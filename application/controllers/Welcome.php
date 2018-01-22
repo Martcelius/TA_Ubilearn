@@ -31,4 +31,14 @@ public function __construct()
 		$this->load->view('welcome_message');
 	}
 
+	public function signup()
+	{
+		$this->load->view('login/signup');
+	}
+
+	public function signin()
+	{
+		$this->load->view('login/signin');
+	}
+
 }
