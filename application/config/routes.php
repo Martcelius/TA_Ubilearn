@@ -56,3 +56,4 @@ $route['translate_uri_dashes'] = FALSE;
 // route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
+$route['siswa/course_info'] = 'C_siswa/course_info';
