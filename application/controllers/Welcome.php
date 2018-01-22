@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 public function __construct()
 {
 	parent::__construct();
-	$this->load->helper('url');
+	// $this->load->helper('url');
 }
 
 
@@ -31,8 +31,4 @@ public function __construct()
 		$this->load->view('welcome_message');
 	}
 
-	public function view()
-	{
-		$this->load->view('layout/master');	
-	}
 }

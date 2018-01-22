@@ -27,7 +27,7 @@
         <div class="mdl-layout__header-row">
            
            <?php $this->load->view('layout/navbar'); ?>
-           
+        
         </div>
     </header>
 
@@ -40,8 +40,8 @@
 <!-- end sidebar -->
 <!-- main -->
 
-    <main class="mdl-layout__content">
-    </main>
+    <?php $this->load->view($content); ?>
+        
 <!-- end main -->
 </div>
 
