@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_siswa extends CI_Controller {
+class C_admin extends CI_Controller {
 
     
     public function __construct()
@@ -15,16 +15,16 @@ class C_siswa extends CI_Controller {
 
     }
 
-    public function dashboard_siswa()
+    public function dashboard_admin()
     {
-        $data['content'] = 'siswa/dashboard_siswa'; 
+        $data['content'] = 'admin/dashboard_admin'; 
         $this->load->view('layout/master', $data);
         
     }
 
     public function manage_akun()
     {
-        $data['content'] = 'siswa/akun_siswa';
+        $data['content'] = 'admin/akun_admin';
         $this->load->view('layout/master', $data);
     }
 
