@@ -66,3 +66,4 @@ $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
 
 
+$route['siswa/course'] = 'C_siswa/course_siswa';
