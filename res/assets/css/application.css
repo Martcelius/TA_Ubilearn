@@ -11705,10 +11705,13 @@ a {
     font-weight: 300;
     padding-bottom: 26px; }
   .cotoneaster .mdl-card__title {
-    background: url("../images/cotoneaster.jpg") center center no-repeat;
+    background: url("../images/banner.jpg") center center no-repeat;
     background-size: cover; }
     .cotoneaster .mdl-card__title .mdl-card__title-text {
       color: rgb(255, 255, 255); }
+.cotoneaster:hover{
+  opacity: .4;
+}
 
 @media screen and (max-width: 1151px) {
   .cotoneaster {
