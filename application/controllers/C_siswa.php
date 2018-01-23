@@ -39,4 +39,10 @@ class C_siswa extends CI_Controller {
         $data['content'] = 'siswa/course_info';
         $this->load->view('layout/master',$data);
     }
+
+    public function course_siswa()
+    {
+        $data['content'] = 'siswa/course_siswa';
+        $this->load->view('layout/master',$data);
+    }
 }
