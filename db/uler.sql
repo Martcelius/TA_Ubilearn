@@ -14,15 +14,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `usr_firstname` varchar(50) NOT NULL,
   `usr_lastname` varchar(50) NOT NULL,
   `usr_password` varchar(50) NOT NULL,
-  `usr_email` varchar(50) NOT NULL,
-  `usr_picture` varchar(150) NOT NULL,
+  `usr_email` varchar(50) NULL,
+  `usr_picture` varchar(150) NULL,
   `usr_gpa` decimal(3,2) NULL,
   `usr_timecreated` timestamp NULL DEFAULT NULL,
   `usr_timemodified` timestamp NULL DEFAULT NULL,
-  `rol_id` int(10) unsigned NOT NULL
+  `usr_level` varchar(50) NOT NULL
 );
-ALTER TABLE `users`
-ADD CONSTRAINT `roles_users_foreign` FOREIGN KEY (`rol_id`) REFERENCES `uler`.`roles` (`rol_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 CREATE TABLE IF NOT EXISTS `university` (
   `unv_id` int(10) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
