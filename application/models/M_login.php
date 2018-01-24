@@ -4,10 +4,10 @@ class M_login extends CI_Model{
 
     function cek($username, $password)
     {
-        $this->db->select('username,password,level');
+        $this->db->select('usr_username,usr_password,usr_level');
         $this->db->from('users');
-        $this->db->where('username', $username);
-        $this->db->where('password', $password);
+        $this->db->where('usr_username', $username);
+        $this->db->where('usr_password', $password);
         $this->db->limit(1);
 
         $query = $this->db->get();
