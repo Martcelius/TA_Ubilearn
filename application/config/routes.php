@@ -62,6 +62,7 @@ $route['siswa/course_close'] = 'C_siswa/course_close';
 $route['siswa/course'] = 'C_siswa/course_siswa';
 //assesment
 $route['siswa/assignment'] = 'C_siswa/assignment_opening';
+$route['siswa/assignment_detail'] = 'C_siswa/assignment_detail';
 //assignment
 $route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
 //exercise

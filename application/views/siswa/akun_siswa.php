@@ -23,7 +23,7 @@
                     </div>
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="firstName" value="Luke"/>
+                            <input class="mdl-textfield__input" placeholder="Nama" type="text" id="firstName" value="Luke"/>
                             <label class="mdl-textfield__label" for="firstName">Nama Depan</label>
                         </div>
 

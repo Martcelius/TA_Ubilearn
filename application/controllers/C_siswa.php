@@ -62,6 +62,7 @@ class C_siswa extends CI_Controller {
         
     }
 
+
     public function exercise_doing()
     {
         $data['content'] = 'siswa/exercise_doing';
@@ -72,6 +73,12 @@ class C_siswa extends CI_Controller {
     public function result()
     {
         $data['content'] = 'siswa/result';
+        $this->load->view('layout/master', $data);
+    }
+
+    public function assignment_detail()
+    {
+        $data['content'] = 'siswa/assignment_detail';
         $this->load->view('layout/master', $data);
         
     }
