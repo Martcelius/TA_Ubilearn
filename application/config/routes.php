@@ -56,14 +56,19 @@ $route['translate_uri_dashes'] = FALSE;
 // route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
+// course
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
+$route['siswa/course'] = 'C_siswa/course_siswa';
+//assesment
+$route['siswa/assignment'] = 'C_siswa/assignment_opening';
+//assignment
+$route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
 
 
 // route login
-
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
 
 
-$route['siswa/course'] = 'C_siswa/course_siswa';
+

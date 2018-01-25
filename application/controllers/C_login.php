@@ -33,15 +33,15 @@ class C_login extends CI_Controller {
            
             if ($this->session->userdata('level')=="admin")
             {
-                redirect('C_admin/dashboard_admin');
+                redirect('admin/dashboard');
             }
             elseif ($this->session->userdata('level')=="siswa")
             {
-                redirect('C_siswa/dashboard_siswa');
+                redirect('siswa/dashboard');
             }
             elseif ($this->session->userdata('level')=="instruktur")
             {
-                redirect('C_instruktur/dashboard_instruktur');
+                redirect("instruktur/dashboard");
             }
         }
         else
