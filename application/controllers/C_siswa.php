@@ -61,4 +61,10 @@ class C_siswa extends CI_Controller {
         $this->load->view('layout/master', $data);
         
     }
+    public function assignment_detail()
+    {
+        $data['content'] = 'siswa/assignment_detail';
+        $this->load->view('layout/master', $data);
+        
+    }
 }
