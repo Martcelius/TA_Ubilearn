@@ -58,6 +58,7 @@ $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
+$route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
 
 
 // route login
