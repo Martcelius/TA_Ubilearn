@@ -64,6 +64,11 @@ $route['siswa/course'] = 'C_siswa/course_siswa';
 $route['siswa/assignment'] = 'C_siswa/assignment_opening';
 //assignment
 $route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
+//exercise
+$route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
+//result assesment/exercise
+$route['siswa/result'] = 'C_siswa/result';
+
 
 
 // route login
