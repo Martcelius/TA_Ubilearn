@@ -45,15 +45,6 @@
             Submit
         </button>
     </div>
-    <div class="form__action">
-    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="firstName" placeholder="silahkan komen.."/>
-                            <label class="mdl-textfield__label" for="firstName">Nama Depan</label>
-                        </div>
-        <button id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-            Submit
-        </button>
-    </div>
         </div>
         </div>
         <div class="mdl-grid">
