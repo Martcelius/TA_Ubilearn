@@ -53,10 +53,10 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// route siswa
+//route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
-// course
+//course
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
 $route['siswa/course'] = 'C_siswa/course_siswa';
