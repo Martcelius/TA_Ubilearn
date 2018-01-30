@@ -60,6 +60,8 @@ $route['siswa/akun'] = 'C_siswa/manage_akun';
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
 $route['siswa/course'] = 'C_siswa/course_siswa';
+$route['siswa/course_detail'] = 'C_siswa/course_detail';
+$route['siswa/course_content'] = 'C_siswa/course_content';
 //assesment
 $route['siswa/assignment'] = 'C_siswa/assignment_opening';
 $route['siswa/assignment_detail'] = 'C_siswa/assignment_detail';
@@ -75,6 +77,3 @@ $route['siswa/result'] = 'C_siswa/result';
 // route login
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
-
-
-

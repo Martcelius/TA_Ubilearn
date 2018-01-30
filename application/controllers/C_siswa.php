@@ -52,14 +52,14 @@ class C_siswa extends CI_Controller {
     {
         $data['content'] = 'siswa/assignment_opening';
         $this->load->view('layout/master', $data);
-        
+
     }
 
     public function assesment_doing()
     {
         $data['content'] = 'siswa/assesment_doing';
         $this->load->view('layout/master', $data);
-        
+
     }
 
 
@@ -67,7 +67,7 @@ class C_siswa extends CI_Controller {
     {
         $data['content'] = 'siswa/exercise_doing';
         $this->load->view('layout/master', $data);
-        
+
     }
 
     public function result()
@@ -80,6 +80,16 @@ class C_siswa extends CI_Controller {
     {
         $data['content'] = 'siswa/assignment_detail';
         $this->load->view('layout/master', $data);
-        
+
+    }
+    public function course_detail()
+    {
+        $data['content'] = 'siswa/course_detail';
+        $this->load->view('layout/master', $data);
+    }
+    public function course_content()
+    {
+        $data['content'] = 'siswa/course_content';
+        $this->load->view('layout/master', $data);
     }
 }
