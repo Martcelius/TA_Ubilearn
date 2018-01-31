@@ -36,6 +36,13 @@
  * @filesource
  */
 
+ /*
+ * --------------------------------------------------------------------
+ * LOAD THE COMPOSER PACKAGE
+ * --------------------------------------------------------------------
+ */
+require_once 'vendor/autoload.php';
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -312,4 +319,4 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
-require_once BASEPATH.'core/CodeIgniter.php';
+require_once BASEPATH. 'core/CodeIgniter.php';
