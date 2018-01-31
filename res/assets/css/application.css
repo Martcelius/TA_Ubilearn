@@ -5121,12 +5121,12 @@ input.mdl-button[type="submit"] {
         content: "\e5d8";
         margin-right: 5px;
         vertical-align: sub; }
-      .mdl-data-table th.mdl-data-table__header--sorted-ascending:hover, .mdl-data-table th.mdl-data-table__header--sorted-descending:hover {
+      /* .mdl-data-table th.mdl-data-table__header--sorted-ascending:hover, .mdl-data-table th.mdl-data-table__header--sorted-descending:hover {
         cursor: pointer; }
         .mdl-data-table th.mdl-data-table__header--sorted-ascending:hover:before, .mdl-data-table th.mdl-data-table__header--sorted-descending:hover:before {
           color: rgba(0, 0, 0, 0.26); }
     .mdl-data-table th.mdl-data-table__header--sorted-descending:before {
-      content: "\e5db"; }
+      content: "\e5db"; } */
 
 .mdl-data-table__select {
   width: 16px; }
@@ -11709,9 +11709,10 @@ a {
     background-size: cover; }
     .cotoneaster .mdl-card__title .mdl-card__title-text {
       color: rgb(255, 255, 255); }
-.cotoneaster:hover{
+/* .cotoneaster:hover{
   opacity: .4;
-}
+} */
+
 
 @media screen and (max-width: 1151px) {
   .cotoneaster {
@@ -12094,3 +12095,26 @@ a {
 
 .mdl-textfield.is-disabled input {
   border-bottom-width: 2px !important; }
+
+  /* btn-dd */
+.btn-dd {
+      background-color: white;
+      border: none;
+      color: black;
+      padding: 12px 16px;
+      font-size: 16px;
+      cursor: pointer;
+  }
+
+  /* Darker background on mouse-over */
+.btn-dd:hover {
+      background-color: grey; }
+  /* btn-dd_end */
+  .cover-main {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url('../images/hero-bg.png') right bottom;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/hero-bg.png') right bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+  }
+  

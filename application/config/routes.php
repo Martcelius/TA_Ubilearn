@@ -53,17 +53,39 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// route siswa
+//route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
+
+//course
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
 
-
-// route login
-
-$route['signin'] = 'welcome/signin';
-$route['signup'] = 'welcome/signup';
-
+$route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
 
 $route['siswa/course'] = 'C_siswa/course_siswa';
+$route['siswa/course_detail'] = 'C_siswa/course_detail';
+$route['siswa/course_content'] = 'C_siswa/course_content';
+//assesment
+$route['siswa/assignment'] = 'C_siswa/assignment_opening';
+$route['siswa/assignment_detail'] = 'C_siswa/assignment_detail';
+//assignment
+$route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
+//exercise
+$route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
+//result assesment/exercise
+$route['siswa/result'] = 'C_siswa/result';
+
+
+
+
+//route instruktor
+$route['instruktur/MyCourse'] = 'C_instruktur/myCourse';
+$route['instruktur/add_course'] = 'C_instruktur/add_course';
+$route['instruktur/lesson'] = 'C_instruktur/lesson';
+$route['instruktur/add_lesson'] = 'C_instruktur/add_lesson';
+
+
+// route login
+$route['signin'] = 'welcome/signin';
+$route['signup'] = 'welcome/signup';

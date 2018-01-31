@@ -47,4 +47,56 @@ class C_siswa extends CI_Controller {
         $data['content'] = 'siswa/course_siswa';
         $this->load->view('layout/master',$data);
     }
+
+
+    public function forum_siswa()
+    {
+        $data['content'] = 'siswa/forum_siswa';
+        $this->load->view('layout/master',$data);
+    }
+
+    public function assignment_opening()
+    {
+        $data['content'] = 'siswa/assignment_opening';
+        $this->load->view('layout/master', $data);
+
+    }
+
+    public function assesment_doing()
+    {
+        $data['content'] = 'siswa/assesment_doing';
+        $this->load->view('layout/master', $data);
+
+    }
+
+
+    public function exercise_doing()
+    {
+        $data['content'] = 'siswa/exercise_doing';
+        $this->load->view('layout/master', $data);
+
+    }
+
+    public function result()
+    {
+        $data['content'] = 'siswa/result';
+        $this->load->view('layout/master', $data);
+    }
+
+    public function assignment_detail()
+    {
+        $data['content'] = 'siswa/assignment_detail';
+        $this->load->view('layout/master', $data);
+
+    }
+    public function course_detail()
+    {
+        $data['content'] = 'siswa/course_detail';
+        $this->load->view('layout/master', $data);
+    }
+    public function course_content()
+    {
+        $data['content'] = 'siswa/course_content';
+        $this->load->view('layout/master', $data);
+    }
 }
