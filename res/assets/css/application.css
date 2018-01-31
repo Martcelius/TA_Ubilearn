@@ -12107,11 +12107,13 @@ a {
 
   /* Darker background on mouse-over */
 .btn-dd:hover {
-      background-color: grey;
+      background-color: grey; }
   /* btn-dd_end */
-.cover-main{
-  background: url(<?php echo base_url();?>res/assets/images/hero-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 60vh;
-}
+  .cover-main {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url('../images/hero-bg.png') right bottom;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/hero-bg.png') right bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+  }
+  
