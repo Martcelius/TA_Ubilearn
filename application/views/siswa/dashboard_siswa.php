@@ -8,6 +8,7 @@
         </div>
       </div>
     </div>
+    
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
         <div class="mdl-card mdl-shadow--2dp ui-buttons">
@@ -17,6 +18,7 @@
         </div>
       </div>
     </div>
+
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--6-col-phone">
         <div class="mdl-card mdl-shadow--2dp pie-chart">
