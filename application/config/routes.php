@@ -79,6 +79,13 @@ $route['siswa/result'] = 'C_siswa/result';
 
 
 
+//route instruktor
+$route['instruktur/MyCourse'] = 'C_instruktur/myCourse';
+$route['instruktur/add_course'] = 'C_instruktur/add_course';
+$route['instruktur/lesson'] = 'C_instruktur/lesson';
+$route['instruktur/add_lesson'] = 'C_instruktur/add_lesson';
+
+
 // route login
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';

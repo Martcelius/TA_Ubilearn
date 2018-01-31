@@ -1,6 +1,6 @@
 <main class="mdl-layout__content">
   <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--10-col">
+    <div class="mdl-cell mdl-cell--10-col-desktop mdl-cell--10-col-tablet mdl-cell--10-col-phone">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
           <div>
@@ -16,58 +16,58 @@
       </div>
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp cotoneaster">
+                        <div class="mdl-card__title mdl-card--expand">
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <h4 style="text-transform: uppercase;">IT Project Management </h4> <hr/>
+                            <span> Martcel Razzaq </span>
+                        </div>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">IT Project Management </h4> <hr/>
-                        <span> Martcel Razzaq </span>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp cotoneaster">
+                        <div class="mdl-card__title mdl-card--expand">
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
+                            <span> Raden Atcheng </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp cotoneaster">
+                        <div class="mdl-card__title mdl-card--expand">
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
+                            <span> Raden Atcheng </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp cotoneaster">
+                        <div class="mdl-card__title mdl-card--expand">
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
+                            <span> Raden Atcheng </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp cotoneaster">
+                        <div class="mdl-card__title mdl-card--expand">
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <h4 style="text-transform: uppercase;">IT Project Management </h4> <hr/>
+                            <span> Martcel Razzaq </span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
-                        <span> Raden Atcheng </span>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
-                        <span> Raden Atcheng </span>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
-                        <span> Raden Atcheng </span>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">IT Project Management </h4> <hr/>
-                        <span> Martcel Razzaq </span>
-                    </div>
-                </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

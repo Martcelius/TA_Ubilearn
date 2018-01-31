@@ -30,7 +30,7 @@
                     <td class="mdl-data-table__cell--non-numeric">Time taken</td>
                     <td>22 hours 16 mins</td>
                 </tr>
-                <tr>
+                <tr>    
                     <td class="mdl-data-table__cell--non-numeric">Marks</td>
                     <td>0.00/1.00</td>
                 </tr>
