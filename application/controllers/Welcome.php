@@ -23,12 +23,21 @@ public function __construct()
 {
 	parent::__construct();
 	// $this->load->helper('url');
+
+	
 }
 
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$users = M_User::all();
+
+        foreach ($users as $key => $value) {
+            echo "ID : ".$value->usr_id."<br>";
+            echo "First Name : ".$value->usr_firstname."<br>";
+            echo "Last Name : ".$value->usr_lastname."<br>";
+            echo "Email : ".$value->usr_username."<br><br>";
+        }
 	}
 
 	public function signup()
