@@ -6,6 +6,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 class M_Course extends Eloquent
 {
     protected $table = 'course';
+    const CREATED_AT = 'crs_timecreated';
+    const UPDATED_AT = 'crs_timemodified';
 
     public function course_enrol()
     {
@@ -26,6 +28,7 @@ class M_Course extends Eloquent
     {
         return $this->hasMany('M_Course_Assignment', 'crs_id');
     }
+    
 }
 
 ?>

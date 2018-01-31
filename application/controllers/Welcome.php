@@ -19,13 +19,13 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-public function __construct()
-{
-	parent::__construct();
-	// $this->load->helper('url');
+	public function __construct()
+	{
+		parent::__construct();
+		// $this->load->helper('url');
 
-	
-}
+		
+	}
 
 
 	public function index()
@@ -37,7 +37,13 @@ public function __construct()
             echo "First Name : ".$value->usr_firstname."<br>";
             echo "Last Name : ".$value->usr_lastname."<br>";
             echo "Email : ".$value->usr_username."<br><br>";
-        }
+		}
+		
+		echo "<pre>", print_r($users->toArray()), "</pre>";
+
+		$courses = M_Course::all();
+		echo "<pre>", print_r($courses->toArray()), "</pre>";
+
 	}
 
 	public function signup()
