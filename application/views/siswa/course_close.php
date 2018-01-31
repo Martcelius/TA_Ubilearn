@@ -1,12 +1,7 @@
 <!-- MAIN -->
 
 <main class="mdl-layout__content">
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--9-col">
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--1-col">
-                <h4>ICON</h4>
-            </div>
+<div class="mdl-grid cover-main">
             <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
                 <div class="">
                     <div class="">
@@ -14,6 +9,14 @@
                     </div>
                 </div>
             </div>
+</div>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--9-col">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--1-col">
+                <h4>ICON</h4>
+            </div>
+            
         </div>
 
         <div class="mdl-grid">

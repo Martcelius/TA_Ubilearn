@@ -1,25 +1,25 @@
 <main class="mdl-layout__content">
-	<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--10-col">
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <div class="">
+	<div class="mdl-grid cover-main">
+    <div class="mdl-cell mdl-cell--10-col">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
           <div class="">
-              <h2 style="color:white">IT Project Management</h2>
+            <div class="">
+                <h2 style="color:white">IT Project Management</h2>
+            </div>
+            <div>
+              <p style="color:white">Matakuliah Manajemen Proyek Teknologi Informasi adalah adwniawndimakmkn nidn aiwndianw d anwidni aniwdn naiwdnai nwidn inawidn ians ...</p>
+            </div>
+            <div>
+              <P style="color: white">
+                <b>Learning Goals </b><sub style="color:#44efe2">(What do you want to learn ?)</sub>
+              </P>
+            </div>
           </div>
-          <div>
-            <p style="color:white">Matakuliah Manajemen Proyek Teknologi Informasi adalah adwniawndimakmkn nidn aiwndianw d anwidni aniwdn naiwdnai nwidn inawidn ians ...</p>
-          </div>
-          <div>
-            <P style="color: white">
-              <b>Learning Goals </b><sub style="color:#44efe2">(What do you want to learn ?)</sub>
-            </P>
-          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="mdl-grid">
+    <div class="mdl-grid">
 <!-- dropdown -->
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-card mdl-shadow--2dp">
