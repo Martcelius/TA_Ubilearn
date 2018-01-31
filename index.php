@@ -73,10 +73,11 @@ require_once 'vendor/autoload.php';
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
-		ini_set('display_errors', 1);
+		$whoops = new \Whoops\Run;
+		$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+		$whoops->register();
 	break;
-
+ 
 	case 'testing':
 	case 'production':
 		ini_set('display_errors', 0);

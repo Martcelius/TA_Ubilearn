@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2018 at 10:33 AM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Generation Time: Jan 31, 2018 at 11:56 AM
+-- Server version: 5.6.37
+-- PHP Version: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -30,13 +32,21 @@ CREATE TABLE `course` (
   `crs_id` int(10) UNSIGNED NOT NULL,
   `crs_code` varchar(10) NOT NULL,
   `crs_name` varchar(50) NOT NULL,
-  `crs_summary` varchar(10) DEFAULT NULL,
+  `crs_summary` longtext,
   `crs_univ` varchar(50) DEFAULT NULL,
   `crs_timecreated` timestamp NULL DEFAULT NULL,
   `crs_timemodified` timestamp NULL DEFAULT NULL,
-  `cat_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL
+  `cat_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`crs_id`, `crs_code`, `crs_name`, `crs_summary`, `crs_univ`, `crs_timecreated`, `crs_timemodified`, `cat_id`) VALUES
+(2, 'KK22', 'Juvetic', 'asdfkjk as', 'Universitas Komedian', '2018-01-31 04:15:39', '2018-01-31 04:15:39', 1),
+(3, 'Injek2', 'Evvean', 'aaaaaa 23\r', 'Universitas Komedian', '2018-01-31 04:16:12', '2018-01-31 04:16:12', 1),
+(5, 'Injek22', 'Evvean', 'aaaaaa 23\r\n123\r\n123\r\n123\r\n124\r\n1243\r\n2 rf\r\na\r\n1234\r\n', 'Universitas Komedian', '2018-01-31 04:23:00', '2018-01-31 04:23:00', 1);
 
 -- --------------------------------------------------------
 
@@ -46,6 +56,7 @@ CREATE TABLE `course` (
 
 CREATE TABLE `course_assesment` (
   `ass_id` int(10) UNSIGNED NOT NULL,
+  `ass_tipe` varchar(20) NOT NULL,
   `ass_name` varchar(50) NOT NULL,
   `ass_desc` varchar(150) NOT NULL,
   `ass_timeopen` timestamp NULL DEFAULT NULL,
@@ -147,6 +158,13 @@ CREATE TABLE `course_category` (
   `cat_timemodified` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `course_category`
+--
+
+INSERT INTO `course_category` (`cat_id`, `cat_name`, `cat_timecreated`, `cat_timemodified`) VALUES
+(1, 'Teknik Informatika', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -156,6 +174,8 @@ CREATE TABLE `course_category` (
 CREATE TABLE `course_content` (
   `cnt_id` int(10) UNSIGNED NOT NULL,
   `cnt_name` varchar(50) NOT NULL,
+  `cnt_desc` varchar(500) DEFAULT NULL,
+  `cnt_comment` varchar(250) DEFAULT NULL,
   `cnt_type` varchar(10) DEFAULT NULL,
   `cnt_source` varchar(500) DEFAULT NULL,
   `cnt_timecreated` timestamp NULL DEFAULT NULL,
@@ -330,8 +350,17 @@ CREATE TABLE `users` (
   `usr_timecreated` timestamp NULL DEFAULT NULL,
   `usr_timemodified` timestamp NULL DEFAULT NULL,
   `usr_level` varchar(50) NOT NULL,
-  `usr_jk` varchar(10) DEFAULT NULL
+  `usr_jk` varchar(10) DEFAULT NULL,
+  `usr_tgllahir` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`usr_id`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`) VALUES
+(1, 'admin', 'admin', 'uler', 'admin', NULL, NULL, NULL, NULL, NULL, '1', NULL, 0),
+(2, 'dummy', 'dummy', 'uler', 'dummy', NULL, NULL, NULL, NULL, NULL, '2', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -342,14 +371,15 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`crs_id`),
-  ADD KEY `course_category_course_foreign` (`cat_id`),
-  ADD KEY `user_course_foreign` (`usr_id`);
+  ADD UNIQUE KEY `crs_code` (`crs_code`),
+  ADD KEY `course_category_course_foreign` (`cat_id`);
 
 --
 -- Indexes for table `course_assesment`
 --
 ALTER TABLE `course_assesment`
   ADD PRIMARY KEY (`ass_id`),
+  ADD UNIQUE KEY `ass_tipe` (`ass_tipe`),
   ADD KEY `course_assesment_foreign` (`crs_id`);
 
 --
@@ -488,102 +518,122 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `course_assesment`
 --
 ALTER TABLE `course_assesment`
   MODIFY `ass_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_question`
 --
 ALTER TABLE `course_assesment_question`
   MODIFY `qst_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_questions_answer`
 --
 ALTER TABLE `course_assesment_questions_answer`
   MODIFY `ans_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_questions_answer_of_student`
 --
 ALTER TABLE `course_assesment_questions_answer_of_student`
   MODIFY `ast_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_assignment`
 --
 ALTER TABLE `course_assignment`
   MODIFY `asg_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_assignment_submission`
 --
 ALTER TABLE `course_assignment_submission`
   MODIFY `sub_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_category`
 --
 ALTER TABLE `course_category`
-  MODIFY `cat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `course_content`
 --
 ALTER TABLE `course_content`
   MODIFY `cnt_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_enrol`
 --
 ALTER TABLE `course_enrol`
   MODIFY `enr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_enrol_detail`
 --
 ALTER TABLE `course_enrol_detail`
   MODIFY `end_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_forum`
 --
 ALTER TABLE `course_forum`
   MODIFY `cfr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread`
 --
 ALTER TABLE `course_forum_thread`
   MODIFY `cft_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply`
 --
 ALTER TABLE `course_forum_thread_reply`
   MODIFY `ftr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply`
   MODIFY `trr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
   MODIFY `loc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_lesson`
 --
 ALTER TABLE `course_lesson`
   MODIFY `lsn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `rol_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `university`
 --
 ALTER TABLE `university`
   MODIFY `unv_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Constraints for dumped tables
 --
@@ -592,8 +642,7 @@ ALTER TABLE `users`
 -- Constraints for table `course`
 --
 ALTER TABLE `course`
-  ADD CONSTRAINT `course_category_course_foreign` FOREIGN KEY (`cat_id`) REFERENCES `course_category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_course_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `course_category_course_foreign` FOREIGN KEY (`cat_id`) REFERENCES `course_category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `course_assesment`
@@ -685,6 +734,7 @@ ALTER TABLE `course_forum_thread_reply_reply`
 --
 ALTER TABLE `course_lesson`
   ADD CONSTRAINT `course_lesson_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

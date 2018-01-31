@@ -7,29 +7,29 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Course</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form class="form-horizontal">
+                    <form action="<?php echo base_url(). 'instruktur/course/insert'; ?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Kode Course</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputtext3" placeholder="Kode Course">
+                            <input name="m-kode-course" type="text" class="form-control" id="inputtext3" placeholder="Kode Course">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Nama Course</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPassword3" placeholder="Nama Course">
+                            <input name="m-nama-course" type="text" class="form-control" id="inputPassword3" placeholder="Nama Course">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" id="inputtext3" placeholder="Deskripsi"></textarea>
+                            <textarea name="m-deskripsi-course" class="form-control" id="inputtext3" placeholder="Deskripsi"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Universitas Course</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputtext3" placeholder="Universitas Course">
+                            <input name="m-univ-course" type="text" class="form-control" id="inputtext3" placeholder="Universitas Course">
                             </div>
                         </div>
                         <div class="form-group">
