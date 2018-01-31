@@ -32,5 +32,15 @@
         padding-bottom: 0;
       }
     }
+    .mdl-list__forum {
+      @include typo-dropdown-menu-li;
+      &:first-child {
+        color: $dropdown-menu-header-font-color;
+      }
+      &:last-child {
+        padding-top: $list-min-padding/0;
+        padding-bottom: 0;
+      }
+    }
   }
 }

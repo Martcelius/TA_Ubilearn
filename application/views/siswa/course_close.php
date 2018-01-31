@@ -55,14 +55,14 @@
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">done</i>
-                            <span style="margin-left:20px">Type: CLOSE COURSE</span>
+                            <span style="margin-left:20px">Status: Belum Diambil</span>
                         </span>
                     </li>
                 </ul>
                 <hr>
                 <div style="text-align:center;">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue" >
-                                    Ambil Course
+                        Ambil Course
                     </button>
                  </div>
             </div>

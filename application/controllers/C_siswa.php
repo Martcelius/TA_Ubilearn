@@ -48,6 +48,13 @@ class C_siswa extends CI_Controller {
         $this->load->view('layout/master',$data);
     }
 
+
+    public function forum_siswa()
+    {
+        $data['content'] = 'siswa/forum_siswa';
+        $this->load->view('layout/master',$data);
+    }
+
     public function assignment_opening()
     {
         $data['content'] = 'siswa/assignment_opening';
