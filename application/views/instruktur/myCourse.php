@@ -1,5 +1,5 @@
 <main class="mdl-layout__content">
-    <div class="mdl-grid">
+    <div class="mdl-grid cover-main">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
         <div class="">
             <div class="">
@@ -36,7 +36,9 @@
                 <span>Instruktur Course</span>
             </div>
             <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">Masuk</button>                    
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                    Masuk
+                </button>                     
             </div>
         </div>
       </div>
@@ -49,7 +51,9 @@
                 <span>IQBAL IF </span>
             </div>
             <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">Masuk</button>                    
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                    Masuk
+                </button>                    
             </div>
         </div>
       </div>
@@ -62,7 +66,9 @@
                 <span>IQBAL IF </span>
             </div>
             <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">Masuk</button>                    
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                    Masuk
+                </button>                    
             </div>
         </div>
       </div>
