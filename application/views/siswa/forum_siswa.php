@@ -37,56 +37,53 @@
                 </div>
             </div>
            
-            <div id="demo1" class="collapse">
-                <table class="mdl-data-table mdl-shadow--2dp" style="width:96%;margin-left:35px" border="1">
+            <div id="demo1" class="collapse" style="background-color:rgba(0, 0, 0, 0.3)">
+                <table class="table table-bordered" style="width:96%;margin-left:35px;">
                     <thead>
                         <tr>
-                            <td colspan = "2" style="text-align:left">
+                            <td colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                 SFH4123 / INTERAKSI MANUSIA DAN KOMPUTER / DJN    
                             </td>
                         </tr>
                         <tr id="forum_tabel_lesson1">
-                            <td style="width:10px">
+                            <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
                                 1.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align:left;color : rgba(255, 255, 255, 0.8);">
                                 Lesson 01
                             </td>
                             <td>
-                                <table class="mdl-data-table mdl-shadow--2dp" style="width:100%" border="1">
+                                <table class="table table-bordered" style="width:100%; background-color:transparent; margin-top: 5px;">
                                     <thead>
                                         <tr>
-                                            <td style="width:15px;text-align : left">
+                                            <td style="width:15px;text-align : left;color : rgba(255, 255, 255, 0.8);">
                                                 No
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
                                                 Judul
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
                                                 Post saya
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 Total Post
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 Aksi
                                             </td>
                                         </tr>
-                                        <tr>
-    
-                                        </tr>
     
                                         <tr>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 1
                                             </td>
-                                            <td style="width:50%; text-align : left">
+                                            <td style="width:50%; text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 Belajar Menginjek
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 5
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 100
                                             </td>
                                             <td style="text-align : center">
@@ -102,37 +99,37 @@
                         </tr>
     
                         <tr id="forum_tabel_lesson2">
-                            <td style="width:10px">
+                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
                                 2.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align : left; color : rgba(255, 255, 255, 0.8);">
                                 Lesson 02
                             </td>
-                            <td>
+                            <td style="color : rgba(255, 255, 255, 0.8);">
                                 Tidak ada diskusi
                             </td>
                         </tr>
     
                         <tr id="forum_tabel_lesson3">
-                            <td style="width:10px">
+                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
                                 3.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
                                 Lesson 03
                             </td>
-                            <td>
+                            <td style="color : rgba(255, 255, 255, 0.8);">
                                 Tidak ada diskusi
                             </td>
                         </tr>
     
                         <tr id="forum_tabel_lesson4">
-                            <td style="width:10px">
+                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
                                 4.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
                                 Lesson 04
                             </td>
-                            <td>
+                            <td style="color : rgba(255, 255, 255, 0.8);">
                                 Tidak ada diskusi
                             </td>
                         </tr>
@@ -156,56 +153,53 @@
                 </div>
             </div>
            
-            <div id="demo2" class="collapse">
-                <table class="mdl-data-table mdl-shadow--2dp" style="width:96%;margin-left:35px;" border="1">
+            <div id="demo2" class="collapse" style="background-color:rgba(0, 0, 0, 0.3)">
+                <table class="table table-bordered" style="width:96%;margin-left:35px;">
                     <thead>
                         <tr>
-                            <td colspan = "2" style="text-align:left">
-                                SFH4321 / IT Project Management / IDN    
+                            <td colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8);">
+                                SFH4123 / INTERAKSI MANUSIA DAN KOMPUTER / DJN    
                             </td>
                         </tr>
                         <tr id="forum_tabel_lesson1">
-                            <td style="width:10px">
+                            <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
                                 1.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align:left;color : rgba(255, 255, 255, 0.8);">
                                 Lesson 01
                             </td>
                             <td>
-                                <table class="mdl-data-table mdl-shadow--2dp" style="width:100%" border="1">
+                                <table class="table table-bordered" style="width:100%; background-color:transparent">
                                     <thead>
                                         <tr>
-                                            <td style="width:15px;text-align : left">
+                                            <td style="width:15px;text-align : left;color : rgba(255, 255, 255, 0.8);">
                                                 No
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
                                                 Judul
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
                                                 Post saya
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 Total Post
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 Aksi
                                             </td>
                                         </tr>
+
                                         <tr>
-    
-                                        </tr>
-    
-                                        <tr>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 1
                                             </td>
-                                            <td style="width:50%; text-align : left">
+                                            <td style="width:50%; text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 Belajar Menginjek
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 5
                                             </td>
-                                            <td style="text-align : left">
+                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                 100
                                             </td>
                                             <td style="text-align : center">
@@ -213,45 +207,45 @@
                                             </td>
                                         </tr>
                                         <tr>
-    
+
                                         </tr>
                                     </thead>
                                 </table>
                             </td>
                         </tr>
-    
+
                         <tr id="forum_tabel_lesson2">
-                            <td style="width:10px">
+                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
                                 2.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align : left; color : rgba(255, 255, 255, 0.8);">
                                 Lesson 02
                             </td>
-                            <td>
+                            <td style="color : rgba(255, 255, 255, 0.8);">
                                 Tidak ada diskusi
                             </td>
                         </tr>
-    
+
                         <tr id="forum_tabel_lesson3">
-                            <td style="width:10px">
+                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
                                 3.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
                                 Lesson 03
                             </td>
-                            <td>
+                            <td style="color : rgba(255, 255, 255, 0.8);">
                                 Tidak ada diskusi
                             </td>
                         </tr>
-    
+
                         <tr id="forum_tabel_lesson4">
-                            <td style="width:10px">
+                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
                                 4.
                             </td>
-                            <td style="width:200px; text-align:left">
+                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
                                 Lesson 04
                             </td>
-                            <td>
+                            <td style="color : rgba(255, 255, 255, 0.8);">
                                 Tidak ada diskusi
                             </td>
                         </tr>

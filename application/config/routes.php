@@ -61,7 +61,9 @@ $route['siswa/akun'] = 'C_siswa/manage_akun';
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
 
+//forum
 $route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
+$route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
 
 $route['siswa/course'] = 'C_siswa/course_siswa';
 $route['siswa/course_detail'] = 'C_siswa/course_detail';
@@ -75,6 +77,7 @@ $route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 //result assesment/exercise
 $route['siswa/result'] = 'C_siswa/result';
+
 
 
 
