@@ -11709,9 +11709,15 @@ a {
     background-size: cover; }
     .cotoneaster .mdl-card__title .mdl-card__title-text {
       color: rgb(255, 255, 255); }
+
 .cotoneaster:hover{
   opacity: .4;
 }
+/* .cotoneaster:hover{
+  opacity: .4;
+} */
+
+
 
 @media screen and (max-width: 1151px) {
   .cotoneaster {
@@ -12107,6 +12113,7 @@ a {
 
   /* Darker background on mouse-over */
 .btn-dd:hover {
+
       background-color: grey;
   /* btn-dd_end */
 .cover-main{
@@ -12115,3 +12122,14 @@ a {
   background-size: cover;
   height: 60vh;
 }
+
+      background-color: grey; }
+  /* btn-dd_end */
+  .cover-main {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url('../images/hero-bg.png') right bottom;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/hero-bg.png') right bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+  }
+

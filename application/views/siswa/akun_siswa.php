@@ -1,5 +1,7 @@
 <main class="mdl-layout__content mdl-color--grey-100">
-    <div class="mdl-card mdl-shadow--2dp employer-form" action="#">
+<div class="mdl-grid cover-main">
+</div>
+    <div class="mdl-card mdl-shadow--2dp employer-form" >
         <div class="mdl-card__title">
             <h2>Pengaturan Akun</h2>
             <div class="mdl-card__subtitle">Isikan data dengan lengkap</div>
@@ -9,10 +11,21 @@
             <form action="#" class="form">
                 <div class="form__article">
                     <h3>Personal data</h3>
-
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">  
+                        <label class="mdl-textfield__label" for="firstName" style="font-size:16px">Foto</label>
+                        </div>
+                    </div>
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="firstName" value="Luke"/>
+                            <!-- <label class="mdl-textfield__label" onchange="readURL(this);">Foto</label> -->
+                            <img id="blah" src="http://placehold.it/180" alt="your image" /><br></br>
+                            <input type='file' onchange="readURL(this);" />
+                        </div>
+                    </div>
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" placeholder="Nama" type="text" id="firstName" value="Luke"/>
                             <label class="mdl-textfield__label" for="firstName">Nama Depan</label>
                         </div>
 
@@ -77,4 +90,21 @@
             </form>
         </div>
     </div>
+
+    
 </main>
+
+<script>
+function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
