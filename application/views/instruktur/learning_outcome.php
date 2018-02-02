@@ -3,7 +3,7 @@
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="">
           <div class="">
-              <h2 style="color:white">Lesson</h2>
+              <h2 style="color:white">Learning Outcome</h2>
           </div>
       </div>
     </div>
@@ -12,7 +12,7 @@
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
         <i class="material-icons">create</i>
-        Buat Assessment
+        Buat Learning Outcome
       </button>
     </div>
   </div>
@@ -140,38 +140,30 @@
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-card mdl-shadow--2dp pie-chart">
           <div class="mdl-card__title" style="display:block;">
-              <h2 class="mdl-card__title-text">Nama Lesson</h2>
-              <div class="mdl-card__subtitle-text">deskripsi singkat lesson</div>
-          </div>
-          <div class="mdl-card__supporting-text" style="font-size: unset;" >
-            Deskripsi Lesson ...
+              <h2 class="mdl-card__title-text">Learning Outcome</h2>
           </div>
           <div class="mdl-card__supporting-text" style="font-size: unset;" >
            <table id="Table_mdl">
             <thead>
               <tr>
                 <th style="text-align: center;">No.</th>
-                <th style="text-align: center;">Nama Assessment</th>
-                <th style="text-align: center;">Deskripsi</th>
-                <th style="text-align: center;">Waktu Mulai</th>
-                <th style="text-align: center;">Waktu Selesai</th>
-                <th style="text-align: center;">Batas Waktu</th>
+                <th style="text-align: center;">Learning Outcome Deskripsi</th>
+                <th style="text-align: center;">Waktu Create</th>
+                <th style="text-align: center;">Waktu Update</th>
                 <th style="text-align: center;">Aksi</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style="text-align: center;">1.</td>
-                <td>Assessment 1</td>
                 <td  style="text-align: justify;width: 30%;">ijdiuhucednuanca Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                <td>12-02-2018 23:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>0 Hari 1 Jam</td>
+                <td style="text-align: center;">12-02-2018 23:00</td>
+                <td style="text-align: center;">12-02-2018 24:00</td>
                 <td style="text-align: center;">
                   <button style="margin-bottom: 5px;background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
                     <i class="material-icons">remove_red_eye</i>
@@ -186,11 +178,9 @@
               </tr>
               <tr>
                 <td style="text-align: center;">2.</td>
-                <td>Assessment 2</td>
                 <td style="text-align: justify;width: 30%;">ijdiuhucednuanca</td>
-                <td>12-02-2018 23:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>0 Hari 1 Jam</td>
+                <td style="text-align: center;">12-02-2018 23:00</td>
+                <td style="text-align: center;">12-02-2018 24:00</td>
                 <td style="text-align: center;">
                   <button style="margin-bottom: 5px;background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
                     <i class="material-icons">remove_red_eye</i>
