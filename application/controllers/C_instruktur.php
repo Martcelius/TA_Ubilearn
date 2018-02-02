@@ -49,4 +49,11 @@ class C_instruktur extends CI_Controller {
         
     }
 
+    public function add_lo()
+    {
+        $data['content'] = 'instruktur/add_LO';
+        $this->load->view('layout/master', $data);
+
+    }
+
 }

@@ -1,5 +1,5 @@
 <main class="mdl-layout__content">
-    <div class="mdl-grid">
+    <div class="mdl-grid cover-main">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
         <div class="">
             <div class="">
@@ -31,6 +31,37 @@
       <?php foreach ($courses as $course):?>
 
       <div onclick="alert('<?php echo $course->crs_id;?>')" class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+        <div class="mdl-card mdl-shadow--2dp cotoneaster">
+            <div class="mdl-card__title mdl-card--expand">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h4 style="text-transform: uppercase;">Nama Course </h4> <hr/>
+                <span>Instruktur Course</span>
+            </div>
+            <div class="mdl-card__actions">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                    Masuk
+                </button>                     
+            </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+        <div class="mdl-card mdl-shadow--2dp cotoneaster">
+            <div class="mdl-card__title mdl-card--expand">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h4 style="text-transform: uppercase;">Nama Course </h4> <hr/>
+                <span>IQBAL IF </span>
+            </div>
+            <div class="mdl-card__actions">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                    Masuk
+                </button>                    
+            </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
         <div class="mdl-card mdl-shadow--2dp cotoneaster">
             <div class="mdl-card__title mdl-card--expand">
             </div>
@@ -39,7 +70,9 @@
                 <span><?php echo $nama_instruktur->usr_firstname.' '.$nama_instruktur->usr_lastname;?></span>
             </div>
             <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">Masuk</button>                    
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                    Masuk
+                </button>                    
             </div>
         </div>
       </div>
