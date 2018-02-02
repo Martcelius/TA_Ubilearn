@@ -11,83 +11,33 @@
     </div>
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-          <i class="material-icons">create</i>
+      <a href="<?php echo site_url('instruktur/add_course') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+          <i class="material-icons">add</i>
           Buat Course
-      </button>
+      </button></a>
       </div>
     </div>
-    <!-- <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <div class="mdl-card mdl-shadow--2dp ui-buttons">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Welcome to TEL-C U-Learning</h2>
-            </div>
-        </div>
-      </div>
-    </div> -->
     <div class="mdl-grid">
 
       <?php foreach ($courses as $course):?>
 
-      <div onclick="alert('<?php echo $course->crs_id;?>')" class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
-      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+      <div  class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
         <div class="mdl-card mdl-shadow--2dp cotoneaster">
             <div class="mdl-card__title mdl-card--expand">
             </div>
             <div class="mdl-card__supporting-text">
-                <h4 style="text-transform: uppercase;">Nama Course </h4> <hr/>
-                <span>Instruktur Course</span>
-            </div>
-            <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
-                    <i class="material-icons">create</i>
-                    Masuk
-                </button>  
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
-                    <i class="material-icons">drafts</i>
-                    Edit
-                </button>                  
-            </div>
-        </div>
-      </div>
-      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
-        <div class="mdl-card mdl-shadow--2dp cotoneaster">
-            <div class="mdl-card__title mdl-card--expand">
-            </div>
-            <div class="mdl-card__supporting-text">
-                <h4 style="text-transform: uppercase;">Nama Course </h4> <hr/>
-                <span>IQBAL IF </span>
-            </div>
-            <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
-                    <i class="material-icons">create</i>
-                    Masuk
-                </button>  
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
-                    <i class="material-icons">drafts</i>
-                    Edit
-                </button>                    
-            </div>
-        </div>
-      </div>
-      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
-        <div class="mdl-card mdl-shadow--2dp cotoneaster">
-            <div class="mdl-card__title mdl-card--expand">
-            </div>
-            <div class="mdl-card__supporting-text">
-                <h4 style="text-transform: uppercase;"><?php echo $course->crs_name;?> </h4> <hr/>
+                <h4 style="text-transform: uppercase;"><?php echo $course->crs_name ?> </h4> <hr/>
                 <span><?php echo $nama_instruktur->usr_firstname.' '.$nama_instruktur->usr_lastname;?></span>
             </div>
             <div class="mdl-card__actions">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
-                <i class="material-icons">create</i>
+                <i class="material-icons">add</i>
                 Masuk
              </button>  
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+            <a href="<?php echo site_url('instruktur/edit_course/'.$course->crs_id) ?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
                 <i class="material-icons">drafts</i>
                 Edit
-            </button>                    
+            </button></a>                    
             </div>
         </div>
       </div>
@@ -96,5 +46,5 @@
 
     </div>
 </main>
-
+<!-- onclick="alert('<?php echo $course->crs_id;?>')" -->
 
