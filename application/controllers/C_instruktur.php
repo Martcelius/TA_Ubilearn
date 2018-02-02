@@ -48,6 +48,13 @@ class C_instruktur extends CI_Controller {
         
     }
 
+    public function detail_lesson()
+    {
+        $data['content'] = 'instruktur/detail_lesson';
+        $this->load->view('layout/master', $data);
+        
+    }    
+
     public function add_lesson()
     {
         $data['content'] = 'instruktur/add_lesson';
@@ -61,5 +68,12 @@ class C_instruktur extends CI_Controller {
         $this->load->view('layout/master', $data);
 
     }
+
+    public function add_assessment()
+    {
+        $data['content'] = 'instruktur/tambah_assessment';
+        $this->load->view('layout/master', $data);
+        
+    } 
 
 }

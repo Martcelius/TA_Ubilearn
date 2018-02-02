@@ -36,9 +36,14 @@
                 <span>Instruktur Course</span>
             </div>
             <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                    <i class="material-icons">create</i>
                     Masuk
-                </button>                     
+                </button>  
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    <i class="material-icons">drafts</i>
+                    Edit
+                </button>                  
             </div>
         </div>
       </div>
@@ -51,8 +56,13 @@
                 <span>IQBAL IF </span>
             </div>
             <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                    <i class="material-icons">create</i>
                     Masuk
+                </button>  
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    <i class="material-icons">drafts</i>
+                    Edit
                 </button>                    
             </div>
         </div>
@@ -66,9 +76,14 @@
                 <span>IQBAL IF </span>
             </div>
             <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
-                    Masuk
-                </button>                    
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                <i class="material-icons">create</i>
+                Masuk
+             </button>  
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                <i class="material-icons">drafts</i>
+                Edit
+            </button>                    
             </div>
         </div>
       </div>

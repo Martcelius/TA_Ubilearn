@@ -7,6 +7,9 @@ class Course extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        
+        // $this->load->model('M_Course');
+        
     }
     
     public function index()
@@ -15,9 +18,22 @@ class Course extends CI_Controller {
     }
 
     /* CRUD Course */
+    public function test()
+    {
+        $test= M_course::find(1);
+        return $test;
+    } 
+
     public function add()
     {
         $this->load->view('instruktur/add_course');
+    }
+
+    public function edit_course()
+    {
+        $data['content'] = "instruktur/edit_course";
+        $this->load->view('layout/master', $data);
+        
     }
 
     public function insert()
@@ -30,6 +46,7 @@ class Course extends CI_Controller {
         $course->crs_summary = $_POST['m-deskripsi-course'];
         $course->crs_univ = $_POST['m-univ-course'];
         $course->cat_id = 1;
+        $course->usr_id = 1;
 
         try {
             if ($course->save()) {

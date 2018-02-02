@@ -49,39 +49,54 @@
                 <span>Instruktur Course</span>
             </div>
             <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
-                    Masuk
-                </button>                 
-            </div>
-        </div>
-      </div>
-      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
-        <div class="mdl-card mdl-shadow--2dp cotoneaster">
-            <div class="mdl-card__title mdl-card--expand">
-            </div>
-            <div class="mdl-card__supporting-text">
-                <h4 style="text-transform: uppercase;">Nama </h4> <hr/>
-                <span>IQBAL IF </span>
-            </div>
-            <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
-                        Masuk
-                </button>   
-            </div>
-        </div>
-      </div>
-      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
-        <div class="mdl-card mdl-shadow--2dp cotoneaster">
-            <div class="mdl-card__title mdl-card--expand">
-            </div>
-            <div class="mdl-card__supporting-text">
-                <h4 style="text-transform: uppercase;">Nama </h4> <hr/>
-                <span>IQBAL IF </span>
-            </div>
-            <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="float:right;">
-                        Masuk
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                    <i class="material-icons">create</i>
+                     Masuk
                 </button>  
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    <i class="material-icons">drafts</i>
+                    Edit
+                </button>                
+            </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+        <div class="mdl-card mdl-shadow--2dp cotoneaster">
+            <div class="mdl-card__title mdl-card--expand">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h4 style="text-transform: uppercase;">Nama </h4> <hr/>
+                <span>IQBAL IF </span>
+            </div>
+            <div class="mdl-card__actions">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                    <i class="material-icons">create</i>
+                    Masuk
+                </button>  
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    <i class="material-icons">drafts</i>
+                    Edit
+                </button>  
+            </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+        <div class="mdl-card mdl-shadow--2dp cotoneaster">
+            <div class="mdl-card__title mdl-card--expand">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h4 style="text-transform: uppercase;">Nama </h4> <hr/>
+                <span>IQBAL IF </span>
+            </div>
+            <div class="mdl-card__actions">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                    <i class="material-icons">create</i>
+                    Masuk
+                </button>  
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    <i class="material-icons">drafts</i>
+                    Edit
+                </button> 
             </div>
         </div>
       </div>

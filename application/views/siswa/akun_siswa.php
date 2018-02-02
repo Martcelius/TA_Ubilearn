@@ -6,7 +6,6 @@
         <div class="mdl-card mdl-shadow--2dp " >
             <div class="mdl-card__title">
                 <h2>Pengaturan Akun</h2>
-                <div class="mdl-card__subtitle">Isikan data dengan lengkap</div>
             </div>
             <div class="mdl-card__supporting-text">
             <div class="container">
@@ -16,7 +15,7 @@
             <fieldset>
             
             <!-- Form Name -->
-            <legend style="color:white;">User profile form requirement</legend>
+            <legend style="color:white;">Isikan data dengan lengkap</legend>
             
             <!-- Text input-->
             <div class="form-group">
@@ -35,7 +34,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
               <div class="col-md-4">
-                <input id="Upload photo" name="Upload photo" class="input-file" type="file" onchange="readURL(this);"/>>
+                <input id="Upload photo" name="Upload photo" class="input-file" type="file" onchange="readURL(this);"/>
               </div>
             </div>
 
@@ -381,6 +380,11 @@
               </div>
             </div> -->
             </fieldset>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-10">
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
+                    </div>
+                </div>
             </form>
             </div>
 
