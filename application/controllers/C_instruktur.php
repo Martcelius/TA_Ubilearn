@@ -28,12 +28,6 @@ class C_instruktur extends CI_Controller {
         $this->load->view('layout/master', $data);
     }
 
-    public function myCourse()
-    {
-        $data['content'] = 'instruktur/myCourse';
-        $this->load->view('layout/master', $data);
-    }
-
     public function add_course()
     {
         $data['content'] = 'instruktur/add_course';

@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class Course extends CI_Controller {
 
     
@@ -14,7 +16,17 @@ class Course extends CI_Controller {
     
     public function index()
     {
-
+        $data['content'] = 'instruktur/MyCourse';
+        $data['courses'] = DB::table('course')
+                            ->join('users', 'users.usr_id', '=', 'course.usr_id')
+                            ->where('course.usr_id', '=', 3)
+                            ->get();
+        $data['nama_instruktur'] = DB::table('course')
+                                                ->join('users', 'users.usr_id', '=', 'course.usr_id')
+                                                ->where('course.usr_id', '=', 3)
+                                                ->select('usr_firstname', 'usr_lastname')
+                                                ->first();
+        $this->load->view('layout/master', $data);
     }
 
     /* CRUD Course */
@@ -46,8 +58,8 @@ class Course extends CI_Controller {
         $course->crs_summary = $_POST['m-deskripsi-course'];
         $course->crs_univ = $_POST['m-univ-course'];
         $course->cat_id = 1;
-        $course->usr_id = 1;
-
+        $course->usr_id = 3;
+        
         try {
             if ($course->save()) {
                 echo "Injeksi";
