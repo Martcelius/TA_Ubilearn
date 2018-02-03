@@ -6,14 +6,22 @@ img{
 
 .sidenav {
     height: 100%;
+
     width: 250px;
+
+    width: 18%;
+
     position: fixed;
     z-index: 1;
     top: 0;
     right: 0;
     background-color: #111;
     overflow-x: hidden;
+
     padding-top: 20px;
+
+    padding-top: 40px;
+
 }
 
 .sidenav a {
@@ -38,3 +46,18 @@ img{
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+
+.accordion {
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.accordion:hover {
+    background-color: #807f7f;
+}
+
+.panel {
+    background-color: #686868;
+}
+

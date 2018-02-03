@@ -83,10 +83,20 @@ $route['admin/add_user'] = 'C_admin/add_user';
 
 
 //route instruktor
-$route['instruktur/MyCourse'] = 'C_instruktur/myCourse';
-$route['instruktur/add_course'] = 'C_instruktur/add_course';
+$route['instruktur/dashboard'] = 'C_instruktur/dashboard';
+$route['instruktur/akun'] = 'C_instruktur/manage_akun';
+$route['instruktur/MyCourse'] = 'instruktur/course/index';
+$route['instruktur/add_course'] = 'instruktur/course/add';
+$route['instruktur/edit_course/(:any)'] = 'instruktur/course/edit/$1';
+$route['instruktur/update_course'] = 'instruktur/course/update';
 $route['instruktur/lesson'] = 'C_instruktur/lesson';
 $route['instruktur/add_lesson'] = 'C_instruktur/add_lesson';
+$route['instruktur/edit_lesson'] = 'instruktur/lesson/edit_lesson';
+$route['instruktur/learning_outcome'] = 'C_instruktur/learning_outcome';
+$route['instruktur/add_lo'] = 'C_instruktur/add_lo';
+$route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
+$route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
+
 
 
 // route login
