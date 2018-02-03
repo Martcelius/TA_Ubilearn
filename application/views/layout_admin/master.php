@@ -18,7 +18,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
-   <?php $this->load->view('layout/header'); ?>
+   <?php $this->load->view('layout_admin/header'); ?>
 
 </head>
 <body>
@@ -26,7 +26,7 @@
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
 
-           <?php $this->load->view('layout/navbar'); ?>
+           <?php $this->load->view('layout_admin/navbar'); ?>
 
         </div>
     </header>
@@ -34,7 +34,7 @@
 <!-- side bar -->
     <div class="mdl-layout__drawer">
 
-       <?php $this->load->view('layout/sidebar'); ?>
+       <?php $this->load->view('layout_admin/sidebar'); ?>
 
     </div>
 <!-- end sidebar -->
@@ -46,7 +46,7 @@
 </div>
 
 <!-- inject:js -->
-    <?php $this->load->view('layout/script');?>
+    <?php $this->load->view('layout_admin/script');?>
 <!-- endinject -->
 
 </body>

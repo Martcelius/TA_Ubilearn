@@ -76,7 +76,10 @@ $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 //result assesment/exercise
 $route['siswa/result'] = 'C_siswa/result';
 
-
+//route admin
+$route['admin/dashboard'] = 'C_admin/dashboard_admin';
+$route['admin/akun_admin'] = 'C_admin/akun_admin';
+$route['admin/add_user'] = 'C_admin/add_user';
 
 
 //route instruktor
