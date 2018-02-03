@@ -99,3 +99,4 @@ $route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
 // route login
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
+$route['landing_page']= 'C_login/landing_page';
