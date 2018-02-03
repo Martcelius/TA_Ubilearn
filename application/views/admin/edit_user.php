@@ -15,7 +15,7 @@
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__title" style="display:block;">
-                    <h2 class="mdl-card__title-text">Tambah User</h2>
+                    <h2 class="mdl-card__title-text">Edit User</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail User</div>
                 </div>
                 <div class="mdl-card__supporting-text">
@@ -23,27 +23,27 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label" style="font-size: 14px">Username</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="username" placeholder="Username">
+                                <input type="text" class="form-control" id="username" value="Username">
                             </div>
                             <label for="password" class="col-sm-2 control-label" style="font-size: 14px">Password</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="password" placeholder="Password">
+                                <input type="text" class="form-control" id="password" value="Password">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="namaDepan" class="col-sm-2 control-label" style="font-size: 14px">Nama Depan</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="namaDepan" placeholder="Nama Depan">
+                                <input type="text" class="form-control" id="namaDepan" value="Nama Depan">
                             </div>
                             <label for="namaBelakang" class="col-sm-2 control-label" style="font-size: 14px">Nama Belakang</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="namaBelakang" placeholder="Nama Belakang">
+                                <input type="text" class="form-control" id="namaBelakang" value="Nama Belakang">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label" style="font-size: 14px">Email</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="email" placeholder="E-mail">
+                                <input type="text" class="form-control" id="email" value="E-mail">
                             </div>
                         </div>
                         <div class="form-group">
@@ -74,7 +74,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="font-size: 14px">IPK</label>
                             <div class="col-sm-4">
-                                <input type="decimal" min="0" max="4" class="form-control" id="ipk" placeholder="IPK">
+                                <input type="decimal" min="0" max="4" class="form-control" id="ipk" value="IPK">
                             </div>
                             <span>*Isi bila user adalah siswa</span>
                         </div>

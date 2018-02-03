@@ -79,7 +79,12 @@ $route['siswa/result'] = 'C_siswa/result';
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
 $route['admin/akun_admin'] = 'C_admin/akun_admin';
+$route['admin/user'] = 'C_admin/user';
 $route['admin/add_user'] = 'C_admin/add_user';
+$route['admin/edit_user'] = 'C_admin/edit_user';
+$route['admin/universitas'] = 'C_admin/universitas';
+$route['admin/add_universitas'] = 'C_admin/add_universitas';
+$route['admin/edit_universitas'] = 'C_admin/edit_universitas';
 
 
 //route instruktor
