@@ -17,24 +17,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-2 control-label">Nama Course</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPassword3" placeholder="Nama Course">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
-                            <div class="col-sm-10">
-                            <textarea class="form-control" id="inputtext3" placeholder="Deskripsi"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputtext3" class="col-sm-2 control-label">Universitas Course</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputtext3" placeholder="Universitas Course">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
                             </div>

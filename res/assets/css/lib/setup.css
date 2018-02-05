@@ -4,6 +4,13 @@ img{
     
   }
 
+.coverlanding
+{
+    background: url('../../images/photodune-4161018-group-of-students-m.jpg') ;
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
 .sidenav {
     height: 100%;
 
