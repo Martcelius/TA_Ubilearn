@@ -22,6 +22,11 @@
                         <h4 style="text-transform: uppercase;">IT Project Management </h4> <hr/>
                         <span> Martcel Razzaq </span>
                     </div>
+                    <div class="mdl-card__actions">
+                   <a href="<?php echo site_url('siswa/course_close') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                        Masuk
+                    </button></a>                    
+                    </div>
                 </div>
             </div>
             <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell-4-col-phone">
@@ -32,6 +37,11 @@
                         <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
                         <span> Raden Atcheng </span>
                     </div>
+                    <div class="mdl-card__actions">
+                    <a href="<?php echo site_url('siswa/course_close') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                        Masuk
+                    </button></a>                     
+                    </div>
                 </div>
             </div>
             <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
@@ -41,6 +51,11 @@
                     <div class="mdl-card__supporting-text">
                         <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
                         <span> Raden Atcheng </span>
+                    </div>
+                    <div class="mdl-card__actions">
+                    <a href="<?php echo site_url('siswa/course_close') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                        Masuk
+                    </button></a>                     
                     </div>
                 </div>
             </div>

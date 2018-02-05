@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2018 at 11:56 AM
+-- Generation Time: Feb 02, 2018 at 09:05 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.33
 
@@ -36,17 +36,23 @@ CREATE TABLE `course` (
   `crs_univ` varchar(50) DEFAULT NULL,
   `crs_timecreated` timestamp NULL DEFAULT NULL,
   `crs_timemodified` timestamp NULL DEFAULT NULL,
-  `cat_id` int(10) UNSIGNED NOT NULL
+  `cat_id` int(10) UNSIGNED NOT NULL,
+  `usr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`crs_id`, `crs_code`, `crs_name`, `crs_summary`, `crs_univ`, `crs_timecreated`, `crs_timemodified`, `cat_id`) VALUES
-(2, 'KK22', 'Juvetic', 'asdfkjk as', 'Universitas Komedian', '2018-01-31 04:15:39', '2018-01-31 04:15:39', 1),
-(3, 'Injek2', 'Evvean', 'aaaaaa 23\r', 'Universitas Komedian', '2018-01-31 04:16:12', '2018-01-31 04:16:12', 1),
-(5, 'Injek22', 'Evvean', 'aaaaaa 23\r\n123\r\n123\r\n123\r\n124\r\n1243\r\n2 rf\r\na\r\n1234\r\n', 'Universitas Komedian', '2018-01-31 04:23:00', '2018-01-31 04:23:00', 1);
+INSERT INTO `course` (`crs_id`, `crs_code`, `crs_name`, `crs_summary`, `crs_univ`, `crs_timecreated`, `crs_timemodified`, `cat_id`, `usr_id`) VALUES
+(2, 'KK22', 'Juvetic', 'asdfkjk as', 'Universitas Komedian', '2018-01-31 04:15:39', '2018-01-31 04:15:39', 1, 3),
+(3, 'Injek2', 'Evvean', 'aaaaaa 23\r', 'Universitas Komedian', '2018-01-31 04:16:12', '2018-01-31 04:16:12', 1, 5),
+(5, 'Injek22', 'Evvean', 'aaaaaa 23\r\n123\r\n123\r\n123\r\n124\r\n1243\r\n2 rf\r\na\r\n1234\r\n', 'Universitas Komedian', '2018-01-31 04:23:00', '2018-01-31 04:23:00', 1, 6),
+(6, 'Injeksi221', 'Teu dicalana', 'Moal dicalana dicalana club', 'Univ Komedi', '2018-02-01 01:04:10', '2018-02-01 01:04:10', 1, 3),
+(7, 'Polisu23', 'Polisi Lalu Lintas', 'Mempolisikan Diri', 'Polisi Bandung', '2018-02-01 01:04:33', '2018-02-01 01:04:33', 1, 3),
+(8, 'Merdi22', 'Merda Merdi', 'Merda aklsdfj iawefq jafj asdklf jawioef j', 'Univvean', '2018-02-01 01:04:55', '2018-02-01 01:04:55', 1, 3),
+(9, 'JJK99', 'Penambangan Teks', 'Teksmin aip aip aip aip aip aip aip kasep', 'Universitas Aip Club', '2018-02-01 01:05:33', '2018-02-01 01:05:33', 1, 3),
+(10, 'AIP22', 'Penambangan Data', 'Damin aip aip aip aip aip aip aip kasep', 'Universitas Aip Club', '2018-02-01 01:05:48', '2018-02-01 01:05:48', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -209,7 +215,8 @@ CREATE TABLE `course_enrol_detail` (
   `end_status` varchar(500) DEFAULT NULL,
   `end_timecreated` timestamp NULL DEFAULT NULL,
   `end_timemodified` timestamp NULL DEFAULT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `enr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -223,8 +230,17 @@ CREATE TABLE `course_forum` (
   `cfr_title` varchar(75) NOT NULL,
   `cfr_desc` varchar(150) NOT NULL,
   `usr_id` int(10) UNSIGNED NOT NULL,
-  `crs_id` int(10) UNSIGNED NOT NULL
+  `lsn_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course_forum`
+--
+
+INSERT INTO `course_forum` (`cfr_id`, `cfr_title`, `cfr_desc`, `usr_id`, `lsn_id`) VALUES
+(1, 'Teori Tentang Klasifikasi', 'Bagaimanapun sedikitpun sama sekali euyyyyy', 3, 1),
+(2, 'Ngoding Klasifikasi', 'Injeksi bos', 3, 1),
+(3, 'Dolan GBLG', 'askjdfh kjasdhf kjasdhf jkhasdkjf hkajsdf ', 11, 2);
 
 -- --------------------------------------------------------
 
@@ -285,6 +301,14 @@ CREATE TABLE `course_learning_outcomes` (
   `loc_timemodified` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `course_learning_outcomes`
+--
+
+INSERT INTO `course_learning_outcomes` (`loc_id`, `loc_desc`, `loc_timecreated`, `loc_timemodified`) VALUES
+(1, 'Mengimplementasikan Klasifikasi Data', '2018-01-31 17:00:00', '2018-01-31 17:00:00'),
+(2, 'Menjelaskan Klasifikasi Data', '2018-01-31 17:00:00', '2018-01-31 17:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -299,6 +323,14 @@ CREATE TABLE `course_lesson` (
   `lsn_timemodified` timestamp NULL DEFAULT NULL,
   `crs_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course_lesson`
+--
+
+INSERT INTO `course_lesson` (`lsn_id`, `lsn_name`, `lsn_intro`, `lsn_timecreated`, `lsn_timemodified`, `crs_id`) VALUES
+(1, 'Klasifikasi', 'Klasifikasi data enjoy', '2018-01-31 17:00:00', '2018-01-31 17:00:00', 8),
+(2, 'Klasterisasi', 'Klasterisasi Data Enjoy', '2018-01-31 17:00:00', '2018-01-31 17:00:00', 8);
 
 -- --------------------------------------------------------
 
@@ -340,6 +372,7 @@ CREATE TABLE `university` (
 
 CREATE TABLE `users` (
   `usr_id` int(10) UNSIGNED NOT NULL,
+  `usr_kode` varchar(3) DEFAULT NULL,
   `usr_username` varchar(50) NOT NULL,
   `usr_firstname` varchar(50) NOT NULL,
   `usr_lastname` varchar(50) NOT NULL,
@@ -351,16 +384,26 @@ CREATE TABLE `users` (
   `usr_timemodified` timestamp NULL DEFAULT NULL,
   `usr_level` varchar(50) NOT NULL,
   `usr_jk` varchar(10) DEFAULT NULL,
-  `usr_tgllahir` int(11) NOT NULL
+  `usr_tgllahir` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`usr_id`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`) VALUES
-(1, 'admin', 'admin', 'uler', 'admin', NULL, NULL, NULL, NULL, NULL, '1', NULL, 0),
-(2, 'dummy', 'dummy', 'uler', 'dummy', NULL, NULL, NULL, NULL, NULL, '2', NULL, 0);
+INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`) VALUES
+(1, NULL, 'admin', 'admin', 'uler', 'admin', NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL),
+(2, NULL, 'dummy', 'dummy', 'uler', 'dummy', NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL),
+(3, 'DNH', 'dade', 'Dade', 'Nurjanah', 'dade', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(4, 'NDN', 'anisa', 'Anisa', 'Herdiani', 'anisa', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(5, 'NKS', 'nungki', 'Nungki', 'Selviandro', 'nungki', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(6, 'SFY', 'said', 'Said', 'Al Faraby', 'said', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(7, 'MAB', 'arif', 'Arif', 'Bijaksana', 'arif', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(8, 'VRE', 'vero', 'Veronikha', 'Effendy', 'vero', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(9, 'DJN', 'danang', 'Danang', 'Junaedi', 'danang', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(10, 'IDL', 'indra', 'Indra', 'Lukmana', 'indra', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(11, 'MDI', 'dickson', 'Mohamad', 'Dickson', 'dickson', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(12, 'SYP', 'shinta', 'Shinta', 'Yulia', 'shinta', NULL, NULL, NULL, NULL, NULL, '3', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -372,7 +415,8 @@ INSERT INTO `users` (`usr_id`, `usr_username`, `usr_firstname`, `usr_lastname`, 
 ALTER TABLE `course`
   ADD PRIMARY KEY (`crs_id`),
   ADD UNIQUE KEY `crs_code` (`crs_code`),
-  ADD KEY `course_category_course_foreign` (`cat_id`);
+  ADD KEY `course_category_course_foreign` (`cat_id`),
+  ADD KEY `course_user_foreign` (`usr_id`);
 
 --
 -- Indexes for table `course_assesment`
@@ -446,7 +490,8 @@ ALTER TABLE `course_enrol`
 --
 ALTER TABLE `course_enrol_detail`
   ADD PRIMARY KEY (`end_id`),
-  ADD KEY `enrol_details_foreign` (`usr_id`);
+  ADD KEY `enrol_details_foreign` (`usr_id`),
+  ADD KEY `enrol_enrol_details_foreign` (`enr_id`);
 
 --
 -- Indexes for table `course_forum`
@@ -454,7 +499,7 @@ ALTER TABLE `course_enrol_detail`
 ALTER TABLE `course_forum`
   ADD PRIMARY KEY (`cfr_id`),
   ADD KEY `user_forum_foreign` (`usr_id`),
-  ADD KEY `course_forum_foreign` (`crs_id`);
+  ADD KEY `course_forum_foreign` (`lsn_id`);
 
 --
 -- Indexes for table `course_forum_thread`
@@ -508,7 +553,8 @@ ALTER TABLE `university`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`usr_id`);
+  ADD PRIMARY KEY (`usr_id`),
+  ADD UNIQUE KEY `usr_kode` (`usr_kode`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -518,7 +564,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `course_assesment`
@@ -584,7 +630,7 @@ ALTER TABLE `course_enrol_detail`
 -- AUTO_INCREMENT for table `course_forum`
 --
 ALTER TABLE `course_forum`
-  MODIFY `cfr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cfr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `course_forum_thread`
@@ -608,13 +654,13 @@ ALTER TABLE `course_forum_thread_reply_reply`
 -- AUTO_INCREMENT for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
-  MODIFY `loc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `loc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `course_lesson`
 --
 ALTER TABLE `course_lesson`
-  MODIFY `lsn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `lsn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -632,7 +678,7 @@ ALTER TABLE `university`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -642,7 +688,8 @@ ALTER TABLE `users`
 -- Constraints for table `course`
 --
 ALTER TABLE `course`
-  ADD CONSTRAINT `course_category_course_foreign` FOREIGN KEY (`cat_id`) REFERENCES `course_category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `course_category_course_foreign` FOREIGN KEY (`cat_id`) REFERENCES `course_category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `course_user_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `course_assesment`
@@ -700,13 +747,14 @@ ALTER TABLE `course_enrol`
 -- Constraints for table `course_enrol_detail`
 --
 ALTER TABLE `course_enrol_detail`
-  ADD CONSTRAINT `enrol_details_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `enrol_enrol_details_foreign` FOREIGN KEY (`enr_id`) REFERENCES `course_enrol` (`enr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `enrol_users_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `course_forum`
 --
 ALTER TABLE `course_forum`
-  ADD CONSTRAINT `course_forum_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `course_forum_foreign` FOREIGN KEY (`lsn_id`) REFERENCES `course_lesson` (`lsn_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_forum_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

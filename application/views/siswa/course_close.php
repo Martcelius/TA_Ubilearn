@@ -64,9 +64,9 @@
                 </ul>
                 <hr>
                 <div style="text-align:center;">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue" >
+                    <a href="<?php echo site_url('siswa/course_detail')?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue" >
                         Ambil Course
-                    </button>
+                    </button></a>
                  </div>
             </div>
         </div>
