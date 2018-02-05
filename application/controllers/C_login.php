@@ -33,8 +33,8 @@ class C_login extends CI_Controller {
            
             if ($this->session->userdata('level')==1)
             {
-                print_r($this->session->userdata());
-                // redirect('admin/dashboard');
+                // print_r($this->session->userdata());
+                redirect('admin/dashboard');
             }
             elseif ($this->session->userdata('level')==2)
             {
@@ -54,6 +54,9 @@ class C_login extends CI_Controller {
 
     public function landing_page()
     {
+        // $this->session->userdata();
+        // print_r($this->session->userdata("level"));
+        // die();
         $this->load->view('layout/landing_page');   
     }
 

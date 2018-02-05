@@ -22,11 +22,11 @@ class Course extends CI_Controller {
         //                 ->get();
         $data['courses']= DB::table('course')
                             ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                            ->where('course.usr_id', '=', 3)
+                            ->where('course.usr_id', '=', 2)
                             ->get();
         $data['nama_instruktur'] = DB::table('course')
                                     ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                                    ->where('course.usr_id', '=', 3)
+                                    ->where('course.usr_id', '=', 2)
                                     ->select('usr_firstname', 'usr_lastname')
                                     ->first();
         // print_r($data['nama_instruktur']);
