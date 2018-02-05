@@ -35,7 +35,11 @@
     <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/nv.d3.css">
     <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/application.css">
     <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/setup.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>res/assets/css/lib/bootstrap-datetimepicker.min.css">
+
+    <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/additional.css">
+
     <!-- endinject -->
 
     <!-- buat drop down -->

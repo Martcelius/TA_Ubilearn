@@ -22,8 +22,10 @@
           <div class="mdl-card__supporting-text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ab aperiam, corporis molestiae quia nulla fuga magnam repellat iusto, iure veritatis accusamus, alias ea doloribus! Ea modi dolorum culpa quia.
           </div>
-          <div class="mdl-card__actions">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">View All</button>                    
+          <div class="mdl-card__actions" >
+            <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                Lihat
+            </button></a>                    
           </div>
       </div>
     </div>
@@ -44,8 +46,10 @@
           <hr>
 
         </div>
-          <div class="mdl-card__actions">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">View All</button>                    
+          <div class="mdl-card__actions" >
+            <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                Lihat
+            </button></a>                      
           </div>
       </div>
     </div>
@@ -66,8 +70,10 @@
             <div class="mdl-card__supporting-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ab aperiam, corporis molestiae quia nulla fuga magnam repellat iusto, iure veritatis accusamus, alias ea doloribus! Ea modi dolorum culpa quia.
             </div>
-            <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">View All</button>                    
+            <div class="mdl-card__actions" >
+              <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                Lihat
+              </button></a>                      
             </div>
         </div>
       </div>
@@ -84,8 +90,10 @@
             <hr>
 
           </div>
-            <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">View All</button>                    
+            <div class="mdl-card__actions" >
+              <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                  Lihat
+              </button></a>                      
             </div>
         </div>
       </div>
