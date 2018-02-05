@@ -15,7 +15,7 @@ class C_instruktur extends CI_Controller {
 
     }
 
-    public function dashboard_instruktur()
+    public function dashboard()
     {
         $data['content'] = 'instruktur/dashboard_instruktur'; 
         $this->load->view('layout/master', $data);
@@ -54,6 +54,12 @@ class C_instruktur extends CI_Controller {
         $data['content'] = 'instruktur/add_lesson';
         $this->load->view('layout/master', $data);
         
+    }
+
+    public function learning_outcome()
+    {
+        $data['content'] = 'instruktur/learning_outcome';
+        $this->load->view('layout/master',$data);
     }
 
     public function add_lo()

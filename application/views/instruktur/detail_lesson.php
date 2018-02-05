@@ -66,9 +66,9 @@
         text-align: right;
       }
 
-      div {
+      /* div {
         overflow: auto;
-      }
+      } */
 
       @media screen and (max-width: 37em), print and (max-width: 5in) {
         table,
