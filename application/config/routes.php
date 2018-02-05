@@ -76,16 +76,28 @@ $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 //result assesment/exercise
 $route['siswa/result'] = 'C_siswa/result';
 
-
+//route admin
+$route['admin/dashboard'] = 'C_admin/dashboard_admin';
+$route['admin/akun_admin'] = 'C_admin/akun_admin';
+$route['admin/user'] = 'C_admin/user';
+$route['admin/add_user'] = 'C_admin/add_user';
+$route['admin/edit_user'] = 'C_admin/edit_user';
+$route['admin/universitas'] = 'C_admin/universitas';
+$route['admin/add_universitas'] = 'C_admin/add_universitas';
+$route['admin/edit_universitas'] = 'C_admin/edit_universitas';
 
 
 //route instruktor
+$route['instruktur/dashboard'] = 'C_instruktur/dashboard';
+$route['instruktur/akun'] = 'C_instruktur/manage_akun';
 $route['instruktur/MyCourse'] = 'instruktur/course/index';
 $route['instruktur/add_course'] = 'instruktur/course/add';
 $route['instruktur/edit_course/(:any)'] = 'instruktur/course/edit/$1';
+$route['instruktur/update_course'] = 'instruktur/course/update';
 $route['instruktur/lesson'] = 'C_instruktur/lesson';
 $route['instruktur/add_lesson'] = 'C_instruktur/add_lesson';
 $route['instruktur/edit_lesson'] = 'instruktur/lesson/edit_lesson';
+$route['instruktur/learning_outcome'] = 'C_instruktur/learning_outcome';
 $route['instruktur/add_lo'] = 'C_instruktur/add_lo';
 $route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
 $route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
@@ -95,3 +107,4 @@ $route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
 // route login
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
+$route['landing_page']= 'C_login/landing_page';

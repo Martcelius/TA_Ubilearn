@@ -12113,16 +12113,8 @@ a {
 
   /* Darker background on mouse-over */
 .btn-dd:hover {
-
       background-color: grey;
   /* btn-dd_end */
-.cover-main{
-  background: url(<?php echo base_url();?>res/assets/images/hero-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 60vh;
-}
-
       background-color: grey; }
   /* btn-dd_end */
   .cover-main {

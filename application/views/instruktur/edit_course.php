@@ -17,7 +17,8 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Course</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form action="<?php echo base_url(). 'instruktur/course/update/'.$course->crs_id; ?>" class="form-horizontal" method="post">
+
+                    <form action="<?php echo site_url('instruktur/update_course') ?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Kode Course</label>
                             <div class="col-sm-10">
@@ -47,6 +48,7 @@
                             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
                             </div>
                         </div>
+                        <input name="m-id-course" type="text" class="form-control" id="inputtext3" value="<?php echo $course->crs_id ?>" style="display:none" >
                     </form>
                 </div>
             </div>

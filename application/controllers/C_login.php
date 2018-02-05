@@ -51,6 +51,10 @@ class C_login extends CI_Controller {
         }
     }
 
+    public function landing_page()
+    {
+        $this->load->view('layout/landing_page');   
+    }
 
 
 }

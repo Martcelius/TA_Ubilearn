@@ -5,7 +5,7 @@
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
         <div class="mdl-card mdl-shadow--2dp " >
             <div class="mdl-card__title">
-                <h2>Pengaturan Akun</h2>
+                <h2>Pengaturan Akun Siswa</h2>
             </div>
             <div class="mdl-card__supporting-text">
             <div class="container">

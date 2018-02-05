@@ -17,31 +17,31 @@
 -->
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    
+
    <?php $this->load->view('layout/header'); ?>
-   
+
 </head>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header is-small-screen">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-           
+
            <?php $this->load->view('layout/navbar'); ?>
-        
+
         </div>
     </header>
 
 <!-- side bar -->
     <div class="mdl-layout__drawer">
-       
+
        <?php $this->load->view('layout/sidebar'); ?>
-    
+
     </div>
 <!-- end sidebar -->
 <!-- main -->
 
     <?php $this->load->view($content); ?>
-        
+
 <!-- end main -->
 </div>
 
