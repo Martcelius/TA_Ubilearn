@@ -1,6 +1,7 @@
 <link rel="icon" type="image/png" href="images/DB_16х16.png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Material Dashboard Lite</title>
@@ -34,6 +35,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/nv.d3.css">
     <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/application.css">
     <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/setup.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>res/assets/css/lib/bootstrap-datetimepicker.min.css">
     <!-- endinject -->
 
     <!-- buat drop down -->
@@ -45,5 +47,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>res/assets/js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- drop down end -->
