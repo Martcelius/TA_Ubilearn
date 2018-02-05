@@ -10,10 +10,12 @@
   </div>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-        <i class="material-icons">create</i>
-        Buat User
-      </button>
+        <a href="add_user">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+            <i class="material-icons">create</i>
+            Buat User
+            </button>
+        </a>
     </div>
   </div>
   <style type="text/css">
@@ -140,11 +142,7 @@
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-card mdl-shadow--2dp pie-chart">
           <div class="mdl-card__title" style="display:block;">
-              <h2 class="mdl-card__title-text">Nama Lesson</h2>
-              <div class="mdl-card__subtitle-text">deskripsi singkat lesson</div>
-          </div>
-          <div class="mdl-card__supporting-text" style="font-size: unset;" >
-            Deskripsi Lesson ...
+              <h2 class="mdl-card__title-text">Data User</h2>
           </div>
           <div class="mdl-card__supporting-text" style="font-size: unset;" >
            <table id="Table_mdl">
@@ -166,45 +164,22 @@
             <tbody>
               <tr>
                 <td style="text-align: center;">1.</td>
-                <td>Assessment 1</td>
-                <td  style="text-align: justify;width: 30%;">ijdiuhucednuanca Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                <td>12-02-2018 23:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>0 Hari 1 Jam</td>
+                <td>tikusROOK</td>
+                <td  style="text-align: center;">Iqbal</td>
+                <td>Maulana</td>
+                <td>iqbalmaulana.ardi@gmail.com</td>
+                <td>???</td>
+                <td style="text-align: center">1.2</td>
+                <td style="text-align: center">Laki-laki</td>
+                <td style="text-align: center">Siswa</td>
+                <td style="text-align: center">07-08-1996</td>
                 <td style="text-align: center;">
+                    <a href="edit_user">
                   <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
                     <i class="material-icons">edit</i>
                   </button>
-                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
-                    <i class="material-icons">delete</i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: center;">2.</td>
-                <td>Assessment 2</td>
-                <td style="text-align: justify;width: 30%;">ijdiuhucednuanca</td>
-                <td>12-02-2018 23:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>12-02-2018 24:00</td>
-                <td>0 Hari 1 Jam</td>
-                <td style="text-align: center;">
-                  <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
-                    <i class="material-icons">edit</i>
-                  </button>
-                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
+                    </a>
+                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin?');">
                     <i class="material-icons">delete</i>
                   </button>
                 </td>
