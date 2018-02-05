@@ -45,7 +45,7 @@
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">2. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Manager</a>
+                                          <a href="<?php echo site_url('siswa/course_content')?>">Project Manager</a>
                                   </span>
                                   <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
                                   </li>
@@ -90,7 +90,7 @@
                                 <h4>ICON</h4>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text">Lesson Content</h2><hr style="color: white" />
+                                <h2 class="mdl-card__title-text">Assesment</h2><hr style="color: white" />
                                 <p style="color: white">Understand to growing need for better .... ....</p>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">2. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Manager</a>
+                                          <a href="<?php echo site_url('siswa/assesment_doing')?>">Project Manager</a>
                                   </span>
                                   <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
                                   </li>
@@ -119,7 +119,7 @@
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">3. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Software Development Life Cycle</a>
+                                          <a href="<?php echo site_url('siswa/exercise_doing')?>">Software Development Life Cycle</a>
                                   </span>
                                   <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
                                   </li>
@@ -156,7 +156,7 @@
                                 <h4>ICON</h4>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text">Lesson Content</h2><hr style="color: white" />
+                                <h2 class="mdl-card__title-text">Assignment</h2><hr style="color: white" />
                                 <p style="color: white">Understand to growing need for better .... ....</p>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">2. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Manager</a>
+                                          <a href="<?php echo site_url('siswa/assignment_opening')?>">Project Manager</a>
                                   </span>
                                   <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
                                   </li>
@@ -221,7 +221,7 @@
                                 <h4>ICON</h4>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text">Lesson Content</h2><hr style="color: white" />
+                                <h2 class="mdl-card__title-text">Forum</h2><hr style="color: white" />
                                 <p style="color: white">Understand to growing need for better .... ....</p>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">2. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Manager</a>
+                                          <a href="<?php echo site_url('siswa/forum_siswa')?>">Project Manager</a>
                                   </span>
                                   <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
                                   </li>
