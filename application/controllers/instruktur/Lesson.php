@@ -35,6 +35,7 @@ class Lesson extends CI_Controller {
 
     public function edit_lesson()
     {
+        $data['sidebar'] = "layout/sidebar_instruktur";
         $data['content'] = "instruktur/edit_lesson";
         $this->load->view('layout/master', $data);
         

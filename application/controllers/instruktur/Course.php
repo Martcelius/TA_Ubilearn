@@ -16,6 +16,7 @@ class Course extends CI_Controller {
     
     public function index()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/MyCourse';
         // $test= M_course::where('course.usr_id', '=', 2)
         //                 ->join('users', 'users.usr_id', '=', 'course.usr_id')
@@ -38,6 +39,7 @@ class Course extends CI_Controller {
   
     public function add()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = "instruktur/add_course";
         $this->load->view('layout/master',$data);
     }
@@ -70,6 +72,7 @@ class Course extends CI_Controller {
 
         $data['course'] = M_Course::where('crs_id',$id)
                                     ->first();
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/edit_course';
         $this->load->view('layout/master',$data);
 

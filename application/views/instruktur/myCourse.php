@@ -30,10 +30,12 @@
                 <span><?php echo $nama_instruktur->usr_firstname.' '.$nama_instruktur->usr_lastname;?></span>
             </div>
             <div class="mdl-card__actions">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+            <a href="<?php echo site_url('instruktur/lesson')?>">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                 <i class="material-icons">add</i>
                 Masuk
-             </button>  
+                </button>
+             </a>  
             <a href="<?php echo site_url('instruktur/edit_course/'.$course->crs_id) ?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
                 <i class="material-icons">drafts</i>
                 Edit

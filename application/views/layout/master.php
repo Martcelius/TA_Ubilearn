@@ -34,7 +34,7 @@
 <!-- side bar -->
     <div class="mdl-layout__drawer">
 
-       <?php $this->load->view('layout/sidebar'); ?>
+    <?php $this->load->view($sidebar); ?>
 
     </div>
 <!-- end sidebar -->

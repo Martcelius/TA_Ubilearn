@@ -24,10 +24,12 @@
     </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+            <a href="<?php echo site_url('instruktur/add_lesson')?>">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                 <i class="material-icons">create</i>
                 Buat Lesson
-            </button>   
+                </button>
+            </a>   
         </div>
     </div>
     <!-- <div class="mdl-grid">
@@ -49,14 +51,18 @@
                 <span>Instruktur Course</span>
             </div>
             <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                <a href="<?php echo site_url('instruktur/detail_lesson')?>">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                     <i class="material-icons">create</i>
                      Masuk
-                </button>  
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    </button>
+                </a>  
+                <a href="<?php echo site_url('instruktur/edit_lesson')?>">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
                     <i class="material-icons">drafts</i>
                     Edit
-                </button>                
+                    </button>  
+                </a>                
             </div>
         </div>
       </div>
@@ -69,14 +75,18 @@
                 <span>IQBAL IF </span>
             </div>
             <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                <a href="<?php echo site_url('instruktur/detail_lesson')?>">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                     <i class="material-icons">create</i>
                     Masuk
-                </button>  
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    </button>
+                </a>  
+                <a href="<?php echo site_url('instruktur/edit_lesson')?>">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
                     <i class="material-icons">drafts</i>
                     Edit
-                </button>  
+                    </button>  
+                </a>
             </div>
         </div>
       </div>
@@ -89,14 +99,18 @@
                 <span>IQBAL IF </span>
             </div>
             <div class="mdl-card__actions">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                <a href="<?php echo site_url('instruktur/detail_lesson')?>">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                     <i class="material-icons">create</i>
                     Masuk
-                </button>  
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                    </button>
+                </a>    
+                <a href="<?php echo site_url('instruktur/edit_lesson')?>">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
                     <i class="material-icons">drafts</i>
                     Edit
-                </button> 
+                    </button>  
+                </a>
             </div>
         </div>
       </div>

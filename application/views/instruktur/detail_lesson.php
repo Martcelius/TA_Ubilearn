@@ -10,10 +10,12 @@
   </div>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-        <i class="material-icons">create</i>
-        Buat Assessment
-      </button>
+      <a href="<?php echo site_url('instruktur/add_assessment')?>">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+          <i class="material-icons">create</i>
+          Buat Assessment
+        </button>
+      </a>
     </div>
   </div>
   <style type="text/css">

@@ -60,22 +60,25 @@ $route['siswa/akun'] = 'C_siswa/manage_akun';
 //course
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
+$route['siswa/course'] = 'C_siswa/course_siswa';
+$route['siswa/course_detail'] = 'C_siswa/course_detail';
+$route['siswa/course_content'] = 'C_siswa/course_content';
 
 //forum
 $route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
 $route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
 $route['siswa/detail_thread_siswa'] = 'C_siswa/detail_thread_siswa';
 
-$route['siswa/course'] = 'C_siswa/course_siswa';
-$route['siswa/course_detail'] = 'C_siswa/course_detail';
-$route['siswa/course_content'] = 'C_siswa/course_content';
 //assesment
 $route['siswa/assignment_opening'] = 'C_siswa/assignment_opening';
 $route['siswa/assignment_detail'] = 'C_siswa/assignment_detail';
+
 //assignment
 $route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
+
 //exercise
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
+
 //result assesment/exercise
 $route['siswa/result'] = 'C_siswa/result';
 
@@ -88,8 +91,6 @@ $route['admin/edit_user'] = 'C_admin/edit_user';
 $route['admin/universitas'] = 'C_admin/universitas';
 $route['admin/add_universitas'] = 'C_admin/add_universitas';
 $route['admin/edit_universitas'] = 'C_admin/edit_universitas';
-
-
 
 //route instruktor
 $route['instruktur/dashboard'] = 'C_instruktur/dashboard';

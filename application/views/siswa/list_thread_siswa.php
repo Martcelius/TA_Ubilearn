@@ -38,7 +38,7 @@
             <div class="box-footer no-padding">
                 <ul class="nav nav-pills nav-stacked">
                     <li>
-                        <a href="#">
+                        <a href="<?php echo site_url('siswa/detail_thread_siswa')?>">
                             Tutorial Teu Dicalana
                             <br>
                             <span style="color: #00a65a; font-size : 14px">

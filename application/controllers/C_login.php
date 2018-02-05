@@ -36,7 +36,7 @@ class C_login extends CI_Controller {
                 // print_r($this->session->userdata());
                 redirect('admin/dashboard');
             }
-            elseif ($this->session->userdata('level')==2)
+            elseif ($this->session->userdata('level')==0)
             {
                 redirect('siswa/dashboard');
             }

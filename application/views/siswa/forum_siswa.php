@@ -87,7 +87,9 @@
                                                 100
                                             </td>
                                             <td style="text-align : center">
+                                                <a href="<?php echo site_url('siswa/list_thread_siswa')?>">
                                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
+                                                </a>
                                             </td>
                                         </tr>
                                         <tr>

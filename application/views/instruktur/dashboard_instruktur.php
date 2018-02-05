@@ -29,7 +29,9 @@
 
           </div>
             <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">View All</button>                    
+              <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+              Lihat
+              </button></a>
             </div>
         </div>
       </div>
@@ -44,8 +46,8 @@
         </div>
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__title" style="display:block;">
-                <h2 class="mdl-card__title-text">Quizzes</h2>
-                <div class="mdl-card__subtitle-text">Your recent performance</div>
+                <h2 class="mdl-card__title-text">Forum</h2>
+                <div class="mdl-card__subtitle-text">Your recent forum</div>
             </div>
             <div class="mdl-card__supporting-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ab aperiam, 
@@ -58,7 +60,9 @@
             <hr>
           </div>
             <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="float: right;">View All</button>                    
+              <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+              Lihat
+              </button></a>
             </div>
         </div>
       </div>

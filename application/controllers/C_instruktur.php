@@ -17,6 +17,7 @@ class C_instruktur extends CI_Controller {
 
     public function dashboard()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/dashboard_instruktur'; 
         $this->load->view('layout/master', $data);
         
@@ -24,12 +25,14 @@ class C_instruktur extends CI_Controller {
 
     public function manage_akun()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/akun_instruktur';
         $this->load->view('layout/master', $data);
     }
 
     public function add_course()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/add_course';
         $this->load->view('layout/master', $data);
         
@@ -37,6 +40,7 @@ class C_instruktur extends CI_Controller {
 
     public function lesson()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/lesson';
         $this->load->view('layout/master', $data);
         
@@ -44,6 +48,7 @@ class C_instruktur extends CI_Controller {
 
     public function detail_lesson()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/detail_lesson';
         $this->load->view('layout/master', $data);
         
@@ -51,6 +56,7 @@ class C_instruktur extends CI_Controller {
 
     public function add_lesson()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/add_lesson';
         $this->load->view('layout/master', $data);
         
@@ -58,12 +64,14 @@ class C_instruktur extends CI_Controller {
 
     public function learning_outcome()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/learning_outcome';
         $this->load->view('layout/master',$data);
     }
 
     public function add_lo()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/add_LO';
         $this->load->view('layout/master', $data);
 
@@ -71,6 +79,7 @@ class C_instruktur extends CI_Controller {
 
     public function add_assessment()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/tambah_assessment';
         $this->load->view('layout/master', $data);
         
@@ -78,6 +87,7 @@ class C_instruktur extends CI_Controller {
 
     public function add_pretest()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/tambah_pretest';
         $this->load->view('layout/master', $data);
         
@@ -85,6 +95,7 @@ class C_instruktur extends CI_Controller {
 
     public function add_remedial()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/tambah_remedial';
         $this->load->view('layout/master', $data);
         
@@ -92,6 +103,7 @@ class C_instruktur extends CI_Controller {
 
     public function add_exercise()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/tambah_latihan';
         $this->load->view('layout/master', $data);
         
