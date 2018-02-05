@@ -25,14 +25,14 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control input-md">
+                            <input id="Name (Full name)" name="Name (Full name)" type="text" value="username1" class="form-control input-md">
                         </div>
                     </div>  
             </div>
             
             <!-- File Button --> 
             <div class="form-group">
-              <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
+              <label class="col-md-4 control-label" for="Upload photo">Ubah foto</label>
               <div class="col-md-4">
                 <input id="Upload photo" name="Upload photo" class="input-file" type="file" onchange="readURL(this);"/>
               </div>
@@ -45,7 +45,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Nama Depan" name="Nama Depan" type="text" placeholder="Nama Depan" class="form-control input-md">
+                            <input id="Nama Depan" name="Nama Depan" type="text" value="Luke" class="form-control input-md">
                         </div>
                     </div>  
             </div>
@@ -57,7 +57,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Nama Belakang" name="Nama Belakang" type="text" placeholder="Nama Belakang" class="form-control input-md">
+                            <input id="Nama Belakang" name="Nama Belakang" type="text" value="Skywalker" class="form-control input-md">
                         </div>
                     </div>  
             </div>
@@ -69,7 +69,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Password" name="Password" type="password" placeholder="Password" class="form-control input-md">
+                            <input id="Password" name="Password" type="password" value="wisk%kw" class="form-control input-md">
                         </div>
                     </div>  
             </div>
@@ -81,7 +81,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-envelope-o"></i>
                     </div>
-                    <input id="Email Address" name="Email Address" type="email" placeholder="Email Address" class="form-control input-md">
+                    <input id="Email Address" name="Email Address" type="email" value="luke@skywalker.com" class="form-control input-md">
                     </div>
                 </div>
             </div>
@@ -91,11 +91,11 @@
                 <div class="col-md-4"> 
                     <label class="radio-inline" for="jenis_kelamin-0">
                     <input type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
-                    Male
+                    Pria
                     </label> 
                     <label class="radio-inline" for="jenis_kelamin-1">
                     <input type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
-                    Female
+                    Wanita
                     </label> 
                 </div>
             </div>
@@ -370,7 +370,7 @@
             </fieldset>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-10">
-                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Ubah</button>
                     </div>
                 </div>
             </form>

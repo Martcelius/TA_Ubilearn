@@ -26,7 +26,7 @@
                     <span class="mdl-list__item-primary-content">
                         <span class="material-icons mdl-list__item-avatar"></span>
                         <span>Admin</span>
-                        <span class="mdl-list__item-sub-title">admin@skywalker.com</span>
+                        <span class="mdl-list__item-sub-title">luke@skywalker.com</span>
                     </span>
                 </li>
                 <li class="list__item--border-top"></li>
@@ -37,9 +37,9 @@
                     </a>
                 </li>
                 <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
+                    <a class="mdl-list__item-primary-content" href="../welcome/signin">
                         <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
                         Log out
-                    </span>
+                    </a>
                 </li>
             </ul>
