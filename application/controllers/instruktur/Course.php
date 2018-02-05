@@ -22,11 +22,11 @@ class Course extends CI_Controller {
         //                 ->get();
         $data['courses']= DB::table('course')
                             ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                            ->where('course.usr_id', '=', 2)
+                            ->where('course.usr_id', '=', 3)
                             ->get();
         $data['nama_instruktur'] = DB::table('course')
                                     ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                                    ->where('course.usr_id', '=', 2)
+                                    ->where('course.usr_id', '=', 3)
                                     ->select('usr_firstname', 'usr_lastname')
                                     ->first();
         // print_r($data['nama_instruktur']);
@@ -73,26 +73,23 @@ class Course extends CI_Controller {
         $data['content'] = 'instruktur/edit_course';
         $this->load->view('layout/master',$data);
 
-        
-
-        // $course->crs_code = $_POST['m-kode-course'];
-        // $course->crs_name = $_POST['m-nama-course'];
-        // $course->crs_summary = $_POST['m-deskripsi-course'];
-        // $course->crs_univ = $_POST['m-univ-course'];
-        // $course->cat_id = 1;
-
-        // $course_update = M_Course::find(1);
-        // $course_update->crs_code = $course->crs_code;
-        // $course_update->crs_name = $course->crs_name;
-        // $course_update->crs_summary = $course->crs_summary;
-        // $course_update->crs_univ = $course->crs_univ;
-        // $course_update->cat_id = $course->cat_id;
-
     }
 
     public function update($id = NULL)
     {
+        
+        $course->crs_code = $_POST['m-kode-course'];
+        $course->crs_name = $_POST['m-nama-course'];
+        $course->crs_summary = $_POST['m-deskripsi-course'];
+        $course->crs_univ = $_POST['m-univ-course'];
+
+        $course_update = M_Course::find($id);
+        $course_update->crs_code = $course->crs_code;
+        $course_update->crs_name = $course->crs_name;
+        $course_update->crs_summary = $course->crs_summary;
+        $course_update->crs_univ = $course->crs_univ;
         $course_update->save();
+
     }
 
     public function delete($id = NULL)
