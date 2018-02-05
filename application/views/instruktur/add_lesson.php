@@ -1,4 +1,5 @@
 <main class="mdl-layout__content">
+<div class="mdl-grid cover-main"></div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">

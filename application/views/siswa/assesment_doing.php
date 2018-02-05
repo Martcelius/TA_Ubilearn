@@ -78,9 +78,9 @@
         </div>
     </div>
     <div style="text-align:center;">
-        <button class="mdl-button mdl-js-button mdl-button--raised">
+       <a href="<?php echo site_url('siswa/result') ?>"> <button class="mdl-button mdl-js-button mdl-button--raised">
             Selesai Mengerjakan
-        </button>
+        </button></a>
     </div>
 </main>
 

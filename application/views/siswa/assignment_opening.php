@@ -22,7 +22,9 @@
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="" style="float:right; margin-bottom:10px;">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" >Buka </button>                    
+                    <a href="<?php echo site_url('siswa/assignment_detail') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                        Buka
+                    </button></a>                     
                     </div>
                     <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--9-col-tablet mdl-cell--2-col-phone" >
                         <p>Due Dec 19,2016, 2.95PM</p>
@@ -52,7 +54,9 @@
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="" style="float:right; margin-bottom:10px;">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" >Buka </button>                    
+                    <a href="<?php echo site_url('siswa/assignment_detail') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                    Buka
+                    </button></a>                      
                     </div>
                     <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--9-col-tablet mdl-cell--2-col-phone">
                         <p>Due Dec 19,2016, 2.95PM</p>

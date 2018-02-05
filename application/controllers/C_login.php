@@ -31,11 +31,12 @@ class C_login extends CI_Controller {
             $this->session->set_userdata('username', $row->usr_username);
             $this->session->set_userdata('level', $row->usr_level);
            
-            if ($this->session->userdata('level')=="admin")
+            if ($this->session->userdata('level')==1)
             {
-                redirect('admin/dashboard');
+                print_r($this->session->userdata());
+                // redirect('admin/dashboard');
             }
-            elseif ($this->session->userdata('level')=="siswa")
+            elseif ($this->session->userdata('level')==2)
             {
                 redirect('siswa/dashboard');
             }
@@ -51,6 +52,10 @@ class C_login extends CI_Controller {
         }
     }
 
+    public function landing_page()
+    {
+        $this->load->view('layout/landing_page');   
+    }
 
 
 }

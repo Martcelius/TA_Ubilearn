@@ -4,16 +4,31 @@ img{
     
   }
 
+.coverlanding
+{
+    background: url('../../images/photodune-4161018-group-of-students-m.jpg') ;
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
 .sidenav {
     height: 100%;
+
+    width: 250px;
+
     width: 18%;
+
     position: fixed;
     z-index: 1;
     top: 0;
     right: 0;
     background-color: #111;
     overflow-x: hidden;
+
+    padding-top: 20px;
+
     padding-top: 40px;
+
 }
 
 .sidenav a {
@@ -482,4 +497,17 @@ img{
 }
 .user-block.user-block-sm .username {
   font-size: 14px;
+}
+
+.accordion {
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.accordion:hover {
+    background-color: #807f7f;
+}
+
+.panel {
+    background-color: #686868;
 }
