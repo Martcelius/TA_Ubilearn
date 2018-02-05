@@ -74,6 +74,27 @@ class C_instruktur extends CI_Controller {
         $data['content'] = 'instruktur/tambah_assessment';
         $this->load->view('layout/master', $data);
         
+    }
+
+    public function add_pretest()
+    {
+        $data['content'] = 'instruktur/tambah_pretest';
+        $this->load->view('layout/master', $data);
+        
     } 
+
+    public function add_remedial()
+    {
+        $data['content'] = 'instruktur/tambah_remedial';
+        $this->load->view('layout/master', $data);
+        
+    }  
+
+    public function add_exercise()
+    {
+        $data['content'] = 'instruktur/tambah_latihan';
+        $this->load->view('layout/master', $data);
+        
+    }  
 
 }

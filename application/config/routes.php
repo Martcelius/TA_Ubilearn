@@ -105,6 +105,9 @@ $route['instruktur/learning_outcome'] = 'C_instruktur/learning_outcome';
 $route['instruktur/add_lo'] = 'C_instruktur/add_lo';
 $route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
 $route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
+$route['instruktur/add_pretest'] = 'C_instruktur/add_pretest';
+$route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
+$route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
 
 
 
