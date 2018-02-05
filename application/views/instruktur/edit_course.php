@@ -17,7 +17,7 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Course</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form action="" class="form-horizontal" method="post">
+                    <form action="<?php echo base_url(). 'instruktur/course/update/'.$course->crs_id; ?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Kode Course</label>
                             <div class="col-sm-10">
