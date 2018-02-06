@@ -15,7 +15,7 @@
             <!-- Notifications dropdown-->
             <!-- Messages dropdown-->
 
-            <div class="avatar-dropdown" id="icon">
+            <div class="avatar-dropdown" id="icon" >
                 <span>Luke</span>
                 <img src="<?php echo base_url();?>res/assets/images/Icon_header.png">
             </div>
@@ -30,12 +30,13 @@
                     </span>
                 </li>
                 <li class="list__item--border-top"></li>
-                <li class="mdl-menu__item mdl-list__item">
+                <a href="<?php if ($this->session->userdata('level')== 1) echo site_url('instruktur/akun'); elseif ($this->session->userdata('level')== 2) echo site_url('siswa/akun'); else echo site_url('admin/akun_admin'); ?>">
+                <li class="mdl-menu__item mdl-list__item" >
                     <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">account_circle</i>
+                       <i class="material-icons mdl-list__item-icon" >account_circle</i>
                         My account
                     </span>
-                </li>
+                </li></a>
                 <li class="mdl-menu__item mdl-list__item">
                     <span class="mdl-list__item-primary-content">
                         <i class="material-icons mdl-list__item-icon">check_box</i>
@@ -65,3 +66,5 @@
                     </span>
                 </li>
             </ul>
+
+

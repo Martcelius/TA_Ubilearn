@@ -56,24 +56,67 @@ $route['translate_uri_dashes'] = FALSE;
 //route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
+
 //course
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
 $route['siswa/course'] = 'C_siswa/course_siswa';
 $route['siswa/course_detail'] = 'C_siswa/course_detail';
 $route['siswa/course_content'] = 'C_siswa/course_content';
+
+//forum
+$route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
+$route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
+$route['siswa/detail_thread_siswa'] = 'C_siswa/detail_thread_siswa';
+
 //assesment
-$route['siswa/assignment'] = 'C_siswa/assignment_opening';
+$route['siswa/assignment_opening'] = 'C_siswa/assignment_opening';
 $route['siswa/assignment_detail'] = 'C_siswa/assignment_detail';
+
 //assignment
 $route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
+
 //exercise
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
+
 //result assesment/exercise
 $route['siswa/result'] = 'C_siswa/result';
+<<<<<<< HEAD
 $route['siswa/remedial'] = 'C_siswa/remedial';
+=======
+
+//route admin
+$route['admin/dashboard'] = 'C_admin/dashboard_admin';
+$route['admin/akun_admin'] = 'C_admin/akun_admin';
+$route['admin/user'] = 'C_admin/user';
+$route['admin/add_user'] = 'C_admin/add_user';
+$route['admin/edit_user'] = 'C_admin/edit_user';
+$route['admin/universitas'] = 'C_admin/universitas';
+$route['admin/add_universitas'] = 'C_admin/add_universitas';
+$route['admin/edit_universitas'] = 'C_admin/edit_universitas';
+
+//route instruktor
+$route['instruktur/dashboard'] = 'C_instruktur/dashboard';
+$route['instruktur/akun'] = 'C_instruktur/manage_akun';
+$route['instruktur/MyCourse'] = 'instruktur/course/index';
+$route['instruktur/add_course'] = 'instruktur/course/add';
+$route['instruktur/edit_course/(:any)'] = 'instruktur/course/edit/$1';
+$route['instruktur/update_course'] = 'instruktur/course/update';
+$route['instruktur/lesson'] = 'C_instruktur/lesson';
+$route['instruktur/add_lesson'] = 'C_instruktur/add_lesson';
+$route['instruktur/edit_lesson'] = 'instruktur/lesson/edit_lesson';
+$route['instruktur/learning_outcome'] = 'C_instruktur/learning_outcome';
+$route['instruktur/add_lo'] = 'C_instruktur/add_lo';
+$route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
+$route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
+$route['instruktur/add_pretest'] = 'C_instruktur/add_pretest';
+$route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
+$route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
+
+>>>>>>> 85dc8150b3cf93e4abb84467d329df91d40e0779
 
 
 // route login
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
+$route['landing_page']= 'C_login/landing_page';

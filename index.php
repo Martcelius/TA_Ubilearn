@@ -36,6 +36,13 @@
  * @filesource
  */
 
+ /*
+ * --------------------------------------------------------------------
+ * LOAD THE COMPOSER PACKAGE
+ * --------------------------------------------------------------------
+ */
+require_once 'vendor/autoload.php';
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -66,10 +73,11 @@
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
-		ini_set('display_errors', 1);
+		$whoops = new \Whoops\Run;
+		$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+		$whoops->register();
 	break;
-
+ 
 	case 'testing':
 	case 'production':
 		ini_set('display_errors', 0);
@@ -312,4 +320,4 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
-require_once BASEPATH.'core/CodeIgniter.php';
+require_once BASEPATH. 'core/CodeIgniter.php';

@@ -1,9 +1,9 @@
 <main class="mdl-layout__content">
-    <div class="mdl-grid">
+    <div class="mdl-grid cover-main">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <div class="mdl-card mdl-shadow--2dp ui-buttons">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Assessment Management Proyek </h2>
+        <div class="">
+            <div class="" >
+                <h2 class="" style="color: white">Assessment Management Proyek </h2>
             </div>
         </div>
       </div>
@@ -78,9 +78,9 @@
         </div>
     </div>
     <div style="text-align:center;">
-        <button class="mdl-button mdl-js-button mdl-button--raised">
+       <a href="<?php echo site_url('siswa/result') ?>"> <button class="mdl-button mdl-js-button mdl-button--raised">
             Selesai Mengerjakan
-        </button>
+        </button></a>
     </div>
 </main>
 

@@ -11036,7 +11036,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   background: #202020; }
 
 main {
-  background: url("../images/imgo.png") center top no-repeat;
+  background: url("../images/Dark_background_1920x1080.png") center top no-repeat;
   background-size: cover; }
 
 .mdl-layout__header {
@@ -11709,9 +11709,15 @@ a {
     background-size: cover; }
     .cotoneaster .mdl-card__title .mdl-card__title-text {
       color: rgb(255, 255, 255); }
+
 .cotoneaster:hover{
   opacity: .4;
 }
+/* .cotoneaster:hover{
+  opacity: .4;
+} */
+
+
 
 @media screen and (max-width: 1151px) {
   .cotoneaster {
@@ -12109,9 +12115,13 @@ a {
 .btn-dd:hover {
       background-color: grey;
   /* btn-dd_end */
-.cover-main{
-  background: url(<?php echo base_url();?>res/assets/images/hero-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 60vh;
-}
+      background-color: grey; }
+  /* btn-dd_end */
+  .cover-main {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url('../images/hero-bg.png') right bottom;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/hero-bg.png') right bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+  }
+
