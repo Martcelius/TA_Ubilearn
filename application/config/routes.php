@@ -71,7 +71,7 @@ $route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 //result assesment/exercise
 $route['siswa/result'] = 'C_siswa/result';
-
+$route['siswa/remedial'] = 'C_siswa/remedial';
 
 
 // route login
