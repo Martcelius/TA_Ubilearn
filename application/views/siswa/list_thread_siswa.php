@@ -40,12 +40,34 @@
                     <li>
                         <a href="<?php echo site_url('siswa/detail_thread_siswa')?>">
                             Tutorial Teu Dicalana
+                            <span style="color : #8a8a8a; float:right">
+                                2017-11-16 09:37:19 
+                            </span>
                             <br>
                             <span style="color: #00a65a; font-size : 14px">
                                 Oleh : Dolan 
                             </span>
-                            <span class="pull-right" style="color : #8a8a8a">
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" style="float:right;margin-top:10px; background-color:red;"><i class="material-icons">delete</i></button>
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" style="float:right;margin-top:10px; margin-right:10px; background-color:green;"><i class="material-icons">edit</i></button>
+                            <br>
+                            <span class="description" style="color : grey; font-size : 14px">
+                                Kategori : 
+                                <span class="label label-success">
+                                    Teu Dicalana
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Tutorial Teu Dicalana
+                            <span style="color : #8a8a8a; float:right">
                                 2017-11-16 09:37:19 
+                            </span>
+                            <br>
+                            <span style="color: #00a65a; font-size : 14px">
+                                Oleh : Dolan 
                             </span>
                             <br>
                             <span class="description" style="color : grey; font-size : 14px">
@@ -59,19 +81,19 @@
 
                     <li>
                         <a href="#">
-                            Eh We And You
+                            Tutorial Teu Dicalana
+                            <span style="color : #8a8a8a; float:right">
+                                2017-11-16 09:37:19 
+                            </span>
                             <br>
                             <span style="color: #00a65a; font-size : 14px">
                                 Oleh : Dolan 
                             </span>
-                            <span class="pull-right" style="color : #8a8a8a">
-                                2018-12-12 11:17:30 
-                            </span>
                             <br>
                             <span class="description" style="color : grey; font-size : 14px">
                                 Kategori : 
                                 <span class="label label-success">
-                                    Mengolenkan Diri
+                                    Teu Dicalana
                                 </span>
                             </span>
                         </a>
@@ -79,19 +101,19 @@
 
                     <li>
                         <a href="#">
-                            Eh We And You
+                            Tutorial Teu Dicalana
+                            <span style="color : #8a8a8a; float:right">
+                                2017-11-16 09:37:19 
+                            </span>
                             <br>
                             <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dilan 
-                            </span>
-                            <span class="pull-right" style="color : #8a8a8a">
-                                2018-12-12 11:17:30 
+                                Oleh : Dolan 
                             </span>
                             <br>
                             <span class="description" style="color : grey; font-size : 14px">
                                 Kategori : 
                                 <span class="label label-success">
-                                    Mengolenkan Diri
+                                    Teu Dicalana
                                 </span>
                             </span>
                         </a>
@@ -99,39 +121,19 @@
 
                     <li>
                         <a href="#">
-                            Belajar 1
+                            Tutorial Teu Dicalana
+                            <span style="color : #8a8a8a; float:right">
+                                2017-11-16 09:37:19 
+                            </span>
                             <br>
                             <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dulan 
-                            </span>
-                            <span class="pull-right" style="color : #8a8a8a">
-                                2018-12-12 11:17:30 
+                                Oleh : Dolan 
                             </span>
                             <br>
                             <span class="description" style="color : grey; font-size : 14px">
                                 Kategori : 
                                 <span class="label label-success">
-                                    Injeksi gan!
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Belajar 2
-                            <br>
-                            <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dulan 
-                            </span>
-                            <span class="pull-right" style="color : #8a8a8a">
-                                2018-12-12 11:17:30 
-                            </span>
-                            <br>
-                            <span class="description" style="color : grey; font-size : 14px">
-                                Kategori : 
-                                <span class="label label-success">
-                                    Injeksi gan!
+                                    Teu Dicalana
                                 </span>
                             </span>
                         </a>

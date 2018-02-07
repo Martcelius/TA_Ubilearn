@@ -41,9 +41,9 @@
                 <table class="table table-bordered" style="width:96%;margin-left:35px;">
                     <thead>
                         <tr>
-                            <td colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8);">
+                            <th colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black; ">
                                 SFH4123 / INTERAKSI MANUSIA DAN KOMPUTER / DJN    
-                            </td>
+                            </th>
                         </tr>
                         <tr id="forum_tabel_lesson1">
                             <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
@@ -56,21 +56,21 @@
                                 <table class="table table-bordered" style="width:100%; background-color:transparent; margin-top: 5px;">
                                     <thead>
                                         <tr>
-                                            <td style="width:15px;text-align : left;color : rgba(255, 255, 255, 0.8);">
+                                            <th style="width:15px;text-align : left;color : rgba(255, 255, 255, 0.8); background-color:black;">
                                                 No
-                                            </td>
-                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
+                                            </th>
+                                            <th style="text-align : left;color : rgba(255, 255, 255, 0.8); background-color:black;">
                                                 Judul
-                                            </td>
-                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
+                                            </th>
+                                            <th style="text-align : left;color : rgba(255, 255, 255, 0.8); background-color:black;">
                                                 Post saya
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
+                                            </th>
+                                            <th style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black;">
                                                 Total Post
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
+                                            </th>
+                                            <th style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black;">
                                                 Aksi
-                                            </td>
+                                            </th>
                                         </tr>
     
                                         <tr>
