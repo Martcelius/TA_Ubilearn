@@ -24,6 +24,7 @@
 							</li>
 					</ol>
 				</div>
+            </div>
 				<!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:10px;">
 						<i class="material-icons">create</i>
 						Buat Komentar
@@ -54,7 +55,6 @@
 					    </div>
 					 </div>
 				</div> -->
-			</div>
 			<div class="mdl-cell mdl-cell--3-col">
 				<div class="mdl-card mdl-shadow--2dp trending">
             <div class="mdl-card__title">

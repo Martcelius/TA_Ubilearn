@@ -17,55 +17,94 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__title" style="display:block;">
                 <h2 class="mdl-card__title-text">My Courses</h2>
-                <div class="mdl-card__subtitle-text">Your recent courses</div>
+                <h3 class="mdl-card__subtitle-text">Jumlah Course : </h3>
             </div>
             <div class="mdl-card__supporting-text">
-            <p>IT Project Management</p>
-             Course : IT Managemen Project
-            <hr>
-            <p>Rekayasa Perangkat Lunak</p>
-            Course : IT Managemen Project
-            <hr>
-
-          </div>
-            <div class="mdl-card__actions">
-              <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
-              Lihat
-              </button></a>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p>IT Project Management</p>
+                            Universitas Telkom
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="lesson" style="float:right">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                                    Lihat
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p>IT Project Management</p>
+                            Universitas Telkom
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="<?php echo site_url('')?>" style="float:right">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                                    Lihat
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
             </div>
-        </div>
-      </div>
 
+        </div>
+        </div>
       <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--6-col-phone">
-        <div class="">
-              <div class="">
-                <h2 style="color:white; font-size: 28px">Course Forums
-                <br><h4 style="color:white;">Latest forum topic</h4> </br>
-                </h2>
-            </div>
-        </div>
-        <div class="mdl-card mdl-shadow--2dp pie-chart">
-            <div class="mdl-card__title" style="display:block;">
-                <h2 class="mdl-card__title-text">Forum</h2>
-                <div class="mdl-card__subtitle-text">Your recent forum</div>
-            </div>
-            <div class="mdl-card__supporting-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ab aperiam, 
-            corporis molestiae quia nulla fuga magnam repellat iusto, 
-            iure veritatis accusamus, alias ea doloribus! Ea modi dolorum culpa quia. <br>Course : IT Managemen Project</br>
-            <hr>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ab aperiam, 
-            corporis molestiae quia nulla fuga magnam repellat iusto, 
-            iure veritatis accusamus, alias ea doloribus! Ea modi dolorum culpa quia. <br>Course : IT Managemen Project</br>
-            <hr>
+          <div class="mdl-card mdl-shadow--2dp pie-chart">
+              <div class="mdl-card__title" style="display:block;">
+                  <h2 class="mdl-card__title-text">Forum</h2>
+                  <h3 class="mdl-card__subtitle-text">Jumlah Forum : </h3>
+              </div>
+              <div class="mdl-card__supporting-text">
+                  <div>
+                      <div class="row">
+                          <div class="col-sm-8">
+                              <p>Judul Forum 1</p>
+                              Course : IT Project Management <br>
+                              Universitas Telkom
+                          </div>
+                          <div class="col-sm-4">
+                              <a href="list_thread" style="float:right">
+                                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                                      Lihat
+                                  </button>
+                              </a>
+                          </div>
+                      </div>
+                      <hr>
+                  </div>
+                  <div>
+                      <div class="row">
+                          <div class="col-sm-8">
+                              <p>Judul Forum 2</p>
+                              Course : IT Project Management <br>
+                              Lesson : Intro <br>
+                              Universitas Telkom
+                          </div>
+                          <div class="col-sm-4">
+                              <a href="<?php echo site_url('')?>" style="float:right">
+                                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
+                                      Lihat
+                                  </button>
+                              </a>
+                          </div>
+                      </div>
+                      <hr>
+                  </div>
+              </div>
+
           </div>
-            <div class="mdl-card__actions">
-              <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
-              Lihat
-              </button></a>
-            </div>
-        </div>
       </div>
+  </div>
+
+
     </div>
   </div>
 </main>
