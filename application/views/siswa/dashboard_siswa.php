@@ -14,7 +14,7 @@
 
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--6-col-phone">
-      <div class="mdl-card mdl-shadow--2dp pie-chart">
+      <div class="mdl-card mdl-shadow--2dp pie-chart" >
           <div class="mdl-card__title" style="display:block;">
               <h2 class="mdl-card__title-text">Courses</h2>
               <div class="mdl-card__subtitle-text">Your recent courses test</div>

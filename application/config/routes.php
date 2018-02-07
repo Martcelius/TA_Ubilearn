@@ -113,6 +113,7 @@ $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
 
 
 // route login
+$route['index'] = 'C_login/index';
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
 $route['landing_page']= 'C_login/landing_page';

@@ -28,11 +28,17 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/main.css">
 <!--===============================================================================================-->
+
+<style>
+     .error{
+      color:red;
+     }
+    </style>
 </head>
 <body style="background-color: #999999;">
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('res/assets/images/S_7335164267594.jpg');"></div>
+			<div class="login100-more" style="background-image: url(<?php echo $url?>);"></div>
 			<?php echo form_open('C_login/masuk'); ?>
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
 				<form class="login100-form validate-form">
@@ -41,17 +47,19 @@
 					</span> 
 
 					
-
-					<div class="wrap-input100 validate-input" data-validate="Nama pengguna dibutuhkan">
+					
+					<div class="wrap-input100 validate-input" >
 						<span class="label-input100">Nama Pengguna</span>
-						<input class="input100" type="text" name="username" placeholder="Nama Pengguna...">
-						<span class="focus-input100"></span>
+						<input class="input100" type="text" name="username" placeholder="Nama Pengguna..." required>
+						
+						
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Kata sandi dibutuhkan">
+					<div class="wrap-input100 validate-input" >
 						<span class="label-input100">Kata Sandi</span>
-						<input class="input100" type="text" name="password" placeholder="*************">
-						<span class="focus-input100"></span>
+						<input class="input100" type="password" name="password" placeholder="*************" required>
+						
+						
 					</div>
                     
 					<div class="container-login100-form-btn">
@@ -68,13 +76,13 @@
 						</a>
 					</div>
 
-					<?php
+					<!-- <?php
 						if(isset($pesan))
 						{
 							echo $pesan;
 						}
 					
-					?>
+					?> -->
 					<?php echo form_close(); ?>
 			</div>
 		</div>
