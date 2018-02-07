@@ -110,4 +110,16 @@ class C_siswa extends CI_Controller {
         $data['content'] = 'siswa/detail_thread_siswa';
         $this->load->view('layout/master', $data);
     }
+
+    public function add_thread_siswa()
+    {
+        $data['content'] = 'siswa/add_thread_siswa';
+        $this->load->view('layout/master', $data);
+    }
+
+    public function edit_thread_siswa()
+    {
+        $data['content'] = 'siswa/edit_thread_siswa';
+        $this->load->view('layout/master', $data);
+    }
 }
