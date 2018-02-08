@@ -106,17 +106,22 @@ class C_siswa extends CI_Controller {
         $data['content'] = 'siswa/course_detail';
         $this->load->view('layout/master', $data);
     }
-<<<<<<< HEAD
     public function remedial()
     {
+        $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/remedial';
-=======
-
+        $this->load->view('layout/master', $data);
+    }
+    public function pretest()
+    {
+        $data['sidebar'] = 'layout/sidebar';
+        $data['content'] = 'siswa/pretest';
+        $this->load->view('layout/master', $data);
+    }
     public function course_content()
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/course_content';
->>>>>>> 85dc8150b3cf93e4abb84467d329df91d40e0779
         $this->load->view('layout/master', $data);
     }
 

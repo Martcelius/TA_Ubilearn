@@ -31,6 +31,7 @@ class C_instruktur extends CI_Controller {
     }
     public function result_instruktur()
     {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/result_instruktur';
         $this->load->view('layout/master', $data);
     }
