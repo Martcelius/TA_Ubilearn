@@ -68,6 +68,8 @@ $route['siswa/course_content'] = 'C_siswa/course_content';
 $route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
 $route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
 $route['siswa/detail_thread_siswa'] = 'C_siswa/detail_thread_siswa';
+$route['siswa/add_thread_siswa'] = 'C_siswa/add_thread_siswa';
+$route['siswa/edit_thread_siswa'] = 'C_siswa/edit_thread_siswa';
 
 //assesment
 $route['siswa/assignment_opening'] = 'C_siswa/assignment_opening';
@@ -112,11 +114,16 @@ $route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
 $route['instruktur/add_pretest'] = 'C_instruktur/add_pretest';
 $route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
 $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
+$route['instruktur/content'] = 'C_instruktur/content';
+//$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
+$route['instruktur/list_thread'] = 'C_instruktur/list_thread';
+
 
 >>>>>>> 85dc8150b3cf93e4abb84467d329df91d40e0779
 
 
 // route login
+$route['index'] = 'C_login/index';
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
 $route['landing_page']= 'C_login/landing_page';

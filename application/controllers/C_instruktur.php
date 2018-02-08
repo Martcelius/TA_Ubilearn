@@ -112,6 +112,24 @@ class C_instruktur extends CI_Controller {
         $data['content'] = 'instruktur/tambah_latihan';
         $this->load->view('layout/master', $data);
         
-    }  
+    }
+    public function content()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/content';
+        $this->load->view('layout/master',$data);
+    }
+//    public function list_thread_instruktur()
+//    {
+//        $data['sidebar'] = 'layout/sidebar_instruktur';
+//        $data['content'] = 'instruktur/list_thread_instruktur';
+//        $this->load->view('layout/master',$data);
+//    }
+    public function list_thread()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/list_thread';
+        $this->load->view('layout/master',$data);
+    }
 
 }

@@ -53,7 +53,8 @@ class Welcome extends CI_Controller {
 
 	public function signin()
 	{
-		$this->load->view('login/signin');
+		$data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
+		$this->load->view('login/signin',$data);
 	}
 
 }

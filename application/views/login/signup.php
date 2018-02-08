@@ -28,6 +28,11 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/main.css">
 <!--===============================================================================================-->
+<style>
+     .error{
+      color:red;
+     }
+    </style>
 </head>
 <body style="background-color: #999999;">
 	
@@ -36,69 +41,54 @@
 			<div class="login100-more" style="background-image: url('res/assets/images/S_7335164267594.jpg');"></div>
 
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" method="post">
 					<span class="login100-form-title p-b-59">
 						Daftar
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate="Nama lengkap dibutuhkan">
-						<span class="label-input100">Nama Lengkap</span>
-						<input class="input100" type="text" name="name" placeholder="Nama Lengkap...">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "email valid dibutuhkan, contoh: abc@gmail.com">
-						<span class="label-input100">Email</span>
-						<input class="input100" type="text" name="email" placeholder="Alamat Email...">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Nama pengguna dibutuhkan">
+					<div class="wrap-input100 " >
 						<span class="label-input100">Nama Pengguna</span>
-						<input class="input100" type="text" name="username" placeholder="Nama Pengguna...">
-						<span class="focus-input100"></span>
+						<input class="input100" type="text" name="name" placeholder="Nama Lengkap..." value="<?php echo set_value('name'); ?>">
+						<?php echo form_error('name'); ?>
 					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Kata sandi dibutuhkan">
+					<div class="wrap-input100" >
+						<span class="label-input100">Nama Depan</span>
+						<input class="input100" type="text" name="name_depan" placeholder="Nama Lengkap..."  value="<?php echo set_value('name_depan'); ?>">
+						<?php echo form_error('name_depan'); ?>
+					</div>
+					<div class="wrap-input100" >
+						<span class="label-input100">Nama Belakang</span>
+						<input class="input100" type="text" name="name_belakang" placeholder="Nama Lengkap..."  value="<?php echo set_value('name_belakang'); ?>">
+						<?php echo form_error('name_belakang'); ?>
+					</div>
+					<div class="wrap-input100" >
+						<span class="label-input100">Email</span>
+						<input class="input100" type="email" name="email" placeholder="Alamat Email..." value="<?php echo set_value('email'); ?>">
+						<?php echo form_error('email'); ?>
+					</div>
+					<div class="wrap-input100" >
 						<span class="label-input100">Kata Sandi</span>
-						<input class="input100" type="text" name="pass" placeholder="*************">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Ulangi kata sandi dibutuhkan">
-						<span class="label-input100">Ulangi Kata Sandi</span>
-						<input class="input100" type="text" name="repeat-pass" placeholder="*************">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="flex-m w-full p-b-33">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								<span class="txt1">
-									Dengan mengeklik Daftar, maka kamu setuju dengan
-									<a href="#" class="txt2 hov1">
-										Ketentuan.
-									</a>
-								</span>
-							</label>
-						</div>
-
+						<input class="input100" type="password" name="pass" placeholder="*************" value="<?php echo set_value('pass'); ?>">
 						
+						<?php echo form_error('pass'); ?>
+					</div>
+
+					<div class="wrap-input100" >
+						<span class="label-input100">Ulangi Kata Sandi</span>
+						<input class="input100" type="password" name="repeat-pass" placeholder="*************" value="<?php echo set_value('repeat-pass'); ?>">
+						<?php echo form_error('repeat-pass'); ?>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Daftar
-							</button>
+							<input type="submit" name="submit" value="Submit">
 						</div>
 
-						<a href="<?php echo site_url('signin') ?>" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+						<!-- <a href="<?php echo site_url('signin') ?>" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Masuk
 							<i class="fa fa-long-arrow-right m-l-5"></i>
-						</a>
+						</a> -->
 					</div>
 				</form>
 			</div>
