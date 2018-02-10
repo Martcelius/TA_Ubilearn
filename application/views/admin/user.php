@@ -10,7 +10,7 @@
   </div>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <a href="add_user">
+        <a href="<?php echo site_url('admin/add_user')?>">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
             <i class="material-icons">create</i>
             Buat User
@@ -139,6 +139,13 @@
       }
   </style>
   <div class="mdl-grid">
+    <?php if ($this->session->flashdata('data_tersimpan') == TRUE): ?>
+    <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet  mdl-cell--12-col-phone"> 
+        <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+        </button>
+        <p><?php echo $this->session->flashdata('data_tersimpan')?></p>
+    </div>
+    <?php endif; ?>
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-card mdl-shadow--2dp pie-chart">
           <div class="mdl-card__title" style="display:block;">
@@ -149,41 +156,51 @@
             <thead>
               <tr>
                 <th style="text-align: center;">No.</th>
-                <th style="text-align: center;">Username</th>
-                <th style="text-align: center;">First Name</th>
-                <th style="text-align: center;">Last Name</th>
+                <th style="text-align: center;">Kode Pengguna(Instruktur)</th>
+                <th style="text-align: center;">Nama Pengguna</th>
+                <th style="text-align: center;">Nama Depan</th>
+                <th style="text-align: center;">Nama Belakang</th>
                 <th style="text-align: center;">Email</th>
                 <th style="text-align: center;">Foto</th>
                 <th style="text-align: center;">IPK (Mahasiswa)</th>
-                <th style="text-align: center;">Jenis Kelamin</th>
+                <th style="text-align: center;">Waktu Buat</th>
+                <th style="text-align: center;">Waktu Sunting</th>
                 <th style="text-align: center;">User Level</th>
-                <th style="text-align: center;">Tanggal Lahir</th>
+                <th style="text-align: center;">Jenis Kelamin</th>
                 <th style="text-align: center;">Aksi</th>
               </tr>
             </thead>
             <tbody>
+            <?php
+            $no = 1;
+            foreach($userData as $user):?>
               <tr>
-                <td style="text-align: center;">1.</td>
-                <td>tikusROOK</td>
-                <td  style="text-align: center;">Iqbal</td>
-                <td>Maulana</td>
-                <td>iqbalmaulana.ardi@gmail.com</td>
-                <td>???</td>
-                <td style="text-align: center">1.2</td>
-                <td style="text-align: center">Laki-laki</td>
-                <td style="text-align: center">Siswa</td>
-                <td style="text-align: center">07-08-1996</td>
+                <td style="text-align: center;"><?php echo $no++ ?></td>
+                <td style="text-align: center;"><?php echo $user->usr_kode ?></td>
+                <td style="text-align: center;"><?php echo $user->usr_username ?></td>
+                <td style="text-align: center;"><?php echo $user->usr_firstname ?></td>
+                <td style="text-align: center;"><?php echo $user->usr_lastname ?></td>
+                <td style="text-align: center;"><?php echo $user->usr_email ?></td>
+                <td style="text-align: center"><img src="<?php if(!empty ($user->usr_picture)) echo base_url('res/assets/images/uploads/'.$user->usr_picture); else echo 'http://websamplenow.com/30/userprofile/images/avatar.jpg';?>" alt="foto user" ></td>
+                <td style="text-align: center"><?php echo $user->usr_gpa ?></td>
+                <td style="text-align: center"><?php echo $user->usr_timecreated ?></td>
+                <td style="text-align: center"><?php echo $user->usr_timemodified ?></td>
+                <td style="text-align: center"><?php echo $user->usr_level ?></td>
+                <td style="text-align: center"><?php echo $user->usr_jk ?></td>
                 <td style="text-align: center;">
-                    <a href="edit_user">
-                  <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
-                    <i class="material-icons">edit</i>
-                  </button>
+                    <a href="<?php echo site_url('admin/edit_user/'.$user->usr_id);?>">
+                      <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
+                        <i class="material-icons">edit</i>
+                      </button>
                     </a>
-                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin?');">
-                    <i class="material-icons">delete</i>
-                  </button>
+                    <a href="<?php echo site_url('admin/delete_user/'.$user->usr_id);?>">
+                      <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin?');">
+                        <i class="material-icons">delete</i>
+                      </button  >
+                    </a>
                 </td>
               </tr>
+              <?php endforeach ;?>
             </tbody>
           </table>
           </div>

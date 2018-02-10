@@ -19,41 +19,49 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail User</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form class="form-horizontal"  action="" method="post">
+                    <form class="form-horizontal"  action="<?php echo site_url('admin/update_user')?>" method="post"  enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 14px">Kode Pengguna</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode" value="<?php echo $userData->usr_kode ;?>">
+                                <span>*Isi bila pengguna adalah instruktur</span>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label" style="font-size: 14px">Username</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="username" value="Username">
+                                <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?php echo $userData->usr_username ;?>">
                             </div>
                             <label for="password" class="col-sm-2 control-label" style="font-size: 14px">Password</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="password" value="Password">
+                               <input type="password" class="form-control" id="password" placeholder="Password" name="password" >
+                               <span>*Isi bila pengguna ingin mengganti password lama</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="namaDepan" class="col-sm-2 control-label" style="font-size: 14px">Nama Depan</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="namaDepan" value="Nama Depan">
+                                <input type="text" class="form-control" id="namaDepan" placeholder="Nama Depan" name="nama_depan" value="<?php echo $userData->usr_firstname ;?>">
                             </div>
                             <label for="namaBelakang" class="col-sm-2 control-label" style="font-size: 14px">Nama Belakang</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="namaBelakang" value="Nama Belakang">
+                                <input type="text" class="form-control" id="namaBelakang" placeholder="Nama Belakang" name="nama_belakang" value="<?php echo $userData->usr_lastname ;?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label" style="font-size: 14px">Email</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="email" value="E-mail">
+                                <input type="email" class="form-control" id="email" placeholder="E-mail" name="email" value="<?php echo $userData->usr_email ;?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="jenis_kelamin" class="col-sm-2 control-label" style="font-size: 14px">Jenis Kelamin</label>
                             <div class="col-sm-5">
                                 <div class="radio-inline">
-                                    <label style="font-size: 14px"><input type="radio" name="optradio">Laki-laki</label>
+                                    <label style="font-size: 14px"><input type="radio" name="jenis_kelamin" value="Pria">Laki-laki</label>
                                 </div>
                                 <div class="radio-inline">
-                                    <label style="font-size: 14px"><input type="radio" name="optradio">Wanita</label>
+                                    <label style="font-size: 14px"><input type="radio" name="jenis_kelamin" value="Perempuan">Wanita</label>
                                 </div>
                             </div>
                         </div>
@@ -61,41 +69,45 @@
                             <label class="col-sm-2 control-label" style="font-size: 14px">Role</label>
                             <div class="col-sm-5">
                                 <div class="radio-inline">
-                                    <label style="font-size: 14px"><input type="radio" name="optradio1">Admin</label>
+                                    <label style="font-size: 14px"><input type="radio" name="level" value="1">Admin</label>
                                 </div>
                                 <div class="radio-inline">
-                                    <label style="font-size: 14px"><input type="radio" name="optradio1">Siswa</label>
+                                    <label style="font-size: 14px"><input type="radio" name="level" value="2">Siswa</label>
                                 </div>
                                 <div class="radio-inline">
-                                    <label style="font-size: 14px"><input type="radio" name="optradio1">Instruktur</label>
+                                    <label style="font-size: 14px"><input type="radio" name="level" value="3">Instruktur</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="font-size: 14px">IPK</label>
                             <div class="col-sm-4">
-                                <input type="decimal" min="0" max="4" class="form-control" id="ipk" value="IPK">
+                                <input type="decimal" min="0" max="4" class="form-control" id="ipk" placeholder="IPK" name="ipk" value="<?php echo $userData->usr_gpa ;?>">
+                                <span>*Isi bila pengguna adalah siswa</span>
                             </div>
-                            <span>*Isi bila user adalah siswa</span>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="font-size: 14px">Upload gambar</label>
-                            <input type="file" id="gambar" accept="image/x-png,image/gif,image/jpeg" style="padding: 9px" onchange="readURL(this);">
+                            <input type="file" id="gambar" accept="image/x-png,image/gif,image/jpeg" style="padding: 9px" onchange="readURL(this);" name="foto" >
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="font-size: 14px"></label>
                             <div class="col-sm-2">
-                                <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail " id="blah">
+                                <img src="<?php if(!empty ($userData->usr_picture)) echo base_url('res/assets/images/uploads/'.$userData->usr_picture); else echo 'http://websamplenow.com/30/userprofile/images/avatar.jpg';?>" class="img-responsive img-thumbnail " id="blah">
                             </div>
                         </div>
-                    </form>
-                    <div class="form__action">
+                        <div class="form__action">
                         <div class="mdl-layout-spacer"></div>
-                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-                            Ubah
-                        </button>
-                    </div>
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+                                Selesai
+                            </button>
+                        </div>
+                        <div>
+                            <input type="text" value="<?php echo $userData->usr_id?>" class="form-control" name="id"  style="display:none" required/>
+                        </div>
+                    </form>
+                   
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@ class C_login extends CI_Controller {
 
     function masuk(){
         $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $password = md5($this->input->post('password'));
 
         $query = $this->M_login->cek($username, $password);
         if ($query->num_rows() == 0){
@@ -75,11 +75,13 @@ class C_login extends CI_Controller {
         $this->form_validation->set_rules('name_belakang', 'Nama Belakang', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('pass', 'Kata Sandi', 'required');
-        $this->form_validation->set_rules('repeat_pass', 'Ulangi Kata Sandi', 'required|matches[pass]');
+        $this->form_validation->set_rules('repeat-pass', 'Ulangi Kata Sandi', 'required|matches[pass]');
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         $this->form_validation->set_message('required', 'Masukan %s');
+        $this->form_validation->set_message('matches', 'Ulangi kata sandi tidak sesuai');
         
-    
+        //dd($this->form_validation->run());
+        
         if ( $this->form_validation->run() == FALSE ) {
             // echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
             // dd($insert);

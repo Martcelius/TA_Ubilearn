@@ -87,12 +87,18 @@ $route['siswa/result'] = 'C_siswa/result';
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
 $route['admin/akun_admin'] = 'C_admin/akun_admin';
-$route['admin/user'] = 'C_admin/user';
-$route['admin/add_user'] = 'C_admin/add_user';
-$route['admin/edit_user'] = 'C_admin/edit_user';
-$route['admin/universitas'] = 'C_admin/universitas';
-$route['admin/add_universitas'] = 'C_admin/add_universitas';
-$route['admin/edit_universitas'] = 'C_admin/edit_universitas';
+$route['admin/user'] = 'admin/users/index';
+$route['admin/add_user'] = 'admin/users/add_user';
+$route['admin/insert_user'] = 'admin/users/insert_user';
+$route['admin/edit_user/(:any)'] = 'admin/users/edit_user/$1';
+$route['admin/update_user'] = 'admin/users/update_user';
+$route['admin/delete_user/(:any)'] = 'admin/users/delete_user/$1';
+$route['admin/universitas'] = 'admin/universitas/index';
+$route['admin/add_universitas'] = 'admin/universitas/add_universitas';
+$route['admin/insert_universitas'] = 'admin/universitas/insert_universitas';
+$route['admin/edit_universitas/(:any)'] = 'admin/universitas/edit_universitas/$1';
+$route['admin/update_universitas'] = 'admin/universitas/update_universitas';
+$route['admin/delete_universitas/(:any)'] = 'admin/universitas/delete_universitas/$1';
 
 //route instruktor
 $route['instruktur/dashboard'] = 'C_instruktur/dashboard';

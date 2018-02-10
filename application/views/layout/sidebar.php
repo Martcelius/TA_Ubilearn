@@ -8,6 +8,10 @@
                 <i class="material-icons" role="presentation">Course</i>
                 Course
             </a>
+            <a class="mdl-navigation__link" href="<?php echo site_url('siswa/forum_siswa')?> ">
+                <i class="material-icons" role="presentation">forum</i>
+                Forum
+            </a>
             <!-- <a class="mdl-navigation__link" href="maps.html">
                 <i class="material-icons" role="presentation">forum</i>
                 Forum

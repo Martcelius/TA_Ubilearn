@@ -41,7 +41,7 @@
 			<div class="login100-more" style="background-image: url('res/assets/images/S_7335164267594.jpg');"></div>
 
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
-				<form class="login100-form validate-form" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" method="post">
+				<form class="login100-form" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" method="post">
 					<span class="login100-form-title p-b-59">
 						Daftar
 					</span>

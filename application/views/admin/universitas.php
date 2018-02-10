@@ -10,7 +10,7 @@
   </div>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <a href="add_universitas">
+        <a href="<?php echo site_url('admin/add_universitas')?>">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
             <i class="material-icons">create</i>
             Buat Universitas
@@ -139,6 +139,13 @@
       }
   </style>
   <div class="mdl-grid">
+  <?php if ($this->session->flashdata('data_universitas') == TRUE): ?>
+    <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet  mdl-cell--12-col-phone"> 
+        <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+        </button>
+        <p><?php echo $this->session->flashdata('data_universitas')?></p>
+    </div>
+    <?php endif; ?>
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-card mdl-shadow--2dp pie-chart">
           <div class="mdl-card__title" style="display:block;">
@@ -155,48 +162,39 @@
                 <th style="text-align: center;">Email</th>
                 <th style="text-align: center;">Website</th>
                 <th style="text-align: center;">Status</th>
+                <th style="text-align: center;">Waktu Buat</th>
+                <th style="text-align: center;">Waktu Sunting</th>
                 <th style="text-align: center;">Aksi</th>
               </tr>
             </thead>
             <tbody>
+            <?php 
+            $no = 1;
+            foreach ($dataUnv as $unv):?>
               <tr>
-                <td style="text-align: center;">1.</td>
-                <td style="text-align: center">Universitas Gajah Mada</td>
-                <td style="text-align: center">Yogyakarta</td>
-                <td style="text-align: center">0223423345</td>
-                <td style="text-align: center">ugm@university.ac.id</td>
-                <td style="text-align: center">ugm.com</td>
-                <td style="text-align: center">Inye</td>
+                <td style="text-align: center"><?php echo $no++ ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_name ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_address ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_contact ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_email ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_website ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_stats ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_timecreated ?></td>
+                <td style="text-align: center"><?php echo $unv->unv_timemodified ?></td>
                 <td style="text-align: center;">
-                    <a href="edit_universitas">
+                    <a href="<?php echo site_url('admin/edit_universitas/'.$unv->unv_id);?>">
                       <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
                         <i class="material-icons">edit</i>
                       </button>
                     </a>
-                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin?');">
-                    <i class="material-icons">delete</i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                  <td style="text-align: center;">2.</td>
-                  <td style="text-align: center">Universitas Telkom</td>
-                  <td style="text-align: center">Dayeuh Kolot</td>
-                  <td style="text-align: center">0262323345</td>
-                  <td style="text-align: center">telkom@university.ac.id</td>
-                  <td style="text-align: center">telkomigracias.com</td>
-                  <td style="text-align: center">Inye2</td>
-                <td style="text-align: center;">
-                    <a href="edit_universitas">
-                  <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
-                    <i class="material-icons">edit</i>
-                  </button>
+                    <a href="<?php echo site_url('admin/delete_universitas/'.$unv->unv_id);?>">
+                      <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin?');">
+                        <i class="material-icons">delete</i>
+                      </button>
                     </a>
-                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin?');">
-                    <i class="material-icons">delete</i>
-                  </button>
                 </td>
               </tr>
+              <?php endforeach ;?>
             </tbody>
           </table>
           </div>

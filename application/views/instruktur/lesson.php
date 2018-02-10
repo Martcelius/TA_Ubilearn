@@ -95,7 +95,7 @@
                                     Tambah
                                 </button>
                             </a>
-                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
+                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo2"><i class="fa fa-bars"></i></button>
                         </div>                        <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
                                 <h4>ICON</h4>
@@ -167,7 +167,7 @@
                                     Tambah
                                 </button>
                             </a>
-                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
+                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo3"><i class="fa fa-bars"></i></button>
                         </div>
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
@@ -239,7 +239,7 @@
                                     Tambah
                                 </button>
                             </a>
-                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
+                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo4"><i class="fa fa-bars"></i></button>
                         </div>                        <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
                                 <h4>ICON</h4>

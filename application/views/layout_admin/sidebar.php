@@ -4,11 +4,11 @@
                 <i class="material-icons" role="presentation">dashboard</i>
                 Dashboard
             </a>
-            <a class="mdl-navigation__link" href="user">
+            <a class="mdl-navigation__link" href="<?php echo site_url('admin/user');?>">
                 <i class="material-icons" role="presentation">supervisor_account</i>
                 User
             </a>
-            <a class="mdl-navigation__link" href="universitas">
+            <a class="mdl-navigation__link" href="<?php echo site_url('admin/universitas')?>">
                 <i class="material-icons" role="presentation">work</i>
                 University
             </a>
