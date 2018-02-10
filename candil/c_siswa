@@ -1,0 +1,5 @@
+    public function course_content()
+    {
+        $data['content'] = 'siswa/course_content';
+        $this->load->view('layout/master', $data);
+    }

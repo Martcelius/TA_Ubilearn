@@ -29,6 +29,12 @@ class C_instruktur extends CI_Controller {
         $data['content'] = 'instruktur/akun_instruktur';
         $this->load->view('layout/master', $data);
     }
+    public function result_instruktur()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/result_instruktur';
+        $this->load->view('layout/master', $data);
+    }
 
     public function add_course()
     {

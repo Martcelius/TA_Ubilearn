@@ -1,0 +1,2 @@
+//pretest
+$route['siswa/pretest'] = 'C_siswa/pretest';

@@ -41,6 +41,35 @@
                                 <br>Nama file harus: "(NIM) (Nama) Tugas Menulis 2"
                         </div>
                     </div>
+<<<<<<< HEAD
+            <div class="form__action">
+            <input type='file' onchange="readURL(this);" />
+        <button id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            Submit
+        </button>
+    </div>
+        </div>
+        </div>
+        <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--3-offset-tablet mdl-cell--12-col-phone">
+        <form role="form" method="POST" action="#." style="width: 100%">
+            <div>
+            <textarea id="textarea-char-counter" name="isi_forum" class="mdl-textfield_input" ></textarea></textarea>
+            </div>
+            <input type="text" id="form1" class="form-control" value="bagi" name="kategori" hidden>
+            <input type="text" id="form1" class="form-control" value="{{Auth::user()->id}}" name="id_user" hidden>
+
+            <!--Yellow-->
+            <input class="btn btn-cyan" type="submit" value="Sumbit">
+                              <!-- <
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius totam, officiis doloremque
+                                velit nobis dolor nulla unde architecto alias praesentium, soluta error omnis sint, impedit,
+                                delectus ipsam eveniet debitis nemo.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius totam, officiis doloremque
+                                velit nobis dolor nulla unde architecto alias praesentium, soluta error omnis sint, impedit,
+                                delectus ipsam eveniet debitis nemo.</p>
+=======
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -54,6 +83,7 @@
                                     Selesai
                                 </button>
                             </a>
+>>>>>>> 85dc8150b3cf93e4abb84467d329df91d40e0779
                         </div>
                     </div>
                 </div>

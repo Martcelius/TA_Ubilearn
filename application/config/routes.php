@@ -84,6 +84,9 @@ $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 //result assesment/exercise
 $route['siswa/result'] = 'C_siswa/result';
 
+$route['siswa/remedial'] = 'C_siswa/remedial';
+
+
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
 $route['admin/akun_admin'] = 'C_admin/akun_admin';
@@ -120,6 +123,7 @@ $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
 $route['instruktur/content'] = 'C_instruktur/content';
 //$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
 $route['instruktur/list_thread'] = 'C_instruktur/list_thread';
+
 
 
 
