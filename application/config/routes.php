@@ -124,7 +124,10 @@ $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
 $route['instruktur/content'] = 'C_instruktur/content';
 //$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
 $route['instruktur/list_thread'] = 'C_instruktur/list_thread';
+$route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
+
 $route['instruktur/add_assignment'] = 'C_instruktur/add_assignment';
+
 
 
 
@@ -135,3 +138,6 @@ $route['index'] = 'C_login/index';
 $route['signin'] = 'welcome/signin';
 $route['signup'] = 'welcome/signup';
 $route['landing_page']= 'C_login/landing_page';
+
+// logout
+$route['logout'] = 'C_login/logout';

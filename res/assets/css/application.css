@@ -11709,16 +11709,6 @@ a {
     background-size: cover; }
     .cotoneaster .mdl-card__title .mdl-card__title-text {
       color: rgb(255, 255, 255); }
-
-/*.cotoneaster:hover{*/
-  /*opacity: .4;*/
-/*}*/
-/* .cotoneaster:hover{
-  opacity: .4;
-} */
-
-
-
 @media screen and (max-width: 1151px) {
   .cotoneaster {
     height: 329px; } }
