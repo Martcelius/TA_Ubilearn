@@ -124,6 +124,7 @@ $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
 $route['instruktur/content'] = 'C_instruktur/content';
 //$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
 $route['instruktur/list_thread'] = 'C_instruktur/list_thread';
+$route['instruktur/add_assignment'] = 'C_instruktur/add_assignment';
 
 
 
