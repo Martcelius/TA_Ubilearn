@@ -126,6 +126,8 @@ $route['instruktur/content'] = 'C_instruktur/content';
 $route['instruktur/list_thread'] = 'C_instruktur/list_thread';
 $route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
 
+$route['instruktur/add_assignment'] = 'C_instruktur/add_assignment';
+
 
 
 
