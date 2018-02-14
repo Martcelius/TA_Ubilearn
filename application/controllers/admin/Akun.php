@@ -46,7 +46,7 @@ class Akun extends CI_Controller {
         $userData['usr_picture'] = $result['file_name'];
         $userData['usr_gpa'] = empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk');
         $userData['usr_jk'] = empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin');
-        // dd($userData['usr_username']);
+        // dd($usr_id);
         $user= array(
             'kode' =>empty($this->input->post('kode')) ? NULL : $this->input->post('kode'),
             'username' =>$this->input->post('username'),
@@ -66,6 +66,6 @@ class Akun extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_tersimpan', 'Data User Tidak Berhasil Terbarui');
         }
-        redirect('instruktur/dashboard');
+        redirect('admin/dashboard');
     }
 }

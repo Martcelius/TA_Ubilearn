@@ -87,6 +87,8 @@ $route['siswa/result'] = 'C_siswa/result';
 $route['siswa/pretest'] = 'C_siswa/pretest';
 $route['siswa/remedial'] = 'C_siswa/remedial';
 
+$route['siswa/update_user'] = 'siswa/akun/update_user';
+
 
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
@@ -103,6 +105,7 @@ $route['admin/insert_universitas'] = 'admin/universitas/insert_universitas';
 $route['admin/edit_universitas/(:any)'] = 'admin/universitas/edit_universitas/$1';
 $route['admin/update_universitas'] = 'admin/universitas/update_universitas';
 $route['admin/delete_universitas/(:any)'] = 'admin/universitas/delete_universitas/$1';
+$route['admin/update_user'] = 'admin/akun/update_user';
 
 //route instruktor
 $route['instruktur/dashboard'] = 'C_instruktur/dashboard';
@@ -127,8 +130,7 @@ $route['instruktur/list_thread'] = 'C_instruktur/list_thread';
 
 $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 
-$route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
-
+$route['instruktur/update_user'] = 'instruktur/akun/update_user';
 $route['instruktur/add_assignment'] = 'C_instruktur/add_assignment';
 
 
