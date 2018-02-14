@@ -17,7 +17,7 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Lesson</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form class="form-horizontal" method="post" action="<?php echo site_url('instruktur/lesson/insert'.$id);?>">
+                    <form class="form-horizontal" method="post" action="<?php echo site_url('instruktur/lesson/insert/'.$id);?>">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Lesson</label>
                             <div class="col-sm-10">

@@ -19,15 +19,18 @@ class Lesson extends CI_Controller {
         $data['datalesen'] = M_Course_Lesson::where('crs_id', $id)->get();
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/lesson';
+        // dd($data['datalesen']);
+        $data['id'] = $id;
         $this->load->view('layout/master', $data);
     }
 
     /* CRUD Course */
    
 
-    public function add()
+    public function add($id)
     {
         // $data['addlesen'] = M_Course_Lesson::where('crs_id',$id)
+        $data['id'] = $id;
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = "instruktur/add_lesson";
         $this->load->view('layout/master',$data);
@@ -47,7 +50,7 @@ class Lesson extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_tersimpan', 'Data Lesen Tidak Berhasil Tersimpan');
         }
-        
+        $data['id'] = $id;
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = "instruktur/add_lesson";
         $this->load->view('layout/master', $data);
@@ -69,5 +72,12 @@ class Lesson extends CI_Controller {
     public function delete($id = NULL)
     {
         
+    }
+
+    public function detail_lesson()
+    {
+        $data['sidebar'] = "layout/sidebar_instruktur";
+        $data['content'] = "instruktur/detail_lesson";
+        $this->load->view('layout/master', $data);
     }
 }
