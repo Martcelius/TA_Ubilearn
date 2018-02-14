@@ -14,14 +14,14 @@
 
         <!-- START LESSON LIST  -->
 
-        <?php foreach ($datalesen as $lesen):?>
+        <!--  -->
         
             <!-- dropdown -->
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div class="mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title" style="display: block">
                         <div>
-                            <a href="<?php echo site_url('instruktur/add_lesson/'.$lesen->crs_id)?>">
+                            <a href="<?php echo site_url('instruktur/add_lesson/'.$id)?>">
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                                     Tambah
                                 </button>
@@ -30,28 +30,40 @@
                         </div>
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
-                                <img src="http://localhost/TA_Ubilearn/res/assets/images/card.jpg">
+                                <!-- <img src="http://localhost/TA_Ubilearn/res/assets/images/card.jpg"> -->
                             </div>
 
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text"><?php echo 'Materi - '.$lesen->lsn_name ?></h2><hr style="color: white" />
-                                <p style="color: white"><?php echo $lesen->lsn_intro ?></p>
+                                <h2 class="mdl-card__title-text">Lesson</h2><hr style="color: white" />
+                                <p style="color: white"></p>
                             </div>
                         </div>
                     </div>
                     <div id="demo" class="collapse">
                         <div class="mdl-card__supporting-text">
-
+                        <?php foreach ($datalesen as $lesen):?>
                             <ul class="demo-list-icon mdl-list">
                                 <li class="mdl-list__item">
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">1. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Intro</a>
+                                          <a href=""><?php echo 'Materi - '.$lesen->lsn_name ?></a>
                                   </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">TEXT</b>
+                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">
+                                    <a href="">
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                                        <i class="material-icons">add</i>
+                                        Masuk
+                                        </button>
+                                    </a>  
+                                    <a href="" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                                        <i class="material-icons">drafts</i>
+                                        Edit
+                                        </button>
+                                    </a>
+                                    </b>
                                 </li>
-                                <li class="mdl-list__item">
+                                <!-- <li class="mdl-list__item">
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">2. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
@@ -82,15 +94,15 @@
                                           <a href="">Another porject stuff</a>
                                   </span>
                                     <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li>
+                                </li> -->
                             </ul>
-
+                            <?php endforeach;?>
                         </div>
                     </div>
                 </div>
             </div>
 
-        <?php endforeach;?>
+        <!--  -->
         <!-- END LESSON LIST  -->
 
             <!-- dropdown end -->
