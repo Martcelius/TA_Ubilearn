@@ -43,7 +43,7 @@
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
 				<form class="login100-form" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" method="post">
 					<span class="login100-form-title p-b-59">
-						Daftar Pelajar
+						Daftar Instruktur
 					</span>
 
 					<div class="wrap-input100 " >
@@ -78,17 +78,17 @@
 						<input class="input100" type="password" name="repeat-pass" placeholder="*************" value="<?php echo set_value('repeat-pass'); ?>">
 						<?php echo form_error('repeat-pass'); ?>
 					</div>
-					<div>
-                        <input type="text" value="2" class="input100" name="level"  style="display:none" required/>
+                    <div>
+                        <input type="text" value="3" class="input100" name="level"  style="display:none" required/>
                     </div>
 
 					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Masuk
-							</button>
-						</div>
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                Masuk
+                            </button>
+                        </div>
 
 						<!-- <a href="<?php echo site_url('signin') ?>" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Masuk

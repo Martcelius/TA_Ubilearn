@@ -50,7 +50,7 @@ class C_login extends CI_Controller {
                 {
                     redirect('siswa/dashboard');
                 }
-                elseif ($this->session->userdata('level')=="instruktur")
+                elseif ($this->session->userdata('level')==3)
                 {
                     redirect("instruktur/dashboard");
                 }

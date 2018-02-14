@@ -50,6 +50,11 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('login/signup');
 	}
+	
+	public function signup_instruktur()
+	{
+		$this->load->view('login/signup_instruktur');
+	}
 
 	public function signin()
 	{
