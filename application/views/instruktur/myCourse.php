@@ -30,7 +30,7 @@
                 <span><?php echo $nama_instruktur->usr_firstname.' '.$nama_instruktur->usr_lastname;?></span>
             </div>
             <div class="mdl-card__actions">
-            <a href="<?php echo site_url('instruktur/lesson')?>">
+            <a href="<?php echo site_url('instruktur/lesson/'.$course->crs_id)?>">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                 <i class="material-icons">add</i>
                 Masuk

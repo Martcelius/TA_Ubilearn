@@ -11,7 +11,8 @@
             <div class="container">
             <div class="row">
             <div class="col-md-10 ">
-            <form class="form-horizontal">
+
+            <form class="form-horizontal" action="<?php echo site_url('instruktur/edit_akun')?>" method="post" enctype="multipart/form-data">
             <fieldset>
             
             <!-- Form Name -->
@@ -19,22 +20,33 @@
             
             <!-- Text input-->
             <div class="form-group">
+                <label class="col-md-4 control-label" for="Name (Full name)">Kode Instruktur</label>  
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <input name="kode" type="text" class="form-control input-md" value="<?php echo $this->session->userdata('kode') ;?>">
+                        </div>
+                    </div>  
+            </div>
+            <div class="form-group">
                 <label class="col-md-4 control-label" for="Name (Full name)">Username</label>  
                     <div class="col-md-4">
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control input-md">
+                            <input name="username" type="text" placeholder="nama" class="form-control input-md" value="<?php echo $this->session->userdata('username') ;?>">
                         </div>
                     </div>  
             </div>
             
             <!-- File Button --> 
             <div class="form-group">
-              <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
+              <label class="col-md-4 control-label" for="Upload photo">Ubah foto</label>
               <div class="col-md-4">
-                <input id="Upload photo" name="Upload photo" class="input-file" type="file" onchange="readURL(this);"/>
+                <input name="upload_foto" class="input-file" type="file" onchange="readURL(this);"/>
               </div>
             </div>
 
@@ -45,7 +57,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Nama Depan" name="Nama Depan" type="text" placeholder="Nama Depan" class="form-control input-md">
+                            <input name="nama_depan" type="text" placeholder="Nama Depan" class="form-control input-md" value="<?php echo $this->session->userdata('firstname') ;?>">
                         </div>
                     </div>  
             </div>
@@ -57,7 +69,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Nama Belakang" name="Nama Belakang" type="text" placeholder="Nama Belakang" class="form-control input-md">
+                            <input name="nama_belakang" type="text" placeholder="Nama Belakang" class="form-control input-md" value="<?php echo $this->session->userdata('lastname') ;?>">
                         </div>
                     </div>  
             </div>
@@ -69,7 +81,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input id="Password" name="Password" type="password" placeholder="Password" class="form-control input-md">
+                            <input name="password" type="password" placeholder="Password" class="form-control input-md" value="<?php echo $this->session->userdata('password') ;?>">
                         </div>
                     </div>  
             </div>
@@ -81,7 +93,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-envelope-o"></i>
                     </div>
-                    <input id="Email Address" name="Email Address" type="email" placeholder="Email Address" class="form-control input-md">
+                    <input name="email" type="email" placeholder="Email Address" class="form-control input-md" value="<?php echo $this->session->userdata('email') ;?>">
                     </div>
                 </div>
             </div>
@@ -91,11 +103,11 @@
                 <div class="col-md-4"> 
                     <label class="radio-inline" for="jenis_kelamin-0">
                     <input type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
-                    Male
+                    Pria
                     </label> 
                     <label class="radio-inline" for="jenis_kelamin-1">
                     <input type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
-                    Female
+                    Wanita
                     </label> 
                 </div>
             </div>
@@ -377,7 +389,7 @@
             </div>
 
             <div class="col-md-2 hidden-xs">
-                <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail " id="blah">
+            <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" class="img-responsive img-thumbnail" id="blah">
             </div>
             </div>
             </div>

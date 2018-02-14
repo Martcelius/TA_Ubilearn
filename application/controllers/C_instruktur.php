@@ -154,11 +154,21 @@ class C_instruktur extends CI_Controller {
 //        $data['content'] = 'instruktur/list_thread_instruktur';
 //        $this->load->view('layout/master',$data);
 //    }
+
     public function list_thread()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/list_thread';
         $this->load->view('layout/master',$data);
     }
+
+    public function result_siswa()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/result_instruktur';
+        $this->load->view('layout/master',$data);
+    }
+
+
 
 }

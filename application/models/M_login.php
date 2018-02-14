@@ -9,7 +9,7 @@ class M_login extends CI_Model{
 
     public function cek($username=NULL, $password)
     {
-        $this->db->select('usr_username,usr_password,usr_level');
+        $this->db->select('usr_kode,usr_username,usr_firstname,usr_lastname,usr_password,usr_email,usr_picture,usr_gpa,usr_level,usr_jk');
         $this->db->from('users');
         $this->db->where('usr_username', $username);
         $this->db->where('usr_password', $password);
@@ -27,7 +27,8 @@ class M_login extends CI_Model{
         $data['name_belakang']= $this->input->post('name_belakang');
         $data['pass']= md5($this->input->post('pass'));
         $data['email']= ($this->input->post('email'));
-        $insert = $this->db->query("INSERT INTO users (usr_username,usr_firstname,usr_lastname,usr_password,usr_email) VALUES ('".$data['name_pengguna']."' , '".$data['name_depan']."', '".$data['name_belakang']."', '".$data['pass']."', '".$data['email']."') ");
+        $data['level']= ($this->input->post('level'));
+        $insert = $this->db->query("INSERT INTO users (usr_username,usr_firstname,usr_lastname,usr_password,usr_email,usr_level) VALUES ('".$data['name_pengguna']."' , '".$data['name_depan']."', '".$data['name_belakang']."', '".$data['pass']."', '".$data['email']."','".$data['level']."') ");
     
     }
 }
