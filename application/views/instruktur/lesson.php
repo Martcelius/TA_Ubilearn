@@ -11,12 +11,17 @@
     </div>
     <div class=" col-sm-10 " >
         <div class="mdl-grid">
+
+        <!-- START LESSON LIST  -->
+
+        <?php foreach ($datalesen as $lesen):?>
+        
             <!-- dropdown -->
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div class="mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title" style="display: block">
                         <div>
-                            <a href="add_lesson">
+                            <a href="<?php echo site_url('instruktur/add_lesson/'.$lesen->crs_id)?>">
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                                     Tambah
                                 </button>
@@ -25,12 +30,12 @@
                         </div>
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
-                                <h4>ICON</h4>
+                                <img src="http://localhost/TA_Ubilearn/res/assets/images/card.jpg">
                             </div>
 
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text">Lesson Content</h2><hr style="color: white" />
-                                <p style="color: white">Understand to growing need for better .... ....</p>
+                                <h2 class="mdl-card__title-text"><?php echo 'Materi - '.$lesen->lsn_name ?></h2><hr style="color: white" />
+                                <p style="color: white"><?php echo $lesen->lsn_intro ?></p>
                             </div>
                         </div>
                     </div>
@@ -84,6 +89,9 @@
                     </div>
                 </div>
             </div>
+
+        <?php endforeach;?>
+        <!-- END LESSON LIST  -->
 
             <!-- dropdown end -->
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">

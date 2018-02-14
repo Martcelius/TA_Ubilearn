@@ -23,6 +23,9 @@ class C_login extends CI_Controller {
         $password = md5($this->input->post('password'));
 
         $query = $this->M_login->cek($username, $password);
+        // $cek= $query->result();
+        // dd($cek);
+
         if ($query->num_rows() == 0){
             // $this->index();
             echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
@@ -35,7 +38,15 @@ class C_login extends CI_Controller {
                 $cek= $query->result();
                 // foreach($cek as $row);
                 $user= array(
+                    'kode' =>$cek[0]->usr_kode,
                     'username' =>$cek[0]->usr_username,
+                    'password' =>$cek[0]->usr_password,
+                    'email' =>$cek[0]->usr_email,
+                    'firstname' =>$cek[0]->usr_firstname,
+                    'lastname' =>$cek[0]->usr_lastname,
+                    'gpa' =>$cek[0]->usr_gpa,
+                    'foto' =>$cek[0]->usr_picture,
+                    'jk' =>$cek[0]->usr_jk,
                     'level' =>$cek[0]->usr_level
                 );
             
@@ -95,6 +106,22 @@ class C_login extends CI_Controller {
             
         }
     }
+    public function logout()
+    {
+        $user_data = $this->session->all_userdata();
+        foreach ($user_data as $key => $value) {
+            if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+                $this->session->unset_userdata($key);
+            }
+        }
+        $this->session->sess_destroy();
+        if (!$this->session->userdata('username'))
+        {
+            echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
+        }
+                    
 
+        redirect('signin');
+    }
 
 }

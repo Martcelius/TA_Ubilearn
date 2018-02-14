@@ -44,6 +44,9 @@ class Welcome extends CI_Controller {
 		$courses = M_Course::all();
 		echo "<pre>", print_r($courses->toArray()), "</pre>";
 
+		$lesen = M_Course_Lesson::where('crs_id', 8)->get();
+		echo "<pre>", print_r($lesen->toArray()), "</pre>";
+
 	}
 
 	public function signup()
