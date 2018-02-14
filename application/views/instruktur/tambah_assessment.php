@@ -16,7 +16,7 @@
               <div class="mdl-card__subtitle-text">menambahkan assessment baru</div>
           </div>
           <div class="mdl-card__supporting-text" style="font-size: unset;" >
-            <form class="form-horizontal" action="/action_page.php">
+            <form class="form-horizontal" action="<?php echo base_url().'C_instruktur/add_assessment2'?>">
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" >Nama Assessment :</label>
 			    <div class="col-sm-10">
@@ -32,14 +32,14 @@
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" >Waktu Mulai :</label>
 			    <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
-                    <input class="form-control" size="16" type="text" value="" required >
+                    <input class="form-control" size="16" type="text" name="wmulai" value="" required >
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
 			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" >Waktu Selesai :</label>
 			    <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
-                    <input class="form-control" size="16" type="text" value="" required>
+                    <input class="form-control" size="16" type="text" name="wselesai" value="" required>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
 			  </div>
@@ -58,11 +58,11 @@
                  </div>
 			  </div>
 			  <div class="row" id="bodyRow">
-          <div class="col-md-12">
+          <div class="col-md-12" id="s1">
           	<div class="form-group">
-						    <label class="control-label col-sm-2" >Soal No. 1 :</label>
+						    <label class="control-label col-sm-2" id="lab1" >Soal No. 1 :</label>
 						    <div class="col-sm-10">
-                <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(1)" >(X) Hapus Soal</a> 
+                <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(1)" id="del1">(X) Hapus Soal</a> 
 						      <textarea type="text" class="form-control" rows="5" name="soal1"></textarea>
 						    </div>
 						  </div>
@@ -147,11 +147,11 @@
       while(i < jumSlide){
         currNum++;
         text = `
-        <div class="col-md-12">
+        <div class="col-md-12" id="s`+currNum+`">
              <div class="form-group">
-						    <label class="control-label col-sm-2" >Soal No. `+currNum+` :</label>
+						    <label class="control-label col-sm-2" id="lab`+currNum+`" >Soal No. `+currNum+` :</label>
 						    <div class="col-sm-10"> 
-                  <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(`+currNum+`)">(X) Hapus Soal</a> 
+                  <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(`+currNum+`)" id="del`+currNum+`">(X) Hapus Soal</a> 
 						      <textarea type="text" class="form-control" rows="5" name="soal`+currNum+`"></textarea>
 						    </div>
 						  </div>
@@ -210,15 +210,40 @@
   }
 
     function deleteSoal(N){
-    if(N == currNum){
-      $("#bodyRow").children().slice(N-1).remove();
+    if(confirm("Anda yakin ingin menghapus soal nomor "+N+" ?")){
+      if(N == currNum){
+        $("#bodyRow").children().slice(N-1).remove();
+        currNum--;
+        $('#currNum').val(currNum);
+      }
+      else if(N < currNum){
+        $("#bodyRow").children().slice(N-1).remove();
+        currNum = N - 1;
+        $('#currNum').val(currNum);
+      }
+/*      id = "#s"+N;
+      $(id).remove();
       currNum--;
       $('#currNum').val(currNum);
+      if(N < currNum){
+        while(N <= currNum){
+          N++;
+          $("textarea[name='soal"+N+"']").prop('name','soal'+N-1);
+          $("#lab"+N).text("Soal No. "+N-1);
+          $("#lab"+N).prop('id','lab'+N-1);
+          $("#del"+N).prop('onclick','deleteSoal('+N-1+')');
+          $("#del"+N).prop('id','del'+N-1);
+          $("input[name='opt"+N+"']").prop('name','opt'+N-1);
+          $("input[name='A"+N+"']").prop('name','A'+N-1);
+          $("input[name='B"+N+"']").prop('name','B'+N-1);
+          $("input[name='C"+N+"']").prop('name','C'+N-1);
+          $("input[name='D"+N+"']").prop('name','D'+N-1);
+          $("input[name='E"+N+"']").prop('name','E'+N-1);
+        }  
+      }*/
     }
-    else if(N < currNum){
-      $("#bodyRow").children().slice(N-1).remove();
-      currNum = N - 1;
-      $('#currNum').val(currNum);
+    else{
+      //Do Nothing
     }
   }
 
