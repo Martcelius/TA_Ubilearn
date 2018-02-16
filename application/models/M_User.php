@@ -60,6 +60,38 @@ class M_User extends Eloquent
         $userUpdate->usr_jk = $data['usr_jk'];
         return $userUpdate->save();
     }
+    public function update_user_akun($data,$usr_id)
+    {
+        $userUpdate = M_user::where('usr_id','=',$usr_id)->first();
+        //dd(userUpdate);
+        $userUpdate->usr_kode = $data['usr_kode'];
+        $userUpdate->usr_username = $data['usr_username'];
+        $userUpdate->usr_firstname = $data['usr_firstname'];
+        $userUpdate->usr_lastname = $data['usr_lastname'];
+        if(!empty($data['usr_password'])){
+            $userUpdate->usr_password = $data['usr_password'];
+        }
+        $userUpdate->usr_email = $data['usr_email'];
+        $userUpdate->usr_picture = $data['usr_picture'];
+        $userUpdate->usr_gpa = $data['usr_gpa'];
+        $userUpdate->usr_jk = $data['usr_jk'];
+        return $userUpdate->save();
+    }
+    public function update_user_akun_siswa($data,$usr_id)
+    {
+        $userUpdate = M_user::where('usr_id','=',$usr_id)->first();
+        $userUpdate->usr_username = $data['usr_username'];
+        $userUpdate->usr_firstname = $data['usr_firstname'];
+        $userUpdate->usr_lastname = $data['usr_lastname'];
+        if(!empty($data['usr_password'])){
+            $userUpdate->usr_password = $data['usr_password'];
+        }
+        $userUpdate->usr_email = $data['usr_email'];
+        $userUpdate->usr_picture = $data['usr_picture'];
+        $userUpdate->usr_gpa = $data['usr_gpa'];
+        $userUpdate->usr_jk = $data['usr_jk'];
+        return $userUpdate->save();
+    }
     
 }
 
