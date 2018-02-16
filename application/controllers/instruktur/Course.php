@@ -100,4 +100,5 @@ class Course extends CI_Controller {
         $course = M_Course::find($id);
         $course->delete();
     }
+    
 }
