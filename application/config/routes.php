@@ -139,6 +139,10 @@ $route['instruktur/add_assessment'] = 'C_instruktur/add_assessment';
 $route['instruktur/add_pretest'] = 'C_instruktur/add_pretest';
 $route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
 $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
+
+$route['instruktur/content'] = 'C_instruktur/content';
+$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
+$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
 // route instruktor-content
 $route['instruktur/content/(:any)'] = 'instruktur/content/content/$1';
 $route['instruktur/add_content/(:any)'] = 'instruktur/content/add_content/$1';
@@ -155,10 +159,9 @@ $route['instruktur/update_user'] = 'instruktur/akun/update_user';
 $route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
 
 $route['instruktur/add_assignment'] = 'C_instruktur/add_assignment';
-
-
-
-
+$route['instruktur/add_forum'] = 'C_instruktur/add_forum';
+$route['instruktur/forum_instruktur'] = 'C_instruktur/forum_instruktur';
+$route['instruktur/dashboard_forum_instruktur'] = 'C_instruktur/dashboard_forum_instruktur';
 
 
 // route login
@@ -167,6 +170,7 @@ $route['signin'] = 'C_login/signin';
 $route['signup'] = 'C_login/signup';
 $route['signup_instruktur'] = 'C_login/signup_instruktur';
 $route['landing_page']= 'C_login/landing_page';
+
 
 // logout
 $route['logout'] = 'C_login/logout';
