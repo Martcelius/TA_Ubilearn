@@ -11,7 +11,7 @@ class Lesson extends CI_Controller {
         parent::__construct();
 
         $this->load->model('M_Course_Lesson');
-        
+        $this->load->model('M_Course');
     }
     
     public function index($id)
@@ -74,10 +74,5 @@ class Lesson extends CI_Controller {
         
     }
 
-    public function detail_lesson()
-    {
-        $data['sidebar'] = "layout/sidebar_instruktur";
-        $data['content'] = "instruktur/detail_lesson";
-        $this->load->view('layout/master', $data);
-    }
+    
 }

@@ -13,10 +13,24 @@ class C_login extends CI_Controller {
     }
     
     public function index(){
-        $data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
-		$this->load->view('login/signin',$data);
+
     }
 
+    public function signup()
+	{
+		$this->load->view('login/signup');
+	}
+	
+	public function signup_instruktur()
+	{
+		$this->load->view('login/signup_instruktur');
+	}
+
+	public function signin()
+	{
+		$data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
+		$this->load->view('login/signin',$data);
+	}
 
     function masuk(){
         $username = $this->input->post('username');
@@ -75,7 +89,10 @@ class C_login extends CI_Controller {
         // $this->session->userdata();
         // print_r($this->session->userdata("level"));
         // die();
-        $this->load->view('layout/landing_page');   
+        $this->load->view('layout/landing_page'); 
+        
+        // redirect('signup');
+          
     }
 
     function registrasi_siswa()
@@ -96,8 +113,8 @@ class C_login extends CI_Controller {
         if ( $this->form_validation->run() == FALSE ) {
             // echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
             // dd($insert);
-            $this->load->view('login/signup');
-            
+            // $this->load->view('login/signup');
+            $this->signup();
         }else
         {
             $insert= $this->M_login->insert();
