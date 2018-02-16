@@ -40,14 +40,46 @@
                         </div>
                     </div>
                     <div id="demo" class="collapse">
-                        <div class="mdl-card__supporting-text">
-                        <?php foreach ($datalesen as $lesen):?>
+                        <div class="mdl-card">
+                        <?php $num= 1;
+                        if ($datalesen) : ?>
+                            <?php foreach ($datalesen as $lesen) : ?>
                             <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+                                      <span class="mdl-list__item-primary-content">
+                                          <span style="margin-right: 25px;"><?php echo $num++?> </span>
+                                          <i class="material-icons mdl-list__item-icon">label</i>
+                                          <a href=""><?php echo 'Materi - '.$lesen->lsn_name ?></a>
+                                  </span>
+                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">
+                                    <a href="<?php echo site_url('instruktur/content/'.$lesen->lsn_id)?>">
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                                        <i class="material-icons">add</i>
+                                        Masuk
+                                        </button>
+                                    </a>  
+                                    <a href="<?php echo site_url('instruktur/edit_lesson/'.$lesen->lsn_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                                        <i class="material-icons">drafts</i>
+                                        Edit
+                                        </button>
+                                    </a>
+                                    <a href="" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
+                                        <i class="material-icons">delete</i>
+                                        Hapus
+                                        </button>
+                                    </a>
+                                    </b>
+                                </li>
+                            </ul>
+<?php endforeach; ?>
+                        <?php else : ?>
+                        asas
+                        <ul class="demo-list-icon mdl-list">
                                 <li class="mdl-list__item">
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">1. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href=""><?php echo 'Materi - '.$lesen->lsn_name ?></a>
+                                          <a href=""></a>
                                   </span>
                                     <b class="mdl-list__item-secondary-action" style="margin-right:50px">
                                     <a href="">
@@ -61,42 +93,15 @@
                                         Edit
                                         </button>
                                     </a>
+                                    <a href="" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
+                                        <i class="material-icons">delete</i>
+                                        Hapus
+                                        </button>
+                                    </a>
                                     </b>
                                 </li>
-                                <!-- <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">2. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="<?php echo site_url('siswa/course_content')?>">Project Manager</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li>
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">3. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Software Development Life Cycle</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li>
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">4. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Stuff</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li>
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">5. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Another porject stuff</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li> -->
                             </ul>
-                            <?php endforeach;?>
+                        <?php endif;?>
                         </div>
                     </div>
                 </div>

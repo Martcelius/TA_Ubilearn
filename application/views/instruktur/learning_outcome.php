@@ -9,11 +9,20 @@
     </div>
   </div>
   <div class="mdl-grid">
+  <?php if ($this->session->flashdata('aksi_lo') == TRUE): ?>
+    <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet  mdl-cell--12-col-phone"> 
+        <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+        </button>
+        <p><?php echo $this->session->flashdata('aksi_lo')?></p>
+    </div>
+    <?php endif; ?>
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+    <a href="<?php echo site_url('instruktur/add_lo')?>">  
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
         <i class="material-icons">create</i>
         Buat Learning Outcome
       </button>
+    </a>
     </div>
   </div>
   <style type="text/css">
@@ -148,51 +157,34 @@
               <tr>
                 <th style="text-align: center;">No.</th>
                 <th style="text-align: center;">Learning Outcome Deskripsi</th>
-                <th style="text-align: center;">Waktu Create</th>
-                <th style="text-align: center;">Waktu Update</th>
+                <th style="text-align: center;">Waktu Dibuat</th>
+                <th style="text-align: center;">Waktu Sunting</th>
                 <th style="text-align: center;">Aksi</th>
               </tr>
             </thead>
             <tbody>
+            <?php 
+            $num = 1;
+            foreach($dataLO as $lo):?>
               <tr>
-                <td style="text-align: center;">1.</td>
-                <td  style="text-align: justify;width: 30%;">ijdiuhucednuanca Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                <td style="text-align: center;">12-02-2018 23:00</td>
-                <td style="text-align: center;">12-02-2018 24:00</td>
+                <td style="text-align: center;"><?php echo $num++?></td>
+                <td  style="text-align: justify;width: 30%;"><?php echo $lo->loc_desc?></td>
+                <td style="text-align: center;"><?php echo $lo->loc_timecreated?></td>
+                <td style="text-align: center;"><?php echo $lo->loc_timemodified?></td>
                 <td style="text-align: center;">
-                  <button style="margin-bottom: 5px;background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
-                    <i class="material-icons">remove_red_eye</i>
-                  </button>
-                  <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
-                    <i class="material-icons">edit</i>
-                  </button>
-                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
-                    <i class="material-icons">delete</i>
-                  </button>
+                  <a href="<?php echo site_url('instruktur/edit_lo/'.$lo->loc_id)?>">
+                    <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
+                      <i class="material-icons">edit</i>
+                    </button>
+                  </a>
+                  <a href="<?php echo site_url('instruktur/delete_lo/'.$lo->loc_id)?>">
+                    <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </a>
                 </td>
               </tr>
-              <tr>
-                <td style="text-align: center;">2.</td>
-                <td style="text-align: justify;width: 30%;">ijdiuhucednuanca</td>
-                <td style="text-align: center;">12-02-2018 23:00</td>
-                <td style="text-align: center;">12-02-2018 24:00</td>
-                <td style="text-align: center;">
-                  <button style="margin-bottom: 5px;background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
-                    <i class="material-icons">remove_red_eye</i>
-                  </button>
-                  <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
-                    <i class="material-icons">edit</i>
-                  </button>
-                  <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
-                    <i class="material-icons">delete</i>
-                  </button>
-                </td>
-              </tr>
+            <?php endforeach ;?>
             </tbody>
           </table>
           </div>

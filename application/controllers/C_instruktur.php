@@ -68,21 +68,6 @@ class C_instruktur extends CI_Controller {
         
     }
 
-    public function learning_outcome()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/learning_outcome';
-        $this->load->view('layout/master',$data);
-    }
-
-    public function add_lo()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/add_LO';
-        $this->load->view('layout/master', $data);
-
-    }
-
     public function add_assessment()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
