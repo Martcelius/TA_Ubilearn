@@ -12,7 +12,7 @@
 
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <a href="#">
+        <a href="<?php echo site_url('instruktur/add_forum')?>">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
             <i class="material-icons">create</i>
                 Buat Forum
@@ -47,15 +47,21 @@
                                 <td style="text-align: center;">14 Thread</td>
                                 <td style="text-align: center;">36 Siswa</td>
                                 <td style="text-align: center;">
+                                <a href="<?php echo site_url('instruktur/list_thread_instruktur')?>">
                                     <button style="margin-bottom: 5px;background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
                                     <i class="material-icons">remove_red_eye</i>
                                     </button>
+                                </a>
+                                <a href="http://">
                                     <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
                                     <i class="material-icons">edit</i>
                                     </button>
+                                </a>
+                                <a href="http://">
                                     <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
                                     <i class="material-icons">delete</i>
                                     </button>
+                                </a>
                                 </td>
                             </tr>
                             <tr>

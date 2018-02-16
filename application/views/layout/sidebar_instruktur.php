@@ -8,7 +8,7 @@
                 <i class="material-icons" role="presentation">Course</i>
                My Course
             </a>
-            <a class="mdl-navigation__link" href="maps.html">
+            <a class="mdl-navigation__link" href="<?php echo site_url('instruktur/forum_instruktur')?>">
                 <i class="material-icons" role="presentation">forum</i>
                 Forum
             </a>

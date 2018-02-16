@@ -50,15 +50,7 @@ class C_instruktur extends CI_Controller {
         $data['content'] = 'instruktur/lesson';
         $this->load->view('layout/master', $data);
         
-    }
-
-    public function detail_lesson()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/detail_lesson';
-        $this->load->view('layout/master', $data);
-        
-    }    
+    }   
 
     public function add_lesson()
     {
@@ -107,12 +99,6 @@ class C_instruktur extends CI_Controller {
         $this->load->view('layout/master', $data);
     }
 
-    public function content()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/content';
-        $this->load->view('layout/master',$data);
-    }
    
     public function list_thread_instruktur()
     {
