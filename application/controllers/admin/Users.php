@@ -60,8 +60,11 @@ class Users extends CI_Controller {
             $this->session->set_flashdata('data_gagal_tersimpan', 'Data User Tidak Berhasil Tersimpan');
         }
         
-        $data['content'] = 'admin/add_user';
-        $this->load->view('layout_admin/master', $data);
+        // $data['content'] = 'admin/add_user';
+        // $this->load->view('layout_admin/master', $data);
+        
+        redirect('admin/add_user','refresh');
+        
 
     }
 
@@ -106,6 +109,7 @@ class Users extends CI_Controller {
         }
 
        $this->index();
+    //    redirect('admin/user','refresh');
     }
 
     public function delete_user($id)
@@ -120,7 +124,8 @@ class Users extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_tersimpan', 'Data User Tidak Berhasil Terhapus');
         }
-        $this->index();
+        // $this->index();
+        redirect('admin/user','refresh');
     }
 }
 

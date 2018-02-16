@@ -117,7 +117,10 @@ $route['instruktur/update_course'] = 'instruktur/course/update';
 // route instruktor-lesson
 $route['instruktur/lesson/(:any)'] = 'instruktur/lesson/index/$1';
 $route['instruktur/add_lesson/(:any)'] = 'instruktur/lesson/add/$1';
+$route['instruktur/insert_lesson'] = 'instruktur/lesson/insert_lesson';
 $route['instruktur/edit_lesson/(:any)'] = 'instruktur/lesson/edit/$1';
+$route['instruktur/update_lesson'] = 'instruktur/lesson/update_lesson';
+$route['instruktur/delete_lesson/(:any)'] = 'instruktur/lesson/delete_lesson/$1';
 // route instruktor-LO
 $route['instruktur/learning_outcome'] = 'instruktur/learning_outcome/index';
 $route['instruktur/add_lo'] = 'instruktur/learning_outcome/add_lo';

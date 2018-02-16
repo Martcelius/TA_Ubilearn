@@ -17,17 +17,22 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Lesson</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="<?php echo site_url('instruktur/update_lesson');?>" method="post">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Lesson</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputEmail3" value="Kode Course">
+                            <input type="text" class="form-control" id="inputEmail3" name="lsn_name" value="<?php echo $dataLesson->lsn_name; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Intro Lesson</label>
                             <div class="col-sm-10">
-                            <textarea  class="form-control" id="inputPassword3" value="Intro" rows="2"></textarea>
+                            <textarea  class="form-control" id="inputPassword3" name="lsn_intro" value="<?php echo $dataLesson->lsn_intro; ?>" rows="2"><?php echo htmlspecialchars($dataLesson->lsn_intro);?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                            <input  class="form-control" id="inputPassword3" name="lsn_id" value="<?php echo $dataLesson->lsn_id; ?>" style="display:none;" />
                             </div>
                         </div>
                         <div class="form-group">

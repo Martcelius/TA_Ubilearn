@@ -5,7 +5,7 @@
                 Dashboard
             </a>
             <a class="mdl-navigation__link" href="<?php echo site_url('instruktur/MyCourse')?> ">
-                <i class="material-icons" role="presentation">Course</i>
+                <i class="material-icons" role="presentation">folder</i>
                My Course
             </a>
             <a class="mdl-navigation__link" href="<?php echo site_url('instruktur/forum_instruktur')?>">

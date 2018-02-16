@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Sumber Content</label>
                             <div class="col-sm-10">
-                            <textarea name="cnt_source" class="form-control" id="inputtext3" value= "<?php echo $editContent->cnt_source;?>"></textarea>
+                            <textarea name="cnt_source" class="form-control" id="inputtext3" value= "<?php echo $editContent->cnt_source;?>"><?php echo htmlspecialchars($editContent->cnt_source) ;?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
