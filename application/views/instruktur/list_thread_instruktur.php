@@ -23,9 +23,6 @@
                     </span>
             </div>
         </form>
-        <div style="text-align : right; margin-top : 5px">
-           <a href="<?php echo site_url('siswa/add_thread_siswa')?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Buat Thread</button></a>
-        </div>
     </div>
 </div>
 
