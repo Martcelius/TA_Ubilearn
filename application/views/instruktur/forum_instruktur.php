@@ -20,12 +20,13 @@
             </div> 
             <div class="mdl-card__supporting-text">
                 <ul class="demo-list-icon mdl-list">
+                    <?php foreach ($dataCourse as $course):?>
                     <li class="mdl-list__item" style="padding-top:0px; padding-bottom:0px;">
                         <span class="mdl-list__item-primary-content">
-                            <h4 style="margin-bottom:0px; margin-top:0px">Interaksi Manusia dan Komputer (SFH4123)</h4>
+                            <h4 style="margin-bottom:0px; margin-top:0px"><?php echo $course->crs_name;?> (<?php echo $course->crs_code;?>)</h4>
                         </span>
                         <span class="mdl-list__item-secondary-action">
-                            <a href="<?php echo site_url('instruktur/dashboard_forum_instruktur')?>">
+                            <a href="<?php echo site_url('instruktur/dashboard_forum_instruktur/'.$course->crs_id)?>">
                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                                 Masuk Forum
                             </button>
@@ -33,27 +34,7 @@
                         </span>                    
                     </li>
                     <hr style="margin-left:18px">
-                    <li class="mdl-list__item" style="padding-top:0px; padding-bottom:0px;">
-                        <span class="mdl-list__item-primary-content">
-                            <h4 style="margin-bottom:0px; margin-top:0px">IT Project Management (SFH1234)</h4>
-                        </span>
-                        <span class="mdl-list__item-secondary-action">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-                                Masuk Forum
-                            </button>
-                        </span>                    
-                    </li>
-                    <hr style="margin-left:18px">
-                    <li class="mdl-list__item" style="padding-top:0px; padding-bottom:0px;">
-                        <span class="mdl-list__item-primary-content">
-                            <h4 style="margin-bottom:0px; margin-top:0px">Kalkulus 1 (SFX4524)</h4>
-                        </span>
-                        <span class="mdl-list__item-secondary-action">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-                                Masuk Forum
-                            </button>
-                        </span>                    
-                    </li>
+                    <?php endforeach;?>
                 </ul>
             </div>     
         </div>
