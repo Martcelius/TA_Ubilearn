@@ -27,9 +27,32 @@ class Forum extends CI_Controller {
     {
         $data['dataForum']= DB::table('course_forum')
                             ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
-                            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+                            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')/*
+                            ->leftJoin('course_forum_thread','course_forum_thread.crs_id','=','course.crs_id')*/
                             ->where('course.crs_id',$crs_id)
                             ->get();
+//        $data['data'] = DB::table('course_forum')
+//            ->join('course_forum_thread','course_forum_thread.cfr_id','=','course_forum.cfr_id')
+//            ->where('course_forum.cfr_id','4')
+//            ->get();
+
+//        dd($data['data']);
+//        $jumlahThread = DB::table('course_forum_thread')
+//                            ->leftJoin('course_forum','course_forum.cfr_id','=','course_forum_thread.cfr_id')
+//                            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+//                            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+//                            ->where('course.crs_id',$crs_id)
+//                            ->get();
+//        $data['jumlahThread']= count($jumlahThread);
+//        dd($data['jumlahThread']);
+        $num=1;
+        foreach ($data['dataForum'] as $thread){
+            $jumlahThread = M_Course_Forum_Thread::where('cfr_id',$thread->cfr_id)->get();
+            $jumlah[$num] = $jumlahThread->count('cfr_id');
+            $num++;
+
+        }
+        $data['jumlah'] =$jumlah;
         $data['dataCourse']= M_Course::where('crs_id',$crs_id)->first();
 //        $data['crs_name'] = $data['dataForum']->
         $data['sidebar'] = 'layout/sidebar_instruktur';

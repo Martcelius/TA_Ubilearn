@@ -17,6 +17,14 @@ class Lesson extends CI_Controller {
     public function index($id)
     {
         $data['datalesen'] = M_Course_Lesson::where('crs_id', $id)->get();
+//        dd($data['datalesen']);
+        $data['jumlah'] = $data['datalesen']->count();
+        $data['dataInstruktur'] = DB::table('course_lesson')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->leftJoin('users','users.usr_id','=','course.usr_id')
+            ->where('course_lesson.crs_id',$id)
+            ->first(['users.usr_firstname','users.usr_lastname','course.crs_name']);
+//        dd($data['dataInstruktur']);
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/lesson';
         // dd($data['datalesen']);

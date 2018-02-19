@@ -41,7 +41,7 @@
                             <th style="text-align: center;">No.</th>
                             <th style="text-align: center;">Nama Forum</th>
                             <th style="text-align: center;">Deskripsi</th>
-<!--                            <th style="text-align: center;">Jumlah Thread</th>-->
+                            <th style="text-align: center;">Jumlah Thread</th>
 <!--                            <th style="text-align: center;">Jumlah Partisipan</th>-->
                             <th style="text-align: center;">Aksi</th>
                             </tr>
@@ -51,10 +51,10 @@
                         $num = 1;
                         foreach ($dataForum as $forum):?>
                             <tr>
-                                <td style="text-align: center;"><?php echo $num++?></td>
+                                <td style="text-align: center;"><?php echo $num?></td>
                                 <td style="text-align: center;"><?php echo $forum->cfr_title?></td>
                                 <td style="text-align: center;"><?php echo $forum->cfr_desc?></td>
-<!--                                <td style="text-align: center;">14 Thread</td>-->
+                                <td style="text-align: center;"><?php echo $jumlah[$num];?></td>
 <!--                                <td style="text-align: center;">36 Siswa</td>-->
                                 <td style="text-align: center;">
                                 <a href="<?php echo site_url('instruktur/list_thread_instruktur/'.$forum->cfr_id)?>">
@@ -74,6 +74,7 @@
                                 </a>
                                 </td>
                             </tr>
+                         <?php $num++;?>
                         <?php endforeach;?>
                         </tbody>
                     </table>
