@@ -43,7 +43,7 @@ class C_login extends CI_Controller {
         if ($query->num_rows() == 0){
             // $this->index();
             echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
-            $this->index();
+            redirect('signin');
         
         }
         else {

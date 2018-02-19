@@ -43,8 +43,13 @@ class Akun extends CI_Controller {
         $userData['usr_lastname'] = $this->input->post('nama_belakang');
         $userData['usr_password'] = $this->input->post('password');
         $userData['usr_email'] = empty($this->input->post('email')) ? NULL : $this->input->post('email');
-        $userData['usr_picture'] = $result['file_name'];
-        $userData['usr_gpa'] = empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk');
+        if ($this->upload->do_upload('upload_foto'))
+        {
+            $userData['usr_picture'] = $result['file_name'];
+        } else {
+            $userData['usr_picture'] = $this->session->userdata('foto');
+        }
+                $userData['usr_gpa'] = empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk');
         $userData['usr_jk'] = empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin');
         // dd($usr_id);
         $user= array(
@@ -55,7 +60,7 @@ class Akun extends CI_Controller {
             'firstname' =>$this->input->post('nama_depan'),
             'lastname' =>$this->input->post('nama_belakang'),
             'gpa' =>empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk'),
-            'foto' =>$result['file_name'],
+            'foto' =>$userData['usr_picture'],
             'jk' =>empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin'),
         );
         $this->session->set_userdata($user);
