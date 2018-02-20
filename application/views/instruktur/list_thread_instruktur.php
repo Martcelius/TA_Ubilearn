@@ -3,7 +3,7 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
-                <h2 style="color:white">Judul Forum</h2>
+                <h2 style="color:white">Judul Forum : <?php echo $judul_forum->cfr_title?></h2>
                 <br>
             </div>
         </div>
@@ -30,19 +30,20 @@
     <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--9-col-tablet mdl-cell--9-col-phone" style="">      
         <div class="box box-solid box-primary">
             <div class="box-header">
-                <h3 class="box-title">Judul Lesson Forum Thread</h3>
+                <h3 class="box-title">Judul Lesson : <?php echo $judul_lesson->lsn_name?></h3>
             </div>
             <div class="box-footer no-padding">
                 <ul class="nav nav-pills nav-stacked">
+                    <?php foreach ($dataThread as $thread):?>
                     <li>
                         <a href="<?php echo site_url('siswa/detail_thread_siswa')?>">
-                            Tutorial Teu Dicalana
+                            <?php echo $thread->cft_title?>
                             <span style="color : #8a8a8a; float:right">
-                                2017-11-16 09:37:19 
+                                <?php echo $thread->cft_timecreated?>
                             </span>
                             <br>
                             <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dolan 
+                                Oleh : <?php echo $thread->usr_username?>
                             </span>
                             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" style="float:right;margin-top:10px; background-color:red;"><i class="material-icons">delete</i></button>
                             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" style="float:right;margin-top:10px; margin-right:10px; background-color:green;"><i class="material-icons">edit</i></button>
@@ -55,86 +56,7 @@
                             </span>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="#">
-                            Tutorial Teu Dicalana
-                            <span style="color : #8a8a8a; float:right">
-                                2017-11-16 09:37:19 
-                            </span>
-                            <br>
-                            <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dolan 
-                            </span>
-                            <br>
-                            <span class="description" style="color : grey; font-size : 14px">
-                                Kategori : 
-                                <span class="label label-success">
-                                    Teu Dicalana
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Tutorial Teu Dicalana
-                            <span style="color : #8a8a8a; float:right">
-                                2017-11-16 09:37:19 
-                            </span>
-                            <br>
-                            <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dolan 
-                            </span>
-                            <br>
-                            <span class="description" style="color : grey; font-size : 14px">
-                                Kategori : 
-                                <span class="label label-success">
-                                    Teu Dicalana
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Tutorial Teu Dicalana
-                            <span style="color : #8a8a8a; float:right">
-                                2017-11-16 09:37:19 
-                            </span>
-                            <br>
-                            <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dolan 
-                            </span>
-                            <br>
-                            <span class="description" style="color : grey; font-size : 14px">
-                                Kategori : 
-                                <span class="label label-success">
-                                    Teu Dicalana
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Tutorial Teu Dicalana
-                            <span style="color : #8a8a8a; float:right">
-                                2017-11-16 09:37:19 
-                            </span>
-                            <br>
-                            <span style="color: #00a65a; font-size : 14px">
-                                Oleh : Dolan 
-                            </span>
-                            <br>
-                            <span class="description" style="color : grey; font-size : 14px">
-                                Kategori : 
-                                <span class="label label-success">
-                                    Teu Dicalana
-                                </span>
-                            </span>
-                        </a>
-                    </li>
+                    <?php endforeach;?>
                 </ul>
 
                 <div style="text-align : center">

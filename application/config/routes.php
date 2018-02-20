@@ -147,6 +147,15 @@ $route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instrukt
 $route['instruktur/add_forum'] = 'C_instruktur/add_forum';
 $route['instruktur/forum_instruktur'] = 'instruktur/forum/index';
 $route['instruktur/dashboard_forum_instruktur'] = 'C_instruktur/dashboard_forum_instruktur';
+$route['instruktur/forum_instruktur'] = 'instruktur/forum/index';
+$route['instruktur/dashboard_forum_instruktur/(:any)'] = 'instruktur/forum/dashboard_forum_instruktur/$1';
+$route['instruktur/add_forum/(:any)'] = 'instruktur/forum/add_forum/$1';
+$route['instruktur/insert_forum'] = 'instruktur/forum/insert_forum';
+$route['instruktur/edit_forum/(:any)/(:any)'] = 'instruktur/forum/edit_forum/$1/$2';
+$route['instruktur/update_forum'] = 'instruktur/forum/update_forum';
+$route['instruktur/delete_forum/(:any)/(:any)'] = 'instruktur/forum/delete_forum/$1/$2';
+$route['instruktur/list_thread_instruktur/(:any)'] = 'instruktur/thread/list_thread_instruktur/$1';
+>>>>>>> b9fcf3df392a30c209bee12186225e2460563b7d
 // route instruktur-result siswa
 $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 // route instruktur-akun

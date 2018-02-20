@@ -11,8 +11,15 @@
     </div>
 
     <div class="mdl-grid">
+        <?php if ($this->session->flashdata('data_forum') == TRUE): ?>
+            <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo $this->session->flashdata('data_forum')?></p>
+            </div>
+        <?php endif; ?>
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <a href="<?php echo site_url('instruktur/add_forum')?>">
+        <a href="<?php echo site_url('instruktur/add_forum/'.$dataCourse->crs_id)?>">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
             <i class="material-icons">create</i>
                 Buat Forum
@@ -25,7 +32,7 @@
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title" style="display:block;">
-                    <h2 class="mdl-card__title-text">Interaksi Manusia dan Komputer (SFH4123)</h2>
+                    <h2 class="mdl-card__title-text"><?php echo $dataCourse->crs_name;?> (<?php echo $dataCourse->crs_code;?>)</h2>
                 </div>
                 <div class="mdl-card__supporting-text" style="font-size: unset;" >
                     <table id="Table_mdl">
@@ -35,53 +42,40 @@
                             <th style="text-align: center;">Nama Forum</th>
                             <th style="text-align: center;">Deskripsi</th>
                             <th style="text-align: center;">Jumlah Thread</th>
-                            <th style="text-align: center;">Jumlah Partisipan</th>
+<!--                            <th style="text-align: center;">Jumlah Partisipan</th>-->
                             <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                        $num = 1;
+                        foreach ($dataForum as $forum):?>
                             <tr>
-                                <td style="text-align: center;">1.</td>
-                                <td>Introduction Human Computer Interaction</td>
-                                <td style="text-align: justify;width: 30%;">Forum ini merupakan blablablabla</td>
-                                <td style="text-align: center;">14 Thread</td>
-                                <td style="text-align: center;">36 Siswa</td>
+                                <td style="text-align: center;"><?php echo $num?></td>
+                                <td style="text-align: center;"><?php echo $forum->cfr_title?></td>
+                                <td style="text-align: center;"><?php echo $forum->cfr_desc?></td>
+                                <td style="text-align: center;"><?php echo $jumlah[$num];?></td>
+<!--                                <td style="text-align: center;">36 Siswa</td>-->
                                 <td style="text-align: center;">
-                                <a href="<?php echo site_url('instruktur/list_thread_instruktur')?>">
+                                <a href="<?php echo site_url('instruktur/list_thread_instruktur/'.$forum->cfr_id)?>">
                                     <button style="margin-bottom: 5px;background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
                                     <i class="material-icons">remove_red_eye</i>
                                     </button>
                                 </a>
-                                <a href="http://">
+                                <a href="<?php echo site_url('instruktur/edit_forum/'.$forum->cfr_id.'/'.$dataCourse->crs_id)?>">
                                     <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
                                     <i class="material-icons">edit</i>
                                     </button>
                                 </a>
-                                <a href="http://">
+                                <a href="<?php echo site_url('instruktur/delete_forum/'.$forum->cfr_id.'/'.$dataCourse->crs_id);?>">
                                     <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
                                     <i class="material-icons">delete</i>
                                     </button>
                                 </a>
                                 </td>
                             </tr>
-                            <tr>
-                            <td style="text-align: center;">2.</td>
-                                <td>Component of Human Computer Interaction</td>
-                                <td style="text-align: justify;width: 30%;">Forum ini merupakan blablablabla</td>
-                                <td style="text-align: center;">24 Thread</td>
-                                <td style="text-align: center;">16 Siswa</td>
-                                <td style="text-align: center;">
-                                    <button style="margin-bottom: 5px;background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
-                                    <i class="material-icons">remove_red_eye</i>
-                                    </button>
-                                    <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
-                                    <i class="material-icons">edit</i>
-                                    </button>
-                                    <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus">
-                                    <i class="material-icons">delete</i>
-                                    </button>
-                                </td>
-                            </tr>
+                         <?php $num++;?>
+                        <?php endforeach;?>
                         </tbody>
                     </table>
                 </div>

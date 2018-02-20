@@ -3,8 +3,6 @@
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div class="">
                 <div class="">
-                    <h2 style="color:white">Nama Course</h2>
-                    <h3 style="color:white">Nungki Selviandro</h3>
                 </div>
             </div>
         </div>
@@ -308,96 +306,25 @@
 
     <div class="sidenav" style="background-color: #343434;">
         <br/>
-        <h5 style="color: white;margin-left: 10px;">Course Information</h5>
-        <h5 style="color: white;margin-left: 10px;">IT Project Management</h5>
+        <h5 style="color: white;margin-left: 10px;">Informasi Course</h5>
+        <h5 style="color: white;margin-left: 10px;"><?php echo $dataInstruktur->crs_name?></h5>
         <hr/>
         <ul class="demo-list-item mdl-list">
             <li class="mdl-list__item">
                 Jumlah siswa:
             </li>
             <li class="mdl-list__item">
-                Jumlah lesson:
+                Jumlah lesson: <?php echo $jumlah?>
             </li>
         </ul>
         <hr/>
-        <h6 style="color: white;margin-left: 10px;">Instructor</h6>
-        <h5 style="color: white;margin-left: 10px;">Martcel Razzaq
+        <h6 style="color: white;margin-left: 10px;">Instruktur</h6>
+        <h5 style="color: white;margin-left: 10px;"><?php echo $dataInstruktur->usr_firstname?> <?php echo $dataInstruktur->usr_lastname?>
             <br/>
-            <small>Instructor</small>
         </h5>
         <hr>
         <h6 style="color: white;margin-left: 10px;">Siswa dalam Course :</h6>
         <ul class="demo-list-icon mdl-list">
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI </span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI </span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI </span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <span style="margin-right: 25px;">IKI</span>
-                </span>
-            </li>
             <li class="mdl-list__item">
                 <span class="mdl-list__item-primary-content">
                     <span style="margin-right: 25px;">IKI</span>

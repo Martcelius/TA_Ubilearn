@@ -99,33 +99,7 @@ class C_instruktur extends CI_Controller {
         $this->load->view('layout/master', $data);
     }
 
-   
-    public function list_thread_instruktur()
-    {
-       $data['sidebar'] = 'layout/sidebar_instruktur';
-       $data['content'] = 'instruktur/list_thread_instruktur';
-       $this->load->view('layout/master',$data);
-    }
 
-    public function add_forum()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/add_forum';
-        $this->load->view('layout/master',$data);
-    }
-
-    public function forum_instruktur()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/forum_instruktur';
-        $this->load->view('layout/master',$data);
-    }
-    public function dashboard_forum_instruktur()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/dashboard_forum_instruktur';
-        $this->load->view('layout/master',$data);
-    }
     public function result_siswa()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
