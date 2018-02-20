@@ -11,6 +11,8 @@ class Forum extends CI_Controller {
         parent::__construct();
         $this->load->model('M_Course');
         $this->load->model('M_Course_Forum');
+        $this->load->model('M_Course_Forum_Thread');
+        $this->load->model('M_Course_Lesson');
     }
 
 
