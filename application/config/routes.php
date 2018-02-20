@@ -109,6 +109,7 @@ $route['admin/update_user'] = 'admin/akun/update_user';
 //route instruktor
 $route['instruktur/dashboard'] = 'C_instruktur/dashboard';
 $route['instruktur/akun'] = 'C_instruktur/manage_akun';
+$route['instruktur/password'] = 'C_instruktur/manage_password';
 // route instruktor-course
 $route['instruktur/MyCourse'] = 'instruktur/course/index';
 $route['instruktur/add_course'] = 'instruktur/course/add';
@@ -160,6 +161,7 @@ $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 // route instruktur-akun
 $route['instruktur/update_user'] = 'instruktur/akun/update_user';
 $route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
+$route['instruktur/password_instruktur'] = 'instruktur/akun/password_instruktur';
 // =================================================================================================
 // route login
 $route['index'] = 'C_login/index';
