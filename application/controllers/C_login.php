@@ -120,8 +120,6 @@ class C_login extends CI_Controller {
         {
             $insert= $this->M_login->insert();
             redirect('signin','refresh');
-            
-            
         }
     }
     public function logout()

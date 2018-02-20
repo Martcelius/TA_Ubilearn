@@ -77,7 +77,21 @@
 						<span class="label-input100">Ulangi Kata Sandi</span>
 						<input class="input100" type="password" name="repeat-pass" placeholder="*************" value="<?php echo set_value('repeat-pass'); ?>">
 						<?php echo form_error('repeat-pass'); ?>
-					</div>
+                    </div>
+                    <div class="wrap-input100">
+                        <span class="label-input100">Tanggal Lahir</span>
+                        <input class="input100" type="date" name="tgl_lahir" style="color: gray;">
+                    </div>
+                    <div class="wrap-input100">
+                        <label class="radio-inline" for="jenis_kelamin-0" style="margin-left: 10px; color:gray;">
+                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
+                            Pria
+                        </label>
+                        <label class="radio-inline" for="jenis_kelamin-1" style="margin-left: 10px; color:gray;">
+                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
+                            Wanita
+                        </label>
+                    </div>
                     <div>
                         <input type="text" value="3" class="input100" name="level"  style="display:none" required/>
                     </div>
