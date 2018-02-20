@@ -16,7 +16,7 @@
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Cari..." style="width:320px">
                     <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <button type="submit" name="search" id="dataTables-example" class="btn btn-flat">
                             <i class="fa fa-search">
                             </i>
                         </button>
@@ -110,3 +110,9 @@
     </div>
 </div>
 </main>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
