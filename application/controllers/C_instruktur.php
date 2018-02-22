@@ -74,6 +74,26 @@ class C_instruktur extends CI_Controller {
         
     }
 
+    public function add_assessment2()
+    {
+        $this->model->load('M_Course_Assessment');
+        $this->M_Course_Assessment->insert();
+
+        $jumSoal =$this->input->post('currNum');
+        $i = 1;
+        while($i <= $jumSoal){
+            $text = $this->input->post('soal'+$i);
+            $jwbBenar = $this->input->post('opt'+$i);
+            $A = $this->input->post('A'+$i);
+            $B = $this->input->post('B'+$i);
+            $C = $this->input->post('C'+$i);
+            $D = $this->input->post('D'+$i);
+            $E = $this->input->post('E'+$i);
+            //DB insert()
+            $i++;
+        }
+    }
+
     public function add_pretest()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
