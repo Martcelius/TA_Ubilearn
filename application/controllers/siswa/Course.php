@@ -17,8 +17,9 @@ class Course extends CI_Controller {
      {
          $data['sidebar'] = 'layout/sidebar';
          $data['content'] = 'siswa/course_siswa';
-         $data['courses']=  M_Course::where('usr_id',$this->session->userdata('id'))
-                                     ->get();
+         $data['courses']=  DB::table("course")
+         ->leftJoin("users","users.usr_id","=","course.usr_id")
+         ->get();
          $this->load->view('layout/master', $data);
      }
 }
