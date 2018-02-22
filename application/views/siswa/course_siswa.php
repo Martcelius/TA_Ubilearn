@@ -22,10 +22,10 @@
                         </div>
                         <div class="mdl-card__supporting-text">
                             <h4 style="text-transform: uppercase;"><?php echo $course_siswa->crs_name; ?> </h4> <hr/>
-                            <span> <?php ?> </span>
+                            <span> <?php echo $course_siswa->usr_firstname.' '.$course_siswa->usr_lastname;?> </span>
                         </div>
                         <div class="mdl-card__actions">
-                    <a href="<?php echo site_url('siswa/course_close') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                    <a href="<?php echo site_url('siswa/course_close/'.$course_siswa->crs_id) ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                             Masuk
                         </button></a>                    
                         </div>
