@@ -46,7 +46,7 @@
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">account_circle</i>
-                            <span style="margin-left:20px">Instruktur: Nungki Selvi Andro</span>
+                            <span style="margin-left:20px">Instruktur:Nungki Selvi Andro</span>
                         </span>
                     </li>
                     <li class="mdl-list__item">

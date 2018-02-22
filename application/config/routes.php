@@ -167,3 +167,5 @@ $route['landing_page']= 'C_login/landing_page';
 // ==================================================================================================
 // logout
 $route['logout'] = 'C_login/logout';
+
+$route['siswa/kurs'] = 'instruktur/course/kurs';
