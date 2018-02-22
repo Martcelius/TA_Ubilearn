@@ -28,6 +28,7 @@ class Course extends CI_Controller {
 //                                    ->where('course.usr_id', '=', 4)
 //                                    ->select('usr_firstname', 'usr_lastname')
 //                                    ->first();
+
         // print_r($data['nama_instruktur']);
         // die();::table('course')
 //

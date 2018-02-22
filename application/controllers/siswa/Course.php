@@ -22,6 +22,9 @@ class Course extends CI_Controller {
          DB::table("course")
              ->leftJoin("users","users.usr_id","=","course.usr_id")
              ->where("")
+         $data['courses']=  DB::table("course")
+         ->leftJoin("users","users.usr_id","=","course.usr_id")
+         ->get();
          $this->load->view('layout/master', $data);
      }
 }
