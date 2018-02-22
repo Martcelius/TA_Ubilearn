@@ -3,26 +3,48 @@
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="">
           <div class="">
-              <h2 style="color:white">Tambah Assessment Baru</h2>
+              <h2 style="color:white">Tambah Assesment Baru</h2>
           </div>
       </div>
     </div>
   </div>
    <div class="mdl-grid">
+
+   <!-- FLash Data -->
+   <?php if ($this->session->flashdata('ass_simpan') == TRUE): ?>
+    <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet  mdl-cell--12-col-phone"> 
+        <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+        </button>
+        <p><?php echo $this->session->flashdata('ass_simpan')?></p>
+    </div>
+    <?php endif; ?>
+    <!-- End Of Flash Data -->
+
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-card mdl-shadow--2dp pie-chart">
           <div class="mdl-card__title" style="display:block;">
               <h2 class="mdl-card__title-text">Form</h2>
-              <div class="mdl-card__subtitle-text">menambahkan assessment baru</div>
+              <div class="mdl-card__subtitle-text">menambahkan assesment baru</div>
           </div>
           <div class="mdl-card__supporting-text" style="font-size: unset;" >
-            <form class="form-horizontal" action="<?php echo base_url().'C_instruktur/add_assessment2'?>">
+            <form class="form-horizontal" action="<?php echo base_url().'instruktur/Assesment/insert_assesment/'.$crs_id?>" method="post">
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" >Nama Assessment :</label>
+			    <label class="control-label col-sm-2" >Nama Assesment :</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control" id="nama" name="nama" required placeholder="Masukkan Nama Assessment">
 			    </div>
 			  </div>
+         <div class="form-group">
+          <label class="control-label col-sm-2">Tipe Assesment :</label>
+          <div class="col-sm-10">
+          <select class="form-control" id="tipe" name="tipe">
+            <option>Kuis</option>
+            <option>Pre-test</option>
+            <option>Remedial</option>
+            <option>Exercise</option>
+          </select>
+          </div>
+        </div> 
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" >Deskripsi :</label>
 			    <div class="col-sm-10"> 
@@ -60,7 +82,15 @@
 			  <div class="row" id="bodyRow">
           <div class="col-md-12" id="s1">
           	<div class="form-group">
-						    <label class="control-label col-sm-2" id="lab1" >Soal No. 1 :</label>
+						    <label class="control-label col-sm-2" id="lab1" >Soal No. 1 :
+                  <hr/>
+                  <span class="col-sm-6">
+                    Poin Soal
+                  </span>
+                  <span class="col-sm-6">
+                    <input class="form-control" name="poin1" max="100" min="0" placeholder="0" required>
+                  </span>
+                </label>
 						    <div class="col-sm-10">
                 <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(1)" id="del1">(X) Hapus Soal</a> 
 						      <textarea type="text" class="form-control" rows="5" name="soal1"></textarea>
@@ -71,35 +101,35 @@
                             <label class="col-sm-2"></label>
                             <div class="col-sm-10" sty>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="A" checked name="opt1">
+                                  <label style="display: inline-flex;"><input type="radio" value="0" checked name="opt1">
                                   <div class="col-sm-10">
                                   	<input type="text" name="A1" class="form-control" style="width:580px;" placeholder="Pilihan Jawaban A">
                                   </div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="B" name="opt1">
+                                  <label style="display: inline-flex;"><input type="radio" value="1" name="opt1">
                                   <div class="col-sm-10">
                                   	<input type="text" name="B1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban B">
                                   	</div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="C" name="opt1">
+                                  <label style="display: inline-flex;"><input type="radio" value="2" name="opt1">
                                   <div class="col-sm-10">
                                   	<input type="text" name="C1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban C">
                                   </div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="D" name="opt1">
+                                  <label style="display: inline-flex;"><input type="radio" value="3" name="opt1">
                                   <div class="col-sm-10">
                                   	<input type="text" name="D1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban D">
                                   </div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="E" name="opt1">
+                                  <label style="display: inline-flex;"><input type="radio" value="4" name="opt1">
                                   <div class="col-sm-10">	
                                   	<input type="text" name="E1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban E">
                                   </div>
@@ -129,7 +159,7 @@
         //language:  'fr',
         autoclose: true,
         todayBtn: true,
-        format: "dd mm yyyy - hh:ii",
+        format: "yyyy-mm-dd hh:ii",
         pickerPosition: "top-left",
     });
 
@@ -148,8 +178,17 @@
         currNum++;
         text = `
         <div class="col-md-12" id="s`+currNum+`">
+        <hr/>
              <div class="form-group">
-						    <label class="control-label col-sm-2" id="lab`+currNum+`" >Soal No. `+currNum+` :</label>
+						    <label class="control-label col-sm-2" id="lab`+currNum+`" >Soal No. `+currNum+` :
+                  <hr/>
+                  <span class="col-sm-6">
+                    Poin Soal
+                  </span>
+                  <span class="col-sm-6">
+                    <input class="form-control" name="poin`+currNum+`" max="100" min="0" placeholder="0" required>
+                  </span>
+                </label>
 						    <div class="col-sm-10"> 
                   <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(`+currNum+`)" id="del`+currNum+`">(X) Hapus Soal</a> 
 						      <textarea type="text" class="form-control" rows="5" name="soal`+currNum+`"></textarea>
@@ -160,35 +199,35 @@
                           	<label class="col-sm-2"></label> 
                             <div class="col-sm-10">
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="A" checked name="opt`+currNum+`">
+                                  <label style="display: inline-flex;"><input type="radio" value="0" checked name="opt`+currNum+`">
                                   <div class="col-sm-10">
                                   	<input type="text" name="A`+currNum+`" class="form-control" style="width:580px;" placeholder="Pilihan Jawaban A">
                                   </div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="B" name="opt`+currNum+`">
+                                  <label style="display: inline-flex;"><input type="radio" value="1" name="opt`+currNum+`">
                                   <div class="col-sm-10">
                                   	<input type="text" name="B`+currNum+`" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban B">
                                   	</div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="C" name="opt`+currNum+`">
+                                  <label style="display: inline-flex;"><input type="radio" value="2" name="opt`+currNum+`">
                                   <div class="col-sm-10">
                                   	<input type="text" name="C`+currNum+`" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban C">
                                   </div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="D" name="opt`+currNum+`">
+                                  <label style="display: inline-flex;"><input type="radio" value="3" name="opt`+currNum+`">
                                   <div class="col-sm-10">
                                   	<input type="text" name="D`+currNum+`" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban D">
                                   </div>
                                   </label>
                                 </div>
                                 <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="E" name="opt`+currNum+`">
+                                  <label style="display: inline-flex;"><input type="radio" value="4" name="opt`+currNum+`">
                                   <div class="col-sm-10">	
                                   	<input type="text" name="E`+currNum+`" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban E">
                                   </div>
