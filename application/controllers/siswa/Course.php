@@ -13,12 +13,12 @@ class Course extends CI_Controller {
         
     }
 
-    // public function index()
-    // {
-    //     $data['sidebar'] = 'layout/sidebar';
-    //     $data['content'] = 'siswa/course_siswa';
-    //     $data['courses']=  M_Course::where('usr_id',$this->session->userdata('id'))
-    //                                 ->get();
-    //     $this->load->view('layout/master', $data);
-    // }
+     public function index()
+     {
+         $data['sidebar'] = 'layout/sidebar';
+         $data['content'] = 'siswa/course_siswa';
+         $data['courses']=  M_Course::where('usr_id',$this->session->userdata('id'))
+                                     ->get();
+         $this->load->view('layout/master', $data);
+     }
 }

@@ -20,8 +20,7 @@ class Course extends CI_Controller {
         $data['content'] = 'instruktur/MyCourse';
         $data['courses']= M_course::where('course.usr_id', '=', $this->session->userdata('id'))->get();
 //        dd($data['courses']);
-//        $data['courses']= DB::table('course')
-//                            ->join('users', 'users.usr_id', '=', 'course.usr_id')
+//        $data['courses']= DB   ->join('users', 'users.usr_id', '=', 'course.usr_id')
 //                            ->where('course.usr_id', '=', 4)
 //                            ->get();
 //        $data['nama_instruktur'] = DB::table('course')
@@ -30,7 +29,8 @@ class Course extends CI_Controller {
 //                                    ->select('usr_firstname', 'usr_lastname')
 //                                    ->first();
         // print_r($data['nama_instruktur']);
-        // die();
+        // die();::table('course')
+//
         $this->load->view('layout/master', $data);
     }
 
