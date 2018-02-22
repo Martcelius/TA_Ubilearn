@@ -21,12 +21,12 @@
             <!-- Account dropdawn-->
             <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
                 for="icon">
-                <li class="mdl-list__item mdl-list__item--two-line">
+                <li class="mdl-list__item mdl-list__item--two-line" style="height:75px;">
                     <span class="mdl-list__item-primary-content">
                         <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" class="material-icons mdl-list__item-avatar">
                         <!-- <span class="material-icons mdl-list__item-avatar"></span> -->
                         <span><?php echo $this->session->userdata('firstname');?></span>
-                        <span class="mdl-list__item-sub-title"><?php echo $this->session->userdata('email');?></span>
+                        <span class="mdl-list__item-sub-title" style="word-wrap: break-word;"><?php echo $this->session->userdata('email');?></span>
                     </span>
                 </li>
                 <li class="list__item--border-top"></li>

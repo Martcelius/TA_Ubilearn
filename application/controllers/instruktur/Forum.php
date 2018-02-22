@@ -9,8 +9,11 @@ class Forum extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course');
+
+        $this->load->model('M_User');
         $this->load->model('M_Course_Forum');
+        $this->load->model('M_Course_Forum_Thread');
+        $this->load->model('M_Course_Lesson');
     }
 
 
@@ -45,19 +48,46 @@ class Forum extends CI_Controller {
 //                            ->get();
 //        $data['jumlahThread']= count($jumlahThread);
 //        dd($data['jumlahThread']);
-        $num=1;
-        foreach ($data['dataForum'] as $thread){
-            $jumlahThread = M_Course_Forum_Thread::where('cfr_id',$thread->cfr_id)->get();
-            $jumlah[$num] = $jumlahThread->count('cfr_id');
-            $num++;
 
+        if ($data['dataForum'] != NULL)
+        {
+            $num=1;
+            foreach ($data['dataForum'] as $thread)
+            {
+                $jumlahThread = M_Course_Forum_Thread::where('cfr_id',$thread->cfr_id)->get();
+                $jumlah[$num] = $jumlahThread->count('cfr_id');
+                $num++;
+
+            }
+            $data['jumlah'] =$jumlah;
+            $data['dataCourse']= M_Course::where('crs_id',$crs_id)->first();
+    //        $data['crs_name'] = $data['dataForum']->
+            $data['sidebar'] = 'layout/sidebar_instruktur';
+            $data['content'] = 'instruktur/dashboard_forum_instruktur';
+            $this->load->view('layout/master',$data);
         }
-        $data['jumlah'] =$jumlah;
-        $data['dataCourse']= M_Course::where('crs_id',$crs_id)->first();
-//        $data['crs_name'] = $data['dataForum']->
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/dashboard_forum_instruktur';
-        $this->load->view('layout/master',$data);
+        else
+        {
+            $data['jumlah'] =0;
+            $data['dataCourse']= M_Course::where('crs_id',$crs_id)->first();
+    //        $data['crs_name'] = $data['dataForum']->
+            $data['sidebar'] = 'layout/sidebar_instruktur';
+            $data['content'] = 'instruktur/dashboard_forum_instruktur';
+            $this->load->view('layout/master',$data);
+        }
+//         $num=1;
+//         foreach ($data['dataForum'] as $thread){
+//             $jumlahThread = M_Course_Forum_Thread::where('cfr_id',$thread->cfr_id)->get();
+//             $jumlah[$num] = $jumlahThread->count('cfr_id');
+//             $num++;
+
+//         }
+//         $data['jumlah'] =$jumlah;
+//         $data['dataCourse']= M_Course::where('crs_id',$crs_id)->first();
+// //        $data['crs_name'] = $data['dataForum']->
+//         $data['sidebar'] = 'layout/sidebar_instruktur';
+//         $data['content'] = 'instruktur/dashboard_forum_instruktur';
+//         $this->load->view('layout/master',$data);
     }
 
     public function add_forum($crs_id)
@@ -82,12 +112,12 @@ class Forum extends CI_Controller {
 
         if($insert)
         {
-            $this->session->set_flashdata('insert_forum', 'Data Forum Berhasil Tersimpan');
+            $this->session->set_flashdata('data_forum', 'Data Forum Berhasil Tersimpan');
         }else{
-            $this->session->set_flashdata('data_insert_forum', 'Data Forum Tidak Berhasil Tersimpan');
+            $this->session->set_flashdata('data_gagal_forum', 'Data Forum Tidak Berhasil Tersimpan');
         }
 
-        redirect('instruktur/add_forum/'.$crs_id);
+        redirect('instruktur/dashboard_forum_instruktur/'.$crs_id);
     }
 
     public function edit_forum($cfr_id,$crs_id)

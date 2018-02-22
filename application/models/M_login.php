@@ -29,7 +29,9 @@ class M_login extends CI_Model{
         $data['email']= ($this->input->post('email'));
         $data['level']= ($this->input->post('level'));
         $data['foto'] = "avatar_default.jpg";
-        $insert = $this->db->query("INSERT INTO users (usr_username,usr_firstname,usr_lastname,usr_password,usr_email,usr_level,usr_picture) VALUES ('".$data['name_pengguna']."' , '".$data['name_depan']."', '".$data['name_belakang']."', '".$data['pass']."', '".$data['email']."','".$data['level']."','".$data['foto']."') ");
+        $data['jenis_kelamin'] = ($this->input->post('jenis_kelamin'));
+        $data['tgl_lahir'] = ($this->input->post('tgl_lahir'));
+        $insert = $this->db->query("INSERT INTO users (usr_username,usr_firstname,usr_lastname,usr_password,usr_email,usr_level,usr_picture,usr_jk,usr_tgllahir) VALUES ('".$data['name_pengguna']."' , '".$data['name_depan']."', '".$data['name_belakang']."', '".$data['pass']."', '".$data['email']."','".$data['level']."','".$data['foto']."','".$data['jenis_kelamin']."','".$data['tgl_lahir']."') ");
     
     }
 }

@@ -35,7 +35,7 @@
                     <h2 class="mdl-card__title-text"><?php echo $dataCourse->crs_name;?> (<?php echo $dataCourse->crs_code;?>)</h2>
                 </div>
                 <div class="mdl-card__supporting-text" style="font-size: unset;" >
-                    <table id="Table_mdl">
+                    <table  id="dataTables-example">
                         <thead>
                             <tr>
                             <th style="text-align: center;">No.</th>
@@ -238,5 +238,10 @@ ResponsiveCellHeaders("Table_mdl");
     }
 </style>
 
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
 
 
