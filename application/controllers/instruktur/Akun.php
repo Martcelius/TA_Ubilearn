@@ -114,6 +114,12 @@ class Akun extends CI_Controller {
 //            dd($user['password']);
             $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
             redirect('instruktur/dashboard');
+=======
+=======
+
+            dd($update);
+//            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
+//            redirect('instruktur/dashboard');
         }
         else {
 //            dd($update);
