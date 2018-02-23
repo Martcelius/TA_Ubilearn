@@ -62,20 +62,9 @@
                     </div>  
             </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="Password">Password</label>  
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <input name="password" type="password" value="<?php echo $this->session->userdata('password') ;?>" class="form-control input-md">
-                        </div>
-                    </div>  
-            </div>
 
             <div class="form-group">
-              <label class="col-md-4 control-label" for="Email Address">Email Address</label>  
+              <label class="col-md-4 control-label" for="Email Address">Alamat Email</label>
                 <div class="col-md-4">
                     <div class="input-group">
                     <div class="input-group-addon">
@@ -85,21 +74,32 @@
                     </div>
                 </div>
             </div>
+                <fieldset disabled>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Tanggal Lahir</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input id="disabledTextInput" name="ttl" type="text" value="<?php echo $this->session->userdata('ttl') ;?>" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Jenis Kelamin</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-male"></i>
+                                </div>
+                                <input id="disabledTextInput" name="ttl" type="text" value="<?php if ($this->session->userdata('jk')== 1) echo 'Pria'; else echo 'Wanita' ;?>" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="jenis_kelamin">Jenis Kelamin</label>
-                <div class="col-md-4"> 
-                    <label class="radio-inline" for="jenis_kelamin-0">
-                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
-                    Pria
-                    </label> 
-                    <label class="radio-inline" for="jenis_kelamin-1">
-                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
-                    Wanita
-                    </label> 
-                </div>
-            </div>
-        
+
             </fieldset>
             <div>
                 <input type="text" value="<?php echo $this->session->userdata('id')?>" class="form-control" name="id"  style="display:none" required/>

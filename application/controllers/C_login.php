@@ -43,7 +43,7 @@ class C_login extends CI_Controller {
         if ($query->num_rows() == 0){
             // $this->index();
 //            echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
-            $this->session->set_flashdata('login_salah', 'Nama Pengguna atau Kata Sandi anda salah');
+            $this->session->set_flashdata('login_salah', 'Username atau password salah!');
             redirect('signin');
         
         }
@@ -63,14 +63,16 @@ class C_login extends CI_Controller {
                     'gpa' =>$cek[0]->usr_gpa,
                     'foto' =>$cek[0]->usr_picture,
                     'jk' =>$cek[0]->usr_jk,
-                    'level' =>$cek[0]->usr_level
+                    'level' =>$cek[0]->usr_level,
+                    'ttl' =>$cek[0]->usr_tgllahir
                 );
             
             $this->session->set_userdata($user);
         
                 if ($this->session->userdata('level')==1)
                 {
-                    // print_r($this->session->userdata());
+//                    dd($user['ttl']);
+                    // print_r($this->sAession->userdata());
                     redirect('admin/dashboard');
                 }
                 elseif ($this->session->userdata('level')==2)

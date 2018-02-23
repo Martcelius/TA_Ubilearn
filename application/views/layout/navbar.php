@@ -27,14 +27,17 @@
                         <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" class="material-icons mdl-list__item-avatar">
                         <!-- <span class="material-icons mdl-list__item-avatar"></span> -->
                         <span><?php echo $this->session->userdata('firstname');?></span>
+                        <span class="mdl-list__item-sub-title" style="word-wrap: break-word;"><?php echo $this->session->userdata('email');?></span>
+
                         <span class="mdl-list__item-sub-title" style="word-wrap: break-word;><?php echo $this->session->userdata('email');?></span>
                     </span>
                 </li>
                 <li class="list__item--border-top"></li>
+                <li class="list__item--border-top"></li>
                 <a href="<?php if ($this->session->userdata('level')== 1) echo site_url('instruktur/akun'); elseif ($this->session->userdata('level')== 2) echo site_url('siswa/akun'); else echo site_url('instruktur/akun'); ?>">
                 <li class="mdl-menu__item mdl-list__item" >
                     <span class="mdl-list__item-primary-content">
-                       <i class="material-icons mdl-list__item-icon" >account_circle</i>
+                       <i class="material-icons mdl-list__item-icon" >settings</i>
                         My account
                     </span>
                 </li></a>
@@ -57,18 +60,18 @@
                 <a href="<?php if ($this->session->userdata('level')== 1) echo site_url('admin/akun'); elseif ($this->session->userdata('level')== 2) echo site_url('siswa/password'); else echo site_url('instruktur/password'); ?>">
                 <li class="mdl-menu__item mdl-list__item">
                     <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">settings</i>
+                        <i class="material-icons mdl-list__item-icon">supervisor_account</i>
                         Ubah Password
                     </span>
                 </li></a>
-                <li class="mdl-menu__item mdl-list__item">
                 <a href="<?php echo site_url('logout');?>">
+                <li class="mdl-menu__item mdl-list__item">
                     <span class="mdl-list__item-primary-content">
                         <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
                         Log out
                     </span>
-                </a>    
-                </li>
+
+                </li></a>
             </ul>
 
 

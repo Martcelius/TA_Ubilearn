@@ -21,7 +21,18 @@ class Akun extends CI_Controller {
     }
 
     /* CRUD Course */
-  
+    public function manage_akun()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/akun_instruktur';
+        $this->load->view('layout/master', $data);
+    }
+    public function manage_password()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/password';
+        $this->load->view('layout/master', $data);
+    }
     
     public function update_user()
     {
@@ -88,22 +99,33 @@ class Akun extends CI_Controller {
 //        dd($userData['result']);
         $update = $this->M_User->update_password($userData,$usr_id);
 //        dd($update);
-        $user= array(
-            'password' => $update
-        );
-        $this->session->set_userdata($user);
+//        $user= array(
+//            'password' => $update
+//        );
+//        $this->session->set_userdata($user);
 //        dd($update);
 
         if($update)
         {
+            $user= array(
+                'password' => md5($userData['new_password'])
+            );
+            $this->session->set_userdata($user);
+//            dd($user['password']);
+            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
+            redirect('instruktur/dashboard');
+            dd($update);
+//            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
+//            redirect('instruktur/dashboard');
             dd($update);
 //            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
 //            redirect('instruktur/dashboard');
         }
         else {
-            dd($update);
-//                $this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah');
-//                redirect('instruktur/password');
+//            dd($update);
+                $this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah');
+                redirect('instruktur/password');
+//                dd($update);
             }
 
     }
