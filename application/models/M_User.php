@@ -118,18 +118,19 @@ class M_User extends Eloquent
                 echo "<script>
                     alert('Password Berhasil Diganti!');
                     </script>";
-                return true;
+                return $new_password;
             } else {
                 echo "<script>
                     alert('Password tidak sama!');
                     </script>";
-                return false;            }
+                return $data['result'];
+            }
 
         } else {
             echo "<script>
                     alert('Current Password Salah!');
                     </script>";
-            return false;
+            return $data['result'];
         }
 
 

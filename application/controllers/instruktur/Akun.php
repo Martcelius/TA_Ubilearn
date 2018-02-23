@@ -96,6 +96,10 @@ class Akun extends CI_Controller {
 
         if($update)
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 73555cbbe3e2619badf470bf0f10fd7101a55325
             dd($update);
 //            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
 //            redirect('instruktur/dashboard');
