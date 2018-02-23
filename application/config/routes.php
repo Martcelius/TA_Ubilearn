@@ -57,6 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 //route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
+$route['siswa/password'] = 'C_siswa/manage_password';
 //course
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close'] = 'C_siswa/course_close';
@@ -82,12 +83,15 @@ $route['siswa/pretest'] = 'C_siswa/pretest';
 $route['siswa/remedial'] = 'C_siswa/remedial';
 // akun siswa
 $route['siswa/update_user'] = 'siswa/akun/update_user';
+$route['siswa/password_siswa'] = 'siswa/akun/password_siswa';
 
 
 // =============================================================================
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
 $route['admin/akun_admin'] = 'C_admin/akun_admin';
+$route['admin/password'] = 'C_admin/manage_password';
+
 // route admin-user
 $route['admin/user'] = 'admin/users/index';
 $route['admin/add_user'] = 'admin/users/add_user';
@@ -104,6 +108,8 @@ $route['admin/update_universitas'] = 'admin/universitas/update_universitas';
 $route['admin/delete_universitas/(:any)'] = 'admin/universitas/delete_universitas/$1';
 // akun admin
 $route['admin/update_user'] = 'admin/akun/update_user';
+$route['admin/password_admin'] = 'admin/akun/password_admin';
+
 
 // ==========================================================================================
 //route instruktor

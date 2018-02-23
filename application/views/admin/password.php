@@ -2,17 +2,24 @@
     <div class="mdl-grid cover-main">
     </div>
     <div class="mdl-grid"  >
+        <?php if ($this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah') == TRUE): ?>
+            <div role="alert"  class="alert alert-danger alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo $this->session->flashdata('password_gagal')?></p>
+            </div>
+        <?php endif; ?>
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp " >
                 <div class="mdl-card__title">
-                    <h2>Pengaturan Akun Instruktur</h2>
+                    <h2>Pengaturan Password Admin</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-10 ">
 
-                                <form class="form-horizontal" action="<?php echo site_url('instruktur/password_instruktur')?>" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="<?php echo site_url('admin/password_admin')?>" method="post" enctype="multipart/form-data">
                                     <fieldset>
 
                                         <!-- Form Name -->

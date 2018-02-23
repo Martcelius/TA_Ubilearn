@@ -62,19 +62,6 @@
                         </div>
                     </div>  
             </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="Password">Password</label>  
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <input name="password" type="password" value="<?php echo $this->session->userdata('password') ;?>" class="form-control input-md">
-                        </div>
-                    </div>  
-            </div>
-
             <div class="form-group">
               <label class="col-md-4 control-label" for="Email Address">Email Address</label>  
                 <div class="col-md-4">
@@ -96,19 +83,6 @@
                             <input name="ipk" type="text" value="<?php echo $this->session->userdata('gpa') ;?>" class="form-control input-md">
                         </div>
                     </div>  
-            </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="jenis_kelamin">Jenis Kelamin</label>
-                <div class="col-md-4"> 
-                    <label class="radio-inline" for="jenis_kelamin-0">
-                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
-                    Pria
-                    </label> 
-                    <label class="radio-inline" for="jenis_kelamin-1">
-                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
-                    Wanita
-                    </label> 
-                </div>
             </div>
         
             </fieldset>
