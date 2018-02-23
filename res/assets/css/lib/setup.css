@@ -7,28 +7,20 @@ img{
 .coverlanding
 {
     background: url('../../images/photodune-4161018-group-of-students-m.jpg') ;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
 .sidenav {
     height: 100%;
-
     width: 250px;
-
-    width: 18%;
-
     position: fixed;
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #111;
     overflow-x: hidden;
-
-    padding-top: 20px;
-
-    padding-top: 40px;
-
+    background-color: #343434;
+    padding-top: 60px;
 }
 
 .sidenav a {
@@ -43,16 +35,16 @@ img{
     color: #f1f1f1;
 }
 
-.main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-}
+/*.main {*/
+   /*margin-left: 160px; !* Same as the width of the sidenav *!*/
+   /*font-size: 28px; !* Increased text to enable scrolling *!*/
+   /*padding: 0px 10px;*/
+ /*}*/
 
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
+/*@media screen and (max-height: 450px) {*/
+    /*.sidenav {padding-top: 15px;}*/
+    /*.sidenav a {font-size: 18px;}*/
+/*}*/
 
 .box {
     position: relative;
