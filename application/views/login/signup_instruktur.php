@@ -27,6 +27,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/lib/setup.css">
 <!--===============================================================================================-->
 <style>
      .error{
@@ -38,7 +39,7 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('res/assets/images/S_7335164267594.jpg');"></div>
+			<div class="login100-more coverlanding"></div>
 
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
 				<form class="login100-form" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" method="post">
