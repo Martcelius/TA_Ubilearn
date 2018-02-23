@@ -167,7 +167,7 @@ $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 // route instruktur-akun
 $route['instruktur/update_user'] = 'instruktur/akun/update_user';
 $route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
-$route['instruktur/password_instruktucr'] = 'instruktur/akun/password_instruktur';
+$route['instruktur/password_instruktur'] = 'instruktur/akun/password_instruktur';
 // =================================================================================================
 // route login
 $route['index'] = 'C_login/index';
