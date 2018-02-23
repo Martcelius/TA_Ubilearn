@@ -108,6 +108,9 @@ class Akun extends CI_Controller {
         if($update)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ee62073b4b92714317b4b3cb4c70e1d6431888b9
             $user= array(
                 'password' => md5($userData['new_password'])
             );
@@ -117,6 +120,7 @@ class Akun extends CI_Controller {
             redirect('instruktur/dashboard');
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 73555cbbe3e2619badf470bf0f10fd7101a55325
@@ -124,6 +128,13 @@ class Akun extends CI_Controller {
 //            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
 //            redirect('instruktur/dashboard');
 >>>>>>> e075490118df2eb79f7e43792394c3307be161e0
+=======
+=======
+
+            dd($update);
+//            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
+//            redirect('instruktur/dashboard');
+>>>>>>> ee62073b4b92714317b4b3cb4c70e1d6431888b9
         }
         else {
 //            dd($update);
