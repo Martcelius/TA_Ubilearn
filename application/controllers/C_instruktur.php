@@ -7,6 +7,9 @@ class C_instruktur extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('M_Course_Assesment');
+        $this->load->model('M_Course_Assesment_Question');
+        $this->load->model('M_Course_Assesment_Question_Answer');
         
     }
     
@@ -66,6 +69,23 @@ class C_instruktur extends CI_Controller {
         
     }
 
+
+    public function learning_outcome()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/learning_outcome';
+        $this->load->view('layout/master',$data);
+    }
+
+    public function add_lo()
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/add_LO';
+        $this->load->view('layout/master', $data);
+
+    }
+
+   
     public function add_assessment()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
@@ -117,6 +137,7 @@ class C_instruktur extends CI_Controller {
         $this->load->view('layout/master', $data);
         
     }
+
 
     public function add_assignment()
     {
