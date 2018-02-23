@@ -60,7 +60,7 @@ $route['siswa/akun'] = 'C_siswa/manage_akun';
 $route['siswa/password'] = 'C_siswa/manage_password';
 //course
 $route['siswa/course_info'] = 'C_siswa/course_info';
-$route['siswa/course_close'] = 'C_siswa/course_close';
+$route['siswa/course_close/(:any)'] = 'C_siswa/course_close/$1';
 $route['siswa/course'] = 'siswa/Course/index';
 $route['siswa/course_detail'] = 'C_siswa/course_detail';
 $route['siswa/course_content'] = 'C_siswa/course_content';
@@ -179,3 +179,4 @@ $route['landing_page']= 'C_login/landing_page';
 // ==================================================================================================
 // logout
 $route['logout'] = 'C_login/logout';
+

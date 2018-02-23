@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class C_siswa extends CI_Controller {
 
 
@@ -36,8 +38,12 @@ class C_siswa extends CI_Controller {
         $this->load->view('layout/master', $data);
     }
 
-    public function course_close()
+    public function course_close($crs_id)
     {
+        $data['dataCourse'] = DB::table("course")
+        ->leftJoin("users","users.usr_id","=","course.usr_id")
+        ->where('crs_id',$crs_id)->first();
+    
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/course_close';
         $this->load->view('layout/master', $data);

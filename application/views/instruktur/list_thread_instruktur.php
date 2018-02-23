@@ -16,7 +16,7 @@
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Cari..." style="width:320px">
                     <span class="input-group-btn">
-                        <button type="submit" name="search" id="dataTables-example" class="btn btn-flat">
+                        <button type="submit" name="search"  class="btn btn-flat">
                             <i class="fa fa-search">
                             </i>
                         </button>
@@ -33,6 +33,7 @@
                 <h3 class="box-title">Judul Lesson : <?php echo $judul_lesson->lsn_name?></h3>
             </div>
             <div class="box-footer no-padding">
+
                 <ul class="nav nav-pills nav-stacked">
                     <?php foreach ($dataThread as $thread):?>
                     <li>
