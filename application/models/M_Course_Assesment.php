@@ -21,6 +21,11 @@ class M_Course_Assesment extends Eloquent
    		return $assesment;
     }
 
+    public function selectBy($name,$id){
+    	$list = M_Course_Assesment::where($name,$id)->get();
+   		return $list;
+    }
+
     public function updates($data,$ass_id){
     	$mca = M_Course_Assesment::where('ass_id','=',$ass_id)->first();
         $mca->ass_name = $data->ass_name;

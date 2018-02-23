@@ -12,6 +12,8 @@ class Lesson extends CI_Controller {
 
         $this->load->model('M_Course_Lesson');
         $this->load->model('M_Course');
+        $this->load->model('M_Course_Assesment');
+        $this->load->model('M_Course_Assesment_Question');
     }
     
     public function index($id)
@@ -28,6 +30,16 @@ class Lesson extends CI_Controller {
         $data['content'] = 'instruktur/lesson';
         // dd($data['datalesen']);
         $data['id'] = $id;
+        $listAss = $this->M_Course_Assesment->selectBy('crs_id',$id);
+        $i = 0;
+        $jumSoal = array();
+        foreach($listAss as $c){
+            $soal = $this->M_Course_Assesment_Question->select($c->ass_id);
+            $jumSoal[$i] = $soal->count();
+            $i++;
+        }
+        $data['listAss'] = $listAss;
+        $data['jumSoal'] = $jumSoal;
         $this->load->view('layout/master', $data);
     }
 

@@ -10,7 +10,10 @@ class M_Course_Assesment_Question_Answer extends Eloquent
     const CREATED_AT = NULL;
     const UPDATED_AT = NULL;
     protected $primaryKey = 'ans_id';
+<<<<<<< HEAD
+=======
 
+>>>>>>> e075490118df2eb79f7e43792394c3307be161e0
     
     public function insert($data)
     {

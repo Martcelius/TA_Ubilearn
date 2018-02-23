@@ -35,14 +35,19 @@ class C_siswa extends CI_Controller {
         $this->load->view('layout/master', $data);
     }
 
-    public function course_info()
+
+    public function manage_akun()
     {
         $data['sidebar'] = 'layout/sidebar';
-        $data['content'] = 'siswa/course_info';
-        $this->load->view('layout/master',$data);
+        $data['content'] = 'siswa/akun_siswa';
+        $this->load->view('layout/master', $data);
     }
-
-
+    public function manage_password()
+    {
+        $data['sidebar'] = 'layout/sidebar';
+        $data['content'] = 'siswa/password';
+        $this->load->view('layout/master', $data);
+    }
     public function course_siswa()
     {
         $data['sidebar'] = 'layout/sidebar';
@@ -98,12 +103,7 @@ class C_siswa extends CI_Controller {
 
     }
 
-    public function course_detail()
-    {
-        $data['sidebar'] = 'layout/sidebar';
-        $data['content'] = 'siswa/course_detail';
-        $this->load->view('layout/master', $data);
-    }
+
     public function remedial()
     {
         $data['sidebar'] = 'layout/sidebar';

@@ -110,20 +110,25 @@ class Assesment extends CI_Controller {
 
     public function delete_qst($qst_id){
     	$cek = $this->M_Course_Assesment_Question->deletes($qst_id);
-/*    	$mcaqa = $this->M_Course_Assesment_Question_Answer->select($qst_id);
-    	$j = 0;
-    	while ($j < 5) {
-    		$cek = $this->M_Course_Assesment_Question_Answer->deletes($mcaqa[$j]->ans_id);
-    		echo $cek;
-    		$j++;
-    	}*/
     	if($cek != 0)
         {
-            $this->session->set_flashdata('ass_delete_success', 'Soal Assesment Berhasil Dihapus');
+            $this->session->set_flashdata('qst_delete_success', 'Soal Assesment Berhasil Dihapus');
         }else{
-            $this->session->set_flashdata('ass_delete_fail', 'Soal Assesment Tidak Berhasil Dihapus');
+            $this->session->set_flashdata('qst_delete_fail', 'Soal Assesment Tidak Berhasil Dihapus');
         }
         echo '<script>window.history.go(-1);</script>';
+    }
+
+    public function delete_assesment($ass_id){
+        $cek = $this->M_Course_Assesment->deletes($ass_id);
+        if($cek != 0)
+        {
+            $this->session->set_flashdata('ass_delete_success', 'Assesment Berhasil Dihapus');
+        }else{
+            $this->session->set_flashdata('ass_delete_fail', 'Assesment Tidak Berhasil Dihapus');
+        }
+        echo '<script>window.history.go(-1);</script>';
+
     }	
 
     public function insert_assesment($crs_id)
