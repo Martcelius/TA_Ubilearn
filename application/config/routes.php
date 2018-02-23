@@ -59,10 +59,9 @@ $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
 $route['siswa/password'] = 'C_siswa/manage_password';
 //course
-$route['siswa/course_info'] = 'C_siswa/course_info';
-$route['siswa/course_close/(:any)'] = 'C_siswa/course_close/$1';
 $route['siswa/course'] = 'siswa/Course/index';
-$route['siswa/course_detail'] = 'C_siswa/course_detail';
+$route['siswa/course_close/(:any)'] = 'siswa/course/course_close/$1';
+$route['siswa/course_detail/(:any)'] = 'siswa/course/course_detail/$1';
 $route['siswa/course_content'] = 'C_siswa/course_content';
 //forum
 $route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
@@ -127,17 +126,17 @@ $route['instruktur/add_lesson/(:any)'] = 'instruktur/lesson/add/$1';
 $route['instruktur/insert_lesson'] = 'instruktur/lesson/insert_lesson';
 $route['instruktur/edit_lesson/(:any)'] = 'instruktur/lesson/edit/$1';
 
-$route['instruktur/learning_outcome'] = 'C_instruktur/learning_outcome';
-$route['instruktur/add_lo'] = 'C_instruktur/add_lo';
-$route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
+//$route['instruktur/learning_outcome'] = 'C_instruktur/learning_outcome';
+//$route['instruktur/add_lo'] = 'C_instruktur/add_lo';
+//$route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
 $route['instruktur/add_assesment/(:any)'] = 'instruktur/Assesment/add_assesment/$1';
 $route['instruktur/edit_assesment/(:any)'] = 'instruktur/Assesment/edit_assesment/$1';
 /*$route['instruktur/add_pretest'] = 'C_instruktur/add_pretest';
 $route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
 $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';*/
-$route['instruktur/content'] = 'C_instruktur/content';
+//$route['instruktur/content'] = 'C_instruktur/content';
 //$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
-$route['instruktur/list_thread'] = 'C_instruktur/list_thread';
+//$route['instruktur/list_thread'] = 'C_instruktur/list_thread';
 
 
 $route['instruktur/update_lesson'] = 'instruktur/lesson/update_lesson';
