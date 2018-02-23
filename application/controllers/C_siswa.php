@@ -24,20 +24,6 @@ class C_siswa extends CI_Controller {
         $this->load->view('layout/master', $data);
 
     }
-
-    public function manage_akun()
-    {
-        $data['sidebar'] = 'layout/sidebar';
-        $data['content'] = 'siswa/akun_siswa';
-        $this->load->view('layout/master', $data);
-    }
-    public function manage_password()
-    {
-        $data['sidebar'] = 'layout/sidebar';
-        $data['content'] = 'siswa/password';
-        $this->load->view('layout/master', $data);
-    }
-
     public function course_close($crs_id)
     {
         $data['dataCourse'] = DB::table("course")

@@ -56,8 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 // ==============================================================================
 //route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
-$route['siswa/akun'] = 'C_siswa/manage_akun';
-$route['siswa/password'] = 'C_siswa/manage_password';
+$route['siswa/akun'] = 'siswa/akun/manage_akun';
+$route['siswa/password'] = 'siswa/akun/manage_password';
 //course
 $route['siswa/course_info'] = 'C_siswa/course_info';
 $route['siswa/course_close/(:any)'] = 'C_siswa/course_close/$1';
@@ -89,8 +89,8 @@ $route['siswa/password_siswa'] = 'siswa/akun/password_siswa';
 // =============================================================================
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
-$route['admin/akun_admin'] = 'C_admin/akun_admin';
-$route['admin/password'] = 'C_admin/manage_password';
+$route['admin/akun_admin'] = 'admin/akun/akun_admin';
+$route['admin/password'] = 'admin/akun/manage_password';
 
 // route admin-user
 $route['admin/user'] = 'admin/users/index';
@@ -114,8 +114,8 @@ $route['admin/password_admin'] = 'admin/akun/password_admin';
 // ==========================================================================================
 //route instruktor
 $route['instruktur/dashboard'] = 'C_instruktur/dashboard';
-$route['instruktur/akun'] = 'C_instruktur/manage_akun';
-$route['instruktur/password'] = 'C_instruktur/manage_password';
+$route['instruktur/akun'] = 'instruktur/akun/manage_akun';
+$route['instruktur/password'] = 'instruktur/akun/manage_password';
 // route instruktor-course
 $route['instruktur/MyCourse'] = 'instruktur/course/index';
 $route['instruktur/add_course'] = 'instruktur/course/add';

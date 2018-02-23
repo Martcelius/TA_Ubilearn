@@ -28,6 +28,31 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/lib/setup.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/setup.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/getmdl-select.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/nv.d3.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/application.css">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>res/assets/css/lib/bootstrap-datetimepicker.min.css">
+
+    <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/additional.css">
+
+    <!-- endinject -->
+
+    <!-- buat drop down -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <!-- drop down end -->
 <!--===============================================================================================-->
 
 <style>
@@ -43,10 +68,18 @@
 			<?php echo form_open('C_login/masuk'); ?>
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
 				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-59">
+
+
+                    <span class="login100-form-title p-b-59">
 						Masuk
 					</span>
-
+                    <?php if ($this->session->flashdata('login_salah') == TRUE): ?>
+                        <div role="alert"  class="alert alert-danger alert-dismissible fade in ">
+                            <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                            </button>
+                            <p><?php echo $this->session->flashdata('login_salah')?></p>
+                        </div>
+                    <?php endif; ?>
 
 
 					<div class="wrap-input100 validate-input" >
@@ -107,7 +140,9 @@
 	<script src="<?php echo base_url(); ?>res/assets/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="<?php echo base_url(); ?>res/assets/js/main.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>res/assets/js/bootstrap-datetimepicker.min.js"></script>
 </form>
 </body>
 </html>
