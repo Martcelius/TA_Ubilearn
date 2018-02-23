@@ -27,6 +27,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/lib/setup.css">
 <!--===============================================================================================-->
 <style>
      .error{
@@ -38,7 +39,7 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('res/assets/images/S_7335164267594.jpg');"></div>
+			<div class="login100-more coverlanding"></div>
 
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
 				<form class="login100-form" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" method="post">
@@ -77,7 +78,21 @@
 						<span class="label-input100">Ulangi Kata Sandi</span>
 						<input class="input100" type="password" name="repeat-pass" placeholder="*************" value="<?php echo set_value('repeat-pass'); ?>">
 						<?php echo form_error('repeat-pass'); ?>
-					</div>
+                    </div>
+                    <div class="wrap-input100">
+                        <span class="label-input100">Tanggal Lahir</span>
+                        <input class="input100" type="date" name="tgl_lahir" style="color: gray;">
+                    </div>
+                    <div class="wrap-input100">
+                        <label class="radio-inline" for="jenis_kelamin-0" style="margin-left: 10px; color:gray;">
+                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
+                            Pria
+                        </label>
+                        <label class="radio-inline" for="jenis_kelamin-1" style="margin-left: 10px; color:gray;">
+                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
+                            Wanita
+                        </label>
+                    </div>
                     <div>
                         <input type="text" value="3" class="input100" name="level"  style="display:none" required/>
                     </div>
@@ -86,7 +101,7 @@
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
                             <button class="login100-form-btn">
-                                Masuk
+                                Daftar
                             </button>
                         </div>
 

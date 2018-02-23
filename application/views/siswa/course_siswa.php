@@ -14,51 +14,24 @@
     </div>
     <div class=" col-sm-10 " >
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">IT Project Management </h4> <hr/>
-                        <span> Martcel Razzaq </span>
-                    </div>
-                    <div class="mdl-card__actions">
-                   <a href="<?php echo site_url('siswa/course_close') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
-                        Masuk
-                    </button></a>                    
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell-4-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
-                        <span> Raden Atcheng </span>
-                    </div>
-                    <div class="mdl-card__actions">
-                    <a href="<?php echo site_url('siswa/course_close') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
-                        Masuk
-                    </button></a>                     
+            <?php foreach($courses as $course_siswa): ?>
+                <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    
+                    <div class="mdl-card mdl-shadow--2dp cotoneaster">   
+                        <div class="mdl-card__title mdl-card--expand">
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <h4 style="text-transform: uppercase;"><?php echo $course_siswa->crs_name; ?> </h4> <hr/>
+                            <span> <?php echo $course_siswa->usr_firstname.' '.$course_siswa->usr_lastname;?> </span>
+                        </div>
+                        <div class="mdl-card__actions">
+                    <a href="<?php echo site_url('siswa/course_close/'.$course_siswa->crs_id) ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                            Masuk
+                        </button></a>                    
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
-                <div class="mdl-card mdl-shadow--2dp cotoneaster">
-                    <div class="mdl-card__title mdl-card--expand">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <h4 style="text-transform: uppercase;">Artificial Intelligent </h4> <hr/>
-                        <span> Raden Atcheng </span>
-                    </div>
-                    <div class="mdl-card__actions">
-                    <a href="<?php echo site_url('siswa/course_close') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
-                        Masuk
-                    </button></a>                     
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="sidenav" style="background-color: #343434;">

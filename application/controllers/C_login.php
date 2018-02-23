@@ -13,10 +13,24 @@ class C_login extends CI_Controller {
     }
     
     public function index(){
-        $data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
-		$this->load->view('login/signin',$data);
+
     }
 
+    public function signup()
+	{
+		$this->load->view('login/signup');
+	}
+	
+	public function signup_instruktur()
+	{
+		$this->load->view('login/signup_instruktur');
+	}
+
+	public function signin()
+	{
+//		$data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
+		$this->load->view('login/signin');
+	}
 
     function masuk(){
         $username = $this->input->post('username');
@@ -29,7 +43,7 @@ class C_login extends CI_Controller {
         if ($query->num_rows() == 0){
             // $this->index();
             echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
-            $this->index();
+            redirect('signin');
         
         }
         else {
@@ -38,6 +52,7 @@ class C_login extends CI_Controller {
                 $cek= $query->result();
                 // foreach($cek as $row);
                 $user= array(
+                    'id' =>$cek[0]->usr_id,
                     'kode' =>$cek[0]->usr_kode,
                     'username' =>$cek[0]->usr_username,
                     'password' =>$cek[0]->usr_password,
@@ -75,7 +90,10 @@ class C_login extends CI_Controller {
         // $this->session->userdata();
         // print_r($this->session->userdata("level"));
         // die();
-        $this->load->view('layout/landing_page');   
+        $this->load->view('layout/landing_page'); 
+        
+        // redirect('signup');
+          
     }
 
     function registrasi_siswa()
@@ -96,24 +114,22 @@ class C_login extends CI_Controller {
         if ( $this->form_validation->run() == FALSE ) {
             // echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
             // dd($insert);
-            $this->load->view('login/signup');
-            
+            // $this->load->view('login/signup');
+            $this->signup();
         }else
         {
             $insert= $this->M_login->insert();
             redirect('signin','refresh');
-            
-            
         }
     }
     public function logout()
     {
-        $user_data = $this->session->all_userdata();
-        foreach ($user_data as $key => $value) {
-            if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
-                $this->session->unset_userdata($key);
-            }
-        }
+        // $user_data = $this->session->all_userdata();
+        // foreach ($user_data as $key => $value) {
+        //     if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+        //         $this->session->unset_userdata($key);
+        //     }
+        // }
         $this->session->sess_destroy();
         if (!$this->session->userdata('username'))
         {
@@ -125,3 +141,7 @@ class C_login extends CI_Controller {
     }
 
 }
+
+
+
+

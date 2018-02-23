@@ -5,7 +5,7 @@
             <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
                 <div class="">
                     <div class="">
-                        <h2 style="color:white">IT Project Management</h2>
+                        <h2 style="color:white"><?php echo $dataCourse->crs_name; ?></h2>
                     </div>
                 </div>
             </div>
@@ -40,19 +40,19 @@
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">today</i>
-                            <span style="margin-left:20px">23/1/2018 16:00 AM </span>
+                            <span style="margin-left:20px"><?php echo $dataCourse->crs_timecreated; ?> </span>
                         </span>
                     </li>
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">account_circle</i>
-                            <span style="margin-left:20px">Instruktur: Nungki Selvi Andro</span>
+                            <span style="margin-left:20px">Instruktur:<?php echo $dataCourse->usr_firstname.' '.$dataCourse->usr_lastname; ?></span>
                         </span>
                     </li>
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">place</i>
-                            <span style="margin-left:20px">Universitas: Telkom University </span>
+                            <span style="margin-left:20px">Universitas:<?php echo $dataCourse->crs_univ; ?> </span>
                         </span>
                     </li>
                     <li class="mdl-list__item">

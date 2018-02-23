@@ -28,6 +28,7 @@
                             <label for="inputkategorithread" class="col-sm-2 control-label" style="font-size:12px;">Kategori Thread</label>
                             <div class="col-sm-10">
                                 <select id="inputkategorithread" class="form-control" name="kategorithread">
+                                    <option>--Kategori Thread--</option>
                                     <option>Algoritma</option>
                                     <option>Teori</option>
                                 </select>
@@ -36,7 +37,7 @@
                         <div class="form-group">
                             <label for="inputisithreadforum" class="col-sm-2 control-label" style="font-size:12px;">Isi Thread</label>
                             <div class="col-sm-10">
-                            <textarea name="isithreadforum" class="form-control" rows="100" id="inputisithreadforum" style="max-width: 100%"></textarea>
+                            <textarea name="isithreadforum" class="form-control" id="inputisithreadforum" style="max-width: 100%"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

@@ -49,20 +49,6 @@ class Welcome extends CI_Controller {
 
 	}
 
-	public function signup()
-	{
-		$this->load->view('login/signup');
-	}
 	
-	public function signup_instruktur()
-	{
-		$this->load->view('login/signup_instruktur');
-	}
-
-	public function signin()
-	{
-		$data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
-		$this->load->view('login/signin',$data);
-	}
 
 }

@@ -11,18 +11,5 @@ class Forum extends CI_Controller {
         parent::__construct();
     }
     
-    public function index()
-    {
-        $data['content'] = 'siswa/forum_siswa';
-        $data['courses'] = DB::table('course')
-                            ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                            ->where('course.usr_id', '=', 3)
-                            ->get();
-        $data['nama_instruktur'] = DB::table('course')
-                                                ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                                                ->where('course.usr_id', '=', 3)
-                                                ->select('usr_firstname', 'usr_lastname')
-                                                ->first();
-        $this->load->view('layout/master', $data);
-    }
+    
 }

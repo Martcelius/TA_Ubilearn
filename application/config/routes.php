@@ -119,9 +119,8 @@ $route['instruktur/add_lo'] = 'C_instruktur/add_lo';
 $route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
 $route['instruktur/add_assesment/(:any)'] = 'instruktur/Assesment/add_assesment/$1';
 $route['instruktur/edit_assesment/(:any)'] = 'instruktur/Assesment/edit_assesment/$1';
-/*$route['instruktur/add_pretest'] = 'C_instruktur/add_pretest';
-$route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
-$route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';*/
+$route['instruktur/delete_assesment/(:any)'] = 'instruktur/Assesment/delete_assesment/$1';
+
 $route['instruktur/content'] = 'C_instruktur/content';
 //$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
 $route['instruktur/list_thread'] = 'C_instruktur/list_thread';
@@ -131,9 +130,6 @@ $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 $route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
 
 $route['instruktur/add_assignment'] = 'C_instruktur/add_assignment';
-
-
-
 
 
 
