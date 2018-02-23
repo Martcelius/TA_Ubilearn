@@ -97,7 +97,7 @@ class M_User extends Eloquent
         $userUpdate->usr_jk = $data['usr_jk'];
         return $userUpdate->save();
     }
-    public function update_password_instruktur($data,$usr_id)
+    public function update_password($data,$usr_id)
     {
         $userUpdate = M_user::where('usr_id','=',$usr_id)->first();
         $current_password = md5($data['current_password']);
@@ -105,11 +105,12 @@ class M_User extends Eloquent
         $repeat_password = md5($data['repeat_password']);
 
 
-//        dd($current_password);
+//        dd($data['result']);
 //        dd($usr_id);
 //        dd($data['result']);
         if ($current_password == $data['result'])
         {
+
             if ($new_password == $repeat_password)
             {
                 $userUpdate->usr_password = $new_password;
@@ -117,20 +118,18 @@ class M_User extends Eloquent
                 echo "<script>
                     alert('Password Berhasil Diganti!');
                     </script>";
-                return $new_password;
-
+                return true;
             } else {
                 echo "<script>
                     alert('Password tidak sama!');
-                    window.location.href='password';
                     </script>";
-            }
+                return false;            }
 
         } else {
             echo "<script>
                     alert('Current Password Salah!');
-                    window.location.href='password';
                     </script>";
+            return false;
         }
 
 

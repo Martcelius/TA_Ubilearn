@@ -73,4 +73,34 @@ class Akun extends CI_Controller {
         }
         redirect('admin/dashboard');
     }
+    public function password_admin()
+    {
+        $usr_id = $this->input->post('id');
+//        dd($usr_id);
+
+        $userData['current_password'] = $this->input->post('current_password');
+        $userData['new_password'] = $this->input->post('new_password');
+        $userData['repeat_password'] = $this->input->post('repeat_password');
+        $userData['result'] = $this->session->userdata('password');
+//        dd($userData['result']);
+        $update = $this->M_User->update_password($userData,$usr_id);
+//        dd($update);
+        $user= array(
+            'password' => $update
+        );
+        $this->session->set_userdata($user);
+//        dd($update);
+
+        if($update)
+        {
+            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
+            redirect('instruktur/dashboard');
+        }
+        else {
+            $this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah');
+            redirect('instruktur/password');
+        }
+
+    }
 }
+

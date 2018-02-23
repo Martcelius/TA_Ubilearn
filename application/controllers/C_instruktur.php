@@ -32,7 +32,7 @@ class C_instruktur extends CI_Controller {
     public function manage_password()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/password_instruktur.php';
+        $data['content'] = 'instruktur/password';
         $this->load->view('layout/master', $data);
     }
     public function result_instruktur()
