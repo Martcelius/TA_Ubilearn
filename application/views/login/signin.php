@@ -39,21 +39,17 @@
 <body style="background-color: #999999;">
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more coverlanding"></div>
+			<div class="login100-more coverlanding">
+            </div>
 			<?php echo form_open('C_login/masuk'); ?>
 			<div class="wrap-login100 p-l-20 p-r-20 p-t-52 p-b-30">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-59">
 						Masuk
 					</span>
-
-
-
 					<div class="wrap-input100 validate-input" >
 						<span class="label-input100">Nama Pengguna</span>
 						<input class="input100" type="text" name="username" placeholder="Nama Pengguna..." required>
-
-
 					</div>
 
 					<div class="wrap-input100 validate-input" >
