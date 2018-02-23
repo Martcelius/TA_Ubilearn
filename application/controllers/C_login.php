@@ -42,7 +42,8 @@ class C_login extends CI_Controller {
 
         if ($query->num_rows() == 0){
             // $this->index();
-            echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
+//            echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';
+            $this->session->set_flashdata('login_salah', 'Nama Pengguna atau Kata Sandi anda salah');
             redirect('signin');
         
         }

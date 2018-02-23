@@ -244,12 +244,6 @@
                 <li class="mdl-list__item">
                     Jumlah lesson: <?php echo $jumlah?>
                 </li>
-                <li class="mdl-list__item">
-                    Jumlah siswa:
-                </li>
-                <li class="mdl-list__item">
-                    Jumlah lesson: <?php echo $jumlah?>
-                </li>
             </ul>
 
             <hr>
