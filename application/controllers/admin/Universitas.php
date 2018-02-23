@@ -43,8 +43,11 @@ class Universitas extends CI_Controller {
             $this->session->set_flashdata('data_gagal_tersimpan', 'Data Universitas Tidak Berhasil Tersimpan');
         }
         
-        $data['content'] = 'admin/add_universitas';
-        $this->load->view('layout_admin/master', $data);
+        // $data['content'] = 'admin/add_universitas';
+        // $this->load->view('layout_admin/master', $data);
+        
+        redirect('admin/add_universitas','refresh');
+        
     }
 
     public function edit_universitas($id)
@@ -72,7 +75,10 @@ class Universitas extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_universitas', 'Data Universitas Tidak Berhasil Terbaharui');
         }
-        $this->index();
+        // $this->index();
+        
+        redirect('admin/universitas','refresh');
+        
     }
 
     public function delete_universitas($id)
@@ -88,6 +94,7 @@ class Universitas extends CI_Controller {
             $this->session->set_flashdata('data_gagal_universitas', 'Data Universitas Tidak Berhasil Terhapus');
         }
         $this->index();
+        redirect('admin/universitas','refresh');
     }
 
 }

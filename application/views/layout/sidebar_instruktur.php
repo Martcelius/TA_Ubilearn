@@ -5,12 +5,16 @@
                 Dashboard
             </a>
             <a class="mdl-navigation__link" href="<?php echo site_url('instruktur/MyCourse')?> ">
-                <i class="material-icons" role="presentation">Course</i>
+                <i class="material-icons" role="presentation">folder</i>
                My Course
             </a>
-            <a class="mdl-navigation__link" href="maps.html">
+            <a class="mdl-navigation__link" href="<?php echo site_url('instruktur/forum_instruktur')?>">
                 <i class="material-icons" role="presentation">forum</i>
                 Forum
+            </a>
+            <a class="mdl-navigation__link" href="<?php echo site_url('instruktur/learning_outcome')?>">
+                <i class="material-icons" role="presentation">book</i>
+                Learning Outcome
             </a>
             <!-- <a class="mdl-navigation__link" href="ui.html">
                 <i class="material-icons">message</i>

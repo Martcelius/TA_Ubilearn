@@ -24,14 +24,7 @@
                 <th>Status</th>
                 <th>Start Assessment</th>
                 <th>End Assessment</th>
-                <th>Waktu</th>
-                <th>Nama</th>
-                <th>Score</th>
-                <th>Aksi</th>
-                <th>Score</th>
-                <th>Aksi</th>
-                <th>Score</th>
-                <th>Aksi</th>
+
             
             </tr>
         </thead>
@@ -41,170 +34,10 @@
                 <td>Selesai</td>
                 <td>21 Januari 2018 15.30</td>
                 <td>21 Januari 2018 15.40</td>
-                <td>15 menit</td>
-                <td>Olen</td>
-                <td>40</td>
-                <td>Olen</td>
-                <td>40</td> 
-                <td>Olen</td>
-                <td>40</td>
-                <td>40</td>
+
             
             </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-           <td>1</td>
-                <td>tidak</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>Olen</td>
-                <td>40</td>
-                <td>Olen</td>
-                <td>40</td> 
-                <td>Olen</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-           <td>1</td>
-                <td>tidak</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
-            <tr class="odd gradeX" style="background-color: #363636;">
-            <td>1</td>
-                <td>Selesai</td>
-                <td>21 Januari 2018 15.30</td>
-                <td>21 Januari 2018 15.40</td>
-                <td>10 menit</td>
-                <td>martcel</td>
-                <td>40</td>
-                <td>martcel</td>
-                <td>40</td> 
-                <td>martcel</td>
-                <td>40</td>
-                <td>40</td>
-            </tr>
+
         </tbody>
     </table>  
 </div>

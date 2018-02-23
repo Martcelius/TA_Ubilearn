@@ -30,7 +30,7 @@
 </div>
 
 <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" style="margin-left:30px">      
+    <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--9-col-tablet mdl-cell--9-col-phone" style="">      
         <div class="box box-solid box-primary">
             <div class="box-header">
                 <h3 class="box-title">Judul Lesson Forum Thread</h3>
@@ -154,6 +154,38 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--3-col-phone">      
+        <div class="box box-solid box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Rekomendasi Learner</h3>
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="#">
+                            <span class="mdl-list__item-primary-content">
+                                <img class="img-circle" style="width:50px;height:50px; float:left" src="../res/assets/images/icon.png" alt="User Image">
+                                <span style="margin-left:20px;color:black;">Atcheng Supratman</span>
+                                <br>
+                                <span style="margin-left:20px;color:black;font-size:14px;">1301140249</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="mdl-list__item-primary-content">
+                                <img class="img-circle" style="width:50px;height:50px; float:left" src="../res/assets/images/icon.png" alt="User Image">
+                                <span style="margin-left:20px;color:black;">Si Belegag</span>
+                                <br>
+                                <span style="margin-left:20px;color:black;font-size:14px;">1301140249</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

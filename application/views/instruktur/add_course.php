@@ -1,15 +1,13 @@
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main"></div>
     <div class="mdl-grid">
-    
-    <?php if ($this->session->flashdata('data_tersimpan') == TRUE): ?>
-    <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone"> 
-        <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
-        </button>
-        <p><?php echo $this->session->flashdata('data_tersimpan')?></p>
-    </div>
-    <?php endif; ?>
-    
+        <?php if ($this->session->flashdata('insert_course') == TRUE): ?>
+            <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo $this->session->flashdata('insert_course')?></p>
+            </div>
+        <?php endif; ?>
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__title" style="display:block;">
@@ -40,6 +38,11 @@
                             <label for="inputtext3" class="col-sm-2 control-label">Universitas Course</label>
                             <div class="col-sm-10">
                             <input name="m-univ-course" type="text" class="form-control" id="inputtext3" placeholder="Universitas Course">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <input name="usr_id" type="text" class="form-control" id="usr_id" value="<?php echo $this->session->userdata('id')?>" style="display:none">
                             </div>
                         </div>
                         <div class="form-group">
