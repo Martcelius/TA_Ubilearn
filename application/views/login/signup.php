@@ -28,11 +28,40 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>res/assets/css/main.css">
 <!--===============================================================================================-->
-<style>
+
+    <style>
      .error{
       color:red;
      }
     </style>
+    <script type="text/javascript">
+        $('#dob_month, #dob_year').change(function() {
+            var year = $('#dob_year').val();
+            var month = $('#dob_month').val();
+            if ((year != 0) &&  (month!=0)) {
+                var lastday = 32 - new Date(year, month - 1, 32).getDate();
+                var selected_day = $('#dob_day').val();
+
+                // Change selected day if it is greater than the number of days in current month
+                if (selected_day > lastday) {
+                    $('#dob_day  > option[value=' + selected_day + ']').attr('selected', false);
+                    $('#dob_day  > option[value=' + lastday + ']').attr('selected', true);
+                }
+
+                // Remove possibly offending days
+                for (var i = lastday + 1; i < 32; i++) {
+                    $('#dob_day  > option[value=' + i + ']').remove();
+                }
+
+                // Add possibly missing days
+                for (var i = 29; i < lastday + 1; i++) {
+                    if (!$('#dob_day  > option[value=' + i + ']').length) {
+                        $('#dob_day').append($("<option></option>").attr("value",i).text(i));
+                    }
+                }
+            }
+        });
+    </script>
 </head>
 <body style="background-color: #999999;">
 	
@@ -78,6 +107,20 @@
 						<input class="input100" type="password" name="repeat-pass" placeholder="*************" value="<?php echo set_value('repeat-pass'); ?>">
 						<?php echo form_error('repeat-pass'); ?>
 					</div>
+                    <div class="wrap-input100">
+                        <span class="label-input100">Tanggal Lahir</span>
+                        <input class="input100" type="date" name="tgl_lahir" style="color: gray;">
+                    </div>
+                    <div class="wrap-input100">
+                            <label class="radio-inline" for="jenis_kelamin-0" style="margin-left: 10px; color:gray;">
+                                <input type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
+                                Pria
+                            </label>
+                            <label class="radio-inline" for="jenis_kelamin-1" style="margin-left: 10px; color:gray;">
+                                <input type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
+                                Wanita
+                            </label>
+                    </div>
 					<div>
                         <input type="text" value="2" class="input100" name="level"  style="display:none" required/>
                     </div>

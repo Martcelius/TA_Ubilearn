@@ -18,20 +18,20 @@ class Course extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/MyCourse';
-        // $test= M_course::where('course.usr_id', '=', 2)
-        //                 ->join('users', 'users.usr_id', '=', 'course.usr_id')
-        //                 ->get();
-        $data['courses']= DB::table('course')
-                            ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                            ->where('course.usr_id', '=', 37)
-                            ->get();
-        $data['nama_instruktur'] = DB::table('course')
-                                    ->join('users', 'users.usr_id', '=', 'course.usr_id')
-                                    ->where('course.usr_id', '=', 37)
-                                    ->select('usr_firstname', 'usr_lastname')
-                                    ->first();
+        $data['courses']= M_course::where('course.usr_id', '=', $this->session->userdata('id'))->get();
+//        dd($data['courses']);
+//        $data['courses']= DB   ->join('users', 'users.usr_id', '=', 'course.usr_id')
+//                            ->where('course.usr_id', '=', 4)
+//                            ->get();
+//        $data['nama_instruktur'] = DB::table('course')
+//                                    ->join('users', 'users.usr_id', '=', 'course.usr_id')
+//                                    ->where('course.usr_id', '=', 4)
+//                                    ->select('usr_firstname', 'usr_lastname')
+//                                    ->first();
+
         // print_r($data['nama_instruktur']);
-        // die();
+        // die();::table('course')
+//
         $this->load->view('layout/master', $data);
     }
 
@@ -54,17 +54,18 @@ class Course extends CI_Controller {
         $course->crs_summary = $_POST['m-deskripsi-course'];
         $course->crs_univ = $_POST['m-univ-course'];
         $course->cat_id = 1;
-        $course->usr_id = 4;
+        $course->usr_id = $_POST['usr_id'];
+        $insert = $course->save();
+//        dd($insert);
 
-        try {
-            if ($course->save()) {
-                redirect('instruktur/MyCourse','refresh');
-            } else {
-                echo "Gagal";
-            }
-        } catch(Illuminate\Database\QueryException $e) {
-            echo $e->getMessage();
+        if($insert)
+        {
+            $this->session->set_flashdata('insert_course', 'Data Course Berhasil Tersimpan');
+        }else{
+            $this->session->set_flashdata('insert_course', 'Data Course Tidak Berhasil Tersimpan');
         }
+
+        redirect('instruktur/add_course');
     }
 
     public function edit($id)
@@ -78,24 +79,25 @@ class Course extends CI_Controller {
 
     }
 
-    public function update($id = NULL)
+    public function update($id)
     {
-        
-        $course->crs_code = $_POST['m-kode-course'];
-        $course->crs_name = $_POST['m-nama-course'];
-        $course->crs_summary = $_POST['m-deskripsi-course'];
-        $course->crs_univ = $_POST['m-univ-course'];
-
         $course_update = M_Course::find($id);
-        $course_update->crs_code = $course->crs_code;
-        $course_update->crs_name = $course->crs_name;
-        $course_update->crs_summary = $course->crs_summary;
-        $course_update->crs_univ = $course->crs_univ;
-        $course_update->save();
+        $course_update->crs_code = $_POST['m-kode-course'];
+        $course_update->crs_name = $_POST['m-nama-course'];
+        $course_update->crs_summary = $_POST['m-deskripsi-course'];
+        $course_update->crs_univ = $_POST['m-univ-course'];
+        $update = $course_update->save();
+        if($update)
+        {
+            $this->session->set_flashdata('data_course', 'Data Course Berhasil Terupdate');
+        }else{
+            $this->session->set_flashdata('data_course', 'Data Course Tidak Berhasil Terupdate');
+        }
 
+        redirect('instruktur/MyCourse');
     }
 
-    public function delete($id = NULL)
+    public function delete($id)
     {
         $course = M_Course::find($id);
         $course->delete();

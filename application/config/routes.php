@@ -59,7 +59,7 @@ $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'C_siswa/manage_akun';
 //course
 $route['siswa/course_info'] = 'C_siswa/course_info';
-$route['siswa/course_close'] = 'C_siswa/course_close';
+$route['siswa/course_close/(:any)'] = 'C_siswa/course_close/$1';
 $route['siswa/course'] = 'siswa/Course/index';
 $route['siswa/course_detail'] = 'C_siswa/course_detail';
 $route['siswa/course_content'] = 'C_siswa/course_content';
@@ -109,6 +109,7 @@ $route['admin/update_user'] = 'admin/akun/update_user';
 //route instruktor
 $route['instruktur/dashboard'] = 'C_instruktur/dashboard';
 $route['instruktur/akun'] = 'C_instruktur/manage_akun';
+$route['instruktur/password'] = 'C_instruktur/manage_password';
 // route instruktor-course
 $route['instruktur/MyCourse'] = 'instruktur/course/index';
 $route['instruktur/add_course'] = 'instruktur/course/add';
@@ -160,6 +161,7 @@ $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 // route instruktur-akun
 $route['instruktur/update_user'] = 'instruktur/akun/update_user';
 $route['instruktur/edit_akun'] = 'instruktur/akun/update_user';
+$route['instruktur/password_instruktur'] = 'instruktur/akun/password_instruktur';
 // =================================================================================================
 // route login
 $route['index'] = 'C_login/index';
@@ -171,3 +173,4 @@ $route['landing_page']= 'C_login/landing_page';
 // ==================================================================================================
 // logout
 $route['logout'] = 'C_login/logout';
+
