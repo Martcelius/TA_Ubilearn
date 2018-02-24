@@ -8,6 +8,7 @@ class M_Course extends Eloquent
     protected $table = 'course';
     const CREATED_AT = 'crs_timecreated';
     const UPDATED_AT = 'crs_timemodified';
+    protected $primaryKey = 'crs_id';
 
     public function course_enrol()
     {

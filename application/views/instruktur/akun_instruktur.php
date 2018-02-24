@@ -12,7 +12,7 @@
             <div class="row">
             <div class="col-md-10 ">
 
-            <form class="form-horizontal" action="<?php echo site_url('instruktur/update_user')?>" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" action="<?php echo site_url('instruktur/edit_akun')?>" method="post" enctype="multipart/form-data">
             <fieldset>
             
             <!-- Form Name -->
