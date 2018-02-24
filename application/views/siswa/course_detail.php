@@ -14,6 +14,13 @@
     </div>
     <div class=" col-sm-10 " >
         <div class="mdl-grid">
+            <?php if ($this->session->flashdata('data_enroll') == TRUE): ?>
+                <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                    <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                    </button>
+                    <p><?php echo $this->session->flashdata('data_enroll')?></p>
+                </div>
+            <?php endif; ?>
             <!-- dropdown -->
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div class="mdl-card mdl-shadow--2dp">
@@ -215,30 +222,22 @@
         </div>
     </div>
 
-    <div class="sidenav" style="background-color: #343434;">
-        <br/>
-        <h5 style="color: white;margin-left: 10px;">Course Information</h5>
-      <h5 style="color: white;margin-left: 10px;">IT Project Management</h5>
-      <hr/>
-      <ul class="demo-list-item mdl-list">
-        <li class="mdl-list__item">
-          <a href="" style="font-size: 18px;padding-bottom: 2px;padding-top: 2px;" class="mdl-list__item-primary-content">
-            Bryan Cranston
-          </a>
-        </li>
-        <li class="mdl-list__item">
-          <a href="" style="font-size: 18px;padding-bottom: 2px;padding-top: 2px;" class="mdl-list__item-primary-content">
-            Bryan Cranston
-          </a>
-        </li>
-      </ul>
-      <hr/>
-      <h6 style="color: white;margin-left: 10px;">Instructor</h6>
-      <h5 style="color: white;margin-left: 10px;">Martcel Razzaq
-      <br/>
-      <small>Instructor</small>
-      </h5>
-        <hr>
+    <div class="sidenav">
+        <ul class="demo-list-item mdl-list">
+            <li class="mdl-list__item">
+                Informasi Course
+            </li>
+            <hr>
+            <li class="mdl-list__item">
+                Course : <?php echo $course->crs_name?>
+            </li>
+            <li class="mdl-list__item">
+                Instruktur : <?php echo $course->usr_firstname?> <?php echo $course->usr_lastname?>
+            </li>
+            <li class="mdl-list__item">
+                Jumlah lesson: <?php echo $jml_lesson?>
+            </li>
+        </ul>
     </div>
     
 </main>

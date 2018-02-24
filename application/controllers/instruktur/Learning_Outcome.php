@@ -27,13 +27,13 @@ class Learning_Outcome extends CI_Controller {
         $this->load->view('layout/master', $data);
 
     }
-    
+
     public function insert_lo()
     {
         $data['loc_desc'] = $this->input->post('loc_desc');
-        // dd($data['loc_desc']);
+//         dd($data['loc_desc']);
         $insert= $this->M_Course_Learning_Outcomes->insert_lo($data);
-        // dd($insert);
+//         dd($insert);
         if($insert)
         {
             $this->session->set_flashdata('data_lo', 'Data Learning Outcome Berhasil Tersimpan');
@@ -41,11 +41,9 @@ class Learning_Outcome extends CI_Controller {
             $this->session->set_flashdata('data_gagal_lo', 'Data learning Outcome Tidak Berhasil Tersimpan');
         }
         
-        redirect('instruktur/insert_lo','refresh')
-        ;
+        redirect('instruktur/add_lo');
     
     }
-
     public function edit_lo($id)
     {
         $data['dataLO'] = M_Course_Learning_Outcomes::where('loc_id',$id)->first();

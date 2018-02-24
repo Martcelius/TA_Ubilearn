@@ -12,14 +12,17 @@
                 <i class="material-icons" role="presentation">forum</i>
                 Forum
             </a>
-            <!-- <a class="mdl-navigation__link" href="maps.html">
-                <i class="material-icons" role="presentation">forum</i>
-                Forum
-            </a>
-            <a class="mdl-navigation__link" href="ui.html">
-                <i class="material-icons">message</i>
-                 Message
-            </a> -->
+            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                for="demo-menu-lower-left">
+                <li class="mdl-menu__item">Some Action</li>
+                <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
+                <li disabled class="mdl-menu__item">Disabled Action</li>
+                <li class="mdl-menu__item">Yet Another Action</li>
+            </ul>
+<!--            <a class="mdl-navigation__link" href="ui.html">-->
+<!--                <i class="material-icons">message</i>-->
+<!--                 Message-->
+<!--            </a>-->
 
             <div class="mdl-layout-spacer"></div>
             <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">

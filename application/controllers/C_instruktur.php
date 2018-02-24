@@ -72,6 +72,9 @@ class C_instruktur extends CI_Controller {
 
     }
 
+<<<<<<< HEAD
+
+=======
    
     public function add_assessment()
     {
@@ -125,6 +128,7 @@ class C_instruktur extends CI_Controller {
         
     }
 
+>>>>>>> e075490118df2eb79f7e43792394c3307be161e0
 
     public function add_assignment()
     {
