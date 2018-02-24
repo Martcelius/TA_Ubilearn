@@ -50,7 +50,9 @@ class C_login extends CI_Controller {
         else {
             if ($query)
             {
+
                 $cek= $query->result();
+
                 // foreach($cek as $row);
                 $user= array(
                     'id' =>$cek[0]->usr_id,
@@ -66,9 +68,9 @@ class C_login extends CI_Controller {
                     'level' =>$cek[0]->usr_level,
                     'ttl' =>$cek[0]->usr_tgllahir
                 );
-            
-            $this->session->set_userdata($user);
-        
+
+                $this->session->set_userdata($user);
+//                dd($this->session->userdata('foto'));
                 if ($this->session->userdata('level')==1)
                 {
 //                    dd($user['ttl']);

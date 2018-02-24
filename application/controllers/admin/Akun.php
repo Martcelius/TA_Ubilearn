@@ -71,9 +71,9 @@ class Akun extends CI_Controller {
             'lastname' =>$this->input->post('nama_belakang'),
             'gpa' =>empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk'),
             'foto' =>$userData['usr_picture'],
-            'jk' =>empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin'),
         );
         $this->session->set_userdata($user);
+//        dd($this->session->userdata('jk'));
         $update = $this->M_User->update_user_akun($userData,$usr_id);
         if($update)
         {

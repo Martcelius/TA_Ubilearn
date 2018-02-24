@@ -64,6 +64,7 @@
                         Ubah Password
                     </span>
                 </li></a>
+                <li class="list__item--border-top"></li>
                 <a href="<?php echo site_url('logout');?>">
                 <li class="mdl-menu__item mdl-list__item">
                     <span class="mdl-list__item-primary-content">
