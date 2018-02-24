@@ -81,7 +81,7 @@ class Akun extends CI_Controller {
         $update = $this->M_User->update_user_akun($userData,$usr_id);
         if($update)
         {
-            $this->session->set_flashdata('data_tersimpan', 'Data User Berhasil Terbarui');
+            $this->session->set_flashdata('password_tersimpan', 'Data User Berhasil Terbarui');
         }else{
             $this->session->set_flashdata('data_gagal_tersimpan', 'Data User Tidak Berhasil Terbarui');
         }

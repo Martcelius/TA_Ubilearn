@@ -176,7 +176,7 @@
       var i = 0;
       while(i < jumSlide){
         currNum++;
-        text = `
+        text = '
         <div class="col-md-12" id="s`+currNum+`">
         <hr/>
              <div class="form-group">
