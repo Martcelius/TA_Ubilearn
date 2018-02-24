@@ -111,7 +111,7 @@
                                       <span class="mdl-list__item-primary-content">
                                           <span style="margin-right: 25px;">2. </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="<?php echo site_url('siswa/assesment_doing')?>">Project Manager</a>
+                                          <a href="<?php echo site_url('siswa/assesment_info')?>">Project Manager</a>
                                   </span>
                                   <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
                                   </li>

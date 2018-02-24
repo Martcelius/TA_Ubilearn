@@ -74,6 +74,7 @@ $route['siswa/edit_thread_siswa'] = 'C_siswa/edit_thread_siswa';
 $route['siswa/assignment_opening'] = 'C_siswa/assignment_opening';
 $route['siswa/assignment_detail'] = 'C_siswa/assignment_detail';
 //assignment
+$route['siswa/assesment_info'] = 'siswa/assesment/index';
 $route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
 //exercise
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';

@@ -38,7 +38,7 @@
                 <li class="mdl-menu__item mdl-list__item" >
                     <span class="mdl-list__item-primary-content">
                        <i class="material-icons mdl-list__item-icon" >settings</i>
-                        My account
+                        Pengaturan
                     </span>
                 </li></a>
 <!--                <li class="mdl-menu__item mdl-list__item">-->
