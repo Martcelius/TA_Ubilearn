@@ -2,13 +2,6 @@
     <div class="mdl-grid cover-main">
     </div>
     <div class="mdl-grid"  >
-        <?php if ($this->session->flashdata('password_gagal') == TRUE): ?>
-            <div role="alert"  class="alert alert-danger alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
-                </button>
-                <p><?php echo $this->session->flashdata('password_gagal')?></p>
-            </div>
-        <?php endif; ?>
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp " >
                 <div class="mdl-card__title">
@@ -19,9 +12,8 @@
                         <div class="row">
                             <div class="col-md-10 ">
 
-                                <form class="form-horizontal" action="<?php echo site_url('siswa/akun/password_siswa')?>" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="<?php echo site_url('siswa/password_siswa')?>" method="post" enctype="multipart/form-data">
                                     <fieldset>
-
                                         <!-- Form Name -->
                                         <legend style="color:white;">Ubah Password</legend>
 
@@ -32,35 +24,11 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-key"></i>
                                                     </div>
-                                                    <input name="current_password" type="password" class="form-control input-md" required>
+                                                    <input name="current_password"  class="form-control input-md" value="<?php echo $assesment->ass_name?>" required>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label">New Password</label>
-                                            <div class="col-md-4">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-key"></i>
-                                                    </div>
-                                                    <input name="new_password" type="password" class="form-control input-md" required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" >Repeat Password</label>
-                                            <div class="col-md-4">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-key"></i>
-                                                    </div>
-                                                    <input name="repeat_password" type="password" class="form-control input-md" required>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </fieldset>
                                     <div>
                                         <input type="text" value="<?php echo $this->session->userdata('id')?>" class="form-control" name="id"  style="display:none" required/>

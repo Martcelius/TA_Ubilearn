@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-md-10 ">
 
-                                <form class="form-horizontal" action="<?php echo site_url('instruktur/password_instruktur')?>" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="<?php echo site_url('instruktur/akun/password_instruktur')?>" method="post" enctype="multipart/form-data">
                                     <fieldset>
 
                                         <!-- Form Name -->

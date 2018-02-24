@@ -38,7 +38,7 @@
                 <li class="mdl-menu__item mdl-list__item" >
                     <span class="mdl-list__item-primary-content">
                        <i class="material-icons mdl-list__item-icon" >settings</i>
-                        My account
+                        Pengaturan
                     </span>
                 </li></a>
 <!--                <li class="mdl-menu__item mdl-list__item">-->
@@ -64,6 +64,7 @@
                         Ubah Password
                     </span>
                 </li></a>
+                <li class="list__item--border-top"></li>
                 <a href="<?php echo site_url('logout');?>">
                 <li class="mdl-menu__item mdl-list__item">
                     <span class="mdl-list__item-primary-content">

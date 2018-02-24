@@ -114,19 +114,13 @@ class Akun extends CI_Controller {
 //            dd($user['password']);
             $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
             redirect('instruktur/dashboard');
-            dd($update);
-//            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
-//            redirect('instruktur/dashboard');
-            dd($update);
-//            $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
-//            redirect('instruktur/dashboard');
         }
         else {
-//            dd($update);
-                $this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah');
-                redirect('instruktur/password');
+//            dd($userData['new_password']);
+            $this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah');
+            redirect('instruktur/password');
 //                dd($update);
-            }
+        }
 
     }
 }
