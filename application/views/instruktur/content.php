@@ -51,7 +51,7 @@
 							</a>
 
 							<a href="<?php echo site_url('instruktur/delete_content/'.$content->cnt_id);?>" >
-								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" onclick="return confirm('Anda yakin untuk menghapus?');">
 								<i class="material-icons">delete</i>
 								Hapus
 								</button>
