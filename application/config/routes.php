@@ -66,7 +66,7 @@ $route['siswa/password'] = 'siswa/akun/manage_password';
 //$route['siswa/course_detail'] = 'C_siswa/course_detail';
 $route['siswa/course'] = 'siswa/Course/index';
 $route['siswa/course_close/(:any)'] = 'siswa/course/course_close/$1';
-$route['siswa/course_detail/(:any)'] = 'siswa/course/course_detail/$1';
+$route['siswa/my_course/(:any)'] = 'siswa/course/my_course/$1';
 $route['siswa/course_content'] = 'C_siswa/course_content';
 
 //forum
