@@ -123,7 +123,8 @@ class M_User extends Eloquent
                 echo "<script>
                     alert('Password tidak sama!');
                     </script>";
-                return false;            }
+                return false;
+            }
 
         } else {
             echo "<script>

@@ -2,7 +2,7 @@
     <div class="mdl-grid cover-main">
     </div>
     <div class="mdl-grid"  >
-        <?php if ($this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah') == TRUE): ?>
+        <?php if ($this->session->flashdata('password_gagal') == TRUE): ?>
             <div role="alert"  class="alert alert-danger alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
                 </button>
@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-md-10 ">
 
-                                <form class="form-horizontal" action="<?php echo site_url('siswa/password_siswa')?>" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="<?php echo site_url('siswa/akun/password_siswa')?>" method="post" enctype="multipart/form-data">
                                     <fieldset>
 
                                         <!-- Form Name -->

@@ -7,6 +7,9 @@ class C_instruktur extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('M_Course_Assesment');
+        $this->load->model('M_Course_Assesment_Question');
+        $this->load->model('M_Course_Assesment_Question_Answer');
         
     }
     
@@ -22,19 +25,6 @@ class C_instruktur extends CI_Controller {
         $this->load->view('layout/master', $data);
         
     }
-
-    public function manage_akun()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/akun_instruktur';
-        $this->load->view('layout/master', $data);
-    }
-    public function manage_password()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/password';
-        $this->load->view('layout/master', $data);
-    }
     public function result_instruktur()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
@@ -42,57 +32,74 @@ class C_instruktur extends CI_Controller {
         $this->load->view('layout/master', $data);
     }
 
-    public function add_course()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/add_course';
-        $this->load->view('layout/master', $data);
-        
-    }
+//    public function add_course()
+//    {
+//        $data['sidebar'] = 'layout/sidebar_instruktur';
+//        $data['content'] = 'instruktur/add_course';
+//        $this->load->view('layout/master', $data);
+//
+//    }
+//
+//    public function lesson()
+//    {
+//        $data['sidebar'] = 'layout/sidebar_instruktur';
+//        $data['content'] = 'instruktur/lesson';
+//        $this->load->view('layout/master', $data);
+//
+//    }
+//
+//    public function add_lesson()
+//    {
+//        $data['sidebar'] = 'layout/sidebar_instruktur';
+//        $data['content'] = 'instruktur/add_lesson';
+//        $this->load->view('layout/master', $data);
+//
+//    }
 
-    public function lesson()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/lesson';
-        $this->load->view('layout/master', $data);
-        
-    }   
 
-    public function add_lesson()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/add_lesson';
-        $this->load->view('layout/master', $data);
-        
-    }
+//    public function learning_outcome()
+//    {
+//        $data['sidebar'] = 'layout/sidebar_instruktur';
+//        $data['content'] = 'instruktur/learning_outcome';
+//        $this->load->view('layout/master',$data);
+//    }
 
-    public function add_assessment()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/tambah_assessment';
-        $this->load->view('layout/master', $data);
-        
-    }
+//    public function add_lo()
+//    {
+//        $data['sidebar'] = 'layout/sidebar_instruktur';
+//        $data['content'] = 'instruktur/add_LO';
+//        $this->load->view('layout/master', $data);
+//
+//    }
 
-    public function add_assessment2()
-    {
-        $this->model->load('M_Course_Assessment');
-        $this->M_Course_Assessment->insert();
-
-        $jumSoal =$this->input->post('currNum');
-        $i = 1;
-        while($i <= $jumSoal){
-            $text = $this->input->post('soal'+$i);
-            $jwbBenar = $this->input->post('opt'+$i);
-            $A = $this->input->post('A'+$i);
-            $B = $this->input->post('B'+$i);
-            $C = $this->input->post('C'+$i);
-            $D = $this->input->post('D'+$i);
-            $E = $this->input->post('E'+$i);
-            //DB insert()
-            $i++;
-        }
-    }
+   
+//    public function add_assessment()
+//    {
+//        $data['sidebar'] = 'layout/sidebar_instruktur';
+//        $data['content'] = 'instruktur/tambah_assessment';
+//        $this->load->view('layout/master', $data);
+//
+//    }
+//
+//    public function add_assessment2()
+//    {
+//        $this->model->load('M_Course_Assessment');
+//        $this->M_Course_Assessment->insert();
+//
+//        $jumSoal =$this->input->post('currNum');
+//        $i = 1;
+//        while($i <= $jumSoal){
+//            $text = $this->input->post('soal'+$i);
+//            $jwbBenar = $this->input->post('opt'+$i);
+//            $A = $this->input->post('A'+$i);
+//            $B = $this->input->post('B'+$i);
+//            $C = $this->input->post('C'+$i);
+//            $D = $this->input->post('D'+$i);
+//            $E = $this->input->post('E'+$i);
+//            //DB insert()
+//            $i++;
+//        }
+//    }
 
     public function add_pretest()
     {

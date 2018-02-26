@@ -13,7 +13,7 @@ class M_Course_Learning_Outcomes extends Eloquent
     public function insert_lo($data)
     {
         $lo = new M_Course_Learning_Outcomes;
-        $lo->loc_desc = $data['loc_desc'] ;
+        $lo->loc_desc = $data['loc_desc'];
         return $lo ->save();
     }
 

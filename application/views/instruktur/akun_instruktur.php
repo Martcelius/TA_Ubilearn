@@ -12,7 +12,7 @@
             <div class="row">
             <div class="col-md-10 ">
 
-            <form class="form-horizontal" action="<?php echo site_url('instruktur/update_user')?>" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" action="<?php echo site_url('instruktur/edit_akun')?>" method="post" enctype="multipart/form-data">
             <fieldset>
             
             <!-- Form Name -->
@@ -86,6 +86,30 @@
                     </div>
                 </div>
             </div>
+                <fieldset disabled>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Tanggal Lahir</label>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input id="disabledTextInput" name="ttl" type="text" value="<?php echo $this->session->userdata('ttl') ;?>" class="form-control input-md">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Jenis Kelamin</label>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-male"></i>
+                            </div>
+                            <input id="disabledTextInput" name="ttl" type="text" value="<?php if ($this->session->userdata('jk')== 1) echo 'Pria'; else echo 'Wanita' ;?>" class="form-control input-md">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
             </fieldset>
             <div>
                 <input type="text" value="<?php echo $this->session->userdata('id')?>" class="form-control" name="id"  style="display:none" required/>

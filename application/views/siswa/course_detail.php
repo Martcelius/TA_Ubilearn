@@ -1,5 +1,6 @@
 <main class="mdl-layout__content">
-    <div class="mdl-grid cover-main">
+<div class="col-sm-10 cover-main">
+    <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div>
                     <h2 style="color:white">Library</h2>
@@ -12,6 +13,7 @@
                 </div>
             </div>
     </div>
+</div>
     <div class=" col-sm-10 " >
         <div class="mdl-grid">
             <!-- dropdown -->
@@ -30,52 +32,22 @@
                         </div>
                     </div>
                     <div id="demo" class="collapse">
-                    <div class="mdl-card__supporting-text">
-                            
-                              <ul class="demo-list-icon mdl-list">
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">1. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Intro</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">TEXT</b>
-                                  </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">2. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="<?php echo site_url('siswa/course_content')?>">Project Manager</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">3. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Software Development Life Cycle</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">4. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Stuff</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">5. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Another porject stuff</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
-                              </ul>
-                             
-                    </div>
+                        <div class="mdl-card__supporting-text">
+                            <ul class="demo-list-icon mdl-list">
+                                <?php 
+                                $num=1;
+                                foreach ($lesson as $lessons):?>
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span style="margin-right: 25px;"><?php echo $num++?> </span>
+                                        <i class="material-icons mdl-list__item-icon">label</i>
+                                        <a href="" style="color: white;"><?php echo 'Materi - '.$lessons->lsn_name?></a>
+                                </span>
+                                <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                </li>
+                                <?php endforeach;?>
+                            </ul>
+                        </div>
                     </div> 
                 </div>
             </div>
@@ -97,48 +69,20 @@
                     </div>
                     <div id="demo2" class="collapse">
                     <div class="mdl-card__supporting-text">
-                            
                               <ul class="demo-list-icon mdl-list">
+                              <?php 
+                                $num= 1;
+                                $i = 0;
+                                foreach ($listAss as $ass) : ?>
                                   <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">1. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Intro</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">TEXT</b>
+                                        <span class="mdl-list__item-primary-content">
+                                            <span style="margin-right: 25px;"><?php echo $num++?> </span>
+                                            <i class="material-icons mdl-list__item-icon mdl-badge mdl-badge--overlap" data-badge="<?php echo $jumSoal[$i] ?>" title="Jumlah Soal" >description</i>
+                                            <a href="" style="color: white;"><?php echo $ass->ass_tipe.' - '.$ass->ass_name ?></a>
+                                        </span>
+                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                   </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">2. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="<?php echo site_url('siswa/assesment_doing')?>">Project Manager</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">3. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="<?php echo site_url('siswa/exercise_doing')?>">Software Development Life Cycle</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">4. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Stuff</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
-                                  <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">5. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Another porject stuff</a>
-                                  </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                  </li>
+                                  <?php $i++; endforeach; ?>
                               </ul>
                              
                     </div>
@@ -215,30 +159,22 @@
         </div>
     </div>
 
-    <div class="sidenav" style="background-color: #343434;">
-        <br/>
-        <h5 style="color: white;margin-left: 10px;">Course Information</h5>
-      <h5 style="color: white;margin-left: 10px;">IT Project Management</h5>
-      <hr/>
-      <ul class="demo-list-item mdl-list">
-        <li class="mdl-list__item">
-          <a href="" style="font-size: 18px;padding-bottom: 2px;padding-top: 2px;" class="mdl-list__item-primary-content">
-            Bryan Cranston
-          </a>
-        </li>
-        <li class="mdl-list__item">
-          <a href="" style="font-size: 18px;padding-bottom: 2px;padding-top: 2px;" class="mdl-list__item-primary-content">
-            Bryan Cranston
-          </a>
-        </li>
-      </ul>
-      <hr/>
-      <h6 style="color: white;margin-left: 10px;">Instructor</h6>
-      <h5 style="color: white;margin-left: 10px;">Martcel Razzaq
-      <br/>
-      <small>Instructor</small>
-      </h5>
-        <hr>
+    <div class="sidenav">
+        <ul class="demo-list-item mdl-list">
+            <li class="mdl-list__item">
+                Informasi Course
+            </li>
+            <hr>
+            <li class="mdl-list__item">
+                Course : <?php echo $course->crs_name?>
+            </li>
+            <li class="mdl-list__item">
+                Instruktur : <?php echo $course->usr_firstname?> <?php echo $course->usr_lastname?>
+            </li>
+            <li class="mdl-list__item">
+                Jumlah lesson: <?php echo $jml_lesson?>
+            </li>
+        </ul>
     </div>
     
 </main>
