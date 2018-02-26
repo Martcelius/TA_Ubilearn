@@ -65,7 +65,7 @@ $route['siswa/course'] = 'siswa/Course/index';
 $route['siswa/course_detail'] = 'C_siswa/course_detail';
 $route['siswa/course_content'] = 'C_siswa/course_content';
 //forum
-$route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
+$route['siswa/forum_siswa'] = 'siswa/Forum/index';
 $route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
 $route['siswa/detail_thread_siswa'] = 'C_siswa/detail_thread_siswa';
 $route['siswa/add_thread_siswa'] = 'C_siswa/add_thread_siswa';

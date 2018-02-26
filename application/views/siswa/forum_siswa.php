@@ -24,237 +24,100 @@
     </div>
 </div>
 
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">    
-        <div class="mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title" style="display: block">
-                <button class="btn-dd" style="float: right" type="button" data-toggle="collapse" data-target="#demo1">
-                    <i class="fa fa-bars" style="display : inline-block" id = "forum_em"></i>
-                </button>
-                <div class="mdl-cell mdl-cell--12-col">
-                        <h2 class="mdl-card__title-text">Interaksi Manusia dan Komputer</h2><hr style="color: white"/>
-                        <h4>SFH4123 / DJN</h4>
+<?php foreach ($coursetake as $coursetaked): ?>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">    
+            <div class="mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title" style="display: block">
+                    <button class="btn-dd" style="float: right" type="button" data-toggle="collapse" data-target="#demo1">
+                        <i class="fa fa-bars" style="display : inline-block" id = "forum_em"></i>
+                    </button>
+                    <div class="mdl-cell mdl-cell--12-col">
+                            <h2 class="mdl-card__title-text"><?php echo $coursetaked->crs_name ?></h2><hr style="color: white"/>
+                            <h4><?php echo $coursetaked->crs_code ?> / <?php echo $coursetaked->usr_kode ?> </h4>
+                    </div>
                 </div>
+            
+                <div id="demo1" class="collapse" style="background-color:rgba(0, 0, 0, 0.3)">
+                    <table class="table table-bordered" style="width:96%;margin-left:35px;">
+                        <thead>
+                            <tr>
+                                <th colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black; ">
+                                <?php echo $coursetaked->crs_code ?> / <?php echo $coursetaked->crs_name ?> / <?php echo $coursetaked->usr_kode ?>    
+                                </th>
+                            </tr>
+
+                            <?php
+                                $counttab1 = 1; 
+                                foreach ($lessondata as $lessoncourse): ?>
+                                
+                                <tr id="forum_tabel_lesson1">
+                                    <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
+                                        <?php echo $counttab1++; ?>
+                                    </td>
+                                    <td style="width:200px; text-align:left;color : rgba(255, 255, 255, 0.8);">
+                                        <?php echo $lessoncourse->lsn_name ?>
+                                    </td>
+                                    <td>
+                                        <table class="table table-bordered" style="width:100%; background-color:transparent; margin-top: 5px;">
+                                            <thead> 
+                                                    <tr>
+                                                        <th style="width: 4%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
+                                                            No
+                                                        </th>
+                                                        <th style="width:20%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
+                                                            Judul
+                                                        </th>
+                                                        <th style="width: 30%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
+                                                            Deskripsi Forum
+                                                        </th>
+                                                        <th style="width: 10%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
+                                                            Post saya
+                                                        </th>
+                                                        <th style="width: 10%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
+                                                            Jumlah Thread
+                                                        </th>
+                                                        <th style="width: 16%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
+                                                            Aksi
+                                                        </th>
+                                                    </tr>
+
+                                                    <?php
+                                                        $counttab2 = 1;
+                                                        foreach ($listforumlesson as $listforum):?>
+                                                    <tr>
+                                                        <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
+                                                            <?php echo $counttab2++ ?>
+                                                        </td>
+                                                        <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
+                                                            <?php echo $listforum->cfr_title ?>
+                                                        </td>
+                                                        <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
+                                                            <?php echo $listforum->cfr_desc ?>
+                                                        </td>
+                                                        <td style="text-align : center; color : rgba(255, 255, 255, 0.8);">
+                                                            5
+                                                        </td>
+                                                        <td style="text-align : center; color : rgba(255, 255, 255, 0.8);">
+                                                            100
+                                                        </td>
+                                                        <td style="text-align : center">
+                                                            <a href="<?php echo site_url('siswa/list_thread_siswa')?>">
+                                                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </thead>
+                                        </table>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </thead>
+                    </table>
+                </div>      
             </div>
-           
-            <div id="demo1" class="collapse" style="background-color:rgba(0, 0, 0, 0.3)">
-                <table class="table table-bordered" style="width:96%;margin-left:35px;">
-                    <thead>
-                        <tr>
-                            <th colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black; ">
-                                SFH4123 / INTERAKSI MANUSIA DAN KOMPUTER / DJN    
-                            </th>
-                        </tr>
-                        <tr id="forum_tabel_lesson1">
-                            <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
-                                1.
-                            </td>
-                            <td style="width:200px; text-align:left;color : rgba(255, 255, 255, 0.8);">
-                                Lesson 01
-                            </td>
-                            <td>
-                                <table class="table table-bordered" style="width:100%; background-color:transparent; margin-top: 5px;">
-                                    <thead>
-                                        <tr>
-                                            <th style="width:15px;text-align : left;color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                No
-                                            </th>
-                                            <th style="text-align : left;color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                Judul
-                                            </th>
-                                            <th style="text-align : left;color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                Post saya
-                                            </th>
-                                            <th style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                Total Post
-                                            </th>
-                                            <th style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                Aksi
-                                            </th>
-                                        </tr>
-    
-                                        <tr>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                1
-                                            </td>
-                                            <td style="width:50%; text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                Belajar Menginjek
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                5
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                100
-                                            </td>
-                                            <td style="text-align : center">
-                                                <a href="<?php echo site_url('siswa/list_thread_siswa')?>">
-                                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-    
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </td>
-                        </tr>
-    
-                        <tr id="forum_tabel_lesson2">
-                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
-                                2.
-                            </td>
-                            <td style="width:200px; text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                Lesson 02
-                            </td>
-                            <td style="color : rgba(255, 255, 255, 0.8);">
-                                Tidak ada diskusi
-                            </td>
-                        </tr>
-    
-                        <tr id="forum_tabel_lesson3">
-                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
-                                3.
-                            </td>
-                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
-                                Lesson 03
-                            </td>
-                            <td style="color : rgba(255, 255, 255, 0.8);">
-                                Tidak ada diskusi
-                            </td>
-                        </tr>
-    
-                        <tr id="forum_tabel_lesson4">
-                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
-                                4.
-                            </td>
-                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
-                                Lesson 04
-                            </td>
-                            <td style="color : rgba(255, 255, 255, 0.8);">
-                                Tidak ada diskusi
-                            </td>
-                        </tr>
-                    </thead>
-                </table>
-            </div>      
         </div>
     </div>
-</div>
-
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">    
-        <div class="mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title" style="display: block">
-                <button class="btn-dd" style="float: right" type="button" data-toggle="collapse" data-target="#demo2">
-                    <i class="fa fa-bars" style="display : inline-block" id = "forum_em"></i>
-                </button>
-                <div class="mdl-cell mdl-cell--12-col">
-                        <h2 class="mdl-card__title-text">IT Project Management</h2><hr style="color: white"/>
-                        <h4>SFH4321 / IDN</h4>
-                </div>
-            </div>
-           
-            <div id="demo2" class="collapse" style="background-color:rgba(0, 0, 0, 0.3)">
-                <table class="table table-bordered" style="width:96%;margin-left:35px;">
-                    <thead>
-                        <tr>
-                            <td colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                SFH4123 / INTERAKSI MANUSIA DAN KOMPUTER / DJN    
-                            </td>
-                        </tr>
-                        <tr id="forum_tabel_lesson1">
-                            <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
-                                1.
-                            </td>
-                            <td style="width:200px; text-align:left;color : rgba(255, 255, 255, 0.8);">
-                                Lesson 01
-                            </td>
-                            <td>
-                                <table class="table table-bordered" style="width:100%; background-color:transparent">
-                                    <thead>
-                                        <tr>
-                                            <td style="width:15px;text-align : left;color : rgba(255, 255, 255, 0.8);">
-                                                No
-                                            </td>
-                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
-                                                Judul
-                                            </td>
-                                            <td style="text-align : left;color : rgba(255, 255, 255, 0.8);">
-                                                Post saya
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                Total Post
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                Aksi
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                1
-                                            </td>
-                                            <td style="width:50%; text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                Belajar Menginjek
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                5
-                                            </td>
-                                            <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                100
-                                            </td>
-                                            <td style="text-align : center">
-                                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </td>
-                        </tr>
-
-                        <tr id="forum_tabel_lesson2">
-                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
-                                2.
-                            </td>
-                            <td style="width:200px; text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                Lesson 02
-                            </td>
-                            <td style="color : rgba(255, 255, 255, 0.8);">
-                                Tidak ada diskusi
-                            </td>
-                        </tr>
-
-                        <tr id="forum_tabel_lesson3">
-                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
-                                3.
-                            </td>
-                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
-                                Lesson 03
-                            </td>
-                            <td style="color : rgba(255, 255, 255, 0.8);">
-                                Tidak ada diskusi
-                            </td>
-                        </tr>
-
-                        <tr id="forum_tabel_lesson4">
-                            <td style="width:10px; color : rgba(255, 255, 255, 0.8);">
-                                4.
-                            </td>
-                            <td style="width:200px; text-align:left; color : rgba(255, 255, 255, 0.8);">
-                                Lesson 04
-                            </td>
-                            <td style="color : rgba(255, 255, 255, 0.8);">
-                                Tidak ada diskusi
-                            </td>
-                        </tr>
-                    </thead>
-                </table>
-            </div>      
-        </div>
-    </div>
-</div>          
+<?php endforeach; ?>         
 </main>

@@ -84,7 +84,7 @@ class Lesson extends CI_Controller {
         $crs_id = M_Course_Lesson::where('lsn_id',$lesen['lsn_id'])->first(['crs_id']);
         // dd($crs_id->crs_id);
 
-        $update = $this->M_Course_Lesson->update($lesen);
+        $update = $this->M_Course_Lesson->update_lesson($lesen);
 
         if($update)
         {
