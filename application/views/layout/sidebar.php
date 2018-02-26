@@ -11,7 +11,7 @@
             <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
                 for="demo-menu-lower-left">
                 <a href="<?php echo site_url('siswa/course')?> "><li class="mdl-menu__item" >Course</li></a>
-                <a href="<?php echo site_url('siswa/mycourse')?> "><li class="mdl-menu__item ">My Course</li></a>
+                <a href="<?php echo site_url('siswa/my_course')?> "><li class="mdl-menu__item ">My Course</li></a>
 
             </ul>
             <a class="mdl-navigation__link" href="<?php echo site_url('siswa/forum_siswa')?> ">
