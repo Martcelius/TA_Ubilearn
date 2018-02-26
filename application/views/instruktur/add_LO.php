@@ -24,6 +24,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Course</label>
+                            <div class="col-sm-10">
+                                <select id="inputlessonforum" class="form-control" name="lsn_id" required>
+                                    <option disabled="disabled" selected value="">--Pilih Course--</option>
+                                    <?php foreach ($dataLesson as $lesson):?>
+                                        <option value="<?php echo $lesson->lsn_id?>"><?php echo $lesson->lsn_name?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
                             </div>
