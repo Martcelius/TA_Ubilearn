@@ -15,6 +15,12 @@ class M_Course_Lesson extends Eloquent
         return $this->belongsTo('M_Course', 'crs_id');
     }
 
+    public function selectBy($colName,$value)
+    {   
+        $data = M_Course_Lesson::where($colName,$value)->get();
+        return $data;
+    }
+
     // public function insert($data)
     // {
     //     $lesen = new M_Course_Lesson;

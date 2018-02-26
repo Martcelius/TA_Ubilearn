@@ -23,6 +23,11 @@ class M_Course_Learning_Outcomes extends Eloquent
         $updatelo->loc_desc = $data['loc_desc'];
         return $updatelo ->save();
     }
+
+    public function selectBy($name_col,$id){
+        $data = M_Course_Learning_Outcomes::where($name,$id)->get();
+        return $data;
+    }
 }
 
 ?>
