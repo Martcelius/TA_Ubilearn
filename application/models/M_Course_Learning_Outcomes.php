@@ -14,6 +14,7 @@ class M_Course_Learning_Outcomes extends Eloquent
     {
         $lo = new M_Course_Learning_Outcomes;
         $lo->loc_desc = $data['loc_desc'];
+        $lo->crs_id = $data['crs_id'];
         return $lo ->save();
     }
 
@@ -21,6 +22,9 @@ class M_Course_Learning_Outcomes extends Eloquent
     {
         $updatelo = M_Course_Learning_Outcomes::where('loc_id',$data['id'])->first();
         $updatelo->loc_desc = $data['loc_desc'];
+        if($data['crs_id'] != NULL){
+            $updatelo->crs_id = $data['crs_id'];
+        }
         return $updatelo ->save();
     }
 }
