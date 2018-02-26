@@ -240,8 +240,6 @@ INSERT INTO `course_forum` (`cfr_id`, `cfr_title`, `cfr_desc`, `usr_id`, `lsn_id
 (1, 'Teori Tentang Klasifikasi', 'Bagaimanapun sedikitpun sama sekali euyyyyy', 3, 1),
 (2, 'Ngoding Klasifikasi', 'Injeksi bos', 3, 1),
 (3, 'Dolan GBLG', 'askjdfh kjasdhf kjasdhf jkhasdkjf hkajsdf ', 11, 2);
-(7, 'TEST FORUM', '<p>TEST FORUM</p>\r\n', 38, 8),
-(8, 'TEST FORUM 2', 'INJEKSI BOSQUQ', 38, 8);
 
 -- --------------------------------------------------------
 
@@ -266,8 +264,6 @@ CREATE TABLE `course_forum_thread` (
 INSERT INTO `course_forum_thread` (`cft_id`, `cft_title`, `cft_rated`, `cft_timecreated`, `cft_timemodified`, `cfr_id`, `usr_id`) VALUES
 (1, 'Injek Thread Forum #1', NULL, '2018-02-28 05:25:35', '2018-02-28 10:32:42', 3, 13),
 (2, 'Injek Thread Forum #2', NULL, '2018-02-28 05:25:35', '2018-02-28 10:32:42', 3, 13);
-(3, 'asdasdf', NULL, NULL, NULL, 7, 2),
-(4, 'sdfssdf', NULL, NULL, NULL, 8, 3);
 -- --------------------------------------------------------
 
 --
