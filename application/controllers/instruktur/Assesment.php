@@ -20,10 +20,9 @@ class Assesment extends CI_Controller {
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/tambah_assesment';
         $data['crs_id'] = $crs_id;
-        /*$mclo = new M_Course_Learning_Outcomes;
-        $listLO = $mclo->selectBy('');*/
-        $mcl = new M_Course_Lesson;
-        $data['listLsn'] = $mcl->selectBy('crs_id',$crs_id);
+        $mclo = new M_Course_Learning_Outcomes;
+        $listLo = $mclo->selectBy('crs_id',$crs_id);
+        $data['listLo'] = $listLo;
         $this->load->view('layout/master', $data);
         
     }
@@ -38,8 +37,11 @@ class Assesment extends CI_Controller {
         foreach($data['qst'] as $c){
         	$data['qst_ans'][$i] = $this->M_Course_Assesment_Question_Answer->select($c->qst_id);
         	$i++;	
-        }
+        };
         $data['jumSoal'] = $i;
+        $mclo = new M_Course_Learning_Outcomes;
+        $listLo = $mclo->selectBy('crs_id',$data['ass_obj']->crs_id);
+        $data['listLo'] = $listLo;
         $this->load->view('layout/master', $data);
     }
 
@@ -148,8 +150,6 @@ class Assesment extends CI_Controller {
 		$mca->ass_timeclose = $this->input->post('wselesai');
 		$mca->crs_id = $crs_id;
 		$mca->ass_tipe = $this->input->post('tipe');
-        $mca->lsn_id = $this->input->post('lsn_id');
-        /*dd($mca->lsn_id);*/
         $ass_id = $this->M_Course_Assesment->insert($mca);
         $jumSoal = $this->input->post('currNum');
         $i = 1;
@@ -162,6 +162,7 @@ class Assesment extends CI_Controller {
 
             $mcaq->qst_text = $soal;
             $mcaq->ass_id = $ass_id;
+            $mcaq->loc_id = $loc_id;
 
             $qst_id = $this->M_Course_Assesment_Question->insert($mcaq);
             //end insert soal
