@@ -71,7 +71,7 @@ class C_siswa extends CI_Controller {
 
     }
 
-    public function assesment_doing()
+    public function assesment_doing($id)
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assesment_doing';
