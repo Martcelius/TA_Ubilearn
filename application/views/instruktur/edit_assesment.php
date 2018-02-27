@@ -51,10 +51,19 @@
           <label class="control-label col-sm-2">Tipe Assesment :</label>
           <div class="col-sm-10">
           <select class="form-control" id="tipe" name="tipe">
-            <option>Kuis</option>
-            <option>Pre-test</option>
-            <option>Remedial</option>
-            <option>Exercise</option>
+          <?php 
+          $dtOpt = array('Kuis','Pre-test','Remedial','Exercise');
+          $ix = 0;
+          while($ix < 4){
+            if($dtOpt[$ix] == $ass_obj->ass_tipe){
+              $tipeSl = 'selected';
+            }else{
+              $tipeSl = '';
+            }
+            echo '<option '.$tipeSl.' >'.$dtOpt[$ix].'</option>';
+            $ix++;
+          } 
+          ?>
           </select>
           </div>
         </div> 
@@ -101,6 +110,22 @@
 			  
           <div class="col-md-12" id="s<?php echo $i+1 ?>">
           <hr/>
+          <div class="form-group">
+            <label class="control-label col-sm-2">Learning Outcomes :</label>
+            <div class="col-sm-10">
+            <select class="form-control" name="loc1" >
+              <?php 
+              foreach($listLo as $d){
+                if($d->loc_id == $c->loc_id){
+                  $sl = 'selected';
+                }else{
+                  $sl ='';
+                }
+                echo '<option '.$sl.' value="'.$d->loc_id.'" >'.$d->loc_desc.'</option>';
+              } ?>
+            </select>
+            </div>
+          </div>
           <!-- Hidden input ID -->
           <input type="text" hidden name="qst_id<?php echo $i+1 ?>" value="<?php echo $c->qst_id ?>">
           <!-- End Hidden -->
@@ -207,6 +232,17 @@
         text = `
         <div class="col-md-12" id="s`+currNum+`">
         <hr/>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Learning Outcomes :</label>
+            <div class="col-sm-10">
+            <select class="form-control" name="loc`+currNum+`" >
+              <?php 
+              foreach($listLo as $c){
+                echo '<option value="'.$c->loc_id.'" >'.$c->loc_desc.'</option>';
+              } ?>
+            </select>
+            </div>
+          </div> 
              <div class="form-group">
 						    <label class="control-label col-sm-2" id="lab`+currNum+`" >Soal No. `+currNum+` :
                   <hr/>
