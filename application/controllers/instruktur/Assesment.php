@@ -10,6 +10,8 @@ class Assesment extends CI_Controller {
         $this->load->model('M_Course_Assesment');
         $this->load->model('M_Course_Assesment_Question');
         $this->load->model('M_Course_Assesment_Question_Answer');
+        $this->load->model('M_Course_Learning_Outcomes');
+        $this->load->model('M_Course_Lesson');
         
     }
 
@@ -18,6 +20,10 @@ class Assesment extends CI_Controller {
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/tambah_assesment';
         $data['crs_id'] = $crs_id;
+        /*$mclo = new M_Course_Learning_Outcomes;
+        $listLO = $mclo->selectBy('');*/
+        $mcl = new M_Course_Lesson;
+        $data['listLsn'] = $mcl->selectBy('crs_id',$crs_id);
         $this->load->view('layout/master', $data);
         
     }
@@ -65,9 +71,10 @@ class Assesment extends CI_Controller {
             //Update Soal ke DB
         	$mcaq = new M_Course_Assesment_Question;
             $soal = $this->input->post('soal'.$i);
-
+            $loc_id = $this->input->post('loc'.$i);
             $mcaq->qst_text = $soal;
             $mcaq->ass_id = $ass_id;
+            $mcaq->loc_id = $loc_id;
             $qst_id = $this->input->post('qst_id'.$i);
             $qst_id = $this->M_Course_Assesment_Question->updates($mcaq,$qst_id);
             //end insert soal
@@ -141,6 +148,8 @@ class Assesment extends CI_Controller {
 		$mca->ass_timeclose = $this->input->post('wselesai');
 		$mca->crs_id = $crs_id;
 		$mca->ass_tipe = $this->input->post('tipe');
+        $mca->lsn_id = $this->input->post('lsn_id');
+        /*dd($mca->lsn_id);*/
         $ass_id = $this->M_Course_Assesment->insert($mca);
         $jumSoal = $this->input->post('currNum');
         $i = 1;
@@ -149,6 +158,7 @@ class Assesment extends CI_Controller {
             //Insert Soal ke DB
         	$mcaq = new M_Course_Assesment_Question;
             $soal = $this->input->post('soal'.$i);
+            $loc_id = $this->input->post('loc'.$i);
 
             $mcaq->qst_text = $soal;
             $mcaq->ass_id = $ass_id;

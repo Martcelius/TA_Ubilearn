@@ -34,6 +34,16 @@
 			      <input type="text" class="form-control" id="nama" name="nama" required placeholder="Masukkan Nama Assessment">
 			    </div>
 			  </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2">Pilih Lesson :</label>
+          <div class="col-sm-10">
+          <select class="form-control" name="lsn_id" >
+            <?php foreach($listLsn as $c){ ?>
+                <option value="<?php echo $c->lsn_id ?>" ><?php echo $c->lsn_name ?></option>
+            <?php } ?>
+          </select>
+          </div>
+        </div> 
          <div class="form-group">
           <label class="control-label col-sm-2">Tipe Assesment :</label>
           <div class="col-sm-10">
@@ -81,6 +91,18 @@
 			  </div>
 			  <div class="row" id="bodyRow">
           <div class="col-md-12" id="s1">
+          <hr/>
+          <div class="form-group">
+            <label class="control-label col-sm-2">Learning Outcomes :</label>
+            <div class="col-sm-10">
+            <select class="form-control" name="loc1" >
+              <option>MEngkalsikuk adwnkadk ksndian kawndknad akdnwk</option>
+              <option>Pre-test</option>
+              <option>Remedial</option>
+              <option>Exercise</option>
+            </select>
+            </div>
+          </div> 
           	<div class="form-group">
 						    <label class="control-label col-sm-2" id="lab1" >Soal No. 1 :
                   <hr/>

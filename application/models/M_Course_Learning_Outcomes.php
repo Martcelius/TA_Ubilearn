@@ -27,6 +27,11 @@ class M_Course_Learning_Outcomes extends Eloquent
         }
         return $updatelo ->save();
     }
+
+    public function selectBy($name_col,$id){
+        $data = M_Course_Learning_Outcomes::where($name,$id)->get();
+        return $data;
+    }
 }
 
 ?>
