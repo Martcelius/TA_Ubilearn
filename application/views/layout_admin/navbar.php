@@ -30,26 +30,31 @@
                     </span>
                 </li>
                 <li class="list__item--border-top"></li>
+                <a class="mdl-list__item-primary-content" href="<?php echo site_url('admin/akun_admin') ?>">
                 <li class="mdl-menu__item mdl-list__item">
-                    <a class="mdl-list__item-primary-content" href="akun_admin">
-                        <i class="material-icons mdl-list__item-icon">settings</i>
+                        <span class="mdl-list__item-primary-content">
+                            <i class="material-icons mdl-list__item-icon">settings</i>
                         Pengaturan
-                    </a>
+                        </span>
                 </li>
+                </a>
                 <li class="list__item--border-top"></li>
                 <a href="<?php if ($this->session->userdata('level')== 1) echo site_url('admin/password'); elseif ($this->session->userdata('level')== 2) echo site_url('siswa/password'); else echo site_url('instruktur/password'); ?>">
                     <li class="mdl-menu__item mdl-list__item">
                     <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">settings</i>
+                        <i class="material-icons mdl-list__item-icon">supervisor_account</i>
                         Ubah Password
                     </span>
                     </li></a>
+                <li class="list__item--border-top"></li>
+
+                <a href="<?php echo site_url('logout');?>">
+
                 <li class="mdl-menu__item mdl-list__item">
-                    <a href="<?php echo site_url('logout');?>">
                     <span class="mdl-list__item-primary-content">
                         <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
                         Log out
                     </span>
-                    </a>    
-                </li>
+
+                </li></a>
             </ul>

@@ -79,9 +79,10 @@ class Course extends CI_Controller {
 
     }
 
-    public function update($id)
+    public function update()
     {
-        $course_update = M_Course::find($id);
+        $course_update = M_Course::where('crs_id',$this->input->post('m-id-course'))
+                                    ->first();
         $course_update->crs_code = $_POST['m-kode-course'];
         $course_update->crs_name = $_POST['m-nama-course'];
         $course_update->crs_summary = $_POST['m-deskripsi-course'];

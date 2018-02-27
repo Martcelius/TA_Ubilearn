@@ -21,7 +21,17 @@ class Akun extends CI_Controller {
     }
 
     /* CRUD Course */
-  
+    public function akun_admin()
+    {
+        $data['content'] = 'admin/akun_admin';
+        $this->load->view('layout_admin/master', $data);
+    }
+    public function manage_password()
+    {
+        $data['sidebar'] = 'layout_admin/sidebar';
+        $data['content'] = 'admin/password';
+        $this->load->view('layout_admin/master', $data);
+    }
     
     public function update_user()
     {
@@ -61,9 +71,9 @@ class Akun extends CI_Controller {
             'lastname' =>$this->input->post('nama_belakang'),
             'gpa' =>empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk'),
             'foto' =>$userData['usr_picture'],
-            'jk' =>empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin'),
         );
         $this->session->set_userdata($user);
+//        dd($this->session->userdata('jk'));
         $update = $this->M_User->update_user_akun($userData,$usr_id);
         if($update)
         {
@@ -93,14 +103,20 @@ class Akun extends CI_Controller {
 
         if($update)
         {
+            $user= array(
+                'password' => md5($userData['new_password'])
+            );
+            $this->session->set_userdata($user);
+//            dd($user['password']);
             $this->session->set_flashdata('password_tersimpan', 'Password Berhasil Terbarui');
-            redirect('instruktur/dashboard');
+            redirect('admin/dashboard');
         }
         else {
+//            dd($update);
             $this->session->set_flashdata('password_gagal', 'Password Tidak Cocok atau Current Password Salah');
-            redirect('instruktur/password');
+            redirect('admin/password');
+//                dd($update);
         }
-
     }
 }
 

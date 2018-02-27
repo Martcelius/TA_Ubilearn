@@ -175,7 +175,7 @@
    </div>
 </main>
 
-<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 <script type="text/javascript">
         $('.form_datetime').datetimepicker({
         //language:  'fr',
@@ -198,7 +198,7 @@
       var i = 0;
       while(i < jumSlide){
         currNum++;
-        text = `
+        text = '
         <div class="col-md-12" id="s`+currNum+`">
         <hr/>
              <div class="form-group">

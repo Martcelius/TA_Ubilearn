@@ -194,7 +194,7 @@
                       </button>
                     </a>
                     <a href="<?php echo site_url('admin/delete_user/'.$user->usr_id);?>">
-                      <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin?');">
+                      <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin untuk menghapus?');">
                         <i class="material-icons">delete</i>
                       </button  >
                     </a>

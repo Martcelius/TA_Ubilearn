@@ -22,19 +22,6 @@ class C_admin extends CI_Controller {
 
     }
 
-    public function akun_admin()
-    {
-        $data['content'] = 'admin/akun_admin';
-        $this->load->view('layout_admin/master', $data);
-    }
-    public function manage_password()
-    {
-        $data['sidebar'] = 'layout_admin/sidebar';
-        $data['content'] = 'admin/password';
-        $this->load->view('layout_admin/master', $data);
-    }
-
-    
 
 
 }
