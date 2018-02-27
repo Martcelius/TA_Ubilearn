@@ -75,7 +75,7 @@ class Lesson extends CI_Controller {
         // $this->load->view('layout/master', $data);
 
         
-        redirect('instruktur/add_lesson/'.$lesen['crs_id'],'refresh');
+        redirect('instruktur/lesson/'.$lesen['crs_id'],'refresh');
         
     }
 
@@ -91,12 +91,13 @@ class Lesson extends CI_Controller {
     public function update_lesson()
     {
         $lesen['lsn_name'] = $this->input->post('lsn_name');
-        $lesen['lsn_intro'] = empty($this->input->post('lsn_intro')) ? NULL : $this->input->post('lsn_intro');
+        $lesen['lsn_intro'] = $this->input->post('lsn_intro');
+//        $lesen['lsn_intro'] = empty($this->input->post('lsn_intro')) ? NULL : $this->input->post('lsn_intro');
         $lesen['lsn_id'] = $this->input->post('lsn_id');
         $crs_id = M_Course_Lesson::where('lsn_id',$lesen['lsn_id'])->first(['crs_id']);
         // dd($crs_id->crs_id);
 
-        $update = $this->M_Course_Lesson->update($lesen);
+        $update = $this->M_Course_Lesson->update_lesson($lesen);
 
         if($update)
         {

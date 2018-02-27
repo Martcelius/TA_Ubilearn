@@ -13,16 +13,22 @@ class Assesment extends CI_Controller {
 
     }
 
-    public function index()
+    public function index($id)
     {
 
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assesment_info';
         $data['assesment']=  DB::table("course_assesment")
-            ->leftJoin("course_lesson","course_lesson.lsn_id","=","course_assesment.lsn_id")
-            ->where("ass_id","=", 1)
+            ->leftJoin("course","course.crs_id","=","course_assesment.crs_id")
+            ->where("ass_id","=", $id)
             ->first();
-//        dd($data['assesment']);
+
+
+        $data['course'] = DB::table("course")
+            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+            ->where("crs_id", '=',$data['assesment']->crs_id)
+            ->first();
+//        dd($data['course']);
         $this->load->view('layout/master', $data);
     }
 }
