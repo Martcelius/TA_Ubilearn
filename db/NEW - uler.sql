@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26 Feb 2018 pada 12.03
+-- Generation Time: 27 Feb 2018 pada 06.31
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -111,10 +111,9 @@ CREATE TABLE `course_assesment_questions_answer` (
 
 CREATE TABLE `course_assesment_questions_answer_of_student` (
   `ast_id` int(10) UNSIGNED NOT NULL,
-  `ast_text` varchar(500) DEFAULT NULL,
   `ast_point` decimal(12,7) DEFAULT NULL,
   `ass_id` int(10) UNSIGNED NOT NULL,
-  `qst_id` int(10) UNSIGNED NOT NULL,
+  `ans_id` int(10) UNSIGNED NOT NULL,
   `usr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -264,6 +263,7 @@ CREATE TABLE `course_forum_thread` (
 INSERT INTO `course_forum_thread` (`cft_id`, `cft_title`, `cft_rated`, `cft_timecreated`, `cft_timemodified`, `cfr_id`, `usr_id`) VALUES
 (1, 'Injek Thread Forum #1', NULL, '2018-02-28 05:25:35', '2018-02-28 10:32:42', 3, 13),
 (2, 'Injek Thread Forum #2', NULL, '2018-02-28 05:25:35', '2018-02-28 10:32:42', 3, 13);
+
 -- --------------------------------------------------------
 
 --
@@ -448,6 +448,23 @@ INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_username`, `usr_firstname`, `usr
 (35, NULL, 'arzuko', 'Arzuko', 'Mawa Golok', 'arzuko', NULL, NULL, NULL, NULL, NULL, '7', NULL, NULL),
 (36, NULL, 'gblg', 'Gblg', 'Anjg', 'gblg', NULL, NULL, NULL, NULL, NULL, '7', NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `usertracking`
+--
+
+CREATE TABLE `usertracking` (
+  `id` int(11) NOT NULL,
+  `session_id` varchar(100) DEFAULT NULL,
+  `user_identifier` varchar(255) DEFAULT NULL,
+  `request_uri` text,
+  `timestamp` varchar(20) DEFAULT NULL,
+  `client_ip` varchar(50) DEFAULT NULL,
+  `client_user_agent` text,
+  `referer_page` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --
@@ -489,7 +506,7 @@ ALTER TABLE `course_assesment_questions_answer`
 ALTER TABLE `course_assesment_questions_answer_of_student`
   ADD PRIMARY KEY (`ast_id`),
   ADD KEY `assesment_answerstudent_foreign` (`ass_id`),
-  ADD KEY `question_answerstudent_foreign` (`qst_id`),
+  ADD KEY `question_answerstudent_foreign` (`ans_id`),
   ADD KEY `users_answerstudent_foreign` (`usr_id`);
 
 --
@@ -601,6 +618,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `usr_kode` (`usr_kode`);
 
 --
+-- Indexes for table `usertracking`
+--
+ALTER TABLE `usertracking`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -705,6 +728,11 @@ ALTER TABLE `university`
 ALTER TABLE `users`
   MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
+-- AUTO_INCREMENT for table `usertracking`
+--
+ALTER TABLE `usertracking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
@@ -737,8 +765,8 @@ ALTER TABLE `course_assesment_questions_answer`
 -- Ketidakleluasaan untuk tabel `course_assesment_questions_answer_of_student`
 --
 ALTER TABLE `course_assesment_questions_answer_of_student`
+  ADD CONSTRAINT `answer_answerstudent_foreign` FOREIGN KEY (`ans_id`) REFERENCES `course_assesment_questions_answer` (`ans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `assesment_answerstudent_foreign` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `question_answerstudent_foreign` FOREIGN KEY (`qst_id`) REFERENCES `course_assesment_question` (`qst_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `users_answerstudent_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
