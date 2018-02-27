@@ -25,7 +25,7 @@ class M_Course_Lesson extends Eloquent
          return $lesen->save();
      }
 
-     public function update($data)
+     public function update_lesson($data)
      {
          $updateLesen = M_Course_Lesson::where('lsn_id',$data['lsn_id'])->first();
          $updateLesen->lsn_name = $data['lsn_name'];
