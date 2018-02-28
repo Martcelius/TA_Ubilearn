@@ -21,22 +21,22 @@ class Forum extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/forum_siswa';
-        $data['coursetake']=  DB::table("course_enrol")
-                            ->leftJoin("course","course.crs_id","=","course_enrol.crs_id")
+        $data['coursetake']=  DB::table("course_enrol_detail")
+                            ->leftJoin("course","course.crs_id","=","course_enrol_detail.crs_id")
                             ->leftJoin("users","users.usr_id","=","course.usr_id")
                             ->where('course_enrol.usr_id',$this->session->userdata('id'))
                             ->get();
                             //dd($data['coursetake']);
 
-        $data['lessondata'] = DB::table("course_enrol")
-                            ->leftJoin("course","course.crs_id","=","course_enrol.crs_id")
+        $data['lessondata'] = DB::table("course_enrol_detail")
+                            ->leftJoin("course","course.crs_id","=","course_enrol_detail.crs_id")
                             ->leftJoin("course_lesson","course_lesson.crs_id","=","course.crs_id")
                             ->where('course_enrol.usr_id',$this->session->userdata('id'))
                             ->get();
                             //dd($data['lessondata']);
 
-        $data['listforumlesson'] = DB::table("course_enrol")
-                            ->leftJoin("course","course.crs_id","=","course_enrol.crs_id")
+        $data['listforumlesson'] = DB::table("course_enrol_detail")
+                            ->leftJoin("course","course.crs_id","=","course_enrol_detail.crs_id")
                             ->leftJoin("course_lesson","course_lesson.crs_id","=","course.crs_id")
                             ->leftJoin("course_forum","course_forum.lsn_id","=","course_lesson.lsn_id")
                             ->where('course_enrol.usr_id',$this->session->userdata('id'))
