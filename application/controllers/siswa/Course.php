@@ -13,6 +13,8 @@ class Course extends CI_Controller {
         $this->load->model('M_Course_Enrol');
         $this->load->model('M_Course_Assesment');
         $this->load->model('M_Course_Assesment_Question');
+
+        $this->load->library('usertracking'); $this->usertracking->track_this();
     }
 
      public function index()

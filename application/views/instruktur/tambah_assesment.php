@@ -81,6 +81,18 @@
 			  </div>
 			  <div class="row" id="bodyRow">
           <div class="col-md-12" id="s1">
+          <hr/>
+          <div class="form-group">
+            <label class="control-label col-sm-2">Learning Outcomes :</label>
+            <div class="col-sm-10">
+            <select class="form-control" name="loc1" >
+              <?php 
+              foreach($listLo as $c){
+                echo '<option value="'.$c->loc_id.'" >'.$c->loc_desc.'</option>';
+              } ?>
+            </select>
+            </div>
+          </div> 
           	<div class="form-group">
 						    <label class="control-label col-sm-2" id="lab1" >Soal No. 1 :
                   <hr/>
@@ -96,54 +108,54 @@
 						      <textarea type="text" class="form-control" rows="5" name="soal1"></textarea>
 						    </div>
 						  </div>
-                          <span class="form-horizontal"> 
-                          <div class="form-group">      
-                            <label class="col-sm-2"></label>
-                            <div class="col-sm-10" sty>
-                                <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="0" checked name="opt1">
-                                  <div class="col-sm-10">
-                                  	<input type="text" name="A1" class="form-control" style="width:580px;" placeholder="Pilihan Jawaban A">
-                                  </div>
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="1" name="opt1">
-                                  <div class="col-sm-10">
-                                  	<input type="text" name="B1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban B">
-                                  	</div>
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="2" name="opt1">
-                                  <div class="col-sm-10">
-                                  	<input type="text" name="C1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban C">
-                                  </div>
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="3" name="opt1">
-                                  <div class="col-sm-10">
-                                  	<input type="text" name="D1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban D">
-                                  </div>
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label style="display: inline-flex;"><input type="radio" value="4" name="opt1">
-                                  <div class="col-sm-10">	
-                                  	<input type="text" name="E1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban E">
-                                  </div>
-                                  </label>
-                                </div>
-                            </div>
-                          </div>
-                          </span>
-                    </div>
+                <span class="form-horizontal"> 
+                <div class="form-group">      
+                  <label class="col-sm-2"></label>
+                  <div class="col-sm-10" sty>
+                      <div class="radio">
+                        <label style="display: inline-flex;"><input type="radio" value="0" checked name="opt1">
+                        <div class="col-sm-10">
+                        	<input type="text" name="A1" class="form-control" style="width:580px;" placeholder="Pilihan Jawaban A">
+                        </div>
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label style="display: inline-flex;"><input type="radio" value="1" name="opt1">
+                        <div class="col-sm-10">
+                        	<input type="text" name="B1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban B">
+                        	</div>
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label style="display: inline-flex;"><input type="radio" value="2" name="opt1">
+                        <div class="col-sm-10">
+                        	<input type="text" name="C1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban C">
+                        </div>
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label style="display: inline-flex;"><input type="radio" value="3" name="opt1">
+                        <div class="col-sm-10">
+                        	<input type="text" name="D1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban D">
+                        </div>
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label style="display: inline-flex;"><input type="radio" value="4" name="opt1">
+                        <div class="col-sm-10">	
+                        	<input type="text" name="E1" class="form-control" style="width: 580px" placeholder="Pilihan Jawaban E">
+                        </div>
+                        </label>
+                      </div>
                   </div>
+                </div>
+                </span>
+          </div>
+        </div>
                     
 			  <div class="form-group pull-right"> 
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+			      <button type="submit" class="btn btn-lg btn-primary" onclick="return cek()">Submit</button>
 			    </div>
 			  </div>
 			</form>
@@ -176,9 +188,20 @@
       var i = 0;
       while(i < jumSlide){
         currNum++;
-        text = '
+        text =` 
         <div class="col-md-12" id="s`+currNum+`">
         <hr/>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Learning Outcomes :</label>
+            <div class="col-sm-10">
+            <select class="form-control" name="loc`+currNum+`" >
+              <?php 
+              foreach($listLo as $c){
+                echo '<option value="'.$c->loc_id.'" >'.$c->loc_desc.'</option>';
+              } ?>
+            </select>
+            </div>
+          </div> 
              <div class="form-group">
 						    <label class="control-label col-sm-2" id="lab`+currNum+`" >Soal No. `+currNum+` :
                   <hr/>
@@ -284,6 +307,19 @@
     else{
       //Do Nothing
     }
+  }
+
+  function cek(){
+    /*var i = 1;
+    var temp;
+    while(i <= currNum){
+      temp[i-1] = $('input[name="poin'+i+'"]').val();
+      i++;
+    }*/
+    return false;
+    alert('aa');
+    
+
   }
 
 </script>  

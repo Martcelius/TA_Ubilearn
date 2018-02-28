@@ -42,10 +42,10 @@
                             <input name="cnt_type" type="text" class="form-control" id="inputtext3" placeholder="Tipe Content">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputtext3" class="col-sm-2 control-label">Sumber Content</label>
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label">Attachment</label>
                             <div class="col-sm-10">
-                            <textarea name="cnt_source" class="form-control" id="inputtext3" placeholder="Sumber Content"></textarea>
+                                <input type="file" name="content">
                             </div>
                         </div>
                         <div class="form-group">

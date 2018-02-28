@@ -12,6 +12,8 @@ class Akun extends CI_Controller {
         parent::__construct();
         
         $this->load->model('M_User');
+
+        $this->load->library('usertracking'); $this->usertracking->track_this();
         
     }
     
