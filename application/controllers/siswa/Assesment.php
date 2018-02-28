@@ -11,6 +11,10 @@ class Assesment extends CI_Controller {
 
         $this->load->model('M_Course');
 
+        $this->load->library('usertracking'); $this->usertracking->track_this();
+
+
+
     }
 
     public function index()
