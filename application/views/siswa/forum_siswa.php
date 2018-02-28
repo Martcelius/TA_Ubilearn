@@ -48,12 +48,12 @@
                             </tr>
 
                             <?php
-                                $counttab1 = 1; 
+                                $num = 1; 
                                 foreach ($lessondata as $lessoncourse): ?>
                                 
                                 <tr id="forum_tabel_lesson1">
                                     <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
-                                        <?php echo $counttab1++; ?>
+                                        <?php echo $num; ?>
                                     </td>
                                     <td style="width:200px; text-align:left;color : rgba(255, 255, 255, 0.8);">
                                         <?php echo $lessoncourse->lsn_name ?>
@@ -82,9 +82,9 @@
                                                         </th>
                                                     </tr>
 
-                                                    <?php
-                                                        $counttab2 = 1;
-                                                        foreach ($listforumlesson as $listforum):?>
+                                                <?php
+                                                    $counttab2 = 1;
+                                                    foreach ($listforumlesson as $listforum):?>
                                                     <tr>
                                                         <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
                                                             <?php echo $counttab2++ ?>
@@ -99,7 +99,7 @@
                                                             5
                                                         </td>
                                                         <td style="text-align : center; color : rgba(255, 255, 255, 0.8);">
-                                                            100
+                                                            <?php echo $jumlah[$num];?>
                                                         </td>
                                                         <td style="text-align : center">
                                                             <a href="<?php echo site_url('siswa/list_thread_siswa')?>">
@@ -112,6 +112,7 @@
                                         </table>
                                     </td>
                                 </tr>
+                                <?php $num++ ?>
                             <?php endforeach; ?>
                         </thead>
                     </table>
