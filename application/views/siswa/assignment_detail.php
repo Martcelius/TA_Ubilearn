@@ -41,7 +41,6 @@
                                 <br>Nama file harus: "(NIM) (Nama) Tugas Menulis 2"
                         </div>
                     </div>
-<<<<<<< HEAD
             <div class="form__action">
             <input type='file' onchange="readURL(this);" />
         <button id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">

@@ -82,14 +82,13 @@ $route['siswa/assignment_opening'] = 'C_siswa/assignment_opening';
 $route['siswa/assignment_detail'] = 'C_siswa/assignment_detail';
 
 //assignment
-$route['siswa/assesment_info'] = 'siswa/assesment/index';
-$route['siswa/assesment_doing'] = 'C_siswa/assesment_doing';
-
+$route['siswa/assesment_doing/(:any)'] = 'siswa/assesment/assesment_doing/$1';
+$route['siswa/assesment_info/(:any)'] = 'siswa/assesment/index/$1';
 //exercise
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 
 //result assesment/exercise
-$route['siswa/result'] = 'C_siswa/result';
+$route['siswa/result/(:any)'] = 'C_siswa/result/$1';
 
 $route['siswa/pretest'] = 'C_siswa/pretest';
 $route['siswa/remedial'] = 'C_siswa/remedial';
@@ -130,6 +129,15 @@ $route['instruktur/lesson/(:any)'] = 'instruktur/lesson/index/$1';
 $route['instruktur/add_lesson/(:any)'] = 'instruktur/lesson/add/$1';
 $route['instruktur/insert_lesson'] = 'instruktur/lesson/insert_lesson';
 $route['instruktur/edit_lesson/(:any)'] = 'instruktur/lesson/edit/$1';
+
+
+$route['instruktur/learning_outcome'] = 'C_instruktur/learning_outcome';
+$route['instruktur/add_lo'] = 'C_instruktur/add_lo';
+$route['instruktur/detail_lesson'] = 'C_instruktur/detail_lesson';
+$route['instruktur/add_assesment/(:any)'] = 'instruktur/Assesment/add_assesment/$1';
+$route['instruktur/edit_assesment/(:any)'] = 'instruktur/Assesment/edit_assesment/$1';
+$route['instruktur/delete_assesment/(:any)'] = 'instruktur/Assesment/delete_assesment/$1';
+
 $route['instruktur/update_lesson'] = 'instruktur/lesson/update_lesson';
 $route['instruktur/delete_lesson/(:any)'] = 'instruktur/lesson/delete_lesson/$1';
 
@@ -145,7 +153,14 @@ $route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
 $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';*/
 //$route['instruktur/content'] = 'C_instruktur/content';
 //$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
+
+$route['instruktur/list_thread'] = 'C_instruktur/list_thread';
+
+$route['instruktur/update_lesson'] = 'instruktur/lesson/update_lesson';
+$route['instruktur/delete_lesson/(:any)'] = 'instruktur/lesson/delete_lesson/$1';
+
 //$route['instruktur/list_thread'] = 'C_instruktur/list_thread';
+
 
 // route instruktor-LO
 $route['instruktur/learning_outcome'] = 'instruktur/learning_outcome/index';
@@ -185,6 +200,8 @@ $route['instruktur/update_forum'] = 'instruktur/forum/update_forum';
 $route['instruktur/delete_forum/(:any)/(:any)'] = 'instruktur/forum/delete_forum/$1/$2';
 $route['instruktur/list_thread_instruktur/(:any)'] = 'instruktur/thread/list_thread_instruktur/$1';
 // route instruktur-result siswa
+
+
 $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 
 

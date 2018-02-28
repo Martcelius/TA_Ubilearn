@@ -1,15 +1,10 @@
 <main class="mdl-layout__content">
-<div class="col-sm-10 cover-main">
+<div class="col-sm-11 cover-main">
     <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div>
-                    <h2 style="color:white">Library</h2>
-                    <h3 style="color:white">Browse Lessons</h3>
-                </div>
-                <div>
-                    <P style="color: white">
-                        <b>Learning Goals </b><sub style="color:#44efe2">(What do you want to learn ?)</sub>
-                    </P>
+                    <h2 style="color:white"><?php echo $course->crs_name?></h2>
+                    <h3 style="color:white"><?php echo $course->usr_kode?></h3>
                 </div>
             </div>
     </div>
@@ -23,7 +18,9 @@
                         <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
-                                <h4>ICON</h4>
+                                <div id="icon">
+                                    <img src="<?php echo base_url();?>res/assets/images/lesson.png">
+                                </div>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
                                 <h2 class="mdl-card__title-text">Lesson Content</h2><hr style="color: white" />
@@ -59,7 +56,9 @@
                         <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo2"><i class="fa fa-bars"></i></button>
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
-                                <h4>ICON</h4>
+                                <div id="icon">
+                                    <img src="<?php echo base_url();?>res/assets/images/assesment.png">
+                                </div>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
                                 <h2 class="mdl-card__title-text">Assesment</h2><hr style="color: white" />
@@ -78,9 +77,9 @@
                                         <span class="mdl-list__item-primary-content">
                                             <span style="margin-right: 25px;"><?php echo $num++?> </span>
                                             <i class="material-icons mdl-list__item-icon mdl-badge mdl-badge--overlap" data-badge="<?php echo $jumSoal[$i] ?>" title="Jumlah Soal" >description</i>
-                                            <a href="" style="color: white;"><?php echo $ass->ass_tipe.' - '.$ass->ass_name ?></a>
+                                            <a href="<?php echo site_url('siswa/assesment_info/'.$ass->ass_id)?>" style="color: white;"><?php echo $ass->ass_tipe.' - '.$ass->ass_name ?></a>
                                         </span>
-                                  <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                        <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                   </li>
                                   <?php $i++; endforeach; ?>
                               </ul>
@@ -97,7 +96,9 @@
                         <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo3"><i class="fa fa-bars"></i></button>
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--1-col">
-                                <h4>ICON</h4>
+                                <div id="icon">
+                                    <img src="<?php echo base_url();?>res/assets/images/assignment.png">
+                                </div>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
                                 <h2 class="mdl-card__title-text">Assignment</h2><hr style="color: white" />
