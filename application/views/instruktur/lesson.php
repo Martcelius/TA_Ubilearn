@@ -64,6 +64,11 @@
                     </div>
                     <div id="demo" class="collapse">
                         <div class="mdl-card__supporting-text">
+
+                        <?php $num= 1;
+                        if ($datalesen) : ?>
+                            <?php foreach ($datalesen as $lesen) : ?>
+
                             <ul class="demo-list-icon mdl-list">
                                 <?php 
                                 $num= 1;
@@ -128,6 +133,11 @@
                     </div>
                     <div id="demo2" class="collapse">
                         <div class="mdl-card__supporting-text">
+
+                        <?php $num= 1;
+                        $i = 0;
+                        if ($listAss) : ?>
+                            <?php foreach ($listAss as $ass) : ?>
                             <ul class="demo-list-icon mdl-list">
                                 <?php 
                                 $num= 1;
@@ -164,7 +174,7 @@
                 <div class="mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title" style="display: block">
                         <div>
-                            <a href="add_assignment">
+                            <a href="<?php echo site_url('instruktur/add_assignment/'.$id)?>">
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                                     Tambah
                                 </button>
@@ -184,53 +194,42 @@
                         </div>
                     </div>
                     <div id="demo3" class="collapse">
-                        <div class="mdl-card__supporting-text">
-
+                    <div class="mdl-card__supporting-text">
+                    <?php $num= 1;
+                        if ($dataasing) : ?>
+                            <?php foreach ($dataasing as $asing) : ?>
                             <ul class="demo-list-icon mdl-list">
                                 <li class="mdl-list__item">
                                       <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">1. </span>
+                                          <span style="margin-right: 25px;"><?php echo $num++?> </span>
                                           <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Intro</a>
+                                          <?php echo 'Materi - '.$asing->asg_name ?>
                                   </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">TEXT</b>
-                                </li>
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">2. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="<?php echo site_url('siswa/assignment_opening')?>">Project Manager</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li>
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">3. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Software Development Life Cycle</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li>
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">4. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Project Stuff</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
-                                </li>
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;">5. </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <a href="">Another porject stuff</a>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">VIDEO</b>
+                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">
+                                    <a href="<?php echo site_url('instruktur/content/'.$asing->asg_id)?>">
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                                        <i class="material-icons">add</i>
+                                        Masuk
+                                        </button>
+                                    </a>
+                                    <a href="<?php echo site_url('instruktur/edit_assignment/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                                        <i class="material-icons">drafts</i>
+                                        Edit
+                                        </button>
+                                    </a>
+                                    <a href="<?php echo site_url('instruktur/delete_lesson/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
+                                        <i class="material-icons">delete</i>
+                                        Hapus
+                                        </button>
+                                    </a>
+                                    </b>
                                 </li>
                             </ul>
-
-                        </div>
+                        <?php endforeach; ?>
+                        <?php else : ?>
+                        <?php endif;?>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

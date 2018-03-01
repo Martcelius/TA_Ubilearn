@@ -125,12 +125,12 @@ class C_instruktur extends CI_Controller {
         
     }
 
-    public function add_assignment()
-    {
-        $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/add_assignment';
-        $this->load->view('layout/master', $data);
-    }
+    //public function add_assignment()
+    //{
+      //  $data['sidebar'] = 'layout/sidebar_instruktur';
+        //$data['content'] = 'instruktur/add_assignment';
+        //$this->load->view('layout/master', $data);
+    //}
 
 
     public function result_siswa()
