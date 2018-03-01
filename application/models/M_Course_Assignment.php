@@ -10,6 +10,7 @@ class M_Course_Assignment extends Eloquent
     const UPDATED_AT = 'asg_timemodified';
     protected $primaryKey = 'asg_id';
 
+
     public function course()
     {
         return $this->belongsTo('M_Course', 'crs_id');

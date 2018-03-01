@@ -2,11 +2,14 @@
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <div class="">
-            <div class="">
-                <h2 class="" style="color: white;">Assessment Result </h2>
-            </div>
-        </div>
+        <<div class="">
+              <div class="">
+                  <h2 style="color:white"><?php echo $course->crs_name?></h2>
+                  <h3 style="color:white"><?php echo $assesment->ass_name;?></h3>
+                  <p class="glyphicon glyphicon-file" style="color: white;"> Dibuat Oleh : <?php echo $course->usr_firstname." ".$course->usr_lastname." pada tanggal ".$assesment->ass_timecreated?></p>
+
+              </div>
+          </div>
       </div>
     </div>
 

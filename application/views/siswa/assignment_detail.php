@@ -3,95 +3,85 @@
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div class="">
                 <div class="">
-                    <h3 style="color:white; text-align:center;">Manajemen Proyek TIK</h3>
+                    <h2 style="color:white; text-align:center;"><?php echo $course->crs_name?></h2>
                     <div style="text-align:center">
-                        <img src="<?php echo base_url();?>/res/assets/images/Icon_header.png" alt="">
-                        <span style="color:white;">Nungki Selviandro</span>
-                        <p style="color:white;">Januari 29, 2018</p>
+                        <img src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $course->usr_picture;?>" class="material-icons mdl-list__item-avatar" style="width: 100px; height: 100px;">
+                        <h3 style="color:white;"><?php echo $course->usr_firstname." ".$course->usr_lastname?></h3>
+                        <p style="color:white;"><?php $converted = date('d M Y h.i.s A', strtotime($assignment->asg_timecreated));
+                            $reversed = date('Y-m-d', strtotime($converted));
+                            echo $reversed;
+                        ?>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="mdl-grid">
+        <?php if ($this->session->flashdata('on_time') == TRUE): ?>
+            <div role="alert"  class="alert alert-warning alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo '<strong>'.$this->session->flashdata('on_time').'</strong>'?></p>
+            </div>
+
+        <?php elseif ($this->session->flashdata('out_time') == TRUE): ?>
+            <div role="alert"  class="alert alert-danger alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo '<strong>'.$this->session->flashdata('out_time').'</strong>'?></p>
+            </div>
+        <?php elseif ($this->session->flashdata('done') == TRUE): ?>
+            <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo '<strong>'.$this->session->flashdata('done').'</strong>'?></p>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('submit') == TRUE): ?>
+            <div role="alert"  class="alert alert-danger alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo '<strong>'.$this->session->flashdata('submit').'</strong>'?></p>
+            </div>
+        <?php endif; ?>
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__title" style="display:block;">
-                    <h2 class="mdl-card__title-text">Nungki Selviandro</h2>
-                    <div class="mdl-card__subtitle-text">Dec 12,2016</div>
+                    <h2 class="mdl-card__title-text"><?php echo $assignment->asg_name;?></h2>
                 </div>
-                <div class="mdl-card__supporting-text">
-                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--9-col-tablet mdl-cell--2-col-phone" >
-                        <p>Due Dec 19,2016, 2.95PM</p>
-                        <p>
-                            1.Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur harum modi hic blanditiis mollitia, consequuntur, eligendi distinctio ullam ratione eius voluptas aliquid nesciunt qui. Ea ullam eos possimus voluptate tempora.
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum nesciunt officia, debitis in vel accusantium officiis itaque? Obcaecati, voluptas. Veniam consectetur aperiam ut illum quae laudantium? Hic ea voluptatem asperiores.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nostrum voluptate nesciunt commodi? Dignissimos, nisi veritatis. Harum earum nulla quas itaque ipsa, cupiditate ex expedita commodi, consectetur omnis vitae.
-                        </p>
-                        <p>
-                            2.Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur harum modi hic blanditiis mollitia, consequuntur, eligendi distinctio ullam ratione eius voluptas aliquid nesciunt qui. Ea ullam eos possimus voluptate tempora.
-                        </p>
-                        <p>
-                            3.Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur harum modi hic blanditiis mollitia, consequuntur, eligendi distinctio ullam ratione eius voluptas aliquid nesciunt qui. Ea ullam eos possimus voluptate tempora.
-                        </p>
-                        <hr>
-                        <div>
-                            <p style="color:white">Diupload ke Google Classroom. Upload hanya sekali (satu file saja).
-                                <br>File harus dalam format PDF.
-                                <br>Nama file harus: "(NIM) (Nama) Tugas Menulis 2"
-                        </div>
-                    </div>
-            <div class="form__action">
-            <input type='file' onchange="readURL(this);" />
-        <button id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-            Submit
-        </button>
-    </div>
-        </div>
-        </div>
-        <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--3-offset-tablet mdl-cell--12-col-phone">
-        <form role="form" method="POST" action="#." style="width: 100%">
-            <div>
-            <textarea id="textarea-char-counter" name="isi_forum" class="mdl-textfield_input" ></textarea></textarea>
-            </div>
-            <input type="text" id="form1" class="form-control" value="bagi" name="kategori" hidden>
-            <input type="text" id="form1" class="form-control" value="{{Auth::user()->id}}" name="id_user" hidden>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="form-horizontal" action="<?php echo site_url('siswa/assignment/upload_assignment/'.$assignment->asg_id); ?>" method="post" enctype="multipart/form-data">
+                            <div class="mdl-card__supporting-text">
+                                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--9-col-tablet mdl-cell--2-col-phone" >
+                                    <p>Batas Pengumpulan : <?php echo $newDateTime = date('d-M-y h:i A', strtotime($assignment->asg_duedate));?></p>
+                                    <p>
+                                        <?php echo $assignment->asg_text;?>
+                                    </p>
+                                    <hr>
+                                    <div>
+                                        <input type='file' class="input-file" name='asg_attachment' onchange="readURL(this);" required/>
+                                    </div>
+                                    <div class="form__action">
+                                        <button id="submit_button" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" style="width: 100px">
+                                            UPLOAD
+                                        </button>
+                                    </div>
+                                </div>
 
-            <!--Yellow-->
-            <input class="btn btn-cyan" type="submit" value="Sumbit">
-                              <!-- <
-                            <hr>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius totam, officiis doloremque
-                                velit nobis dolor nulla unde architecto alias praesentium, soluta error omnis sint, impedit,
-                                delectus ipsam eveniet debitis nemo.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius totam, officiis doloremque
-                                velit nobis dolor nulla unde architecto alias praesentium, soluta error omnis sint, impedit,
-                                delectus ipsam eveniet debitis nemo.</p>
-=======
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="file" style="color:white; padding: 9px" onchange="readURL(this);">
                             </div>
-                            <img src="https://thumbs.dreamstime.com/b/flat-download-upload-icon-vector-load-symbol-illustration-button-background-49638971.jpg" style="width: 170px; height: 170px" class="img-responsive img-thumbnail" style="margin: 4px;" id="blah">
-                        </div>
-                        <div class="col-sm-8">
-                            <a href="#" style="float: right;">
-                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-                                    Selesai
-                                </button>
-                            </a>
->>>>>>> 85dc8150b3cf93e4abb84467d329df91d40e0779
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="form__action">
-<!--        injeksi komentar-->
-    </div>
+<!--    <div class="col-md-2 hidden-xs">-->
+<!--        <img src="--><?php //echo base_url();?><!--res/assets/images/uploads/avatar_default.jpg" class="img-responsive img-thumbnail" id="blah">            </div>-->
+<!--    </div>-->
+
 </main>
 <script>
     function readURL(input) {
