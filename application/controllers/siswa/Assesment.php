@@ -114,6 +114,16 @@ class Assesment extends CI_Controller {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/result';
 
+        $data['assesment']=  DB::table("course_assesment")
+            ->leftJoin("course","course.crs_id","=","course_assesment.crs_id")
+            ->where("ass_id","=", $ass_id)
+            ->first();
+
+        $data['course'] = DB::table("course")
+            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+            ->where("crs_id", '=',$data['assesment']->crs_id)
+            ->first();
+
         $data['ass_obj'] = $this->M_Course_Assesment->select($ass_id);
         $data['list_qst'] = $this->M_Course_Assesment_Question->select($ass_id);
         $i = 0;
