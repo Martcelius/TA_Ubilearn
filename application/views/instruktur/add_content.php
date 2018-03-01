@@ -49,6 +49,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputtext3" class="col-sm-2 control-label">Source Video</label>
+                            <div class="col-sm-10">
+                                <input name="cnt_type" type="text" class="form-control" id="inputtext3" placeholder="Tipe Content">
+                                <span>*Isi bila source pembelajaran berupa link video</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-2 control-label">Learning Outcome</label>
                             <div class="col-sm-10">
                             <select name="loc_id" class="form-control">
