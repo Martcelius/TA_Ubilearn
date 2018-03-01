@@ -20,6 +20,7 @@ class Lesson extends CI_Controller {
     {
         $data['datalesen'] = M_Course_Lesson::where('crs_id', $id)->get();
 //        dd($data['datalesen']);
+$data['dataasing'] = M_Course_Assignment::where('crs_id', $id)->get();
         $data['jumlah'] = $data['datalesen']->count();
         $data['dataInstruktur'] = DB::table('course')
             ->leftJoin('users','users.usr_id','=','course.usr_id')
@@ -123,6 +124,5 @@ class Lesson extends CI_Controller {
             
         redirect('instruktur/lesson/'.$deleteLesson->crs_id);
     }
-
     
 }
