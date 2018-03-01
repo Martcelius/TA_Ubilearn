@@ -22,7 +22,7 @@
                                 </span>
                                 <div class="mdl-layout-spacer"></div>
                                 <b class="mdl-list__item-secondary-action" style="margin-right:50px">test</b>
-                                <a href="">
+                                <a href="<?php echo site_url('siswa/content/')?>">
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                                         <i class="material-icons">add</i>
                                         Masuk
