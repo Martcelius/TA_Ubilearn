@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Feb 2018 pada 06.31
+-- Generation Time: 28 Feb 2018 pada 05.58
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -52,7 +52,8 @@ INSERT INTO `course` (`crs_id`, `crs_code`, `crs_name`, `crs_summary`, `crs_univ
 (7, 'Polisu23', 'Polisi Lalu Lintas', 'Mempolisikan Diri', 'Polisi Bandung', '2018-02-01 01:04:33', '2018-02-01 01:04:33', 1, 3),
 (8, 'Merdi22', 'Merda Merdi', 'Merda aklsdfj iawefq jafj asdklf jawioef j', 'Univvean', '2018-02-01 01:04:55', '2018-02-01 01:04:55', 1, 3),
 (9, 'JJK99', 'Penambangan Teks', 'Teksmin aip aip aip aip aip aip aip kasep', 'Universitas Aip Club', '2018-02-01 01:05:33', '2018-02-01 01:05:33', 1, 3),
-(10, 'AIP22', 'Penambangan Data', 'Damin aip aip aip aip aip aip aip kasep', 'Universitas Aip Club', '2018-02-01 01:05:48', '2018-02-01 01:05:48', 1, 3);
+(10, 'AIP22', 'Penambangan Data', 'Damin aip aip aip aip aip aip aip kasep', 'Universitas Aip Club', '2018-02-01 01:05:48', '2018-02-01 01:05:48', 1, 3),
+(11, 'ADD', 'Stupid Mana', 'lasdfklasjdflkasjdflk', 'Kon sama', '2018-02-26 23:53:50', '2018-02-26 23:53:50', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -128,6 +129,7 @@ CREATE TABLE `course_assignment` (
   `asg_name` varchar(50) NOT NULL,
   `asg_text` varchar(500) NOT NULL,
   `asg_attachment` varchar(500) DEFAULT NULL,
+  `asg_duedate` datetime DEFAULT NULL,
   `asg_timecreated` timestamp NULL DEFAULT NULL,
   `asg_timemodified` timestamp NULL DEFAULT NULL,
   `crs_id` int(10) UNSIGNED NOT NULL
@@ -143,6 +145,7 @@ CREATE TABLE `course_assignment_submission` (
   `sub_id` int(10) UNSIGNED NOT NULL,
   `sub_attachment` varchar(500) DEFAULT NULL,
   `sub_comment` varchar(500) NOT NULL,
+  `sub_due_status` varchar(30) DEFAULT NULL,
   `sub_timecreated` timestamp NULL DEFAULT NULL,
   `sub_timemodified` timestamp NULL DEFAULT NULL,
   `usr_id` int(10) UNSIGNED NOT NULL,
@@ -446,7 +449,9 @@ INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_username`, `usr_firstname`, `usr
 (33, NULL, 'arwen', 'Arwen', 'Lady', 'arwen', NULL, NULL, NULL, NULL, NULL, '7', NULL, NULL),
 (34, NULL, 'sizuka', 'Sizuka', 'Suzuki', 'sizuka', NULL, NULL, NULL, NULL, NULL, '7', NULL, NULL),
 (35, NULL, 'arzuko', 'Arzuko', 'Mawa Golok', 'arzuko', NULL, NULL, NULL, NULL, NULL, '7', NULL, NULL),
-(36, NULL, 'gblg', 'Gblg', 'Anjg', 'gblg', NULL, NULL, NULL, NULL, NULL, '7', NULL, NULL);
+(36, NULL, 'gblg', 'Gblg', 'Anjg', 'gblg', NULL, NULL, NULL, NULL, NULL, '7', NULL, NULL),
+(37, NULL, 'injeksibos', 'injek', 'atuh', 'f634cd7228dd922d43321698ed498291', 'injek@gmail.com', NULL, NULL, NULL, NULL, '3', NULL, NULL),
+(38, NULL, 'makrus', 'makrus', 'makrus', 'f634cd7228dd922d43321698ed498291', NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -464,6 +469,40 @@ CREATE TABLE `usertracking` (
   `client_user_agent` text,
   `referer_page` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `usertracking`
+--
+
+INSERT INTO `usertracking` (`id`, `session_id`, `user_identifier`, `request_uri`, `timestamp`, `client_ip`, `client_user_agent`, `referer_page`) VALUES
+(1, NULL, NULL, '/marsel/TA_Ubilearn/signin', '1519725703', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', ''),
+(2, NULL, NULL, '/marsel/TA_Ubilearn/signin', '1519725711', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', ''),
+(3, NULL, NULL, '/TA_Ubilearn/signin', '1519725868', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', ''),
+(4, NULL, NULL, '/TA_Ubilearn/C_login/masuk', '1519725878', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(5, NULL, NULL, '/TA_Ubilearn/instruktur/dashboard', '1519725879', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(6, NULL, NULL, '/TA_Ubilearn/instruktur/MyCourse', '1519725887', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/instruktur/dashboard'),
+(7, NULL, NULL, '/TA_Ubilearn/instruktur/dashboard', '1519725928', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(8, NULL, NULL, '/TA_Ubilearn/instruktur/lesson', '1519725931', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/instruktur/dashboard'),
+(9, NULL, NULL, '/TA_Ubilearn/instruktur/dashboard', '1519725934', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(10, NULL, NULL, '/TA_Ubilearn/logout', '1519725938', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/instruktur/dashboard'),
+(11, NULL, NULL, '/TA_Ubilearn/signin', '1519725939', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/instruktur/dashboard'),
+(12, NULL, NULL, '/TA_Ubilearn/C_login/masuk', '1519725961', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(13, NULL, NULL, '/TA_Ubilearn/siswa/dashboard', '1519725962', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(14, NULL, NULL, '/TA_Ubilearn/siswa/course', '1519725967', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/dashboard'),
+(15, NULL, NULL, '/TA_Ubilearn/siswa/course', '1519725967', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/dashboard'),
+(16, NULL, NULL, '/TA_Ubilearn/siswa/dashboard', '1519725975', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(17, NULL, NULL, '/TA_Ubilearn/siswa/my_course', '1519725979', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/dashboard'),
+(18, NULL, NULL, '/TA_Ubilearn/siswa/my_course', '1519725979', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/dashboard'),
+(19, NULL, NULL, '/TA_Ubilearn/siswa/dashboard', '1519726106', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/signin'),
+(20, NULL, NULL, '/TA_Ubilearn/siswa/akun', '1519726112', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/dashboard'),
+(21, NULL, NULL, '/TA_Ubilearn/siswa/akun', '1519726112', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/dashboard'),
+(22, NULL, NULL, '/TA_Ubilearn/siswa/akun/update_user', '1519726132', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/akun'),
+(23, NULL, NULL, '/TA_Ubilearn/siswa/akun/update_user', '1519726132', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/akun'),
+(24, NULL, NULL, '/TA_Ubilearn/siswa/akun/update_user', '1519726229', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', ''),
+(25, NULL, NULL, '/TA_Ubilearn/siswa/akun/update_user', '1519726230', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', ''),
+(26, NULL, NULL, '/TA_Ubilearn/siswa/akun/', '1519726232', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', ''),
+(27, NULL, NULL, '/TA_Ubilearn/siswa/akun/', '1519726232', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', ''),
+(28, NULL, NULL, '/TA_Ubilearn/siswa/dashboard', '1519726243', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 'http://localhost/TA_Ubilearn/siswa/akun/');
 
 --
 -- Indexes for dumped tables
@@ -631,7 +670,7 @@ ALTER TABLE `usertracking`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `course_assesment`
 --
@@ -726,12 +765,12 @@ ALTER TABLE `university`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `usertracking`
 --
 ALTER TABLE `usertracking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

@@ -41,9 +41,8 @@ class Akun extends CI_Controller {
         $config['file_name'] = $nmfoto;
         $this->load->library('upload',$config);
         $this->upload->do_upload('upload_foto');
-        
         $result= $this->upload->data();
-        // dd($result['file_name']);
+//         dd($result);
 
         $usr_id = $this->input->post('id');
         

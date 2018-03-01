@@ -13,17 +13,28 @@
 						<h2 class="mdl-card__title-text"style="color:white">Intro</h2>
 					</div>
 					<p class="mdl-card__supporting-text" style="color:white; font-size:14px;">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-					<ol class="mdl-list">
-							<li class="mdl-list__item">
-								<a href="#" style="color:white" download>
-									<span class="mdl-list__item-primary-content">
-										<i class="material-icons" style="font-size: 30px">assignment_returned</i>
-										<span style="margin-left:20px">Berkas Unduhan 1 </span>
-									</span>
-								</a>
-							</li>
-					</ol>
-				</div>
+					<ul class="mdl-list" style="margin: 15px;">
+							<li class="mdl-list__item" style="background-color: #0d0d0d" >
+								 <span class="mdl-list__item-primary-content">
+                                            <span style="margin-right: 25px;"><?php echo $num++?> </span>
+                                            <i class="material-icons mdl-list__item-icon">label</i>
+<!--                                     --><?php //echo 'Materi - '.$lesen->lsn_name ?>test test
+                                        </span>
+                                <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+
+                            </li>
+
+					</ul>
+                    <ul class="mdl-list" style="margin: 15px;">
+                            <li class="mdl-list__item" style="background-color: #0d0d0d">
+                                <a href="#" style="color:white" download>
+                                    <span class="mdl-list__item-primary-content">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VAJK04HOLd0" frameborder="0" allowfullscreen></iframe>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
             </div>
 				<!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:10px;">
 						<i class="material-icons">create</i>

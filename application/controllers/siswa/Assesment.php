@@ -15,6 +15,10 @@ class Assesment extends CI_Controller {
         $this->load->model('M_Course_Assesment_Question_Answer');
         $this->load->model('M_Course_Assesment_Question_Answer_Of_Student');
 
+        $this->load->library('usertracking'); $this->usertracking->track_this();
+
+
+
     }
 
     public function index($id)
@@ -40,6 +44,7 @@ class Assesment extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assesment_doing';
+
         $ast = $this->M_Course_Assesment_Question_Answer_Of_Student->select($ass_id,$this->session->userdata('id'));
         if($ast->count() != 0){
             $this->session->set_flashdata('ast_done', 'Anda Sudah Mengerjakan Assesment ini');
@@ -108,6 +113,7 @@ class Assesment extends CI_Controller {
     public function result($ass_id){
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/result';
+
         $data['ass_obj'] = $this->M_Course_Assesment->select($ass_id);
         $data['list_qst'] = $this->M_Course_Assesment_Question->select($ass_id);
         $i = 0;

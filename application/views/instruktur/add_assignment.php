@@ -1,6 +1,13 @@
 <main class="mdl-layout__content">
 <div class="mdl-grid cover-main"></div>
     <div class="mdl-grid">
+    <?php if ($this->session->flashdata('insert_asg') == TRUE): ?>
+            <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo $this->session->flashdata('insert_asg')?></p>
+            </div>
+        <?php endif; ?>
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__title" style="display:block;">
@@ -8,23 +15,28 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Assignment</div>
                 </div>
                 <div class="mdl-card__supporting-text" style="font-size:15px;">
-                    <form class="form-horizontal">
+                    <form action="<?php echo base_url().'instruktur/assignment/insert'; ?>" class="form-horizontal" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Nama Assignment</label>
+                            <label for="inputtext3" class="col-sm-2 control-label">Nama Assignment</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nama" placeholder="Kode Course" required>
+                            <input name="m-nama-asg" type="text" class="form-control" id="inputtext3" placeholder="Nama Course" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Deskripsi</label>
+                            <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea  class="form-control" id="desc" placeholder="Intro" rows="2"></textarea>
+                            <textarea name="m-deskripsi-asg" class="form-control" id="inputtext3" placeholder="Deskripsi" rows="2"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Attachment</label>
+                            <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
-                            <input type="file" name="attach">
+                            <input name="asg-name" class="input-file" type="file" onchange="readURL(this);">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                            <input style="display:none;" name="crs_id" class="form-control" value="<?php echo $crs_id?>">
                             </div>
                         </div>
                         <div class="form-group pull-right">

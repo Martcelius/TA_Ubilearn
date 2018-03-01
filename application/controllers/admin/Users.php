@@ -38,7 +38,7 @@ class Users extends CI_Controller {
         $this->load->library('upload',$config);
         $this->upload->do_upload('foto');
         $result= $this->upload->data();
-        // dd($result['file_name']);
+         dd($result);
 
        
         $userData['usr_kode'] = empty($this->input->post('kode')) ? NULL : $this->input->post('kode');
