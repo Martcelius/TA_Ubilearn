@@ -61,9 +61,6 @@
                     </div>
                     <div id="demo" class="collapse">
                         <div class="mdl-card__supporting-text">
-                        <?php
-                        $num = 1;
-                        foreach ($datalesen as $lesen) : ?>
                             <ul class="demo-list-icon mdl-list">
                                 <?php
                                 $num= 1;
@@ -124,11 +121,6 @@
                     </div>
                     <div id="demo2" class="collapse">
                         <div class="mdl-card__supporting-text">
-
-                        <?php
-                        $num= 1;
-                        $i = 0;
-                        foreach ($listAss as $ass) : ?>
                             <ul class="demo-list-icon mdl-list">
                                 <?php
                                 $num= 1;
@@ -184,6 +176,7 @@
                         </div>
                     </div>
                     <div id="demo3" class="collapse">
+
                         <div class="mdl-card__supporting-text">
                         <?php
                         $num= 1;
@@ -217,6 +210,39 @@
                                 </ul>
                             <?php endforeach; ?>
                         </div>
+
+                    <div class="mdl-card__supporting-text">
+                    <?php $num= 1;
+                         ?>
+                            <?php foreach ($dataasing as $asing) : ?>
+                            <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+                                      <span class="mdl-list__item-primary-content">
+                                          <span style="margin-right: 25px;"><?php echo $num++?> </span>
+                                          <i class="material-icons mdl-list__item-icon">label</i>
+                                          <?php echo 'Materi - '.$asing->asg_name ?>
+                                  </span>
+                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">
+                                    <a href="<?php echo site_url('instruktur/content/'.$asing->asg_id)?>">
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                                        <i class="material-icons">add</i>
+                                        Masuk
+                                        </button>
+                                    </a>
+                                    <a href="<?php echo site_url('instruktur/edit_assignment/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                                        <i class="material-icons">drafts</i>
+                                        Edit
+                                        </button>
+                                    </a>
+                                    <a href="<?php echo site_url('instruktur/delete_lesson/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
+                                        <i class="material-icons">delete</i>
+                                        Hapus
+                                        </button>
+                                    </a>
+                                    </b>
+                                </li>
+                            </ul>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
@@ -265,5 +291,3 @@
       }
     }
 </script>
-
-
