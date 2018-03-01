@@ -18,7 +18,7 @@ class C_login extends CI_Controller {
 
     public function signup()
 	{
-		$this->load->view('login/signup');
+		$this->load->view('login/signup2');
 	}
 	
 	public function signup_instruktur()
@@ -29,7 +29,7 @@ class C_login extends CI_Controller {
 	public function signin()
 	{
 //		$data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
-		$this->load->view('login/signin');
+		$this->load->view('login/login');
 	}
 
     function masuk(){

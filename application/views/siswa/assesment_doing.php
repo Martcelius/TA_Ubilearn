@@ -17,6 +17,7 @@
                 </div>
             </div>
         </div>
+    <form method="post" action="<?php echo site_url('siswa/assesment/calc_ass/'.$ass_obj->ass_id) ?>">   
     <?php
     $i = 0; 
     foreach($qst as $c){
@@ -41,7 +42,7 @@
                     foreach($qst_ans[$i] as $d){
                     ?>
                     <p>
-                        <input type="radio" name="jawaban<?php echo $i+1 ?>" onclick="pilih(<?php echo $i+1 ?>)">
+                        <input type="radio" value="<?php echo $d->ans_id ?>" name="jawaban<?php echo $i+1 ?>" onclick="pilih(<?php echo $i+1 ?>)">
                         <label><?php echo $d->ans_text ?></label>
                     </p>
                     <?php $j++; } ?>
@@ -50,12 +51,17 @@
         </div>
     </div>
     <?php $i++; } ?>
+    <!-- Hidden Input Jumlah Soal -->
+    <input hidden type="number" name="jumSoal" value="<?php echo $i ?>">
+    <input hidden type="number" name="timeTaken" id="timeTaken">
+    <!-- End Hidden -->
 
     <div style="text-align:center;margin-bottom: 20px;">
-       <a href="<?php echo site_url('siswa/result') ?>"> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" type="submit">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" type="submit" id="submitBtn" onclick="return setTimeTaken()">
             Selesai Mengerjakan
-        </button></a>
+        </button>
     </div>
+    </form>
 </main>
 <script type="text/javascript">
     function pilih(no){
@@ -65,14 +71,17 @@
 </script>
 
 <script>
+var timeTaken = 0;
 var ass_id = <?php echo $ass_obj->ass_id ?>;
 var peringatan = false;
 // Set the date we're counting down to
 var countDownDate = new Date("<?php echo $ass_obj->ass_timeclose ?>").getTime();
-/*var countDownDate = new Date("2018-02-27 12:34:5").getTime();*/
+/*var countDownDate = new Date("2018-02-28 13:50:5").getTime();*/
 
 // Update the count down every 1 second
 var x = setInterval(function() {
+
+  timeTaken = timeTaken + 1;
 
   // Get todays date and time
   var now = new Date().getTime();
@@ -95,14 +104,18 @@ var x = setInterval(function() {
     clearInterval(x);
     document.getElementById("demo").innerHTML = "EXPIRED";
     alert('Waktu Anda Sudah Habis');
-    window.location.href = '<?php echo base_url().'siswa/Assesment/assesment_doing/'?>'+ass_id ;
+    $('#submitBtn').click();
   }
-  else if(minutes <= 4 && peringatan == false){
+  else if(minutes <= 4 && peringatan == false && hours == 0 && days == 0){
     alert('Waktu 5 Menit lagi');
     peringatan = true;
     $('.timeBox').css('background','#e92a2a');
   }
 }, 1000);
+
+function setTimeTaken(){
+    $('#timeTaken').val(timeTaken);
+}
 </script>
 
 
