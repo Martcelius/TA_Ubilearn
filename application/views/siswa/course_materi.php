@@ -16,13 +16,20 @@
 					<ul class="mdl-list" style="margin: 15px;">
 							<li class="mdl-list__item" style="background-color: #0d0d0d" >
 								 <span class="mdl-list__item-primary-content">
-                                            <span style="margin-right: 25px;"><?php echo $num++?> </span>
-                                            <i class="material-icons mdl-list__item-icon">label</i>
-<!--                                     --><?php //echo 'Materi - '.$lesen->lsn_name ?>test test
-                                        </span>
-                                <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
-
+                                    <span style="margin-right: 25px;"></span>
+                                    <i class="material-icons mdl-list__item-icon">label</i>
+                                   test
+                                </span>
+                                <div class="mdl-layout-spacer"></div>
+                                <b class="mdl-list__item-secondary-action" style="margin-right:50px">test</b>
+                                <a href="">
+                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+                                        <i class="material-icons">add</i>
+                                        Masuk
+                                    </button>
+                                </a>
                             </li>
+
 
 					</ul>
                     <ul class="mdl-list" style="margin: 15px;">
