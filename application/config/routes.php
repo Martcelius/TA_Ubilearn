@@ -92,7 +92,7 @@ $route['siswa/result/(:any)'] = 'C_siswa/result/$1';
 
 $route['siswa/pretest'] = 'C_siswa/pretest';
 $route['siswa/remedial'] = 'C_siswa/remedial';
-
+$route['siswa/materi'] = 'C_siswa/course_materi';
 
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
