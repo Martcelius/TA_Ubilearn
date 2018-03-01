@@ -214,7 +214,7 @@
                                         Edit
                                         </button>
                                     </a>
-                                    <a href="<?php echo site_url('instruktur/delete_lesson/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
+                                    <a href="<?php echo site_url('instruktur/delete_asing/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
                                         <i class="material-icons">delete</i>
                                         Hapus
                                         </button>

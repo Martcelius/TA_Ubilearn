@@ -29,6 +29,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                        <label class="control-label col-sm-2" >Waktu Selesai :</label>
+                        <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
+                            <input class="form-control" size="16" type="text" name="asg_date" value="" required>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+			            </div>
+                        <div class="form-group">
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
                             <input name="asg-name" class="input-file" type="file" onchange="readURL(this);">
@@ -51,3 +58,16 @@
     </div>
 </main>
 
+<script type="text/javascript">
+        $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        autoclose: true,
+        todayBtn: true,
+        format: "yyyy-mm-dd hh:ii",
+        pickerPosition: "top-left",
+    });
+
+    $(function () {
+	    CKEDITOR.replace('soal1');
+	  });
+</script>

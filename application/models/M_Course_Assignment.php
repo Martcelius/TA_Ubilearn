@@ -23,6 +23,7 @@ class M_Course_Assignment extends Eloquent
         $asg->asg_text = $data['m-deskripsi-asg'];
         $asg->crs_id = $data['crs_id'];
         $asg->asg_attachment = $data['asg_attachment'];
+        $asg->asg_duedate = $data['asg_date'];
         
         return $asg->save();
     }
@@ -32,6 +33,7 @@ class M_Course_Assignment extends Eloquent
         $updateasing = M_Course_Assignment::where('asg_id',$data['asg_id'])->first();
         $updateasing->asg_name = $data['asg_name'];
         $updateasing->asg_text = $data['asg_text'];
+        $updateasing->asg_duedate = $data['asg_waktu'];
 
         return $updateasing->save();
     }
