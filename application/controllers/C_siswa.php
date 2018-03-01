@@ -88,17 +88,31 @@ class C_siswa extends CI_Controller {
 
     }
 
-    public function result()
+    public function result($id)
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/result';
+        $data['assesment']=  DB::table("course_assesment")
+            ->leftJoin("course","course.crs_id","=","course_assesment.crs_id")
+            ->where("ass_id","=", $id)
+            ->first();
+
+
+        $data['course'] = DB::table("course")
+            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+            ->where("crs_id", '=',$data['assesment']->crs_id)
+            ->first();
         $this->load->view('layout/master', $data);
     }
 
-    public function assignment_detail()
+    public function assignment_detail($asg_id)
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assignment_detail';
+        $data['assignment']=  DB::table("course_assignment")
+            ->leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+            ->where("asg_id","=", $asg_id)
+            ->first();
         $this->load->view('layout/master', $data);
 
     }

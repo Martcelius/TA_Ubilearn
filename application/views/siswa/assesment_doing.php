@@ -1,11 +1,14 @@
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <div class="">
-            <div class="" >
-                <h2 class="" style="color: white">Assesment "<?php echo $ass_obj->ass_name ?>"</h2>
-            </div>
-        </div>
+          <div class="">
+              <div class="">
+                  <h2 style="color:white"><?php echo $course->crs_name?></h2>
+                  <h3 style="color:white"><?php echo $assesment->ass_name;?></h3>
+                  <p class="glyphicon glyphicon-file" style="color: white;"> Dibuat Oleh : <?php echo $course->usr_firstname." ".$course->usr_lastname." pada tanggal ".$assesment->ass_timecreated?></p>
+
+              </div>
+          </div>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--3-col-tablet mdl-cell--6-col-phone" style="position: absolute;top: 20%;right: 1%;" >
@@ -26,8 +29,8 @@
         <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--6-col-phone" >
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__supporting-text" style="text-align: center;" >
-                <p>Question <?php echo $i+1 ?></p>
-                <p style="color:#ff5151" id="soal<?php echo $i+1 ?>" >Belom Terjawab</p>
+                <p>Pertanyaan <?php echo $i+1 ?></p>
+                <p style="color:#ff5151" id="soal<?php echo $i+1 ?>" >Belum Terjawab</p>
                 <p>Nilai <?php echo $qst_ans[$i]->sum('ans_point') ?></p>
                 </div>
             </div>
@@ -52,7 +55,7 @@
     <?php $i++; } ?>
 
     <div style="text-align:center;margin-bottom: 20px;">
-       <a href="<?php echo site_url('siswa/result') ?>"> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" type="submit">
+       <a href="<?php echo site_url('siswa/result/'.$assesment->ass_id) ?>"> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" type="submit">
             Selesai Mengerjakan
         </button></a>
     </div>
