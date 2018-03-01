@@ -1,0 +1,87 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+use Illuminate\Database\Capsule\Manager as DB;
+
+class Assignment extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->load->model('M_Course');
+        $this->load->model('M_Course_Assignment');
+        $this->load->model('M_Course_Assignment_Submission');
+
+    }
+
+    public function index($asg_id)
+    {
+
+        $data['sidebar'] = 'layout/sidebar';
+        $data['content'] = 'siswa/assignment_detail';
+        $data['assignment']=  DB::table("course_assignment")
+            ->leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+            ->where("asg_id","=", $asg_id)
+            ->first();
+
+
+        $data['course'] = DB::table("course")
+            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+            ->where("crs_id", '=',$data['assignment']->crs_id)
+            ->first();
+        $dt= date('Y-m-d h:i:s');
+//        dd();
+        $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
+//         dd($cek_user);
+        if (empty($cek_user))
+        {
+//blm ngumpulin
+            if($dt <= $data['assignment']->asg_duedate)
+            {
+                $this->session->set_flashdata('on_time', 'Anda belum mengumpulkan tugas');
+            } elseif ($dt >= $data['assignment']->asg_duedate)
+            {
+                $this->session->set_flashdata('out_time', 'Anda telat, segara kumpulkan tugas!');
+            }
+        } else
+        {
+            //ngumpulin
+            $this->session->set_flashdata('done', 'Anda sudah mengumpulkan tugas');
+
+
+        }
+        $this->load->view('layout/master', $data);
+    }
+
+    public function upload_assignment($asg_id)
+    {
+        $file = "file_siswa".time();
+        $config['upload_path'] ='./res/assets/File_siswa';
+        $config['allowed_types'] = 'doc|csv|pdf|docx|xlxs|xls|rar|zip';
+        $config['file_name'] = $file;
+        $this->load->library('upload',$config);
+        $this->upload->do_upload('asg_attachment');
+        $result = $this->upload->data();
+
+//        dd($result['is_image']);
+
+        $data_asg = array(
+            'file' => $file,
+            'usr_id' => $this->session->userdata['id']
+        );
+        $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
+        if($result['is_image'])
+        {
+
+        }
+        elseif (empty($cek_user)){
+            $insert = $this->M_Course_Assignment_Submission->insert($data_asg,$asg_id);
+        }
+        else {
+            $this->session->set_flashdata('submit', 'Berkas tidak terupload! Anda sudah mengumpulkan tugas ini.');
+        }
+        redirect('siswa/assignment_detail/'.$asg_id);
+
+    }
+}

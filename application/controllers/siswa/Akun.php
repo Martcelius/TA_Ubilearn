@@ -46,6 +46,7 @@ class Akun extends CI_Controller {
         $this->upload->do_upload('upload_foto');
         
         $result= $this->upload->data();
+
         $usr_id = $this->input->post('id');
 
         // dd($this->upload->do_upload('upload_foto'));
@@ -97,12 +98,7 @@ class Akun extends CI_Controller {
         $userData['result'] = $this->session->userdata('password');
 //        dd($userData['result']);
         $update = $this->M_User->update_password($userData,$usr_id);
-//        dd($update);
-//        $user= array(
-//            'password' => $update
-//        );
-//        $this->session->set_userdata($user);
-//        dd($update);
+
 
         if($update)
         {

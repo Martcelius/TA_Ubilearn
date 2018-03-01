@@ -72,9 +72,10 @@ class Course extends CI_Controller {
        $data['course'] = DB::table("course")
                            ->leftJoin("users","users.usr_id","=","course.usr_id")
                            ->where('crs_id',$crs_id)->first();
-        $data['lesson'] = M_Course_Lesson::where('crs_id',$crs_id)->get();
-        $data['jml_lesson'] = $data['lesson']->count();
+       $data['lesson'] = M_Course_Lesson::where('crs_id',$crs_id)->get();
+       $data['jml_lesson'] = $data['lesson']->count();
         // $data['id'] = $crs_id;
+        //list assesment
         $listAss = $this->M_Course_Assesment->selectBy('crs_id',$crs_id);
         $i = 0;
         $jumSoal = array();
@@ -83,6 +84,9 @@ class Course extends CI_Controller {
             $jumSoal[$i] = $soal->count();
             $i++;
         }
+        //list assignment
+        $data['assignment'] = M_Course_Assignment::where('crs_id',$crs_id)->get();
+        $data['jml_assignment'] = $data['assignment']->count();
         $data['listAss'] = $listAss;
         $data['jumSoal'] = $jumSoal;
         $data['sidebar'] = 'layout/sidebar';
