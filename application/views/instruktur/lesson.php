@@ -65,9 +65,7 @@
                     <div id="demo" class="collapse">
                         <div class="mdl-card__supporting-text">
 
-                        <?php $num= 1;
-                        if ($datalesen) : ?>
-                            <?php foreach ($datalesen as $lesen) : ?>
+                        <?php $num= 1;   ?>
 
                             <ul class="demo-list-icon mdl-list">
                                 <?php 
@@ -136,8 +134,7 @@
 
                         <?php $num= 1;
                         $i = 0;
-                        if ($listAss) : ?>
-                            <?php foreach ($listAss as $ass) : ?>
+                         ?>
                             <ul class="demo-list-icon mdl-list">
                                 <?php 
                                 $num= 1;
@@ -196,7 +193,7 @@
                     <div id="demo3" class="collapse">
                     <div class="mdl-card__supporting-text">
                     <?php $num= 1;
-                        if ($dataasing) : ?>
+                         ?>
                             <?php foreach ($dataasing as $asing) : ?>
                             <ul class="demo-list-icon mdl-list">
                                 <li class="mdl-list__item">
@@ -226,8 +223,7 @@
                                 </li>
                             </ul>
                         <?php endforeach; ?>
-                        <?php else : ?>
-                        <?php endif;?>
+                        
                     </div>
                 </div>
                 </div>
@@ -277,5 +273,3 @@
       }
     }
 </script>
-
-
