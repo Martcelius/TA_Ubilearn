@@ -89,6 +89,6 @@ class Forum extends CI_Controller {
 //         $data['content'] = 'instruktur/dashboard_forum_instruktur';
 //         $this->load->view('layout/master',$data);
     }
-    
+        
     
 }
