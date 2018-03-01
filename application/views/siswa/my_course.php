@@ -1,5 +1,6 @@
 <main class="mdl-layout__content">
-    <div class="mdl-grid cover-main">
+<div class="col-sm-11 cover-main">
+    <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div>
                 <h2 style="color:white">My Course</h2>
@@ -12,6 +13,7 @@
             </div>
         </div>
     </div>
+</div>
     <div class=" col-sm-10 " >
         <div class="mdl-grid">
             <?php if ($this->session->flashdata('data_enroll') == TRUE): ?>

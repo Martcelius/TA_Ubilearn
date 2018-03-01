@@ -37,6 +37,7 @@ class Content extends CI_Controller {
     {
         $data['dataLO'] = M_Course_Learning_Outcomes::get();
         // dd($data['dataLO']->loc_id);
+
         $data['lsn_id'] = $id;
         $data['sidebar'] = "layout/sidebar_instruktur";
         $data['content'] = "instruktur/add_content";
@@ -45,11 +46,19 @@ class Content extends CI_Controller {
 
     public function insert_content()
     {
+        $nmfile = $this->input->post('cnt_name').time();
+        $config['upload_path'] ='./res/assets/content';
+        $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx|zip|rar|text';
+        $config['file_name'] = $nmfile;
+        $this->load->library('upload',$config);
+        $this->upload->do_upload('content');
+
+        $result= $this->upload->data();
         $cntData['cnt_name'] = $this->input->post('cnt_name');
         $cntData['cnt_desc'] = empty($this->input->post('cnt_desc')) ? NULL : $this->input->post('cnt_desc');
         $cntData['cnt_comment'] = empty($this->input->post('cnt_comment')) ? NULL : $this->input->post('cnt_comment');
         $cntData['cnt_type'] = empty($this->input->post('cnt_type')) ? NULL : $this->input->post('cnt_type');
-        $cntData['cnt_source'] = empty($this->input->post('cnt_source')) ? NULL : $this->input->post('cnt_source');
+        $cntData['cnt_source'] = $result['file_name'];
         $cntData['lsn_id'] = intval($this->input->post('lsn_id'));
         $cntData['loc_id'] = intval($this->input->post('loc_id'));
         

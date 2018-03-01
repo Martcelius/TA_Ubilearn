@@ -67,7 +67,7 @@
 
 
 <!-- CKEDITOR -->
-<script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js" type="text/javascript"></script>
+<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js" type="text/javascript"></script>
 <script>
 	CKEDITOR.replace('deskripsiforum');
     $("form").submit( function(e) {

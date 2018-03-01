@@ -22,15 +22,19 @@ class Learning_Outcome extends CI_Controller {
 
     public function add_lo()
     {
+        $data['data_course']= M_Course::get(['crs_name','crs_id']);
+//        dd($data['data_course']);
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/add_LO';
         $this->load->view('layout/master', $data);
+
 
     }
 
     public function insert_lo()
     {
         $data['loc_desc'] = $this->input->post('loc_desc');
+        $data['crs_id'] = $this->input->post('crs_id');
 //         dd($data['loc_desc']);
         $insert= $this->M_Course_Learning_Outcomes->insert_lo($data);
 //         dd($insert);
@@ -46,7 +50,11 @@ class Learning_Outcome extends CI_Controller {
     }
     public function edit_lo($id)
     {
+        $data['data_course']= M_Course::get();
         $data['dataLO'] = M_Course_Learning_Outcomes::where('loc_id',$id)->first();
+//        dd( $data['dataLO']->crs_id);
+        $data['course_Lo'] =M_Course::where('crs_id',$data['dataLO']->crs_id)->first(['crs_name']);
+//        dd( $data['course_Lo']);
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/edit_LO';
         $this->load->view('layout/master', $data);
@@ -56,6 +64,7 @@ class Learning_Outcome extends CI_Controller {
     {
         $data['id'] = $this->input->post('id');
         $data['loc_desc'] = $this->input->post('loc_desc');
+        $data['crs_id'] = $this->input->post('crs_id');
         $update = $this->M_Course_Learning_Outcomes->update_lo($data);
         if($update)
         {
