@@ -177,7 +177,9 @@ $route['instruktur/delete_assesment/(:any)'] = 'instruktur/Assesment/delete_asse
 $route['instruktur/add_pretest'] = 'C_instruktur/add_pretest';
 $route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
 $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
-$route['instruktur/add_assignment'] = 'C_instruktur/add_assignment';
+$route['instruktur/add_assignment/(:any)'] = 'instruktur/Assignment/add_assignment/$1';
+$route['instruktur/edit_assignment/(:any)'] = 'instruktur/Assignment/edit_asing/$1';
+
 // route instruktur-content
 $route['instruktur/content/(:any)'] = 'instruktur/content/content/$1';
 $route['instruktur/add_content/(:any)'] = 'instruktur/content/add_content/$1';
