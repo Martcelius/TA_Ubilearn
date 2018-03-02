@@ -19,6 +19,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'res/assets/Login_v1/' ?>css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'res/assets/Login_v1/' ?>css/main.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>res/assets/css/lib/setup.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -27,14 +28,14 @@
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100" style="background: unset;padding-top: 120px;">
+		<div class="container-login100 coverlanding">
+			<div class="wrap-login100" style="background: unset;padding-top: 120px;background-color: rgba(0,0,0,0.2);">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="<?php echo base_url().'res/assets/Login_v1/' ?>images/img-01.png" alt="IMG">
 				</div>
 
 				<form class="login100-form validate-form" method="post" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" style="width: 315px;" >
-					<span class="login100-form-title" style="color: whitesmoke;padding-bottom: 25px;">
+					<span class="login100-form-title" style="color: black;padding-bottom: 25px;">
 						Daftar Pelajar
 					</span>
 					<!-- Hidden Input -->

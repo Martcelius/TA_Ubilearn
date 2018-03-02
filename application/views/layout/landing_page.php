@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Material Design Bootstrap</title>
+    <title>U-Learning</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -133,7 +133,7 @@
                 <div class="full-bg-img flex-center white-text">
                     <ul class="animated fadeInUp col-md-12">
                         <li>
-                            <h1 class="display-3 flex-item font-bold">Welcome to TELC-C U-Learning</h1>
+                            <h1 class="display-3 flex-item font-bold">Welcome to TEL-C U-Learning</h1>
                             <li>
                                 <h3 class="flex-item">Telkom University</h3>
                             </li>
