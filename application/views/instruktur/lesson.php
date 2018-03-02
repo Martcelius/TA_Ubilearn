@@ -73,19 +73,19 @@
                                         </span>
                                         <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                         <a href="<?php echo site_url('instruktur/content/'.$lesen->lsn_id)?>">
-                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:10px;">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:2px;">
                                             <i class="material-icons">add</i>
                                             Masuk
                                             </button>
                                         </a>
                                         <a href="<?php echo site_url('instruktur/edit_lesson/'.$lesen->lsn_id)?>" >
-                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:10px;">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;">
                                             <i class="material-icons">drafts</i>
                                             Edit
                                             </button>
                                         </a>
                                         <a href="<?php echo site_url('instruktur/delete_lesson/'.$lesen->lsn_id)?>" >
-                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:10px;" onclick="return confirm('Anda yakin untuk menghapus?');">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;" onclick="return confirm('Anda yakin untuk menghapus?');">
                                             <i class="material-icons">delete</i>
                                             Hapus
                                             </button>
@@ -132,18 +132,18 @@
                                             <i class="material-icons mdl-list__item-icon mdl-badge mdl-badge--overlap" data-badge="<?php echo $jumSoal[$i] ?>" title="Jumlah Soal">description</i>
                                             <?php echo $ass->ass_tipe.' - '.$ass->ass_name; ?>
                                         </span>
-                                        <b class="mdl-list__item-secondary-action" style="margin-right:50px">
+                                        <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                         <a href="<?php echo site_url('instruktur/edit_assesment/'.$ass->ass_id)?>" >
-                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;">
                                             <i class="material-icons">drafts</i>
                                             Edit
                                             </button>
                                         </a>
-                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" onclick="deleteAss(<?php echo $ass->ass_id ?>)">
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;" onclick="deleteAss(<?php echo $ass->ass_id ?>)">
                                             <i class="material-icons">delete</i>
                                             Hapus
                                             </button>
-                                        </b>
+
                                     </li>
                                 <?php $i++; endforeach; ?>
                             </ul>
@@ -176,74 +176,39 @@
                         </div>
                     </div>
                     <div id="demo3" class="collapse">
-
                         <div class="mdl-card__supporting-text">
-                        <?php
-                        $num= 1;
-                        foreach ($dataasing as $asing) : ?>
-                                <ul class="demo-list-icon mdl-list">
+                            <ul class="demo-list-icon mdl-list">
+                                <?php
+                                $num= 1;
+                                foreach ($dataasing as $asing) : ?>
                                     <li class="mdl-list__item">
                                           <span class="mdl-list__item-primary-content">
                                               <span style="margin-right: 25px;"><?php echo $num++?> </span>
                                               <i class="material-icons mdl-list__item-icon">label</i>
                                               <?php echo 'Materi - '.$asing->asg_name ?>
                                       </span>
-                                        <b class="mdl-list__item-secondary-action" style="margin-right:50px">
+                                        <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                         <a href="<?php echo site_url('instruktur/content/'.$asing->asg_id)?>">
-                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:2px;" >
                                             <i class="material-icons">add</i>
                                             Masuk
                                             </button>
                                         </a>
-                                        <a href="<?php echo site_url('instruktur/edit_assignment/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
+                                        <a href="<?php echo site_url('instruktur/edit_assignment/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;">
                                             <i class="material-icons">drafts</i>
                                             Edit
                                             </button>
                                         </a>
-                                        <a href="<?php echo site_url('instruktur/delete_lesson/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
+                                        <a href="<?php echo site_url('instruktur/delete_lesson/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;">
                                             <i class="material-icons">delete</i>
                                             Hapus
                                             </button>
                                         </a>
-                                        </b>
-                                    </li>
-                                </ul>
-                            <?php endforeach; ?>
-                        </div>
 
-                    <div class="mdl-card__supporting-text">
-                    <?php $num= 1;
-                         ?>
-                            <?php foreach ($dataasing as $asing) : ?>
-                            <ul class="demo-list-icon mdl-list">
-                                <li class="mdl-list__item">
-                                      <span class="mdl-list__item-primary-content">
-                                          <span style="margin-right: 25px;"><?php echo $num++?> </span>
-                                          <i class="material-icons mdl-list__item-icon">label</i>
-                                          <?php echo 'Materi - '.$asing->asg_name ?>
-                                  </span>
-                                    <b class="mdl-list__item-secondary-action" style="margin-right:50px">
-                                    <a href="<?php echo site_url('instruktur/content/'.$asing->asg_id)?>">
-                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
-                                        <i class="material-icons">add</i>
-                                        Masuk
-                                        </button>
-                                    </a>
-                                    <a href="<?php echo site_url('instruktur/edit_assignment/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" >
-                                        <i class="material-icons">drafts</i>
-                                        Edit
-                                        </button>
-                                    </a>
-                                    <a href="<?php echo site_url('instruktur/delete_asing/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red">
-                                        <i class="material-icons">delete</i>
-                                        Hapus
-                                        </button>
-                                    </a>
-                                    </b>
-                                </li>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
-                        <?php endforeach; ?>
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
