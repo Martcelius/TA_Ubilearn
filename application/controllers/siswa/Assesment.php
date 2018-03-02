@@ -52,6 +52,11 @@ class Assesment extends CI_Controller {
         }
         else{
             $data['ass_obj'] = $this->M_Course_Assesment->select($ass_id);
+            $data['course'] = DB::table("course")
+            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+            ->where("crs_id", '=',$data['ass_obj']->crs_id)
+            ->first();
+
             $data['qst'] = $this->M_Course_Assesment_Question->select($ass_id);
             $i = 0;
             foreach($data['qst'] as $c){

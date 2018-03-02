@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Daftar Pelajar</title>
+	<title>Daftar Instruktur</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -35,10 +35,10 @@
 
 				<form class="login100-form validate-form" method="post" action="<?php echo base_url(). 'C_login/registrasi_siswa'; ?>" style="width: 315px;" >
 					<span class="login100-form-title" style="color: whitesmoke;padding-bottom: 25px;">
-						Daftar Pelajar
+						Daftar Instruktur
 					</span>
 					<!-- Hidden Input -->
-					<input type="text" hidden value="2" class="input100" name="level" required/>
+					<input type="text" hidden value="3" class="input100" name="level" required/>
 					<!-- End Hidden Input -->
 
 					<div class="wrap-input100 validate-input" data-validate = "Nama pengguna tidak boleh kosong">

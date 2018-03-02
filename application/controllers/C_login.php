@@ -23,7 +23,7 @@ class C_login extends CI_Controller {
 	
 	public function signup_instruktur()
 	{
-		$this->load->view('login/signup_instruktur');
+		$this->load->view('login/signup_instruktur2');
 	}
 
 	public function signin()
@@ -110,9 +110,10 @@ class C_login extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('pass', 'Kata Sandi', 'required');
         $this->form_validation->set_rules('repeat-pass', 'Ulangi Kata Sandi', 'required|matches[pass]');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'trim|is_numeric'); 
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         $this->form_validation->set_message('required', 'Masukan %s');
-        $this->form_validation->set_message('matches', 'Ulangi kata sandi tidak sesuai');
+        $this->form_validation->set_message('matches', '<p style="color: red;margin-left: 15px;">*Ulangi kata sandi tidak sesuai</p>');
         
         //dd($this->form_validation->run());
         
