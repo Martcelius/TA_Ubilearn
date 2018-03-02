@@ -64,11 +64,6 @@
                     </div>
                     <div id="demo" class="collapse">
                         <div class="mdl-card__supporting-text">
-
-                        <?php $num= 1;
-                        if ($datalesen) : ?>
-                            <?php foreach ($datalesen as $lesen) : ?>
-
                             <ul class="demo-list-icon mdl-list">
                                 <?php 
                                 $num= 1;
@@ -134,10 +129,6 @@
                     <div id="demo2" class="collapse">
                         <div class="mdl-card__supporting-text">
 
-                        <?php $num= 1;
-                        $i = 0;
-                        if ($listAss) : ?>
-                            <?php foreach ($listAss as $ass) : ?>
                             <ul class="demo-list-icon mdl-list">
                                 <?php 
                                 $num= 1;
