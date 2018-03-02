@@ -19,19 +19,19 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Assignment</label>
                             <div class="col-sm-10">
-                            <input name="asg_name" type="text" class="form-control" id="inputtext3" value="<?php echo $dataasing->asg_name; ?>">
+                            <input name="m-nama-asg" type="text" class="form-control" id="inputtext3" value="<?php echo $dataasing->asg_name; ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="asg_text" class="form-control" id="inputtext3" value="<?php echo $dataasing->asg_text; ?>" rows="2"><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
+                            <textarea name="m-deskripsi-asg" class="form-control" id="inputtext3" value="<?php echo $dataasing->asg_text; ?>" rows="3" required><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                         <label class="control-label col-sm-2" >Waktu Selesai :</label>
                         <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
-                            <input class="form-control" size="16" type="text" name="asg_waktu" value="<?php echo $dataasing->asg_date ?>" required>
+                            <input class="form-control" size="16" type="text" name="asg_date" value="<?php echo $dataasing->asg_duedate ?>" >
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                         </div>
 			            </div>
@@ -39,6 +39,7 @@
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
                             <input name="asg-name" class="input-file" type="file" onchange="readURL(this);">
+                                <span><?php echo $dataasing->asg_attachment?></span>
                             </div>
                         </div>
                         <div class="form-group">
