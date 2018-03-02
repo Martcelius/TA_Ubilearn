@@ -36,6 +36,7 @@ class Forum extends CI_Controller {
                             ->where('course_enrol_detail.usr_id',$this->session->userdata('id'))
                             ->get();
                             //dd($data['lessondata']);
+        
 
         $data['listforumlesson'] = DB::table("course_enrol_detail")
                             ->leftJoin("course_enrol","course_enrol.enr_id","=","course_enrol_detail.enr_id")
@@ -68,8 +69,7 @@ class Forum extends CI_Controller {
             {
                 $jumlahThread = M_Course_Forum_Thread::where('cfr_id',$thread->cfr_id)->get();
                 $jumlah[$num] = $jumlahThread->count('cfr_id');
-                $num++;
-
+                $num++;                
             }
             $data['listforumm'] = $listforum;
             $data['jumlah'] =$jumlah;
