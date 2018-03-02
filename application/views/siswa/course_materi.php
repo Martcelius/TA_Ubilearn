@@ -1,46 +1,45 @@
 <main class="mdl-layout__content">
 	<div class="mdl-grid cover-main">
 		<div class="mdl-cell mdl-cell--12-col">
-			<h1 style="color:white">IT Project Management</h1><br>
-			<h2 style="color:white">Intro</h2>
-			<p style="color:white">Nungki Selvi Andro</p>
+			<h1 style="color:white"><?php echo $course->crs_name?></h1><br>
+			<p style="color:white"><?php echo $course->usr_firstname.' '.$course->usr_lastname?></p>
 		</div>
 	</div>
 	<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--9-col">
 				<div class="mdl-card">
 					<div class="mdl-card__title">
-						<h2 class="mdl-card__title-text"style="color:white">Intro</h2>
+						<h2 class="mdl-card__title-text"style="color:white"><?php echo $course->lsn_name?></h2>
 					</div>
-					<p class="mdl-card__supporting-text" style="color:white; font-size:14px;">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-					<ul class="mdl-list" style="margin: 15px;">
-							<li class="mdl-list__item" style="background-color: #0d0d0d" >
+					<p class="mdl-card__supporting-text" style="color:white; font-size:14px;"><?php echo $course->lsn_intro?></p>
+                    <?php foreach($contents as $content): ?>
+                        <ul class="mdl-list" style="margin: 15px;">
+                            <li class="mdl-list__item" style="background-color: #0d0d0d" >
 								 <span class="mdl-list__item-primary-content">
                                     <span style="margin-right: 25px;"></span>
                                     <i class="material-icons mdl-list__item-icon">label</i>
-                                   test
+                                     <?php echo $content->cnt_name?>
                                 </span>
                                 <div class="mdl-layout-spacer"></div>
-                                <b class="mdl-list__item-secondary-action" style="margin-right:50px">test</b>
-                                <a href="<?php echo site_url('siswa/content/')?>">
+                                <b class="mdl-list__item-secondary-action" style="margin-right:50px"><?php echo $content->cnt_type?></b>
+                                <a href="<?php if ($content->cnt_type == 'Text')echo site_url('siswa/content/'.$content->cnt_id); else echo site_url('siswa/content/video/'.$content->cnt_id); ?>">
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-                                        <i class="material-icons">add</i>
+                                        <i class="material-icons"></i>
                                         Masuk
                                     </button>
                                 </a>
                             </li>
-
-
-					</ul>
-                    <ul class="mdl-list" style="margin: 15px;">
-                            <li class="mdl-list__item" style="background-color: #0d0d0d">
-                                <a href="#" style="color:white" download>
-                                    <span class="mdl-list__item-primary-content">
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VAJK04HOLd0" frameborder="0" allowfullscreen></iframe>
-                                    </span>
-                                </a>
-                            </li>
-                    </ul>
+                        </ul>
+                    <?php endforeach; ?>
+<!--                    <ul class="mdl-list" style="margin: 15px;">-->
+<!--                            <li class="mdl-list__item" style="background-color: #0d0d0d">-->
+<!--                                <a href="#" style="color:white" download>-->
+<!--                                    <span class="mdl-list__item-primary-content">-->
+<!--                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VAJK04HOLd0" frameborder="0" allowfullscreen></iframe>-->
+<!--                                    </span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                    </ul>-->
                 </div>
             </div>
 				<!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:10px;">
@@ -89,13 +88,13 @@
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">account_circle</i>
-                            <span style="margin-left:20px">Instruktur: Nungki Selvi Andro</span>
+                            <span style="margin-left:20px"><?php echo $course->usr_firstname.' '.$course->usr_lastname?></span>
                         </span>
                     </li>
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">place</i>
-                            <span style="margin-left:20px">Universitas: Telkom University </span>
+                            <span style="margin-left:20px">Universitas: <?php echo $course->crs_univ?> </span>
                         </span>
                     </li>
                     <li class="mdl-list__item">

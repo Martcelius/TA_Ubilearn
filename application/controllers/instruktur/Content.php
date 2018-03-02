@@ -51,14 +51,20 @@ class Content extends CI_Controller {
         $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx|zip|rar|text';
         $config['file_name'] = $nmfile;
         $this->load->library('upload',$config);
-        $this->upload->do_upload('content');
-
+        $this->upload->do_upload('cnt_source');
         $result= $this->upload->data();
+
+
         $cntData['cnt_name'] = $this->input->post('cnt_name');
         $cntData['cnt_desc'] = empty($this->input->post('cnt_desc')) ? NULL : $this->input->post('cnt_desc');
         $cntData['cnt_comment'] = empty($this->input->post('cnt_comment')) ? NULL : $this->input->post('cnt_comment');
         $cntData['cnt_type'] = empty($this->input->post('cnt_type')) ? NULL : $this->input->post('cnt_type');
-        $cntData['cnt_source'] = $result['file_name'];
+        if ($cntData['cnt_type'] == "Text"){
+
+            $cntData['cnt_source'] = $result['file_name'];
+        }else{
+            $cntData['cnt_source'] = $this->input->post('cnt_source');
+        };
         $cntData['lsn_id'] = intval($this->input->post('lsn_id'));
         $cntData['loc_id'] = intval($this->input->post('loc_id'));
         
@@ -88,12 +94,26 @@ class Content extends CI_Controller {
 
     public function update_content()
     {
+//        dd($this->input->post('cnt_type'));
+        $nmfile = $this->input->post('cnt_name').time();
+        $config['upload_path'] ='./res/assets/content';
+        $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx|zip|rar|text';
+        $config['file_name'] = $nmfile;
+        $this->load->library('upload',$config);
+        $this->upload->do_upload('cnt_source');
+        $result= $this->upload->data();
+
         $cntData['cnt_id'] = $this->input->post('cnt_id');
         $cntData['cnt_name'] = $this->input->post('cnt_name');
         $cntData['cnt_desc'] = empty($this->input->post('cnt_desc')) ? NULL : $this->input->post('cnt_desc');
         $cntData['cnt_comment'] = empty($this->input->post('cnt_comment')) ? NULL : $this->input->post('cnt_comment');
         $cntData['cnt_type'] = empty($this->input->post('cnt_type')) ? NULL : $this->input->post('cnt_type');
-        $cntData['cnt_source'] = empty($this->input->post('cnt_source')) ? NULL : $this->input->post('cnt_source');
+        if ($cntData['cnt_type'] == "Text"){
+
+            $cntData['cnt_source'] = $result['file_name'];
+        }elseif($cntData['cnt_type'] == "Video"){
+            $cntData['cnt_source'] = $this->input->post('cnt_source');
+        };
         $cntData['loc_id'] = intval($this->input->post('loc_id'));
         $lsn_id = intval($this->input->post('lsn_id'));
 

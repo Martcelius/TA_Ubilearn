@@ -44,10 +44,10 @@ class Course extends CI_Controller {
         $data['data_course'] = M_Course::where('crs_id',$crs_id)->first();
         $data['data_user'] = $this->session->userdata('id');
         $data['enrol_status'] = "Diambil";
-        $data['detail_status'] = "Diambil";
-        $enr_id = $this->M_Course_Enrol->insert_enroll($data);
-        $input_detail = $this->M_Course_Enrol_Detail->insert_detail($data,$enr_id);
-        if ($input_detail){
+//        $data['detail_status'] = "Diambil";
+        $enroll = $this->M_Course_Enrol->insert_enroll($data);
+//        $input_detail = $this->M_Course_Enrol_Detail->insert_detail($data,$enr_id);
+        if ($enroll){
             $this->session->set_flashdata('data_enroll','Anda Mengambil Course '.$data['data_course']->crs_name);
         }
 //        dd($data['my_course']);
@@ -55,11 +55,10 @@ class Course extends CI_Controller {
     }
 
     public function my_course(){
-        $data['my_course'] = DB::table('course_enrol_detail')
-            ->leftJoin('course_enrol','course_enrol.enr_id','=','course_enrol_detail.enr_id')
+        $data['my_course'] = DB::table('course_enrol')
             ->leftJoin('course','course.crs_id','=','course_enrol.crs_id')
             ->leftJoin('users','users.usr_id','=','course.usr_id')
-            ->where('course_enrol_detail.usr_id',$this->session->userdata('id'))
+            ->where('course_enrol.usr_id',$this->session->userdata('id'))
             ->get();
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/my_course';

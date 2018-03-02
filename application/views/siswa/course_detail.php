@@ -38,7 +38,7 @@
                                     <span class="mdl-list__item-primary-content">
                                         <span style="margin-right: 25px;"><?php echo $num++?> </span>
                                         <i class="material-icons mdl-list__item-icon">label</i>
-                                        <a href="" style="color: white;"><?php echo 'Materi - '.$lessons->lsn_name?></a>
+                                        <a href="<?php echo site_url('siswa/materi/'.$lessons->lsn_id)?>" style="color: white;"><?php echo 'Materi - '.$lessons->lsn_name?></a>
                                 </span>
                                 <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                 </li>

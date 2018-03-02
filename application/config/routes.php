@@ -70,6 +70,11 @@ $route['siswa/enrol/(:any)'] = 'siswa/course/enrol/$1';
 $route['siswa/my_course'] = 'siswa/course/my_course';
 $route['siswa/course_detail/(:any)'] = 'siswa/course/course_detail/$1';
 
+//content
+$route['siswa/materi/(:any)'] = 'siswa/content/index/$1';
+$route['siswa/content/(:any)'] = 'siswa/content/contents/$1';
+$route['siswa/content/video/(:any)'] = 'siswa/content/contents/$1';
+
 //forum
 $route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
 $route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';

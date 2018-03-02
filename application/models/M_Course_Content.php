@@ -30,9 +30,13 @@ class M_Course_Content extends Eloquent
         $update->cnt_name= $data['cnt_name'];
         $update->cnt_desc= $data['cnt_desc'];
         $update->cnt_comment= $data['cnt_comment'];
-        $update->cnt_type= $data['cnt_type'];
-        $update->cnt_source= $data['cnt_source'];
+        if ($data['cnt_type'] != NULL){
+
+            $update->cnt_type= $data['cnt_type'];
+            $update->cnt_source= $data['cnt_source'];
+        }
         if ($data['loc_id'] != 0){
+
             $update->loc_id= $data['loc_id'];
         }
         return $update->save();
