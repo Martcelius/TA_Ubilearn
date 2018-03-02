@@ -29,21 +29,22 @@ class Assignment extends CI_Controller {
         $this->load->library('upload',$config);
         $this->upload->do_upload('asg-name');
         $result= $this->upload->data();
-        // dd($result['file_name']);
 
         $data['m-nama-asg'] = $_POST['m-nama-asg'];
         $data['m-deskripsi-asg'] = $_POST['m-deskripsi-asg'];
-        $data['asg_date'] = $_POST['asg_date'];
+        $data['asg_date'] = empty($_POST['asg_date']) ? NULL : $_POST['asg_date'];
         $data['crs_id'] = $_POST['crs_id'];
-        $data['asg_attachment'] = $result['file_name'];
+        if ($this->upload->do_upload('asg-name') == TRUE){
+            $data['asg_attachment'] = $result['file_name'];
+        }else{
+            $data['asg_attachment'] = NULL;
+        }
         $insert = $this->M_Course_Assignment->insert($data);
-    //    dd($insert);
-
         if($insert)
         {
-            $this->session->set_flashdata('data_lesson', 'Data Course Berhasil Tersimpan');
+            $this->session->set_flashdata('data_lesson', 'Data Assignment Berhasil Tersimpan');
         }else{
-            $this->session->set_flashdata('data_lesson_gagal', 'Data Course Tidak Berhasil Tersimpan');
+            $this->session->set_flashdata('data_lesson_gagal', 'Data Assignment Tidak Berhasil Tersimpan');
         }
 
         redirect('instruktur/lesson/'.$data['crs_id']);
@@ -61,10 +62,23 @@ class Assignment extends CI_Controller {
 
     public function update_asing()
     {
-        $asing['asg_name'] = $this->input->post('asg_name');
-        $asing['asg_waktu'] = $this->input->post('asg_waktu');
-        $asing['asg_text'] = empty($this->input->post('asg_text')) ? NULL : $this->input->post('asg_text');
-        $asing['asg_id'] = $this->input->post('asg_id');
+        $file = $this->input->post('m-nama-asg').time();
+        $config['upload_path'] ='./res/assets/file';
+        $config['allowed_types'] = 'doc|csv|pdf|docx|xlsx|xls|rar';
+        $config['file_name'] = $file;
+        $this->load->library('upload',$config);
+        $this->upload->do_upload('asg-name');
+        $result= $this->upload->data();
+
+        $asing['m-nama-asg'] = $_POST['m-nama-asg'];
+        $asing['m-deskripsi-asg'] = $_POST['m-deskripsi-asg'];
+        $data['asg_date'] = empty($_POST['asg_date']) ? NULL : $_POST['asg_date'];
+        if ($this->upload->do_upload('asg-name') == TRUE){
+            $data['asg_attachment'] = $result['file_name'];
+        }else{
+            $data['asg_attachment'] = NULL;
+        }
+        $asing['asg_id'] = $_POST['asg_id'];
         $crs_id = M_Course_Assignment::where('asg_id',$asing['asg_id'])->first(['crs_id']);
         // dd($crs_id->crs_id);
 

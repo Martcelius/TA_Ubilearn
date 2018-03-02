@@ -31,10 +31,13 @@ class M_Course_Assignment extends Eloquent
     public function update_asing($data)
     {
         $updateasing = M_Course_Assignment::where('asg_id',$data['asg_id'])->first();
-        $updateasing->asg_name = $data['asg_name'];
-        $updateasing->asg_text = $data['asg_text'];
-        $updateasing->asg_duedate = $data['asg_waktu'];
+        $updateasing->asg_name = $data['m-nama-asg'];
+        $updateasing->asg_text = $data['m-deskripsi-asg'];
+        if ($data['asg_attachment'] != NULL){
 
+            $updateasing->asg_attachment = $data['asg_attachment'];
+        }
+        $updateasing->asg_duedate = $data['asg_date'];
         return $updateasing->save();
     }
     

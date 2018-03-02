@@ -142,7 +142,7 @@
                                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;" onclick="deleteAss(<?php echo $ass->ass_id ?>)">
                                             <i class="material-icons">delete</i>
                                             Hapus
-                                            </button>
+                                        </button>
 
                                     </li>
                                 <?php $i++; endforeach; ?>
@@ -224,12 +224,14 @@
                                             Masuk
                                             </button>
                                         </a>
-                                        <a href="<?php echo site_url('instruktur/edit_assignment/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;">
+                                        <a href="<?php echo site_url('instruktur/edit_assignment/'.$asing->asg_id)?>" >
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;">
                                             <i class="material-icons">drafts</i>
                                             Edit
                                             </button>
                                         </a>
-                                        <a href="<?php echo site_url('instruktur/delete_lesson/'.$asing->asg_id)?>" ><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;">
+                                        <a href="<?php echo site_url('instruktur/delete_assignment/'.$asing->asg_id)?>" >
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;" onclick="return confirm('Anda yakin untuk menghapus?');">
                                             <i class="material-icons">delete</i>
                                             Hapus
                                             </button>

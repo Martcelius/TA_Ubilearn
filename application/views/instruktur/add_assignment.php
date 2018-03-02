@@ -25,13 +25,13 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-asg" class="form-control" id="inputtext3" placeholder="Deskripsi" rows="2"></textarea>
+                            <textarea name="m-deskripsi-asg" class="form-control" id="inputtext3" placeholder="Deskripsi" rows="2" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                         <label class="control-label col-sm-2" >Waktu Selesai :</label>
                         <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
-                            <input class="form-control" size="16" type="text" name="asg_date" value="" required>
+                            <input class="form-control" size="16" type="text" name="asg_date">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                         </div>
 			            </div>
@@ -39,6 +39,7 @@
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
                             <input name="asg-name" class="input-file" type="file" onchange="readURL(this);">
+                                <span>*Isi bila ada file yang ingin diUpload</span>
                             </div>
                         </div>
                         <div class="form-group">
