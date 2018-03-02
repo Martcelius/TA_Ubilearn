@@ -18,6 +18,13 @@
         </div>
     <?php endif; ?>
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                  <?php if ($this->session->flashdata('insert_course') == TRUE): ?>
+          <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet  mdl-cell--12-col-phone">
+              <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+              </button>
+              <p><?php echo $this->session->flashdata('insert_course')?></p>
+          </div>
+                  <?php endif; ?>
       <a href="<?php echo site_url('instruktur/add_course') ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
           <i class="material-icons">add</i>
           Buat Course

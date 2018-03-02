@@ -205,7 +205,8 @@ $route['instruktur/update_forum'] = 'instruktur/forum/update_forum';
 $route['instruktur/delete_forum/(:any)/(:any)'] = 'instruktur/forum/delete_forum/$1/$2';
 $route['instruktur/list_thread_instruktur/(:any)'] = 'instruktur/thread/list_thread_instruktur/$1';
 // route instruktur-result siswa
-$route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
+$route['instruktur/result_siswa_assignment/(:any)'] = 'instruktur/assignment/result_siswa_assignment/$1';
+
 
 
 // route login

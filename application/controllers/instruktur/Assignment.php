@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+use Illuminate\Database\Capsule\Manager as DB;
 class Assignment extends CI_Controller {
 
     
@@ -106,5 +106,21 @@ class Assignment extends CI_Controller {
             }
             
         redirect('instruktur/lesson/'.$deleteasing->crs_id);
+    }
+    public function result_siswa_assignment($asg_id)
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/result_siswa_assignment';
+        $data['assignment'] = DB::table("course_assignment")
+            ->leftJoin("course", "course.crs_id","=","course_assignment.crs_id")
+            ->leftJoin("users","users.usr_id","=","course.usr_id")
+            ->where("course_assignment.asg_id", $asg_id)->first();
+
+        $data['assignment_siswa'] =  DB::table("course_assignment_submission")
+            ->leftJoin("course_assignment", "course_assignment.asg_id", "=", "course_assignment_submission.asg_id")
+            ->leftJoin("users","users.usr_id","=","course_assignment_submission.usr_id")
+            ->where("course_assignment_submission.asg_id", $asg_id)->get();
+//        dd($data['assignment']);
+        $this->load->view('layout/master', $data);
     }
 }

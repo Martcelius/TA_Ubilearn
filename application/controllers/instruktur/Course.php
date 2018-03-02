@@ -65,7 +65,7 @@ class Course extends CI_Controller {
             $this->session->set_flashdata('insert_course', 'Data Course Tidak Berhasil Tersimpan');
         }
 
-        redirect('instruktur/add_course');
+        redirect('instruktur/MyCourse');
     }
 
     public function edit($id)

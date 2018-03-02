@@ -60,7 +60,17 @@
                                     <p>
                                         <?php echo $assignment->asg_text;?>
                                     </p>
-                                    <hr>
+                                    <?php if($data_instruktur->asg_attachment):?>
+                                        <div>
+                                        <span>Berkas Tugas :</span>
+                                            <a href="<?php echo base_url();?>res/assets/file/<?php echo $data_instruktur->asg_attachment;?>" target="_blank">
+                                                <p style="color: white;">
+                                                    <?php echo $data_instruktur->asg_name?>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    <?php endif?>
+
                                     <div>
                                         <input type='file' class="input-file" name='asg_attachment' onchange="readURL(this);" required/>
                                     </div>
