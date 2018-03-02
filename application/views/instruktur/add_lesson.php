@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Intro Lesson</label>
                             <div class="col-sm-10">
-                            <textarea name="lsn_intro" class="form-control" id="inputPassword3" placeholder="Intro Lesson" rows="2"></textarea>
+                            <textarea name="lsn_intro" class="form-control" id="ckedit" placeholder="Intro Lesson" rows="2"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -36,4 +36,13 @@
         </div>
     </div>
 </main>
-
+<script>
+    CKEDITOR.replace( 'ckedit' );
+    $("form").submit( function(e) {
+        var messageLength = CKEDITOR.instances['ckedit'].getData().replace(/<[^>]*>/gi, '').length;
+        if( !messageLength ) {
+            alert( 'Masukkan Deskripsi Lesson' );
+            e.preventDefault();
+        };
+    });
+</script>

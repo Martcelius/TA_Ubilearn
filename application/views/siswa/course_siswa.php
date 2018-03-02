@@ -30,8 +30,8 @@
                         <div class="mdl-card__actions">
                         <?php
                             $course_enrol = DB::table('course_enrol')
-                            ->leftJoin('course_enrol_detail','course_enrol_detail.enr_id','=','course_enrol.enr_id')
-                            ->where('crs_id',$course_siswa->crs_id)->where('usr_id',$this->session->userdata('id'))->first();
+                                ->where('crs_id',$course_siswa->crs_id)
+                                ->where('usr_id',$this->session->userdata('id'))->first();
 //                      ?>
                         <a href="<?php if($course_enrol != NULL) echo site_url('siswa/course_detail/'.$course_siswa->crs_id);else echo site_url('siswa/course_close/'.$course_siswa->crs_id); ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                                 Masuk

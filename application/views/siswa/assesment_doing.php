@@ -1,11 +1,14 @@
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <div class="">
-            <div class="" >
-                <h2 class="" style="color: white">Assesment "<?php echo $ass_obj->ass_name ?>"</h2>
-            </div>
-        </div>
+          <div class="">
+              <div class="">
+                  <h2 style="color:white"><?php echo $course->crs_name?></h2>
+                  <h3 style="color:white"><?php echo $ass_obj->ass_name;?></h3>
+                  <p class="glyphicon glyphicon-file" style="color: white;padding: 6px;border-radius: 12px;background: #558d43;"> Dibuat Oleh : <?php echo $course->usr_firstname." ".$course->usr_lastname." pada tanggal ".$ass_obj->ass_timecreated?></p>
+
+              </div>
+          </div>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--3-col-tablet mdl-cell--6-col-phone" style="position: absolute;top: 20%;right: 1%;" >
@@ -17,6 +20,7 @@
                 </div>
             </div>
         </div>
+    <form method="post" action="<?php echo site_url('siswa/assesment/calc_ass/'.$ass_obj->ass_id) ?>">   
     <?php
     $i = 0; 
     foreach($qst as $c){
@@ -26,8 +30,8 @@
         <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--6-col-phone" >
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__supporting-text" style="text-align: center;" >
-                <p>Question <?php echo $i+1 ?></p>
-                <p style="color:#ff5151" id="soal<?php echo $i+1 ?>" >Belom Terjawab</p>
+                <p>Pertanyaan <?php echo $i+1 ?></p>
+                <p style="color:#ff5151" id="soal<?php echo $i+1 ?>" >Belum Terjawab</p>
                 <p>Nilai <?php echo $qst_ans[$i]->sum('ans_point') ?></p>
                 </div>
             </div>
@@ -41,7 +45,7 @@
                     foreach($qst_ans[$i] as $d){
                     ?>
                     <p>
-                        <input type="radio" name="jawaban<?php echo $i+1 ?>" onclick="pilih(<?php echo $i+1 ?>)">
+                        <input type="radio" value="<?php echo $d->ans_id ?>" name="jawaban<?php echo $i+1 ?>" onclick="pilih(<?php echo $i+1 ?>)">
                         <label><?php echo $d->ans_text ?></label>
                     </p>
                     <?php $j++; } ?>
@@ -50,12 +54,17 @@
         </div>
     </div>
     <?php $i++; } ?>
+    <!-- Hidden Input Jumlah Soal -->
+    <input hidden type="number" name="jumSoal" value="<?php echo $i ?>">
+    <input hidden type="number" name="timeTaken" id="timeTaken">
+    <!-- End Hidden -->
 
     <div style="text-align:center;margin-bottom: 20px;">
-       <a href="<?php echo site_url('siswa/result') ?>"> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" type="submit">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" type="submit" id="submitBtn" onclick="return setTimeTaken()">
             Selesai Mengerjakan
-        </button></a>
+        </button>
     </div>
+    </form>
 </main>
 <script type="text/javascript">
     function pilih(no){
@@ -65,14 +74,17 @@
 </script>
 
 <script>
+var timeTaken = 0;
 var ass_id = <?php echo $ass_obj->ass_id ?>;
 var peringatan = false;
 // Set the date we're counting down to
 var countDownDate = new Date("<?php echo $ass_obj->ass_timeclose ?>").getTime();
-/*var countDownDate = new Date("2018-02-27 12:34:5").getTime();*/
+/*var countDownDate = new Date("2018-02-28 13:50:5").getTime();*/
 
 // Update the count down every 1 second
 var x = setInterval(function() {
+
+  timeTaken = timeTaken + 1;
 
   // Get todays date and time
   var now = new Date().getTime();
@@ -95,14 +107,18 @@ var x = setInterval(function() {
     clearInterval(x);
     document.getElementById("demo").innerHTML = "EXPIRED";
     alert('Waktu Anda Sudah Habis');
-    window.location.href = '<?php echo base_url().'siswa/Assesment/assesment_doing/'?>'+ass_id ;
+    $('#submitBtn').click();
   }
-  else if(minutes <= 4 && peringatan == false){
+  else if(minutes <= 4 && peringatan == false && hours == 0 && days == 0){
     alert('Waktu 5 Menit lagi');
     peringatan = true;
     $('.timeBox').css('background','#e92a2a');
   }
 }, 1000);
+
+function setTimeTaken(){
+    $('#timeTaken').val(timeTaken);
+}
 </script>
 
 

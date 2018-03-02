@@ -155,7 +155,7 @@
                     
 			  <div class="form-group pull-right"> 
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-lg btn-primary" onclick="return cek()">Submit</button>
+			      <button class="btn btn-lg btn-primary" onclick="return cek()">Submit</button>
 			    </div>
 			  </div>
 			</form>
@@ -164,8 +164,6 @@
     </div>
    </div>
 </main>
-
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 <script type="text/javascript">
         $('.form_datetime').datetimepicker({
         //language:  'fr',
@@ -310,16 +308,22 @@
   }
 
   function cek(){
-    /*var i = 1;
-    var temp;
+    var i = 1;
+    var temp = 0;
     while(i <= currNum){
-      temp[i-1] = $('input[name="poin'+i+'"]').val();
+      var a = $('[name=poin'+i+']').val();
+      temp = temp + parseInt(a);
       i++;
-    }*/
-    return false;
-    alert('aa');
-    
-
+    }
+    var bool = false;
+    if(temp == 100){
+      bool = true;
+    }
+    else{
+      bool = false;
+      alert('Jumlah Poin tidak sama dengan 100 !');
+    }
+    return bool;
   }
 
 </script>  
