@@ -91,7 +91,7 @@ $route['siswa/assesment_info/(:any)'] = 'siswa/assesment/index/$1';
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 
 //result assesment/exercise
-$route['siswa/result/(:any)'] = 'C_siswa/result/$1';
+$route['siswa/result/(:any)'] = 'siswa/assesment/result/$1';
 
 $route['siswa/pretest'] = 'C_siswa/pretest';
 $route['siswa/remedial'] = 'C_siswa/remedial';

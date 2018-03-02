@@ -58,15 +58,7 @@ class Assesment extends CI_Controller {
 		
         $this->M_Course_Assesment->updates($mca,$ass_id);
 
-        $jumSoal =$this->input->post('currNum');/*
-        $jumSoalOld = $this->input->post('jumSoalOld');*/
-/*        $i = 1;
-        if($jumSoalOld > $jumSoalNew){
-        	$jumSoal = $jumSoalOld;
-        }
-        else{
-        	$jumSoal = $jumSoalNew;
-        }*/
+        $jumSoal =$this->input->post('currNum');
         //loop per soal
         $i = 1;
         while($i <= $jumSoal){
