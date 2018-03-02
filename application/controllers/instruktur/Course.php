@@ -17,7 +17,7 @@ class Course extends CI_Controller {
     public function index()
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
-        $data['content'] = 'instruktur/MyCourse';
+        $data['content'] = 'instruktur/myCourse';
         $data['courses']= M_course::where('course.usr_id', '=', $this->session->userdata('id'))->get();
 //        dd($data['courses']);
 //        $data['courses']= DB   ->join('users', 'users.usr_id', '=', 'course.usr_id')

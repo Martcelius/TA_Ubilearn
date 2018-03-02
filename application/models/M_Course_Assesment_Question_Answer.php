@@ -22,6 +22,11 @@ class M_Course_Assesment_Question_Answer extends Eloquent
    		return $qst_ans;
     }
 
+    public function selectBy($name_col,$id){
+        $qst_ans = M_Course_Assesment_Question_Answer::where($name_col,$id)->get();
+   		return $qst_ans;
+    }
+
     public function updates($data,$ans_id){
     	if($ans_id){
     		$mcaqa = M_Course_Assesment_Question_Answer::where('ans_id','=',$ans_id)->first();

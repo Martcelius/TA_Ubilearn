@@ -33,6 +33,7 @@ class Assignment extends CI_Controller {
 
         $data['m-nama-asg'] = $_POST['m-nama-asg'];
         $data['m-deskripsi-asg'] = $_POST['m-deskripsi-asg'];
+        $data['asg_date'] = $_POST['asg_date'];
         $data['crs_id'] = $_POST['crs_id'];
         $data['asg_attachment'] = $result['file_name'];
         $insert = $this->M_Course_Assignment->insert($data);
@@ -40,12 +41,12 @@ class Assignment extends CI_Controller {
 
         if($insert)
         {
-            $this->session->set_flashdata('insert_asg', 'Data Course Berhasil Tersimpan');
+            $this->session->set_flashdata('data_lesson', 'Data Course Berhasil Tersimpan');
         }else{
-            $this->session->set_flashdata('insert_asg', 'Data Course Tidak Berhasil Tersimpan');
+            $this->session->set_flashdata('data_lesson_gagal', 'Data Course Tidak Berhasil Tersimpan');
         }
 
-        redirect('instruktur/add_assignment/'.$data['crs_id']);
+        redirect('instruktur/lesson/'.$data['crs_id']);
     }
 
     
@@ -61,6 +62,7 @@ class Assignment extends CI_Controller {
     public function update_asing()
     {
         $asing['asg_name'] = $this->input->post('asg_name');
+        $asing['asg_waktu'] = $this->input->post('asg_waktu');
         $asing['asg_text'] = empty($this->input->post('asg_text')) ? NULL : $this->input->post('asg_text');
         $asing['asg_id'] = $this->input->post('asg_id');
         $crs_id = M_Course_Assignment::where('asg_id',$asing['asg_id'])->first(['crs_id']);
@@ -75,8 +77,21 @@ class Assignment extends CI_Controller {
             $this->session->set_flashdata('data_lesson_gagal', 'Data Assignment Tidak Berhasil Terupdate');
         }
         
-        redirect('instruktur/lesson/'.$crs_id->crs_id);
-        
+        redirect('instruktur/lesson/'.$crs_id->crs_id);        
+    }
+    public function delete_asing($id)
+    {
+        $deleteasing = M_Course_Assignment::where('asg_id',$id)->first();
+        $asingDelete= $deleteasing->delete();
+            
+            if($asingDelete)
+            {
+                $this->session->set_flashdata('data_lesson', 'Data Assignment Berhasil Terhapus');
+            }else{
+                $this->session->set_flashdata('data_lesson_gagal', 'Data Assignment Tidak Berhasil Terhapus');
+            }
+            
+        redirect('instruktur/lesson/'.$deleteasing->crs_id);
     }
     public function result_siswa_assignment($asg_id)
     {

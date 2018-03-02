@@ -70,6 +70,11 @@ $route['siswa/enrol/(:any)'] = 'siswa/course/enrol/$1';
 $route['siswa/my_course'] = 'siswa/course/my_course';
 $route['siswa/course_detail/(:any)'] = 'siswa/course/course_detail/$1';
 
+//content
+$route['siswa/materi/(:any)'] = 'siswa/content/index/$1';
+$route['siswa/content/(:any)'] = 'siswa/content/contents/$1';
+$route['siswa/content/video/(:any)'] = 'siswa/content/contents/$1';
+
 //forum
 $route['siswa/forum_siswa'] = 'C_siswa/forum_siswa';
 $route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
@@ -86,7 +91,7 @@ $route['siswa/assesment_info/(:any)'] = 'siswa/assesment/index/$1';
 $route['siswa/exercise_doing'] = 'C_siswa/exercise_doing';
 
 //result assesment/exercise
-$route['siswa/result/(:any)'] = 'C_siswa/result/$1';
+$route['siswa/result/(:any)'] = 'siswa/assesment/result/$1';
 
 $route['siswa/pretest'] = 'C_siswa/pretest';
 $route['siswa/remedial'] = 'C_siswa/remedial';
@@ -177,6 +182,8 @@ $route['instruktur/add_remedial'] = 'C_instruktur/add_remedial';
 $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';
 $route['instruktur/add_assignment/(:any)'] = 'instruktur/Assignment/add_assignment/$1';
 $route['instruktur/edit_assignment/(:any)'] = 'instruktur/Assignment/edit_asing/$1';
+$route['instruktur/delete_asing/(:any)'] = 'instruktur/Assignment/delete_asing/$1';
+
 
 // route instruktur-content
 $route['instruktur/content/(:any)'] = 'instruktur/content/content/$1';
