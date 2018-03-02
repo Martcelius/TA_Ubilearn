@@ -11,8 +11,6 @@
                     ?>
                 </p>
                 <p style="color:white;"><?php echo $assignment->asg_name?></p>
-                <p style="color:white;"><?php echo $assignment->asg_text?></p>
-
             </div>
         </div>
     </div>
