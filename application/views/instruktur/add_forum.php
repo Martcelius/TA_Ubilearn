@@ -42,10 +42,10 @@
                             <input name="judul_forum" type="text" class="form-control" id="inputjudulforum" placeholder="Judul Forum..." required>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"  >
                             <label for="inputdeskripsiforum" class="col-sm-2 control-label" style="font-size:12px;">Deskripsi Forum</label>
                             <div class="col-sm-10">
-                                <textarea name="deskripsiforum" class="form-control" id="deskripsiforum" style="max-width: 100%" required></textarea>
+                                <textarea name="deskripsiforum" id="deskripsiforum" style="max-width: 100%;" ></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -67,15 +67,16 @@
 
 
 <!-- CKEDITOR -->
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js" type="text/javascript"></script>
+<!--<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js" type="text/javascript"></script>-->
 <script>
-	CKEDITOR.replace('deskripsiforum');
+    CKEDITOR.replace( 'deskripsiforum' );
     $("form").submit( function(e) {
         var messageLength = CKEDITOR.instances['deskripsiforum'].getData().replace(/<[^>]*>/gi, '').length;
         if( !messageLength ) {
             alert( 'Masukkan Deskripsi Forum' );
             e.preventDefault();
-        }
+        };
     });
 </script>
+
 

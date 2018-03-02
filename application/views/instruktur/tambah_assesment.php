@@ -164,8 +164,6 @@
     </div>
    </div>
 </main>
-
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 <script type="text/javascript">
         $('.form_datetime').datetimepicker({
         //language:  'fr',

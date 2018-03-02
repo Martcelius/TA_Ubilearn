@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi Content</label>
                             <div class="col-sm-10">
-                            <textarea name="cnt_desc" class="form-control" id="inputtext3" value= "<?php echo $editContent->cnt_desc;?>"><?php echo htmlspecialchars($editContent->cnt_desc) ;?></textarea>
+                            <textarea name="cnt_desc" class="form-control" id="ckedit" value="<?php echo $editContent->cnt_desc;?>"><?php echo htmlspecialchars($editContent->cnt_desc) ;?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -105,5 +105,15 @@
                 $("#uploadvideo").attr("required",true);
             }
         });
+    });
+</script>
+<script>
+    CKEDITOR.replace( 'ckedit' );
+    $("form").submit( function(e) {
+        var messageLength = CKEDITOR.instances['ckedit'].getData().replace(/<[^>]*>/gi, '').length;
+        if( !messageLength ) {
+            alert( 'Masukkan Deskripsi Content' );
+            e.preventDefault();
+        };
     });
 </script>

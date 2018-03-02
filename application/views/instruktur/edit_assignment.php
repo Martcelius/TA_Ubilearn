@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-asg" class="form-control" id="inputtext3" value="<?php echo $dataasing->asg_text; ?>" rows="3" required><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
+                            <textarea name="m-deskripsi-asg" class="form-control" id="ckedit" value="<?php echo $dataasing->asg_text; ?>" rows="3" required><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -66,5 +66,15 @@
         todayBtn: true,
         format: "yyyy-mm-dd hh:ii",
         pickerPosition: "top-left",
+    });
+</script>
+<script>
+    CKEDITOR.replace( 'ckedit' );
+    $("form").submit( function(e) {
+        var messageLength = CKEDITOR.instances['ckedit'].getData().replace(/<[^>]*>/gi, '').length;
+        if( !messageLength ) {
+            alert( 'Masukkan Deskripsi Assignment' );
+            e.preventDefault();
+        };
     });
 </script>

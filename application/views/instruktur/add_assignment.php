@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-asg" class="form-control" id="inputtext3" placeholder="Deskripsi" rows="2" required></textarea>
+                            <textarea name="m-deskripsi-asg" class="form-control" id="ckedit" placeholder="Deskripsi" rows="2" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -67,8 +67,14 @@
         format: "yyyy-mm-dd hh:ii",
         pickerPosition: "top-left",
     });
-
-    $(function () {
-	    CKEDITOR.replace('soal1');
-	  });
+</script>
+<script>
+    CKEDITOR.replace( 'ckedit' );
+    $("form").submit( function(e) {
+        var messageLength = CKEDITOR.instances['ckedit'].getData().replace(/<[^>]*>/gi, '').length;
+        if( !messageLength ) {
+            alert( 'Masukkan Deskripsi Assignmnet' );
+            e.preventDefault();
+        };
+    });
 </script>
