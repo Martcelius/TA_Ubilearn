@@ -22,24 +22,27 @@ class Forum extends CI_Controller {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/forum_siswa';
         $data['coursetake']=  DB::table("course_enrol_detail")
-                            ->leftJoin("course","course.crs_id","=","course_enrol_detail.crs_id")
+                            ->leftJoin("course_enrol","course_enrol.enr_id","=","course_enrol_detail.enr_id")
+                            ->leftJoin("course","course.crs_id","=","course_enrol.crs_id")
                             ->leftJoin("users","users.usr_id","=","course.usr_id")
-                            ->where('course_enrol.usr_id',$this->session->userdata('id'))
+                            ->where('course_enrol_detail.usr_id',$this->session->userdata('id'))
                             ->get();
                             //dd($data['coursetake']);
 
         $data['lessondata'] = DB::table("course_enrol_detail")
-                            ->leftJoin("course","course.crs_id","=","course_enrol_detail.crs_id")
+                            ->leftJoin("course_enrol","course_enrol.enr_id","=","course_enrol_detail.enr_id")
+                            ->leftJoin("course","course.crs_id","=","course_enrol.crs_id")
                             ->leftJoin("course_lesson","course_lesson.crs_id","=","course.crs_id")
-                            ->where('course_enrol.usr_id',$this->session->userdata('id'))
+                            ->where('course_enrol_detail.usr_id',$this->session->userdata('id'))
                             ->get();
                             //dd($data['lessondata']);
 
         $data['listforumlesson'] = DB::table("course_enrol_detail")
-                            ->leftJoin("course","course.crs_id","=","course_enrol_detail.crs_id")
+                            ->leftJoin("course_enrol","course_enrol.enr_id","=","course_enrol_detail.enr_id")
+                            ->leftJoin("course","course.crs_id","=","course_enrol.crs_id")
                             ->leftJoin("course_lesson","course_lesson.crs_id","=","course.crs_id")
                             ->leftJoin("course_forum","course_forum.lsn_id","=","course_lesson.lsn_id")
-                            ->where('course_enrol.usr_id',$this->session->userdata('id'))
+                            ->where('course_enrol_detail.usr_id',$this->session->userdata('id'))
                             ->get();
                             //dd($data['listforum']);
 
@@ -47,9 +50,16 @@ class Forum extends CI_Controller {
                             ->leftJoin("course_lesson","course_lesson.lsn_id","=","course_forum.lsn_id")
                             ->leftJoin("course","course.crs_id","=","course_lesson.crs_id")
                             ->leftJoin("course_enrol","course_enrol.crs_id","=","course.crs_id")
-                            ->where('course_enrol.usr_id',$this->session->userdata('id'))
+                            ->leftJoin("course_enrol_detail","course_enrol_detail.enr_id","=","course_enrol.enr_id")
+                            ->where('course_enrol_detail.usr_id',$this->session->userdata('id'))
                             ->get();
+                            //dd($data['dataforum']);
 
+        $indexforum = 1;
+        foreach($data['dataforum'] as $linkforum){
+            $listforum[$indexforum] = $linkforum->cfr_id;
+            $indexforum++;
+        }
 
         if ($data['dataforum'] != NULL)
         {
@@ -61,34 +71,15 @@ class Forum extends CI_Controller {
                 $num++;
 
             }
+            $data['listforumm'] = $listforum;
             $data['jumlah'] =$jumlah;
             $this->load->view('layout/master',$data);
         }
         else
         {
+            $data['listforumm'] = $listforum;
             $data['jumlah'] =0;
             $this->load->view('layout/master',$data);
         }
-    }
-
-    public function dashboard_forum_instruktur($crs_id)
-    {
-
-        
-//         $num=1;
-//         foreach ($data['dataForum'] as $thread){
-//             $jumlahThread = M_Course_Forum_Thread::where('cfr_id',$thread->cfr_id)->get();
-//             $jumlah[$num] = $jumlahThread->count('cfr_id');
-//             $num++;
-
-//         }
-//         $data['jumlah'] =$jumlah;
-//         $data['dataCourse']= M_Course::where('crs_id',$crs_id)->first();
-// //        $data['crs_name'] = $data['dataForum']->
-//         $data['sidebar'] = 'layout/sidebar_instruktur';
-//         $data['content'] = 'instruktur/dashboard_forum_instruktur';
-//         $this->load->view('layout/master',$data);
-    }
-        
-    
+    } 
 }

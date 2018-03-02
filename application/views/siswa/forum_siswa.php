@@ -84,6 +84,8 @@
 
                                                 <?php
                                                     $counttab2 = 1;
+                                                    $numforum = 1;
+
                                                     foreach ($listforumlesson as $listforum):?>
                                                     <tr>
                                                         <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
@@ -102,18 +104,22 @@
                                                             <?php echo $jumlah[$num];?>
                                                         </td>
                                                         <td style="text-align : center">
-                                                            <a href="<?php echo site_url('siswa/list_thread_siswa')?>">
+                                                            <a href="<?php echo site_url('siswa/list_thread_siswa/'.$listforumm[$numforum])?>">
                                                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
                                                             </a>
                                                         </td>
                                                     </tr>
-                                                <?php endforeach; ?>
+                                                <?php 
+                                                    $numforum++;
+                                                    endforeach;?>
                                             </thead>
                                         </table>
                                     </td>
                                 </tr>
-                                <?php $num++ ?>
-                            <?php endforeach; ?>
+                                <?php
+                                    $num++;
+                                    endforeach; 
+                                ?>
                         </thead>
                     </table>
                 </div>      

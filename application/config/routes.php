@@ -72,10 +72,11 @@ $route['siswa/course_detail/(:any)'] = 'siswa/course/course_detail/$1';
 
 //forum
 $route['siswa/forum_siswa'] = 'siswa/Forum/index';
-$route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
+// $route['siswa/list_thread_siswa'] = 'C_siswa/list_thread_siswa';
 $route['siswa/detail_thread_siswa'] = 'C_siswa/detail_thread_siswa';
 $route['siswa/add_thread_siswa'] = 'C_siswa/add_thread_siswa';
 $route['siswa/edit_thread_siswa'] = 'C_siswa/edit_thread_siswa';
+$route['siswa/list_thread_siswa/(:any)'] = 'siswa/thread/list_thread_siswa/$1';
 
 //assesment
 $route['siswa/assignment_opening'] = 'C_siswa/assignment_opening';
@@ -199,6 +200,7 @@ $route['instruktur/edit_forum/(:any)/(:any)'] = 'instruktur/forum/edit_forum/$1/
 $route['instruktur/update_forum'] = 'instruktur/forum/update_forum';
 $route['instruktur/delete_forum/(:any)/(:any)'] = 'instruktur/forum/delete_forum/$1/$2';
 $route['instruktur/list_thread_instruktur/(:any)'] = 'instruktur/thread/list_thread_instruktur/$1';
+    
 // route instruktur-result siswa
 
 
