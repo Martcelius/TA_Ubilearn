@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-asg" class="form-control" id="ckedit" value="<?php echo $dataasing->asg_text; ?>" rows="3" required><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
+                            <textarea name="m-deskripsi-asg" id="ckedit" style="width:100%;" value="<?php echo $dataasing->asg_text;?>"><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
                             </div>
                         </div>
                         <div class="form-group">

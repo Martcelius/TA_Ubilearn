@@ -16,7 +16,7 @@
                     <h2 class="mdl-card__title-text">Content</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Content</div>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text" style="font-size:15px;">
                     <form action="<?php echo site_url('instruktur/insert_content'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" >
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Kontent</label>
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi Content</label>
                             <div class="col-sm-10">
-                            <textarea name="cnt_desc" class="form-control" id="ckedit" placeholder="Deskripsi Content"></textarea>
+                            <textarea name="cnt_desc" id="ckedit" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

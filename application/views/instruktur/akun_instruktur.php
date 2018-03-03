@@ -7,7 +7,7 @@
             <div class="mdl-card__title">
                 <h2>Pengaturan Akun Instruktur</h2>
             </div>
-            <div class="mdl-card__supporting-text">
+            <div class="mdl-card__supporting-text" style="font-size:15px;">
             <div class="container">
             <div class="row">
             <div class="col-md-10 ">
