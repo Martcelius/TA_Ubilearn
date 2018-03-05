@@ -156,34 +156,8 @@ class Usertracking
     $input_data['client_ip'] = $this->CI->input->server('REMOTE_ADDR');
     $input_data['client_user_agent'] = $this->CI->agent->agent_string();
     $input_data['referer_page'] = $this->CI->agent->referrer();
-
-    //Get the user identifier, if set
-    if ($this->configuration['user_identifier'] !== null && is_array($this->configuration['user_identifier']))
-    {
-      if (count($this->configuration['user_identifier']) == 3)
-      {
-        list($class_type, $class_name, $function_name) = $this->configuration['user_identifier'];
-        $the_args = array();
-      }
-      elseif (count($this->configuration['user_identifier']) == 4)
-        list($class_type, $class_name, $function_name, $the_args) = $this->configuration['user_identifier'];
-
-      if ( ! $this->CI->load->$class_type($class_name))
-      {
-        if ((($class_type !== 'helper') && !method_exists($this->CI->$class_name, $function_name)) OR ($class_type == 'helper' && !function_exists($function_name)))
-          display_error("Could not load the $function_name in $class_name.  Check the userIdentifier configuration in userTracking config. User Identifier will not be tracked.");
-        else //Do it!
-        {
-          if ($class_type == 'helper')
-            $input_data['user_identifier'] = call_user_func_array($function_name, $the_args);
-          else
-            $input_data['user_identifier'] = call_user_func_array(array($this->CI->$class_name, $function_name), $the_args);
-        }
-      }
-      else
-        display_error("Could not load the $class_type: $class_name.  Check the userIdentifier configuration in userTracking config. User Identifier will not be tracked.");
-    }
-
+    $input_data['user_identifier'] = $this->CI->session->userdata('username');
+    
     //Add it to the database
     $this->CI->load->database();
     $result = $this->CI->db->insert('usertracking', $input_data);

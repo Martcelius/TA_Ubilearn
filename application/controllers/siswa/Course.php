@@ -21,9 +21,7 @@ class Course extends CI_Controller {
      {
          $data['sidebar'] = 'layout/sidebar';
          $data['content'] = 'siswa/course_siswa';
-         $data['courses']=  DB::table("course")
-         ->leftJoin("users","users.usr_id","=","course.usr_id")
-         ->get();
+         $data['courses']=  M_Course::get();
          $data['course_enrol'] = M_Course_Enrol::where('usr_id',$this->session->userdata('id'))->get(['crs_id']);
         //  $coba = DB::table('course_enrol')->where('crs_id',50)->where('usr_id',$this->session->userdata('id'))->first();
         //  dd($coba);
@@ -36,6 +34,8 @@ class Course extends CI_Controller {
             ->leftJoin("users","users.usr_id","=","course.usr_id")
             ->where('crs_id',$crs_id)->first();
 
+        
+            
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/course_close';
         $this->load->view('layout/master', $data);

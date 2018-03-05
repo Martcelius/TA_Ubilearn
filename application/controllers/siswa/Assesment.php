@@ -9,12 +9,7 @@ class Assesment extends CI_Controller {
     {
         parent::__construct();
 
-        $this->load->model('M_Course');
-        $this->load->model('M_Course_Assesment');
-        $this->load->model('M_Course_Assesment_Question');
-        $this->load->model('M_Course_Assesment_Question_Answer');
-
-        $this->load->library('usertracking'); $this->usertracking->track_this();
+        $this->usertracking->track_this();
 
 
 
