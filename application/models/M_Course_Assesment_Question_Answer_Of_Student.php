@@ -27,6 +27,11 @@ class M_Course_Assesment_Question_Answer_Of_Student extends Eloquent
         $ast = M_Course_Assesment_Question_Answer_Of_Student::where(['ass_id' => $ass_id],['usr_id' => $usr_id])->get();
    		return $ast;
     }
+
+    public function selectByUser($usr_id){
+        $ast = M_Course_Assesment_Question_Answer_Of_Student::where('usr_id',$usr_id)->groupBy('ass_id')->selectRaw('*, sum(ast_point) as nilai')->get();
+        return $ast;
+    }
     
 }
 

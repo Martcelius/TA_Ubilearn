@@ -9,7 +9,9 @@ class C_siswa extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-
+        $this->load->model('M_Course_Enrol');
+        $this->load->model('M_Course_Assesment_Question_Answer_Of_Student');
+        $this->load->model('M_Course_Assesment');
     }
 
     public function index()
@@ -21,6 +23,18 @@ class C_siswa extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/dashboard_siswa';
+        $cenr = new M_Course_Enrol;
+        $data['list_course'] = $cenr->selectByUser($this->session->userdata('id'),5);
+        $ans = new M_Course_Assesment_Question_Answer_Of_Student;
+        $ansStd = $ans->selectByUser($this->session->userdata('id'));
+        $ass = new M_Course_Assesment;
+        $i = 0;
+        foreach($ansStd as $c){
+            $listAss[$i] = $ass->select($c->ass_id);
+            $i++;
+        }
+        $data['listAss'] = $listAss;
+        $data['ansStd'] = $ansStd;
         $this->load->view('layout/master', $data);
 
     }
