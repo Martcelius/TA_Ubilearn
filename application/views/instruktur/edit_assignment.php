@@ -38,8 +38,9 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
-                            <input name="asg-name" class="input-file" type="file" onchange="readURL(this);">
-                                <span><?php echo $dataasing->asg_attachment?></span>
+                            <input name="asg-name" class="input-file" type="file" accept="application/pdf" onchange="readURL(this);">
+                                <p>*Input file .pdf</p>
+                                <p><?php echo $dataasing->asg_attachment?></p>
                             </div>
                         </div>
                         <div class="form-group">

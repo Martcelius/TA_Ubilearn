@@ -117,7 +117,7 @@
                                 <div class="mdl-cell mdl-cell--11-col">
                                     <h2 class="mdl-card__title-text">Assignment</h2>
                                     <hr style="background-color: white;"/>
-                                    <p style="color: white">Understand to growing need for better .... ....</p>
+                                    <p style="color: white">Tugas dikerjakan sesuai dengan tenggat waktu yang diberikan</p>
                                 </div>
                             </div>
                         </div>

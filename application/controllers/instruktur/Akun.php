@@ -59,7 +59,7 @@ class Akun extends CI_Controller {
             $userData['usr_picture'] = $result['file_name'];
         } else {
             $userData['usr_picture'] = $this->session->userdata('foto');
-            echo $this->upload->display_errors(); die();
+//            echo $this->upload->display_errors(); die();
 
         }
         
