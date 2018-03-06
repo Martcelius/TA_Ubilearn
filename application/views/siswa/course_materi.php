@@ -17,15 +17,15 @@
                             <li class="mdl-list__item" style="background-color: #0d0d0d" >
 								 <span class="mdl-list__item-primary-content">
                                     <span style="margin-right: 25px;"></span>
-                                    <i class="material-icons mdl-list__item-icon">label</i>
+                                    <i class="material-icons mdl-list__item-icon"><?php if($content->cnt_type == 'Text') echo "file_download"; else echo "play_circle_filled" ?></i>
                                      <?php echo $content->cnt_name?>
                                 </span>
                                 <div class="mdl-layout-spacer"></div>
                                 <b class="mdl-list__item-secondary-action" style="margin-right:50px"><?php echo $content->cnt_type?></b>
-                                <a href="<?php if ($content->cnt_type == 'Text')echo site_url('siswa/content/'.$content->cnt_id); else echo site_url('siswa/content/video/'.$content->cnt_id); ?>">
+                                <a href="<?php if ($content->cnt_type == 'Text')echo site_url('res/assets/content/'.$content->cnt_source); else echo site_url('siswa/content/video/'.$content->cnt_id); ?>">
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                                         <i class="material-icons"></i>
-                                        Masuk
+                                        <?php if ($content->cnt_type == 'Text') echo "Unduh";else echo "Masuk";?>
                                     </button>
                                 </a>
                             </li>

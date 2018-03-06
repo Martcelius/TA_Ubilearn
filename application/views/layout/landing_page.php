@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>U-Learning</title>
-
+    <link rel="icon" type="image/png" href="<?php echo base_url().'res/assets/' ?>images/fav.ico">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 

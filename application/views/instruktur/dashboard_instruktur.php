@@ -30,7 +30,7 @@
                 <div>
                     <div class="row">
                         <div class="col-sm-8">
-                            <p>IT Project Management</p>
+                            <p style="font-size: px;">IT Project Management</p>
                             Universitas Telkom
                         </div>
                         <div class="col-sm-4">

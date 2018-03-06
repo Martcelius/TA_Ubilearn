@@ -27,10 +27,10 @@
                     </div>
                     <ul class="mdl-list" style="margin: 15px;">
                         <a href="<?php echo site_url()?>res/assets/content/<?php echo $kontent->cnt_source?>" target="_blank">
-                            <li class="mdl-list__item" style="background-color: #97b0b5" >
+                            <li class="mdl-list__item" style="" >
                          <span class="mdl-list__item-primary-content">
                             <span style="margin-right: 25px;">
-                                <iframe src="<?php echo site_url()?>res/assets/content/<?php echo $kontent->cnt_source?>" style="scroll: hidden;"  frameborder="0"></iframe>
+                                <embed src="<?php echo site_url()?>res/assets/content/<?php echo $kontent->cnt_source?>"  frameborder="0"></embed>
                             </span>
                                <b class="mdl-list__item-secondary-action"><?php echo $kontent->cnt_name?></b>
                         </span>
