@@ -1,8 +1,8 @@
 <main class="mdl-layout__content">
-<div class="col-sm-11 cover-main">
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-            <div>
+<div class="mdl-grid cover-main">
+    <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+        <div class="">
+            <div class="">
                 <h2 style="color:white">My Course</h2>
                 <h3 style="color:white">Browse Course</h3>
             </div>
@@ -14,8 +14,7 @@
         </div>
     </div>
 </div>
-    <div class=" col-sm-10 " >
-        <div class="mdl-grid">
+
             <?php if ($this->session->flashdata('data_enroll') == TRUE): ?>
                 <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                     <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
@@ -23,6 +22,10 @@
                     <p><?php echo $this->session->flashdata('data_enroll')?></p>
                 </div>
             <?php endif; ?>
+			
+			<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--9-col" >
+			<div class="mdl-grid">
             <?php foreach($my_course as $mycourse): ?>
                 <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
 
@@ -41,23 +44,29 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+       </div>
+    </div>
+	
+    <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-card mdl-shadow--2dp trending">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Category</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <ul class="mdl-list">
+                    <li class="mdl-list_item">
+                            <h7 style="color: white;margin-left: 10px;"> </h7>
+                    </li>
+					<li class="mdl-list_item">
+                            <h7 style="color: white;margin-left: 10px;"> </h7>
+                    </li>
+					<li class="mdl-list_item">
+                            <h7 style="color: white;margin-left: 10px;"> </h7>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="sidenav" style="background-color: #343434;">
-        <br/>
-        <h5 style="color: white;margin-left: 10px;">CATEGORY</h5>
-        <ul>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Software and Development</h7>
-            </li>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Intelligent and Computing</h7>
-            </li>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Networking</h7>
-            </li>
-        </ul>
-        <hr>
-    </div>
 
+	</div>
 </main>

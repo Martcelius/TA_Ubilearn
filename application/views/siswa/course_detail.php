@@ -1,16 +1,19 @@
 <main class="mdl-layout__content">
-<div class="col-sm-11 cover-main">
-    <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-                <div>
+<div class="mdl-grid cover-main">
+    <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+            <div class="">
+                <div class="">
                     <h2 style="color:white"><?php echo $course->crs_name?></h2>
                     <h3 style="color:white"><?php echo $course->usr_kode?></h3>
                 </div>
             </div>
     </div>
 </div>
-    <div class=" col-sm-10 " >
-        <div class="mdl-grid">
+
+	<div class="mdl-grid">
+	
+    <div class="mdl-cell mdl-cell--9-col" >
+	<div class="mdl-grid">
             <!-- dropdown -->
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div class="mdl-card mdl-shadow--2dp">
@@ -130,24 +133,28 @@
             </div> 
 
         </div>
+		</div>
+    
+    <div class="mdl-cell mdl-cell--3-col">
+	<div class="mdl-card mdl-shadow--2dp trending">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Informasi Course</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <ul class="mdl-list">
+                    <li class="mdl-list__item">
+                        Course : <?php echo $course->crs_name?>
+                    </li>
+					<li class="mdl-list__item">
+                        Instruktur : <?php echo $course->usr_firstname?> <?php echo $course->usr_lastname?>
+                    </li>
+					<li class="mdl-list__item">
+                        Jumlah lesson: <?php echo $jml_lesson?>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="sidenav">
-        <ul class="demo-list-item mdl-list">
-            <li class="mdl-list__item">
-                Informasi Course
-            </li>
-            <hr>
-            <li class="mdl-list__item">
-                Course : <?php echo $course->crs_name?>
-            </li>
-            <li class="mdl-list__item">
-                Instruktur : <?php echo $course->usr_firstname?> <?php echo $course->usr_lastname?>
-            </li>
-            <li class="mdl-list__item">
-                Jumlah lesson: <?php echo $jml_lesson?>
-            </li>
-        </ul>
-    </div>
-    
+</div>    
 </main>
