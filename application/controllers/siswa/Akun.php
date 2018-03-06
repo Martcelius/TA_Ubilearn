@@ -40,7 +40,7 @@ class Akun extends CI_Controller {
     {
         $nmfoto = $this->input->post('username').time();
         $config['upload_path'] ='./res/assets/images/uploads';
-        $config['allowed_types'] = 'jpg|png';
+        $config['allowed_types'] = 'jpg|png|jpeg';
         $config['file_name'] = $nmfoto;
         $this->load->library('upload',$config);
         $this->upload->do_upload('upload_foto');
@@ -64,7 +64,7 @@ class Akun extends CI_Controller {
         }
         
         $userData['usr_gpa'] = empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk');
-        $userData['usr_jk'] = empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin');
+//        $userData['usr_jk'] = empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin');
         // dd($usr_id);
         $user= array(
             'kode' =>empty($this->input->post('kode')) ? NULL : $this->input->post('kode'),
@@ -75,7 +75,7 @@ class Akun extends CI_Controller {
             'lastname' =>$this->input->post('nama_belakang'),
             'gpa' =>empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk'),
             'foto' =>$userData['usr_picture'],
-            'jk' =>empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin'),
+//            'jk' =>empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin'),
         );
         $this->session->set_userdata($user);
         $update = $this->M_User->update_user_akun_siswa($userData,$usr_id);

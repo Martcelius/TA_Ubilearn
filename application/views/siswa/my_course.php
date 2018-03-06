@@ -1,5 +1,5 @@
 <main class="mdl-layout__content">
-<div class="col-sm-11 cover-main">
+<div class="col-sm-12 cover-main">
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div>
@@ -14,7 +14,7 @@
         </div>
     </div>
 </div>
-    <div class=" col-sm-10 " >
+    <div class=" col-sm-12 " >
         <div class="mdl-grid">
             <?php if ($this->session->flashdata('data_enroll') == TRUE): ?>
                 <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
@@ -30,7 +30,7 @@
                         <div class="mdl-card__title mdl-card--expand">
                         </div>
                         <div class="mdl-card__supporting-text">
-                            <h4 style="text-transform: uppercase;"><?php echo $mycourse->crs_name; ?> </h4> <hr/>
+                            <h4 style="text-transform: uppercase;"><?php echo $mycourse->crs_name; ?> </h4> <hr style="background-color: white;">
                             <span> <?php echo $mycourse->usr_firstname.' '.$mycourse->usr_lastname;?> </span>
                         </div>
                         <div class="mdl-card__actions">
@@ -42,22 +42,6 @@
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
-    <div class="sidenav" style="background-color: #343434;">
-        <br/>
-        <h5 style="color: white;margin-left: 10px;">CATEGORY</h5>
-        <ul>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Software and Development</h7>
-            </li>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Intelligent and Computing</h7>
-            </li>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Networking</h7>
-            </li>
-        </ul>
-        <hr>
     </div>
 
 </main>

@@ -5,8 +5,7 @@
               <div class="">
                   <h2 style="color:white"><?php echo $course->crs_name?></h2>
                   <h3 style="color:white"><?php echo $ass_obj->ass_name;?></h3>
-                  <p class="glyphicon glyphicon-file" style="color: white;padding: 6px;border-radius: 12px;background: #558d43;"> Dibuat Oleh : <?php echo $course->usr_firstname." ".$course->usr_lastname." pada tanggal ".$ass_obj->ass_timecreated?></p>
-
+                  <p class="glyphicon glyphicon-file" style="color: white;padding: 6px;border-radius: 12px;background: #558d43;"> Dibuat Oleh : <?php echo $course->usr_firstname." ".$course->usr_lastname." pada tanggal ".$time = date("d-M-Y h:i A",strtotime($ass_obj->ass_timecreated));?></p>
               </div>
           </div>
       </div>

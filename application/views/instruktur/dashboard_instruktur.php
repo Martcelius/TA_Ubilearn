@@ -24,40 +24,26 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__title" style="display:block;">
                 <h2 class="mdl-card__title-text">My Courses</h2>
-                <h3 class="mdl-card__subtitle-text">Jumlah Course : </h3>
+                <h3 class="mdl-card__subtitle-text">Jumlah Course : <?php echo count($jum);?></h3>
             </div>
             <div class="mdl-card__supporting-text">
                 <div>
                     <div class="row">
+                        <?php foreach($course as $c):?>
                         <div class="col-sm-8">
-                            <p>IT Project Management</p>
-                            Universitas Telkom
+                            <h3><?php echo $c->crs_name?></h3>
+                            <p><?php echo $c->crs_univ?></p>
+
                         </div>
                         <div class="col-sm-4">
-                            <a href="lesson" style="float:right">
+                            <a href="<?php echo base_url().'instruktur/lesson/'.$c->crs_id?>" style="float:right">
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
                                     Lihat
                                 </button>
                             </a>
                         </div>
+                        <?php endforeach ?>
                     </div>
-                    <hr>
-                </div>
-                <div>
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <p>IT Project Management</p>
-                            Universitas Telkom
-                        </div>
-                        <div class="col-sm-4">
-                            <a href="<?php echo site_url('')?>" style="float:right">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
-                                    Lihat
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
                 </div>
             </div>
 

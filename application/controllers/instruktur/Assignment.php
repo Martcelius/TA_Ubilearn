@@ -72,11 +72,11 @@ class Assignment extends CI_Controller {
 
         $asing['m-nama-asg'] = $_POST['m-nama-asg'];
         $asing['m-deskripsi-asg'] = $_POST['m-deskripsi-asg'];
-        $data['asg_date'] = empty($_POST['asg_date']) ? NULL : $_POST['asg_date'];
+        $asing['asg_date'] = empty($_POST['asg_date']) ? NULL : $_POST['asg_date'];
         if ($this->upload->do_upload('asg-name') == TRUE){
-            $data['asg_attachment'] = $result['file_name'];
+            $asing['asg_attachment'] = $result['file_name'];
         }else{
-            $data['asg_attachment'] = NULL;
+            $asing['asg_attachment'] = NULL;
         }
         $asing['asg_id'] = $_POST['asg_id'];
         $crs_id = M_Course_Assignment::where('asg_id',$asing['asg_id'])->first(['crs_id']);

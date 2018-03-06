@@ -23,8 +23,8 @@
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text">Lesson Content</h2><hr style="color: white" />
-                                <p style="color: white">Understand to growing need for better .... ....</p>
+                                <h2 class="mdl-card__title-text">Lesson Content</h2><hr style="background-color: white;" />
+                                <p style="color: white">Materi pembelajaran di course <?php echo $course->crs_name?></p>
                             </div>
                         </div>
                     </div>
@@ -61,8 +61,8 @@
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text">Assesment</h2><hr style="color: white" />
-                                <p style="color: white">Understand to growing need for better .... ....</p>
+                                <h2 class="mdl-card__title-text">Assessment</h2><hr style="background-color: white;" />
+                                <p style="color: white">Assessment terdiri dari Kuis, Pre-test, Remedial dan Exercise</p>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--11-col">
-                                <h2 class="mdl-card__title-text">Assignment</h2><hr style="color: white" />
+                                <h2 class="mdl-card__title-text">Assignment</h2><hr style="background-color: white;" />
                                 <p style="color: white">Understand to growing need for better .... ....</p>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                                     <span class="mdl-list__item-primary-content">
                                         <span style="margin-right: 25px;"><?php echo $num++?> </span>
                                         <i class="material-icons mdl-list__item-icon">label</i>
-                                        <a href="<?php echo site_url('siswa/assignment_detail/'.$c->asg_id)?>" style="color: white;"><?php echo 'Materi - '.$c->asg_name?></a>
+                                        <a href="<?php echo site_url('siswa/assignment_detail/'.$c->asg_id)?>" style="color: white;"><?php echo $c->asg_name?></a>
                                     </span>
                                           <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                       </li>
@@ -137,7 +137,7 @@
             <li class="mdl-list__item">
                 Informasi Course
             </li>
-            <hr>
+            <hr style="background-color: white;">
             <li class="mdl-list__item">
                 Course : <?php echo $course->crs_name?>
             </li>

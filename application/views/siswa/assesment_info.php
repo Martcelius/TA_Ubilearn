@@ -18,7 +18,7 @@
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="container">
-                        <p class="glyphicon glyphicon-file"> Dibuat Oleh : <?php echo $course->usr_firstname." ".$course->usr_lastname." pada tanggal ".$assesment->ass_timecreated?></p>
+                        <p class="glyphicon glyphicon-file"> Dibuat Oleh : <?php echo $course->usr_firstname." ".$course->usr_lastname." pada tanggal ".$newDateTime = date('d-M-y h:i A', strtotime($assesment->ass_timecreated));;?></p>
 
                         <h2 style="color:white"><?php echo $assesment->ass_name?></h2>
                         <h3 style="color:white">Tipe : <?php echo $assesment->ass_tipe?></h3>
@@ -26,10 +26,12 @@
                         <?php echo $assesment->ass_desc?>
                         </p>
                         <hr>
-                        <p style="color:white">Time Open : <?php echo $assesment->ass_timeopen?></p>
-                        <p style="color:white">Time Close : <?php echo $assesment->ass_timeclose?></p>
+                        <p style="color:white">Time Open : <?php echo $time = date("Y-M-d h:i",strtotime($assesment->ass_timeopen));?></p>
+                        <p style="color:white">Time Close : <?php echo $time_dua = date("Y-M-d h:i",strtotime($assesment->ass_timeclose));?></p>
+
                         <?php
-                            $dt= date('Y-m-d h:i:s');
+                            $dt = date('Y-m-d h:i:s');
+//                            echo $time_tiga = date("Y-M-d h:i",strtotime($dt));
                             if ($assesment->ass_timeopen <= $dt  && $dt <= $assesment->ass_timeclose)
                             {
                                 echo '<a href="'.site_url('siswa/assesment_doing/'.$assesment->ass_id.'').'"><div class="form-group">
@@ -41,7 +43,7 @@
                                 echo "<fieldset disabled>
                                 <div class=\"form-group\">
                                     <button type=\"submit\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-gray\">AMBIL ASSESSMENT</button>
-                                    <p>Anda belum dapat mengambil assessment ini.</p>
+                                    <p>*Anda belum dapat mengambil assessment ini.</p>
                                 </div>
                                 </fieldset>";
 

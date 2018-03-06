@@ -38,8 +38,8 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
-                            <input name="asg-name" class="input-file" type="file" onchange="readURL(this);">
-                                <span>*Isi bila ada file yang ingin diUpload</span>
+                            <input name="asg-name" class="input-file" type="file" accept="application/pdf" onchange="readURL(this);">
+                                <span>*Isi bila ada file .pdf yang ingin di-Upload</span>
                             </div>
                         </div>
                         <div class="form-group">

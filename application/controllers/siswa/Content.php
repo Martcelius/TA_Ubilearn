@@ -44,7 +44,8 @@ class Content extends CI_Controller {
             ->where('course_content.cnt_id',$cnt_id)
             ->first();
         $data['LO'] = M_Course_Learning_Outcomes::where('loc_id',$data['kontent']->loc_id)->first();
-//        dd($data['kontent']->cnt_type);
+//        dd($data['kontent']);
+
         if ($data['kontent']->cnt_type == "Text"){
 
             $data['content'] = 'siswa/course_content';
