@@ -78,6 +78,7 @@ class Assignment extends CI_Controller {
         }else{
             $asing['asg_attachment'] = NULL;
         }
+//        dd( $data['asg_attachment']);
         $asing['asg_id'] = $_POST['asg_id'];
         $crs_id = M_Course_Assignment::where('asg_id',$asing['asg_id'])->first(['crs_id']);
         // dd($crs_id->crs_id);

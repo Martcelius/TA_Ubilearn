@@ -1,9 +1,9 @@
-<link rel="icon" type="image/png" href="images/DB_16х16.png">
+<link rel="icon" type="image/png" href="<?php echo base_url().'res/assets/' ?>images/fav.ico">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Material Dashboard Lite</title>
+    <title>U-Learning</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
