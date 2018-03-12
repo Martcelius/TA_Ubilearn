@@ -26,7 +26,7 @@
                         <p>
                             <?php echo $assesment->ass_desc ?>
                         </p>
-                        <hr>
+                        <hr style="background-color: white;">
                         <p style="color:white">Time Open
                             : <?php echo $tmp1 = date("d-M-Y H:i",strtotime($assesment->ass_timeopen));
                             ; ?></p>
@@ -45,7 +45,7 @@
                             echo "<fieldset disabled>
                                 <div class=\"form-group\">
                                     <button type=\"submit\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-gray\">AMBIL ASSESSMENT</button>
-                                    <p>*Anda belum dapat mengambil assessment ini.</p>
+                                    <p>*Anda tidak dapat mengambil assessment ini.</p>
                                 </div>
                                 </fieldset>";
 
