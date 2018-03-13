@@ -61,7 +61,7 @@ class M_User extends Eloquent
         $userUpdate->usr_picture = $data['usr_picture'];
         $userUpdate->usr_gpa = $data['usr_gpa'];
         $userUpdate->usr_level = $data['usr_level'];
-        $userUpdate->usr_jk = $data['usr_jk'];
+//        $userUpdate->usr_jk = $data['usr_jk'];
         return $userUpdate->save();
     }
     //instruktur
@@ -94,7 +94,7 @@ class M_User extends Eloquent
         $userUpdate->usr_email = $data['usr_email'];
         $userUpdate->usr_picture = $data['usr_picture'];
         $userUpdate->usr_gpa = $data['usr_gpa'];
-        $userUpdate->usr_jk = $data['usr_jk'];
+//        $userUpdate->usr_jk = $data['usr_jk'];
         return $userUpdate->save();
     }
     public function update_password($data,$usr_id)

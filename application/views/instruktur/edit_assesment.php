@@ -141,7 +141,7 @@
                 </label>
 						    <div class="col-sm-10">
                 <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(<?php echo $i+1 ?>)" id="del<?php echo $i+1 ?>">(X) Hapus Soal</a> 
-						      <textarea type="text" class="form-control" rows="5" name="soal<?php echo $i+1 ?>">
+						      <textarea id="textEditor<?php echo $i+1?>"type="text" class="form-control" rows="5" name="soal<?php echo $i+1 ?>">
                 <?php echo $c->qst_text ?>      
                   </textarea>
 						    </div>
@@ -215,7 +215,7 @@
     $(function () {
 	    var idx_soal = 1;
       while(idx_soal <= <?php echo $jumSoal ?>){
-        ck('soal'+idx_soal);
+        textEdit(idx_soal);
         idx_soal++;
       }
 	  });
@@ -255,7 +255,7 @@
                 </label>
 						    <div class="col-sm-10"> 
                   <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(`+currNum+`)" id="del`+currNum+`">(X) Hapus Soal</a> 
-						      <textarea type="text" class="form-control" rows="5" name="soal`+currNum+`"></textarea>
+						      <textarea id="textEditor`+currNum+`" type="text" class="form-control" rows="5" name="soal`+currNum+`"></textarea>
 						    </div>
 						  </div>
                           <span class="form-horizontal"> 
@@ -302,7 +302,7 @@
                           </span> 
                     </div>`;
         $("#bodyRow").append(text);
-        ck('soal'+currNum);
+        textEdit(currNum);
         i++;
       }
       $('#currNum').val(currNum);

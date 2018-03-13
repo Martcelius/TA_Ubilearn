@@ -49,34 +49,27 @@
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__title" style="display:block;">
-                    <h2 class="mdl-card__title-text"><?php echo $assignment->asg_name;?></h2>
+                    <h2 class="mdl-card__title-text">Task Info</h2>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <form class="form-horizontal" action="<?php echo site_url('siswa/assignment/upload_assignment/'.$assignment->asg_id); ?>" method="post" enctype="multipart/form-data">
                             <div class="mdl-card__supporting-text">
-                                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--9-col-tablet mdl-cell--2-col-phone" >
-                                    <p>Batas Pengumpulan : <?php echo $newDateTime = date('d-M-y h:i A', strtotime($assignment->asg_duedate));?></p>
+                                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--2-col-phone" >
+                                    <p>Nama Tugas : <?php echo $assignment->asg_name;?></p>
                                     <p>
+                                        Deskripsi :
                                         <?php echo $assignment->asg_text;?>
                                     </p>
-                                    <?php if($data_instruktur->asg_attachment):?>
-                                        <div>
-                                        <span>Berkas Tugas :</span>
-                                            <a href="<?php echo base_url();?>res/assets/file/<?php echo $data_instruktur->asg_attachment;?>" target="_blank">
-                                                <p style="color: white;">
-                                                    <?php echo $data_instruktur->asg_name?>
-                                                </p>
-                                            </a>
-                                        </div>
-                                    <?php endif?>
-
+                                    <embed src="<?php echo base_url();?>res/assets/file/<?php echo $data_instruktur->asg_attachment;?>" style="width: 100%; height: 1000px;">
+                                    <span>Silahkan unggah tugas, sebelum tanggal : </span>
+                                    <h2 class="mdl-card__title-text" style="color: red;"><?php echo $newDateTime = date('d-M-y h:i A', strtotime($assignment->asg_duedate));?></h2>
                                     <div>
                                         <input type='file' class="input-file" name='asg_attachment' onchange="readURL(this);" required/>
                                     </div>
                                     <div class="form__action">
                                         <button id="submit_button" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" style="width: 100px">
-                                            UPLOAD
+                                            Unggah
                                         </button>
                                     </div>
                                 </div>

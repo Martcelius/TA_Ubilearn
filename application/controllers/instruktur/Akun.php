@@ -38,7 +38,7 @@ class Akun extends CI_Controller {
     {
         $nmfoto = $this->input->post('username').time();
         $config['upload_path'] ='./res/assets/images/uploads';
-        $config['allowed_types'] = 'jpg|png';
+        $config['allowed_types'] = 'jpg|png|jpeg';
         $config['file_name'] = $nmfoto;
         $this->load->library('upload',$config);
         $this->upload->do_upload('upload_foto');

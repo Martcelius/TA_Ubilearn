@@ -28,6 +28,16 @@ class M_Course_Enrol extends Eloquent
         return $insert->save();
 //        return $insert->enr_id;
     }
+
+    public function selectByUser($usr_id,$limit = NULL){
+        if($limit != NULL){
+            $data = M_Course_Enrol::join('course', 'course.crs_id', '=', 'course_enrol.crs_id')->where('course_enrol.usr_id',$usr_id)->orderBy('enr_timecreated', 'desc')->limit($limit)->get();
+        }
+        else{
+            $data = M_Course_Enrol::join('course', 'course.crs_id', '=', 'course_enrol.crs_id')->where('course_enrol.usr_id',$usr_id)->orderBy('enr_timecreated', 'desc')->get();
+        }
+        return $data;
+    }
 }
 
 ?>

@@ -143,7 +143,12 @@ class Content extends CI_Controller {
         }
         redirect('instruktur/content/'.$deleteContent->lsn_id);
     }
-
+    public function uplGambar(){
+        $dir_name = "./res/assets/imgeditor/";
+        move_uploaded_file($_FILES['file']['tmp_name'],$dir_name.$_FILES['file']['name']);
+        $dir_name = base_url()."res/assets/imgeditor/";
+        echo $dir_name.$_FILES['file']['name'];
+    }
 }
 
 /* End of file Controllername.php */

@@ -1,4 +1,4 @@
-<header>U-Learning</header>
+<header style="background:rgba(230, 230, 230, 0.93)"><img src="<?php echo site_url('res/assets/images/Ubilearning_logo.png')?>" style="height:50px ;width:500px ;"  alt="U-Learning"></header>
         <nav class="mdl-navigation" style="text-color:white;">
             <a class="mdl-navigation__link mdl-navigation__link--current" href="<?php echo site_url('siswa/dashboard')?>">
                 <i class="material-icons" role="presentation">dashboard</i>

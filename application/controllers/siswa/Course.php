@@ -75,7 +75,6 @@ class Course extends CI_Controller {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/my_course';
         $this->load->view('layout/master', $data);
-
     }
 
     public function course_detail($crs_id)
