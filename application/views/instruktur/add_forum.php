@@ -45,7 +45,7 @@
                         <div class="form-group"  >
                             <label for="inputdeskripsiforum" class="col-sm-2 control-label" >Deskripsi Forum</label>
                             <div class="col-sm-10">
-                                <textarea name="deskripsiforum" id="ckedit" style="width: 100%;" ></textarea>
+                                <textarea name="deskripsiforum" id="textEditor" style="width: 100%;" ></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -68,7 +68,7 @@
 
 <!-- CKEDITOR -->
 <!--<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js" type="text/javascript"></script>-->
-<script>
+<!-- <script>
     CKEDITOR.replace( 'ckedit' );
     $("form").submit( function(e) {
         var messageLength = CKEDITOR.instances['ckedit'].getData().replace(/<[^>]*>/gi, '').length;
@@ -77,6 +77,53 @@
             e.preventDefault();
         };
     });
+</script> -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#textEditor').summernote({
+            height: 200, // set editor height // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            dialogsInBody: true,
+            callbacks: {
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+            }
+        });
+
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);//You can append as many data as you want. Check mozilla docs for this
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: '<?php echo base_url().'instruktur/Content/uplGambar' ?>',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                    $('#textEditor').summernote('editor.insertImage', url);
+                },
+                error: function(){
+                    alert('Error');
+                }
+            });
+        }
+    });
+
+    $("form").submit( function(e) {
+        var a = $('#textEditor').val();
+        if(a == ''){
+            alert('Deskripsi Content tidak boleh kosong');
+            e.preventDefault();
+        }
+    });
 </script>
+<style type="text/css">
+    .note-view {
+        display: none;
+    }
+</style>
 
 

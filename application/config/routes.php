@@ -164,12 +164,12 @@ $route['instruktur/add_exercise'] = 'C_instruktur/add_exercise';*/
 
 
 // route instruktor-LO
-$route['instruktur/learning_outcome'] = 'instruktur/learning_outcome/index';
-$route['instruktur/add_lo'] = 'instruktur/learning_outcome/add_lo';
-$route['instruktur/insert_lo'] = 'instruktur/learning_outcome/insert_lo';
-$route['instruktur/edit_lo/(:any)'] = 'instruktur/learning_outcome/edit_lo/$1';
-$route['instruktur/update_lo'] = 'instruktur/learning_outcome/update_lo';
-$route['instruktur/delete_lo/(:any)'] = 'instruktur/learning_outcome/delete_lo/$1';
+$route['instruktur/learning_outcome'] = 'instruktur/learning_Outcome/index';
+$route['instruktur/add_lo'] = 'instruktur/learning_Outcome/add_lo';
+$route['instruktur/insert_lo'] = 'instruktur/learning_Outcome/insert_lo';
+$route['instruktur/edit_lo/(:any)'] = 'instruktur/learning_Outcome/edit_lo/$1';
+$route['instruktur/update_lo'] = 'instruktur/learning_Outcome/update_lo';
+$route['instruktur/delete_lo/(:any)'] = 'instruktur/learning_Outcome/delete_lo/$1';
 
 // route instruktur-addSoal
 $route['instruktur/add_assesment/(:any)'] = 'instruktur/Assesment/add_assesment/$1';
