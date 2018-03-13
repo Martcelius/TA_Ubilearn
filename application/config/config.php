@@ -24,7 +24,7 @@ date_default_timezone_set("Asia/Jakarta");
 |
 */
 $config['base_url'] = 'http://localhost/TA_Ubilearn';
-
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=';
 /*
 |--------------------------------------------------------------------------
 | Index File
