@@ -15,6 +15,24 @@ class M_Course_Lesson extends Eloquent
         return $this->belongsTo('M_Course', 'crs_id');
     }
 
+    public function insert($data)
+    {
+        $lesen = new M_Course_Lesson;
+        $lesen->lsn_name = $data['lsn_name'];
+        $lesen->lsn_intro = $data['lsn_intro'];
+        $lesen->crs_id = $data['crs_id'];
+
+        return $lesen->save();
+    }
+
+    public function update_lesson($data)
+    {
+        $updateLesen = M_Course_Lesson::where('lsn_id',$data['lsn_id'])->first();
+        $updateLesen->lsn_name = $data['lsn_name'];
+        $updateLesen->lsn_intro = $data['lsn_intro'];
+
+        return $updateLesen->save();
+    }
 
     public function selectBy($colName,$value)
     {   
@@ -40,29 +58,6 @@ class M_Course_Lesson extends Eloquent
 
     //     return $updateLesen->save();
     // }
-
-     public function insert($data)
-     {
-         $lesen = new M_Course_Lesson;
-         $lesen->lsn_name = $data['lsn_name'];
-         $lesen->lsn_intro = $data['lsn_intro'];
-         $lesen->crs_id = $data['crs_id'];
-
-         return $lesen->save();
-     }
-
-
-     public function update_lesson($data)
-
-     {
-         $updateLesen = M_Course_Lesson::where('lsn_id',$data['lsn_id'])->first();
-         $updateLesen->lsn_name = $data['lsn_name'];
-         $updateLesen->lsn_intro = $data['lsn_intro'];
-
-         return $updateLesen->save();
-     }
-
-
 }
 
 ?>
