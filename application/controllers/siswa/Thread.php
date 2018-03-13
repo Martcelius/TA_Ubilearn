@@ -14,6 +14,9 @@ class Thread extends CI_Controller {
         $this->load->model('M_Course_Forum_Thread_Reply');
         $this->load->model('M_Course_Forum_Thread_Reply_Reply');
         $this->load->model('M_Course_Forum_Thread_Reply_Reply_Reply');
+        $this->load->model('M_Rating_Reply');
+        $this->load->model('M_Rating_Reply_Reply');
+        $this->load->model('M_Rating_Reply_Reply_Reply');
     }
 
 
@@ -158,6 +161,39 @@ class Thread extends CI_Controller {
         $data['usr_id'] = $this->session->userdata('id');
         $data['trr_id'] = $trr_id;
         $insert = $this->M_Course_Forum_Thread_Reply_Reply_Reply->insert_thread_reply_reply_reply($data);
+
+        redirect('siswa/detail_thread_siswa/'.$cft_id);
+    }
+
+    public function insert_rating_reply($ftr_id,$cft_id,$k)
+    {
+        $data['ftr_id'] = $ftr_id;
+        $data['usr_id'] = $this->session->userdata('id');
+        $data['rry_rated'] = $k;
+        
+        $insert = $this->M_Rating_Reply->insert_rating_reply($data);
+
+        redirect('siswa/detail_thread_siswa/'.$cft_id);
+    }
+
+    public function insert_rating_reply_reply($trr_id,$cft_id,$k)
+    {
+        $data['trr_id'] = $trr_id;
+        $data['usr_id'] = $this->session->userdata('id');
+        $data['rrp_rated'] = $k;
+        
+        $insert = $this->M_Rating_Reply_Reply->insert_rating_reply_reply($data);
+
+        redirect('siswa/detail_thread_siswa/'.$cft_id);
+    }
+
+    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k)
+    {
+        $data['rrr_id'] = $rrr_id;
+        $data['usr_id'] = $this->session->userdata('id');
+        $data['rrl_rated'] = $k;
+        
+        $insert = $this->M_Rating_Reply_Reply_Reply->insert_rating_reply_reply_reply($data);
 
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }

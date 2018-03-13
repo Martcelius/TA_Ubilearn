@@ -25,7 +25,7 @@
                 </p>
                 <hr/>
                 <div class="col-md-2" style="text-align: center;"> 
-                    <img class="img-circle" style="width:100px;height: 100px;" src="../res/assets/images/adzan.jpg" alt="User Avatar">
+                    <img class="img-circle" style="width:100px;height: 100px;" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $dataforumthread->usr_picture;?>" alt="User Avatar">
                     <hr style="margin-top: 10px;margin-bottom: 10px;" />
                     <div style="margin-left: 10px;">
                         <p class="text-muted">
@@ -35,17 +35,13 @@
                     </div>
                 </div>
 
-                <div class="col-md-10">
-                    <div class="pull-left">
-                        <p style="text-align: justify;">
-                            <?php echo $dataforumthread->cft_content ?>
-                        </p>
-                        <hr/>
-                        <h4>Lampiran</h4>
-                        <img class="img-responsive pad" src="../res/assets/images/ndusel.jpg" alt="Photo" style="width: 60%">
-                    </div>
+                <div class="col-md-10" style="text-align: justify;">
+                    <?php echo $dataforumthread->cft_content ?>
                 </div>
-                <button class="btn btn-primary" style="float:right;" id="btn_komentar"><i class="fa fa-comment"></i> Komentar</button>
+
+                <div class="col-md-12" style="text-align: justify;">
+                    <button class="btn btn-primary" style="float:right;" id="btn_komentar"><i class="fa fa-comment"></i> Komentar</button>
+                </div>
             </div>
             
             <div id="komentarr" style="display:none">
@@ -53,13 +49,13 @@
                 <br>
                 <div class="mdl-grid">
                     <div class="col-md-1" style="text-align: center;">
-                        <img class="img-circle" src="../res/assets/images/icon.png" style="width:80px;height: 80px;" alt="User Image">
+                        <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $dataforumthread->usr_picture;?>" style="width:80px;height: 80px;" alt="User Image">
                     </div>
                     <div class="col-md-11">
                         <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Beri Komentar</label>
-                                <textarea class="forum_komentarr" id="forum_komentarr" name="forum_komentarr"></textarea>
+                                <textarea name="forum_komentarr"></textarea>
                             </div>
                             <button class="btn btn-primary pull-right" id="balaskomentar" style="float:right; margin-right:5px">
                                 <i class="fa fa-reply">
@@ -107,6 +103,7 @@
 
 <?php $i++;?>
 <?php $j=1;?>
+<?php $k=0;?>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" style="margin-left : 30px; margin-bottom : 0px;">
             <div class="box box-solid box-primary">
@@ -157,14 +154,14 @@
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="" class="rateStar" >
+                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
                                             <span class="text-muted">
                                                 <span class="fa fa-star checked"></span>
                                             </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" class="rateStar" >
+                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
                                             <span class="text-muted">
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -172,7 +169,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" class="rateStar" >
+                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
                                             <span class="text-muted">
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -196,7 +193,7 @@
                         <br>
                         <div class="mdl-grid">
                             <div class="col-md-1" style="text-align: center;">
-                                <img class="img-circle" src="../res/assets/images/icon.png" style="width:80px;height: 80px;" alt="User Image">
+                                <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $dataforumthread->usr_picture;?>" style="width:80px;height: 80px;" alt="User Image">
                             </div>
                             <div class="col-md-11">
                                 <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>" class="form-horizontal" method="post">
@@ -288,14 +285,14 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="" class="rateStar" >
+                                                <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
                                                     <span class="text-muted">
                                                         <span class="fa fa-star checked"></span>
                                                     </span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="" class="rateStar" >
+                                                <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
                                                     <span class="text-muted">
                                                         <span class="fa fa-star checked"></span>
                                                         <span class="fa fa-star checked"></span>
@@ -303,7 +300,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="" class="rateStar" >
+                                                <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
                                                     <span class="text-muted">
                                                         <span class="fa fa-star checked"></span>
                                                         <span class="fa fa-star checked"></span>
@@ -325,7 +322,7 @@
                                 <br>
                                 <div class="mdl-grid">
                                     <div class="col-md-1" style="text-align: center;">
-                                        <img class="img-circle" src="../res/assets/images/icon.png" style="width:80px;height: 80px;" alt="User Image">
+                                        <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $dataforumthread->usr_picture;?>" style="width:80px;height: 80px;" alt="User Image">
                                     </div>
                                     <div class="col-md-11">
                                         <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
@@ -407,7 +404,39 @@
                                         else
                                         {
                                         ?>
-                                        <span class="pull-right"></span>
+                                        <span class="pull-right">
+                                            <span class="dropdown">
+                                                <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
+                                                <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
+                                                            <span class="text-muted">
+                                                                <span class="fa fa-star checked"></span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                            <span class="text-muted">
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                            <span class="text-muted">
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </span>
                                     <?php 
                                         } 
                                         ?>
@@ -469,9 +498,9 @@
 <!-- <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js" type="text/javascript"></script> -->
 <script src="<?php echo base_url();?>res/assets/js/ckeditor.js"></script>
 <script>   
-    CKEDITOR.replaceAll('forum_komentarr');
-    CKEDITOR.replaceAll('forum_komentar1');
-    CKEDITOR.replaceAll('forum_komentar2');
+    // CKEDITOR.replaceAll('forum_komentarr');
+    // CKEDITOR.replaceAll('forum_komentar1');
+    // CKEDITOR.replaceAll('forum_komentar2');
 </script>
 
 
