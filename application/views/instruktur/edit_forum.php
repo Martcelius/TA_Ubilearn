@@ -23,8 +23,24 @@
                     <h2 class="mdl-card__title-text">Edit Forum</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
+<<<<<<< HEAD
                 <div class="mdl-card__supporting-text">
                     <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->lsn_id) ?>" class="form-horizontal" method="post">
+=======
+                <div class="mdl-card__supporting-text" style="font-size:15px;">
+                    <form action="<?php echo site_url('instruktur/update_forum') ?>" class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Lesson</label>
+                            <div class="col-sm-10">
+                                <select id="inputlessonforum" class="form-control" name="lsn_id" required>
+                                    <option disabled="disabled" selected value="<?php echo $dataLesson->lsn_id;?>"><?php echo $dataLesson->lsn_name;?></option>
+                                    <?php foreach ($pilihanLesson as $lesson):?>
+                                        <option value="<?php echo $lesson->lsn_id?>"><?php echo $lesson->lsn_name?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        </div>
+>>>>>>> 27074631c5169ea295d2fff57bd1629a151df737
                         <div class="form-group">
                             <label for="inputjudulforum" class="col-sm-2 control-label" style="font-size:12px;">Judul Forum</label>
                             <div class="col-sm-10">
@@ -34,7 +50,7 @@
                         <div class="form-group">
                             <label for="inputdeskripsiforum" class="col-sm-2 control-label" style="font-size:12px;">Deskripsi Forum</label>
                             <div class="col-sm-10">
-                                <textarea name="deskripsiforum" class="form-control" id="deskripsiforum" style="max-width: 100%" value="<?php echo $dataLesson->cfr_desc;?>" required><?php echo htmlspecialchars($dataLesson->cfr_desc);?></textarea>
+                                <textarea name="deskripsiforum" id="ckedit" style="width: 100%;" value="<?php echo $dataLesson->cfr_desc;?>" ><?php echo htmlspecialchars($dataLesson->cfr_desc);?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -53,9 +69,9 @@
 <!-- CKEDITOR -->
 <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js" type="text/javascript"></script>
 <script>
-    CKEDITOR.replace('deskripsiforum');
+    CKEDITOR.replace('ckedit');
     $("form").submit( function(e) {
-        var messageLength = CKEDITOR.instances['deskripsiforum'].getData().replace(/<[^>]*>/gi, '').length;
+        var messageLength = CKEDITOR.instances['ckedit'].getData().replace(/<[^>]*>/gi, '').length;
         if( !messageLength ) {
             alert( 'Masukkan Deskripsi Forum' );
             e.preventDefault();

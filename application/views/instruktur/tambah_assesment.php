@@ -86,6 +86,7 @@
             <label class="control-label col-sm-2">Learning Outcomes :</label>
             <div class="col-sm-10">
             <select class="form-control" name="loc1" >
+            <option disable>>-Pilih Learning Outcome-<</option>
               <?php 
               foreach($listLo as $c){
                 echo '<option value="'.$c->loc_id.'" >'.$c->loc_desc.'</option>';
@@ -105,7 +106,7 @@
                 </label>
 						    <div class="col-sm-10">
                 <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(1)" id="del1">(X) Hapus Soal</a> 
-						      <textarea type="text" class="form-control" rows="5" name="soal1"></textarea>
+						      <textarea style="width: 100%;" name="soal1"></textarea>
 						    </div>
 						  </div>
                 <span class="form-horizontal"> 
@@ -193,6 +194,7 @@
             <label class="control-label col-sm-2">Learning Outcomes :</label>
             <div class="col-sm-10">
             <select class="form-control" name="loc`+currNum+`" >
+            <option disable>>-Pilih Learning Outcome-<</option>
               <?php 
               foreach($listLo as $c){
                 echo '<option value="'.$c->loc_id.'" >'.$c->loc_desc.'</option>';

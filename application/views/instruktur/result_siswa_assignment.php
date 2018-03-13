@@ -45,9 +45,9 @@
                                     </a>
                                 </td>
                                 <td style="text-align:center;">
-                                    <?php if($c->sub_timecreated <= $c->asg_timecreated):?>
+                                    <?php if($c->sub_timecreated <= $c->asg_duedate):?>
                                         <p>ontime</p>
-                                    <?php elseif($c->sub_timecreated >= $c->asg_timecreated):?>
+                                    <?php elseif($c->sub_timecreated >= $c->asg_duedate):?>
                                         <p>late</p>
                                     <?php endif ?>
                                 </td>

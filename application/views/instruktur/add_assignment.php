@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-asg" class="form-control" id="ckedit" placeholder="Deskripsi" rows="2" required></textarea>
+                            <textarea name="m-deskripsi-asg" id="ckedit" style="width: 100%;" ></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -38,8 +38,8 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
-                            <input name="asg-name" class="input-file" type="file" onchange="readURL(this);">
-                                <span>*Isi bila ada file yang ingin diUpload</span>
+                            <input name="asg-name" class="input-file" type="file" accept="application/pdf" onchange="readURL(this);">
+                                <span>*Isi bila ada file .pdf yang ingin di-Upload</span>
                             </div>
                         </div>
                         <div class="form-group">

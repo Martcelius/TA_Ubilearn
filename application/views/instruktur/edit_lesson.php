@@ -16,7 +16,7 @@
                     <h2 class="mdl-card__title-text">Lesson</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Lesson</div>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text" style="font-size:15px;">
                     <form class="form-horizontal" action="<?php echo site_url('instruktur/update_lesson');?>" method="post">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Lesson</label>
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Intro Lesson</label>
                             <div class="col-sm-10">
-                            <textarea  class="form-control" id="ckedit" name="lsn_intro" value="<?php echo $dataLesson->lsn_intro; ?>" rows="2"><?php echo htmlspecialchars($dataLesson->lsn_intro);?></textarea>
+                            <textarea id="ckedit" style="width: 100%;" name="lsn_intro" value="<?php echo $dataLesson->lsn_intro; ?>" ><?php echo htmlspecialchars($dataLesson->lsn_intro);?></textarea>
                             </div>
                         </div>
                         <div class="form-group">

@@ -30,9 +30,9 @@ class Assignment extends CI_Controller {
             ->leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assignment']->crs_id)
             ->first();
-
+//
         $data['data_instruktur'] = M_Course_Assignment::where("asg_id", $asg_id)->first();
-//        dd($data_instruktur['data_instruktur']->asg_attachment);
+//        dd($data['data_instruktur']->asg_attachment);
         $dt= date('Y-m-d h:i:s');
         $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
         if (empty($cek_user))
