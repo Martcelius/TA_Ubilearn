@@ -29,6 +29,7 @@ class C_siswa extends CI_Controller {
         $ansStd = $ans->selectByUser($this->session->userdata('id'));
         $ass = new M_Course_Assesment;
         $i = 0;
+        $listAss = array();
         foreach($ansStd as $c){
             $listAss[$i] = $ass->select($c->ass_id);
             $i++;

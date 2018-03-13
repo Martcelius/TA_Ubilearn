@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html xmlns="http://www.w3.org/1999/html" class="mdl-js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+   <link rel="icon" type="image/png" href="http://localhost/TA_Ubilearn/instruktur/lesson/images/DB_16%D1%8516.png">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material Dashboard Lite</title>
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+<meta name="msapplication-TileColor" content="#3372DF">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+<!--
+<link rel="canonical" href="http://www.example.com/">
+-->
+
+<script src="Material%20Dashboard%20Lite_files/jquery-3.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- <script src="http://localhost/TA_Ubilearn/res/assets/ckeditor/ckeditor.js"></script> -->
+<!-- <script src="http://localhost/TA_Ubilearn/res/assets/SCEditor-master/src/sceditor.js"></script>
+    <script src="http://localhost/TA_Ubilearn/res/assets/SCEditor-master/src/formats/xhtml.js"></script>
+     -->
+
+<!-- <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js" type="text/javascript"></script>-->
+<link href="Material%20Dashboard%20Lite_files/css.css" rel="stylesheet" type="text/css">
+<link href="Material%20Dashboard%20Lite_files/icon.css" rel="stylesheet">
+<!-- inject:css -->
+<link rel="stylesheet" href="Material%20Dashboard%20Lite_files/setup.css">
+<link rel="stylesheet" href="Material%20Dashboard%20Lite_files/getmdl-select.css">
+<link rel="stylesheet" href="Material%20Dashboard%20Lite_files/nv.css">
+<link rel="stylesheet" href="Material%20Dashboard%20Lite_files/application.css">
+<link rel="stylesheet" type="text/css" href="Material%20Dashboard%20Lite_files/bootstrap-datetimepicker.css">
+<link rel="stylesheet" href="Material%20Dashboard%20Lite_files/additional.css">
+<!-- endinject -->
+<!-- buat drop down -->
+<link href="Material%20Dashboard%20Lite_files/css.css" rel="stylesheet" type="text/css">
+<link href="Material%20Dashboard%20Lite_files/icon.css" rel="stylesheet">
+
+<link rel="stylesheet" href="Material%20Dashboard%20Lite_files/font-awesome.css">
+<link rel="stylesheet" href="Material%20Dashboard%20Lite_files/bootstrap.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+
+<script src="Material%20Dashboard%20Lite_files/popper.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="Material%20Dashboard%20Lite_files/bootstrap.js"></script>
+<script src="Material%20Dashboard%20Lite_files/bootstrap-datetimepicker.js"></script>
+<link href="Material%20Dashboard%20Lite_files/summernote.css" rel="stylesheet">
+<script src="Material%20Dashboard%20Lite_files/summernote.js"></script>
+<!-- drop down end -->
+</head>
+<body>
+<div class="mdl-layout__container"><div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer is-upgraded" data-upgraded=",MaterialLayout">
+    <header class="mdl-layout__header is-casting-shadow"><div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons"></i></div>
+        <div class="mdl-layout__header-row">
+
+           <div class="mdl-layout-spacer"></div>
+            <!-- Search-->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded" data-upgraded=",MaterialTextfield">
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" id="search" type="text">
+                    <label class="mdl-textfield__label" for="search">Enter your query...</label>
+                </div>
+            </div>
+
+            
+            <!-- Notifications dropdown-->
+            <!-- Messages dropdown-->
+            <!-- avatar_default.jpg -->
+            <div class="avatar-dropdown" id="icon">
+                <span>asd</span>
+                <img src="Material%20Dashboard%20Lite_files/avatar_default.jpg">
+            </div>
+            <!-- Account dropdawn-->
+            <div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline mdl-menu--bottom-right"></div><ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown mdl-js-ripple-effect--ignore-events" for="icon" data-upgraded=",MaterialMenu,MaterialRipple">
+                <li class="mdl-list__item mdl-list__item--two-line" style="height: 75px;">
+                    <span class="mdl-list__item-primary-content">
+                        <img src="Material%20Dashboard%20Lite_files/avatar_default.jpg" class="material-icons mdl-list__item-avatar">
+                        <!-- <span class="material-icons mdl-list__item-avatar"></span> -->
+                        <span>asd</span>
+                        <span class="mdl-list__item-sub-title" style="word-wrap: break-word;">asd@asd.com</span>
+
+                        <span class="mdl-list__item-sub-title" style="word-wrap: break-word;&gt;asd@asd.com&lt;/span&gt;
+                    &lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li class=" list__item--border-top"=""></span></span></li>
+                <li class="list__item--border-top"></li>
+                <a href="http://localhost/TA_Ubilearn/instruktur/akun">
+                <li class="mdl-menu__item mdl-list__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple">
+                    <span class="mdl-list__item-primary-content">
+                       <i class="material-icons mdl-list__item-icon">settings</i>
+                        Pengaturan
+                    </span>
+                <span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li></a>
+<!--                <li class="mdl-menu__item mdl-list__item">-->
+<!--                    <span class="mdl-list__item-primary-content">-->
+<!--                        <i class="material-icons mdl-list__item-icon">check_box</i>-->
+<!--                        My tasks-->
+<!--                    </span>-->
+<!--                    <span class="mdl-list__item-secondary-content">-->
+<!--                      <span class="label background-color--primary">3 new</span>-->
+<!--                    </span>-->
+<!--                </li>-->
+<!--                <li class="mdl-menu__item mdl-list__item">-->
+<!--                    <span class="mdl-list__item-primary-content">-->
+<!--                        <i class="material-icons mdl-list__item-icon">perm_contact_calendar</i>-->
+<!--                        My events-->
+<!--                    </span>-->
+<!--                </li>-->
+                <li class="list__item--border-top"></li>
+                <a href="http://localhost/TA_Ubilearn/instruktur/password">
+                <li class="mdl-menu__item mdl-list__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">supervisor_account</i>
+                        Ubah Password
+                    </span>
+                <span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li></a>
+                <li class="list__item--border-top"></li>
+                <a href="http://localhost/TA_Ubilearn/logout">
+                <li class="mdl-menu__item mdl-list__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+                        Log out
+                    </span>
+
+                <span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li></a>
+            </ul></div>
+
+
+
+        </div>
+    </header>
+
+<!-- side bar -->
+    <div class="mdl-layout__drawer" aria-hidden="true">
+
+    <header style="background:rgba(230, 230, 230, 0.93)"><img src="Material%20Dashboard%20Lite_files/Ubilearning_logo.png" style="height:50px ;width:500px ;" alt="U-Learning"></header>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link mdl-navigation__link--current" href="http://localhost/TA_Ubilearn/instruktur/dashboard">
+                <i class="material-icons" role="presentation">dashboard</i>
+                Dashboard
+            </a>
+            <a class="mdl-navigation__link" href="http://localhost/TA_Ubilearn/instruktur/MyCourse">
+                <i class="material-icons" role="presentation">folder</i>
+               My Course
+            </a>
+            <a class="mdl-navigation__link" href="http://localhost/TA_Ubilearn/instruktur/forum_instruktur">
+                <i class="material-icons" role="presentation">forum</i>
+                Forum
+            </a>
+            <a class="mdl-navigation__link" href="http://localhost/TA_Ubilearn/instruktur/learning_outcome">
+                <i class="material-icons" role="presentation">book</i>
+                Learning Outcome
+            </a>
+            <!-- <a class="mdl-navigation__link" href="ui.html">
+                <i class="material-icons">message</i>
+                 Message
+            </a> -->
+
+            <div class="mdl-layout-spacer"></div>
+            <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">
+                <i class="material-icons" role="presentation">link</i>
+                GitHub
+            </a>
+        </nav>
+
+    </div>
+<!-- end sidebar -->
+<!-- main -->
+
+    <main class="mdl-layout__content">
+    <div class="mdl-grid cover-main">
+        <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+            <div class="">
+                <div class="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-grid">
+
+        <div class="mdl-cell mdl-cell--9-col">
+            <div class="mdl-grid">
+                <!-- FLASH DATA -->
+                                                
+                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title" style="display: block">
+                            <div>
+                                <a href="http://localhost/TA_Ubilearn/instruktur/add_lesson/15">
+                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" data-upgraded=",MaterialButton,MaterialRipple">
+                                        Tambah
+                                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                </a>
+                                <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
+                            </div>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--1-col">
+                                    <div id="icon">
+                                        <img src="Material%20Dashboard%20Lite_files/lesson.png">
+                                    </div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--11-col">
+                                    <h2 class="mdl-card__title-text">Lesson</h2>
+                                    <hr style="background-color: white;">
+                                    <p style="color: white;">Materi pembelajaran di
+                                        course untuk siswa</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="demo" class="collapse">
+                            <div class="mdl-card__supporting-text">
+                                <ul class="demo-list-icon mdl-list">
+                                                                            <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span style="margin-right: 25px;">1 </span>
+                                        <i class="material-icons mdl-list__item-icon">label</i>
+                                        Materi - asd                                    </span>
+                                            <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                            <a href="http://localhost/TA_Ubilearn/instruktur/content/12">
+                                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:2px;" data-upgraded=",MaterialButton,MaterialRipple">
+                                                    <i class="material-icons">add</i>
+                                                    Masuk
+                                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                            </a>
+                                            <a href="http://localhost/TA_Ubilearn/instruktur/edit_lesson/12">
+                                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;" data-upgraded=",MaterialButton,MaterialRipple">
+                                                    <i class="material-icons">drafts</i>
+                                                    Edit
+                                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                            </a>
+                                            <a href="http://localhost/TA_Ubilearn/instruktur/delete_lesson/12">
+                                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;" onclick="return confirm('Anda yakin untuk menghapus?');" data-upgraded=",MaterialButton,MaterialRipple">
+                                                    <i class="material-icons">delete</i>
+                                                    Hapus
+                                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title" style="display: block">
+                        <div>
+                            <a href="http://localhost/TA_Ubilearn/instruktur/add_assesment/15">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" data-upgraded=",MaterialButton,MaterialRipple">
+                                    Tambah
+                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                            </a>
+                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo2"><i class="fa fa-bars"></i></button>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <div id="icon">
+                                    <img src="Material%20Dashboard%20Lite_files/assesment.png">
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--11-col">
+                                <h2 class="mdl-card__title-text">Assessment</h2>
+                                <hr style="background-color: white;">
+                                <p style="color: white">Assessment terdiri dari Kuis, Pre-test, Remedial dan
+                                    Exercise</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="demo2" class="collapse">
+                        <div class="mdl-card__supporting-text">
+                            <ul class="demo-list-icon mdl-list">
+                                                                    <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span style="margin-right: 25px;">1 </span>
+                                        <i class="material-icons mdl-list__item-icon mdl-badge mdl-badge--overlap" data-badge="1" title="Jumlah Soal">description</i>
+                                        Remedial - adas                                    </span>
+                                        <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                        <a href="http://localhost/TA_Ubilearn/instruktur/edit_assesment/4">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;" data-upgraded=",MaterialButton,MaterialRipple">
+                                                <i class="material-icons">drafts</i>
+                                                Edit
+                                            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                        </a>
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;" onclick="deleteAss(4)" data-upgraded=",MaterialButton,MaterialRipple">
+                                            <i class="material-icons">delete</i>
+                                            Hapus
+                                        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+                                    </li>
+                                                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title" style="display: block">
+                        <div>
+                            <a href="http://localhost/TA_Ubilearn/instruktur/add_assignment/15">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" data-upgraded=",MaterialButton,MaterialRipple">
+                                    Tambah
+                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                            </a>
+                            <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse" data-target="#demo3"><i class="fa fa-bars"></i></button>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <div id="icon">
+                                    <img src="Material%20Dashboard%20Lite_files/assignment.png">
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--11-col">
+                                <h2 class="mdl-card__title-text">Assignment</h2>
+                                <hr style="background-color: white;">
+                                <p style="color: white">Tugas dikerjakan sesuai dengan tenggat waktu yang diberikan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="demo3" class="collapse">
+                        <div class="mdl-card__supporting-text">
+                            <ul class="demo-list-icon mdl-list">
+                                                                    <li class="mdl-list__item">
+                                      <span class="mdl-list__item-primary-content">
+                                          <span style="margin-right: 25px;">1 </span>
+                                          <i class="material-icons mdl-list__item-icon">label</i>
+                                          Materi - asd                                  </span>
+                                        <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                        <a href="http://localhost/TA_Ubilearn/instruktur/assignment/result_siswa_assignment/3">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" style="margin:2px;" data-upgraded=",MaterialButton,MaterialRipple">
+                                                <i class="material-icons">add</i>
+                                                Masuk
+                                            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                        </a>
+                                        <a href="http://localhost/TA_Ubilearn/instruktur/edit_assignment/3">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow" style="margin:2px;" data-upgraded=",MaterialButton,MaterialRipple">
+                                                <i class="material-icons">drafts</i>
+                                                Edit
+                                            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                        </a>
+                                        <a href="http://localhost/TA_Ubilearn/instruktur/delete_assignment/3">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red" style="margin:2px;" onclick="return confirm('Anda yakin untuk menghapus?');" data-upgraded=",MaterialButton,MaterialRipple">
+                                                <i class="material-icons">delete</i>
+                                                Hapus
+                                            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="mdl-cell mdl-cell--3-col">
+            <div class="mdl-card mdl-shadow--2dp trending">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Informasi Course</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <ul class="mdl-list">
+                        <li class="mdl-list__item">
+                            Course : asdasd                        </li>
+                        <li class="mdl-list__item">
+                            Instruktur
+                            : asd asd                        </li>
+                        <li class="mdl-list__item">
+                            Jumlah siswa:
+                        </li>
+                        <li class="mdl-list__item">
+                            Jumlah lesson: 1                        </li>
+                        <!--<<<<<<< HEAD-->
+                    </ul>
+
+                    <hr style="background-color: white;">
+                    <h4 style="color: white;margin-left: 10px;">Siswa dalam Course :</h4>
+                    <ul class="demo-list-icon mdl-list">
+                        <li class="mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <span style="margin-right: 25px;">IKI</span>
+                    </span>
+                            <!--=======-->
+                            <hr>
+                        </li><li class="mdl-list__item">
+                            Siswa dalam course: iki
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<script type="text/javascript">
+    function deleteAss(ass_id) {
+        if (confirm("Anda yakin ingin menghapusnya ?")) {
+            window.location.href = 'http://localhost/TA_Ubilearn/instruktur/Assesment/delete_assesment/' + ass_id;
+        }
+        else {
+        }
+    }
+</script>
+
+<!-- end main -->
+<div class="mdl-layout__obfuscator"></div></div></div>
+
+<!-- inject:js -->
+    <script src="Material%20Dashboard%20Lite_files/d3.js"></script>
+<script src="Material%20Dashboard%20Lite_files/getmdl-select.js"></script>
+<script src="Material%20Dashboard%20Lite_files/material.js"></script>
+<script src="Material%20Dashboard%20Lite_files/nv.js"></script>
+<script src="Material%20Dashboard%20Lite_files/employer-form.js"></script>
+<script src="Material%20Dashboard%20Lite_files/line-chart-nvd3.js"></script>
+<script src="Material%20Dashboard%20Lite_files/maps.html"></script>
+<script src="Material%20Dashboard%20Lite_files/pie-chart-nvd3.js"></script>
+<script src="Material%20Dashboard%20Lite_files/table.js"></script>
+<script src="Material%20Dashboard%20Lite_files/todo.js"></script>
+<script src="Material%20Dashboard%20Lite_files/jquery.js"></script>
+<script src="Material%20Dashboard%20Lite_files/dataTables.js"></script>
+
+<script type="text/javascript">
+    function textEdit(currNum){
+        $('#textEditor'+currNum).summernote({
+            height: 200, // set editor height // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            dialogsInBody: true,
+            callbacks: {
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+            }
+        });
+
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);//You can append as many data as you want. Check mozilla docs for this
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: 'http://localhost/TA_Ubilearn/instruktur/Content/uplGambar',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                    $('#textEditor'+currNum).summernote('editor.insertImage', url);
+                },
+                error: function(){
+                    alert('Error');
+                }
+            });
+        }
+    }
+
+</script>
+<style type="text/css">
+    .note-view {
+        display: none;
+    }
+</style> <!-- endinject -->
+
+
+
+</body></html>

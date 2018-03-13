@@ -40,7 +40,7 @@
             <div class="mdl-card__title mdl-card--expand">
             </div>
             <div class="mdl-card__supporting-text">
-                <h4 style="text-transform: uppercase;"><?php echo $course->crs_name ?> </h4> <hr/>
+                <h4 style="text-transform: uppercase;"><?php echo $course->crs_name ?> </h4> <hr style="background-color: white;">
                 <span><?php echo $this->session->userdata('firstname').' '.$this->session->userdata('lastname');?></span>
             </div>
             <div class="mdl-card__actions">

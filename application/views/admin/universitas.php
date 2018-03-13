@@ -152,7 +152,7 @@
               <h2 class="mdl-card__title-text">Data Universitas</h2>
           </div>
           <div class="mdl-card__supporting-text" style="font-size: unset;" >
-           <table id="Table_mdl">
+           <table id="dataTables-example">
             <thead>
               <tr>
                 <th style="text-align: center;">No.</th>
@@ -234,6 +234,9 @@
 }
 ResponsiveCellHeaders("Table_mdl");
 </script>
-
-
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
 

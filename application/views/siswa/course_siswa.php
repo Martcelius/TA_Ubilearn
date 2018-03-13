@@ -26,7 +26,7 @@
                         <div class="mdl-card__title mdl-card--expand">
                         </div>
                         <div class="mdl-card__supporting-text">
-                            <h4 style="text-transform: uppercase;"><?php echo $course_siswa->crs_name; ?> </h4> <hr/>
+                            <h4 style="text-transform: uppercase;"><?php echo $course_siswa->crs_name; ?> </h4> <hr style="background-color: white;">
                             <span> <?php echo $course_siswa->usr_firstname.' '.$course_siswa->usr_lastname;?> </span>
                         </div>
                         <div class="mdl-card__actions">

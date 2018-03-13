@@ -84,7 +84,7 @@
           <hr/>
           <div class="form-group">
             <label class="control-label col-sm-2">Learning Outcomes :</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
             <select class="form-control" name="loc1" >
             <option disable>>-Pilih Learning Outcome-<</option>
               <?php 
@@ -93,6 +93,9 @@
               } ?>
             </select>
             </div>
+            <div class="col-sm-2">
+                    <a class="btn btn-danger pull-right" onclick="deleteSoal(1)" id="del1">(X) Hapus Soal</a> 
+                </div>
           </div> 
           	<div class="form-group">
 						    <label class="control-label col-sm-2" id="lab1" >Soal No. 1 :
@@ -105,8 +108,7 @@
                   </span>
                 </label>
 						    <div class="col-sm-10">
-                <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(1)" id="del1">(X) Hapus Soal</a> 
-						      <textarea style="width: 100%;" name="soal1"></textarea>
+						      <textarea style="width: 100%;" name="soal1" id="textEditor1" class="form-control"></textarea>
 						    </div>
 						  </div>
                 <span class="form-horizontal"> 
@@ -175,7 +177,7 @@
     });
 
     $(function () {
-	    CKEDITOR.replace('soal1');
+	    textEdit(1);
 	  });
 </script>
 <script type="text/javascript">
@@ -192,7 +194,7 @@
         <hr/>
         <div class="form-group">
             <label class="control-label col-sm-2">Learning Outcomes :</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
             <select class="form-control" name="loc`+currNum+`" >
             <option disable>>-Pilih Learning Outcome-<</option>
               <?php 
@@ -201,6 +203,9 @@
               } ?>
             </select>
             </div>
+            <div class="col-sm-2">
+                    <a class="btn btn-danger pull-right" onclick="deleteSoal(`+currNum+`)" id="del1">(X) Hapus Soal</a> 
+                </div>
           </div> 
              <div class="form-group">
 						    <label class="control-label col-sm-2" id="lab`+currNum+`" >Soal No. `+currNum+` :
@@ -213,8 +218,7 @@
                   </span>
                 </label>
 						    <div class="col-sm-10"> 
-                  <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(`+currNum+`)" id="del`+currNum+`">(X) Hapus Soal</a> 
-						      <textarea type="text" class="form-control" rows="5" name="soal`+currNum+`"></textarea>
+						      <textarea type="text" class="form-control textEditor" rows="5" id="textEditor`+currNum+`" name="soal`+currNum+`"></textarea>
 						    </div>
 						  </div>
                           <span class="form-horizontal"> 
@@ -261,15 +265,11 @@
                           </span> 
                     </div>`;
         $("#bodyRow").append(text);
-        ck('soal'+currNum);
+        textEdit(currNum);
         i++;
       }
       $('#currNum').val(currNum);
   });
-
-  function ck(id){
-    CKEDITOR.replace(id);
-  }
 
     function deleteSoal(N){
     if(confirm("Anda yakin ingin menghapus soal nomor "+N+" ?")){
@@ -328,4 +328,44 @@
     return bool;
   }
 
-</script>  
+</script> 
+<!-- <script type="text/javascript">
+    function textEdit(currNum){
+        $('#textEditor'+currNum).summernote({
+            height: 200, // set editor height // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            dialogsInBody: true,
+            callbacks: {
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+            }
+        });
+
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);//You can append as many data as you want. Check mozilla docs for this
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: '<?php // echo base_url().'instruktur/Content/uplGambar' ?>',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                    $('#textEditor'+currNum).summernote('editor.insertImage', url);
+                },
+                error: function(){
+                    alert('Error');
+                }
+            });
+        }
+    }
+
+</script>
+<style type="text/css">
+    .note-view {
+        display: none;
+    }
+</style>  -->

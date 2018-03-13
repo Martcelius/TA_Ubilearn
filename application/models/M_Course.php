@@ -29,7 +29,12 @@ class M_Course extends Eloquent
     {
         return $this->hasMany('M_Course_Assignment', 'crs_id');
     }
-    
+    public function select($usr_id){
+        $course = M_Course::where('usr_id',$usr_id)->get();
+
+//        dd($course);
+        return $course;
+    }
 }
 
 ?>
