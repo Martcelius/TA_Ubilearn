@@ -25,7 +25,7 @@
                                   <h4 style="margin-bottom:0px; margin-top:0px"><?php echo $datalesson->lsn_name;?></h4>
                               </span>
                               <span class="mdl-list__item-secondary-action">
-                                  <a href="<?php echo site_url('instruktur/detail_dashboard_forum_instruktur/'.$datalesson->lsn_id)?>">
+                                  <a href="<?php echo site_url('siswa/detail_dashboard_forum_siswa/'.$datalesson->lsn_id)?>">
                                   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                                       Masuk Forum
                                   </button>

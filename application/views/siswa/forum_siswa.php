@@ -16,115 +16,36 @@
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">    
         <div class="mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <i class="material-icons" style="font-size: 30px">forum</i>
-                <h3 class="mdl-card__title-text" style="margin-left: 20px"> Diskusi Saya </h3>   
-            </div>
+            <div class="mdl-card__title" style="">
+                <i class = "material-icons" style="font-size: 30px;">forum</i>
+                <h3 class="mdl-card__title-text" style="margin-left: 15px;">Diskusi Saya</h3>
+            </div> 
+            <div class="mdl-card__supporting-text">
+                <ul class="demo-list-icon mdl-list">
+                    <?php foreach ($coursetakesiswa as $coursetake):?>
+                        <li class="mdl-list__item" style="padding-top:0px; padding-bottom:0px;">
+                            <span class="mdl-list__item-primary-content">
+                                <h4 style="margin-bottom:0px; margin-top:0px"><?php echo $coursetake->crs_name;?> (<?php echo $coursetake->crs_code;?>)</h4>
+                            </span>
+                            <span class="mdl-list__item-secondary-action">
+                                <a href="<?php echo site_url('siswa/dashboard_forum_siswa/'.$coursetake->crs_id)?>">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+                                    Masuk Forum
+                                </button>
+                                </a>
+                            </span>                    
+                        </li>
+                        <hr style="margin-left:18px">
+                    <?php endforeach;?>
+                </ul>
+            </div>     
         </div>
     </div>
 </div>
-
-<?php foreach ($coursetake as $coursetaked): ?>
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">    
-            <div class="mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title" style="display: block">
-                    <button class="btn-dd" style="float: right" type="button" data-toggle="collapse" data-target="#demo1">
-                        <i class="fa fa-bars" style="display : inline-block" id = "forum_em"></i>
-                    </button>
-                    <div class="mdl-cell mdl-cell--12-col">
-                            <h2 class="mdl-card__title-text"><?php echo $coursetaked->crs_name ?></h2><hr style="color: white"/>
-                            <h4><?php echo $coursetaked->crs_code ?> / <?php echo $coursetaked->usr_kode ?> </h4>
-                    </div>
-                </div>
-            
-                <div id="demo1" class="collapse" style="background-color:rgba(0, 0, 0, 0.3)">
-                    <table class="table table-bordered" style="width:96%;margin-left:35px;">
-                        <thead>
-                            <tr>
-                                <th colspan = "3" style="text-align : left; color : rgba(255, 255, 255, 0.8); background-color:black; ">
-                                <?php echo $coursetaked->crs_code ?> / <?php echo $coursetaked->crs_name ?> / <?php echo $coursetaked->usr_kode ?>    
-                                </th>
-                            </tr>
-
-                            <?php
-                                $num = 1; 
-                                foreach ($lessondata as $lessoncourse): ?>
-                                
-                                <tr id="forum_tabel_lesson1">
-                                    <td style="width:10px;color : rgba(255, 255, 255, 0.8);">
-                                        <?php echo $num; ?>
-                                    </td>
-                                    <td style="width:200px; text-align:left;color : rgba(255, 255, 255, 0.8);">
-                                        <?php echo $lessoncourse->lsn_name ?>
-                                    </td>
-                                    <td>
-                                        <table class="table table-bordered" style="width:100%; background-color:transparent; margin-top: 5px;">
-                                            <thead> 
-                                                    <tr>
-                                                        <th style="width: 4%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                            No
-                                                        </th>
-                                                        <th style="width:20%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                            Judul
-                                                        </th>
-                                                        <th style="width: 30%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                            Deskripsi Forum
-                                                        </th>
-                                                        <th style="width: 10%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                            Post saya
-                                                        </th>
-                                                        <th style="width: 10%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                            Jumlah Thread
-                                                        </th>
-                                                        <th style="width: 16%; text-align : center; color : rgba(255, 255, 255, 0.8); background-color:black;">
-                                                            Aksi
-                                                        </th>
-                                                    </tr>
-
-                                                <?php
-                                                    $counttab2 = 1;
-                                                    $numforum = 1;
-
-                                                    foreach ($listforumlesson as $listforum):?>
-                                                    <tr>
-                                                        <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                            <?php echo $counttab2++ ?>
-                                                        </td>
-                                                        <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                            <?php echo $listforum->cfr_title ?>
-                                                        </td>
-                                                        <td style="text-align : left; color : rgba(255, 255, 255, 0.8);">
-                                                            <?php echo $listforum->cfr_desc ?>
-                                                        </td>
-                                                        <td style="text-align : center; color : rgba(255, 255, 255, 0.8);">
-                                                            5
-                                                        </td>
-                                                        <td style="text-align : center; color : rgba(255, 255, 255, 0.8);">
-                                                            <?php echo $jumlah[$num];?>
-                                                        </td>
-                                                        <td style="text-align : center">
-                                                            <a href="<?php echo site_url('siswa/list_thread_siswa/'.$listforumm[$numforum])?>">
-                                                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                <?php 
-                                                    $numforum++;
-                                                    endforeach;?>
-                                            </thead>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <?php
-                                    $num++;
-                                    endforeach; 
-                                ?>
-                        </thead>
-                    </table>
-                </div>      
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>         
 </main>
+
+<style>
+    a:hover{
+        background-color:#424242;
+    }
+</style>

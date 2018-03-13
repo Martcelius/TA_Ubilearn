@@ -1,14 +1,13 @@
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
-        <div class="mdl-cell mdl-cell--12-col">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+            <div class="">
+                <div class="">
                     <h2 style="color:white">Forum</h2>
-                    <br>
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
     <div class="mdl-grid">
         <?php if ($this->session->flashdata('insert_forum') == TRUE): ?>
             <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
@@ -24,18 +23,7 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form action="<?php echo site_url('instruktur/insert_forum') ?>" class="form-horizontal" method="post">
-                        <div class="form-group">
-                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Lesson</label>
-                            <div class="col-sm-10">
-                                <select id="inputlessonforum" class="form-control" name="lsn_id" required>
-                                    <option disabled="disabled" selected value="">--Pilih Lesson--</option>
-                                    <?php foreach ($dataLesson as $lesson):?>
-                                    <option value="<?php echo $lesson->lsn_id?>"><?php echo $lesson->lsn_name?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                        </div>
+                    <form action="<?php echo site_url('instruktur/insert_forum/'.$datalessonaddforum->lsn_id)?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputjudulforum" class="col-sm-2 control-label" style="font-size:12px;">Judul Forum</label>
                             <div class="col-sm-10">
@@ -49,13 +37,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-10">
-                                <input name="crs_id" type="text" class="form-control" value="<?php echo $crs_id?>" style="display: none;">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
+                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
                             </div>
                         </div>
                     </form>

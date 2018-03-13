@@ -11,21 +11,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
-<<<<<<< HEAD
+
 $hook['post_controller_constructor'][] = [
     'class'    => 'EloquentHook',
     'function' => 'bootEloquent',
     'filename' => 'EloquentHook.php',
     'filepath' => 'hooks'
 ];
-=======
- $hook['post_controller_constructor'][] = [
-     'class'    => 'EloquentHook',
-     'function' => 'bootEloquent',
-     'filename' => 'EloquentHook.php',
-     'filepath' => 'hooks'
- ];
->>>>>>> dd31d7aecf27bb38fac52995c84eaac8f1ea75a4
 
 /* ----------------------------------------------------------------- */
 /* | | Added as part of the usertracking library by Casey McLaughlin.

@@ -10,6 +10,13 @@
         </div>
     </div>
     <div class="mdl-grid">
+        <?php if ($this->session->flashdata('insert_thread') == TRUE): ?>
+            <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo $this->session->flashdata('insert_thread')?></p>
+            </div>
+        <?php endif; ?>
         <div class="mdl-cell mdl-cell--10-col-desktop mdl-cell--10-col-tablet mdl-cell--1-offset-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__title" style="display:block;">
@@ -17,21 +24,11 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Thread</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form action="<?php echo base_url(). 'instruktur/course/insert'; ?>" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('siswa/thread/insert_thread_siswa/'.$datathreadforumsiswa->cfr_id)?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputjudulthread" class="col-sm-2 control-label" style="font-size:12px;">Judul Thread</label>
                             <div class="col-sm-10">
                             <input name="judul_thread" type="text" class="form-control" id="inputjudulthread" placeholder="Judul Thread...">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputkategorithread" class="col-sm-2 control-label" style="font-size:12px;">Kategori Thread</label>
-                            <div class="col-sm-10">
-                                <select id="inputkategorithread" class="form-control" name="kategorithread">
-                                    <option>--Kategori Thread--</option>
-                                    <option>Algoritma</option>
-                                    <option>Teori</option>
-                                </select>
                             </div>
                         </div>
                         <div class="form-group">

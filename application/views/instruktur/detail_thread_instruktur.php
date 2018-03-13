@@ -56,7 +56,7 @@
                         <img class="img-circle" src="../res/assets/images/icon.png" style="width:80px;height: 80px;" alt="User Image">
                     </div>
                     <div class="col-md-11">
-                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
+                        <form action="<?php echo site_url('instruktur/thread/insert_komentar_reply/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Beri Komentar</label>
                                 <textarea class="forum_komentarr" id="forum_komentarr" name="forum_komentarr"></textarea>
@@ -95,16 +95,6 @@
 <?php $i = 0; $j = 1;?>
 <?php foreach($datareplythread as $replythread): ?>
 
-<?php 
-    $countreply = M_Course_Forum_Thread_Reply::where('usr_id',$replythread->usr_id)->get();
-    $jumlahreply = $countreply->count('usr_id');
-    $countreplyreply = M_Course_Forum_Thread_Reply_Reply::where('usr_id',$replythread->usr_id)->get();
-    $jumlahreplyreply = $countreplyreply->count('usr_id');
-    $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::where('usr_id',$replythread->usr_id)->get();
-    $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
-    $sumreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
-?>
-
 <?php $i++;?>
 <?php $j=1;?>
     <div class="mdl-grid">
@@ -120,7 +110,7 @@
                             </a>
                         </span>
                         <span class="description" style="font-size:14px;">
-                            Jumlah Post : <?php echo $sumreply; ?>
+                            Jumlah Post : 
                         </span>
                         <span class="description" style="font-size:14px;">
                             Comment pada :  <?php echo $replythread->ftr_timecreated ?>
@@ -142,7 +132,7 @@
                         ?>
                         <span class="pull-right">
                             <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
-                            <a href="<?php echo site_url('siswa/thread/delete_komentar_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>">
+                            <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>">
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </a>
                         </span>
@@ -180,9 +170,9 @@
                                             </span>
                                         </a>
                                     </li>
-                                </ul>
-                            </span> 
-                            <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>    
+                                </ul>    
+                            </span>
+                            <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
                         </span>
                     <?php 
                         } 
@@ -199,7 +189,7 @@
                                 <img class="img-circle" src="../res/assets/images/icon.png" style="width:80px;height: 80px;" alt="User Image">
                             </div>
                             <div class="col-md-11">
-                                <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>" class="form-horizontal" method="post">
+                                <form action="<?php echo site_url('instruktur/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>" class="form-horizontal" method="post">
                                     <div class="form-group">
                                         <label>Beri Komentar</label>
                                         <textarea class="forum_komentar1" id="forum_komentar1<?php echo $i;?>"  name="forum_komentar1"></textarea>
@@ -228,16 +218,6 @@
 
                     <?php foreach($datareply2thread as $reply2thread): ?>
                     
-                    <?php 
-                        $countreply = M_Course_Forum_Thread_Reply::where('usr_id',$reply2thread->usr_id)->get();
-                        $jumlahreply = $countreply->count('usr_id');
-                        $countreplyreply = M_Course_Forum_Thread_Reply_Reply::where('usr_id',$reply2thread->usr_id)->get();
-                        $jumlahreplyreply = $countreplyreply->count('usr_id');
-                        $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::where('usr_id',$reply2thread->usr_id)->get();
-                        $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
-                        $sumreplyreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
-                    ?>
-
                     <?php $j++;?>
                         <div id="balasankomentar1" style="padding-left:60px">
                             <br>
@@ -250,7 +230,7 @@
                                     </a>
                                 </span>
                                 <span class="description" style="font-size:14px;">
-                                    Jumlah Post : <?php echo $sumreplyreply ?>
+                                    Jumlah Post : 
                                 </span>
                                 <span class="description" style="font-size:14px;">
                                     Comment pada : <?php echo $reply2thread->trr_timecreated?>
@@ -271,7 +251,7 @@
                                 ?>
                                 <span class="pull-right">                                
                                     <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>
-                                    <a href="<?php echo site_url('siswa/thread/delete_komentar_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id)?>">
+                                    <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id)?>">
                                         <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </a>
                                 </span>
@@ -284,8 +264,7 @@
                                 <span class="pull-right">
                                     <span class="dropdown">
                                         <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
-                                        <span class="caret"></span>
-                                        </button>
+                                        <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <a href="" class="rateStar" >
@@ -311,9 +290,9 @@
                                                     </span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>    
                                     </span>
-                                    <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>                              
+                                    <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>
                                 </span>
                             <?php 
                                 } 
@@ -328,7 +307,7 @@
                                         <img class="img-circle" src="../res/assets/images/icon.png" style="width:80px;height: 80px;" alt="User Image">
                                     </div>
                                     <div class="col-md-11">
-                                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
+                                        <form action="<?php echo site_url('instruktur/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
                                             <div class="form-group">
                                                 <label>Beri Komentar</label>
                                                 <textarea class="forum_komentar2" id="forum_komentar2<?php echo $i;?>" name="forum_komentar2"></textarea>
@@ -357,16 +336,6 @@
                             ?>
 
                             <?php foreach($datareply3thread as $reply3thread):?>
-
-                            <?php 
-                                $countreply = M_Course_Forum_Thread_Reply::where('usr_id',$reply3thread->usr_id)->get();
-                                $jumlahreply = $countreply->count('usr_id');
-                                $countreplyreply = M_Course_Forum_Thread_Reply_Reply::where('usr_id',$reply3thread->usr_id)->get();
-                                $jumlahreplyreply = $countreplyreply->count('usr_id');
-                                $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::where('usr_id',$reply3thread->usr_id)->get();
-                                $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
-                                $sumreplyreplyreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
-                            ?>
                                 <div id="balasankomentar2" style="padding-left:60px">
                                     <br>
                                     <br>
@@ -378,7 +347,7 @@
                                             </a>
                                         </span>
                                         <span class="description" style="font-size:14px;">
-                                            Jumlah Post : <?php echo $sumreplyreplyreply?>
+                                            Jumlah Post : 
                                         </span>
                                         <span class="description" style="font-size:14px;">
                                             Comment pada : <?php echo $reply3thread->rrr_timecreated?>
@@ -397,7 +366,7 @@
                                         if($this->session->userdata('id') == $reply3thread->usr_id)
                                         {    
                                         ?>
-                                        <a href="<?php echo site_url('siswa/thread/delete_komentar_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id)?>">
+                                        <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id)?>">
                                             <span class="pull-right">
                                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                             </span>

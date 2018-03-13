@@ -31,9 +31,6 @@ class M_Course_Forum extends Eloquent
             $update->lsn_id = $data['lsn_id'];
         };
         return $update->save();
-
-
-
     }
 }
 
