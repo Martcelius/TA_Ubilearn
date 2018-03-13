@@ -7,12 +7,7 @@ class C_login extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('M_login');
-        $this->load->helper('html');
-        $this->load->library('form_validation');
 
-        // SESEN START
-        // session_start();
     }
     
     public function index(){
@@ -21,18 +16,18 @@ class C_login extends CI_Controller {
 
     public function signup()
 	{
-		$this->load->view('login/signup');
+		$this->load->view('login/signup2');
 	}
 	
 	public function signup_instruktur()
 	{
-		$this->load->view('login/signup_instruktur');
+		$this->load->view('login/signup_instruktur2');
 	}
 
 	public function signin()
 	{
 //		$data['url'] = "res/assets/images/photodune-4161018-group-of-students-m.jpg";
-		$this->load->view('login/signin');
+		$this->load->view('login/login');
 	}
 
     function masuk(){
@@ -75,9 +70,18 @@ class C_login extends CI_Controller {
 
                 $this->session->set_userdata($user);
 
-                // SESEN GLOBAL VAR
-                // $_SESSION["session_id"] = session_id();
-                // $_SESSION["username"] = $cek[0]->usr_username;
+                // Capture Log Start
+                $event = array(
+                    'usr_id'            => $this->session->userdata('id'),
+                    'log_event_context' => $this->input->server('REQUEST_URI'),
+                    'log_referrer'      => $this->agent->referrer(),
+                    'log_name'          => "Login",
+                    'log_origin'        => $this->agent->agent_string(),
+                    'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                    'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi Login"
+                );
+                $this->lib_event_log->add_user_event($event);
+                // Capture Log End
 
 //                dd($this->session->userdata('foto'));
                 if ($this->session->userdata('level')==1)
@@ -119,9 +123,10 @@ class C_login extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('pass', 'Kata Sandi', 'required');
         $this->form_validation->set_rules('repeat-pass', 'Ulangi Kata Sandi', 'required|matches[pass]');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'trim|is_numeric'); 
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         $this->form_validation->set_message('required', 'Masukan %s');
-        $this->form_validation->set_message('matches', 'Ulangi kata sandi tidak sesuai');
+        $this->form_validation->set_message('matches', '<p style="color: red;margin-left: 15px;">*Ulangi kata sandi tidak sesuai</p>');
         
         //dd($this->form_validation->run());
         

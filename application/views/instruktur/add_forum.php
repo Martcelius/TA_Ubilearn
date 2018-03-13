@@ -23,10 +23,10 @@
                     <h2 class="mdl-card__title-text">Buat Forum</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text" style="font-size:15px;">
                     <form action="<?php echo site_url('instruktur/insert_forum') ?>" class="form-horizontal" method="post">
                         <div class="form-group">
-                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Lesson</label>
+                            <label for="inputlessonforum" class="col-sm-2 control-label" >Pilih Lesson</label>
                             <div class="col-sm-10">
                                 <select id="inputlessonforum" class="form-control" name="lsn_id" required>
                                     <option disabled="disabled" selected value="">--Pilih Lesson--</option>
@@ -37,15 +37,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputjudulforum" class="col-sm-2 control-label" style="font-size:12px;">Judul Forum</label>
+                            <label for="inputjudulforum" class="col-sm-2 control-label" >Judul Forum</label>
                             <div class="col-sm-10">
                             <input name="judul_forum" type="text" class="form-control" id="inputjudulforum" placeholder="Judul Forum..." required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputdeskripsiforum" class="col-sm-2 control-label" style="font-size:12px;">Deskripsi Forum</label>
+                        <div class="form-group"  >
+                            <label for="inputdeskripsiforum" class="col-sm-2 control-label" >Deskripsi Forum</label>
                             <div class="col-sm-10">
-                                <textarea name="deskripsiforum" class="form-control" id="deskripsiforum" style="max-width: 100%" required></textarea>
+                                <textarea name="deskripsiforum" id="ckedit" style="width: 100%;" ></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -67,15 +67,16 @@
 
 
 <!-- CKEDITOR -->
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js" type="text/javascript"></script>
+<!--<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js" type="text/javascript"></script>-->
 <script>
-	CKEDITOR.replace('deskripsiforum');
+    CKEDITOR.replace( 'ckedit' );
     $("form").submit( function(e) {
-        var messageLength = CKEDITOR.instances['deskripsiforum'].getData().replace(/<[^>]*>/gi, '').length;
+        var messageLength = CKEDITOR.instances['ckedit'].getData().replace(/<[^>]*>/gi, '').length;
         if( !messageLength ) {
             alert( 'Masukkan Deskripsi Forum' );
             e.preventDefault();
-        }
+        };
     });
 </script>
+
 

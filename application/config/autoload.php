@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','lib_event_log');
+$autoload['libraries'] = array('database','session','lib_event_log', 'form_validation');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','form');
+$autoload['helper'] = array('url','form', 'html');
 
 /*
 | -------------------------------------------------------------------
@@ -137,6 +137,7 @@ $autoload['model'] = array(
     'M_login', 
     'M_Course', 
     'M_Course_Lesson', 
+    'M_Course_Content',
     'M_Course_Learning_Outcomes', 
     'M_Course_Forum', 
     'M_Course_Forum_Thread', 
@@ -146,4 +147,7 @@ $autoload['model'] = array(
     'M_Course_Enrol_Detail', 
     'M_Course_Category', 
     'M_Course_Assignment', 
-    'M_Course_Assignment_Submission');
+    'M_Course_Assignment_Submission',
+    'M_Course_Assesment',
+    'M_Course_Assesment_Question'
+    );

@@ -1,13 +1,6 @@
 
 <?php
-/**
- * CodeIgniter Event log library
- *
- * @author     Single Seeker <fusiweb@gmail.com>
- * @license    BSD License
- * @link       http://letcodefly.com
- * @since      Version 1.0
- */
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Lib_event_log
 {
@@ -34,11 +27,10 @@ class Lib_event_log
         $this->_ci->load->database();
         // Load config file
         $this->_ci->load->config('log');
-        $this->_log_table_name = ($this->_ci->config->item('log_table_name')) ? $this->_ci->config->item('log_table_name') : 'user_event_log';
+        $this->_log_table_name = ($this->_ci->config->item('user_logs')) ? $this->_ci->config->item('log_table_name') : 'user_logs';
     }
-    public function add_user_event($event,$user_id)
+    public function add_user_event($event)
     {
-        $event['event_log_user_id'] = (int) $user_id;
         $this->_ci->db->insert($this->_log_table_name, $event);
     }
     public function del_user_event($id)

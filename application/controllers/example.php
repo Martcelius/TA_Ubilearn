@@ -31,10 +31,12 @@ class Example extends CI_Controller
     public function index()
     {
         $event = array(
-                'event_log_name'    => $this->session->userdata('session_id'),
-                'event_log_des'     => $this->input->server('REQUEST_URI'),
-                'user_event_type'   => $this->agent->agent_string(),
-                'event_log_time'    => $this->session->userdata('username')
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => $this->input->server('REQUEST_URI'),
+                'log_name'          => "Merda",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->agent->referrer()
             );
         $this->lib_event_log->add_user_event($event,1);
 

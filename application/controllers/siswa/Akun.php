@@ -10,11 +10,7 @@ class Akun extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        
-        $this->load->model('M_User');
-
-        $this->load->library('usertracking'); $this->usertracking->track_this();
-        
+                
     }
     
     public function index()
@@ -46,6 +42,7 @@ class Akun extends CI_Controller {
         $this->upload->do_upload('upload_foto');
         
         $result= $this->upload->data();
+
         $usr_id = $this->input->post('id');
 
         // dd($this->upload->do_upload('upload_foto'));
@@ -97,12 +94,7 @@ class Akun extends CI_Controller {
         $userData['result'] = $this->session->userdata('password');
 //        dd($userData['result']);
         $update = $this->M_User->update_password($userData,$usr_id);
-//        dd($update);
-//        $user= array(
-//            'password' => $update
-//        );
-//        $this->session->set_userdata($user);
-//        dd($update);
+
 
         if($update)
         {

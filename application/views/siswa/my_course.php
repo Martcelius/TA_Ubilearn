@@ -50,12 +50,6 @@
             <li>
                 <h7 style="color: white;margin-left: 10px;">Software and Development</h7>
             </li>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Intelligent and Computing</h7>
-            </li>
-            <li>
-                <h7 style="color: white;margin-left: 10px;">Networking</h7>
-            </li>
         </ul>
         <hr>
     </div>

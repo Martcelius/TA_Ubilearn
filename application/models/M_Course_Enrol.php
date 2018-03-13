@@ -23,10 +23,10 @@ class M_Course_Enrol extends Eloquent
     {
         $insert = new M_Course_Enrol;
         $insert->enr_status = $data['enrol_status'];
-        $insert->crs_id = $data['data_course']->crs_id;
         $insert->usr_id = $data['data_user'];
+        $insert->crs_id = $data['data_course']->crs_id;
         return $insert->save();
-
+//        return $insert->enr_id;
     }
 }
 

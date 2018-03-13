@@ -15,7 +15,7 @@
                     <h2 class="mdl-card__title-text">Edit Learning Outcome</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Learning Outcome</div>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text" style="font-size:15px;">
                     <form class="form-horizontal" action="<?php echo site_url('instruktur/update_lo')?>" method="post">
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi learning Outcome</label>

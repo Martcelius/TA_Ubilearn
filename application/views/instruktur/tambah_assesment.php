@@ -86,6 +86,7 @@
             <label class="control-label col-sm-2">Learning Outcomes :</label>
             <div class="col-sm-10">
             <select class="form-control" name="loc1" >
+            <option disable>>-Pilih Learning Outcome-<</option>
               <?php 
               foreach($listLo as $c){
                 echo '<option value="'.$c->loc_id.'" >'.$c->loc_desc.'</option>';
@@ -105,7 +106,7 @@
                 </label>
 						    <div class="col-sm-10">
                 <a class="btn btn-danger pull-right" style="padding: 26px;" onclick="deleteSoal(1)" id="del1">(X) Hapus Soal</a> 
-						      <textarea type="text" class="form-control" rows="5" name="soal1"></textarea>
+						      <textarea style="width: 100%;" name="soal1"></textarea>
 						    </div>
 						  </div>
                 <span class="form-horizontal"> 
@@ -155,7 +156,7 @@
                     
 			  <div class="form-group pull-right"> 
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-lg btn-primary" onclick="return cek()">Submit</button>
+			      <button class="btn btn-lg btn-primary" onclick="return cek()">Submit</button>
 			    </div>
 			  </div>
 			</form>
@@ -164,8 +165,6 @@
     </div>
    </div>
 </main>
-
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 <script type="text/javascript">
         $('.form_datetime').datetimepicker({
         //language:  'fr',
@@ -195,6 +194,7 @@
             <label class="control-label col-sm-2">Learning Outcomes :</label>
             <div class="col-sm-10">
             <select class="form-control" name="loc`+currNum+`" >
+            <option disable>>-Pilih Learning Outcome-<</option>
               <?php 
               foreach($listLo as $c){
                 echo '<option value="'.$c->loc_id.'" >'.$c->loc_desc.'</option>';
@@ -310,16 +310,22 @@
   }
 
   function cek(){
-    /*var i = 1;
-    var temp;
+    var i = 1;
+    var temp = 0;
     while(i <= currNum){
-      temp[i-1] = $('input[name="poin'+i+'"]').val();
+      var a = $('[name=poin'+i+']').val();
+      temp = temp + parseInt(a);
       i++;
-    }*/
-    return false;
-    alert('aa');
-    
-
+    }
+    var bool = false;
+    if(temp == 100){
+      bool = true;
+    }
+    else{
+      bool = false;
+      alert('Jumlah Poin tidak sama dengan 100 !');
+    }
+    return bool;
   }
 
 </script>  
