@@ -55,7 +55,7 @@
                         <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Beri Komentar</label>
-                                <textarea name="forum_komentarr"></textarea>
+                                <textarea name="forum_komentarr" class="forum_komentarr"></textarea>
                             </div>
                             <button class="btn btn-primary pull-right" id="balaskomentar" style="float:right; margin-right:5px">
                                 <i class="fa fa-reply">
@@ -491,6 +491,10 @@
             
             $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display:none")
         });
+
+        textEditByClass('forum_komentarr');
+        textEditByClass('forum_komentar1');
+        textEditByClass('forum_komentar2');
     });
 </script>
 

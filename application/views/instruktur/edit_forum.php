@@ -23,24 +23,20 @@
                     <h2 class="mdl-card__title-text">Edit Forum</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
-<<<<<<< HEAD
                 <div class="mdl-card__supporting-text">
                     <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->lsn_id) ?>" class="form-horizontal" method="post">
-=======
-                <div class="mdl-card__supporting-text" style="font-size:15px;">
-                    <form action="<?php echo site_url('instruktur/update_forum') ?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Lesson</label>
                             <div class="col-sm-10">
                                 <select id="inputlessonforum" class="form-control" name="lsn_id" required>
-                                    <option disabled="disabled" selected value="<?php echo $dataLesson->lsn_id;?>"><?php echo $dataLesson->lsn_name;?></option>
+                                    <option selected value="<?php echo $dataLesson->lsn_id;?>"><?php echo $dataLesson->lsn_name;?></option>
                                     <?php foreach ($pilihanLesson as $lesson):?>
                                         <option value="<?php echo $lesson->lsn_id?>"><?php echo $lesson->lsn_name?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
                         </div>
->>>>>>> 27074631c5169ea295d2fff57bd1629a151df737
+
                         <div class="form-group">
                             <label for="inputjudulforum" class="col-sm-2 control-label" style="font-size:12px;">Judul Forum</label>
                             <div class="col-sm-10">

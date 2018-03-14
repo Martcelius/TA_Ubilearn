@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi Content</label>
                             <div class="col-sm-10">
-                                <textarea name="cnt_desc" id="ckedit" style="width: 100%;"></textarea>
+                                <textarea name="cnt_desc" id="textEditor1" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -102,6 +102,7 @@
                 $("#uploadvideo").attr("required",true);
             }
         });
+        textEdit(1);
     });
 </script>
 <!-- <script>
@@ -124,7 +125,7 @@
     });
 </script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function() {
         $('#ckedit').summernote({
             height: 200, // set editor height // set editor height
@@ -144,7 +145,7 @@
             $.ajax({
                 data: data,
                 type: "POST",
-                url: '<?php echo base_url().'instruktur/Content/uplGambar' ?>',
+                url: '<?php // echo base_url().'instruktur/Content/uplGambar' ?>',
                 cache: false,
                 contentType: false,
                 processData: false,
@@ -171,7 +172,7 @@
         display: none;
     }
 </style>
-
+ -->
 <!-- <script type="text/javascript">
     document.getElementsByClassName('note-insert').insertAdjacentHTML('afterend','<p class="sober"><a href="#" data-toggle="modal" data-target="#imageModal"><p>Click here to upoad image</p></i></a></p>');
 </script> -->
