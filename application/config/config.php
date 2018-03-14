@@ -23,12 +23,9 @@ date_default_timezone_set("Asia/Jakarta");
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/TA_Ubilearn';
-<<<<<<< HEAD
-
-=======
-/*$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=';*/
->>>>>>> 02dadc24f562f785692da2a8f909c40365634fb5
+$root=(isset($_SERVER['HTTPS']) ? "https://" : "http://").$_SERVER['HTTP_HOST'];
+$root.= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+$config['base_url'] = $root;
 /*
 |--------------------------------------------------------------------------
 | Index File

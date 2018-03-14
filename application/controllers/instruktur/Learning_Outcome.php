@@ -7,7 +7,6 @@ class Learning_Outcome extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course_Learning_Outcomes');
         
     }
 

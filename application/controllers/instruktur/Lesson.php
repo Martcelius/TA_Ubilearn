@@ -9,11 +9,7 @@ class Lesson extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-
-        $this->load->model('M_Course_Lesson');
-        $this->load->model('M_Course');
-        $this->load->model('M_Course_Assesment');
-        $this->load->model('M_Course_Assesment_Question');
+        
     }
     
     public function index($id)
@@ -22,8 +18,7 @@ class Lesson extends CI_Controller {
 //        dd($data['datalesen']);
 $data['dataasing'] = M_Course_Assignment::where('crs_id', $id)->get();
         $data['jumlah'] = $data['datalesen']->count();
-        $data['dataInstruktur'] = DB::table('course')
-            ->leftJoin('users','users.usr_id','=','course.usr_id')
+        $data['dataInstruktur'] = M_Course::leftJoin('users','users.usr_id','=','course.usr_id')
             ->where('course.crs_id',$id)
             ->first(['users.usr_firstname','users.usr_lastname','course.crs_name']);
 //        dd($data['dataInstruktur']);

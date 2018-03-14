@@ -19,6 +19,7 @@ class M_Rating_Reply extends Eloquent
         return $rating->save();
     }
     
+    
 }
 
 ?>

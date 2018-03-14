@@ -23,12 +23,8 @@
                     <h2 class="mdl-card__title-text">Edit Forum</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
-<<<<<<< HEAD
-                <div class="mdl-card__supporting-text">
-                    <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->lsn_id) ?>" class="form-horizontal" method="post">
-=======
                 <div class="mdl-card__supporting-text" style="font-size:15px;">
-                    <form action="<?php echo site_url('instruktur/update_forum') ?>" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->lsn_id) ?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Lesson</label>
                             <div class="col-sm-10">
@@ -40,7 +36,6 @@
                                 </select>
                             </div>
                         </div>
->>>>>>> 27074631c5169ea295d2fff57bd1629a151df737
                         <div class="form-group">
                             <label for="inputjudulforum" class="col-sm-2 control-label" style="font-size:12px;">Judul Forum</label>
                             <div class="col-sm-10">

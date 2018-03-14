@@ -32,13 +32,8 @@
                             <li class="mdl-list__item" style="">
                          <span class="mdl-list__item-primary-content">
                             <span style="margin-right: 25px;">
-<<<<<<< HEAD
-                                <iframe src="<?php echo base_url() ?>res/assets/content/<?php echo $kontent->cnt_source ?>"
-                                        style="scroll: hidden;" frameborder="0"></iframe>
-=======
                                 <embed src="<?php echo site_url() ?>res/assets/content/<?php echo $kontent->cnt_source ?>"
                                        frameborder="0"></embed>
->>>>>>> 4dc002e5870462adb897e4a0692814e776540cb0
                             </span>
                                <b class="mdl-list__item-secondary-action"><?php echo $kontent->cnt_name ?></b>
                         </span>

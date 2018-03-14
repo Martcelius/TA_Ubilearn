@@ -86,8 +86,7 @@
 </div>
 
 <?php
-     $datareplythread= DB::table('course_forum_thread_reply')
-                            ->leftJoin('users','users.usr_id','=','course_forum_thread_reply.usr_id')
+     $datareplythread= M_Course_Forum_Thread_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply.usr_id')
                             ->where('course_forum_thread_reply.cft_id',$dataforumthread->cft_id)
                             ->get();
                             //dd($datareplythread);
@@ -209,8 +208,7 @@
                     </div>
                     <!-- Balasan Komentar -->
                     <?php
-                        $datareply2thread= DB::table('course_forum_thread_reply_reply')
-                                                ->leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply.usr_id')
+                        $datareply2thread= M_Course_Forum_Thread_Reply_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply.usr_id')
                                                 ->where('course_forum_thread_reply_reply.ftr_id',$replythread->ftr_id)
                                                 ->get();
                                                 //dd($datareplythread);
@@ -328,8 +326,7 @@
 
                             <!-- Komentar ke-2 -->
                             <?php
-                                $datareply3thread= DB::table('course_forum_thread_reply_reply_reply')
-                                                        ->leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply_reply.usr_id')
+                                $datareply3thread= M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply_reply.usr_id')
                                                         ->where('course_forum_thread_reply_reply_reply.trr_id',$reply2thread->trr_id)
                                                         ->get();
                                                         //dd($datareplythread);

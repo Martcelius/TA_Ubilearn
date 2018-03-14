@@ -9,11 +9,7 @@ class Thread extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course_Forum_Thread');
-        $this->load->model('M_Course_Forum');
-        $this->load->model('M_Course_Forum_Thread_Reply');
-        $this->load->model('M_Course_Forum_Thread_Reply_Reply');
-        $this->load->model('M_Course_Forum_Thread_Reply_Reply_Reply');
+
     }
 
 
@@ -24,13 +20,11 @@ class Thread extends CI_Controller {
 
     public function list_thread_instruktur($cfr_id)
     {
-        $data['dataThread'] = DB::table('course_forum_thread')
-            ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
+        $data['dataThread'] = M_Course_Forum_Thread::leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
             ->where('course_forum_thread.cfr_id',$cfr_id)
             ->get(['course_forum_thread.*','users.usr_username']);
         $data['judul_forum'] = M_Course_Forum::where('cfr_id',$cfr_id)->first(['cfr_title']);
-        $data['judul_lesson'] = DB::table('course_forum')
-            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+        $data['judul_lesson'] = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
             ->where('course_forum.cfr_id',$cfr_id)
             ->first(['course_lesson.lsn_name']);
 //        dd($data['judul_lesson']);
@@ -41,8 +35,7 @@ class Thread extends CI_Controller {
 
     public function detail_thread_instruktur($cft_id)
     {
-        $data['dataforumthread'] = DB::table('course_forum')
-                                ->leftJoin('course_forum_thread','course_forum_thread.cfr_id','=','course_forum.cfr_id')
+        $data['dataforumthread'] = M_Course_Forum::leftJoin('course_forum_thread','course_forum_thread.cfr_id','=','course_forum.cfr_id')
                                 ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
                                 ->where('course_forum_thread.cft_id',$cft_id)
                                 ->first();
@@ -85,7 +78,7 @@ class Thread extends CI_Controller {
 
     public function delete_komentar_reply($ftr_id,$cft_id)
     {
-        $deleteThread= DB::table('Course_Forum_Thread_Reply')->where('ftr_id',$ftr_id)->delete();
+        $deleteThread= M_Course_Forum_Thread_Reply::where('ftr_id',$ftr_id)->delete();
 
         if($deleteForum)
         {
@@ -98,7 +91,7 @@ class Thread extends CI_Controller {
 
     public function delete_komentar_reply_reply($trr_id,$cft_id)
     {
-        $deleteThread= DB::table('Course_Forum_Thread_Reply_Reply')->where('trr_id',$trr_id)->delete();
+        $deleteThread= M_Course_Forum_Thread_Reply_Reply::where('trr_id',$trr_id)->delete();
 
         if($deleteForum)
         {
@@ -111,7 +104,7 @@ class Thread extends CI_Controller {
 
     public function delete_komentar_reply_reply_reply($rrr_id,$cft_id)
     {
-        $deleteThread= DB::table('Course_Forum_Thread_Reply_Reply_Reply')->where('rrr_id',$rrr_id)->delete();
+        $deleteThread= M_Course_Forum_Thread_Reply_Reply_Reply::where('rrr_id',$rrr_id)->delete();
 
         if($deleteForum)
         {
