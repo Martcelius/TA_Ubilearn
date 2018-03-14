@@ -110,7 +110,7 @@ class Assesment extends CI_Controller {
             ->where("ass_id","=", $ass_id)
             ->first();
 
-        $data['course'] = M_CourseCourse::leftJoin('users','users.usr_id', '=','course.usr_id')
+        $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assesment']->crs_id)
             ->first();
 
@@ -148,6 +148,19 @@ class Assesment extends CI_Controller {
         }
         date_default_timezone_set('Asia/Jakarta');
         $data['currDate'] = date("l, Y-m-d h:i:sa");
+
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "Done Assesment:" . " " . $data['assesment'],
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "Done Assesment",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " " 
+            ."melakukan aksi Done Assesment" . " '" . $data['assesment']->ass_name . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+
         $this->load->view('layout/master', $data);
     }
 }

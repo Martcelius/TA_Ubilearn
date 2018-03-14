@@ -66,7 +66,6 @@ class Thread extends CI_Controller {
 
     public function insert_thread_siswa($cfr_id)
     {
-//
         $data['cft_title'] = $this->input->post('judul_thread');
         $data['cft_content'] = $this->input->post('isithreadforum');
         $data['usr_id'] = $this->session->userdata('id');
@@ -167,7 +166,6 @@ class Thread extends CI_Controller {
                                 ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
                                 ->where('course_forum_thread.cft_id',$cft_id)
                                 ->first();
-                                //dd($data['dataawalthread']);
 
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
@@ -205,6 +203,10 @@ class Thread extends CI_Controller {
             ."melakukan aksi Create Reply pada" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        // $user = M_User::where('usr_id', '=', $this->session->userdata('id'));
+        // $reply_count = $user->usr_reply_count + 1;
+        // M_User::where('usr_id', '=', $this->session->userdata('id'))->update(['usr_reply_count' => $reply_count]);
 
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
@@ -403,6 +405,14 @@ class Thread extends CI_Controller {
             $this->session->set_flashdata('data_gagal_komentar_reply_reply', 'Data Thread Tidak Berhasil Terhapus');
         }
         redirect('siswa/detail_thread_siswa/'.$cft_id);
+    }
+
+    function debug_to_console( $data ) {
+        $output = $data;
+        if ( is_array( $output ) )
+            $output = implode( ',', $output);
+    
+        echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
     }
 
 }
