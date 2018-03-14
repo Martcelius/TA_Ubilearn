@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','lib_event_log', 'form_validation');
+$autoload['libraries'] = array('database','session','lib_event_log', 'form_validation', 'user_agent');
 
 /*
 | -------------------------------------------------------------------
@@ -149,5 +149,11 @@ $autoload['model'] = array(
     'M_Course_Assignment', 
     'M_Course_Assignment_Submission',
     'M_Course_Assesment',
-    'M_Course_Assesment_Question'
+    'M_Course_Assesment_Question',
+    'M_Course_Assesment_Question_Answer',
+    'M_Course_Assesment_Question_Answer_Of_Student',
+    'M_Rating_Reply',
+    'M_Rating_Reply_Reply',
+    'M_Rating_Reply_Reply_Reply',
+    'M_Rating_Thread'
     );

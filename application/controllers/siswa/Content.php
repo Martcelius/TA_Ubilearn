@@ -22,14 +22,14 @@ class Content extends CI_Controller {
         // Capture Log Start
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => $this->input->server('REQUEST_URI'),
-            'log_referrer'      => $this->agent->referrer(),
+            'log_event_context' => "View Lesson:" . " " . $data['course']->lsn_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
             'log_name'          => "View Course",
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi View Lesson" . " " . $data['course']->lsn_name . " " 
-            . "pada Course" . " " . $data['course']->crs_name
+            ."melakukan aksi View Lesson" . " '" . $data['course']->lsn_name . "' " 
+            . "pada Course" . " '" . $data['course']->crs_name . "'"
         );
         $this->lib_event_log->add_user_event($event);
         // Capture Log End
@@ -55,15 +55,15 @@ class Content extends CI_Controller {
             // Capture Log Start
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => $this->input->server('REQUEST_URI'),
-                'log_referrer'      => $this->agent->referrer(),
+                'log_event_context' => "View Content:" . " " . $data['kontent']->cnt_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
                 'log_name'          => "View Content Text",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi View Content" . " " . $data['kontent']->cnt_name . " " 
-                ."pada Lesson" . " " . $data['kontent']->lsn_name . " " 
-                . "pada Course" . " " . $data['kontent']->crs_name
+                ."melakukan aksi View Content" . " '" . $data['kontent']->cnt_name . "' " 
+                ."pada Lesson" . " " . $data['kontent']->lsn_name . "' " 
+                . "pada Course" . " '" . $data['kontent']->crs_name . "'"
             );
             $this->lib_event_log->add_user_event($event);
             // Capture Log End
@@ -74,15 +74,15 @@ class Content extends CI_Controller {
             // Capture Log Start
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => $this->input->server('REQUEST_URI'),
-                'log_referrer'      => $this->agent->referrer(),
+                'log_event_context' => "View Content:" . " " . $data['kontent']->cnt_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
                 'log_name'          => "View Content Video",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi View Content" . " " . $data['kontent']->cnt_name . " " 
-                ."pada Lesson" . " " . $data['kontent']->lsn_name . " " 
-                . "pada Course" . " " . $data['kontent']->crs_name
+                ."melakukan aksi View Content" . " '" . $data['kontent']->cnt_name . "' " 
+                ."pada Lesson" . " '" . $data['kontent']->lsn_name . "' " 
+                . "pada Course" . " '" . $data['kontent']->crs_name . "."
             );
             $this->lib_event_log->add_user_event($event);
             // Capture Log End

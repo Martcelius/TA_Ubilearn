@@ -26,12 +26,12 @@ class Course extends CI_Controller {
         // Capture Log Start
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => $this->input->server('REQUEST_URI'),
-            'log_referrer'      => $this->agent->referrer(),
+            'log_event_context' => "View Course:" . " " . $data['dataCourse']->crs_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
             'log_name'          => "View Course",
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi View Course" . " " . $data['dataCourse']->crs_name
+            'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi View Course" . " '" . $data['dataCourse']->crs_name . "'"
         );
         $this->lib_event_log->add_user_event($event);
         // Capture Log End
@@ -54,12 +54,12 @@ class Course extends CI_Controller {
         // Capture Log Start
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => $this->input->server('REQUEST_URI'),
-            'log_referrer'      => $this->agent->referrer(),
+            'log_event_context' => "Enrol Course:" . " " . $data['data_course']->crs_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
             'log_name'          => "Enrol",
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi Enrol Course" . " " . $data['data_course']->crs_name
+            'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi Enrol Course" . " '" . $data['data_course']->crs_name . "'"
         );
         $this->lib_event_log->add_user_event($event);
         // Capture Log End
@@ -97,12 +97,12 @@ class Course extends CI_Controller {
         // Capture Log Start
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => $this->input->server('REQUEST_URI'),
-            'log_referrer'      => $this->agent->referrer(),
+            'log_event_context' => "View Course:" . " " . $data['course']->crs_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
             'log_name'          => "View Course",
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi View Course" . " " . $data['course']->crs_name,
+            'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi View Course" . " '" . $data['course']->crs_name . "'",
         );
         $this->lib_event_log->add_user_event($event);
         // Capture Log End

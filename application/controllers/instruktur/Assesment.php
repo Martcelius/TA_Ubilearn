@@ -7,11 +7,6 @@ class Assesment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course_Assesment');
-        $this->load->model('M_Course_Assesment_Question');
-        $this->load->model('M_Course_Assesment_Question_Answer');
-        $this->load->model('M_Course_Learning_Outcomes');
-        $this->load->model('M_Course_Lesson');
         
     }
 

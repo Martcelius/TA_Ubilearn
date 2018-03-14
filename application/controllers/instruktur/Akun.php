@@ -11,8 +11,6 @@ class Akun extends CI_Controller {
     {
         parent::__construct();
         
-        $this->load->model('M_User');
-        
     }
     
     public function index()

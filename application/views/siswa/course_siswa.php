@@ -31,8 +31,7 @@
                         </div>
                         <div class="mdl-card__actions">
                         <?php
-                            $course_enrol = DB::table('course_enrol')
-                                ->where('crs_id',$course_siswa->crs_id)
+                            $course_enrol = M_Course_Enrol::where('crs_id',$course_siswa->crs_id)
                                 ->where('usr_id',$this->session->userdata('id'))->first();
 //                      ?>
                         <a href="<?php if($course_enrol != NULL) echo site_url('siswa/course_detail/'.$course_siswa->crs_id);else echo site_url('siswa/course_close/'.$course_siswa->crs_id); ?>">

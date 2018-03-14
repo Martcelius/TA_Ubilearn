@@ -73,8 +73,8 @@ class C_login extends CI_Controller {
                 // Capture Log Start
                 $event = array(
                     'usr_id'            => $this->session->userdata('id'),
-                    'log_event_context' => $this->input->server('REQUEST_URI'),
-                    'log_referrer'      => $this->agent->referrer(),
+                    'log_event_context' => "Login:" . " " . $this->session->userdata('username'),
+                    'log_referrer'      => $this->input->server('REQUEST_URI'),
                     'log_name'          => "Login",
                     'log_origin'        => $this->agent->agent_string(),
                     'log_ip'            => $this->input->server('REMOTE_ADDR'),
