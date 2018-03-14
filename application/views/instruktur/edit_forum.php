@@ -23,6 +23,7 @@
                     <h2 class="mdl-card__title-text">Edit Forum</h2>
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
+
                 <div class="mdl-card__supporting-text">
                     <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->lsn_id) ?>" class="form-horizontal" method="post">
                         <div class="form-group">

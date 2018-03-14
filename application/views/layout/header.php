@@ -4,7 +4,7 @@
 
 <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Material Dashboard Lite</title>
+<title>TEL-C Ubilearning</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">

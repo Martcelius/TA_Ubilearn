@@ -94,7 +94,8 @@
 
 
 					</div>
-
+                    <input id="lat" type="hidden" name="lat" >
+                    <input id="long"  type="hidden" name="long">
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
@@ -121,6 +122,31 @@
 			</div>
 		</div>
 	</div>
+
+<script>
+$(document).ready(function(){
+    ambillokasi();
+});
+
+
+function ambillokasi() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(parsinglokasi);
+    } else {
+        alert("ga bisa ngambil lokasi make browser ini.");
+    }
+}
+function parsinglokasi(posisi) {
+    $("#lat").val(posisi.coords.latitude);
+    $("#long").val(posisi.coords.longitude);
+}
+
+
+
+
+
+</script>
+
 
 
 <!--===============================================================================================-->

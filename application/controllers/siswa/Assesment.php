@@ -9,16 +9,6 @@ class Assesment extends CI_Controller {
     {
         parent::__construct();
 
-        $this->load->model('M_Course');
-        $this->load->model('M_Course_Assesment');
-        $this->load->model('M_Course_Assesment_Question');
-        $this->load->model('M_Course_Assesment_Question_Answer');
-        $this->load->model('M_Course_Assesment_Question_Answer_Of_Student');
-
-        $this->load->library('usertracking'); $this->usertracking->track_this();
-
-
-
     }
 
     public function index($id)
@@ -26,14 +16,12 @@ class Assesment extends CI_Controller {
 
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assesment_info';
-        $data['assesment']=  DB::table("course_assesment")
-            ->leftJoin("course","course.crs_id","=","course_assesment.crs_id")
+        $data['assesment']=  M_Course_Assesment::leftJoin("course","course.crs_id","=","course_assesment.crs_id")
             ->where("ass_id","=", $id)
             ->first();
 
 
-        $data['course'] = DB::table("course")
-            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+        $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assesment']->crs_id)
             ->first();
 //        dd($data['course']);
@@ -52,8 +40,7 @@ class Assesment extends CI_Controller {
         }
         else{
             $data['ass_obj'] = $this->M_Course_Assesment->select($ass_id);
-            $data['course'] = DB::table("course")
-            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+            $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['ass_obj']->crs_id)
             ->first();
 
@@ -119,13 +106,11 @@ class Assesment extends CI_Controller {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/result';
 
-        $data['assesment']=  DB::table("course_assesment")
-            ->leftJoin("course","course.crs_id","=","course_assesment.crs_id")
+        $data['assesment']=  M_Course_Assesment::leftJoin("course","course.crs_id","=","course_assesment.crs_id")
             ->where("ass_id","=", $ass_id)
             ->first();
 
-        $data['course'] = DB::table("course")
-            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+        $data['course'] = M_CourseCourse::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assesment']->crs_id)
             ->first();
 

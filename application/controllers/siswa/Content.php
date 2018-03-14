@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use Illuminate\Database\Capsule\Manager as DB;
 
 class Content extends CI_Controller {
 
@@ -9,25 +8,31 @@ class Content extends CI_Controller {
     {
         parent::__construct();
 
-        $this->load->model('M_Course_Content');
-        $this->load->library('usertracking');
-        $this->usertracking->track_this();
-
-
-
-
     }
 
     public function index($lsn_id)
     {
-        $data['course'] = DB::table('course_lesson')
-            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+        $data['course'] = M_Course_Lesson::leftJoin('course','course.crs_id','=','course_lesson.crs_id')
             ->leftJoin('users','users.usr_id','=','course.usr_id')
             ->where('course_lesson.lsn_id',$lsn_id)
             ->first();
         $data['contents'] = M_Course_Content::where('lsn_id',$lsn_id)->get();
 //        dd($data['content']);
 
+        // Capture Log Start
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "View Lesson:" . " " . $data['course']->lsn_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "View Course",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " " 
+            ."melakukan aksi View Lesson" . " '" . $data['course']->lsn_name . "' " 
+            . "pada Course" . " '" . $data['course']->crs_name . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+        // Capture Log End
 
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/course_materi';
@@ -37,8 +42,7 @@ class Content extends CI_Controller {
 
     public function contents($cnt_id)
     {
-        $data['kontent'] = DB::table('course_content')
-            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_content.lsn_id')
+        $data['kontent'] = M_Course_Content::leftJoin('course_lesson','course_lesson.lsn_id','=','course_content.lsn_id')
             ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
             ->leftJoin('users','users.usr_id','=','course.usr_id')
             ->where('course_content.cnt_id',$cnt_id)
@@ -48,10 +52,40 @@ class Content extends CI_Controller {
 
         if ($data['kontent']->cnt_type == "Text"){
 
+            // Capture Log Start
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "View Content:" . " " . $data['kontent']->cnt_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Content Text",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " " 
+                ."melakukan aksi View Content" . " '" . $data['kontent']->cnt_name . "' " 
+                ."pada Lesson" . " " . $data['kontent']->lsn_name . "' " 
+                . "pada Course" . " '" . $data['kontent']->crs_name . "'"
+            );
+            $this->lib_event_log->add_user_event($event);
+            // Capture Log End
             $data['content'] = 'siswa/course_content';
         }
         else{
 
+            // Capture Log Start
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "View Content:" . " " . $data['kontent']->cnt_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Content Video",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " " 
+                ."melakukan aksi View Content" . " '" . $data['kontent']->cnt_name . "' " 
+                ."pada Lesson" . " '" . $data['kontent']->lsn_name . "' " 
+                . "pada Course" . " '" . $data['kontent']->crs_name . "."
+            );
+            $this->lib_event_log->add_user_event($event);
+            // Capture Log End
             $data['content'] = 'siswa/course_video';
         }
 

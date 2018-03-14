@@ -7,7 +7,6 @@ class Assignment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course_Assignment');
         
     }
 
@@ -112,13 +111,11 @@ class Assignment extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/result_siswa_assignment';
-        $data['assignment'] = DB::table("course_assignment")
-            ->leftJoin("course", "course.crs_id","=","course_assignment.crs_id")
+        $data['assignment'] = M_Course_Assignment::leftJoin("course", "course.crs_id","=","course_assignment.crs_id")
             ->leftJoin("users","users.usr_id","=","course.usr_id")
             ->where("course_assignment.asg_id", $asg_id)->first();
 
-        $data['assignment_siswa'] =  DB::table("course_assignment_submission")
-            ->leftJoin("course_assignment", "course_assignment.asg_id", "=", "course_assignment_submission.asg_id")
+        $data['assignment_siswa'] =  M_Course_Assignment_Submission::leftJoin("course_assignment", "course_assignment.asg_id", "=", "course_assignment_submission.asg_id")
             ->leftJoin("users","users.usr_id","=","course_assignment_submission.usr_id")
             ->where("course_assignment_submission.asg_id", $asg_id)->get();
 //        dd($data['assignment']);

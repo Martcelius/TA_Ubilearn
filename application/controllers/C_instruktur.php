@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-use Illuminate\Database\Capsule\Manager as DB;
 
 class C_instruktur extends CI_Controller {
 
@@ -8,10 +7,6 @@ class C_instruktur extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course');
-        $this->load->model('M_Course_Assesment');
-        $this->load->model('M_Course_Assesment_Question');
-        $this->load->model('M_Course_Assesment_Question_Answer');
         
     }
     
@@ -24,8 +19,7 @@ class C_instruktur extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/dashboard_instruktur';
-        $data['course'] = DB::table("course")
-            ->leftJoin("users","users.usr_id","=","course.usr_id")
+        $data['course'] = M_Course::leftJoin("users","users.usr_id","=","course.usr_id")
             ->where("course.usr_id","=",$this->session->userdata['id'])->get();
         $i = 0;
         $jum = array();

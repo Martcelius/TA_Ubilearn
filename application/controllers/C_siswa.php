@@ -9,9 +9,7 @@ class C_siswa extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course_Enrol');
-        $this->load->model('M_Course_Assesment_Question_Answer_Of_Student');
-        $this->load->model('M_Course_Assesment');
+
     }
 
     public function index()
@@ -39,37 +37,6 @@ class C_siswa extends CI_Controller {
         $this->load->view('layout/master', $data);
 
     }
-//    public function course_close($crs_id)
-//    {
-//        $data['dataCourse'] = DB::table("course")
-//        ->leftJoin("users","users.usr_id","=","course.usr_id")
-//        ->where('crs_id',$crs_id)->first();
-//
-//        $data['sidebar'] = 'layout/sidebar';
-//        $data['content'] = 'siswa/course_close';
-//        $this->load->view('layout/master', $data);
-//    }
-
-
-//    public function manage_akun()
-//    {
-//        $data['sidebar'] = 'layout/sidebar';
-//        $data['content'] = 'siswa/akun_siswa';
-//        $this->load->view('layout/master', $data);
-//    }
-//    public function manage_password()
-//    {
-//        $data['sidebar'] = 'layout/sidebar';
-//        $data['content'] = 'siswa/password';
-//        $this->load->view('layout/master', $data);
-//    }
-//    public function course_siswa()
-//    {
-//        $data['sidebar'] = 'layout/sidebar';
-//        $data['content'] = 'siswa/course_siswa';
-//        $this->load->view('layout/master',$data);
-//    }
-
 
     public function forum_siswa()
     {
@@ -107,14 +74,12 @@ class C_siswa extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/result';
-        $data['assesment']=  DB::table("course_assesment")
-            ->leftJoin("course","course.crs_id","=","course_assesment.crs_id")
+        $data['assesment']=  M_Course_Assesment::leftJoin("course","course.crs_id","=","course_assesment.crs_id")
             ->where("ass_id","=", $id)
             ->first();
 
 
-        $data['course'] = DB::table("course")
-            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+        $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assesment']->crs_id)
             ->first();
         $this->load->view('layout/master', $data);
@@ -124,8 +89,7 @@ class C_siswa extends CI_Controller {
     {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assignment_detail';
-        $data['assignment']=  DB::table("course_assignment")
-            ->leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+        $data['assignment']=  M_Course_Assignment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
             ->where("asg_id","=", $asg_id)
             ->first();
         $this->load->view('layout/master', $data);
