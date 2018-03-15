@@ -16,7 +16,7 @@ class Assignment extends CI_Controller {
 
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assignment_detail';
-        $data['assignment']=  M_Course_Assigment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+        $data['assignment']=  M_Course_Assignment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
             ->where("asg_id","=", $asg_id)
             ->first();
 
