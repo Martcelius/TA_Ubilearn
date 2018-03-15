@@ -239,6 +239,7 @@ class Thread extends CI_Controller {
         $data['rrr_content'] = $this->input->post('forum_komentar2');
         $data['usr_id'] = $this->session->userdata('id');
         $data['trr_id'] = $trr_id;
+        
         $insert = $this->M_Course_Forum_Thread_Reply_Reply_Reply->insert_thread_reply_reply_reply($data);
 
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
