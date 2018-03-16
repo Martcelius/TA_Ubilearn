@@ -72,4 +72,15 @@ class Forum extends CI_Controller {
             $this->load->view('layout/master',$data);
         }
     }
+
+    public function lesson_dashboard_forum($crs_id)
+    {
+        $data['datalessonforum'] = DB::table('course_lesson')
+                            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+                            ->where('course.crs_id',$crs_id)
+                            ->get();
+        $data['sidebar'] = 'layout/sidebar';
+        $data['content'] = 'siswa/dashboard_forum_siswa';
+        $this->load->view('layout/master',$data);
+    }
 }
