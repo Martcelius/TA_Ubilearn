@@ -4,7 +4,7 @@
             <div class="">
                 <div class="">
                     <h2 style="color:white">Edit Course</h2>
-                    <h3 style="color:white">Nungki Selviandro</h3>
+                    <h3 style="color:white">Fikri Razzaq</h3>
                 </div>
             </div>
       </div>

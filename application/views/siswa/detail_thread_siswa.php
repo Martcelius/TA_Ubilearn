@@ -55,7 +55,7 @@
                         <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Beri Komentar</label>
-                                <textarea name="forum_komentarr"></textarea>
+                                <textarea name="forum_komentarr" class="forum_komentarr"></textarea>
                             </div>
                             <button class="btn btn-primary pull-right" id="balaskomentar" style="float:right; margin-right:5px">
                                 <i class="fa fa-reply">
@@ -82,8 +82,7 @@
 </div>
 
 <?php
-     $datareplythread= DB::table('course_forum_thread_reply')
-                            ->leftJoin('users','users.usr_id','=','course_forum_thread_reply.usr_id')
+     $datareplythread= M_Course_Forum_Thread_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply.usr_id')
                             ->where('course_forum_thread_reply.cft_id',$dataforumthread->cft_id)
                             ->get();
                             //dd($datareplythread);
@@ -216,8 +215,7 @@
                     </div>
                     <!-- Balasan Komentar -->
                     <?php
-                        $datareply2thread= DB::table('course_forum_thread_reply_reply')
-                                                ->leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply.usr_id')
+                        $datareply2thread= M_Course_Forum_Thread_Reply_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply.usr_id')
                                                 ->where('course_forum_thread_reply_reply.ftr_id',$replythread->ftr_id)
                                                 ->get();
                                                 //dd($datareplythread);
@@ -346,8 +344,7 @@
 
                             <!-- Komentar ke-2 -->
                             <?php
-                                $datareply3thread= DB::table('course_forum_thread_reply_reply_reply')
-                                                        ->leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply_reply.usr_id')
+                                $datareply3thread= M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply_reply.usr_id')
                                                         ->where('course_forum_thread_reply_reply_reply.trr_id',$reply2thread->trr_id)
                                                         ->get();
                                                         //dd($datareplythread);
@@ -491,6 +488,10 @@
             
             $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display:none")
         });
+
+        textEditByClass('forum_komentarr');
+        textEditByClass('forum_komentar1');
+        textEditByClass('forum_komentar2');
     });
 </script>
 

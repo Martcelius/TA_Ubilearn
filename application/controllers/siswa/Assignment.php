@@ -9,10 +9,6 @@ class Assignment extends CI_Controller {
     {
         parent::__construct();
 
-        $this->load->model('M_Course');
-        $this->load->model('M_Course_Assignment');
-        $this->load->model('M_Course_Assignment_Submission');
-
     }
 
     public function index($asg_id)
@@ -20,14 +16,12 @@ class Assignment extends CI_Controller {
 
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assignment_detail';
-        $data['assignment']=  DB::table("course_assignment")
-            ->leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+        $data['assignment']=  M_Course_Assignment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
             ->where("asg_id","=", $asg_id)
             ->first();
 
 
-        $data['course'] = DB::table("course")
-            ->leftJoin('users','users.usr_id', '=','course.usr_id')
+        $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assignment']->crs_id)
             ->first();
 //

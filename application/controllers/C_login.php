@@ -7,9 +7,7 @@ class C_login extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('M_login');
-        $this->load->helper('html');
-        $this->load->library('form_validation');
+
     }
     
     public function index(){
@@ -55,6 +53,7 @@ class C_login extends CI_Controller {
 
                 // foreach($cek as $row);
                 $user= array(
+                    'session_id' => session_id(),
                     'id' =>$cek[0]->usr_id,
                     'kode' =>$cek[0]->usr_kode,
                     'username' =>$cek[0]->usr_username,
@@ -70,6 +69,20 @@ class C_login extends CI_Controller {
                 );
 
                 $this->session->set_userdata($user);
+
+                // Capture Log Start
+                $event = array(
+                    'usr_id'            => $this->session->userdata('id'),
+                    'log_event_context' => "Login:" . " " . $this->session->userdata('username'),
+                    'log_referrer'      => $this->input->server('REQUEST_URI'),
+                    'log_name'          => "Login",
+                    'log_origin'        => $this->agent->agent_string(),
+                    'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                    'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi Login"
+                );
+                $this->lib_event_log->add_user_event($event);
+                // Capture Log End
+
 //                dd($this->session->userdata('foto'));
                 if ($this->session->userdata('level')==1)
                 {
@@ -137,6 +150,12 @@ class C_login extends CI_Controller {
         //     }
         // }
         $this->session->sess_destroy();
+        
+        // DESTROY SESEN
+        // $_SESSION = array();
+        // unset($_SESSION);
+        // session_destroy();
+
         if (!$this->session->userdata('username'))
         {
             echo '<script language="javascript">alert("Username atau password tidak ada!");</script>';

@@ -82,61 +82,31 @@
             </div>
             <div class="mdl-card__supporting-text" style="overflow-y : scroll;max-height: 200px">
                 <ul class="mdl-list">
+                <?php
+                $i = 0; 
+                $len = count($dataCourseLain);
+                foreach ($dataCourseLain as $krus):?>
+                <?php
+                    $course_enrol = M_Course_Enrol::where('crs_id',$krus->crs_id)
+                        ->where('usr_id',$this->session->userdata('id'))->first();
+                ?>
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 1</a> 
+                            <a  href="<?php if($course_enrol != NULL) echo site_url('siswa/course_detail/'.$krus->crs_id);else echo site_url('siswa/course_close/'.$krus->crs_id); ?>" style="margin-left:20px">
+                                <?php echo "<b> $krus->crs_name </b>" ?>
+                            </a> 
                         </span>
                     </li>
-                    <hr>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 2</a> 
-                        </span>
-                    </li>
-                    <hr>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 3</a> 
-                        </span>
-                    </li>
-                    <hr>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 3</a> 
-                        </span>
-                    </li>
-                    <hr>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 3</a> 
-                        </span>
-                    </li>
-                    <hr>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 3</a> 
-                        </span>
-                    </li>
-                    <hr>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 3</a> 
-                        </span>
-                    </li>
-                    <hr>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons" style="font-size: 30px">folder_special</i>
-                            <a href="" style="margin-left:20px">Course 3</a> 
-                        </span>
-                    </li>
+                    <?php
+                        if ($i <> $len - 1) {
+                            echo "<hr>";
+                        }
+                    ?>
+                    <?php
+                    $i++;
+                    ?>
+                <?php endforeach; ?>
                 </ul>
             </div>
         </div>

@@ -9,10 +9,7 @@ class Content extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course_Lesson');
-        $this->load->model('M_Course');
-        $this->load->model('M_Course_Learning_Outcomes');
-        $this->load->model('M_Course_Content');
+
     }
     
     public function index()
@@ -81,8 +78,7 @@ class Content extends CI_Controller {
 
     public function edit_content($id)
     {
-        $data['editContent'] = DB::table('course_content')
-                            ->leftjoin('course_learning_outcomes','course_learning_outcomes.loc_id','=','course_content.loc_id')
+        $data['editContent'] = M_Course_Content::leftjoin('course_learning_outcomes','course_learning_outcomes.loc_id','=','course_content.loc_id')
                             ->where('cnt_id',$id)
                             ->first(['course_content.*','course_learning_outcomes.loc_desc']);
         $data['dataLO'] = M_Course_Learning_Outcomes::get();

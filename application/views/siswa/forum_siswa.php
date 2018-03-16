@@ -7,7 +7,7 @@
             <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
                 <h2 style="color:white">Forum</h2>
                 <br>
-                <h4 style="color:grey">Nama Siswa</h4>
+                <h4 style="color:grey"><?php echo $this->session->userdata('firstname'). " " .$this->session->userdata('lastname'); ?></h4>
             </div>
         </div>
     </div>

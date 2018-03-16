@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session');
+$autoload['libraries'] = array('database','session','lib_event_log', 'form_validation', 'user_agent');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','form');
+$autoload['helper'] = array('url','form', 'html');
 
 /*
 | -------------------------------------------------------------------
@@ -104,8 +104,7 @@ $autoload['helper'] = array('url','form');
 |
 */
 $autoload['config'] = array();
-
-/*
+/* 
 | -------------------------------------------------------------------
 |  Auto-load Language files
 | -------------------------------------------------------------------
@@ -116,7 +115,7 @@ $autoload['config'] = array();
 | NOTE: Do not include the "_lang" part of your file.  For example
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
-*/
+ */
 $autoload['language'] = array();
 
 /*
@@ -132,4 +131,30 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array(
+    'M_User', 
+    'M_University', 
+    'M_login', 
+    'M_Course', 
+    'M_Course_Lesson', 
+    'M_Course_Content',
+    'M_Course_Learning_Outcomes', 
+    'M_Course_Forum', 
+    'M_Course_Forum_Thread', 
+    'M_Course_Forum_Thread_Reply', 
+    'M_Course_Forum_Thread_Reply_Reply',
+    'M_Course_Forum_Thread_Reply_Reply_Reply',
+    'M_Course_Enrol', 
+    'M_Course_Enrol_Detail', 
+    'M_Course_Category', 
+    'M_Course_Assignment', 
+    'M_Course_Assignment_Submission',
+    'M_Course_Assesment',
+    'M_Course_Assesment_Question',
+    'M_Course_Assesment_Question_Answer',
+    'M_Course_Assesment_Question_Answer_Of_Student',
+    'M_Rating_Reply',
+    'M_Rating_Reply_Reply',
+    'M_Rating_Reply_Reply_Reply',
+    'M_Rating_Thread'
+    );

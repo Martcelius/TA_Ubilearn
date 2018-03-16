@@ -10,10 +10,6 @@ class Forum extends CI_Controller {
     {
         parent::__construct();
 
-        $this->load->model('M_User');
-        $this->load->model('M_Course_Forum');
-        $this->load->model('M_Course_Forum_Thread');
-        $this->load->model('M_Course_Lesson');
     }
 
 
@@ -27,8 +23,7 @@ class Forum extends CI_Controller {
     }
 
     public function dashboard_forum_instruktur($crs_id){
-        $data['datalessonforum'] = DB::table('course_lesson')
-                            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+        $data['datalessonforum'] = M_Course_Lesson::leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                             ->where('course.crs_id',$crs_id)
                             ->get();
         $data['sidebar'] = 'layout/sidebar_instruktur';
@@ -38,12 +33,10 @@ class Forum extends CI_Controller {
 
     public function detail_dashboard_forum_instruktur($lsn_id)
     {
-        $data['dataForum']= DB::table('course_forum')
-                            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+        $data['dataForum']= M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
                             ->where('course_lesson.lsn_id',$lsn_id)
                             ->get();
-        $data['datalesson']=DB::table('course_lesson')
-                            ->where('course_lesson.lsn_id',$lsn_id)
+        $data['datalesson']= M_Course_Lesson::where('course_lesson.lsn_id',$lsn_id)
                             ->first();
         if ($data['dataForum'] != NULL)
         {
@@ -111,8 +104,7 @@ class Forum extends CI_Controller {
 
     public function edit_forum($cfr_id,$lsn_id)
     {
-        $data['dataLesson'] = DB::table('course_forum')
-                        ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+        $data['dataLesson'] = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
                         ->where('course_forum.cfr_id',$cfr_id)
                         ->first();
         $data['sidebar'] = 'layout/sidebar_instruktur';
@@ -140,8 +132,8 @@ class Forum extends CI_Controller {
 
     public function delete_forum($cfr_id,$lsn_id)
     {
-        $deleteForum = DB::table('course_forum')->where('cfr_id',$cfr_id)->delete();
-        $deleteThread= DB::table('course_forum_thread')->where('cfr_id',$cfr_id)->delete();
+        $deleteForum = M_Course_Forum::where('cfr_id',$cfr_id)->delete();
+        $deleteThread= M_Course_Forum_Thread::where('cfr_id',$cfr_id)->delete();
 
         if($deleteForum)
         {

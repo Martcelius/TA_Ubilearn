@@ -262,7 +262,6 @@
                         <li class="mdl-list__item">
                             Jumlah lesson: <?php echo $jumlah ?>
                         </li>
-                        <!--<<<<<<< HEAD-->
                     </ul>
 
                     <hr style="background-color: white;">
@@ -272,7 +271,6 @@
                     <span class="mdl-list__item-primary-content">
                         <span style="margin-right: 25px;">IKI</span>
                     </span>
-                            <!--=======-->
                             <hr>
                         <li class="mdl-list__item">
                             Siswa dalam course: iki
