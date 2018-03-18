@@ -20,6 +20,13 @@
               <p><?php echo $this->session->flashdata('password_tersimpan')?></p>
           </div>
       <?php endif; ?>
+      <?php if ($this->session->flashdata('ass_notif') == TRUE): ?>
+          <div role="alert"  class="alert alert-warning alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+              <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+              </button>
+              <p><?php echo $this->session->flashdata('ass_notif')?></p>
+          </div>
+      <?php endif; ?>
     <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--6-col-phone">
       <div class="mdl-card grey_card mdl-shadow--2dp pie-chart" >
           <div class="mdl-card__title" style="display:block;">

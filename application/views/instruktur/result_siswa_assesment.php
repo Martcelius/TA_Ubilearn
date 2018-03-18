@@ -1,16 +1,16 @@
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-            <h2 style="color:white; text-align:center;"><?php echo $assignment->crs_name?></h2>
+            <h2 style="color:white; text-align:center;"><?php echo $assesment_instruktur->crs_name?></h2>
             <div style="text-align:center">
-                <img src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $assignment->usr_picture;?>" class="material-icons mdl-list__item-avatar" style="width: 100px; height: 100px;">
-                <h3 style="color:white;"><?php echo $assignment->usr_firstname." ".$assignment->usr_lastname?></h3>
-                <p style="color:white;"><?php $converted = date('d M Y h.i.s A', strtotime($assignment->asg_timecreated));
+                <img src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $assesment_instruktur->usr_picture;?>" class="material-icons mdl-list__item-avatar" style="width: 100px; height: 100px;">
+                <h3 style="color:white;"><?php echo $assesment_instruktur->usr_firstname." ".$assesment_instruktur->usr_lastname?></h3>
+                <p style="color:white;"><?php $converted = date('d M Y h.i.s A', strtotime($assesment_instruktur->asg_timecreated));
                     $reversed = date('Y-M-d', strtotime($converted));
                     echo $reversed;
                     ?>
                 </p>
-                <p style="color:white;"><?php echo $assignment->asg_name?></p>
+                <p style="color:white;"><?php echo $assesment_instruktur->asg_name?></p>
             </div>
         </div>
     </div>
@@ -144,36 +144,22 @@
                             <tr style="text-align:center;">
                                 <th style="text-align:center;">No</th>
                                 <th style="text-align:center;">Nama Siswa</th>
-                                <th style="text-align:center;">Berkas</th>
-                                <th style="text-align:center;">Status</th>
+                                <th style="text-align:center;">Tipe Assesment</th>
+                                <th style="text-align:center;">Nilai Assessment</th>
 
                             </tr>
                             </thead>
                             <tbody>
                             <?php
                             $i = 1;
-                            foreach($assignment_siswa as $c): ?>
-                            <tr class="odd gradeX" style="background-color: #363636;">
-                                <td style="text-align:center;"><?php echo $i++;?></td>
-                                <td style="text-align:center;"><?php echo $c->usr_firstname." ".$c->usr_lastname?></td>
-                                <td style="text-align:center;">
-                                    <a href="<?php echo base_url();?>res/assets/file_siswa/<?php echo $c->sub_attachment;?>" target="_blank">
-                                        <p style="color: white;">
-                                            <?php echo $c->sub_attachment?>
-                                        </p>
-                                    </a>
-                                </td>
-                                <td style="text-align:center;">
-                                    <?php if($c->sub_timecreated <= $c->asg_duedate):?>
-                                        <p>Ontime</p>
-                                    <?php elseif($c->sub_timecreated >= $c->asg_duedate):?>
-                                        <p>Late</p>
-                                    <?php endif ?>
-                                </td>
-                            </tr>
+                            foreach($assesment as $c): ?>
+                                <tr class="odd gradeX" style="background-color: #363636;">
+                                    <td style="text-align:center;"><?php echo $i++;?></td>
+                                    <td style="text-align:center;"><?php echo $c->usr_firstname." ". $c->usr_lastname?></td>
+                                    <td style="text-align:center;"><?php echo $c->ass_tipe?></td>
+                                    <td style="text-align:center;"><?php echo $c->ass_result?></td>
+                                </tr>
                             <?php endforeach;?>
-
-
                             </tbody>
                         </table>
                     </div>

@@ -14,6 +14,8 @@ class Assignment extends CI_Controller {
     {
         $data['sidebar']    = 'layout/sidebar_instruktur';
         $data['content']    = 'instruktur/add_assignment';
+        $data['dataLO'] = M_Course_Learning_Outcomes::where('crs_id','=',$crs_id)->get();
+
         $data['crs_id']  = $crs_id;
         // dd($data['crs_id']);
         $this->load->view('layout/master', $data);

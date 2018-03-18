@@ -153,6 +153,13 @@
                                         <?php echo $ass->ass_tipe . ' - ' . $ass->ass_name; ?>
                                     </span>
                                         <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                        <a href="<?php echo site_url('instruktur/assesment/result_siswa_assesment/' . $ass->ass_id) ?>">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue"
+                                                    style="margin:2px;">
+                                                <i class="material-icons">add</i>
+                                                Masuk
+                                            </button>
+                                        </a>
                                         <a href="<?php echo site_url('instruktur/edit_assesment/' . $ass->ass_id) ?>">
                                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow"
                                                     style="margin:2px;">
