@@ -58,4 +58,5 @@
 <script src="<?php echo base_url();?>res/assets/js/bootstrap-datetimepicker.min.js"></script>
 <link href="<?php echo base_url(); ?>res/assets/dist/summernote.css" rel="stylesheet">
 <script src="<?php echo base_url(); ?>res/assets/dist/summernote.js"></script>
+<script src="<?php echo base_url(); ?>documentation/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
 <!-- drop down end -->
