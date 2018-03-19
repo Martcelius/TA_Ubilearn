@@ -29,12 +29,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                        <label class="control-label col-sm-2" >Waktu Selesai :</label>
-                        <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
-                            <input class="form-control" size="16" type="text" name="asg_date">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                        </div>
+                            <label class="control-label col-sm-2" >Waktu Selesai :</label>
+                            <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
+                                <input class="form-control" size="16" type="text" name="asg_date">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
 			            </div>
+
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
@@ -46,6 +48,27 @@
                             <div class="col-sm-10">
                             <input style="display:none;" name="crs_id" class="form-control" value="<?php echo $crs_id?>">
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <?php $i = 1;?>
+                            <?php foreach($dataLO as $s):?>
+                            <?php if($i==1):?>
+                                <label class="control-label col-sm-2" >Learning Outcome :</label>
+                            <?php endif?>
+                            <?php if($i!=1):?>
+                                <label class="control-label col-sm-2" ></label>
+                            <?php endif?>
+                            <ul class="mdl-list">
+
+                                <li class="mdl-list__item" style="padding-top: 0px;padding-bottom: 0px;">
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-checkbox--colored-blue " for="checkbox-<?php echo $i?>">
+                                        <input type="checkbox" id="checkbox-<?php echo $i?>" class="mdl-checkbox__input" name="Loc[]" value="<?= $s->loc_id?>">
+                                        <span class="mdl-checkbox__label" style="margin-left: 5px;"><?php echo $s->loc_desc?></span>
+                                    </label>
+                                </li>
+                                <?php $i++;
+                                endforeach?>
+                            </ul>
                         </div>
                         <div class="form-group pull-right">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -123,5 +146,41 @@
 <style type="text/css">
     .note-view {
         display: none;
+    }
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    .container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
     }
 </style>

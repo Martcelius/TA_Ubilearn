@@ -37,7 +37,7 @@
                             <label class="col-sm-2 control-label" for="ourField">Learning Outcome</label>
                                 <div class="col-sm-10" id="myRepeatingFields">
                                     <small>Pilih <span class="glyphicon glyphicon-plus gs"></span> Untuk Menambah Learning Outcome</small>
-                                    <div class="entry input-group col-sm-6">
+                                    <div class="entry input-group col-sm-6" style="margin: 5px;">
                                         <input class="form-control" name="Loc[]" type="text" placeholder="Learning Outcome" />
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-success btn-add">
