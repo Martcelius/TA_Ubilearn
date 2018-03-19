@@ -65,6 +65,7 @@ $route['siswa/course_close/(:any)'] = 'siswa/course/course_close/$1';
 $route['siswa/enrol/(:any)'] = 'siswa/course/enrol/$1';
 $route['siswa/my_course'] = 'siswa/course/my_course';
 $route['siswa/course_detail/(:any)'] = 'siswa/course/course_detail/$1';
+$route['siswa/Content/countLogContent/(:any)'] = 'siswa/Content/countLogContent/$1';
 //content
 $route['siswa/materi/(:any)'] = 'siswa/content/index/$1';
 $route['siswa/content/(:any)'] = 'siswa/content/contents/$1';
