@@ -48,7 +48,6 @@
                                     <p>*Anda tidak dapat mengambil assessment ini.</p>
                                 </div>
                                 </fieldset>";
-
                         }
                         ?>
                     </div>

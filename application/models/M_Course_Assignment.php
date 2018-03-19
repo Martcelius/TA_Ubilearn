@@ -25,7 +25,8 @@ class M_Course_Assignment extends Eloquent
         $asg->asg_attachment = $data['asg_attachment'];
         $asg->asg_duedate = $data['asg_date'];
         
-        return $asg->save();
+        $asg->save();
+        return $asg->asg_id;
     }
 
     public function update_asing($data)
