@@ -153,6 +153,7 @@ $autoload['model'] = array(
     'M_Course_Assesment_Question',
     'M_Course_Assesment_Question_Answer',
     'M_Course_Assesment_Question_Answer_Of_Student',
+    'M_Course_Assesment_Result',
     'M_Rating_Reply',
     'M_Rating_Reply_Reply',
     'M_Rating_Reply_Reply_Reply',

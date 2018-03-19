@@ -34,6 +34,22 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-2 control-label" for="ourField">Learning Outcome</label>
+                                <div class="col-sm-10" id="myRepeatingFields">
+                                    <small>Pilih <span class="glyphicon glyphicon-plus gs"></span> Untuk Menambah Learning Outcome</small>
+                                    <div class="entry input-group col-sm-6">
+                                        <input class="form-control" name="Loc[]" type="text" placeholder="Learning Outcome" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-success btn-add">
+                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                            </button>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            <br>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-10">
                                 <input name="usr_id" type="text" class="form-control" id="usr_id" value="<?php echo $this->session->userdata('id')?>" style="display:none">
                             </div>
@@ -49,3 +65,27 @@
         </div>
     </div>
 </main>
+<script>
+    var currNum = 1;
+    $(function()
+    {
+        $(document).on('click','.btn-add', function(e)
+        {
+            e.preventDefault();
+            var controlForm = $('#myRepeatingFields:first'),
+                currentEntry = $(this).parents('.entry:first'),
+                newEntry = $(currentEntry.clone()).appendTo(controlForm);
+            newEntry.find('input').val('');
+            controlForm.find('.entry:not(:last) .btn-add')
+                .removeClass('btn-add').addClass('btn-remove')
+                .removeClass('btn-success').addClass('btn-danger')
+                .removeClass('glyphicon glyphicon-plus').addClass('glyphicon glyphicon-minus')
+                .html('');
+        }).on('click', '.btn-remove', function(e)
+        {
+            e.preventDefault();
+            $(this).parents('.entry:first').remove();
+            return false;
+        });
+    });
+</script>

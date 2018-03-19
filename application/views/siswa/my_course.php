@@ -1,5 +1,5 @@
 <main class="mdl-layout__content">
-    <div class="col-sm-11 cover-main">
+    <div class="col-sm-12 cover-main">
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div>

@@ -160,7 +160,11 @@ class Assesment extends CI_Controller {
             ."melakukan aksi Done Assesment" . " '" . $data['assesment']->ass_name . "'"
         );
         $this->lib_event_log->add_user_event($event);
-
+        $dataResult = new M_Course_Assesment_Result;
+        $dataResult->ass_id = $ass_id;
+        $dataResult->ass_result = $data['nilaiAkhir'];
+        $dataResult->usr_id = $this->session->userdata('id');
+        $this->M_Course_Assesment_Result->insert($dataResult);
         $this->load->view('layout/master', $data);
     }
 }

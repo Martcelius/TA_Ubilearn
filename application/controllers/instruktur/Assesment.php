@@ -181,10 +181,13 @@ class Assesment extends CI_Controller {
 
             $i++;
         }
-
+        $data['course'] = M_Course::leftjoin("users","users.usr_id","=","course.usr_id")
+            ->where("course.crs_id",$crs_id)->get();
+//        dd($data['course']);
         if($ins)
         {
             $this->session->set_flashdata('ass_simpan', 'Data Assesment Berhasil Tersimpan');
+//            $this->session->set_flashdata('ass_notif', $data['course']->usr_firstname.' '.$data['course']->usr_lastname.' menambahkan Assesment baru pada course'.$data['course']->crs_name);
         }else{
             $this->session->set_flashdata('ass_gagal', 'Data Assesment Tidak Berhasil Tersimpan');
         }
@@ -215,6 +218,20 @@ class Assesment extends CI_Controller {
         $data['content'] = 'instruktur/tambah_latihan';
         $this->load->view('layout/master', $data);
         
+    }
+    public function result_siswa_assesment($ass_id)
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/result_siswa_assesment';
+        $data['assesment'] = M_Course_Assesment_Result::leftjoin("course_assesment","course_assesment.ass_id","=","course_assesment_result.ass_id")
+            ->leftjoin("users","users.usr_id","=","course_assesment_result.usr_id")
+            ->where("course_assesment_result.ass_id",$ass_id)->get();
+
+        $data['assesment_instruktur'] = M_Course_Assesment::leftJoin("course", "course.crs_id","=","course_assesment.crs_id")
+            ->leftJoin("users","users.usr_id","=","course.usr_id")
+            ->where("course_assesment.ass_id", $ass_id)->first();
+
+        $this->load->view('layout/master', $data);
     }
 
 }

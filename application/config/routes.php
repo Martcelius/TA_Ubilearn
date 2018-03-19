@@ -171,7 +171,7 @@ $route['instruktur/insert_content'] = 'instruktur/content/insert_content';
 $route['instruktur/edit_content/(:any)'] = 'instruktur/content/edit_content/$1';
 $route['instruktur/update_content'] = 'instruktur/content/update_content';
 $route['instruktur/delete_content/(:any)'] = 'instruktur/content/delete_content/$1';
-// route instruktur-forum
+$route['instruktur/result_siswa_assesment/(:any)'] = 'instruktur/assignment/result_siswa_assesment/$1';// route instruktur-forum
 //$route['instruktur/list_thread_instruktur'] = 'C_instruktur/list_thread_instruktur';
 //$route['instruktur/add_forum'] = 'C_instruktur/add_forum';
 //$route['instruktur/dashboard_forum_instruktur'] = 'C_instruktur/dashboard_forum_instruktur';

@@ -21,6 +21,12 @@ class M_Course_Assignment_Submission extends Eloquent
         $asg->sub_attachment = $data['file'];
         $asg->asg_id = $asg_id;
         $asg->usr_id = $data['usr_id'];
+        if($data['time_created'] <= $data['due_date'])
+        {
+            $asg->sub_due_status = 'Ontime';
+        } elseif ($data['time_created'] > $data['due_date']) {
+            $asg->sub_due_status = 'Late';
+        }
         return $asg->save();
     }
     

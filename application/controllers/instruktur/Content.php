@@ -32,9 +32,10 @@ class Content extends CI_Controller {
 
     public function add_content($id)
     {
-        $data['dataLO'] = M_Course_Learning_Outcomes::get();
-        // dd($data['dataLO']->loc_id);
-
+        $data['dataC'] = M_Course_Lesson::leftjoin('course', 'course.crs_id', '=', 'course_lesson.crs_id')
+            ->where('lsn_id',$id)->first();
+    //         dd($data['dataC']->crs_id);
+        $data['dataLO'] = M_Course_Learning_Outcomes::where('crs_id','=',$data['dataC']->crs_id)->get();
         $data['lsn_id'] = $id;
         $data['sidebar'] = "layout/sidebar_instruktur";
         $data['content'] = "instruktur/add_content";
