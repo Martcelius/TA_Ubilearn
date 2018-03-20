@@ -8,16 +8,23 @@ class M_Rating_Reply_Reply extends Eloquent
     protected $table = 'rating_reply_reply';
     protected $primaryKey = 'rrp_id';
     const CREATED_AT = 'rrp_timecreated';
-    const UPDATED_AT = NULL;
+    const UPDATED_AT = 'rrp_timemodified';
 
-    public function insert_rating_reply_reply($data)
+    public function update_rating_reply_reply($data)
     {
-        $rating = new M_Rating_Reply_Reply;
-        $rating->trr_id = $data['trr_id'];
+        $rating = M_Rating_Reply_Reply::where('trr_id','=',$data['trr_id'])->first();
         $rating->usr_id = $data['usr_id'];
         $rating->rrp_rated = $data['rrp_rated'];
         return $rating->save();
     }
+
+    public function insert_id_rating($idtrr)
+    {
+        $idrr = new M_Rating_Reply_Reply;
+        $idrr->trr_id = $idtrr;
+
+        return $idrr->save();
+    } 
     
 }
 
