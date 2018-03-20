@@ -90,6 +90,41 @@
 <?php $i = 0; $j = 1;?>
 <?php foreach($datareplythread as $replythread): ?>
 
+<?php 
+    $countreply = M_Course_Forum_Thread_Reply::leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                            ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                            ->where('course_forum_thread_reply.usr_id',$replythread->usr_id)
+                                            ->get();
+    $jumlahreply = $countreply->count('usr_id');
+    $countreplyreply = M_Course_Forum_Thread_Reply_Reply::leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                            ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                            ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                            ->where('course_forum_thread_reply_reply.usr_id',$replythread->usr_id)
+                                            ->get();
+    $jumlahreplyreply = $countreplyreply->count('usr_id');
+    $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('course_forum_thread_reply_reply','course_forum_thread_reply_reply.trr_id','=','course_forum_thread_reply_reply_reply.trr_id')
+                                            ->leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                            ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                            ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                            ->where('course_forum_thread_reply_reply_reply.usr_id',$replythread->usr_id)
+                                            ->get();
+    $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
+    $sumreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
+
+    $getrating = M_Course_Forum_Thread_Reply::where('course_forum_thread_reply.ftr_id','=',$replythread->ftr_id)->first(['ftr_ratingsum','ftr_ratingcount']);
+    $ftrratingsum = $getrating->ftr_ratingsum;
+    $ftrratingcount = $getrating->ftr_ratingcount;
+    if($ftrratingcount == 0)
+    {
+        $ftrratingcount = 1;
+        $avgrating1 = $ftrratingsum/$ftrratingcount;
+    }
+    else
+    {
+        $avgrating1 = $ftrratingsum/$ftrratingcount;
+    }  
+?>
+
 <?php $i++;?>
 <?php $j=1;?>
 <?php $k=0;?>
@@ -99,18 +134,43 @@
                 <div class="box-body" id="boxkomen">
                     <!-- User Block -->
                     <div class="user-block">
+                    <?php
+                        if ($replythread->usr_level == 3) 
+                        { ?>
+                            <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $replythread->usr_picture;?>" alt="User Image">
+                            <span class="username">
+                                <a href="#" style="font-size:20px;">
+                                    <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
+                                </a>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Jumlah Post : <?php echo $sumreply; ?>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Comment pada :  <?php echo $replythread->ftr_timecreated ?>
+                            </span>
+                    <?php 
+                        }
+                        else
+                        { ?>
                         <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $replythread->usr_picture;?>" alt="User Image">
                         <span class="username">
                             <a href="#" style="font-size:20px;">
                                 <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
                             </a>
                         </span>
+                        <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                            Rating : <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating1,2,'.',''); ?></i>
+                        </span>
                         <span class="description" style="font-size:14px;">
-                            Jumlah Post : 
+                            Jumlah Post : <?php echo $sumreply; ?>
                         </span>
                         <span class="description" style="font-size:14px;">
                             Comment pada :  <?php echo $replythread->ftr_timecreated ?>
                         </span>
+                    <?php 
+                        } ?>
+
                     </div>
 
                     <hr/>
@@ -222,24 +282,87 @@
 
                     <?php foreach($datareply2thread as $reply2thread): ?>
                     
+                    <?php 
+                         $countreply = M_Course_Forum_Thread_Reply::leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                ->where('course_forum_thread_reply.usr_id',$replythread->usr_id)
+                                                ->get();
+                        $jumlahreply = $countreply->count('usr_id');
+                        $countreplyreply = M_Course_Forum_Thread_Reply_Reply::leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                ->where('course_forum_thread_reply_reply.usr_id',$replythread->usr_id)
+                                                ->get();
+                        $jumlahreplyreply = $countreplyreply->count('usr_id');
+                        $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('course_forum_thread_reply_reply','course_forum_thread_reply_reply.trr_id','=','course_forum_thread_reply_reply_reply.trr_id')
+                                                ->leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                ->where('course_forum_thread_reply_reply_reply.usr_id',$replythread->usr_id)
+                                                ->get();
+                        $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
+                        $sumreplyreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
+
+                        $getrating = M_Course_Forum_Thread_Reply_Reply::where('course_forum_thread_reply_reply.trr_id','=',$reply2thread->trr_id)->first(['trr_ratingsum','trr_ratingcount']);
+                        $trrratingsum = $getrating->trr_ratingsum;
+                        $trrratingcount = $getrating->trr_ratingcount;
+
+                        if($trrratingcount == 0)
+                        {
+                            $trrratingcount = 1;
+                            $avgrating2 = $trrratingsum/$trrratingcount;
+                        }
+                        else
+                        {
+                            $avgrating2 = $trrratingsum/$trrratingcount;
+                        }
+                    ?>
+
+
                     <?php $j++;?>
                         <div id="balasankomentar1" style="padding-left:60px">
                             <br>
                             <br>
-                            <div class="user-block">
-                                <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
-                                <span class="username">
-                                    <a href="#" style="font-size:20px;">
-                                        <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
-                                    </a>
-                                </span>
-                                <span class="description" style="font-size:14px;">
-                                    Jumlah Post : 
-                                </span>
-                                <span class="description" style="font-size:14px;">
-                                    Comment pada : <?php echo $reply2thread->trr_timecreated?>
-                                </span>
-                            </div>
+                            <?php
+                                if ($reply2thread->usr_level == 3) 
+                                { ?>
+                                    <div class="user-block">
+                                        <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
+                                        <span class="username">
+                                            <a href="#" style="font-size:20px;">
+                                                <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
+                                            </a>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Jumlah Post : <?php echo $sumreplyreply ?>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Comment pada : <?php echo $reply2thread->trr_timecreated?>
+                                        </span>
+                                    </div>
+                            <?php 
+                                }
+                                else
+                                { ?>
+                                    <div class="user-block">
+                                        <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
+                                        <span class="username">
+                                            <a href="#" style="font-size:20px;">
+                                                <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
+                                            </a>
+                                        </span>
+                                        <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                            Rating : <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating2,2,'.',''); ?></i>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Jumlah Post : <?php echo $sumreplyreply ?>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Comment pada : <?php echo $reply2thread->trr_timecreated?>
+                                        </span>
+                                    </div>
+                             <?php 
+                                } ?>
 
                             <hr/>
 
@@ -350,23 +473,86 @@
                             ?>
 
                             <?php foreach($datareply3thread as $reply3thread):?>
+
+                            <?php 
+                                $countreply = M_Course_Forum_Thread_Reply::leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                                ->where('course_forum_thread_reply.usr_id',$replythread->usr_id)
+                                                                ->get();
+                                $jumlahreply = $countreply->count('usr_id');
+                                $countreplyreply = M_Course_Forum_Thread_Reply_Reply::leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                                ->where('course_forum_thread_reply_reply.usr_id',$replythread->usr_id)
+                                                                ->get();
+                                $jumlahreplyreply = $countreplyreply->count('usr_id');
+                                $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('course_forum_thread_reply_reply','course_forum_thread_reply_reply.trr_id','=','course_forum_thread_reply_reply_reply.trr_id')
+                                                                ->leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                                ->where('course_forum_thread_reply_reply_reply.usr_id',$replythread->usr_id)
+                                                                ->get();
+                                $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
+                                $sumreplyreplyreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
+
+                                $getrating = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.rrr_id','=',$reply3thread->rrr_id)->first(['rrr_ratingsum','rrr_ratingcount']);
+                                $rrrratingsum = $getrating->rrr_ratingsum;
+                                $rrrratingcount = $getrating->rrr_ratingcount;
+
+                                if($rrrratingcount == 0)
+                                {
+                                    $rrrratingcount = 1;
+                                    $avgrating3 = $rrrratingsum/$rrrratingcount;
+                                }
+                                else
+                                {
+                                    $avgrating3 = $rrrratingsum/$rrrratingcount;
+                                }
+                            ?>
                                 <div id="balasankomentar2" style="padding-left:60px">
                                     <br>
                                     <br>
-                                    <div class="user-block">
-                                        <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
-                                        <span class="username">
-                                            <a href="#" style="font-size:20px;">
-                                            <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
-                                            </a>
-                                        </span>
-                                        <span class="description" style="font-size:14px;">
-                                            Jumlah Post : 
-                                        </span>
-                                        <span class="description" style="font-size:14px;">
-                                            Comment pada : <?php echo $reply3thread->rrr_timecreated?>
-                                        </span>
-                                    </div>
+
+                                <?php
+                                    if ($reply3thread->usr_level == 3) 
+                                    { ?>
+                                        <div class="user-block">
+                                            <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
+                                            <span class="username">
+                                                <a href="#" style="font-size:20px;">
+                                                <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
+                                                </a>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Jumlah Post : <?php echo $sumreplyreplyreply?>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Comment pada : <?php echo $reply3thread->rrr_timecreated?>
+                                            </span>
+                                        </div>
+                                <?php 
+                                    }
+                                    else
+                                    { ?>
+                                        <div class="user-block">
+                                            <img class="img-circle" style="width:80px;height:80px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
+                                            <span class="username">
+                                                <a href="#" style="font-size:20px;">
+                                                <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
+                                                </a>
+                                            </span>
+                                            <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                                Rating :  <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating3,2,'.',''); ?></i>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Jumlah Post : <?php echo $sumreplyreplyreply?>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Comment pada : <?php echo $reply3thread->rrr_timecreated?>
+                                            </span>
+                                        </div>
+                                <?php 
+                                    } ?>
 
                                     <hr/>
 

@@ -84,8 +84,20 @@ class Thread extends CI_Controller {
         $data['ftr_id'] = $ftr_id;
         $data['usr_id'] = $this->session->userdata('id');
         $data['rry_rated'] = $k;
+
+        $getrating = M_Course_Forum_Thread_Reply::where('course_forum_thread_reply.ftr_id','=',$ftr_id)->first(['ftr_ratingsum','ftr_ratingcount']);
+        $ftrratingsum = $getrating->ftr_ratingsum;
+        $ftrratingcount = $getrating->ftr_ratingcount;
+
+        $ftrratingsum = $ftrratingsum + $k;
+        $ftrratingcount++;
+
+        $datarating['ftr_id'] = $ftr_id;
+        $datarating['ftr_ratingsum'] = $ftrratingsum;
+        $datarating['ftr_ratingcount'] = $ftrratingcount;
         
         $insert = $this->M_Rating_Reply->update_rating_reply($data);
+        $update = $this->M_Course_Forum_Thread_Reply->update_rating_reply($datarating);
 
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
@@ -108,8 +120,20 @@ class Thread extends CI_Controller {
         $data['trr_id'] = $trr_id;
         $data['usr_id'] = $this->session->userdata('id');
         $data['rrp_rated'] = $k;
+
+        $getrating = M_Course_Forum_Thread_Reply_Reply::where('course_forum_thread_reply_reply.trr_id','=',$trr_id)->first(['trr_ratingsum','trr_ratingcount']);
+        $trrratingsum = $getrating->trr_ratingsum;
+        $trrratingcount = $getrating->trr_ratingcount;
+
+        $trrratingsum = $trrratingsum + $k;
+        $trrratingcount++;
+
+        $datarating['trr_id'] = $trr_id;
+        $datarating['trr_ratingsum'] = $trrratingsum;
+        $datarating['trr_ratingcount'] = $trrratingcount;
         
         $insert = $this->M_Rating_Reply_Reply->update_rating_reply_reply($data);
+        $update = $this->M_Course_Forum_Thread_Reply_Reply->update_rating_reply_reply($datarating);
 
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
@@ -132,8 +156,20 @@ class Thread extends CI_Controller {
         $data['rrr_id'] = $rrr_id;
         $data['usr_id'] = $this->session->userdata('id');
         $data['rrl_rated'] = $k;
+
+        $getrating = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.rrr_id','=',$rrr_id)->first(['rrr_ratingsum','rrr_ratingcount']);
+        $rrrratingsum = $getrating->rrr_ratingsum;
+        $rrrratingcount = $getrating->rrr_ratingcount;
+
+        $rrrratingsum = $rrrratingsum + $k;
+        $rrrratingcount++;
+
+        $datarating['rrr_id'] = $rrr_id;
+        $datarating['rrr_ratingsum'] = $rrrratingsum;
+        $datarating['rrr_ratingcount'] = $rrrratingcount;
         
         $insert = $this->M_Rating_Reply_Reply_Reply->update_rating_reply_reply_reply($data);
+        $update = $this->M_Course_Forum_Thread_Reply_Reply_Reply->update_rating_reply_reply_reply($datarating);
 
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(

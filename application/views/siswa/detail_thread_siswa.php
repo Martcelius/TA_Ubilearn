@@ -122,8 +122,7 @@
     else
     {
         $avgrating1 = $ftrratingsum/$ftrratingcount;
-    }
-    
+    }  
 ?>
 
 <?php $i++;?>
@@ -135,21 +134,44 @@
                 <div class="box-body" id="boxkomen">
                     <!-- User Block -->
                     <div class="user-block">
-                        <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $replythread->usr_picture;?>" alt="User Image">
-                        <span class="username">
-                            <a href="#" style="font-size:20px;">
-                                <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
-                            </a>
-                        </span>
-                        <span class="description" style="font-size:14px;">
-                            Jumlah Post : <?php echo $sumreply; ?>
-                        </span>
-                        <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
-                            Rating : <?php echo number_format((float)$avgrating1,2,'.',''); ?>
-                        </span>
-                        <span class="description" style="font-size:14px;">
-                            Comment pada :  <?php echo $replythread->ftr_timecreated ?>
-                        </span>
+                    <?php
+                        if ($replythread->usr_level == 3) 
+                        { ?>
+                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $replythread->usr_picture;?>" alt="User Image">
+                            <span class="username">
+                                <a href="#" style="font-size:20px;">
+                                    <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
+                                </a>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Jumlah Post : <?php echo $sumreply; ?>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Comment pada :  <?php echo $replythread->ftr_timecreated ?>
+                            </span>
+                    <?php 
+                        }
+                        else
+                        {
+                        ?>
+                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $replythread->usr_picture;?>" alt="User Image">
+                            <span class="username">
+                                <a href="#" style="font-size:20px;">
+                                    <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
+                                </a>
+                            </span>
+                            <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                Rating : <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating1,2,'.',''); ?></i>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Jumlah Post : <?php echo $sumreply; ?>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Comment pada :  <?php echo $replythread->ftr_timecreated ?>
+                            </span>
+                    <?php 
+                        } ?> 
+                        
                     </div>
 
                     <hr/>
@@ -312,25 +334,47 @@
                         <div id="balasankomentar1" style="padding-left:60px">
                             <br>
                             <br>
-                            <div class="user-block">
-                                <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
-                                <span class="username">
-                                    <a href="#" style="font-size:20px;">
-                                        <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
-                                    </a>
-                                </span>
-                                <span class="description" style="font-size:14px;">
-                                    Jumlah Post : <?php echo $sumreplyreply ?>
-                                </span>
-                                <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
-                                    Rating : <?php echo number_format((float)$avgrating2,2,'.',''); ?>
-                                </span>
-                                <span class="description" style="font-size:14px;">
-                                    Comment pada : <?php echo $reply2thread->trr_timecreated?>
-                                </span>
-                            </div>
-
-                            <hr/>
+                            <?php
+                                if ($reply2thread->usr_level == 3) 
+                                { ?>
+                                    <div class="user-block">
+                                        <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
+                                        <span class="username">
+                                            <a href="#" style="font-size:20px;">
+                                                <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
+                                            </a>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Jumlah Post : <?php echo $sumreplyreply ?>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Comment pada : <?php echo $reply2thread->trr_timecreated?>
+                                        </span>
+                                    </div>
+                            <?php 
+                                }
+                                else
+                                { ?>
+                                    <div class="user-block">
+                                        <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
+                                        <span class="username">
+                                            <a href="#" style="font-size:20px;">
+                                                <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
+                                            </a>
+                                        </span>
+                                        <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                            Rating : <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating2,2,'.',''); ?></i>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Jumlah Post : <?php echo $sumreplyreply ?>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Comment pada : <?php echo $reply2thread->trr_timecreated?>
+                                        </span>
+                                    </div>
+                            <?php 
+                                } ?>
+                                <hr/>
 
                             <!-- Isi Teks -->
                             <p style="text-align: justify;">
@@ -474,7 +518,7 @@
                                 $getrating = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.rrr_id','=',$reply3thread->rrr_id)->first(['rrr_ratingsum','rrr_ratingcount']);
                                 $rrrratingsum = $getrating->rrr_ratingsum;
                                 $rrrratingcount = $getrating->rrr_ratingcount;
-                                
+
                                 if($rrrratingcount == 0)
                                 {
                                     $rrrratingcount = 1;
@@ -488,24 +532,47 @@
                                 <div id="balasankomentar2" style="padding-left:60px">
                                     <br>
                                     <br>
-                                    <div class="user-block">
-                                        <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
-                                        <span class="username">
-                                            <a href="#" style="font-size:20px;">
-                                            <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
-                                            </a>
-                                        </span>
-                                        <span class="description" style="font-size:14px;">
-                                            Jumlah Post : <?php echo $sumreplyreplyreply?>
-                                        </span>
-                                        <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
-                                            Rating : <?php echo number_format((float)$avgrating3,2,'.',''); ?>
-                                        </span>
-                                        <span class="description" style="font-size:14px;">
-                                            Comment pada : <?php echo $reply3thread->rrr_timecreated?>
-                                        </span>
-                                    </div>
 
+                                <?php
+                                    if ($reply3thread->usr_level == 3) 
+                                    { ?>
+                                        <div class="user-block">
+                                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
+                                            <span class="username">
+                                                <a href="#" style="font-size:20px;">
+                                                <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
+                                                </a>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Jumlah Post : <?php echo $sumreplyreplyreply?>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Comment pada : <?php echo $reply3thread->rrr_timecreated?>
+                                            </span>
+                                        </div>
+                                <?php 
+                                    }
+                                    else
+                                    { ?>
+                                        <div class="user-block">
+                                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
+                                            <span class="username">
+                                                <a href="#" style="font-size:20px;">
+                                                <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
+                                                </a>
+                                            </span>
+                                            <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                                Rating :  <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating3,2,'.',''); ?></i>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Jumlah Post : <?php echo $sumreplyreplyreply?>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Comment pada : <?php echo $reply3thread->rrr_timecreated?>
+                                            </span>
+                                        </div>
+                                <?php 
+                                    } ?>
                                     <hr/>
 
                                     <!-- Isi Teks -->
