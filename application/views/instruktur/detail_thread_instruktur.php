@@ -187,7 +187,7 @@
                         { ?>
                         <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
                         <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>">
-                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                         </a>
                      <?php 
                         }
@@ -199,7 +199,7 @@
                                 { ?>
                                     <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
                                     <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>">
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                     </a>
                             <?php 
                                 }
@@ -237,7 +237,7 @@
                                     </span>
                                     <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
                                     <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>">
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                     </a>
                             <?php 
                                 } ?>
@@ -378,7 +378,7 @@
                                 { ?>
                                 <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
                                 <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id)?>">
-                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                 </a>
                             <?php 
                                 }
@@ -390,7 +390,7 @@
                                     { ?>
                                         <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
                                         <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id)?>">
-                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                         </a>
                                 <?php 
                                     }
@@ -428,7 +428,7 @@
                                         </span>
                                         <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
                                         <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id)?>">
-                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                         </a>
                                 <?php 
                                     } ?>
@@ -568,7 +568,7 @@
                                         {    
                                         ?>
                                         <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id)?>">
-                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                         </a>
                                     <?php 
                                         }
@@ -579,7 +579,7 @@
                                                 if ($dataratingreply3->rrr_id == $reply3thread->rrr_id and $dataratingreply3->usr_id == $this->session->userdata('id'))
                                                 { ?>
                                                     <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id)?>">
-                                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                        <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                                     </a>
                                             <?php 
                                                 }
@@ -616,7 +616,7 @@
                                                         </ul>    
                                                     </span>
                                                     <a href="<?php echo site_url('instruktur/thread/delete_komentar_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id)?>">
-                                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                        <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                                     </a>
                                             <?php 
                                                 } ?>
