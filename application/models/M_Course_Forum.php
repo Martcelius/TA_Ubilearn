@@ -27,9 +27,6 @@ class M_Course_Forum extends Eloquent
         $update = M_Course_Forum::where('cfr_id',$data['cfr_id'])->first();
         $update->cfr_title = $data['cfr_title'];
         $update->cfr_desc = $data['cfr_desc'];
-        if ($data['lsn_id'] != 0){
-            $update->lsn_id = $data['lsn_id'];
-        };
         return $update->save();
     }
 }

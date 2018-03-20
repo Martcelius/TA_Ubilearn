@@ -40,7 +40,7 @@
             
                 <div id="demo<?php echo $i?>" class="collapse" style="background-color:rgba(0, 0, 0, 0.3)">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" style="margin-top:0px; margin-left:35px;">
-                        <a href="<?php echo site_url('instruktur/add_forum/'.$dataforum->lsn_id)?>">
+                        <a href="<?php echo site_url('instruktur/add_forum/'.$dataforum->crs_id.'/'.$dataforum->lsn_id)?>">
                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
                             <i class="material-icons">create</i>
                                 Buat Forum
@@ -61,6 +61,7 @@
                         
                         <?php $datalistforum = DB::table('course_forum')
                                             ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+                                            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                                             ->where('course_lesson.lsn_id',$dataforum->lsn_id)
                                             ->get();
                                 if ($datalistforum != NULL)
@@ -97,12 +98,12 @@
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </button>
                                                 </a>
-                                                <a href="<?php echo site_url('instruktur/edit_forum/'.$dataforum->cfr_id.'/'.$dataforum->lsn_id)?>">
+                                                <a href="<?php echo site_url('instruktur/edit_forum/'.$dataforum->cfr_id.'/'.$dataforum->crs_id)?>">
                                                     <button style="margin-bottom: 5px; margin-right: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
                                                         <i class="material-icons">edit</i>
                                                     </button>
                                                 </a>
-                                                <a href="<?php echo site_url('instruktur/forum/delete_forum/'.$dataforum->cfr_id.'/'.$dataforum->lsn_id)?>">
+                                                <a href="<?php echo site_url('instruktur/forum/delete_forum/'.$dataforum->cfr_id.'/'.$dataforum->crs_id)?>">
                                                     <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin untuk menghapus?');">
                                                         <i class="material-icons">delete</i>
                                                     </button>

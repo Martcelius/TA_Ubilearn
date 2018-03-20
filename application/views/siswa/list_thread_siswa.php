@@ -49,7 +49,7 @@
                                             </span>
                                             <br>
                                             <span style="color: #00a65a; font-size : 14px">
-                                                Oleh : <?php echo $threadsiswa->usr_username?>
+                                                Oleh : <?php echo $threadsiswa->usr_firstname?> <?php echo $threadsiswa->usr_lastname?>
                                             </span>
                                             <?php 
                                                 if($this->session->userdata('id') == $threadsiswa->usr_id)
