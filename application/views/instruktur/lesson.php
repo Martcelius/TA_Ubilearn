@@ -242,6 +242,7 @@
             </div>
 
         </div>
+
         <div class="mdl-cell mdl-cell--3-col">
             <div class="mdl-card mdl-shadow--2dp trending">
                 <div class="mdl-card__title">
@@ -257,7 +258,7 @@
                             : <?php echo $dataInstruktur->usr_firstname ?> <?php echo $dataInstruktur->usr_lastname ?>
                         </li>
                         <li class="mdl-list__item">
-                            Jumlah siswa:
+                            Jumlah siswa: <?php echo $jumlah_siswa ?>
                         </li>
                         <li class="mdl-list__item">
                             Jumlah lesson: <?php echo $jumlah ?>
@@ -265,16 +266,14 @@
                     </ul>
 
                     <hr style="background-color: white;">
-                    <h4 style="color: white;margin-left: 10px;">Siswa dalam Course :</h4>
-                    <ul class="demo-list-icon mdl-list">
-                        <li class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <span style="margin-right: 25px;">IKI</span>
+                    <h4 style="color: white;margin-left: 10px;">Siswa dalam Course:</h4>
+                    <ul class="mdl-list">
+                    <?php foreach($dataSiswa as $siswa):?>
+                    <li class="mdl-list__item">
+                    <?php echo $siswa->usr_firstname." ".$siswa->usr_lastname ?>
+                    </li>
+                    <?php endforeach; ?>
                     </span>
-                            <hr>
-                        <li class="mdl-list__item">
-                            Siswa dalam course: iki
-                        </li>
                     </ul>
                 </div>
             </div>

@@ -5,9 +5,9 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 class M_Rating_Reply extends Eloquent
 {
-    protected $table = 'rating_reply';
-    protected $primaryKey = 'rry_id';
-    const CREATED_AT = 'rry_timecreated';
+    protected $table = 'surveypaket';
+    protected $primaryKey = 'id';
+    const CREATED_AT = NULL;
     const UPDATED_AT = NULL;
 
     public function insert_rating_reply($data)

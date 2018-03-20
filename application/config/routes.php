@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'C_login/landing_page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['notifikasi'] = 'siswa/Notif';
 //route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'siswa/akun/manage_akun';

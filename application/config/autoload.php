@@ -155,5 +155,6 @@ $autoload['model'] = array(
     'M_Rating_Reply',
     'M_Rating_Reply_Reply',
     'M_Rating_Reply_Reply_Reply',
-    'M_Rating_Thread'
+    'M_Rating_Thread',
+    'M_Notification'
     );
