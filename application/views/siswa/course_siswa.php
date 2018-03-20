@@ -17,7 +17,7 @@
 </div>    
     <div class="mdl-grid " >
         
-		<div class="mdl-cell mdl-cell--9-col">
+		<div class="mdl-cell mdl-cell--12-col">
 		<div class="mdl-grid">
         <?php foreach($courses as $course_siswa): ?>    
 			    
@@ -46,26 +46,7 @@
         </div>
 		</div>
 		
-    <div class="mdl-cell mdl-cell--3-col">
-        <div class="mdl-card mdl-shadow--2dp trending">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Category</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                <ul class="mdl-list">
-                    <li class="mdl-list_item">
-                            <h7 style="color: white;margin-left: 10px;"> </h7>
-                    </li>
-					<li class="mdl-list_item">
-                            <h7 style="color: white;margin-left: 10px;"> </h7>
-                    </li>
-					<li class="mdl-list_item">
-                            <h7 style="color: white;margin-left: 10px;"> </h7>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
     <!-- <div class="sidenav" style="background-color: #343434;">
         <br/>
         <h5 style="color: white;margin-left: 10px;">CATEGORY</h5>
