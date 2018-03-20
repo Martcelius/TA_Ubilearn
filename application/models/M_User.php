@@ -132,8 +132,22 @@ class M_User extends Eloquent
                     </script>";
             return false;
         }
+    }
 
+    public function update_thread_count($sumthread,$id)
+    {
+        $userthread = M_User::where('usr_id','=',$id)->first();
+        $userthread->usr_thread_count = $sumthread;
 
+        return $userthread->save();
+    }
+
+    public function update_post_count($sumpost,$id)
+    {
+        $userpost = M_User::where('usr_id','=',$id)->first();
+        $userpost->usr_post_count = $sumpost;
+
+        return $userpost->save();
     }
 
     

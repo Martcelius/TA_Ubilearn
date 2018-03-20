@@ -51,7 +51,8 @@ class Thread extends CI_Controller {
         $data['ftr_content'] = $this->input->post('forum_komentarr');
         $data['usr_id'] = $this->session->userdata('id');
         $data['cft_id'] = $cft_id;
-        $insert = $this->M_Course_Forum_Thread_Reply->insert_thread_reply($data);
+        $idftr = $this->M_Course_Forum_Thread_Reply->insert_thread_reply($data);
+        $insert = $this->M_Rating_Reply->insert_id_rating($idftr);
 
         redirect('instruktur/detail_thread_instruktur/'.$cft_id);
     }
@@ -61,7 +62,8 @@ class Thread extends CI_Controller {
         $data['trr_content'] = $this->input->post('forum_komentar1');
         $data['ftr_id'] = $ftr_id;
         $data['usr_id'] = $this->session->userdata('id');
-        $insert = $this->M_Course_Forum_Thread_Reply_Reply->insert_thread_reply_reply($data);
+        $idtrr = $this->M_Course_Forum_Thread_Reply_Reply->insert_thread_reply_reply($data);
+        $insert = $this->M_Rating_Reply_Reply->insert_id_rating($idtrr);
 
         redirect('instruktur/detail_thread_instruktur/'.$cft_id);
     }
@@ -71,9 +73,107 @@ class Thread extends CI_Controller {
         $data['rrr_content'] = $this->input->post('forum_komentar2');
         $data['usr_id'] = $this->session->userdata('id');
         $data['trr_id'] = $trr_id;
-        $insert = $this->M_Course_Forum_Thread_Reply_Reply_Reply->insert_thread_reply_reply_reply($data);
+        $idrrr = $this->M_Course_Forum_Thread_Reply_Reply_Reply->insert_thread_reply_reply_reply($data);
+        $insert = $this->M_Rating_Reply_Reply_Reply->insert_id_rating($idrrr);
 
         redirect('instruktur/detail_thread_instruktur/'.$cft_id);
+    }
+
+    public function insert_rating_reply($ftr_id,$cft_id,$k)
+    {
+        $data['ftr_id'] = $ftr_id;
+        $data['usr_id'] = $this->session->userdata('id');
+        $data['rry_rated'] = $k;
+        
+        $insert = $this->M_Rating_Reply->update_rating_reply($data);
+
+        $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "Rate Post:" . " " . $data['datathread']->cft_title,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "Rate Post",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " " 
+            ."melakukan aksi Rate Post pada" . " '" . $data['datathread']->cft_title . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+
+        redirect('instruktur/detail_thread_instruktur/'.$cft_id);
+    }
+
+    public function insert_rating_reply_reply($trr_id,$cft_id,$k)
+    {
+        $data['trr_id'] = $trr_id;
+        $data['usr_id'] = $this->session->userdata('id');
+        $data['rrp_rated'] = $k;
+        
+        $insert = $this->M_Rating_Reply_Reply->update_rating_reply_reply($data);
+
+        $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "Rate Post:" . " " . $data['datathread']->cft_title,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "Rate Post",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " " 
+            ."melakukan aksi Rate Post pada" . " '" . $data['datathread']->cft_title . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+
+        redirect('instruktur/detail_thread_instruktur/'.$cft_id);
+    }
+
+    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k)
+    {
+        $data['rrr_id'] = $rrr_id;
+        $data['usr_id'] = $this->session->userdata('id');
+        $data['rrl_rated'] = $k;
+        
+        $insert = $this->M_Rating_Reply_Reply_Reply->update_rating_reply_reply_reply($data);
+
+        $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "Rate Post:" . " " . $data['datathread']->cft_title,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "Rate Post",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " " 
+            ."melakukan aksi Rate Post pada" . " '" . $data['datathread']->cft_title . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+
+        redirect('instruktur/detail_thread_instruktur/'.$cft_id);
+    }
+
+    public function delete_thread_instruktur($cft_id,$cfr_id)
+    {
+        $deleteThread= M_Course_Forum_Thread::where('cft_id',$cft_id)->delete();
+
+        if($deleteThread)
+        {
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "Delete Thread:" . " " . $data['cft_title'],
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "Delete Thread",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " " 
+                ."melakukan aksi Delete Thread" . " '" . $data['cft_title'] . "'"
+            );
+            $this->lib_event_log->add_user_event($event);
+
+            $this->session->set_flashdata('data_thread', 'Data Thread Berhasil Terhapus');
+        }else{
+            $this->session->set_flashdata('data_gagal_thread', 'Data Thread Tidak Berhasil Terhapus');
+        }
+        redirect('instruktur/list_thread_instruktur/'.$cfr_id);
     }
 
     public function delete_komentar_reply($ftr_id,$cft_id)
