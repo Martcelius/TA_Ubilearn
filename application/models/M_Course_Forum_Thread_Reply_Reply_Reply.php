@@ -16,7 +16,17 @@ class M_Course_Forum_Thread_Reply_Reply_Reply extends Eloquent
         $thread->rrr_content = $data['rrr_content'];
         $thread->trr_id = $data['trr_id'];
         $thread->usr_id = $data['usr_id'];
+        $thread->save();
 
+        return $thread->rrr_id;
+    }
+
+    public function update_rating_reply_reply_reply($data)
+    {
+        $thread = M_Course_Forum_Thread_Reply_Reply_Reply::where('rrr_id','=',$data['rrr_id'])->first();
+        $thread->rrr_ratingsum = $data['rrr_ratingsum'];
+        $thread->rrr_ratingcount = $data['rrr_ratingcount'];
+        
         return $thread->save();
     }
     
