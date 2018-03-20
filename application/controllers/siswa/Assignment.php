@@ -16,7 +16,7 @@ class Assignment extends CI_Controller {
 
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/assignment_detail';
-        $data['assignment']=  M_Course_Assigment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+        $data['assignment']=  M_Course_Assignment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
             ->where("asg_id","=", $asg_id)
             ->first();
 
@@ -53,23 +53,30 @@ class Assignment extends CI_Controller {
     {
         $file = "file_siswa".time();
         $config['upload_path'] ='./res/assets/File_siswa';
-        $config['allowed_types'] = 'doc|csv|pdf|docx|xlxs|xls|rar|zip';
+        $config['allowed_types'] = 'doc|csv|pptx|pdf|docx|xlxs|xls|rar|zip';
         $config['file_name'] = $file;
         $this->load->library('upload',$config);
         $this->upload->do_upload('asg_attachment');
         $result = $this->upload->data();
-
+        $data['assignment'] =  M_Course_Assignment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+            ->where("asg_id","=", $asg_id)
+            ->first();
+        $dt= date('Y-m-d h:i:s');
         $data_asg = array(
             'file' => $result['file_name'],
-            'usr_id' => $this->session->userdata['id']
+            'usr_id' => $this->session->userdata['id'],
+            'time_created' => $dt,
+            'due_date' => $data['assignment']->asg_duedate
         );
 //        dd($data_asg['file']);
+
         $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
         if($result['is_image'])
         {
 
         }
         elseif (empty($cek_user)){
+//            dd($data_asg);
             $insert = $this->M_Course_Assignment_Submission->insert($data_asg,$asg_id);
         }
         else {

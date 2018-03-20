@@ -503,3 +503,12 @@ img{
 .panel {
     background-color: #686868;
 }
+
+.entry:not(:first-of-type)
+{
+  margin-top: 10px;
+}
+.glyphicon
+{
+  font-size: 12px;
+}

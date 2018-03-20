@@ -33,18 +33,20 @@ class Course extends CI_Controller {
 
     public function insert()
     {
-        
+//        $lo = $this->input->post('Loc[]');
+//        dd($lo[0]);
         $course = new M_Course();
-
         $course->crs_code = $_POST['m-kode-course'];
         $course->crs_name = $_POST['m-nama-course'];
-        $course->crs_summary = $_POST['m-deskripsi-course'];
-        $course->crs_univ = $_POST['m-univ-course'];
+        $course->crs_summary = empty($_POST['m-deskripsi-course']) ? NULL : $_POST['m-deskripsi-course'];
+        $course->crs_univ = empty($_POST['m-univ-course']) ? NULL : $_POST['m-univ-course'];
         $course->cat_id = 1;
         $course->usr_id = $_POST['usr_id'];
-        $insert = $course->save();
-//        dd($insert);
-
+        $course->save();
+        $crs_id = $course->crs_id;
+        $lo = $this->input->post('Loc[]');
+        $insert= $this->M_Course_Learning_Outcomes->insert_lo($lo,$crs_id);
+        
         if($insert)
         {
             $this->session->set_flashdata('insert_course', 'Data Course Berhasil Tersimpan');

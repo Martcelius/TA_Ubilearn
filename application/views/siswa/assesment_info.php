@@ -41,15 +41,17 @@
                                 <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">AMBIL ASSESSMENT</button>
                                 </div></a>';
 
-                        } else {
-                            echo "<fieldset disabled>
-                                <div class=\"form-group\">
-                                    <button type=\"submit\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-gray\">AMBIL ASSESSMENT</button>
-                                    <p>*Anda tidak dapat mengambil assessment ini.</p>
-                                </div>
-                                </fieldset>";
+                        } else if ($assesment->ass_timeopen >= $dt){
+                            //kuis blm mulai timeopen lebih besar dari dt
+                            echo "  <button onclick=\"sweet()\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue\">AMBIL ASSESSMENT</button>";
+                            
+                        }    else{
+                                //telat                            
+                                echo "  <button onclick=\"sweet2()\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red\">AMBIL ASSESSMENT</button>";
+                            }
 
-                        }
+                        
+                        } 
                         ?>
                     </div>
 
@@ -73,4 +75,17 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+</script>
+<script>
+function sweet (){
+swal("Maaf!", "Anda belum dapat mengambil assesment ini!", "warning",{
+    button: "Ok!",
+});
+}
+function sweet2 (){
+swal("Waktu Telat!", "Anda tidak dapat mengambil assesment ini!", "error",{
+    button: "Ok!",
+    dangerMode: true,
+});
+}
 </script>

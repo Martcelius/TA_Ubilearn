@@ -39,7 +39,7 @@
                         <tr style="background-color:#ffffff">
                             <td>
                                 <ul style="list-style-type: none; padding-left:4px;">
-                                    <?php foreach ($datathreadsiswa as $threadsiswa):?>   
+                                    <?php $i=1; foreach ($datathreadsiswa as $threadsiswa):?>   
                                         <li>     
                                             <span style="color:#3c8dbc; font-size:15px; ">
                                                 <?php echo $threadsiswa->cft_title?>
@@ -86,10 +86,11 @@
                                                 ?>
                                             <br>
                                             <span class="description" style="color : grey; font-size : 14px">
-                                                Post Saya : <?php echo $sumreply; ?>
+                                                Post Saya : <?php echo $jumlahpost[$i]; ?>
                                             </span>
                                         </li>
                                         <br>
+                                    <?php $i++; ?>
                                     <?php endforeach;?>
                                 </ul>
                             </td>

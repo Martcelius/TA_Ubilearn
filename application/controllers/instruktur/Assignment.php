@@ -7,15 +7,17 @@ class Assignment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        
+        $this->load->model('M_Course_Assignment_loc');
     }
 
     public function add_assignment($crs_id)
     {
         $data['sidebar']    = 'layout/sidebar_instruktur';
         $data['content']    = 'instruktur/add_assignment';
+        $data['dataLO'] = M_Course_Learning_Outcomes::where('crs_id','=',$crs_id)->get();
+
         $data['crs_id']  = $crs_id;
-        // dd($data['crs_id']);
+//         dd($data['dataLO']);
         $this->load->view('layout/master', $data);
     }
 
@@ -40,8 +42,13 @@ class Assignment extends CI_Controller {
         }
 
         $insert = $this->M_Course_Assignment->insert($data);
-        if($insert != NULL)
-        {
+        
+        $lo = $this->input->post('Loc[]');
+        
+        $data_lo['lo_asg_id'] = $insert;
+        $lo_db = $this->M_Course_Assignment_loc->insert($lo,$data_lo);
+//        dd($data_lo['lo_asg_id']);
+		if($insert != NULL)        {
             $cruses = M_Course_Enrol::where('crs_id', '=', $this->input->post('crs_id'))->get();
 
             foreach ($cruses as $crus):

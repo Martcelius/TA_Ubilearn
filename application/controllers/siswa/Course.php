@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class Course extends CI_Controller {
 
     public function __construct()
@@ -106,6 +108,18 @@ class Course extends CI_Controller {
         );
         $this->lib_event_log->add_user_event($event);
         // Capture Log End
+        $i = 0;
+        foreach($data['lesson'] as $c){
+            $temp = DB::table('lesson_access_log')->where('lsn_id',$c->lsn_id)->where('usr_id',$this->session->userdata('id'))->exists();
+            if($temp != NULL){
+                $lsnAcc[$i] = 'color: #37d837;';
+            }
+            else{
+                $lsnAcc[$i] = 'color: white;';
+            }
+            $i++;
+        }
+        $data['lsnAccessColor'] = $lsnAcc;
 
         //list assignment
         $data['assignment'] = M_Course_Assignment::where('crs_id',$crs_id)->get();

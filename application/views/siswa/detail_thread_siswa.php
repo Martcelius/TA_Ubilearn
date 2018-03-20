@@ -49,13 +49,13 @@
                 <br>
                 <div class="mdl-grid">
                     <div class="col-md-1" style="text-align: center;">
-                        <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $dataforumthread->usr_picture;?>" style="width:80px;height: 80px;" alt="User Image">
+                        <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                     </div>
                     <div class="col-md-11">
                         <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Beri Komentar</label>
-                                <textarea name="forum_komentarr"></textarea>
+                                <textarea name="forum_komentarr" class="forum_komentarr"></textarea>
                             </div>
                             <button class="btn btn-primary pull-right" id="balaskomentar" style="float:right; margin-right:5px">
                                 <i class="fa fa-reply">
@@ -91,13 +91,38 @@
 <?php foreach($datareplythread as $replythread): ?>
 
 <?php 
-    $countreply = M_Course_Forum_Thread_Reply::where('usr_id',$replythread->usr_id)->get();
+    $countreply = M_Course_Forum_Thread_Reply::leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                            ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                            ->where('course_forum_thread_reply.usr_id',$replythread->usr_id)
+                                            ->get();
     $jumlahreply = $countreply->count('usr_id');
-    $countreplyreply = M_Course_Forum_Thread_Reply_Reply::where('usr_id',$replythread->usr_id)->get();
+    $countreplyreply = M_Course_Forum_Thread_Reply_Reply::leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                            ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                            ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                            ->where('course_forum_thread_reply_reply.usr_id',$replythread->usr_id)
+                                            ->get();
     $jumlahreplyreply = $countreplyreply->count('usr_id');
-    $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::where('usr_id',$replythread->usr_id)->get();
+    $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('course_forum_thread_reply_reply','course_forum_thread_reply_reply.trr_id','=','course_forum_thread_reply_reply_reply.trr_id')
+                                            ->leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                            ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                            ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                            ->where('course_forum_thread_reply_reply_reply.usr_id',$replythread->usr_id)
+                                            ->get();
     $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
     $sumreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
+
+    $getrating = M_Course_Forum_Thread_Reply::where('course_forum_thread_reply.ftr_id','=',$replythread->ftr_id)->first(['ftr_ratingsum','ftr_ratingcount']);
+    $ftrratingsum = $getrating->ftr_ratingsum;
+    $ftrratingcount = $getrating->ftr_ratingcount;
+    if($ftrratingcount == 0)
+    {
+        $ftrratingcount = 1;
+        $avgrating1 = $ftrratingsum/$ftrratingcount;
+    }
+    else
+    {
+        $avgrating1 = $ftrratingsum/$ftrratingcount;
+    }  
 ?>
 
 <?php $i++;?>
@@ -109,18 +134,44 @@
                 <div class="box-body" id="boxkomen">
                     <!-- User Block -->
                     <div class="user-block">
-                        <img class="img-circle" style="width:80px;height:80px; float:left" src="../res/assets/images/icon.png" alt="User Image">
-                        <span class="username">
-                            <a href="#" style="font-size:20px;">
-                                <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
-                            </a>
-                        </span>
-                        <span class="description" style="font-size:14px;">
-                            Jumlah Post : <?php echo $sumreply; ?>
-                        </span>
-                        <span class="description" style="font-size:14px;">
-                            Comment pada :  <?php echo $replythread->ftr_timecreated ?>
-                        </span>
+                    <?php
+                        if ($replythread->usr_level == 3) 
+                        { ?>
+                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $replythread->usr_picture;?>" alt="User Image">
+                            <span class="username">
+                                <a href="#" style="font-size:20px;">
+                                    <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
+                                </a>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Jumlah Post : <?php echo $sumreply; ?>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Comment pada :  <?php echo $replythread->ftr_timecreated ?>
+                            </span>
+                    <?php 
+                        }
+                        else
+                        {
+                        ?>
+                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $replythread->usr_picture;?>" alt="User Image">
+                            <span class="username">
+                                <a href="#" style="font-size:20px;">
+                                    <?php echo $replythread->usr_firstname ?> <?php echo $replythread->usr_lastname ?>
+                                </a>
+                            </span>
+                            <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                Rating : <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating1,2,'.',''); ?></i>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Jumlah Post : <?php echo $sumreply; ?>
+                            </span>
+                            <span class="description" style="font-size:14px;">
+                                Comment pada :  <?php echo $replythread->ftr_timecreated ?>
+                            </span>
+                    <?php 
+                        } ?> 
+                        
                     </div>
 
                     <hr/>
@@ -148,41 +199,61 @@
                         {
                         ?>
                         <span class="pull-right">
-                            <span class="dropdown">
-                                <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
-                                <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
-                                            <span class="text-muted">
-                                                <span class="fa fa-star checked"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
-                                            <span class="text-muted">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
-                                            <span class="text-muted">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </span> 
-                            <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>    
+                        <?php $dataratingreply = DB::table('rating_reply')->where('rating_reply.ftr_id',$replythread->ftr_id)->first(); ?>
+                        <?php 
+                            if ($dataratingreply->ftr_id == $replythread->ftr_id and $dataratingreply->usr_id == $this->session->userdata('id'))
+                            { ?>
+                                <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
+                        <?php 
+                            }
+                            else
+                            { ?>
+                            <?php
+                                if ($replythread->usr_level == 3) 
+                                { ?> 
+                                    <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>             
+                            <?php 
+                                }
+                                else
+                                { ?> 
+                                <span class="dropdown">
+                                    <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                <span class="text-muted">
+                                                    <span class="fa fa-star checked"></span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                <span class="text-muted">
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                <span class="text-muted">
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </span>
+                                <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
+                            <?php 
+                                } ?>
+                        <?php 
+                            } ?>
                         </span>
                     <?php 
-                        } 
-                        ?>
+                        } ?>
 
                     
 
@@ -192,7 +263,7 @@
                         <br>
                         <div class="mdl-grid">
                             <div class="col-md-1" style="text-align: center;">
-                                <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $dataforumthread->usr_picture;?>" style="width:80px;height: 80px;" alt="User Image">
+                                <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                             </div>
                             <div class="col-md-11">
                                 <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>" class="form-horizontal" method="post">
@@ -224,35 +295,86 @@
                     <?php foreach($datareply2thread as $reply2thread): ?>
                     
                     <?php 
-                        $countreply = M_Course_Forum_Thread_Reply::where('usr_id',$reply2thread->usr_id)->get();
+                         $countreply = M_Course_Forum_Thread_Reply::leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                ->where('course_forum_thread_reply.usr_id',$replythread->usr_id)
+                                                ->get();
                         $jumlahreply = $countreply->count('usr_id');
-                        $countreplyreply = M_Course_Forum_Thread_Reply_Reply::where('usr_id',$reply2thread->usr_id)->get();
+                        $countreplyreply = M_Course_Forum_Thread_Reply_Reply::leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                ->where('course_forum_thread_reply_reply.usr_id',$replythread->usr_id)
+                                                ->get();
                         $jumlahreplyreply = $countreplyreply->count('usr_id');
-                        $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::where('usr_id',$reply2thread->usr_id)->get();
+                        $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('course_forum_thread_reply_reply','course_forum_thread_reply_reply.trr_id','=','course_forum_thread_reply_reply_reply.trr_id')
+                                                ->leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                ->where('course_forum_thread_reply_reply_reply.usr_id',$replythread->usr_id)
+                                                ->get();
                         $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
                         $sumreplyreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
+
+                        $getrating = M_Course_Forum_Thread_Reply_Reply::where('course_forum_thread_reply_reply.trr_id','=',$reply2thread->trr_id)->first(['trr_ratingsum','trr_ratingcount']);
+                        $trrratingsum = $getrating->trr_ratingsum;
+                        $trrratingcount = $getrating->trr_ratingcount;
+
+                        if($trrratingcount == 0)
+                        {
+                            $trrratingcount = 1;
+                            $avgrating2 = $trrratingsum/$trrratingcount;
+                        }
+                        else
+                        {
+                            $avgrating2 = $trrratingsum/$trrratingcount;
+                        }
                     ?>
 
                     <?php $j++;?>
                         <div id="balasankomentar1" style="padding-left:60px">
                             <br>
                             <br>
-                            <div class="user-block">
-                                <img class="img-circle" style="width:80px;height:80px; float:left" src="../res/assets/images/icon.png" alt="User Image">
-                                <span class="username">
-                                    <a href="#" style="font-size:20px;">
-                                        <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
-                                    </a>
-                                </span>
-                                <span class="description" style="font-size:14px;">
-                                    Jumlah Post : <?php echo $sumreplyreply ?>
-                                </span>
-                                <span class="description" style="font-size:14px;">
-                                    Comment pada : <?php echo $reply2thread->trr_timecreated?>
-                                </span>
-                            </div>
-
-                            <hr/>
+                            <?php
+                                if ($reply2thread->usr_level == 3) 
+                                { ?>
+                                    <div class="user-block">
+                                        <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
+                                        <span class="username">
+                                            <a href="#" style="font-size:20px;">
+                                                <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
+                                            </a>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Jumlah Post : <?php echo $sumreplyreply ?>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Comment pada : <?php echo $reply2thread->trr_timecreated?>
+                                        </span>
+                                    </div>
+                            <?php 
+                                }
+                                else
+                                { ?>
+                                    <div class="user-block">
+                                        <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply2thread->usr_picture;?>" alt="User Image">
+                                        <span class="username">
+                                            <a href="#" style="font-size:20px;">
+                                                <?php echo $reply2thread->usr_firstname?> <?php echo $reply2thread->usr_lastname?>
+                                            </a>
+                                        </span>
+                                        <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                            Rating : <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating2,2,'.',''); ?></i>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Jumlah Post : <?php echo $sumreplyreply ?>
+                                        </span>
+                                        <span class="description" style="font-size:14px;">
+                                            Comment pada : <?php echo $reply2thread->trr_timecreated?>
+                                        </span>
+                                    </div>
+                            <?php 
+                                } ?>
+                                <hr/>
 
                             <!-- Isi Teks -->
                             <p style="text-align: justify;">
@@ -270,49 +392,69 @@
                                         <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </a>
                                 </span>
-                            
+       
                             <?php 
                                 }
                                 else
                                 {
                                 ?>
                                 <span class="pull-right">
-                                    <span class="dropdown">
-                                        <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
-                                        <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
-                                                    <span class="text-muted">
-                                                        <span class="fa fa-star checked"></span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
-                                                    <span class="text-muted">
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
-                                                    <span class="text-muted">
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </span>
-                                    <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>                              
+                                <?php $dataratingreply2 = DB::table('rating_reply_reply')->where('rating_reply_reply.trr_id',$reply2thread->trr_id)->first(); ?>
+                                <?php 
+                                    if ($dataratingreply2->trr_id == $reply2thread->trr_id and $dataratingreply2->usr_id == $this->session->userdata('id'))
+                                    { ?>
+                                        <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>
+                                <?php 
+                                    }
+                                    else
+                                    { ?>
+                                    <?php 
+                                        if ($reply2thread->usr_level == 3)
+                                        { ?>
+                                            <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>
+                                    <?php 
+                                        }
+                                        else
+                                        { ?>
+                                            <span class="dropdown">
+                                                <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
+                                                <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
+                                                            <span class="text-muted">
+                                                                <span class="fa fa-star checked"></span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                            <span class="text-muted">
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                            <span class="text-muted">
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                            <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>
+                                    <?php 
+                                        } ?> 
+                                <?php 
+                                    } ?>                              
                                 </span>
                             <?php 
-                                } 
-                                ?>
+                                } ?>
 
                             <!-- Beri Komentar -->
                             <div id="reply_reply<?php echo $j;?><?php echo $i;?>" style="display:none">
@@ -320,7 +462,7 @@
                                 <br>
                                 <div class="mdl-grid">
                                     <div class="col-md-1" style="text-align: center;">
-                                        <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $dataforumthread->usr_picture;?>" style="width:80px;height: 80px;" alt="User Image">
+                                        <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                                     </div>
                                     <div class="col-md-11">
                                         <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
@@ -353,32 +495,84 @@
                             <?php foreach($datareply3thread as $reply3thread):?>
 
                             <?php 
-                                $countreply = M_Course_Forum_Thread_Reply::where('usr_id',$reply3thread->usr_id)->get();
+                                $countreply = M_Course_Forum_Thread_Reply::leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                                ->where('course_forum_thread_reply.usr_id',$replythread->usr_id)
+                                                                ->get();
                                 $jumlahreply = $countreply->count('usr_id');
-                                $countreplyreply = M_Course_Forum_Thread_Reply_Reply::where('usr_id',$reply3thread->usr_id)->get();
+                                $countreplyreply = M_Course_Forum_Thread_Reply_Reply::leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                                ->where('course_forum_thread_reply_reply.usr_id',$replythread->usr_id)
+                                                                ->get();
                                 $jumlahreplyreply = $countreplyreply->count('usr_id');
-                                $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::where('usr_id',$reply3thread->usr_id)->get();
+                                $countreplyreplyreply = M_Course_Forum_Thread_Reply_Reply_Reply::leftJoin('course_forum_thread_reply_reply','course_forum_thread_reply_reply.trr_id','=','course_forum_thread_reply_reply_reply.trr_id')
+                                                                ->leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
+                                                                ->leftJoin('course_forum_thread','course_forum_thread.cft_id','=','course_forum_thread_reply.cft_id')
+                                                                ->where('course_forum_thread.cft_id',$dataforumthread->cft_id)
+                                                                ->where('course_forum_thread_reply_reply_reply.usr_id',$replythread->usr_id)
+                                                                ->get();
                                 $jumlahreplyreplyreply = $countreplyreplyreply->count('usr_id');
                                 $sumreplyreplyreply = $jumlahreply+$jumlahreplyreply+$jumlahreplyreplyreply;
+
+                                $getrating = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.rrr_id','=',$reply3thread->rrr_id)->first(['rrr_ratingsum','rrr_ratingcount']);
+                                $rrrratingsum = $getrating->rrr_ratingsum;
+                                $rrrratingcount = $getrating->rrr_ratingcount;
+
+                                if($rrrratingcount == 0)
+                                {
+                                    $rrrratingcount = 1;
+                                    $avgrating3 = $rrrratingsum/$rrrratingcount;
+                                }
+                                else
+                                {
+                                    $avgrating3 = $rrrratingsum/$rrrratingcount;
+                                }
                             ?>
                                 <div id="balasankomentar2" style="padding-left:60px">
                                     <br>
                                     <br>
-                                    <div class="user-block">
-                                        <img class="img-circle" style="width:80px;height:80px; float:left" src="../res/assets/images/icon.png" alt="User Image">
-                                        <span class="username">
-                                            <a href="#" style="font-size:20px;">
-                                            <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
-                                            </a>
-                                        </span>
-                                        <span class="description" style="font-size:14px;">
-                                            Jumlah Post : <?php echo $sumreplyreplyreply?>
-                                        </span>
-                                        <span class="description" style="font-size:14px;">
-                                            Comment pada : <?php echo $reply3thread->rrr_timecreated?>
-                                        </span>
-                                    </div>
 
+                                <?php
+                                    if ($reply3thread->usr_level == 3) 
+                                    { ?>
+                                        <div class="user-block">
+                                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
+                                            <span class="username">
+                                                <a href="#" style="font-size:20px;">
+                                                <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
+                                                </a>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Jumlah Post : <?php echo $sumreplyreplyreply?>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Comment pada : <?php echo $reply3thread->rrr_timecreated?>
+                                            </span>
+                                        </div>
+                                <?php 
+                                    }
+                                    else
+                                    { ?>
+                                        <div class="user-block">
+                                            <img class="img-circle" style="width:75px;height:75px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $reply3thread->usr_picture;?>" alt="User Image">
+                                            <span class="username">
+                                                <a href="#" style="font-size:20px;">
+                                                <?php echo $reply3thread->usr_firstname?> <?php echo $reply3thread->usr_lastname?>
+                                                </a>
+                                            </span>
+                                            <span class="description" style="font-size:20px;float:right; margin-right: 5px; font-color:yellow;">
+                                                Rating :  <i class="fa fa-star checked" style="font-size:24px;"><?php echo number_format((float)$avgrating3,2,'.',''); ?></i>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Jumlah Post : <?php echo $sumreplyreplyreply?>
+                                            </span>
+                                            <span class="description" style="font-size:14px;">
+                                                Comment pada : <?php echo $reply3thread->rrr_timecreated?>
+                                            </span>
+                                        </div>
+                                <?php 
+                                    } ?>
                                     <hr/>
 
                                     <!-- Isi Teks -->
@@ -402,41 +596,60 @@
                                         {
                                         ?>
                                         <span class="pull-right">
-                                            <span class="dropdown">
-                                                <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
-                                                <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
-                                                            <span class="text-muted">
-                                                                <span class="fa fa-star checked"></span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
-                                                            <span class="text-muted">
-                                                                <span class="fa fa-star checked"></span>
-                                                                <span class="fa fa-star checked"></span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
-                                                            <span class="text-muted">
-                                                                <span class="fa fa-star checked"></span>
-                                                                <span class="fa fa-star checked"></span>
-                                                                <span class="fa fa-star checked"></span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </span>
+                                        <?php $dataratingreply3 = DB::table('rating_reply_reply_reply')->where('rating_reply_reply_reply.rrr_id',$reply3thread->rrr_id)->first(); ?>
+                                        <?php 
+                                            if ($dataratingreply3->rrr_id == $reply3thread->rrr_id and $dataratingreply3->usr_id == $this->session->userdata('id'))
+                                            { ?>
+                                                
+                                        <?php 
+                                            }
+                                            else
+                                            { ?>    
+                                                <?php 
+                                                    if ($reply3thread->usr_level == 3)
+                                                    { ?>
+                                                <?php 
+                                                    }
+                                                    else
+                                                    { ?>
+                                                    <span class="dropdown">
+                                                        <button class="btn btn-warning" type="button" data-toggle="dropdown"><i class="fa fa-star"></i> Rate
+                                                        <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
+                                                                    <span class="text-muted">
+                                                                        <span class="fa fa-star checked"></span>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                                    <span class="text-muted">
+                                                                        <span class="fa fa-star checked"></span>
+                                                                        <span class="fa fa-star checked"></span>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                                    <span class="text-muted">
+                                                                        <span class="fa fa-star checked"></span>
+                                                                        <span class="fa fa-star checked"></span>
+                                                                        <span class="fa fa-star checked"></span>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </span>
+                                                <?php 
+                                                    } ?>
+                                            <?php 
+                                                } ?>
                                         </span>
                                     <?php 
-                                        } 
-                                        ?>
+                                        } ?>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -488,6 +701,10 @@
             
             $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display:none")
         });
+
+        textEditByClass('forum_komentarr');
+        textEditByClass('forum_komentar1');
+        textEditByClass('forum_komentar2');
     });
 </script>
 

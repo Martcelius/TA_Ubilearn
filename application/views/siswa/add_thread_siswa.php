@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <label for="inputisithreadforum" class="col-sm-2 control-label" style="font-size:12px;">Isi Thread</label>
                             <div class="col-sm-10">
-                            <textarea name="isithreadforum" class="form-control" id="inputisithreadforum" style="max-width: 100%"></textarea>
+                            <textarea name="isithreadforum" class="form-control" id="textEditor1" style="max-width: 100%"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -52,6 +52,10 @@
 <!-- CKEDITOR -->
 <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js" type="text/javascript"></script>
 <script>   
-	CKEDITOR.replace('isithreadforum');
+	/*CKEDITOR.replace('isithreadforum');*/
+    $(document).ready(function () {
+        textEdit(1);
+    });
 </script>
+
 
