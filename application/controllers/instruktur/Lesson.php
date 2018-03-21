@@ -22,6 +22,8 @@ $data['dataasing'] = M_Course_Assignment::where('crs_id', $id)->get();
             ->where('course.crs_id',$id)
             ->first(['users.usr_firstname','users.usr_lastname','course.crs_name']);
 //        dd($data['dataInstruktur']);
+        $data['jumlah_siswa'] = M_Course_Enrol::where('crs_id', '=', $id)->count();
+        $data['dataSiswa'] = M_Course_Enrol::join('users', 'users.usr_id', '=', 'course_enrol.usr_id')->where('crs_id', '=', $id)->get();
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/lesson';
         // dd($data['datalesen']);

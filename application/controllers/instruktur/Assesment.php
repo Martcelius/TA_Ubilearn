@@ -186,6 +186,20 @@ class Assesment extends CI_Controller {
 //        dd($data['course']);
         if($ins)
         {
+            $cruses = M_Course_Enrol::where('crs_id', '=', $crs_id)->get();
+
+            foreach ($cruses as $crus):
+                $notif_content['ntf_type'] = "ASS";
+                $notif_content['ntf_instructor'] = $this->session->userdata('firstname')." ".$this->session->userdata('lastname');
+                $notif_content['ntf_message'] = "Menambahkan assesment baru.";
+                $notif_content['ntf_read'] = "N";
+                $notif_content['ass_id'] = $ass_id;
+                $notif_content['lsn_id'] = NULL;
+                $notif_content['asg_id'] = NULL;
+                $notif_content['usr_id'] = $crus->usr_id;
+                $insert_notif = $this->M_Notification->insert($notif_content);
+            endforeach;
+
             $this->session->set_flashdata('ass_simpan', 'Data Assesment Berhasil Tersimpan');
 //            $this->session->set_flashdata('ass_notif', $data['course']->usr_firstname.' '.$data['course']->usr_lastname.' menambahkan Assesment baru pada course'.$data['course']->crs_name);
         }else{
