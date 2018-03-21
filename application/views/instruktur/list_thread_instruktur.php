@@ -30,7 +30,7 @@
                                     </span>
                                     <br>
                                     <span style="color: #00a65a; font-size : 14px">
-                                        Oleh : <?php echo $thread->usr_username?>
+                                        Oleh : <?php echo $thread->usr_firstname?> <?php echo $thread->usr_lastname?>
                                     </span>
                                     <a href="<?php echo site_url('instruktur/delete_thread_instruktur/'.$thread->cft_id.'/'.$thread->cfr_id)?>">
                                         <button style="margin-bottom: 5px; margin-left:7px; background-color: red; float:right;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin untuk menghapus?');">

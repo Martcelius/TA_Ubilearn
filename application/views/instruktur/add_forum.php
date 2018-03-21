@@ -23,7 +23,7 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form action="<?php echo site_url('instruktur/insert_forum/'.$datalessonaddforum->lsn_id)?>" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('instruktur/insert_forum/'.$datalessonaddforum->crs_id.'/'.$datalessonaddforum->lsn_id)?>" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label for="inputjudulforum" class="col-sm-2 control-label" >Judul Forum</label>
                             <div class="col-sm-10">

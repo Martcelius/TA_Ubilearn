@@ -22,7 +22,7 @@ class Thread extends CI_Controller {
     {
         $data['dataThread'] = M_Course_Forum_Thread::leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
             ->where('course_forum_thread.cfr_id',$cfr_id)
-            ->get(['course_forum_thread.*','users.usr_username']);
+            ->get(['course_forum_thread.*','users.usr_firstname','users.usr_lastname']);
         $data['judul_forum'] = M_Course_Forum::where('cfr_id',$cfr_id)->first(['cfr_title']);
         $data['judul_lesson'] = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
             ->where('course_forum.cfr_id',$cfr_id)
