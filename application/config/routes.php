@@ -188,9 +188,11 @@ $route['instruktur/detail_thread_instruktur/(:any)'] = 'instruktur/thread/detail
 $route['instruktur/delete_thread_instruktur/(:any)/(:any)'] = 'instruktur/thread/delete_thread_instruktur/$1/$2';
     
 // route instruktur-result siswa
-$route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
+//$route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
 // route instruktur-result siswa
 $route['instruktur/result_siswa_assignment/(:any)'] = 'instruktur/assignment/result_siswa_assignment/$1';
+// route instruktur-log siswa
+$route['instruktur/log_user'] = 'instruktur/Log_User/index';
 // route login
 $route['index'] = 'C_login/index';
 $route['signin'] = 'C_login/signin';
