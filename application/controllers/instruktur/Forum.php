@@ -56,7 +56,7 @@ class Forum extends CI_Controller {
             $this->session->set_flashdata('data_gagal_forum', 'Data Forum Tidak Berhasil Tersimpan');
         }
 
-        redirect('instruktur/detail_dashboard_forum_instruktur/'.$lsn_id);
+        redirect('instruktur/dashboard_forum_instruktur/'.$lsn_id);
     }
 
     public function edit_forum($cfr_id,$lsn_id)
@@ -83,7 +83,7 @@ class Forum extends CI_Controller {
             $this->session->set_flashdata('data_gagal_forum', 'Data Forum Tidak Berhasil Terupdate');
         }
 
-        redirect('instruktur/detail_dashboard_forum_instruktur/'.$lsn_id);
+        redirect('instruktur/dashboard_forum_instruktur/'.$lsn_id);
 
     }
 
@@ -98,7 +98,7 @@ class Forum extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_forum', 'Data Forum Tidak Berhasil Terhapus');
         }
-        redirect('instruktur/detail_dashboard_forum_instruktur/'.$lsn_id);
+        redirect('instruktur/dashboard_forum_instruktur/'.$lsn_id);
     }
 
 
