@@ -147,7 +147,7 @@
     </div>
     <?php endif; ?>
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <div class="mdl-card mdl-shadow--2dp pie-chart">
+      <div class="mdl-card">
           <div class="mdl-card__title" style="display:block;">
               <h2 class="mdl-card__title-text">Data User</h2>
           </div>
@@ -242,7 +242,9 @@ ResponsiveCellHeaders("Table_mdl");
 </script> -->
 <script>
     $(document).ready(function () {
-        $('#dataTables-example').dataTable();
+        $('#dataTables-example').dataTable({
+          "scrollX": true
+        });
     });
 </script>
 
