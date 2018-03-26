@@ -15,7 +15,7 @@ class Forum extends CI_Controller {
 
     public function index()
     {
-        $data['dataCourse'] = M_Course::where('usr_id',$this->session->userdata('id'))->get();
+        $data['datacourse'] = M_Course::where('usr_id',$this->session->userdata('id'))->get();
 //        dd($dataCourse);
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/forum_instruktur';
@@ -32,25 +32,26 @@ class Forum extends CI_Controller {
         $this->load->view('layout/master',$data);
     }
 
-    public function add_forum($crs_id, $lsn_id)
+    public function add_forum($crs_id)
     {
+        $data['dataaddforum'] = DB::table('course')->where('course.crs_id','=',$crs_id)->first();
+        
         $data['datalessonaddforum'] = DB::table('course_lesson')
                                 ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                                 ->where('course.crs_id',$crs_id)
-                                ->where('course_lesson.lsn_id',$lsn_id)
-                                ->first();
+                                ->get();
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/add_forum';
         $this->load->view('layout/master',$data);
     }
 
-    public function insert_forum($crs_id,$lsn_id)
+    public function insert_forum($crs_id)
     {
 //
         $data['cfr_title'] = $this->input->post('judul_forum');
         $data['cfr_desc'] = $this->input->post('deskripsiforum');
         $data['usr_id'] = $this->session->userdata('id');
-        $data['lsn_id'] = $lsn_id;
+        $data['lsn_id'] = $this->input->post('lsn_id');
         $insert = $this->M_Course_Forum->insert_forum($data);
 
         if($insert)
