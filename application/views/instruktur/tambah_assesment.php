@@ -107,10 +107,10 @@
                     <input class="form-control" name="poin1" max="100" min="0" placeholder="0" required>
                   </span>
                 </label>
-						    <div class="col-sm-10">
-						      <textarea style="width: 100%;" name="soal1" id="textEditor1" class="form-control"></textarea>
-						    </div>
-						  </div>
+                    <div class="col-sm-10">
+                      <textarea style="width: 100%;" name="soal1" id="textEditor1" class="form-control"></textarea>
+                    </div>
+                </div>
                 <span class="form-horizontal"> 
                 <div class="form-group">      
                   <label class="col-sm-2"></label>

@@ -32,9 +32,10 @@ class Content extends CI_Controller {
 
     public function add_content($id)
     {
-        $data['dataLO'] = M_Course_Learning_Outcomes::get();
-        // dd($data['dataLO']->loc_id);
-
+        $data['dataC'] = M_Course_Lesson::leftjoin('course', 'course.crs_id', '=', 'course_lesson.crs_id')
+            ->where('lsn_id',$id)->first();
+    //         dd($data['dataC']->crs_id);
+        $data['dataLO'] = M_Course_Learning_Outcomes::where('crs_id','=',$data['dataC']->crs_id)->get();
         $data['lsn_id'] = $id;
         $data['sidebar'] = "layout/sidebar_instruktur";
         $data['content'] = "instruktur/add_content";
@@ -68,6 +69,23 @@ class Content extends CI_Controller {
         $insert  = $this->M_Course_Content->insert_content($cntData);
         if($insert)
         {
+            $teudicalana = M_Course_Content::join('course_lesson','course_content.lsn_id', '=' ,'course_lesson.lsn_id')
+                                ->where('course_content.lsn_id', '=', $this->input->post('lsn_id'))
+                                ->first();
+            $cruses = M_Course_Enrol::where('crs_id', '=', $teudicalana->crs_id);
+
+            foreach ($cruses as $crus):
+                $notif_content['ntf_type'] = "LSN";
+                $notif_content['ntf_instructor'] = $this->session->userdata('firstname')." ".$this->session->userdata('lastname');
+                $notif_content['ntf_message'] = "Menambahkan konten materi baru.";
+                $notif_content['ntf_read'] = "N";
+                $notif_content['ass_id'] = NULL;
+                $notif_content['lsn_id'] = $this->input->post('lsn_id');
+                $notif_content['asg_id'] = NULL;
+                $notif_content['usr_id'] = $crus->usr_id;
+                $insert_notif = $this->M_Notification->insert($notif_content);
+            endforeach;
+
             $this->session->set_flashdata('insert_content', 'Data Content Berhasil Tersimpan');
         }else{
             $this->session->set_flashdata('data_insert_content', 'Data Content Tidak Berhasil Tersimpan');

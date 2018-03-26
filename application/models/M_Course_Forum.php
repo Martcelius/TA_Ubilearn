@@ -6,9 +6,9 @@ use Illuminate\Database\Capsule\Manager as DB;
 class M_Course_Forum extends Eloquent
 {
     protected $table = 'course_forum';
-//    const CREATED_AT = 'cfr_timecreated';
-//    const UPDATED_AT = 'cfr_timemodified';
-    public $timestamps = false;
+    const CREATED_AT = 'cfr_timecreated';
+    const UPDATED_AT = 'cfr_timemodified';
+//    public $timestamps = false;
     protected $primaryKey = 'cfr_id';
 
     public function insert_forum($data)
@@ -28,6 +28,16 @@ class M_Course_Forum extends Eloquent
         $update->cfr_title = $data['cfr_title'];
         $update->cfr_desc = $data['cfr_desc'];
         return $update->save();
+    }
+
+    public function selectByUser($usr_id,$limit = NULL){
+        if($limit != NULL){
+            $data = M_Course_Forum::where('course_forum.usr_id',$usr_id)->orderBy('cfr_timecreated', 'desc')->limit($limit)->get();
+        }
+        else{
+            $data = M_Course_Forum_Thread::where('course_forum.usr_id',$usr_id)->orderBy('cfr_timecreated', 'desc')->get();
+        }
+        return $data;
     }
 }
 

@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<p>COBA KLIK GOBLOG</p>
+<!-- <p>COBA KLIK GOBLOG</p>
 
 <button onclick="dapetinlokasi()">KLIK INI NYING</button>
 
@@ -37,7 +37,16 @@ $.ajax({
         swal("Error Menambahkan Data!", "Tolong Periksa Lagi", "error");
     }
 });
-</script>
+</script> -->
+<?php
+$teudicalana = M_Course_Content::join('course_lesson','course_content.lsn_id', '=' ,'course_lesson.lsn_id')
+                                ->where('course_content.lsn_id', '=', $this->input->post('lsn_id'))
+                                ->first();
+echo print_r($teudicalana);
+$cruses = M_Course_Enrol::where('crs_id', '=', 14)->get();
+echo '<pre>',print_r($cruses),'</pre>';
 
+
+?>
 </body>
 </html>

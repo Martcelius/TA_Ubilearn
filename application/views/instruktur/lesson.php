@@ -153,6 +153,13 @@
                                         <?php echo $ass->ass_tipe . ' - ' . $ass->ass_name; ?>
                                     </span>
                                         <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                        <a href="<?php echo site_url('instruktur/assesment/result_siswa_assesment/' . $ass->ass_id) ?>">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue"
+                                                    style="margin:2px;">
+                                                <i class="material-icons">add</i>
+                                                Masuk
+                                            </button>
+                                        </a>
                                         <a href="<?php echo site_url('instruktur/edit_assesment/' . $ass->ass_id) ?>">
                                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-yellow"
                                                     style="margin:2px;">
@@ -242,6 +249,7 @@
             </div>
 
         </div>
+
         <div class="mdl-cell mdl-cell--3-col">
             <div class="mdl-card mdl-shadow--2dp trending">
                 <div class="mdl-card__title">
@@ -257,7 +265,7 @@
                             : <?php echo $dataInstruktur->usr_firstname ?> <?php echo $dataInstruktur->usr_lastname ?>
                         </li>
                         <li class="mdl-list__item">
-                            Jumlah siswa:
+                            Jumlah siswa: <?php echo $jumlah_siswa ?>
                         </li>
                         <li class="mdl-list__item">
                             Jumlah lesson: <?php echo $jumlah ?>
@@ -265,16 +273,14 @@
                     </ul>
 
                     <hr style="background-color: white;">
-                    <h4 style="color: white;margin-left: 10px;">Siswa dalam Course :</h4>
-                    <ul class="demo-list-icon mdl-list">
-                        <li class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <span style="margin-right: 25px;">IKI</span>
+                    <h4 style="color: white;margin-left: 10px;">Siswa dalam Course:</h4>
+                    <ul class="mdl-list">
+                    <?php foreach($dataSiswa as $siswa):?>
+                    <li class="mdl-list__item">
+                    <?php echo $siswa->usr_firstname." ".$siswa->usr_lastname ?>
+                    </li>
+                    <?php endforeach; ?>
                     </span>
-                            <hr>
-                        <li class="mdl-list__item">
-                            Siswa dalam course: iki
-                        </li>
                     </ul>
                 </div>
             </div>

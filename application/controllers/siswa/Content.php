@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Illuminate\Database\Capsule\Manager as DB;
 
 class Content extends CI_Controller {
 
@@ -91,6 +92,13 @@ class Content extends CI_Controller {
 
         $data['sidebar'] = 'layout/sidebar';
         $this->load->view('layout/master',$data);
+    }
+
+    public function countLogContent($lsn_id ){
+        $clc = DB::table('lesson_access_log')->where('lsn_id',$lsn_id)->where('usr_id',$this->session->userdata('id'))->exists();
+        if($clc == NULL){
+            $clc = DB::table('lesson_access_log')->insert(['lsn_id' => $lsn_id, 'usr_id' => $this->session->userdata('id')]);
+        }
     }
 
 

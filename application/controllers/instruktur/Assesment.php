@@ -181,10 +181,27 @@ class Assesment extends CI_Controller {
 
             $i++;
         }
-
+        $data['course'] = M_Course::leftjoin("users","users.usr_id","=","course.usr_id")
+            ->where("course.crs_id",$crs_id)->get();
+//        dd($data['course']);
         if($ins)
         {
+            $cruses = M_Course_Enrol::where('crs_id', '=', $crs_id)->get();
+
+            foreach ($cruses as $crus):
+                $notif_content['ntf_type'] = "ASS";
+                $notif_content['ntf_instructor'] = $this->session->userdata('firstname')." ".$this->session->userdata('lastname');
+                $notif_content['ntf_message'] = "Menambahkan assesment baru.";
+                $notif_content['ntf_read'] = "N";
+                $notif_content['ass_id'] = $ass_id;
+                $notif_content['lsn_id'] = NULL;
+                $notif_content['asg_id'] = NULL;
+                $notif_content['usr_id'] = $crus->usr_id;
+                $insert_notif = $this->M_Notification->insert($notif_content);
+            endforeach;
+
             $this->session->set_flashdata('ass_simpan', 'Data Assesment Berhasil Tersimpan');
+//            $this->session->set_flashdata('ass_notif', $data['course']->usr_firstname.' '.$data['course']->usr_lastname.' menambahkan Assesment baru pada course'.$data['course']->crs_name);
         }else{
             $this->session->set_flashdata('ass_gagal', 'Data Assesment Tidak Berhasil Tersimpan');
         }
@@ -215,6 +232,20 @@ class Assesment extends CI_Controller {
         $data['content'] = 'instruktur/tambah_latihan';
         $this->load->view('layout/master', $data);
         
+    }
+    public function result_siswa_assesment($ass_id)
+    {
+        $data['sidebar'] = 'layout/sidebar_instruktur';
+        $data['content'] = 'instruktur/result_siswa_assesment';
+        $data['assesment'] = M_Course_Assesment_Result::leftjoin("course_assesment","course_assesment.ass_id","=","course_assesment_result.ass_id")
+            ->leftjoin("users","users.usr_id","=","course_assesment_result.usr_id")
+            ->where("course_assesment_result.ass_id",$ass_id)->get();
+
+        $data['assesment_instruktur'] = M_Course_Assesment::leftJoin("course", "course.crs_id","=","course_assesment.crs_id")
+            ->leftJoin("users","users.usr_id","=","course.usr_id")
+            ->where("course_assesment.ass_id", $ass_id)->first();
+
+        $this->load->view('layout/master', $data);
     }
 
 }

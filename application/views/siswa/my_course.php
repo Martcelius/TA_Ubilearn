@@ -1,5 +1,5 @@
 <main class="mdl-layout__content">
-    <div class="col-sm-11 cover-main">
+    <div class="col-sm-12 cover-main">
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                 <div>
@@ -14,15 +14,17 @@
             </div>
         </div>
     </div>
-    <div class=" col-sm-10 " >
+    <div class="col-sm-12">
+        <?php if ($this->session->flashdata('data_enroll') == TRUE): ?>
+            <div role="alert" class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+                </button>
+                <p><?php echo $this->session->flashdata('data_enroll')?></p>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class=" col-sm-12 " >
         <div class="mdl-grid">
-            <?php if ($this->session->flashdata('data_enroll') == TRUE): ?>
-                <div role="alert" class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-                    <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
-                    </button>
-                    <p><?php echo $this->session->flashdata('data_enroll')?></p>
-                </div>
-            <?php endif; ?>
             <?php foreach($my_course as $mycourse): ?>
                 <div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
 
@@ -43,5 +45,4 @@
             <?php endforeach; ?>
         </div>
     </div>
-
 </main>
