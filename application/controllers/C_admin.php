@@ -11,7 +11,9 @@ class C_admin extends CI_Controller {
             redirect('siswa/dashboard');
         } else if ($this->session->userdata('level')=="3") {
             redirect('instruktur/dashboard');
-        }
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        }  
     }
 
     public function index()

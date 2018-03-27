@@ -76,9 +76,9 @@ class Content extends CI_Controller {
         if($insert)
         {
             $teudicalana = M_Course_Content::join('course_lesson','course_content.lsn_id', '=' ,'course_lesson.lsn_id')
-                                ->where('course_content.lsn_id', '=', $this->input->post('lsn_id'));
+                                ->where('course_content.lsn_id', '=', $this->input->post('lsn_id'))->first();
             $cruses = M_Course_Enrol::where('crs_id', '=', $teudicalana->crs_id)->get();
-
+            
             foreach ($cruses as $crus):
                 $notif_content['ntf_type'] = "LSN";
                 $notif_content['ntf_instructor'] = $this->session->userdata('firstname')." ".$this->session->userdata('lastname');
