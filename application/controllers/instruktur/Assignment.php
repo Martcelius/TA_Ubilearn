@@ -7,7 +7,13 @@ class Assignment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_Course_Assignment_loc');
+        if ($this->session->userdata('level')=="2") {
+            redirect('siswa/dashboard');
+        } else if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('C_login/landing_page');
+        }
     }
 
     public function add_assignment($crs_id)

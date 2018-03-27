@@ -9,7 +9,13 @@ class Content extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-
+        if ($this->session->userdata('level')=="2") {
+            redirect('siswa/dashboard');
+        } else if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('C_login/landing_page');
+        }
     }
     
     public function index()
@@ -70,9 +76,8 @@ class Content extends CI_Controller {
         if($insert)
         {
             $teudicalana = M_Course_Content::join('course_lesson','course_content.lsn_id', '=' ,'course_lesson.lsn_id')
-                                ->where('course_content.lsn_id', '=', $this->input->post('lsn_id'))
-                                ->first();
-            $cruses = M_Course_Enrol::where('crs_id', '=', $teudicalana->crs_id);
+                                ->where('course_content.lsn_id', '=', $this->input->post('lsn_id'));
+            $cruses = M_Course_Enrol::where('crs_id', '=', $teudicalana->crs_id)->get();
 
             foreach ($cruses as $crus):
                 $notif_content['ntf_type'] = "LSN";

@@ -10,7 +10,9 @@ class Notif extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-                
+        if ($this->session->userdata('level') == NULL) {
+            redirect('C_login/landing_page');
+        }      
     }
     
     public function index()
