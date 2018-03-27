@@ -24,6 +24,7 @@ class M_Notification extends Eloquent
     {
         $notif = new M_Notification;
         $notif->ntf_type = $data['ntf_type'];
+        $notif->ntf_instructor = $data['ntf_instructor'];
         $notif->ntf_message = $data['ntf_message'];
         $notif->ntf_read = $data['ntf_read'];
         $notif->lsn_id = $data['lsn_id'];

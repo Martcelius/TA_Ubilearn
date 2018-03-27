@@ -22,7 +22,14 @@
                             <div class="mdl-layout-spacer"></div>
                             <b class="mdl-list__item-secondary-action"
                                style="margin-right:50px"><?php echo $content->cnt_type ?></b>
-                            <!-- <a href="<?php if ($content->cnt_type == 'Text') echo site_url('res/assets/content/' . $content->cnt_source); else echo site_url('siswa/content/video/' . $content->cnt_id); ?>"> -->
+                            <!-- <a href="<?php 
+                            if ($content->cnt_type == 'Text') {
+                                echo site_url('res/assets/content/' . $content->cnt_source);
+                                
+                            }
+                            else { 
+                                echo site_url('siswa/content/video/' . $content->cnt_id);
+                            } ?>"> -->
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue btnClick" <?php if ($content->cnt_type == 'Text') echo 'data-loc = '.site_url('res/assets/content/' . $content->cnt_source); else echo 'data-loc = '.site_url('siswa/content/video/' . $content->cnt_id); ?> >
                                     <i class="material-icons"></i>
                                     <?php if ($content->cnt_type == 'Text') echo "Unduh"; else echo "Masuk"; ?>
