@@ -16,6 +16,10 @@
                 <i class="material-icons" role="presentation">book</i>
                 Learning Outcome
             </a>
+            <a style="text-decoration:none;" class="mdl-navigation__link <?php if ($this->uri->segment(2) == 'log_user') echo "mdl-navigation__link--current"?>" href="<?php echo site_url('instruktur/log_user')?>">
+                <i class="material-icons" role="presentation">book</i>
+                History User
+            </a>
             <!-- <a class="mdl-navigation__link" href="ui.html">
                 <i class="material-icons">message</i>
                  Message

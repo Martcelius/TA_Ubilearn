@@ -38,7 +38,7 @@
                                       <i class="fa fa-circle mdl-list__item-icon"></i>
                                       <span><?php echo $c->crs_name ?></span>
                                       <span class="mdl-list__item-text-body">
-                                        taken on <?php echo $c->crs_timecreated ?>
+                                        dibuat pada: <?php echo $c->crs_timecreated ?>
                                       </span>
                                     </span>
                                 </li>
@@ -48,35 +48,32 @@
                 </div>
             </div>
         </div>
-<!--        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--6-col-phone">-->
-<!--            <div class="mdl-card mdl-shadow--2dp pie-chart">-->
-<!--                <div class="mdl-card__title" style="display:block;">-->
-<!--                    <h2 class="mdl-card__title-text">Forum</h2>-->
-<!--                    <h3 class="mdl-card__subtitle-text">Jumlah Forum : </h3>-->
-<!--                </div>-->
-<!--                <div class="mdl-card__supporting-text">-->
-<!--                    <div>-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-sm-8">-->
-<!--                                <p>Judul Forum 1</p>-->
-<!--                                Course : IT Project Management <br>-->
-<!--                                Universitas Telkom-->
-<!--                            </div>-->
-<!--                            <div class="col-sm-4">-->
-<!--                                <a href="list_thread" style="float:right">-->
-<!--                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue">-->
-<!--                                        Lihat-->
-<!--                                    </button>-->
-<!--                                </a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <hr>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!---->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--6-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title" style="display:block;">
+                    <h2 class="mdl-card__title-text">Forum</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <ul class="demo-list-three mdl-list">
+                        <?php foreach ($list_forum as $list) { ?>
+                            <a class="lst" href="<?php echo base_url() . 'instruktur/list_thread_instruktur/' . $list->cfr_id ?>">
+                                <li class="mdl-list__item mdl-list__item--three-line lst point"
+                                    style="padding-top: 16px;padding-bottom: 0px;height: 58px;">
+                                    <span class="mdl-list__item-primary-content">
+                                      <i class="fa fa-circle mdl-list__item-icon"></i>
+                                      <span><?php echo $list->cfr_title ?></span>
+                                      <span class="mdl-list__item-text-body">
+                                        dibuat pada: <?php echo $list->cfr_timecreated ?>
+                                      </span>
+                                    </span>
+                                </li>
+                            </a>
+                        <?php } ?>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
     </div>
 </main>
 <style type="text/css">

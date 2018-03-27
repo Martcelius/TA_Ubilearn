@@ -30,7 +30,8 @@ class C_instruktur extends CI_Controller {
             $i++;
         }
         $data['jum'] = $jum;
-
+        $forumlast = new M_Course_Forum;
+        $data['list_forum'] = $forumlast->selectByUser($this->session->userdata('id'),5);
 //        dd($data['jum']);
         $this->load->view('layout/master', $data);
         

@@ -1,11 +1,15 @@
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-            <h2 style="color:white; text-align:center;"><?php echo $instruktur->crs_name?></h2>
-            <div style="text-align:center">
-                <img src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $instruktur->usr_picture;?>" class="material-icons mdl-list__item-avatar" style="width: 100px; height: 100px;">
-                <h3 style="color:white;"><?php echo $instruktur->usr_firstname." ".$instruktur->usr_lastname?></h3>
+            <div class="">
+                <div class="">
+                    <h2 style="color:white">History User</h2>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
         </div>
     </div>
     <style type="text/css">
@@ -59,7 +63,7 @@
         }
 
         /* div {
-            overflow: auto;
+          overflow: auto;
         } */
 
         @media screen and (max-width: 37em), print and (max-width: 5in) {
@@ -130,70 +134,55 @@
     </style>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-            <div class="mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title" style="display: block">
-                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" >
-                        <table id="dataTables-example" style="text-align:center;">
-                            <thead>
-                            <tr style="text-align:center;">
-                                <th style="text-align:center;">No</th>
-                                <th style="text-align:center;">Nama Siswa</th>
-                                <th style="text-align:center;">Jenis Kelamin</th>
-                                <th style="text-align:center;">Usia</th>
-                                <th style="text-align:center;">IPK</th>
-                                <?php
-                                $j=1;
-                                foreach($ar_kuis as $z):
-                                ?>
-                                <th style="text-align:center;">Kuis <?php echo $j; ?></th>
-                                <?php $j++;
-                                endforeach ?>
-
-                                <th style="text-align:center;">Learner Activity Counter (temp)</th>
-                                <th style="text-align:center;">Status</th>
-
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title" style="display:block;">
+                    <h2 class="mdl-card__title-text">History User</h2>
+                </div>
+                <div class="mdl-card__supporting-text" style="font-size: unset;" >
+                    <table id="dataTables-example" style="text-align:center;">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;white-space: nowrap">No.</th>
+                            <th style="text-align: center;white-space: nowrap">Log Time</th>
+                            <th style="text-align: center;white-space: nowrap">ID User</th>
+                            <th style="text-align: center;white-space: nowrap">Nama User</th>
+                            <th style="text-align: center;white-space: nowrap">Event Context</th>
+                            <th style="text-align: center;white-space: nowrap">Log Referre</th>
+                            <th style="text-align: center;white-space: nowrap">Log Name</th>
+                            <th style="text-align: center;white-space: nowrap">Log Origin</th>
+                            <th style="text-align: center;white-space: nowrap">Log Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $num = 1;
+                        foreach($log_user as $log):?>
+                            <tr>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $num++?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->log_time?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->usr_id?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->usr_firstname?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->log_event_context?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->log_referrer?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->log_name?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->log_origin?></td>
+                                <td style="text-align: center;white-space: nowrap"><?php echo $log->log_desc?></td>
+<!--                                <td style="text-align: center;">-->
+<!--                                    <a href="--><?php //echo site_url('instruktur/edit_lo/'.$lo->loc_id)?><!--">-->
+<!--                                        <button style="margin-bottom: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">-->
+<!--                                            <i class="material-icons">edit</i>-->
+<!--                                        </button>-->
+<!--                                    </a>-->
+<!--                                    <a href="--><?php //echo site_url('instruktur/delete_lo/'.$lo->loc_id)?><!--">-->
+<!--                                        <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin untuk menghapus?');">-->
+<!--                                            <i class="material-icons">delete</i>-->
+<!--                                        </button>-->
+<!--                                    </a>-->
+<!--                                </td>-->
                             </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            $i = 1;
-                            foreach($ar as $c): ?>
-                                <tr class="odd gradeX" style="background-color: #363636;">
-                                    <td style="text-align:center;"><?php echo $i++;?></td>
-                                    <td style="text-align:center;"><?php echo $c->usr_firstname." ". $c->usr_lastname?></td>
-                                    <td style="text-align:center;"><?php if($c->usr_jk == "1") {
-                                            echo "Pria";
-                                        } elseif ($c->usr_jk == "2"){
-                                            echo "Wanita";
-                                        }?>
-                                    </td>
-                                    <td style="text-align:center;"><?php
-                                                $from = new DateTime($c->usr_tgllahir);
-                                                $to   = new DateTime('today');
-                                                echo $from->diff($to)->y;?>
-                                    </td>
-                                    <td style="text-align:center;"><?php echo $c->usr_gpa;?></td>
-                                    <?php
-                                    $k=1;
-                                    foreach($ar_kuis as $s):
-                                    ?>
-                                    <td style="text-align:center;"><?php echo $s->ass_result;?></td>
-                                    <?php endforeach ?>
-
-                                    <td style="text-align:center;"><?php echo $log;?></td>
-                                    <td style="text-align:center;"><?php
-                                            if ($count != 3){
-                                                echo 'Belum dapat diprediksi, jumlah kuis harus > 2';
-                                            } else {
-                                                echo 'panggi fungsi naive bayes';
-                                            }
-                                        ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach;?>
-                            </tbody>
-                        </table>
-                    </div>
+                        <?php endforeach ;?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -231,11 +220,12 @@
     }
     ResponsiveCellHeaders("Table_mdl");
 </script>
-
-
-
 <script>
     $(document).ready(function () {
-        $('#dataTables-example').dataTable();
+        $('#dataTables-example').dataTable({
+            "scrollX" : true,
+            "bJQueryUI": true,
+        });
     });
 </script>
+

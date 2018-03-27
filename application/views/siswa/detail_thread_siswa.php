@@ -193,9 +193,6 @@
                                 <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                             </a>
                         </span>
-                        <div class="col-md-12" id="btn_showmorerep<?php echo $j;?><?php echo $i;?>">
-                            <button class="btn btn-primary btn_reply" style="background-color: white; font-color:black;">Tampilkan Keseluruhan</button>
-                        </div>
                         
                     <?php 
                         }
@@ -705,14 +702,6 @@
             
             $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display:none")
         });
-
-        $('.btn_showmorerep').click(function())
-        {
-            var id = $(this).attr('id');
-            var regexnumber = id.match(/\d/g);
-
-            $()
-        }
 
         textEditByClass('forum_komentarr');
         textEditByClass('forum_komentar1');
