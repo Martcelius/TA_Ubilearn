@@ -162,5 +162,6 @@ $autoload['model'] = array(
     'M_Rating_Thread',
     'M_Notification',
     'M_At_risk',
-    'M_Log'
+    'M_Log',
+    'M_Lesson_Access_Log'
     );

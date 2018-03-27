@@ -24,10 +24,9 @@ class Forum extends CI_Controller {
 
     public function add_forum($crs_id)
     {
-        $data['dataaddforum'] = DB::table('course')->where('course.crs_id','=',$crs_id)->first();
+        $data['dataaddforum'] = M_Course::where('course.crs_id','=',$crs_id)->first();
         
-        $data['datalessonaddforum'] = DB::table('course_lesson')
-                                ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+        $data['datalessonaddforum'] = M_Course_Lesson::leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                                 ->where('course.crs_id',$crs_id)
                                 ->get();
         $data['sidebar'] = 'layout/sidebar_instruktur';
@@ -69,8 +68,7 @@ class Forum extends CI_Controller {
                         ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                         ->where('course_forum.cfr_id',$cfr_id)
                         ->first();
-        $data['datalessoneditforum'] = DB::table('course_lesson')
-                        ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+        $data['datalessoneditforum'] = M_Course_Lesson::leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                         ->where('course.crs_id',$crs_id)
                         ->get();
         $data['sidebar'] = 'layout/sidebar_instruktur';

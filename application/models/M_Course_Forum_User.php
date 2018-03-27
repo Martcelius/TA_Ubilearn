@@ -51,8 +51,7 @@ class M_Course_Forum_User extends Eloquent
 
     public function updateavgscoremsg_forum_user($cfu_id,$cfu_avgscoremsg)
     {
-        $update = DB::table('course_forum_user')
-                ->where('cfu_id','=',$cfu_id)
+        $update = M_Course_Forum_User::where('cfu_id','=',$cfu_id)
                 ->update(['cfu_avgscrmsg' => $cfu_avgscoremsg]);
     }
 
@@ -64,15 +63,13 @@ class M_Course_Forum_User extends Eloquent
     
     public function updatecentrality_forum_user($cfu_id,$cfu_centrality)
     {
-        $update = DB::table('course_forum_user')
-                ->where('cfu_id','=',$cfu_id)
+        $update = M_Course_Forum_User::where('cfu_id','=',$cfu_id)
                 ->update(['cfu_centrality' => $cfu_centrality]);
     }
     
     public function updateprestige_forum_user($cfu_id,$cfu_prestige)
     {
-        $update = DB::table('course_forum_user')
-                ->where('cfu_id','=',$cfu_id)
+        $update = M_Course_Forum_User::where('cfu_id','=',$cfu_id)
                 ->update(['cfu_prestige' =>$cfu_prestige]);
     }
 

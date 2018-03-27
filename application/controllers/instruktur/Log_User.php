@@ -16,8 +16,7 @@ class Log_User extends CI_Controller {
     {
         $data['sidebar'] = "layout/sidebar_instruktur";
         $data['content'] = "instruktur/log_user";
-        $data['log_user'] = DB::table('user_logs')
-            ->leftJoin('users','users.usr_id','=','user_logs.usr_id')->get();
+        $data['log_user'] = M_Log::leftJoin('users','users.usr_id','=','user_logs.usr_id')->get();
         $this->load->view('layout/master',$data);
     }
 }

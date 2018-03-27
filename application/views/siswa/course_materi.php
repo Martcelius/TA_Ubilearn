@@ -25,7 +25,21 @@
                             <!-- <a href="<?php 
                             if ($content->cnt_type == 'Text') {
                                 echo site_url('res/assets/content/' . $content->cnt_source);
-                                
+                                // Capture Log Start
+                                $event = array(
+                                    'usr_id'            => $this->session->userdata('id'),
+                                    'log_event_context' => "View Content:" . " " . $content->cnt_name,
+                                    'log_referrer'      => $this->input->server('REQUEST_URI'),
+                                    'log_name'          => "View Content Text",
+                                    'log_origin'        => $this->agent->agent_string(),
+                                    'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                                    'log_desc'          => $this->session->userdata('username'). " " 
+                                    ."melakukan aksi View Content" . " '" . $content->cnt_name . "' " 
+                                    ."pada Lesson" . " " . $content->lsn_name . "' " 
+                                    . "pada Course" . " '" . $content->crs_name . "'"
+                                );
+                                $this->lib_event_log->add_user_event($event);
+                                // Capture Log End
                             }
                             else { 
                                 echo site_url('siswa/content/video/' . $content->cnt_id);

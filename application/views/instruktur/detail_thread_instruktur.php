@@ -193,7 +193,7 @@
                         }
                         else
                         { ?>
-                            <?php $dataratingreply = DB::table('rating_reply')->where('rating_reply.ftr_id',$replythread->ftr_id)->first(); ?>
+                            <?php $dataratingreply = M_Rating_Reply::where('rating_reply.ftr_id',$replythread->ftr_id)->first(); ?>
                             <?php 
                                 if ($dataratingreply->ftr_id == $replythread->ftr_id and $dataratingreply->usr_id == $this->session->userdata('id'))
                                 { ?>
@@ -384,7 +384,7 @@
                                 }
                                 else
                                 { ?>
-                                <?php $dataratingreply2 = DB::table('rating_reply_reply')->where('rating_reply_reply.trr_id',$reply2thread->trr_id)->first(); ?>
+                                <?php $dataratingreply2 = M_Rating_Reply_Reply::where('rating_reply_reply.trr_id',$reply2thread->trr_id)->first(); ?>
                                 <?php 
                                     if ($dataratingreply2->trr_id == $reply2thread->trr_id and $dataratingreply2->usr_id == $this->session->userdata('id'))
                                     { ?>
@@ -574,7 +574,7 @@
                                         }
                                         else
                                         { ?>
-                                            <?php $dataratingreply3 = DB::table('rating_reply_reply_reply')->where('rating_reply_reply_reply.rrr_id',$reply3thread->rrr_id)->first(); ?>
+                                            <?php $dataratingreply3 = M_Rating_Reply_Reply_Reply::where('rating_reply_reply_reply.rrr_id',$reply3thread->rrr_id)->first(); ?>
                                             <?php 
                                                 if ($dataratingreply3->rrr_id == $reply3thread->rrr_id and $dataratingreply3->usr_id == $this->session->userdata('id'))
                                                 { ?>

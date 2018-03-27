@@ -110,7 +110,7 @@ class Course extends CI_Controller {
         // Capture Log End
         $i = 0;
         foreach($data['lesson'] as $c){
-            $temp = DB::table('lesson_access_log')->where('lsn_id',$c->lsn_id)->where('usr_id',$this->session->userdata('id'))->exists();
+            $temp = M_Lesson_Access_Log::where('lsn_id',$c->lsn_id)->where('usr_id',$this->session->userdata('id'))->exists();
             if($temp != NULL){
                 $lsnAcc[$i] = 'color: #37d837;';
             }

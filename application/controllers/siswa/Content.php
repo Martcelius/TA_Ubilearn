@@ -17,8 +17,9 @@ class Content extends CI_Controller {
             ->leftJoin('users','users.usr_id','=','course.usr_id')
             ->where('course_lesson.lsn_id',$lsn_id)
             ->first();
-        $data['contents'] = M_Course_Content::where('lsn_id',$lsn_id)->get();
-//        dd($data['content']);
+        $data['contents'] = M_Course_Content::leftJoin('course_lesson','course_lesson.lsn_id','=','course_content.lsn_id')
+        ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+        ->where('course_content.lsn_id',$lsn_id)->get();
 
         // Capture Log Start
         $event = array(
@@ -95,9 +96,9 @@ class Content extends CI_Controller {
     }
 
     public function countLogContent($lsn_id ){
-        $clc = DB::table('lesson_access_log')->where('lsn_id',$lsn_id)->where('usr_id',$this->session->userdata('id'))->exists();
+        $clc = M_Lesson_Access_Log::where('lsn_id',$lsn_id)->where('usr_id',$this->session->userdata('id'))->exists();
         if($clc == NULL){
-            $clc = DB::table('lesson_access_log')->insert(['lsn_id' => $lsn_id, 'usr_id' => $this->session->userdata('id')]);
+            $clc = M_Lesson_Access_Log::insert(['lsn_id' => $lsn_id, 'usr_id' => $this->session->userdata('id')]);
         }
     }
 

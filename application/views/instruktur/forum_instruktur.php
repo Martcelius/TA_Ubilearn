@@ -60,8 +60,7 @@
                         </thead>
 
                          <?php 
-                            $datalistforum = DB::table('course_forum')
-                                        ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+                            $datalistforum = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
                                         ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                                         ->where('course.crs_id',$listcourse->crs_id)
                                         ->get();

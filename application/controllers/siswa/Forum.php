@@ -25,8 +25,7 @@ class Forum extends CI_Controller {
     }
 
     public function dashboard_forum_siswa($crs_id){
-        $data['datalessonforum'] = DB::table('course_lesson')
-                            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+        $data['datalessonforum'] = M_Course_Lesson::leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                             ->where('course.crs_id',$crs_id)
                             ->get();
         
