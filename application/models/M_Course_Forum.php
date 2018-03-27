@@ -14,18 +14,17 @@ class M_Course_Forum extends Eloquent
     public function insert_forum($data)
     {
         $forum = new M_Course_Forum;
-        $forum->cfr_title = $data['cfr_title'];
         $forum->cfr_desc = $data['cfr_desc'];
         $forum->usr_id = $data['usr_id'];
         $forum->lsn_id = $data['lsn_id'];
+        $forum->save();
 
-        return $forum->save();
+        return $forum->cfr_id;
     }
 
     public function update_forum($data)
     {
         $update = M_Course_Forum::where('cfr_id',$data['cfr_id'])->first();
-        $update->cfr_title = $data['cfr_title'];
         $update->cfr_desc = $data['cfr_desc'];
         return $update->save();
     }

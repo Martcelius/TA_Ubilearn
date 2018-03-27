@@ -24,7 +24,6 @@ class Thread extends CI_Controller {
                                 ->where('course_forum_thread.cfr_id',$cfr_id)
                                 ->get(['course_forum_thread.*','users.usr_firstname','users.usr_lastname']);
         $data['forumid'] = M_Course_Forum::where('cfr_id',$cfr_id)->first();
-        $data['judul_forum'] = M_Course_Forum::where('cfr_id',$cfr_id)->first(['cfr_title']);
         $data['judul_lesson'] = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
                             ->where('course_forum.cfr_id',$cfr_id)
                             ->first(['course_lesson.lsn_name']);
@@ -64,13 +63,13 @@ class Thread extends CI_Controller {
             //dd($data['sumreply']);
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View Forum:" . " " . $data['judul_forum']->cfr_title,
+                'log_event_context' => "View Forum:" . " " . $data['judul_lesson']->lsn_name,
                 'log_referrer'      => $this->input->server('REQUEST_URI'),
                 'log_name'          => "View Forum",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi View Forum" . " '" . $data['judul_forum']->cfr_title . "'"
+                ."melakukan aksi View Forum" . " '" . $data['judul_lesson']->lsn_name . "'"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -85,13 +84,13 @@ class Thread extends CI_Controller {
             //dd($data['sumreply']);
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View Forum:" . " " . $data['judul_forum']->cfr_title,
+                'log_event_context' => "View Forum:" . " " . $data['judul_lesson']->lsn_name,
                 'log_referrer'      => $this->input->server('REQUEST_URI'),
                 'log_name'          => "View Forum",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi View Forum" . " '" . $data['judul_forum']->cfr_title . "'"
+                ."melakukan aksi View Forum" . " '" . $data['judul_lesson']->lsn_name . "'"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -240,9 +239,14 @@ class Thread extends CI_Controller {
         $this->load->view('layout/master',$data);
     }
 
-    public function insert_komentar_reply($cft_id)
+    public function insert_komentar_reply($cft_id,$cfr_id)
     {
         $data['ftr_content'] = $this->input->post('forum_komentarr');
+        $cfu_sumword = str_replace('</p><p>','',$data['ftr_content']);
+        $cfu_sumword = strip_tags($cfu_sumword);
+        $cfu_sumword = str_replace("&nbsp;", '', $cfu_sumword);
+        $cfu_sumword = str_word_count($cfu_sumword);
+        
         $data['usr_id'] = $this->session->userdata('id');
         $data['cft_id'] = $cft_id;
         $idftr = $this->M_Course_Forum_Thread_Reply->insert_thread_reply($data);
@@ -254,6 +258,68 @@ class Thread extends CI_Controller {
         $jumlahpostuser++;
         $incpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
 
+        $datauserupdate = M_Course_Forum_User::where('usr_id','=',$iduser)
+                                        ->where('cfr_id','=', $cfr_id)
+                                        ->first();
+
+        $cfu_id = $datauserupdate->cfu_id;
+
+        $datainputsumword = $this->M_Course_Forum_User->updatesumword_forum_user($cfu_id,$cfu_sumword);
+
+        $cekuser = M_Course_Forum_Thread::where('cft_id','=',$cft_id)->first();
+
+        if($cekuser->usr_id == $iduser)
+        {
+            //Update Total Messages
+            $updatesummsg =$this->M_Course_Forum_User->updatesummsg_forum_user($cfu_id);
+        }
+        else
+        {
+            //Update Total Messages
+            $updatesummsg =$this->M_Course_Forum_User->updatesummsg_forum_user($cfu_id);
+
+            //Update Message out
+            $updatemsgout = $this->M_Course_Forum_User->updatemsgout_forum_user($cfu_id);
+
+            //update Message in
+            $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                                                ->where('cfr_id','=',$cfr_id)
+                                                ->first();
+            $cfuser_id = $datausermsgin->cfu_id;
+            
+            $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
+
+            //Update Centrality
+            $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
+                                                ->where('cfr_id','=',$cfr_id)
+                                                ->first();
+            
+            $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
+            $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+            $jumlahsiswa = $jumlahsiswa-1;
+            $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+            $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+            $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+        }
+
+        //Update Prestige
+        $datauserprestige = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                                            ->where('cfr_id','=',$cfr_id)
+                                            ->first();
+
+        $cfu_idprestige = $datauserprestige->cfu_id;
+        $cfu_prestigemsgin = $datauserprestige->cfu_msgin;
+        
+        $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+        $jumlahsiswa = $jumlahsiswa-1;
+        $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+        $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+        $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+        
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
@@ -274,19 +340,101 @@ class Thread extends CI_Controller {
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
 
-    public function insert_komentar_reply_reply($ftr_id,$cft_id)
+    public function insert_komentar_reply_reply($ftr_id,$cft_id,$cfr_id)
     {
         $data['trr_content'] = $this->input->post('forum_komentar1');
+        $cfu_sumword = str_replace('</p><p>',' ',$data['trr_content']);
+        $cfu_sumword = strip_tags($cfu_sumword);
+        $cfu_sumword = str_replace("&nbsp;", '', $cfu_sumword);
+        $cfu_sumword = str_word_count($cfu_sumword);
+
         $data['ftr_id'] = $ftr_id;
         $data['usr_id'] = $this->session->userdata('id');
         $idtrr = $this->M_Course_Forum_Thread_Reply_Reply->insert_thread_reply_reply($data);
         $insert = $this->M_Rating_Reply_Reply->insert_id_rating($idtrr);
 
-        $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
         $iduser = $this->session->userdata('id');
-        $jumlahpostuser = $datauser->usr_post_count;
-        $jumlahpostuser++;
-        $incpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
+
+        $datauserupdate = M_Course_Forum_User::where('usr_id','=',$iduser)
+                                        ->where('cfr_id','=', $cfr_id)
+                                        ->first();
+        
+        if($datauserupdate != NULL)
+        {
+            $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
+            $iduser = $this->session->userdata('id');
+            $jumlahpostuser = $datauser->usr_post_count;
+            $jumlahpostuser++;
+            $incpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
+            
+            $cfu_id = $datauserupdate->cfu_id;
+
+            //Update Sum Word
+            $datainputsumword = $this->M_Course_Forum_User->updatesumword_forum_user($cfu_id,$cfu_sumword);
+
+            $cekuser = M_Course_Forum_Thread_Reply::where('ftr_id','=',$ftr_id)->first();
+
+            if($cekuser->usr_id == $iduser)
+            {
+                //Update Total Messages
+                $updatesummsg =$this->M_Course_Forum_User->updatesummsg_forum_user($cfu_id);
+            }
+            else
+            {
+                //Update Total Messages
+                $updatesummsg =$this->M_Course_Forum_User->updatesummsg_forum_user($cfu_id);
+
+                //Update Message out
+                $updatemsgout = $this->M_Course_Forum_User->updatemsgout_forum_user($cfu_id);
+
+                //update Message in
+                $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                                                    ->where('cfr_id','=',$cfr_id)
+                                                    ->first();
+                $cfuser_id = $datausermsgin->cfu_id;
+                
+                $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
+
+                //Update Centrality
+                $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
+                                                        ->where('cfr_id','=',$cfr_id)
+                                                        ->first();
+
+                $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
+                $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+                $jumlahsiswa = $jumlahsiswa-1;
+                $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+            }
+
+            //Update Prestige
+            $datauserprestige = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                                                ->where('cfr_id','=',$cfr_id)
+                                                ->first();
+
+            $cfu_idprestige = $datauserprestige->cfu_id;
+            $cfu_prestigemsgin = $datauserprestige->cfu_msgin;
+
+            $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+            $jumlahsiswa = $jumlahsiswa-1;
+            $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+            $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+            $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+        }
+        else
+        {
+            $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
+            $iduser = $this->session->userdata('id');
+            $jumlahpostuser = $datauser->usr_post_count;
+            $jumlahpostuser++;
+            $incpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
+        }
+            
 
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
@@ -304,19 +452,101 @@ class Thread extends CI_Controller {
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
 
-    public function insert_komentar_reply_reply_reply($trr_id,$cft_id)
+    public function insert_komentar_reply_reply_reply($trr_id,$cft_id,$cfr_id)
     {
         $data['rrr_content'] = $this->input->post('forum_komentar2');
+        $cfu_sumword = str_replace('</p><p>',' ',$data['rrr_content']);
+        $cfu_sumword = strip_tags($cfu_sumword);
+        $cfu_sumword = str_replace("&nbsp;", '', $cfu_sumword);
+        $cfu_sumword = str_word_count($cfu_sumword);
+        
         $data['usr_id'] = $this->session->userdata('id');
         $data['trr_id'] = $trr_id;
         $idrrr = $this->M_Course_Forum_Thread_Reply_Reply_Reply->insert_thread_reply_reply_reply($data);
         $insert = $this->M_Rating_Reply_Reply_Reply->insert_id_rating($idrrr);
 
-        $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
         $iduser = $this->session->userdata('id');
-        $jumlahpostuser = $datauser->usr_post_count;
-        $jumlahpostuser++;
-        $incpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
+        
+        $datauserupdate = M_Course_Forum_User::where('usr_id','=',$iduser)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+
+         if($datauserupdate != NULL)
+         {
+            $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
+            $iduser = $this->session->userdata('id');
+            $jumlahpostuser = $datauser->usr_post_count;
+            $jumlahpostuser++;
+            $incpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
+            
+            $cfu_id = $datauserupdate->cfu_id;
+
+            //Update Sum Word
+            $datainputsumword = $this->M_Course_Forum_User->updatesumword_forum_user($cfu_id,$cfu_sumword);
+
+            $cekuser = M_Course_Forum_Thread_Reply_Reply::where('trr_id','=',$trr_id)->first();
+
+            if($cekuser->usr_id == $iduser)
+            {
+                //Update Total Messages
+                $updatesummsg =$this->M_Course_Forum_User->updatesummsg_forum_user($cfu_id);
+            }
+            else
+            {
+                //Update Total Messages
+                $updatesummsg =$this->M_Course_Forum_User->updatesummsg_forum_user($cfu_id);
+
+                //Update Message out
+                $updatemsgout = $this->M_Course_Forum_User->updatemsgout_forum_user($cfu_id);
+
+                //update Message in
+                $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                                                    ->where('cfr_id','=',$cfr_id)
+                                                    ->first();
+                $cfuser_id = $datausermsgin->cfu_id;
+                
+                $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
+
+                //Update Centrality
+                $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
+                ->where('cfr_id','=',$cfr_id)
+                ->first();
+
+                $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
+                $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+                $jumlahsiswa = $jumlahsiswa-1;
+                $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+            }
+
+            //Update Prestige
+            $datauserprestige = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                                                ->where('cfr_id','=',$cfr_id)
+                                                ->first();
+
+            $cfu_idprestige = $datauserprestige->cfu_id;
+            $cfu_prestigemsgin = $datauserprestige->cfu_msgin;
+
+            $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+            $jumlahsiswa = $jumlahsiswa-1;
+            $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+            $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+            $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+         }
+         else
+         {
+            $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
+            $iduser = $this->session->userdata('id');
+            $jumlahpostuser = $datauser->usr_post_count;
+            $jumlahpostuser++;
+            $incpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
+         }
+            
 
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
@@ -334,11 +564,10 @@ class Thread extends CI_Controller {
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
 
-    public function insert_rating_reply($ftr_id,$cft_id,$k)
+    public function insert_rating_reply($ftr_id,$cft_id,$k,$cfr_id)
     {
         $data['ftr_id'] = $ftr_id;
         $data['usr_id'] = $this->session->userdata('id');
-        $data['rry_rated'] = $k;
         
         $getrating = M_Course_Forum_Thread_Reply::where('course_forum_thread_reply.ftr_id','=',$ftr_id)->first(['ftr_ratingsum','ftr_ratingcount']);
         $ftrratingsum = $getrating->ftr_ratingsum;
@@ -351,8 +580,46 @@ class Thread extends CI_Controller {
         $datarating['ftr_ratingsum'] = $ftrratingsum;
         $datarating['ftr_ratingcount'] = $ftrratingcount;
         
-        $insert = $this->M_Rating_Reply->update_rating_reply($data);
+        $insert = $this->M_Rating_Reply->update_rating_reply($data, $ftrratingsum);
         $update = $this->M_Course_Forum_Thread_Reply->update_rating_reply($datarating);
+
+        $getidftr = M_Course_Forum_Thread_Reply::where('course_forum_thread_reply.ftr_id','=',$ftr_id)->first();
+
+        $datauserrating = M_Course_Forum_User::where('usr_id','=',$getidftr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+
+        
+        $cfu_id = $datauserrating->cfu_id;
+
+        //Update Rating Count
+        $updateratingcount = $this->M_Course_Forum_User->updateratingcount_forum_user($cfu_id);
+
+        //Update Rating Sum
+        $updateratingsum = $this->M_Course_Forum_User->updateratingsum_forum_user($cfu_id,$k);
+
+        $datauseravgrating = M_Course_Forum_User::where('usr_id','=',$getidftr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_ratingsum = $datauseravgrating->cfu_ratingsum;
+        $cfu_ratingcount = $datauseravgrating->cfu_ratingcount;
+        
+        if($cfu_ratingcount == 0)
+        {
+            $cfu_ratingcount = 1;
+            $cfu_avgscoremsg = $cfu_ratingsum/$cfu_ratingcount;
+        }
+        else
+        {
+            $cfu_avgscoremsg = $cfu_ratingsum/$cfu_ratingcount;
+        }
+        
+        $cfu_avgscoremsg = number_format((float)$cfu_avgscoremsg,2,'.','');
+
+        //Update Average Rating
+        $updateavgscoremsg = $this->M_Course_Forum_User->updateavgscoremsg_forum_user($cfu_id,$cfu_avgscoremsg);
+        
 
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
@@ -370,7 +637,7 @@ class Thread extends CI_Controller {
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
 
-    public function insert_rating_reply_reply($trr_id,$cft_id,$k)
+    public function insert_rating_reply_reply($trr_id,$cft_id,$k,$cfr_id)
     {
         $data['trr_id'] = $trr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -387,8 +654,44 @@ class Thread extends CI_Controller {
         $datarating['trr_ratingsum'] = $trrratingsum;
         $datarating['trr_ratingcount'] = $trrratingcount;
         
-        $insert = $this->M_Rating_Reply_Reply->update_rating_reply_reply($data);
+        $insert = $this->M_Rating_Reply_Reply->update_rating_reply_reply($data, $trrratingsum);
         $update = $this->M_Course_Forum_Thread_Reply_Reply->update_rating_reply_reply($datarating);
+
+        $getidtrr = M_Course_Forum_Thread_Reply_Reply::where('course_forum_thread_reply_reply.trr_id','=',$trr_id)->first();
+
+        $datauserrating = M_Course_Forum_User::where('usr_id','=',$getidtrr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_id = $datauserrating->cfu_id;
+
+        //Update Rating Count
+        $updateratingcount = $this->M_Course_Forum_User->updateratingcount_forum_user($cfu_id);
+
+        //Update Rating Sum
+        $updateratingsum = $this->M_Course_Forum_User->updateratingsum_forum_user($cfu_id,$k);
+
+        $datauseravgrating = M_Course_Forum_User::where('usr_id','=',$getidtrr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_ratingsum = $datauseravgrating->cfu_ratingsum;
+        $cfu_ratingcount = $datauseravgrating->cfu_ratingcount;
+        
+        if($cfu_ratingcount == 0)
+        {
+            $cfu_ratingcount = 1;
+            $cfu_avgscoremsg = $cfu_ratingsum/$cfu_ratingcount;
+        }
+        else
+        {
+            $cfu_avgscoremsg = $cfu_ratingsum/$cfu_ratingcount;
+        }
+        
+        $cfu_avgscoremsg = number_format((float)$cfu_avgscoremsg,2,'.','');
+
+        //Update Average Rating
+        $updateavgscoremsg = $this->M_Course_Forum_User->updateavgscoremsg_forum_user($cfu_id,$cfu_avgscoremsg);
         
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
@@ -406,7 +709,7 @@ class Thread extends CI_Controller {
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
 
-    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k)
+    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k,$cfr_id)
     {
         $data['rrr_id'] = $rrr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -423,9 +726,45 @@ class Thread extends CI_Controller {
         $datarating['rrr_ratingsum'] = $rrrratingsum;
         $datarating['rrr_ratingcount'] = $rrrratingcount;
         
-        $insert = $this->M_Rating_Reply_Reply_Reply->update_rating_reply_reply_reply($data);
+        $insert = $this->M_Rating_Reply_Reply_Reply->update_rating_reply_reply_reply($data, $rrrratingsum);
         $update = $this->M_Course_Forum_Thread_Reply_Reply_Reply->update_rating_reply_reply_reply($datarating);
 
+        $getidrrr = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.rrr_id','=',$rrr_id)->first();
+
+        $datauserrating = M_Course_Forum_User::where('usr_id','=',$getidrrr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_id = $datauserrating->cfu_id;
+
+        //Update Rating Count
+        $updateratingcount = $this->M_Course_Forum_User->updateratingcount_forum_user($cfu_id);
+
+        //Update Rating Sum
+        $updateratingsum = $this->M_Course_Forum_User->updateratingsum_forum_user($cfu_id,$k);
+        
+        $datauseravgrating = M_Course_Forum_User::where('usr_id','=',$getidrrr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_ratingsum = $datauseravgrating->cfu_ratingsum;
+        $cfu_ratingcount = $datauseravgrating->cfu_ratingcount;
+        
+        if($cfu_ratingcount == 0)
+        {
+            $cfu_ratingcount = 1;
+            $cfu_avgscoremsg = $cfu_ratingsum/$cfu_ratingcount;
+        }
+        else
+        {
+            $cfu_avgscoremsg = $cfu_ratingsum/$cfu_ratingcount;
+        }
+        
+        $cfu_avgscoremsg = number_format((float)$cfu_avgscoremsg,2,'.','');
+
+        //Update Average Rating
+        $updateavgscoremsg = $this->M_Course_Forum_User->updateavgscoremsg_forum_user($cfu_id,$cfu_avgscoremsg);
+        
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
             'usr_id'            => $this->session->userdata('id'),

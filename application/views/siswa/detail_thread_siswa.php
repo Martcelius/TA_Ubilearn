@@ -52,7 +52,7 @@
                         <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                     </div>
                     <div class="col-md-11">
-                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
+                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id) ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Beri Komentar</label>
                                 <textarea name="forum_komentarr" class="forum_komentarr"></textarea>
@@ -222,14 +222,14 @@
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                            <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
                                                 <span class="text-muted">
                                                     <span class="fa fa-star checked"></span>
                                                 </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                            <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
                                                 <span class="text-muted">
                                                     <span class="fa fa-star checked"></span>
                                                     <span class="fa fa-star checked"></span>
@@ -237,7 +237,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                            <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
                                                 <span class="text-muted">
                                                     <span class="fa fa-star checked"></span>
                                                     <span class="fa fa-star checked"></span>
@@ -267,7 +267,7 @@
                                 <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                             </div>
                             <div class="col-md-11">
-                                <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>" class="form-horizontal" method="post">
+                                <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id)?>" class="form-horizontal" method="post">
                                     <div class="form-group">
                                         <label>Beri Komentar</label>
                                         <textarea class="forum_komentar1" id="forum_komentar1<?php echo $i;?>"  name="forum_komentar1"></textarea>
@@ -423,14 +423,14 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
+                                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar">
                                                             <span class="text-muted">
                                                                 <span class="fa fa-star checked"></span>
                                                             </span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
                                                             <span class="text-muted">
                                                                 <span class="fa fa-star checked"></span>
                                                                 <span class="fa fa-star checked"></span>
@@ -438,7 +438,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
                                                             <span class="text-muted">
                                                                 <span class="fa fa-star checked"></span>
                                                                 <span class="fa fa-star checked"></span>
@@ -466,7 +466,7 @@
                                         <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                                     </div>
                                     <div class="col-md-11">
-                                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id) ?>" class="form-horizontal" method="post">
+                                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id) ?>" class="form-horizontal" method="post">
                                             <div class="form-group">
                                                 <label>Beri Komentar</label>
                                                 <textarea class="forum_komentar2" id="forum_komentar2<?php echo $i;?>" name="forum_komentar2"></textarea>
@@ -619,14 +619,14 @@
                                                         </button>
                                                         <ul class="dropdown-menu">
                                                             <li>
-                                                                <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar">
+                                                                <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar">
                                                                     <span class="text-muted">
                                                                         <span class="fa fa-star checked"></span>
                                                                     </span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                                <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
                                                                     <span class="text-muted">
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
@@ -634,7 +634,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k) ?>" class="rateStar" >
+                                                                <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
                                                                     <span class="text-muted">
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>

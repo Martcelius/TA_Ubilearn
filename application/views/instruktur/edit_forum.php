@@ -26,11 +26,12 @@
 
                 <div class="mdl-card__supporting-text">
                     <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->crs_id) ?>" class="form-horizontal" method="post">
-
                         <div class="form-group">
-                            <label for="inputjudulforum" class="col-sm-2 control-label" style="font-size:12px;">Judul Forum</label>
+                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Lesson</label>
                             <div class="col-sm-10">
-                                <input name="judul_forum" type="text" class="form-control" id="inputjudulforum" value="<?php echo $dataLesson->cfr_title;?>" required>
+                                <select class="form-control">
+                                    <option value=""><?php echo $dataLesson->lsn_name?></option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
