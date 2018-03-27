@@ -12,7 +12,7 @@ class At_risk extends CI_Controller {
         } else if ($this->session->userdata('level')=="1") {
             redirect('admin/dashboard');
         } else if ($this->session->userdata('level') == NULL) {
-            redirect('C_login/landing_page');
+            redirect('');
         }
     }
     public function index($crs_id,$usr_id)
