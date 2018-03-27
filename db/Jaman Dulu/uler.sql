@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 27 Mar 2018 pada 15.21
--- Versi Server: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Host: localhost
+-- Generation Time: Mar 19, 2018 at 01:00 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,26 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ulearn`
+-- Database: `uler`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `at_risk`
---
-
-CREATE TABLE `at_risk` (
-  `ar_id` int(10) NOT NULL,
-  `usr_id` int(10) UNSIGNED DEFAULT NULL,
-  `ass_id` int(10) UNSIGNED DEFAULT NULL,
-  `crs_id` int(10) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `course`
+-- Table structure for table `course`
 --
 
 CREATE TABLE `course` (
@@ -54,7 +41,7 @@ CREATE TABLE `course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course`
+-- Dumping data for table `course`
 --
 
 INSERT INTO `course` (`crs_id`, `crs_code`, `crs_name`, `crs_summary`, `crs_univ`, `crs_timecreated`, `crs_timemodified`, `cat_id`, `usr_id`) VALUES
@@ -66,7 +53,7 @@ INSERT INTO `course` (`crs_id`, `crs_code`, `crs_name`, `crs_summary`, `crs_univ
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment`
+-- Table structure for table `course_assesment`
 --
 
 CREATE TABLE `course_assesment` (
@@ -84,23 +71,22 @@ CREATE TABLE `course_assesment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment`
+-- Dumping data for table `course_assesment`
 --
 
 INSERT INTO `course_assesment` (`ass_id`, `ass_tipe`, `ass_name`, `ass_desc`, `ass_timeopen`, `ass_timeclose`, `ass_shufflequestions`, `ass_timelimit`, `ass_timecreated`, `ass_timemodified`, `crs_id`) VALUES
-(1, 'Kuis', 'Kuis 1', 'Kuis 1 mencakup materi mesin inferensi', '2018-03-07 10:00:00', '2018-08-07 12:00:00', NULL, NULL, '2018-03-05 04:32:07', '2018-03-05 04:32:07', 14),
+(1, 'Kuis', 'Kuis 1', 'Kuis 1 mencakup materi mesin inferensi', '2018-03-07 10:00:00', '2018-03-07 12:00:00', NULL, NULL, '2018-03-05 04:32:07', '2018-03-05 04:32:07', 14),
 (2, 'Pre-test', 'Pre-test Kuis 2', '-', '2018-03-05 23:00:00', '2018-03-30 12:35:00', NULL, NULL, '2018-03-05 21:49:39', '2018-03-16 13:00:22', 14),
 (3, 'Kuis', 'Kuis 3', '-', '2018-03-15 08:00:00', '2018-07-01 09:25:00', NULL, NULL, '2018-03-15 09:31:55', '2018-03-15 09:31:55', 14),
 (4, 'Kuis', 'Kuis 1 SPPK', '-', '2018-03-14 21:55:00', '2018-03-17 06:55:00', NULL, NULL, '2018-03-15 10:02:17', '2018-03-15 10:02:17', 19),
 (5, 'Kuis', 'Kuis 1 Mosi', '-', '2018-03-14 10:05:00', '2018-03-17 10:00:00', NULL, NULL, '2018-03-15 10:19:10', '2018-03-15 10:19:10', 18),
 (6, 'Kuis', 'RPL - 1', '-', '2018-03-15 08:15:00', '2018-03-23 08:15:00', NULL, NULL, '2018-03-16 08:19:48', '2018-03-16 08:19:48', 20),
-(7, 'Kuis', 'Naive Bayes', '-', '2018-03-16 17:00:00', '2018-03-31 14:00:00', NULL, NULL, '2018-03-17 14:08:25', '2018-03-17 14:08:25', 19),
-(8, 'Kuis', 'aaaa', 'aaaa', '2018-03-27 05:05:00', '2018-03-28 06:05:00', NULL, NULL, '2018-03-27 05:10:42', '2018-03-27 05:10:42', 14);
+(7, 'Kuis', 'Naive Bayes', '-', '2018-03-16 17:00:00', '2018-03-31 14:00:00', NULL, NULL, '2018-03-17 14:08:25', '2018-03-17 14:08:25', 19);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment_question`
+-- Table structure for table `course_assesment_question`
 --
 
 CREATE TABLE `course_assesment_question` (
@@ -114,7 +100,7 @@ CREATE TABLE `course_assesment_question` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment_question`
+-- Dumping data for table `course_assesment_question`
 --
 
 INSERT INTO `course_assesment_question` (`qst_id`, `qst_text`, `qst_shuffleanswers`, `qst_timecreated`, `qst_timemodified`, `ass_id`, `loc_id`) VALUES
@@ -133,14 +119,12 @@ INSERT INTO `course_assesment_question` (`qst_id`, `qst_text`, `qst_shuffleanswe
 (15, '<p>Pertanyaan dummy 2</p>', NULL, '2018-03-16 08:19:48', '2018-03-16 08:19:48', 6, 0),
 (16, '<p>Pertnyaan dummy 3</p>', NULL, '2018-03-16 08:19:48', '2018-03-16 08:19:48', 6, 0),
 (17, '<p>Pertanyaan dummy 4</p>', NULL, '2018-03-16 08:19:48', '2018-03-16 08:19:48', 6, 0),
-(18, '<p>soal dummy 1</p>', NULL, '2018-03-17 14:08:25', '2018-03-17 14:08:25', 7, 5),
-(19, '<p>asdasdasfafads</p>', NULL, '2018-03-27 05:10:42', '2018-03-27 05:10:42', 8, 3),
-(20, '<p>asdasdasd</p>', NULL, '2018-03-27 05:10:42', '2018-03-27 05:10:42', 8, 4);
+(18, '<p>soal dummy 1</p>', NULL, '2018-03-17 14:08:25', '2018-03-17 14:08:25', 7, 5);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment_questions_answer`
+-- Table structure for table `course_assesment_questions_answer`
 --
 
 CREATE TABLE `course_assesment_questions_answer` (
@@ -151,7 +135,7 @@ CREATE TABLE `course_assesment_questions_answer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment_questions_answer`
+-- Dumping data for table `course_assesment_questions_answer`
 --
 
 INSERT INTO `course_assesment_questions_answer` (`ans_id`, `ans_text`, `ans_point`, `qst_id`) VALUES
@@ -229,22 +213,12 @@ INSERT INTO `course_assesment_questions_answer` (`ans_id`, `ans_text`, `ans_poin
 (87, 'false', '0.0000000', 18),
 (88, 'false', '0.0000000', 18),
 (89, 'false', '0.0000000', 18),
-(90, 'false', '0.0000000', 18),
-(91, 'ssd', '10.0000000', 19),
-(92, 'sss', '0.0000000', 19),
-(93, 'aaa', '0.0000000', 19),
-(94, 'www', '0.0000000', 19),
-(95, 'qqq', '0.0000000', 19),
-(96, 'rrr', '90.0000000', 20),
-(97, 'eeee', '0.0000000', 20),
-(98, 'aaa', '0.0000000', 20),
-(99, 'www', '0.0000000', 20),
-(100, 'qqq', '0.0000000', 20);
+(90, 'false', '0.0000000', 18);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment_questions_answer_of_student`
+-- Table structure for table `course_assesment_questions_answer_of_student`
 --
 
 CREATE TABLE `course_assesment_questions_answer_of_student` (
@@ -256,7 +230,7 @@ CREATE TABLE `course_assesment_questions_answer_of_student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment_questions_answer_of_student`
+-- Dumping data for table `course_assesment_questions_answer_of_student`
 --
 
 INSERT INTO `course_assesment_questions_answer_of_student` (`ast_id`, `ast_point`, `ass_id`, `ans_id`, `usr_id`) VALUES
@@ -274,14 +248,12 @@ INSERT INTO `course_assesment_questions_answer_of_student` (`ast_id`, `ast_point
 (22, '0.0000000', 6, 67, 44),
 (23, '25.0000000', 6, 74, 44),
 (24, '25.0000000', 6, 76, 44),
-(25, '25.0000000', 6, 83, 44),
-(26, '0.0000000', 8, 94, 42),
-(27, '90.0000000', 8, 96, 42);
+(25, '25.0000000', 6, 83, 44);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment_result`
+-- Table structure for table `course_assesment_result`
 --
 
 CREATE TABLE `course_assesment_result` (
@@ -292,7 +264,7 @@ CREATE TABLE `course_assesment_result` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment_result`
+-- Dumping data for table `course_assesment_result`
 --
 
 INSERT INTO `course_assesment_result` (`id`, `ass_id`, `ass_result`, `usr_id`) VALUES
@@ -301,13 +273,12 @@ INSERT INTO `course_assesment_result` (`id`, `ass_id`, `ass_result`, `usr_id`) V
 (37, 6, 50, 44),
 (52, 3, 100, 42),
 (54, 2, 100, 42),
-(55, 4, 75, 44),
-(56, 8, 90, 42);
+(55, 4, 75, 44);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assignment`
+-- Table structure for table `course_assignment`
 --
 
 CREATE TABLE `course_assignment` (
@@ -322,19 +293,17 @@ CREATE TABLE `course_assignment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assignment`
+-- Dumping data for table `course_assignment`
 --
 
 INSERT INTO `course_assignment` (`asg_id`, `asg_name`, `asg_text`, `asg_attachment`, `asg_duedate`, `asg_timecreated`, `asg_timemodified`, `crs_id`) VALUES
 (1, 'Tugas 1 - Intro Mesin Inferensi', '<p><strong>Pada lingkungan pembelajaran <em>ubiquitous learning</em>, <em>learner </em>akan menerima materi pembelajaran sesuai dengan kondisi serta interaksi <em>learner </em>dengan sistem. Ada <em>learner </em>yang lulus mengikuti kelas pembelajaran, ada juga yang gagal. Dalam beberapa tahun terakhir ini, studi telah menunjukan minat dan perhatian yang terus meningkat dari berbagai negara mengenai tingginya ketidaklulusan <em>learner</em>. Berbagai cara dilakukan untuk membantu <em>learner</em', 'Tugas_1_-_Intro_Mesin_Inferensi1520338085.pdf', '2018-03-13 23:55:00', '2018-03-05 20:56:22', '2018-03-06 12:12:23', 14),
-(2, 'Tugas 2 - Implementasi Mesin Inferensi', '<p>-</p>\r\n', 'Tugas_2_-_Implementasi_Mesin_Inferensi1520305092.pdf', '2018-04-06 23:55:00', '2018-03-05 20:58:12', '2018-03-05 20:58:12', 14),
-(3, 'asfasdfasdf', '<p>sadfasdfasdfsdf</p>', 'asfasdfasdf1521559016.pdf', '2018-03-21 22:15:00', '2018-03-20 15:16:56', '2018-03-20 15:16:56', 14),
-(4, 'aaaa', '<p>aaaa</p>', 'aaaa1521559105.pdf', '2018-03-21 14:15:00', '2018-03-20 15:18:25', '2018-03-20 15:18:25', 14);
+(2, 'Tugas 2 - Implementasi Mesin Inferensi', '<p>-</p>\r\n', 'Tugas_2_-_Implementasi_Mesin_Inferensi1520305092.pdf', '2018-04-06 23:55:00', '2018-03-05 20:58:12', '2018-03-05 20:58:12', 14);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assignment_loc`
+-- Table structure for table `course_assignment_loc`
 --
 
 CREATE TABLE `course_assignment_loc` (
@@ -346,7 +315,7 @@ CREATE TABLE `course_assignment_loc` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assignment_submission`
+-- Table structure for table `course_assignment_submission`
 --
 
 CREATE TABLE `course_assignment_submission` (
@@ -361,7 +330,7 @@ CREATE TABLE `course_assignment_submission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assignment_submission`
+-- Dumping data for table `course_assignment_submission`
 --
 
 INSERT INTO `course_assignment_submission` (`sub_id`, `sub_attachment`, `sub_comment`, `sub_due_status`, `sub_timecreated`, `sub_timemodified`, `usr_id`, `asg_id`) VALUES
@@ -371,7 +340,7 @@ INSERT INTO `course_assignment_submission` (`sub_id`, `sub_attachment`, `sub_com
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_category`
+-- Table structure for table `course_category`
 --
 
 CREATE TABLE `course_category` (
@@ -382,7 +351,7 @@ CREATE TABLE `course_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_category`
+-- Dumping data for table `course_category`
 --
 
 INSERT INTO `course_category` (`cat_id`, `cat_name`, `cat_timecreated`, `cat_timemodified`) VALUES
@@ -391,7 +360,7 @@ INSERT INTO `course_category` (`cat_id`, `cat_name`, `cat_timecreated`, `cat_tim
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_content`
+-- Table structure for table `course_content`
 --
 
 CREATE TABLE `course_content` (
@@ -408,7 +377,7 @@ CREATE TABLE `course_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_content`
+-- Dumping data for table `course_content`
 --
 
 INSERT INTO `course_content` (`cnt_id`, `cnt_name`, `cnt_desc`, `cnt_comment`, `cnt_type`, `cnt_source`, `cnt_timecreated`, `cnt_timemodified`, `lsn_id`, `loc_id`) VALUES
@@ -418,7 +387,7 @@ INSERT INTO `course_content` (`cnt_id`, `cnt_name`, `cnt_desc`, `cnt_comment`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_enrol`
+-- Table structure for table `course_enrol`
 --
 
 CREATE TABLE `course_enrol` (
@@ -431,7 +400,7 @@ CREATE TABLE `course_enrol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_enrol`
+-- Dumping data for table `course_enrol`
 --
 
 INSERT INTO `course_enrol` (`enr_id`, `enr_status`, `enr_timecreated`, `enr_timemodified`, `usr_id`, `crs_id`) VALUES
@@ -448,7 +417,7 @@ INSERT INTO `course_enrol` (`enr_id`, `enr_status`, `enr_timecreated`, `enr_time
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_enrol_detail`
+-- Table structure for table `course_enrol_detail`
 --
 
 CREATE TABLE `course_enrol_detail` (
@@ -463,30 +432,29 @@ CREATE TABLE `course_enrol_detail` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum`
+-- Table structure for table `course_forum`
 --
 
 CREATE TABLE `course_forum` (
   `cfr_id` int(10) UNSIGNED NOT NULL,
+  `cfr_title` varchar(75) NOT NULL,
   `cfr_desc` varchar(150) NOT NULL,
   `usr_id` int(10) UNSIGNED NOT NULL,
-  `lsn_id` int(10) UNSIGNED NOT NULL,
-  `cfr_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `cfr_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `lsn_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_forum`
+-- Dumping data for table `course_forum`
 --
 
-INSERT INTO `course_forum` (`cfr_id`, `cfr_desc`, `usr_id`, `lsn_id`, `cfr_timecreated`, `cfr_timemodified`) VALUES
-(30, '<p>asd</p>', 43, 10, '2018-03-26 09:57:31', '2018-03-26 09:57:31'),
-(31, '<p>qwe</p>', 43, 11, '2018-03-26 09:58:15', '2018-03-26 09:58:15');
+INSERT INTO `course_forum` (`cfr_id`, `cfr_title`, `cfr_desc`, `usr_id`, `lsn_id`) VALUES
+(8, 'Introduction', 'Pengenalan introduction', 45, 12),
+(9, 'Inferensi', '<p>Diskusi Inferensi</p>', 43, 10);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread`
+-- Table structure for table `course_forum_thread`
 --
 
 CREATE TABLE `course_forum_thread` (
@@ -501,16 +469,18 @@ CREATE TABLE `course_forum_thread` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_forum_thread`
+-- Dumping data for table `course_forum_thread`
 --
 
 INSERT INTO `course_forum_thread` (`cft_id`, `cft_title`, `cft_content`, `cft_rated`, `cft_timecreated`, `cft_timemodified`, `cfr_id`, `usr_id`) VALUES
-(79, 'zxc', '<p>zxc</p>', NULL, '2018-03-26 11:07:49', '2018-03-26 11:07:49', 30, 44);
+(15, 'Pengen Kenalan', '<p>Masalah Introduction</p>\r\n', NULL, '2018-03-13 10:39:24', '2018-03-13 10:39:24', 8, 42),
+(16, 'Implementasi Inferensi', '<p>adsfasd fasd fasd fasdf asdf&nbsp;</p>\r\n', NULL, '2018-03-14 01:51:41', '2018-03-14 01:51:54', 8, 42),
+(17, 'sdfasdf', '<p>asdfasdfsadf</p>\r\n', NULL, '2018-03-14 02:15:12', '2018-03-14 02:15:12', 9, 42);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread_reply`
+-- Table structure for table `course_forum_thread_reply`
 --
 
 CREATE TABLE `course_forum_thread_reply` (
@@ -519,22 +489,21 @@ CREATE TABLE `course_forum_thread_reply` (
   `ftr_timecreated` timestamp NULL DEFAULT NULL,
   `ftr_timemodified` timestamp NULL DEFAULT NULL,
   `cft_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `ftr_ratingsum` int(10) DEFAULT '0',
-  `ftr_ratingcount` int(10) DEFAULT '0'
+  `usr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_forum_thread_reply`
+-- Dumping data for table `course_forum_thread_reply`
 --
 
-INSERT INTO `course_forum_thread_reply` (`ftr_id`, `ftr_content`, `ftr_timecreated`, `ftr_timemodified`, `cft_id`, `usr_id`, `ftr_ratingsum`, `ftr_ratingcount`) VALUES
-(45, '<p>zxc</p>', '2018-03-27 02:12:22', '2018-03-27 02:12:22', 79, 44, 0, 0);
+INSERT INTO `course_forum_thread_reply` (`ftr_id`, `ftr_content`, `ftr_timecreated`, `ftr_timemodified`, `cft_id`, `usr_id`) VALUES
+(2, NULL, '2018-03-13 11:00:24', '2018-03-13 11:00:24', 15, 42),
+(4, 'Aing komen', '2018-03-14 02:52:17', '2018-03-14 02:52:17', 17, 42);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread_reply_reply`
+-- Table structure for table `course_forum_thread_reply_reply`
 --
 
 CREATE TABLE `course_forum_thread_reply_reply` (
@@ -543,15 +512,21 @@ CREATE TABLE `course_forum_thread_reply_reply` (
   `trr_timecreated` timestamp NULL DEFAULT NULL,
   `trr_timemodified` timestamp NULL DEFAULT NULL,
   `ftr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `trr_ratingsum` int(10) DEFAULT '0',
-  `trr_ratingcount` int(10) DEFAULT '0'
+  `usr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course_forum_thread_reply_reply`
+--
+
+INSERT INTO `course_forum_thread_reply_reply` (`trr_id`, `trr_content`, `trr_timecreated`, `trr_timemodified`, `ftr_id`, `usr_id`) VALUES
+(2, 'oi udah pada ngopi belommmmm', '2018-03-13 11:11:18', '2018-03-13 11:11:18', 2, 44),
+(3, 'Komen Lagi wa', '2018-03-14 02:53:00', '2018-03-14 02:53:00', 4, 42);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread_reply_reply_reply`
+-- Table structure for table `course_forum_thread_reply_reply_reply`
 --
 
 CREATE TABLE `course_forum_thread_reply_reply_reply` (
@@ -560,50 +535,20 @@ CREATE TABLE `course_forum_thread_reply_reply_reply` (
   `rrr_timecreated` timestamp NULL DEFAULT NULL,
   `rrr_timemodified` timestamp NULL DEFAULT NULL,
   `trr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `rrr_ratingsum` int(10) DEFAULT '0',
-  `rrr_ratingcount` int(10) DEFAULT '0'
+  `usr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course_forum_thread_reply_reply_reply`
+--
+
+INSERT INTO `course_forum_thread_reply_reply_reply` (`rrr_id`, `rrr_content`, `rrr_timecreated`, `rrr_timemodified`, `trr_id`, `usr_id`) VALUES
+(1, 'oiiiiiiiiiiiiiiiii', '2018-03-13 11:12:21', '2018-03-13 11:12:21', 2, 42);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_user`
---
-
-CREATE TABLE `course_forum_user` (
-  `cfu_id` int(10) UNSIGNED NOT NULL,
-  `cfr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `cfu_ratingsum` int(10) DEFAULT '0',
-  `cfu_ratingcount` int(10) DEFAULT '0',
-  `cfu_summsg` int(10) DEFAULT '0',
-  `cfu_msgin` int(10) DEFAULT '0',
-  `cfu_msgout` int(10) DEFAULT '0',
-  `cfu_sumword` int(10) DEFAULT '0',
-  `cfu_avgscrmsg` int(10) DEFAULT '0',
-  `cfu_centrality` int(10) DEFAULT '0',
-  `cfu_prestige` int(10) DEFAULT '0',
-  `cfu_timecreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `cfu_timemodified` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `course_forum_user`
---
-
-INSERT INTO `course_forum_user` (`cfu_id`, `cfr_id`, `usr_id`, `cfu_ratingsum`, `cfu_ratingcount`, `cfu_summsg`, `cfu_msgin`, `cfu_msgout`, `cfu_sumword`, `cfu_avgscrmsg`, `cfu_centrality`, `cfu_prestige`, `cfu_timecreated`, `cfu_timemodified`) VALUES
-(2, 30, 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-26 09:57:31', '2018-03-27 02:00:35'),
-(3, 30, 44, 0, 0, 1, 0, 1, 0, 0, 0, 0, '2018-03-26 09:57:31', '2018-03-27 02:12:22'),
-(4, 30, 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-26 09:57:31', '2018-03-27 02:00:35'),
-(5, 31, 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-26 09:58:16', '2018-03-26 09:58:16'),
-(6, 31, 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-26 09:58:16', '2018-03-26 09:58:16'),
-(7, 31, 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-26 09:58:16', '2018-03-26 09:58:16');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `course_learning_outcomes`
+-- Table structure for table `course_learning_outcomes`
 --
 
 CREATE TABLE `course_learning_outcomes` (
@@ -615,7 +560,7 @@ CREATE TABLE `course_learning_outcomes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_learning_outcomes`
+-- Dumping data for table `course_learning_outcomes`
 --
 
 INSERT INTO `course_learning_outcomes` (`loc_id`, `loc_desc`, `loc_timecreated`, `loc_timemodified`, `crs_id`) VALUES
@@ -628,7 +573,7 @@ INSERT INTO `course_learning_outcomes` (`loc_id`, `loc_desc`, `loc_timecreated`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_lesson`
+-- Table structure for table `course_lesson`
 --
 
 CREATE TABLE `course_lesson` (
@@ -641,7 +586,7 @@ CREATE TABLE `course_lesson` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_lesson`
+-- Dumping data for table `course_lesson`
 --
 
 INSERT INTO `course_lesson` (`lsn_id`, `lsn_name`, `lsn_intro`, `lsn_timecreated`, `lsn_timemodified`, `crs_id`) VALUES
@@ -653,7 +598,7 @@ INSERT INTO `course_lesson` (`lsn_id`, `lsn_name`, `lsn_intro`, `lsn_timecreated
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lesson_access_log`
+-- Table structure for table `lesson_access_log`
 --
 
 CREATE TABLE `lesson_access_log` (
@@ -663,7 +608,7 @@ CREATE TABLE `lesson_access_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `lesson_access_log`
+-- Dumping data for table `lesson_access_log`
 --
 
 INSERT INTO `lesson_access_log` (`lal_id`, `usr_id`, `lsn_id`) VALUES
@@ -672,90 +617,73 @@ INSERT INTO `lesson_access_log` (`lal_id`, `usr_id`, `lsn_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `notifications`
---
-
-CREATE TABLE `notifications` (
-  `ntf_id` int(10) NOT NULL,
-  `ntf_type` varchar(10) DEFAULT NULL,
-  `ntf_instructor` varchar(50) NOT NULL,
-  `ntf_message` tinytext,
-  `ntf_read` varchar(1) NOT NULL DEFAULT 'N',
-  `ntf_time` datetime DEFAULT CURRENT_TIMESTAMP,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `ass_id` int(10) UNSIGNED DEFAULT NULL,
-  `lsn_id` int(10) UNSIGNED DEFAULT NULL,
-  `asg_id` int(10) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `notifications`
---
-
-INSERT INTO `notifications` (`ntf_id`, `ntf_type`, `ntf_instructor`, `ntf_message`, `ntf_read`, `ntf_time`, `usr_id`, `ass_id`, `lsn_id`, `asg_id`) VALUES
-(1, 'ASG', 'Dade Nurjanah', 'Menambahkan konten materi baru.', 'Y', '2018-03-20 22:18:25', 42, NULL, NULL, 4),
-(2, 'ASG', 'Yanti Rusmawanti', 'Menambahkan Assesment baru.', 'Y', '2018-03-20 22:18:25', 42, NULL, NULL, 4),
-(3, 'ASG', '', 'Fikri Fikri menambahkan Assesment baru.', 'N', '2018-03-20 22:18:26', 46, NULL, NULL, 4),
-(4, 'ASS', 'Fikri Razzaq', 'Menambahkan assesment baru.', 'Y', '2018-03-27 12:10:43', 42, 8, NULL, NULL),
-(5, 'ASS', 'Fikri Razzaq', 'Menambahkan assesment baru.', 'N', '2018-03-27 12:10:43', 44, 8, NULL, NULL),
-(6, 'ASS', 'Fikri Razzaq', 'Menambahkan assesment baru.', 'N', '2018-03-27 12:10:43', 46, 8, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `rating_reply`
+-- Table structure for table `rating_reply`
 --
 
 CREATE TABLE `rating_reply` (
   `rry_id` int(10) NOT NULL,
   `ftr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED DEFAULT NULL,
-  `rry_rated` int(5) DEFAULT NULL,
-  `rry_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rry_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `rry_rated` int(5) NOT NULL,
+  `rry_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `rating_reply`
+-- Dumping data for table `rating_reply`
 --
 
-INSERT INTO `rating_reply` (`rry_id`, `ftr_id`, `usr_id`, `rry_rated`, `rry_timecreated`, `rry_timemodified`) VALUES
-(19, 45, NULL, NULL, '2018-03-27 02:12:22', '2018-03-27 02:12:22');
+INSERT INTO `rating_reply` (`rry_id`, `ftr_id`, `usr_id`, `rry_rated`, `rry_timecreated`) VALUES
+(1, 2, 44, 1, '2018-03-13 11:07:16'),
+(4, 2, 44, 3, '2018-03-13 11:18:30'),
+(5, 4, 44, 2, '2018-03-14 02:55:28');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rating_reply_reply`
+-- Table structure for table `rating_reply_reply`
 --
 
 CREATE TABLE `rating_reply_reply` (
   `rrp_id` int(10) NOT NULL,
   `trr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED DEFAULT NULL,
-  `rrp_rated` int(5) DEFAULT NULL,
-  `rrp_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rrp_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `rrp_rated` int(5) NOT NULL,
+  `rrp_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rating_reply_reply`
+--
+
+INSERT INTO `rating_reply_reply` (`rrp_id`, `trr_id`, `usr_id`, `rrp_rated`, `rrp_timecreated`) VALUES
+(1, 2, 42, 3, '2018-03-13 11:11:56'),
+(2, 2, 42, 3, '2018-03-13 11:19:21');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rating_reply_reply_reply`
+-- Table structure for table `rating_reply_reply_reply`
 --
 
 CREATE TABLE `rating_reply_reply_reply` (
   `rrl_id` int(10) NOT NULL,
   `rrr_id` int(10) NOT NULL,
-  `usr_id` int(10) UNSIGNED DEFAULT NULL,
-  `rrl_rated` int(5) DEFAULT NULL,
-  `rrl_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rrl_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `rrl_rated` int(5) NOT NULL,
+  `rrl_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rating_reply_reply_reply`
+--
+
+INSERT INTO `rating_reply_reply_reply` (`rrl_id`, `rrr_id`, `usr_id`, `rrl_rated`, `rrl_timecreated`) VALUES
+(3, 1, 44, 3, '2018-03-13 11:16:45');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rating_thread`
+-- Table structure for table `rating_thread`
 --
 
 CREATE TABLE `rating_thread` (
@@ -769,7 +697,7 @@ CREATE TABLE `rating_thread` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -782,7 +710,7 @@ CREATE TABLE `roles` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `university`
+-- Table structure for table `university`
 --
 
 CREATE TABLE `university` (
@@ -799,7 +727,7 @@ CREATE TABLE `university` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `university`
+-- Dumping data for table `university`
 --
 
 INSERT INTO `university` (`unv_id`, `unv_name`, `unv_latlong`, `unv_address`, `unv_contact`, `unv_email`, `unv_website`, `unv_stats`, `unv_timecreated`, `unv_timemodified`) VALUES
@@ -809,7 +737,7 @@ INSERT INTO `university` (`unv_id`, `unv_name`, `unv_latlong`, `unv_address`, `u
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -833,21 +761,21 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`, `usr_post_count`, `usr_thread_count`, `usr_reply_count`) VALUES
 (41, NULL, 'admin', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.co.id', 'avatar_default.jpg', NULL, NULL, NULL, '1', NULL, NULL, 0, 0, 0),
-(42, NULL, 'iqbal', 'Iqbal', 'Maulana', 'eedae20fc3c7a6e9c5b1102098771c70', 'iqbalmlna@student.telkomuniversity.ac.id', 'iqbal1520309207.jpeg', '3.50', NULL, '2018-03-21 02:43:40', '2', '1', '1996-08-07', 2, 0, 0),
+(42, NULL, 'iqbal', 'Iqbal', 'Maulana', 'eedae20fc3c7a6e9c5b1102098771c70', 'iqbalmlna@student.telkomuniversity.ac.id', 'iqbal1520309207.jpeg', '3.50', NULL, '2018-03-05 22:06:47', '2', '1', '1996-08-07', 0, 0, 0),
 (43, 'RZQ', 'razzaq', 'Fikri', 'Razzaq', '2f3383ed694d0e9446f98e90abf539cc', 'fikri@razzaq.gmail.com', 'razzaq1520959378.jpg', NULL, NULL, '2018-03-13 16:42:58', '3', '1', '1995-06-19', 0, 0, 0),
-(44, NULL, 'adzan', 'Adzan', 'Anugrah', '88c7dc5f4ea5d6f5283946f53e166dfe', 'adzan@anu.co.id', 'adzan1520314965.jpg', NULL, NULL, '2018-03-27 02:12:22', '2', '2', '1996-07-25', 33, 5, 0),
+(44, NULL, 'adzan', 'Adzan', 'Anugrah', '88c7dc5f4ea5d6f5283946f53e166dfe', 'adzan@anu.co.id', 'adzan1520314965.jpg', NULL, NULL, '2018-03-06 05:42:45', '2', '2', '1996-07-25', 0, 0, 0),
 (45, NULL, 'nungki', 'Nungki', 'Selviandro', '6d882a978ee7a24596f5bb9d9e07d250', 'nungkiselviandro@gmail.com', 'avatar_default.jpg', NULL, NULL, NULL, '3', '1', '1956-07-08', 0, 0, 0),
 (46, NULL, 'martcel', 'Martcelius', 'Saragih', 'a0e13e106218e1cb1b72d5b58a85ab58', 'marsel@marsel.ac.id', 'martcel1521275671.jpeg', NULL, NULL, '2018-03-17 08:34:31', '2', '1', '2002-06-12', 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_logs`
+-- Table structure for table `user_logs`
 --
 
 CREATE TABLE `user_logs` (
@@ -863,7 +791,7 @@ CREATE TABLE `user_logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_logs`
+-- Dumping data for table `user_logs`
 --
 
 INSERT INTO `user_logs` (`log_id`, `log_time`, `usr_id`, `log_event_context`, `log_referrer`, `log_name`, `log_origin`, `log_ip`, `log_desc`) VALUES
@@ -1383,238 +1311,11 @@ INSERT INTO `user_logs` (`log_id`, `log_time`, `usr_id`, `log_event_context`, `l
 (549, '2018-03-19 11:27:22', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0', '127.0.0.1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
 (550, '2018-03-19 11:27:49', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0', '127.0.0.1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
 (551, '2018-03-19 11:27:56', 42, 'View Lesson: Mesin Inferensi', '/TA_Ubilearn/siswa/materi/10', 'View Course', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0', '127.0.0.1', 'iqbal melakukan aksi View Lesson \'Mesin Inferensi\' pada Course \'Sistem Berbasis Pengetahuan\''),
-(552, '2018-03-19 11:28:02', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0', '127.0.0.1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(553, '2018-03-20 15:15:56', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'razzaq melakukan aksi Login'),
-(554, '2018-03-20 15:19:43', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Login'),
-(555, '2018-03-20 15:48:13', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(556, '2018-03-20 15:48:56', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(557, '2018-03-20 15:49:34', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(558, '2018-03-20 15:51:24', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(559, '2018-03-20 15:52:08', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(560, '2018-03-20 16:01:27', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(561, '2018-03-20 16:02:40', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(562, '2018-03-20 16:03:51', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(563, '2018-03-20 16:04:51', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(564, '2018-03-20 16:05:24', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(565, '2018-03-20 17:10:34', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'razzaq melakukan aksi Login'),
-(566, '2018-03-20 17:38:53', 43, 'Delete Thread: ', '/TA_Ubilearn/instruktur/delete_thread_instruktur/71/9', 'Delete Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'razzaq melakukan aksi Delete Thread \'\''),
-(567, '2018-03-21 01:21:42', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'razzaq melakukan aksi Login'),
-(568, '2018-03-21 02:05:00', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi Login'),
-(569, '2018-03-21 02:05:47', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(570, '2018-03-21 02:06:35', 44, 'Create Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/17', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi Create Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(571, '2018-03-21 02:06:35', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(572, '2018-03-21 02:07:27', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Login'),
-(573, '2018-03-21 02:08:07', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(574, '2018-03-21 02:08:11', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(575, '2018-03-21 02:09:33', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'razzaq melakukan aksi Login'),
-(576, '2018-03-21 02:09:58', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi Login'),
-(577, '2018-03-21 02:10:06', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Login'),
-(578, '2018-03-21 02:10:25', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(579, '2018-03-21 02:10:27', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(580, '2018-03-21 02:14:20', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi Login'),
-(581, '2018-03-21 02:14:30', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(582, '2018-03-21 02:14:33', 44, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(583, '2018-03-21 02:15:50', 44, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(584, '2018-03-21 02:17:02', 44, 'Create Reply: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/72', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi Create Reply pada \'Membahas tentang apa Mesin Inferensi?\''),
-(585, '2018-03-21 02:17:02', 44, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(586, '2018-03-21 02:19:17', 44, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(587, '2018-03-21 02:19:30', 44, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(588, '2018-03-21 02:19:38', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Login'),
-(589, '2018-03-21 02:19:49', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(590, '2018-03-21 02:19:52', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(591, '2018-03-21 02:20:03', 42, 'Create Reply: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/72', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Create Reply pada \'Membahas tentang apa Mesin Inferensi?\''),
-(592, '2018-03-21 02:20:04', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(593, '2018-03-21 02:20:56', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(594, '2018-03-21 02:21:24', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(595, '2018-03-21 02:21:27', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(596, '2018-03-21 02:21:50', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'razzaq melakukan aksi Login'),
-(597, '2018-03-21 02:43:04', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Login'),
-(598, '2018-03-21 02:43:24', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(599, '2018-03-21 02:43:27', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(600, '2018-03-21 02:43:33', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(601, '2018-03-21 02:43:40', 42, 'Create Reply: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/thread/insert_komentar_reply_reply_reply/15/72', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Create Reply pada \'Membahas tentang apa Mesin Inferensi?\''),
-(602, '2018-03-21 02:43:40', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(603, '2018-03-21 02:45:47', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'razzaq melakukan aksi Login'),
-(604, '2018-03-21 02:54:01', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi Login'),
-(605, '2018-03-21 02:54:12', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(606, '2018-03-21 02:54:14', 44, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(607, '2018-03-21 02:54:16', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(608, '2018-03-21 03:03:00', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi Login'),
-(609, '2018-03-21 03:03:11', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(610, '2018-03-21 03:03:13', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.16', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(611, '2018-03-21 04:58:01', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(612, '2018-03-21 04:58:55', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(613, '2018-03-21 04:58:59', 42, 'View Thread: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/siswa/detail_thread_siswa/72', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Thread \'Membahas tentang apa Mesin Inferensi?\''),
-(614, '2018-03-21 04:59:02', 42, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Forum \'Introduction\''),
-(615, '2018-03-21 04:59:21', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(616, '2018-03-21 05:04:06', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Login'),
-(617, '2018-03-21 05:04:21', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(618, '2018-03-21 05:05:03', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(619, '2018-03-21 05:05:47', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(620, '2018-03-21 05:07:43', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(621, '2018-03-21 05:08:02', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(622, '2018-03-21 05:56:24', 44, 'View Forum: Introduction', '/TA_Ubilearn/siswa/list_thread_siswa/17', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Introduction\''),
-(623, '2018-03-25 15:30:43', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(624, '2018-03-25 16:15:51', 43, 'Rate Post: Membahas tentang apa Mesin Inferensi?', '/TA_Ubilearn/instruktur/thread/insert_rating_reply/13/72/1', 'Rate Post', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Rate Post pada \'Membahas tentang apa Mesin Inferensi?\''),
-(625, '2018-03-26 00:17:48', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Login'),
-(626, '2018-03-26 01:23:45', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(627, '2018-03-26 04:36:39', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(628, '2018-03-26 06:33:37', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(629, '2018-03-26 07:24:59', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Login'),
-(630, '2018-03-26 07:37:34', 44, 'View Forum: ', '/TA_Ubilearn/siswa/list_thread_siswa/20', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'\''),
-(631, '2018-03-26 07:40:45', 44, 'View Forum: ', '/TA_Ubilearn/siswa/list_thread_siswa/20', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'\''),
-(632, '2018-03-26 07:40:56', 44, 'View Forum: Ontologi Tools', '/TA_Ubilearn/siswa/list_thread_siswa/20', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'\''),
-(633, '2018-03-26 07:41:36', 44, 'View Forum: Ontologi Tools', '/TA_Ubilearn/siswa/list_thread_siswa/20', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Ontologi Tools\''),
-(634, '2018-03-26 07:42:00', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(635, '2018-03-26 07:42:28', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Login'),
-(636, '2018-03-26 07:42:35', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/21', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(637, '2018-03-26 07:43:02', 44, 'Create Thread: Thread 1', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/21', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Thread \'Thread 1\''),
-(638, '2018-03-26 07:43:03', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/21', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(639, '2018-03-26 07:43:15', 44, 'Create Thread: Thread 2', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/21', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Thread \'Thread 2\''),
-(640, '2018-03-26 07:43:15', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/21', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(641, '2018-03-26 07:43:20', 44, 'View Thread: Thread 1', '/TA_Ubilearn/siswa/detail_thread_siswa/73', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread 1\''),
-(642, '2018-03-26 07:43:28', 44, 'Create Reply: Thread 1', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/73', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'Thread 1\''),
-(643, '2018-03-26 07:43:28', 44, 'View Thread: Thread 1', '/TA_Ubilearn/siswa/detail_thread_siswa/73', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread 1\''),
-(644, '2018-03-26 07:43:37', 44, 'Create Reply: Thread 1', '/TA_Ubilearn/siswa/thread/insert_komentar_reply_reply/14/73', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'Thread 1\''),
-(645, '2018-03-26 07:43:37', 44, 'View Thread: Thread 1', '/TA_Ubilearn/siswa/detail_thread_siswa/73', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread 1\''),
-(646, '2018-03-26 07:43:43', 44, 'Create Reply: Thread 1', '/TA_Ubilearn/siswa/thread/insert_komentar_reply_reply_reply/16/73', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'Thread 1\''),
-(647, '2018-03-26 07:43:44', 44, 'View Thread: Thread 1', '/TA_Ubilearn/siswa/detail_thread_siswa/73', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread 1\''),
-(648, '2018-03-26 07:44:31', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/21', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(649, '2018-03-26 09:01:55', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/21', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(650, '2018-03-26 09:02:14', 44, 'Create Thread: Thread Pertama', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/21', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Thread \'Thread Pertama\''),
-(651, '2018-03-26 09:02:14', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/21', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(652, '2018-03-26 09:07:42', 44, 'View Thread: Thread Pertama', '/TA_Ubilearn/siswa/detail_thread_siswa/75', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread Pertama\''),
-(653, '2018-03-26 09:07:48', 44, 'Create Reply: Thread Pertama', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/75', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'Thread Pertama\''),
-(654, '2018-03-26 09:07:48', 44, 'View Thread: Thread Pertama', '/TA_Ubilearn/siswa/detail_thread_siswa/75', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread Pertama\''),
-(655, '2018-03-26 09:07:54', 44, 'Create Reply: Thread Pertama', '/TA_Ubilearn/siswa/thread/insert_komentar_reply_reply/15/75', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'Thread Pertama\''),
-(656, '2018-03-26 09:07:54', 44, 'View Thread: Thread Pertama', '/TA_Ubilearn/siswa/detail_thread_siswa/75', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread Pertama\''),
-(657, '2018-03-26 09:08:00', 44, 'Create Reply: Thread Pertama', '/TA_Ubilearn/siswa/thread/insert_komentar_reply_reply_reply/17/75', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'Thread Pertama\''),
-(658, '2018-03-26 09:08:00', 44, 'View Thread: Thread Pertama', '/TA_Ubilearn/siswa/detail_thread_siswa/75', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Thread Pertama\''),
-(659, '2018-03-26 09:27:26', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(660, '2018-03-26 09:56:45', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(661, '2018-03-26 10:34:37', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Login'),
-(662, '2018-03-26 10:34:44', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(663, '2018-03-26 10:35:03', 44, 'Create Thread: Aku mau nanya', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/30', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Thread \'Aku mau nanya\''),
-(664, '2018-03-26 10:35:04', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(665, '2018-03-26 10:35:08', 44, 'View Thread: Aku mau nanya', '/TA_Ubilearn/siswa/detail_thread_siswa/76', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Aku mau nanya\''),
-(666, '2018-03-26 10:35:20', 44, 'Create Reply: Aku mau nanya', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/76/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'Aku mau nanya\''),
-(667, '2018-03-26 10:35:20', 44, 'View Thread: Aku mau nanya', '/TA_Ubilearn/siswa/detail_thread_siswa/76', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'Aku mau nanya\''),
-(668, '2018-03-26 10:38:24', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(669, '2018-03-26 10:38:40', 44, 'Create Thread: FORUM THREAD 1', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/30', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Thread \'FORUM THREAD 1\''),
-(670, '2018-03-26 10:38:40', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(671, '2018-03-26 10:38:53', 44, 'View Thread: FORUM THREAD 1', '/TA_Ubilearn/siswa/detail_thread_siswa/77', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'FORUM THREAD 1\''),
-(672, '2018-03-26 10:39:00', 44, 'Create Reply: FORUM THREAD 1', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/77/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'FORUM THREAD 1\''),
-(673, '2018-03-26 10:39:00', 44, 'View Thread: FORUM THREAD 1', '/TA_Ubilearn/siswa/detail_thread_siswa/77', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'FORUM THREAD 1\''),
-(674, '2018-03-26 10:42:17', 44, 'View Thread: FORUM THREAD 1', '/TA_Ubilearn/siswa/detail_thread_siswa/77', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'FORUM THREAD 1\''),
-(675, '2018-03-26 10:42:57', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(676, '2018-03-26 10:43:03', 44, 'Create Thread: asd', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/30', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Thread \'asd\''),
-(677, '2018-03-26 10:43:04', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(678, '2018-03-26 10:43:07', 44, 'View Thread: asd', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'asd\''),
-(679, '2018-03-26 10:44:29', 44, 'View Thread: asd', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'asd\''),
-(680, '2018-03-26 10:44:58', 44, 'View Thread: asd', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'asd\''),
-(681, '2018-03-26 10:45:04', 44, 'Create Reply: asd', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/78/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'asd\''),
-(682, '2018-03-26 10:45:04', 44, 'View Thread: asd', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'asd\''),
-(683, '2018-03-26 10:47:55', 44, 'View Thread: asd', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'asd\''),
-(684, '2018-03-26 10:58:39', 44, 'View Thread: asd', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'asd\''),
-(685, '2018-03-26 11:04:23', 44, 'View Thread: asd', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'asd\''),
-(686, '2018-03-26 11:04:35', 44, 'View Thread: ', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'\''),
-(687, '2018-03-26 11:07:12', 44, 'View Thread: ', '/TA_Ubilearn/siswa/detail_thread_siswa/78', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'\''),
-(688, '2018-03-26 11:07:41', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(689, '2018-03-26 11:07:49', 44, 'Create Thread: zxc', '/TA_Ubilearn/siswa/thread/insert_thread_siswa/30', 'Create Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Thread \'zxc\''),
-(690, '2018-03-26 11:07:49', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(691, '2018-03-26 11:08:02', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(692, '2018-03-26 11:12:22', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(693, '2018-03-26 11:12:38', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(694, '2018-03-26 11:17:31', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\'');
-INSERT INTO `user_logs` (`log_id`, `log_time`, `usr_id`, `log_event_context`, `log_referrer`, `log_name`, `log_origin`, `log_ip`, `log_desc`) VALUES
-(695, '2018-03-26 11:17:37', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(696, '2018-03-26 11:28:10', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(697, '2018-03-26 11:28:16', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(698, '2018-03-26 11:28:23', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(699, '2018-03-26 16:47:36', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Login'),
-(700, '2018-03-26 16:49:07', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(701, '2018-03-26 16:49:10', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(702, '2018-03-26 16:53:52', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(703, '2018-03-26 16:55:53', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(704, '2018-03-26 16:55:54', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(705, '2018-03-26 16:59:59', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(706, '2018-03-26 17:00:06', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(707, '2018-03-26 17:00:07', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(708, '2018-03-26 17:11:54', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(709, '2018-03-26 17:12:02', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(710, '2018-03-26 17:12:02', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(711, '2018-03-26 17:26:18', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(712, '2018-03-26 17:26:27', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(713, '2018-03-26 17:26:28', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(714, '2018-03-26 17:30:21', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(715, '2018-03-26 17:35:00', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(716, '2018-03-26 17:35:13', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(717, '2018-03-26 17:37:22', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(718, '2018-03-26 17:45:58', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(719, '2018-03-26 17:46:05', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(720, '2018-03-26 17:46:11', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(721, '2018-03-26 17:46:11', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(722, '2018-03-26 17:50:22', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(723, '2018-03-26 17:50:35', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(724, '2018-03-26 17:51:07', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(725, '2018-03-26 17:51:15', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(726, '2018-03-26 17:51:20', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(727, '2018-03-26 17:51:27', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(728, '2018-03-26 17:51:28', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(729, '2018-03-26 17:59:18', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(730, '2018-03-26 17:59:34', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(731, '2018-03-26 18:00:03', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(732, '2018-03-26 18:00:44', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(733, '2018-03-26 18:08:15', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(734, '2018-03-26 18:13:21', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(735, '2018-03-26 18:13:31', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(736, '2018-03-26 18:13:39', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(737, '2018-03-26 18:13:39', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(738, '2018-03-26 18:18:21', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(739, '2018-03-26 18:18:36', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(740, '2018-03-26 18:18:36', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(741, '2018-03-27 01:57:02', 44, 'Login: adzan', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Login'),
-(742, '2018-03-27 01:57:14', 44, 'View Forum: Mesin Inferensi', '/TA_Ubilearn/siswa/list_thread_siswa/30', 'View Forum', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Forum \'Mesin Inferensi\''),
-(743, '2018-03-27 01:57:17', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(744, '2018-03-27 01:57:23', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(745, '2018-03-27 01:57:29', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(746, '2018-03-27 01:57:29', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(747, '2018-03-27 02:00:23', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(748, '2018-03-27 02:00:35', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(749, '2018-03-27 02:00:35', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(750, '2018-03-27 02:01:53', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(751, '2018-03-27 02:01:59', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(752, '2018-03-27 02:01:59', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(753, '2018-03-27 02:03:25', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(754, '2018-03-27 02:10:49', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(755, '2018-03-27 02:11:08', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(756, '2018-03-27 02:11:59', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(757, '2018-03-27 02:12:15', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(758, '2018-03-27 02:12:22', 44, 'Create Reply: zxc', '/TA_Ubilearn/siswa/thread/insert_komentar_reply/79/30', 'Create Reply', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi Create Reply pada \'zxc\''),
-(759, '2018-03-27 02:12:23', 44, 'View Thread: zxc', '/TA_Ubilearn/siswa/detail_thread_siswa/79/30', 'View Thread', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'adzan melakukan aksi View Thread \'zxc\''),
-(760, '2018-03-27 05:06:24', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi Login'),
-(761, '2018-03-27 05:06:35', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(762, '2018-03-27 05:09:21', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(763, '2018-03-27 05:11:00', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi Login'),
-(764, '2018-03-27 05:11:06', 42, 'View Course: Rekayasa Perangkat Lunak', '/TA_Ubilearn/siswa/course_detail/20', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Course \'Rekayasa Perangkat Lunak\''),
-(765, '2018-03-27 05:11:19', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\''),
-(766, '2018-03-27 05:11:43', 42, 'Done Assesment: {\"ass_id\":8,\"ass_tipe\":\"Kuis\",\"ass_name\":\"aaaa\",\"ass_desc\":\"aaaa\",\"ass_timeopen\":\"20', '/TA_Ubilearn/siswa/Assesment/result/8', 'Done Assesment', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi Done Assesment \'aaaa\''),
-(767, '2018-03-27 06:48:11', 43, 'Login: razzaq', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'razzaq melakukan aksi Login'),
-(768, '2018-03-27 06:48:57', 42, 'Login: iqbal', '/TA_Ubilearn/C_login/masuk', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi Login'),
-(769, '2018-03-27 06:49:05', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.18', '::1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\'');
+(552, '2018-03-19 11:28:02', 42, 'View Course: Sistem Berbasis Pengetahuan', '/TA_Ubilearn/siswa/course_detail/14', 'View Course', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0', '127.0.0.1', 'iqbal melakukan aksi View Course \'Sistem Berbasis Pengetahuan\'');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `at_risk`
---
-ALTER TABLE `at_risk`
-  ADD PRIMARY KEY (`ar_id`),
-  ADD KEY `usr_id` (`usr_id`),
-  ADD KEY `crs_id` (`crs_id`),
-  ADD KEY `ass_id` (`ass_id`);
 
 --
 -- Indexes for table `course`
@@ -1756,14 +1457,6 @@ ALTER TABLE `course_forum_thread_reply_reply_reply`
   ADD KEY `user_reply_foreign` (`usr_id`);
 
 --
--- Indexes for table `course_forum_user`
---
-ALTER TABLE `course_forum_user`
-  ADD PRIMARY KEY (`cfu_id`),
-  ADD KEY `cfu_user` (`usr_id`),
-  ADD KEY `cfu_forum` (`cfr_id`);
-
---
 -- Indexes for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
@@ -1782,16 +1475,6 @@ ALTER TABLE `course_lesson`
 --
 ALTER TABLE `lesson_access_log`
   ADD PRIMARY KEY (`lal_id`);
-
---
--- Indexes for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`ntf_id`),
-  ADD KEY `usr_foreign_key` (`usr_id`),
-  ADD KEY `lsn_foreign_key` (`lsn_id`),
-  ADD KEY `ass_foreign_key` (`ass_id`),
-  ADD KEY `asg_foreign_key` (`asg_id`);
 
 --
 -- Indexes for table `rating_reply`
@@ -1856,204 +1539,210 @@ ALTER TABLE `user_logs`
 --
 
 --
--- AUTO_INCREMENT for table `at_risk`
---
-ALTER TABLE `at_risk`
-  MODIFY `ar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
   MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `course_assesment`
 --
 ALTER TABLE `course_assesment`
-  MODIFY `ass_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ass_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_question`
 --
 ALTER TABLE `course_assesment_question`
-  MODIFY `qst_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `qst_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_questions_answer`
 --
 ALTER TABLE `course_assesment_questions_answer`
-  MODIFY `ans_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `ans_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_questions_answer_of_student`
 --
 ALTER TABLE `course_assesment_questions_answer_of_student`
-  MODIFY `ast_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ast_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_result`
 --
 ALTER TABLE `course_assesment_result`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
 --
 -- AUTO_INCREMENT for table `course_assignment`
 --
 ALTER TABLE `course_assignment`
-  MODIFY `asg_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `asg_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `course_assignment_loc`
 --
 ALTER TABLE `course_assignment_loc`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_assignment_submission`
 --
 ALTER TABLE `course_assignment_submission`
   MODIFY `sub_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `course_category`
 --
 ALTER TABLE `course_category`
   MODIFY `cat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `course_content`
 --
 ALTER TABLE `course_content`
   MODIFY `cnt_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `course_enrol`
 --
 ALTER TABLE `course_enrol`
   MODIFY `enr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `course_enrol_detail`
 --
 ALTER TABLE `course_enrol_detail`
   MODIFY `end_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_forum`
 --
 ALTER TABLE `course_forum`
-  MODIFY `cfr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `cfr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread`
 --
 ALTER TABLE `course_forum_thread`
-  MODIFY `cft_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `cft_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply`
 --
 ALTER TABLE `course_forum_thread_reply`
-  MODIFY `ftr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `ftr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply`
-  MODIFY `trr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `trr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply_reply`
-  MODIFY `rrr_id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `course_forum_user`
---
-ALTER TABLE `course_forum_user`
-  MODIFY `cfu_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `rrr_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
   MODIFY `loc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `course_lesson`
 --
 ALTER TABLE `course_lesson`
   MODIFY `lsn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `lesson_access_log`
 --
 ALTER TABLE `lesson_access_log`
   MODIFY `lal_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `ntf_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `rating_reply`
 --
 ALTER TABLE `rating_reply`
-  MODIFY `rry_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `rry_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `rating_reply_reply`
 --
 ALTER TABLE `rating_reply_reply`
-  MODIFY `rrp_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `rrp_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `rating_reply_reply_reply`
 --
 ALTER TABLE `rating_reply_reply_reply`
-  MODIFY `rrl_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `rrl_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `rating_thread`
 --
 ALTER TABLE `rating_thread`
   MODIFY `rtd_id` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `rol_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `university`
 --
 ALTER TABLE `university`
   MODIFY `unv_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
 --
 -- AUTO_INCREMENT for table `user_logs`
 --
 ALTER TABLE `user_logs`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=770;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=553;
+
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `at_risk`
---
-ALTER TABLE `at_risk`
-  ADD CONSTRAINT `at_risk_ibfk_1` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `at_risk_ibfk_3` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `at_risk_ibfk_4` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `course`
+-- Constraints for table `course`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `course_category_course_foreign` FOREIGN KEY (`cat_id`) REFERENCES `course_category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `course_user_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment`
+-- Constraints for table `course_assesment`
 --
 ALTER TABLE `course_assesment`
   ADD CONSTRAINT `course_assesment_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment_question`
+-- Constraints for table `course_assesment_question`
 --
 ALTER TABLE `course_assesment_question`
   ADD CONSTRAINT `assesment_questions_foreign` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment_questions_answer`
+-- Constraints for table `course_assesment_questions_answer`
 --
 ALTER TABLE `course_assesment_questions_answer`
   ADD CONSTRAINT `questions_answers_foreign` FOREIGN KEY (`qst_id`) REFERENCES `course_assesment_question` (`qst_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment_questions_answer_of_student`
+-- Constraints for table `course_assesment_questions_answer_of_student`
 --
 ALTER TABLE `course_assesment_questions_answer_of_student`
   ADD CONSTRAINT `answer_answerstudent_foreign` FOREIGN KEY (`ans_id`) REFERENCES `course_assesment_questions_answer` (`ans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -2061,138 +1750,122 @@ ALTER TABLE `course_assesment_questions_answer_of_student`
   ADD CONSTRAINT `users_answerstudent_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment_result`
+-- Constraints for table `course_assesment_result`
 --
 ALTER TABLE `course_assesment_result`
   ADD CONSTRAINT `assesment_foreign` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assignment`
+-- Constraints for table `course_assignment`
 --
 ALTER TABLE `course_assignment`
   ADD CONSTRAINT `course_assignment_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assignment_loc`
+-- Constraints for table `course_assignment_loc`
 --
 ALTER TABLE `course_assignment_loc`
   ADD CONSTRAINT `asg_foreign` FOREIGN KEY (`asg_id`) REFERENCES `course_assignment` (`asg_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `loc_foreign` FOREIGN KEY (`loc_id`) REFERENCES `course_learning_outcomes` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assignment_submission`
+-- Constraints for table `course_assignment_submission`
 --
 ALTER TABLE `course_assignment_submission`
   ADD CONSTRAINT `assignment_submission_foreign` FOREIGN KEY (`asg_id`) REFERENCES `course_assignment` (`asg_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_submission_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_content`
+-- Constraints for table `course_content`
 --
 ALTER TABLE `course_content`
   ADD CONSTRAINT `content_learningoutcomes_foreign` FOREIGN KEY (`loc_id`) REFERENCES `course_learning_outcomes` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `content_lesson_foreign` FOREIGN KEY (`lsn_id`) REFERENCES `course_lesson` (`lsn_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_enrol`
+-- Constraints for table `course_enrol`
 --
 ALTER TABLE `course_enrol`
   ADD CONSTRAINT `course_enrol_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_enrol_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`);
 
 --
--- Ketidakleluasaan untuk tabel `course_enrol_detail`
+-- Constraints for table `course_enrol_detail`
 --
 ALTER TABLE `course_enrol_detail`
   ADD CONSTRAINT `enrol_enrol_details_foreign` FOREIGN KEY (`enr_id`) REFERENCES `course_enrol` (`enr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `enrol_users_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum`
+-- Constraints for table `course_forum`
 --
 ALTER TABLE `course_forum`
   ADD CONSTRAINT `course_forum_foreign` FOREIGN KEY (`lsn_id`) REFERENCES `course_lesson` (`lsn_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_forum_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread`
+-- Constraints for table `course_forum_thread`
 --
 ALTER TABLE `course_forum_thread`
   ADD CONSTRAINT `forum_thread_foreign` FOREIGN KEY (`cfr_id`) REFERENCES `course_forum` (`cfr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread_reply`
+-- Constraints for table `course_forum_thread_reply`
 --
 ALTER TABLE `course_forum_thread_reply`
   ADD CONSTRAINT `cft_ftr_foreign` FOREIGN KEY (`cft_id`) REFERENCES `course_forum_thread` (`cft_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `users_ftr_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread_reply_reply`
+-- Constraints for table `course_forum_thread_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply`
   ADD CONSTRAINT `threads_posts_foreign` FOREIGN KEY (`ftr_id`) REFERENCES `course_forum_thread_reply` (`ftr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `users_posts_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread_reply_reply_reply`
+-- Constraints for table `course_forum_thread_reply_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply_reply`
   ADD CONSTRAINT `reply_reply_foreign` FOREIGN KEY (`trr_id`) REFERENCES `course_forum_thread_reply_reply` (`trr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_reply_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_user`
---
-ALTER TABLE `course_forum_user`
-  ADD CONSTRAINT `cfu_forum` FOREIGN KEY (`cfr_id`) REFERENCES `course_forum` (`cfr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cfu_user` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `course_learning_outcomes`
+-- Constraints for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
   ADD CONSTRAINT `course_loc_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_lesson`
+-- Constraints for table `course_lesson`
 --
 ALTER TABLE `course_lesson`
   ADD CONSTRAINT `course_lesson_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `asg_foreign_key` FOREIGN KEY (`asg_id`) REFERENCES `course_assignment` (`asg_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ass_foreign_key` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `lsn_foreign_key` FOREIGN KEY (`lsn_id`) REFERENCES `course_lesson` (`lsn_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usr_foreign_key` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `rating_reply`
+-- Constraints for table `rating_reply`
 --
 ALTER TABLE `rating_reply`
   ADD CONSTRAINT `ftr_foreign` FOREIGN KEY (`ftr_id`) REFERENCES `course_forum_thread_reply` (`ftr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usr_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rating_reply_reply`
+-- Constraints for table `rating_reply_reply`
 --
 ALTER TABLE `rating_reply_reply`
   ADD CONSTRAINT `reply_rating` FOREIGN KEY (`trr_id`) REFERENCES `course_forum_thread_reply_reply` (`trr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_rating` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rating_reply_reply_reply`
+-- Constraints for table `rating_reply_reply_reply`
 --
 ALTER TABLE `rating_reply_reply_reply`
   ADD CONSTRAINT `injek_rating` FOREIGN KEY (`rrr_id`) REFERENCES `course_forum_thread_reply_reply_reply` (`rrr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `userr_rating` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rating_thread`
+-- Constraints for table `rating_thread`
 --
 ALTER TABLE `rating_thread`
   ADD CONSTRAINT `rating_thread` FOREIGN KEY (`cft_id`) REFERENCES `course_forum_thread` (`cft_id`) ON DELETE CASCADE ON UPDATE CASCADE,
