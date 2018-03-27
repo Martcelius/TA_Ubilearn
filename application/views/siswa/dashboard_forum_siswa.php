@@ -1,4 +1,3 @@
-<?php use Illuminate\Database\Capsule\Manager as DB;?>
 <!-- MAIN -->
 
 <main class="mdl-layout__content">
@@ -50,8 +49,7 @@
                             </tr>
                         </thead>
                         
-                        <?php $datalistforum = DB::table('course_forum')
-                                            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+                        <?php $datalistforum = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
                                             ->where('course_lesson.lsn_id',$dataforum->lsn_id)
                                             ->get();
                                 if ($datalistforum != NULL)

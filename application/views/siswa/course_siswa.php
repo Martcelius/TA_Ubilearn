@@ -1,4 +1,3 @@
-<?php use Illuminate\Database\Capsule\Manager as DB;?>
 <main class="mdl-layout__content">
 <div class="mdl-grid cover-main">
     <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
