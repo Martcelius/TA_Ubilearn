@@ -10,11 +10,11 @@ class M_Rating_Reply extends Eloquent
     const CREATED_AT = 'rry_timecreated';
     const UPDATED_AT = 'rry_timemodified';
 
-    public function update_rating_reply($data)
+    public function update_rating_reply($data,$ftrratingsum)
     {
         $rating = M_Rating_Reply::where('ftr_id','=',$data['ftr_id'])->first();
         $rating->usr_id = $data['usr_id'];
-        $rating->rry_rated = $data['rry_rated'];
+        $rating->rry_rated = $ftrratingsum;
         return $rating->save();
     }
 

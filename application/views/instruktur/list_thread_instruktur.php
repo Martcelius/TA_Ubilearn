@@ -3,7 +3,7 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
-                <h2 style="color:white"><?php echo $judul_lesson->lsn_name?></h2>
+                <h2 style="color:white">Forum</h2>
                 <br>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="col-md-9" style="color: #ffffff; ">  
                 <div class="box box-solid box-primary">
                     <div class="box-header">
-                        <h3 class="box-title"> <?php echo $judul_forum->cfr_title ?></h3>
+                        <h3 class="box-title"> <?php echo $judul_lesson->lsn_name ?></h3>
                     </div>
                     <div class="box-footer">
                         <ul style="list-style-type:none; padding-left:1px;">                              

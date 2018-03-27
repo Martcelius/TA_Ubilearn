@@ -23,7 +23,6 @@ class Thread extends CI_Controller {
         $data['dataThread'] = M_Course_Forum_Thread::leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
             ->where('course_forum_thread.cfr_id',$cfr_id)
             ->get(['course_forum_thread.*','users.usr_firstname','users.usr_lastname']);
-        $data['judul_forum'] = M_Course_Forum::where('cfr_id',$cfr_id)->first(['cfr_title']);
         $data['judul_lesson'] = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
             ->where('course_forum.cfr_id',$cfr_id)
             ->first(['course_lesson.lsn_name']);
@@ -79,7 +78,7 @@ class Thread extends CI_Controller {
         redirect('instruktur/detail_thread_instruktur/'.$cft_id);
     }
 
-    public function insert_rating_reply($ftr_id,$cft_id,$k)
+    public function insert_rating_reply($ftr_id,$cft_id,$k,$cfr_id)
     {
         $data['ftr_id'] = $ftr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -96,9 +95,23 @@ class Thread extends CI_Controller {
         $datarating['ftr_ratingsum'] = $ftrratingsum;
         $datarating['ftr_ratingcount'] = $ftrratingcount;
         
-        $insert = $this->M_Rating_Reply->update_rating_reply($data);
+        $insert = $this->M_Rating_Reply->update_rating_reply($data, $ftrratingsum);
         $update = $this->M_Course_Forum_Thread_Reply->update_rating_reply($datarating);
 
+        $getidftr = M_Course_Forum_Thread_Reply::where('course_forum_thread_reply.ftr_id','=',$ftr_id)->first();
+
+        $datauserrating = M_Course_Forum_User::where('usr_id','=',$getidftr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_id = $datauserrating->cfu_id;
+        
+        //Update Rating Count
+        $updateratingcount = $this->M_Course_Forum_User->updateratingcount_forum_user($cfu_id);
+
+        //Update Rating Sum
+        $updateratingsum = $this->M_Course_Forum_User->updateratingsum_forum_user($cfu_id,$k);
+        
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
@@ -115,7 +128,7 @@ class Thread extends CI_Controller {
         redirect('instruktur/detail_thread_instruktur/'.$cft_id);
     }
 
-    public function insert_rating_reply_reply($trr_id,$cft_id,$k)
+    public function insert_rating_reply_reply($trr_id,$cft_id,$k,$cfr_id)
     {
         $data['trr_id'] = $trr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -132,9 +145,23 @@ class Thread extends CI_Controller {
         $datarating['trr_ratingsum'] = $trrratingsum;
         $datarating['trr_ratingcount'] = $trrratingcount;
         
-        $insert = $this->M_Rating_Reply_Reply->update_rating_reply_reply($data);
+        $insert = $this->M_Rating_Reply_Reply->update_rating_reply_reply($data, $trrratingsum);
         $update = $this->M_Course_Forum_Thread_Reply_Reply->update_rating_reply_reply($datarating);
 
+        $getidtrr = M_Course_Forum_Thread_Reply_Reply::where('course_forum_thread_reply_reply.trr_id','=',$trr_id)->first();
+
+        $datauserrating = M_Course_Forum_User::where('usr_id','=',$getidtrr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_id = $datauserrating->cfu_id;
+
+        //Update Rating Count
+        $updateratingcount = $this->M_Course_Forum_User->updateratingcount_forum_user($cfu_id);
+
+        //Update Rating Sum
+        $updateratingsum = $this->M_Course_Forum_User->updateratingsum_forum_user($cfu_id,$k);
+        
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
@@ -151,7 +178,7 @@ class Thread extends CI_Controller {
         redirect('instruktur/detail_thread_instruktur/'.$cft_id);
     }
 
-    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k)
+    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k,$cfr_id)
     {
         $data['rrr_id'] = $rrr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -168,9 +195,23 @@ class Thread extends CI_Controller {
         $datarating['rrr_ratingsum'] = $rrrratingsum;
         $datarating['rrr_ratingcount'] = $rrrratingcount;
         
-        $insert = $this->M_Rating_Reply_Reply_Reply->update_rating_reply_reply_reply($data);
+        $insert = $this->M_Rating_Reply_Reply_Reply->update_rating_reply_reply_reply($data, $rrrratingsum);
         $update = $this->M_Course_Forum_Thread_Reply_Reply_Reply->update_rating_reply_reply_reply($datarating);
 
+        $getidrrr = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.rrr_id','=',$rrr_id)->first();
+
+        $datauserrating = M_Course_Forum_User::where('usr_id','=',$getidrrr->usr_id)
+                                            ->where('cfr_id','=', $cfr_id)
+                                            ->first();
+        
+        $cfu_id = $datauserrating->cfu_id;
+
+        //Update Rating Count
+        $updateratingcount = $this->M_Course_Forum_User->updateratingcount_forum_user($cfu_id);
+
+        //Update Rating Sum
+        $updateratingsum = $this->M_Course_Forum_User->updateratingsum_forum_user($cfu_id,$k);
+        
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
             'usr_id'            => $this->session->userdata('id'),

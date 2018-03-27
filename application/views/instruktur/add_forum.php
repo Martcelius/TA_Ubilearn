@@ -35,13 +35,6 @@
                                 </select>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="inputjudulforum" class="col-sm-2 control-label" >Judul Forum</label>
-                            <div class="col-sm-10">
-                            <input name="judul_forum" type="text" class="form-control" id="inputjudulforum" placeholder="Judul Forum..." required>
-                            </div>
-                        </div>
                         <div class="form-group"  >
                             <label for="inputdeskripsiforum" class="col-sm-2 control-label" >Deskripsi Forum</label>
                             <div class="col-sm-10">

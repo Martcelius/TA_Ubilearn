@@ -78,7 +78,7 @@
                                                 <?php echo $num; ?>
                                             </td>
                                             <td style="color : rgba(255, 255, 255, 0.8);">
-                                                <?php echo $dataforum->cfr_title ?>
+                                                <?php echo $dataforum->lsn_name ?>
                                             </td>
                                             <td style="color : rgba(255, 255, 255, 0.8);">
                                                 <?php echo $dataforum->cfr_desc ?>
@@ -108,7 +108,7 @@
                                                     <?php echo $num; ?>
                                                 </td>
                                                 <td style="color : rgba(255, 255, 255, 0.8);">
-                                                    <?php echo $dataforum->cfr_title ?>
+                                                    <?php echo $dataforum->lsn_name ?>
                                                 </td>
                                                 <td style="color : rgba(255, 255, 255, 0.8);">
                                                     <?php echo $dataforum->cfr_desc ?>

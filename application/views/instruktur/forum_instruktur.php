@@ -86,7 +86,7 @@
                                                 <?php echo $num; ?>
                                             </td>
                                             <td style="color : rgba(255, 255, 255, 0.8);">
-                                                <?php echo $dataforum->cfr_title ?>
+                                                <?php echo $dataforum->lsn_name ?>
                                             </td>
                                             <td style="color : rgba(255, 255, 255, 0.8);">
                                                 <?php echo $dataforum->cfr_desc ?>
@@ -95,8 +95,20 @@
                                                 <?php echo $jumlahthread[$num] ?>
                                             </td>
                                             <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
-                                                <a href="<?php echo site_url('siswa/list_thread_siswa/'.$dataforum->cfr_id) ?>">
-                                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
+                                                <a href="<?php echo site_url('instruktur/list_thread_instruktur/'.$dataforum->cfr_id)?>">
+                                                    <button style="margin-bottom: 5px; margin-right: 5px; background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
+                                                        <i class="material-icons">remove_red_eye</i>
+                                                    </button>
+                                                </a>
+                                                <a href="<?php echo site_url('instruktur/edit_forum/'.$dataforum->cfr_id.'/'.$dataforum->crs_id)?>">
+                                                    <button style="margin-bottom: 5px; margin-right: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </a>
+                                                <a href="<?php echo site_url('instruktur/forum/delete_forum/'.$dataforum->cfr_id.'/'.$dataforum->crs_id)?>">
+                                                    <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin untuk menghapus?');">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
                                                 </a>
                                             </td>
                                         </tr>
@@ -125,8 +137,20 @@
                                                     <?php echo $jumlahthread[$num] ?>
                                                 </td>
                                                 <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
-                                                    <a href="<?php echo site_url('siswa/list_thread_siswa/'.$dataforum->cfr_id)?>">
-                                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
+                                                    <a href="<?php echo site_url('instruktur/list_thread_instruktur/'.$dataforum->cfr_id)?>">
+                                                        <button style="margin-bottom: 5px; margin-right: 5px; background-color: #067eb7;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
+                                                            <i class="material-icons">remove_red_eye</i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="<?php echo site_url('instruktur/edit_forum/'.$dataforum->cfr_id.'/'.$dataforum->crs_id)?>">
+                                                        <button style="margin-bottom: 5px; margin-right: 5px;background-color: green;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Ubah">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="<?php echo site_url('instruktur/forum/delete_forum/'.$dataforum->cfr_id.'/'.$dataforum->crs_id)?>">
+                                                        <button style="margin-bottom: 5px;background-color: red;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab " title="Hapus" onclick="return confirm('Anda yakin untuk menghapus?');">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
                                                     </a>
                                                 </td>
                                             </tr>
