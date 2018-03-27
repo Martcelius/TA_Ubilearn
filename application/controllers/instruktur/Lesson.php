@@ -38,6 +38,27 @@ $data['dataasing'] = M_Course_Assignment::where('crs_id', $id)->get();
         }
         $data['listAss'] = $listAss;
         $data['jumSoal'] = $jumSoal;
+        //at-risk
+        $data['assesment_instruktur'] = M_Course_Assesment::leftJoin("course", "course.crs_id","=","course_assesment.crs_id")
+            ->leftJoin("users","users.usr_id","=","course.usr_id")
+            ->where("course_assesment.crs_id", $id)->first();
+
+
+//        $data['ar'] = M_At_risk::leftjoin("course_assesment","course_assesment.ass_id","=","at_risk.ass_id")
+//            ->leftJoin("users","users.usr_id","=","at_risk.usr_id")
+//            ->where("course_assesment.crs_id",$crs_id)->get();
+//        $data['ar_2'] = M_User::leftjoin("at_risk","at_risk.usr_id","=","users.usr_id")
+//            ->leftJoin("course","course.crs_id","=","at_risk.crs_id")
+//            ->leftJoin("course_assesment.ass_id","=","at_risk.ass_id")
+//            ->where("at_risk.crs_id","=",$crs_id)->get();
+        $data['ar'] = M_At_risk::leftjoin("course_assesment","course_assesment.ass_id","=","at_risk.ass_id")
+            ->leftJoin("users","users.usr_id","=","at_risk.usr_id")
+            ->where("course_assesment.crs_id",$id)->groupby("at_risk.usr_id")->get();
+        $data['ar_kuis'] = M_At_risk::leftjoin("course_assesment_result","course_assesment_result.ass_id","=","at_risk.ass_id")
+            ->leftJoin("course_assesment","course_assesment.crs_id","=","at_risk.crs_id")
+            ->where("course_assesment.crs_id",$id)->groupby("course_assesment_result.ass_result")->get();
+
+        //end at-risk
         $this->load->view('layout/master', $data);
     }
 
