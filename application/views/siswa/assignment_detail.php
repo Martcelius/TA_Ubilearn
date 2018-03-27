@@ -61,7 +61,9 @@
                                         Deskripsi :
                                         <?php echo $assignment->asg_text;?>
                                     </p>
-                                    <embed src="<?php echo base_url();?>res/assets/file/<?php echo $data_instruktur->asg_attachment;?>" style="width: 100%; height: 1000px;">
+                                    <?php if($data_instruktur->asg_attachment != NULL):?>
+                                        <embed src="<?php echo base_url();?>res/assets/file/<?php echo $data_instruktur->asg_attachment;?>" style="width: 100%; height: 1000px;">
+                                    <?php endif ?>
                                     <span>Silahkan unggah tugas, sebelum tanggal : </span>
                                     <h2 class="mdl-card__title-text" style="color: red;"><?php echo $newDateTime = date('d-M-y h:i A', strtotime($assignment->asg_duedate));?></h2>
                                     <div>
@@ -75,7 +77,6 @@
                                         </button>
                                     </div>
                                 </div>
-
                             </div>
                         </form>
                     </div>

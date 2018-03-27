@@ -91,7 +91,7 @@ class Content extends CI_Controller {
             $this->session->set_flashdata('data_insert_content', 'Data Content Tidak Berhasil Tersimpan');
         }
 
-        redirect('instruktur/add_content/'.$cntData['lsn_id']);
+        redirect('instruktur/content/'.$cntData['lsn_id']);
     }
 
     public function edit_content($id)

@@ -1,11 +1,13 @@
 <main class="mdl-layout__content">
-<div class="mdl-grid cover-main"></div>
+    <div class="mdl-grid cover-main"></div>
     <div class="mdl-grid">
-    <?php if ($this->session->flashdata('insert_asg') == TRUE): ?>
-            <div role="alert"  class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
-                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
+        <?php if ($this->session->flashdata('insert_asg') == TRUE): ?>
+            <div role="alert"
+                 class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true"
+                                                                                                  class="fa fa-times"></span>
                 </button>
-                <p><?php echo $this->session->flashdata('insert_asg')?></p>
+                <p><?php echo $this->session->flashdata('insert_asg') ?></p>
             </div>
         <?php endif; ?>
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
@@ -15,64 +17,71 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Assignment</div>
                 </div>
                 <div class="mdl-card__supporting-text" style="font-size:15px;">
-                    <form action="<?php echo base_url().'instruktur/assignment/insert'; ?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url() . 'instruktur/assignment/insert'; ?>" class="form-horizontal"
+                          method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Assignment</label>
                             <div class="col-sm-10">
-                            <input name="m-nama-asg" type="text" class="form-control" id="inputtext3" placeholder="Nama Course" required>
+                                <input name="m-nama-asg" type="text" class="form-control" id="inputtext3"
+                                       placeholder="Nama Course" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-asg" id="textEditor" style="width: 100%;" ></textarea>
+                                <textarea name="m-deskripsi-asg" id="textEditor" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" >Waktu Selesai :</label>
-                            <div class="input-group date form_datetime col-sm-6" style="padding-left: 15px;padding-right: 15px;"  data-link-field="dtp_input1">
+                            <label class="control-label col-sm-2">Waktu Selesai :</label>
+                            <div class="input-group date form_datetime col-sm-6"
+                                 style="padding-left: 15px;padding-right: 15px;" data-link-field="dtp_input1">
                                 <input class="form-control" size="16" type="text" name="asg_date">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                             </div>
-			            </div>
+                        </div>
 
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="Upload File">Attachment</label>
                             <div class="col-sm-10">
-                            <input name="asg-name" class="input-file" type="file" accept="application/pdf" onchange="readURL(this);">
                                 <span>*Isi bila ada file .pdf yang ingin di-Upload</span>
+                                <input name="asg-name" class="input-file" type="file" accept="application/pdf"
+                                       onchange="readURL(this);">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-10">
-                            <input style="display:none;" name="crs_id" class="form-control" value="<?php echo $crs_id?>">
+                                <input style="display:none;" name="crs_id" class="form-control"
+                                       value="<?php echo $crs_id ?>">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <?php $i = 1;?>
-                            <?php foreach($dataLO as $s):?>
-                            <?php if($i==1):?>
-                                <label class="control-label col-sm-2" >Learning Outcome :</label>
-                            <?php endif?>
-                            <?php if($i!=1):?>
-                                <label class="control-label col-sm-2" ></label>
-                            <?php endif?>
-                            <ul class="mdl-list">
+                        <div>
+                            <?php $i = 1; ?>
+                            <label class="control-label col-sm-2">Learning Outcome :</label>
+                            <span>*Isian dapat lebih dari 1</span>
 
-                                <li class="mdl-list__item" style="padding-top: 0px;padding-bottom: 0px;">
-                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-checkbox--colored-blue " for="checkbox-<?php echo $i?>">
-                                        <input type="checkbox" id="checkbox-<?php echo $i?>" class="mdl-checkbox__input" name="Loc[]" value="<?= $s->loc_id?>">
-                                        <span class="mdl-checkbox__label" style="margin-left: 5px;"><?php echo $s->loc_desc?></span>
+                            <div class="mdl-list demo-list-control col-sm-10"
+                                style="padding-top: 0px;padding-bottom: 0px;" style="overflow: scroll;">
+                                <?php foreach ($dataLO as $s): ?>
+                                    <label class="mdl-list__item mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-checkbox--colored-blue" for="checkbox-<?php echo $i ?>">
+                                        <input type="checkbox" id="checkbox-<?php echo $i ?>"
+                                               class="mdl-checkbox__input" name="Loc[]" value="<?= $s->loc_id ?>">
+                                        <span class="mdl-list__item-primary-content" style="margin-left: 10px;">
+                                          <?php echo $s->loc_desc ?>
+                                        </span>
                                     </label>
-                                </li>
-                                <?php $i++;
-                                endforeach?>
-                            </ul>
+
+                                    <?php $i++;
+                                endforeach ?>
+                            </div>
                         </div>
                         <div class="form-group pull-right">
                             <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Selesai</button>
+                                <button type="submit"
+                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
+                                    Selesai
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -83,7 +92,7 @@
 </main>
 
 <script type="text/javascript">
-        $('.form_datetime').datetimepicker({
+    $('.form_datetime').datetimepicker({
         //language:  'fr',
         autoclose: true,
         todayBtn: true,
@@ -102,14 +111,14 @@
     });
 </script> -->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#textEditor').summernote({
             height: 200, // set editor height // set editor height
             minHeight: null, // set minimum height of editor
             maxHeight: null, // set maximum height of editor
             dialogsInBody: true,
             callbacks: {
-                onImageUpload: function(files, editor, welEditable) {
+                onImageUpload: function (files, editor, welEditable) {
                     sendFile(files[0], editor, welEditable);
                 }
             }
@@ -121,23 +130,23 @@
             $.ajax({
                 data: data,
                 type: "POST",
-                url: '<?php echo base_url().'instruktur/Content/uplGambar' ?>',
+                url: '<?php echo base_url() . 'instruktur/Content/uplGambar' ?>',
                 cache: false,
                 contentType: false,
                 processData: false,
-                success: function(url) {
+                success: function (url) {
                     $('#textEditor').summernote('editor.insertImage', url);
                 },
-                error: function(){
+                error: function () {
                     alert('Error');
                 }
             });
         }
     });
 
-    $("form").submit( function(e) {
+    $("form").submit(function (e) {
         var a = $('#textEditor').val();
-        if(a == ''){
+        if (a == '') {
             alert('Deskripsi Content tidak boleh kosong');
             e.preventDefault();
         }
@@ -147,6 +156,7 @@
     .note-view {
         display: none;
     }
+
     .container {
         display: block;
         position: relative;
@@ -159,6 +169,7 @@
         -ms-user-select: none;
         user-select: none;
     }
+
     .checkmark {
         position: absolute;
         top: 0;
@@ -167,11 +178,13 @@
         width: 25px;
         background-color: #eee;
     }
+
     .checkmark:after {
         content: "";
         position: absolute;
         display: none;
     }
+
     .container .checkmark:after {
         left: 9px;
         top: 5px;

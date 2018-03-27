@@ -97,6 +97,18 @@ class Assesment extends CI_Controller {
             $min = $min + 1;
             $timeTaken = $timeTaken - 60;
         }
+        //at_risk
+        $cek_ar = $this->M_Course_Assesment->select($ass_id);
+        $cek = $this->M_At_risk->select($this->session->userdata('id'));
+//        dd($cek->count());
+        if($cek_ar->ass_tipe == "Kuis" && $cek->count() < 3){
+            $data_ar['usr_id'] = $this->session->userdata('id');
+            $data_ar['ass_id'] = $cek_ar->ass_id;
+            $data_ar['crs_id'] = $cek_ar->crs_id;
+            $this->M_At_risk->insert($data_ar);
+//            dd($data_ar['usr_id']);
+        }
+        //end at_risk
         $sec = $timeTaken; 
         $this->session->set_flashdata('result_timeTaken', $min.'minute(s) '.$sec.' second(s)');
         redirect(base_url().'siswa/Assesment/result/'.$ass_id );
