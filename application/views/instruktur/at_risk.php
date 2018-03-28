@@ -136,7 +136,6 @@
                         <table id="dataTables-example" style="text-align:center;">
                             <thead>
                             <tr style="text-align:center;">
-                                <th style="text-align:center;">No</th>
                                 <th style="text-align:center;">Nama Siswa</th>
                                 <th style="text-align:center;">Jenis Kelamin</th>
                                 <th style="text-align:center;">Usia</th>
@@ -156,10 +155,8 @@
                             </thead>
                             <tbody>
                             <?php
-                            $i = 1;
                             foreach($ar as $c): ?>
                                 <tr class="odd gradeX" style="background-color: #363636;">
-                                    <td style="text-align:center;"><?php echo $i++;?></td>
                                     <td style="text-align:center;"><?php echo $c->usr_firstname." ". $c->usr_lastname?></td>
                                     <td style="text-align:center;"><?php if($c->usr_jk == "1") {
                                             echo "Pria";
@@ -172,7 +169,11 @@
                                                 $to   = new DateTime('today');
                                                 echo $from->diff($to)->y;?>
                                     </td>
-                                    <td style="text-align:center;"><?php echo $c->usr_gpa;?></td>
+                                    <td style="text-align:center;"><?php if($c->usr_gpa != NULL) {
+                                            echo $c->usr_gpa;
+                                        } elseif ($c->usr_gpa == NULL){
+                                            echo "-";
+                                        }?></td>
                                     <?php
                                     $k=1;
                                     foreach($ar_kuis as $s):
@@ -183,9 +184,13 @@
                                     <td style="text-align:center;"><?php echo $log;?></td>
                                     <td style="text-align:center;"><?php
                                             if ($count != 3){
-                                                echo 'Belum dapat diprediksi, jumlah kuis harus > 2';
+                                                if($c->usr_gpa == NULL){
+                                                    echo 'Belum dapat diprediksi, IPK siswa kosong';
+                                                }else{
+                                                    echo 'Belum dapat diprediksi, jumlah kuis harus > 2';
+                                                }
                                             } else {
-                                                echo 'panggi fungsi naive bayes';
+                                                echo 'panggil fungsi naive bayes';
                                             }
                                         ?>
                                     </td>
@@ -199,43 +204,3 @@
         </div>
     </div>
 </main>
-<script type="text/javascript">
-    function ResponsiveCellHeaders(elmID) {
-        try {
-            var THarray = [];
-            var table = document.getElementById(elmID);
-            var ths = table.getElementsByTagName("th");
-            for (var i = 0; i < ths.length; i++) {
-                var headingText = ths[i].innerHTML;
-                THarray.push(headingText);
-            }
-            var styleElm = document.createElement("style"),
-                styleSheet;
-            document.head.appendChild(styleElm);
-            styleSheet = styleElm.sheet;
-            for (var i = 0; i < THarray.length; i++) {
-                styleSheet.insertRule(
-                    "#" +
-                    elmID +
-                    " td:nth-child(" +
-                    (i + 1) +
-                    ')::before {content:"' +
-                    THarray[i] +
-                    ': ";}',
-                    styleSheet.cssRules.length
-                );
-            }
-        } catch (e) {
-            console.log("ResponsiveCellHeaders(): " + e);
-        }
-    }
-    ResponsiveCellHeaders("Table_mdl");
-</script>
-
-
-
-<script>
-    $(document).ready(function () {
-        $('#dataTables-example').dataTable();
-    });
-</script>
