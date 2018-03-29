@@ -84,6 +84,53 @@
                         </div>
                     </div>  
             </div>
+            <div class="form-group">
+                        <label class="col-md-4 control-label">Tempat Asal</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <select class="form-control" name="tempatAsal">
+                                    <option><?php echo $this->session->userdata('tmpasal'); ?></option>
+                                    <option>Aceh</option>
+                                    <option>Sumatera Utara</option>
+                                    <option>Sumatera Barat</option>
+                                    <option>Riau</option>
+                                    <option>Jambi</option>
+                                    <option>Sumatera Selatan</option>
+                                    <option>Bengkulu</option>
+                                    <option>Lampung</option>
+                                    <option>Kepulauan Bangka Belitung</option>
+                                    <option>Kepulauan Riau</option>
+                                    <option>DKI Jakarta</option>
+                                    <option>Jawa Barat</option>
+                                    <option>Jawa Tengah</option>
+                                    <option>DI Yogyakarta</option>
+                                    <option>Jawa Timur</option>
+                                    <option>Banten</option>
+                                    <option>Bali</option>
+                                    <option>Nusa Tenggara Barat</option>
+                                    <option>Nusa Tenggara Timur</option>
+                                    <option>Kalimantan Barat</option>
+                                    <option>Kalimantan Tengah</option>
+                                    <option>Kalimantan Selatan</option>
+                                    <option>Kalimantan Timur</option>
+                                    <option>Kalimantan Utara</option>
+                                    <option>Sulawesi Utara</option>
+                                    <option>Sulawesi Tengah</option>
+                                    <option>Sulawesi Selatan</option>
+                                    <option>Sulawesi Tenggara</option>
+                                    <option>Gorontalo</option>
+                                    <option>Sulawesi Barat</option>
+                                    <option>Maluku</option>
+                                    <option>Maluku Utara</option>
+                                    <option>Papua</option>
+                                    <option>Papua Barat</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 <fieldset disabled>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Tanggal Lahir</label>

@@ -93,6 +93,10 @@ $route['siswa/result/(:any)'] = 'siswa/assesment/result/$1';
 //$route['siswa/pretest'] = 'C_siswa/pretest';
 //$route['siswa/remedial'] = 'C_siswa/remedial';
 //$route['siswa/materi'] = 'C_siswa/course_materi';
+
+$route['siswa/kuesioner_ls'] = 'siswa/Kuesioner/kuesioner_ls';
+$route['siswa/kuesioner_tr'] = 'siswa/Kuesioner/kuesioner_tr';
+
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
 $route['admin/akun_admin'] = 'admin/akun/akun_admin';

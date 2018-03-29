@@ -1,4 +1,4 @@
-<main class="mdl-layout__content">
+<main class="mdl-layout__content" id="mains">
   <div class="mdl-grid cover-main">
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="">
@@ -108,6 +108,7 @@
               </div>
           </div>
       </div>
+
         <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--6-col-phone">
             <div class="mdl-card grey_card mdl-shadow--2dp pie-chart" >
                 <div class="mdl-card__supporting-text" style="width: 100%;">
@@ -153,6 +154,12 @@
     text-decoration: none;
   }
 </style>
+<script type="text/javascript">
+
+  function cek(){
+     $(window).scrollTop();
+  }
+</script>
 <!-- <script type="text/javascript">
   $('.lst').hover( function(){
      $(this).css({
