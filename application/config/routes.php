@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = '';
+$route['default_controller'] = 'C_login/landing_page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['notifikasi'] = 'siswa/Notif';
@@ -199,6 +199,6 @@ $route['index'] = 'C_login/index';
 $route['signin'] = 'C_login/signin';
 $route['signup'] = 'C_login/signup';
 $route['signup_instruktur'] = 'C_login/signup_instruktur';
-$route['landing_page']= '';
+$route['landing_page']= 'C_login/landing_page';
 // logout
 $route['logout'] = 'C_login/logout';

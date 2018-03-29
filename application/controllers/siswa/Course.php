@@ -91,6 +91,7 @@ class Course extends CI_Controller {
                            ->where('crs_id',$crs_id)->first();
        $data['lesson'] = M_Course_Lesson::where('crs_id',$crs_id)->get();
        $data['jml_lesson'] = $data['lesson']->count();
+       $data['loc'] = M_Course_Learning_Outcomes::where("crs_id", $crs_id)->get();
         // $data['id'] = $crs_id;
         //list assesment
         $listAss = $this->M_Course_Assesment->selectBy('crs_id',$crs_id);

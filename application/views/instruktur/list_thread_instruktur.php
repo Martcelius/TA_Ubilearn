@@ -61,12 +61,12 @@
                         <ul class="nav nav-pills nav-stacked">
                             <li>
                                 <a href="#">
-                                    <span class="mdl-list__item-primary-content">
-                                        <img class="img-circle" style="width:50px;height:50px; float:left" src="../res/assets/images/icon.png" alt="User Image">
-                                        <span style="margin-left:20px;color:black;">Atcheng Supratman</span>
-                                        <br>
-                                        <span style="margin-left:20px;color:black;font-size:14px;">1301140249</span>
-                                    </span>
+                                <span class="mdl-list__item-primary-content">
+                                    <img class="img-circle" style="width:50px;height:50px; float:left" src="<?php echo base_url();?>/res/assets/images/uploads/" alt="User Image">
+                                    <span style="margin-left:20px;color:black;"></span>
+                                    <br>
+                                    <span style="margin-left:20px;color:black;font-size:14px;"></span>
+                                </span>
                                 </a>
                             </li>
                         </ul>

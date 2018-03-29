@@ -8,12 +8,39 @@
                 </div>
             </div>
         </div>
+        <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+            <div class="">
+                <div class="">
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+            <div class="">
+                <div class="">
+                
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="mdl-grid">
 
         <div class="mdl-cell mdl-cell--9-col">
             <div class="mdl-grid">
+
+                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                    <h4 style="color: white">
+                        <b>Target Pembelajaran</b><sub style="color:#05C1CD"><b>(Apa yang ingin Anda pelajari?)</b></sub> <b>&#8681;</b>
+                    </h4>                    
+                    <select id="selectLoc" class="js-example-placeholder-single mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" name="state">
+                        <option value="AL">Semua</option>    
+                        <?php foreach ($loc as $lo): ?>
+                        <option value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    
+
+                </div>
                 <!-- dropdown -->
                 <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                     <div class="mdl-card mdl-shadow--2dp">
@@ -170,3 +197,31 @@
         </div>
 
 </main>
+
+<script>
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $(".js-example-placeholder-single").select2({
+        placeholder: "Apa yang ingin Anda pelajari?",
+        allowClear: true
+    });
+
+    $('#selectLoc').on('select2:select', 
+    function (e) {
+        var data = e.params.data.id;
+        console.log(data);
+        
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url().'siswa/course/goals'. data ?>",
+            data: "key=value",
+            success: function(){ alert("success"); },
+            error: function(xhr, textStatus, error){
+                alert(xhr.statusText);
+                alert(textStatus);
+                alert(error);
+            }
+        });
+    });
+});
+</script>

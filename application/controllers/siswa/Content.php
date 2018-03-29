@@ -58,26 +58,7 @@ class Content extends CI_Controller {
         $data['LO'] = M_Course_Learning_Outcomes::where('loc_id',$data['kontent']->loc_id)->first();
 //        dd($data['kontent']);
 
-        if ($data['kontent']->cnt_type == "Text"){
-
-            // Capture Log Start
-            $event = array(
-                'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View Content:" . " " . $data['kontent']->cnt_name,
-                'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View Content Text",
-                'log_origin'        => $this->agent->agent_string(),
-                'log_ip'            => $this->input->server('REMOTE_ADDR'),
-                'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi View Content" . " '" . $data['kontent']->cnt_name . "' " 
-                ."pada Lesson" . " " . $data['kontent']->lsn_name . "' " 
-                . "pada Course" . " '" . $data['kontent']->crs_name . "'"
-            );
-            $this->lib_event_log->add_user_event($event);
-            // Capture Log End
-            $data['content'] = 'siswa/course_content';
-        }
-        else{
+        if ($data['kontent']->cnt_type == "Video"){
 
             // Capture Log Start
             $event = array(
@@ -95,6 +76,9 @@ class Content extends CI_Controller {
             $this->lib_event_log->add_user_event($event);
             // Capture Log End
             $data['content'] = 'siswa/course_video';
+        }
+        else{
+            $data['content'] = 'siswa/course_content';
         }
 
         $data['sidebar'] = 'layout/sidebar';
