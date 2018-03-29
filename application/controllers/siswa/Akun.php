@@ -52,6 +52,7 @@ class Akun extends CI_Controller {
         $userData['usr_lastname'] = $this->input->post('nama_belakang');
         $userData['usr_password'] = $this->input->post('password');
         $userData['usr_email'] = empty($this->input->post('email')) ? NULL : $this->input->post('email');
+        $userData['usr_tmpasal'] = $this->input->post('tempatAsal');
         if ($this->upload->do_upload('upload_foto'))
         {
             $userData['usr_picture'] = $result['file_name'];
@@ -71,6 +72,7 @@ class Akun extends CI_Controller {
             'lastname' =>$this->input->post('nama_belakang'),
             'gpa' =>empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk'),
             'foto' =>$userData['usr_picture'],
+            'tmpasal' => $this->input->post('tempatAsal')
 //            'jk' =>empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin'),
         );
         $this->session->set_userdata($user);
@@ -113,5 +115,11 @@ class Akun extends CI_Controller {
 //                dd($update);
         }
 
+    }
+
+    public function kuesioner_ls(){
+        $data['sidebar'] = 'layout/sidebar';
+        $data['content'] = 'siswa/selfass';
+        $this->load->view('layout/master', $data);
     }
 }

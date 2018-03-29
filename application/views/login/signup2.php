@@ -92,6 +92,63 @@
 					</div>
 					<?php echo form_error('repeat-pass'); ?>
 
+					<div class="wrap-input100 validate-input" data-validate = "Kaya">
+						<select style="font-family: Poppins-Medium;
+									  font-size: 15px;
+									  line-height: 1.5;
+									  color: #666666;
+
+									  display: block;
+									  width: 100%;
+									  background: #e6e6e6;
+									  height: 50px;
+									  border-radius: 25px;
+									  padding: 0 30px 0 68px;" 
+							name="tempatAsal" required>
+							<option selected disabled>--Pilih Tempat Asal--</option>
+                            <option>Aceh</option>
+                            <option>Sumatera Utara</option>
+                            <option>Sumatera Barat</option>
+                            <option>Riau</option>
+                            <option>Jambi</option>
+                            <option>Sumatera Selatan</option>
+                            <option>Bengkulu</option>
+                            <option>Lampung</option>
+                            <option>Kepulauan Bangka Belitung</option>
+                            <option>Kepulauan Riau</option>
+                            <option>DKI Jakarta</option>
+                            <option>Jawa Barat</option>
+                            <option>Jawa Tengah</option>
+                            <option>DI Yogyakarta</option>
+                            <option>Jawa Timur</option>
+                            <option>Banten</option>
+                            <option>Bali</option>
+                            <option>Nusa Tenggara Barat</option>
+                            <option>Nusa Tenggara Timur</option>
+                            <option>Kalimantan Barat</option>
+                            <option>Kalimantan Tengah</option>
+                            <option>Kalimantan Selatan</option>
+                            <option>Kalimantan Timur</option>
+                            <option>Kalimantan Utara</option>
+                            <option>Sulawesi Utara</option>
+                            <option>Sulawesi Tengah</option>
+                            <option>Sulawesi Selatan</option>
+                            <option>Sulawesi Tenggara</option>
+                            <option>Gorontalo</option>
+                            <option>Sulawesi Barat</option>
+                            <option>Maluku</option>
+                            <option>Maluku Utara</option>
+                            <option>Papua</option>
+                            <option>Papua Barat</option>
+                        </select>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+
 					<div class="wrap-input100 validate-input" data-validate = "Tanggal lahir tidak boleh kosong">
 						<input value="<?php echo set_value('tgl_lahir'); ?>" class="input100" type="date" name="tgl_lahir" style="color: gray;">
 						<span class="focus-input100"></span>

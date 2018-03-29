@@ -94,6 +94,7 @@ class M_User extends Eloquent
         $userUpdate->usr_email = $data['usr_email'];
         $userUpdate->usr_picture = $data['usr_picture'];
         $userUpdate->usr_gpa = $data['usr_gpa'];
+        $userUpdate->usr_tmpasal = $data['usr_tmpasal'];
 //        $userUpdate->usr_jk = $data['usr_jk'];
         return $userUpdate->save();
     }

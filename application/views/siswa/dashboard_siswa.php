@@ -1,4 +1,4 @@
-<main class="mdl-layout__content">
+<main class="mdl-layout__content" id="mains">
   <div class="mdl-grid cover-main">
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="">
@@ -109,7 +109,8 @@
             <div class="mdl-card__actions" >
               <a href="<?php echo site_url('')?>" style="float:right"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue"  >
                 Lihat
-              </button></a>                      
+              </button></a>
+              <button onclick="cek()">cek</button>                      
             </div>
         </div>
       </div>
@@ -153,6 +154,12 @@
     text-decoration: none;
   }
 </style>
+<script type="text/javascript">
+
+  function cek(){
+     $(window).scrollTop();
+  }
+</script>
 <!-- <script type="text/javascript">
   $('.lst').hover( function(){
      $(this).css({
