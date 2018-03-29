@@ -7,7 +7,13 @@ class Assignment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        
+        if ($this->session->userdata('level')=="2") {
+            redirect('siswa/dashboard');
+        } else if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        }
     }
 
     public function add_assignment($crs_id)
@@ -17,7 +23,7 @@ class Assignment extends CI_Controller {
         $data['dataLO'] = M_Course_Learning_Outcomes::where('crs_id','=',$crs_id)->get();
 
         $data['crs_id']  = $crs_id;
-        // dd($data['crs_id']);
+//         dd($data['dataLO']);
         $this->load->view('layout/master', $data);
     }
 
@@ -31,18 +37,37 @@ class Assignment extends CI_Controller {
         $this->upload->do_upload('asg-name');
         $result= $this->upload->data();
 
-        $data['m-nama-asg'] = $_POST['m-nama-asg'];
-        $data['m-deskripsi-asg'] = $_POST['m-deskripsi-asg'];
-        $data['asg_date'] = empty($_POST['asg_date']) ? NULL : $_POST['asg_date'];
-        $data['crs_id'] = $_POST['crs_id'];
+        $data['m-nama-asg'] = $this->input->post('m-nama-asg');
+        $data['m-deskripsi-asg'] = $this->input->post('m-deskripsi-asg');
+        $data['asg_date'] = empty($this->input->post('asg_date')) ? NULL : $this->input->post('asg_date');
+        $data['crs_id'] = $this->input->post('crs_id');
         if ($this->upload->do_upload('asg-name') == TRUE){
             $data['asg_attachment'] = $result['file_name'];
         }else{
             $data['asg_attachment'] = NULL;
         }
+
         $insert = $this->M_Course_Assignment->insert($data);
-        if($insert)
-        {
+        
+        $lo = $this->input->post('Loc[]');
+        
+        $data_lo['lo_asg_id'] = $insert;
+        $lo_db = $this->M_Course_Assignment_loc->insert($lo,$data_lo);
+//        dd($data_lo['lo_asg_id']);
+		if($insert != NULL)        {
+            $cruses = M_Course_Enrol::where('crs_id', '=', $this->input->post('crs_id'))->get();
+
+            foreach ($cruses as $crus):
+                $notif_content['ntf_type'] = "ASG";
+                $notif_content['ntf_instructor'] = $this->session->userdata('firstname')." ".$this->session->userdata('lastname');
+                $notif_content['ntf_message'] = "Menambahkan assignment baru.";
+                $notif_content['ntf_read'] = "N";
+                $notif_content['ass_id'] = NULL;
+                $notif_content['lsn_id'] = NULL;
+                $notif_content['asg_id'] = $insert;
+                $notif_content['usr_id'] = $crus->usr_id;
+                $insert_notif = $this->M_Notification->insert($notif_content);
+            endforeach;
             $this->session->set_flashdata('data_lesson', 'Data Assignment Berhasil Tersimpan');
         }else{
             $this->session->set_flashdata('data_lesson_gagal', 'Data Assignment Tidak Berhasil Tersimpan');
@@ -71,9 +96,9 @@ class Assignment extends CI_Controller {
         $this->upload->do_upload('asg-name');
         $result= $this->upload->data();
 
-        $asing['m-nama-asg'] = $_POST['m-nama-asg'];
-        $asing['m-deskripsi-asg'] = $_POST['m-deskripsi-asg'];
-        $asing['asg_date'] = empty($_POST['asg_date']) ? NULL : $_POST['asg_date'];
+        $asing['m-nama-asg'] = $this->input->post('m-nama-asg');
+        $asing['m-deskripsi-asg'] = $this->input->post('m-deskripsi-asg');
+        $asing['asg_date'] = empty($this->input->post('asg_date')) ? NULL : $this->input->post('asg_date');
         if ($this->upload->do_upload('asg-name') == TRUE){
             $asing['asg_attachment'] = $result['file_name'];
         }else{

@@ -9,7 +9,13 @@ class Forum extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-
+        if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level')=="3") {
+            redirect('instruktur/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        }
     }
 
     public function index()
@@ -32,38 +38,5 @@ class Forum extends CI_Controller {
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/dashboard_forum_siswa';
         $this->load->view('layout/master',$data);
-    }
-    
-    public function detail_dashboard_forum_siswa($lsn_id)
-    {
-        $data['datadashboardforum']= M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
-                                ->where('course_lesson.lsn_id',$lsn_id)
-                                ->get();
-        
-        if ($data['datadashboardforum'] != NULL)
-        {
-            $num=1;
-            foreach ($data['datadashboardforum'] as $thread)
-            {
-                $jumlahThread = M_Course_Forum_Thread::where('cfr_id',$thread->cfr_id)->get();
-                $jumlah[$num] = $jumlahThread->count('cfr_id');
-                $num++;
-
-            }
-            
-            $data['jumlah'] =$jumlah;
-            $data['datalesson']= M_Course_lesson::where('lsn_id',$lsn_id)->first();
-            $data['sidebar'] = 'layout/sidebar';
-            $data['content'] = 'siswa/detail_dashboard_forum_siswa';
-            $this->load->view('layout/master',$data);
-        }
-        else
-        {
-            $data['jumlah'] = 0;
-            $data['datalesson']= M_Course_lesson::where('lsn_id',$lsn_id)->first();
-            $data['sidebar'] = 'layout/sidebar';
-            $data['content'] = 'siswa/detail_dashboard_forum_siswa';
-            $this->load->view('layout/master',$data);
-        }
     }
 }

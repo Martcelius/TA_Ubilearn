@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'C_login/landing_page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['notifikasi'] = 'siswa/Notif';
 //route siswa
 $route['siswa/dashboard'] = 'C_siswa/dashboard_siswa';
 $route['siswa/akun'] = 'siswa/akun/manage_akun';
@@ -73,7 +74,6 @@ $route['siswa/content/video/(:any)'] = 'siswa/content/contents/$1';
 //forum
 $route['siswa/forum_siswa'] = 'siswa/Forum/index';
 $route['siswa/dashboard_forum_siswa/(:any)'] = 'siswa/forum/dashboard_forum_siswa/$1';
-$route['siswa/detail_dashboard_forum_siswa/(:any)'] = 'siswa/forum/detail_dashboard_forum_siswa/$1';
 $route['siswa/list_thread_siswa/(:any)'] = 'siswa/thread/list_thread_siswa/$1';
 $route['siswa/add_thread_siswa/(:any)'] = 'siswa/thread/add_thread_siswa/$1';
 $route['siswa/insert_thread_siswa/(:any)'] = 'siswa/thread/insert_thread_siswa/$1';
@@ -94,7 +94,8 @@ $route['siswa/result/(:any)'] = 'siswa/assesment/result/$1';
 //$route['siswa/remedial'] = 'C_siswa/remedial';
 //$route['siswa/materi'] = 'C_siswa/course_materi';
 
-$route['siswa/kuesioner_ls'] = 'siswa/Akun/kuesioner_ls';
+$route['siswa/kuesioner_ls'] = 'siswa/Kuesioner/kuesioner_ls';
+$route['siswa/kuesioner_tr'] = 'siswa/Kuesioner/kuesioner_tr';
 
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
@@ -181,7 +182,6 @@ $route['instruktur/result_siswa_assesment/(:any)'] = 'instruktur/assignment/resu
 //$route['instruktur/dashboard_forum_instruktur'] = 'C_instruktur/dashboard_forum_instruktur';
 $route['instruktur/forum_instruktur'] = 'instruktur/forum/index';
 $route['instruktur/dashboard_forum_instruktur/(:any)'] = 'instruktur/forum/dashboard_forum_instruktur/$1';
-$route['instruktur/detail_dashboard_forum_instruktur/(:any)'] = 'instruktur/forum/detail_dashboard_forum_instruktur/$1';
 $route['instruktur/add_forum/(:any)'] = 'instruktur/forum/add_forum/$1';
 $route['instruktur/insert_forum/(:any)'] = 'instruktur/forum/insert_forum/$1';
 $route['instruktur/edit_forum/(:any)/(:any)'] = 'instruktur/forum/edit_forum/$1/$2';
@@ -189,11 +189,15 @@ $route['instruktur/update_forum/(:any)/(:any)'] = 'instruktur/forum/update_forum
 $route['instruktur/delete_forum/(:any)/(:any)'] = 'instruktur/forum/delete_forum/$1/$2';
 $route['instruktur/list_thread_instruktur/(:any)'] = 'instruktur/thread/list_thread_instruktur/$1';
 $route['instruktur/detail_thread_instruktur/(:any)'] = 'instruktur/thread/detail_thread_instruktur/$1';
-    
+$route['instruktur/delete_thread_instruktur/(:any)/(:any)'] = 'instruktur/thread/delete_thread_instruktur/$1/$2';
+
 // route instruktur-result siswa
 $route['instruktur/result_siswa'] = 'C_instruktur/result_siswa';
+$route['instruktur/at_risk/(:any)/(:any)'] = 'instruktur/At_risk/index/$1/$2';
 // route instruktur-result siswa
 $route['instruktur/result_siswa_assignment/(:any)'] = 'instruktur/assignment/result_siswa_assignment/$1';
+// route instruktur-log siswa
+$route['instruktur/log_user'] = 'instruktur/Log_User/index';
 // route login
 $route['index'] = 'C_login/index';
 $route['signin'] = 'C_login/signin';

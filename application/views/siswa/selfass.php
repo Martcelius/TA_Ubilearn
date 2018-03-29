@@ -20,7 +20,7 @@
                 
     <!-- kuesioner halaman 1 -->
 <div class="mdl-card__supporting-text" id="kues1">
-    <form id="form1" name="form1" method="post" action="http://google.com">  
+    <form id="form1" name="form1" method="post" action="<?php echo base_url().'siswa/Kuesioner/calc_kuesioner' ?>">  
         <ol start="1" type="1">
             <h4>
             <li>Saya lebih memahami sesuatu setelah</li>

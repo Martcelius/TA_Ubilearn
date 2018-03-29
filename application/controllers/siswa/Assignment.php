@@ -8,7 +8,13 @@ class Assignment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-
+        if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level')=="3") {
+            redirect('instruktur/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        }
     }
 
     public function index($asg_id)
@@ -44,7 +50,6 @@ class Assignment extends CI_Controller {
             //ngumpulin
             $this->session->set_flashdata('done', 'Anda sudah mengumpulkan tugas');
 
-
         }
         $this->load->view('layout/master', $data);
     }
@@ -76,12 +81,34 @@ class Assignment extends CI_Controller {
 
         }
         elseif (empty($cek_user)){
-//            dd($data_asg);
             $insert = $this->M_Course_Assignment_Submission->insert($data_asg,$asg_id);
+
         }
         else {
             $this->session->set_flashdata('submit', 'Berkas tidak terupload! Anda sudah mengumpulkan tugas ini.');
         }
+
+        $data['assignment']=  M_Course_Assignment::leftJoin("course","course.crs_id","=","course_assignment.crs_id")
+            ->where("asg_id","=", $asg_id)
+            ->first();
+        $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
+            ->where("crs_id", '=',$data['assignment']->crs_id)
+            ->first();
+        // Capture Log Start
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "Unggah Tugas:" . " " . $data['assignment']->asg_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "View Course",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " "
+                ."melakukan aksi Unggah Tugas" . " '" . $data['assignment']->asg_name . "' "
+                . "pada Course" . " '" . $data['course']->crs_name . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+        // Capture Log End
+
         redirect('siswa/assignment_detail/'.$asg_id);
 
     }

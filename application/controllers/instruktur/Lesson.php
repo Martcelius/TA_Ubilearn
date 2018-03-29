@@ -9,7 +9,13 @@ class Lesson extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        
+        if ($this->session->userdata('level')=="2") {
+            redirect('siswa/dashboard');
+        } else if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        }
     }
     
     public function index($id)
@@ -22,6 +28,8 @@ $data['dataasing'] = M_Course_Assignment::where('crs_id', $id)->get();
             ->where('course.crs_id',$id)
             ->first(['users.usr_firstname','users.usr_lastname','course.crs_name']);
 //        dd($data['dataInstruktur']);
+        $data['jumlah_siswa'] = M_Course_Enrol::where('crs_id', '=', $id)->count();
+        $data['dataSiswa'] = M_Course_Enrol::join('users', 'users.usr_id', '=', 'course_enrol.usr_id')->where('crs_id', '=', $id)->get();
         $data['sidebar'] = 'layout/sidebar_instruktur';
         $data['content'] = 'instruktur/lesson';
         // dd($data['datalesen']);
@@ -36,6 +44,28 @@ $data['dataasing'] = M_Course_Assignment::where('crs_id', $id)->get();
         }
         $data['listAss'] = $listAss;
         $data['jumSoal'] = $jumSoal;
+        //at-risk
+        $data['assesment_instruktur'] = M_Course_Assesment::leftJoin("course", "course.crs_id","=","course_assesment.crs_id")
+            ->leftJoin("users","users.usr_id","=","course.usr_id")
+            ->where("course_assesment.crs_id", $id)->first();
+
+
+//        $data['ar'] = M_At_risk::leftjoin("course_assesment","course_assesment.ass_id","=","at_risk.ass_id")
+//            ->leftJoin("users","users.usr_id","=","at_risk.usr_id")
+//            ->where("course_assesment.crs_id",$crs_id)->get();
+//        $data['ar_2'] = M_User::leftjoin("at_risk","at_risk.usr_id","=","users.usr_id")
+//            ->leftJoin("course","course.crs_id","=","at_risk.crs_id")
+//            ->leftJoin("course_assesment.ass_id","=","at_risk.ass_id")
+//            ->where("at_risk.crs_id","=",$crs_id)->get();
+        $data['ar'] = M_At_risk::leftjoin("course_assesment","course_assesment.ass_id","=","at_risk.ass_id")
+            ->leftJoin("users","users.usr_id","=","at_risk.usr_id")
+            ->where("course_assesment.crs_id",$id)->groupby("at_risk.usr_id")->get();
+        $data['ar_kuis'] = M_At_risk::leftjoin("course_assesment_result","course_assesment_result.ass_id","=","at_risk.ass_id")
+            ->leftJoin("course_assesment","course_assesment.crs_id","=","at_risk.crs_id")
+            ->where("course_assesment.crs_id",$id)->groupby("course_assesment_result.ass_result")->get();
+        $data['cek'] = M_At_risk::where("at_risk.crs_id","=",$id)->get();
+//        dd($data['cek']);
+        //end at-risk
         $this->load->view('layout/master', $data);
     }
 

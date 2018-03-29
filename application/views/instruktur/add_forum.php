@@ -23,11 +23,16 @@
                     <div class="mdl-card__subtitle-text">Masukan Detail Forum</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <form action="<?php echo site_url('instruktur/insert_forum/'.$datalessonaddforum->lsn_id)?>" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('instruktur/insert_forum/'.$dataaddforum->crs_id)?>" class="form-horizontal" method="post">
                         <div class="form-group">
-                            <label for="inputjudulforum" class="col-sm-2 control-label" >Judul Forum</label>
+                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Lesson</label>
                             <div class="col-sm-10">
-                            <input name="judul_forum" type="text" class="form-control" id="inputjudulforum" placeholder="Judul Forum..." required>
+                                <select id="inputlessonforum" class="form-control" name="lsn_id" required>
+                                    <option disabled="disabled" selected value="">--Pilih Lesson--</option>
+                                    <?php foreach ($datalessonaddforum as $lesson):?>
+                                        <option value="<?php echo $lesson->lsn_id?>"><?php echo $lesson->lsn_name?></option>
+                                    <?php endforeach;?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group"  >

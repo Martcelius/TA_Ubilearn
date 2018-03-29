@@ -10,7 +10,13 @@ class Akun extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-                
+        if ($this->session->userdata('level')=="2") {
+            redirect('siswa/dashboard');
+        } else if ($this->session->userdata('level')=="3") {
+            redirect('instruktur/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        }
     }
     
     public function index()

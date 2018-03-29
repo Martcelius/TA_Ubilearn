@@ -58,5 +58,11 @@
 <script src="<?php echo base_url();?>res/assets/js/bootstrap-datetimepicker.min.js"></script>
 <link href="<?php echo base_url(); ?>res/assets/dist/summernote.css" rel="stylesheet">
 <script src="<?php echo base_url(); ?>res/assets/dist/summernote.js"></script>
-<!-- drop down end & multiple select-->
+<script src="<?php echo base_url(); ?>documentation/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
+<!-- drop down end -->
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script src="<?php echo base_url();?>res/assets/js/mdbajis.min.js"></script>
+<script src="<?php echo base_url();?>res/assets/js/mdbajis.js"></script>
