@@ -63,7 +63,8 @@ $data['dataasing'] = M_Course_Assignment::where('crs_id', $id)->get();
         $data['ar_kuis'] = M_At_risk::leftjoin("course_assesment_result","course_assesment_result.ass_id","=","at_risk.ass_id")
             ->leftJoin("course_assesment","course_assesment.crs_id","=","at_risk.crs_id")
             ->where("course_assesment.crs_id",$id)->groupby("course_assesment_result.ass_result")->get();
-
+        $data['cek'] = M_At_risk::where("at_risk.crs_id","=",$id)->get();
+//        dd($data['cek']);
         //end at-risk
         $this->load->view('layout/master', $data);
     }

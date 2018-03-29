@@ -72,16 +72,16 @@
                                 foreach($datalistforum as $dataforum): ?>
                                     <tbody>
                                         <tr id="forum_tabel_lesson1">
-                                            <td style="color : rgba(255, 255, 255, 0.8);">
+                                            <td style="color : rgba(255, 255, 255, 0.8);width:5%;max-width:5%;">
                                                 <?php echo $num; ?>
                                             </td>
-                                            <td style="color : rgba(255, 255, 255, 0.8);">
+                                            <td style="color : rgba(255, 255, 255, 0.8);width:20%;max-width:20%;">
                                                 <?php echo $dataforum->lsn_name ?>
                                             </td>
-                                            <td style="color : rgba(255, 255, 255, 0.8);">
+                                            <td style="color : rgba(255, 255, 255, 0.8);width:40%;max-width:40%;">
                                                 <?php echo $dataforum->cfr_desc ?>
                                             </td>
-                                            <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
+                                            <td style="color : rgba(255, 255, 255, 0.8);text-align:center;width:10%;max-width:10%;">
                                                 <?php echo $jumlahthread[$num] ?>
                                             </td>
                                             <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
@@ -102,16 +102,16 @@
                                     foreach($datalistforum as $dataforum): ?>
                                         <tbody>
                                             <tr id="forum_tabel_lesson1">
-                                                <td style="color : rgba(255, 255, 255, 0.8);">
+                                                <td style="color : rgba(255, 255, 255, 0.8);width:5%;max-width:5%;">
                                                     <?php echo $num; ?>
                                                 </td>
-                                                <td style="color : rgba(255, 255, 255, 0.8);">
+                                                <td style="color : rgba(255, 255, 255, 0.8);width:20%;max-width:20%;">
                                                     <?php echo $dataforum->lsn_name ?>
                                                 </td>
-                                                <td style="color : rgba(255, 255, 255, 0.8);">
+                                                <td style="color : rgba(255, 255, 255, 0.8);width:40%;max-width:40%;">
                                                     <?php echo $dataforum->cfr_desc ?>
                                                 </td>
-                                                <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
+                                                <td style="color : rgba(255, 255, 255, 0.8);text-align:center;width:10%;max-width:10%;">
                                                     <?php echo $jumlahthread[$num] ?>
                                                 </td>
                                                 <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
