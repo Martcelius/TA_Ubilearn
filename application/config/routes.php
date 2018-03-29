@@ -199,6 +199,6 @@ $route['index'] = 'C_login/index';
 $route['signin'] = 'C_login/signin';
 $route['signup'] = 'C_login/signup';
 $route['signup_instruktur'] = 'C_login/signup_instruktur';
-$route['landing_page']= '';
+$route['landing_page']= 'C_login/landing_page';
 // logout
 $route['logout'] = 'C_login/logout';

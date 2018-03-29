@@ -36,7 +36,7 @@
                             <span> <?php echo $mycourse->usr_firstname.' '.$mycourse->usr_lastname;?> </span>
                         </div>
                         <div class="mdl-card__actions">
-                            <a href="<?php echo site_url('siswa/course_detail/'.$mycourse->crs_id) ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
+                            <a href="<?php echo site_url('siswa/course/log/'.$mycourse->crs_id) ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue" >
                                     Masuk
                                 </button></a>
                         </div>

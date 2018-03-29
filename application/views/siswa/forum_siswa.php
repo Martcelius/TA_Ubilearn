@@ -85,7 +85,7 @@
                                                 <?php echo $jumlahthread[$num] ?>
                                             </td>
                                             <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
-                                                <a href="<?php echo site_url('siswa/list_thread_siswa/'.$dataforum->cfr_id) ?>">
+                                                <a href="<?php echo site_url('siswa/thread/log_forum/'.$dataforum->cfr_id) ?>">
                                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
                                                 </a>
                                             </td>
@@ -115,7 +115,7 @@
                                                     <?php echo $jumlahthread[$num] ?>
                                                 </td>
                                                 <td style="color : rgba(255, 255, 255, 0.8);text-align:center;">
-                                                    <a href="<?php echo site_url('siswa/list_thread_siswa/'.$dataforum->cfr_id)?>">
+                                                    <a href="<?php echo site_url('siswa/thread/log_forum/'.$dataforum->cfr_id)?>">
                                                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">Masuk Forum</button>
                                                     </a>
                                                 </td>
