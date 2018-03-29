@@ -58,7 +58,7 @@
                                                 <i class="material-icons">edit</i>
                                                 </button>
                                             </a>
-                                            <a href="<?php echo site_url('siswa/detail_thread_siswa/'.$threadsiswa->cft_id)?>">
+                                            <a href="<?php echo site_url('siswa/thread/log_detailThread/'.$threadsiswa->cft_id)?>">
                                                 <button style="margin-bottom: 5px; margin-left:7px; background-color: #067eb7; float:right;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
                                                 <i class="material-icons">remove_red_eye</i>
                                                 </button>
@@ -70,7 +70,7 @@
                                         else
                                         { ?>
                                             
-                                            <a href="<?php echo site_url('siswa/detail_thread_siswa/'.$threadsiswa->cft_id)?>">
+                                            <a href="<?php echo site_url('siswa/thread/log_detailThread/'.$threadsiswa->cft_id)?>">
                                                 <button style="margin-bottom: 5px; margin-left:7px; background-color: #067eb7; float:right;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" title="Lihat">
                                                 <i class="material-icons">remove_red_eye</i>
                                                 </button>

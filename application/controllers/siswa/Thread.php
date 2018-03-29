@@ -66,19 +66,6 @@ class Thread extends CI_Controller {
                 $index++;
             } 
             $data['jumlahpost'] = $sumpost;
-            //dd($data['sumreply']);
-            $event = array(
-                'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View Forum:" . " " . $data['judul_lesson']->lsn_name,
-                'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View Forum",
-                'log_origin'        => $this->agent->agent_string(),
-                'log_ip'            => $this->input->server('REMOTE_ADDR'),
-                'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi View Forum" . " '" . $data['judul_lesson']->lsn_name . "'"
-            );
-            $this->lib_event_log->add_user_event($event);
-
             $data['sidebar'] = 'layout/sidebar';
             $data['content'] = 'siswa/list_thread_siswa';
             $this->load->view('layout/master',$data);  
@@ -87,19 +74,6 @@ class Thread extends CI_Controller {
         {
             $jumlahpost = 0;
             $data['jumlahpost'] = $jumlahpost;
-            //dd($data['sumreply']);
-            $event = array(
-                'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View Forum:" . " " . $data['judul_lesson']->lsn_name,
-                'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View Forum",
-                'log_origin'        => $this->agent->agent_string(),
-                'log_ip'            => $this->input->server('REMOTE_ADDR'),
-                'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi View Forum" . " '" . $data['judul_lesson']->lsn_name . "'"
-            );
-            $this->lib_event_log->add_user_event($event);
-
             $data['sidebar'] = 'layout/sidebar';
             $data['content'] = 'siswa/list_thread_siswa';
             $this->load->view('layout/master',$data); 
@@ -193,6 +167,7 @@ class Thread extends CI_Controller {
 
     public function delete_thread_siswa($cft_id,$cfr_id)
     {
+        $data['dataforumthread'] = M_Course_Forum_Thread::where('cft_id',$cft_id)->first();
         $deleteThread= M_Course_Forum_Thread::where('cft_id',$cft_id)->delete();
         $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
         $iduser = $this->session->userdata('id');
@@ -204,13 +179,13 @@ class Thread extends CI_Controller {
         {
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "Delete Thread:" . " " . $data['cft_title'],
+                'log_event_context' => "Delete Thread:" . " " . $data['dataforumthread']->cft_title,
                 'log_referrer'      => $this->input->server('REQUEST_URI'),
                 'log_name'          => "Delete Thread",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi Delete Thread" . " '" . $data['cft_title'] . "'"
+                ."melakukan aksi Delete Thread" . " '" . $data['dataforumthread']->cft_title . "'"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -227,18 +202,6 @@ class Thread extends CI_Controller {
                                 ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
                                 ->where('course_forum_thread.cft_id',$cft_id)
                                 ->first();
-
-        $event = array(
-            'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => "View Thread:" . " " . $data['dataforumthread']->cft_title,
-            'log_referrer'      => $this->input->server('REQUEST_URI'),
-            'log_name'          => "View Thread",
-            'log_origin'        => $this->agent->agent_string(),
-            'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi View Thread" . " '" . $data['dataforumthread']->cft_title . "'"
-        );
-        $this->lib_event_log->add_user_event($event);
 
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/detail_thread_siswa';
@@ -335,7 +298,7 @@ class Thread extends CI_Controller {
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Create Reply pada" . " '" . $data['datathread']->cft_title . "'"
+            ."melakukan aksi Create Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
 
@@ -451,7 +414,7 @@ class Thread extends CI_Controller {
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Create Reply pada" . " '" . $data['datathread']->cft_title . "'"
+            ."melakukan aksi Create Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
 
@@ -563,7 +526,7 @@ class Thread extends CI_Controller {
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Create Reply pada" . " '" . $data['datathread']->cft_title . "'"
+            ."melakukan aksi Create Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
 
@@ -636,7 +599,7 @@ class Thread extends CI_Controller {
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Rate Post pada" . " '" . $data['datathread']->cft_title . "'"
+            ."melakukan aksi Rate Post pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
 
@@ -708,7 +671,7 @@ class Thread extends CI_Controller {
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Rate Post pada" . " '" . $data['datathread']->cft_title . "'"
+            ."melakukan aksi Rate Post pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
 
@@ -780,7 +743,7 @@ class Thread extends CI_Controller {
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Rate Post pada" . " '" . $data['datathread']->cft_title . "'"
+            ."melakukan aksi Rate Post pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
 
@@ -832,7 +795,7 @@ class Thread extends CI_Controller {
 
         $deleteThread= M_Course_Forum_Thread_Reply::where('ftr_id',$ftr_id)->delete();
 
-        if($deleteForum)
+        if($deleteThread)
         {
             $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
             $event = array(
@@ -843,7 +806,7 @@ class Thread extends CI_Controller {
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi Delete Reply pada" . " '" . $data['datathread']->cft_title . "'"
+                ."melakukan aksi Delete Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -881,7 +844,7 @@ class Thread extends CI_Controller {
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi Delete Reply pada" . " '" . $data['datathread']->cft_title . "'"
+                ."melakukan aksi Delete Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -913,7 +876,7 @@ class Thread extends CI_Controller {
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " " 
-                ."melakukan aksi Delete Reply pada" . " '" . $data['datathread']->cft_title . "'"
+                ."melakukan aksi Delete Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -931,5 +894,43 @@ class Thread extends CI_Controller {
     
         echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
     }
+    public function log_forum($cfr_id)
+    {
+        $data['judul_lesson'] = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->where('course_forum.cfr_id',$cfr_id)
+            ->first(['course_lesson.lsn_name']);
 
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "View Forum:" . " " . $data['judul_lesson']->lsn_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Forum",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " "
+                    ."melakukan aksi View Forum" . " '" . $data['judul_lesson']->lsn_name . "'"
+            );
+            $this->lib_event_log->add_user_event($event);
+            redirect(site_url('siswa/list_thread_siswa/'.$cfr_id));
+    }
+
+    public function log_detailThread($cft_id)
+    {
+        $data['dataforumthread'] = M_Course_Forum::leftJoin('course_forum_thread','course_forum_thread.cfr_id','=','course_forum.cfr_id')
+            ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
+            ->where('course_forum_thread.cft_id',$cft_id)
+            ->first();
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "View Thread:" . " " . $data['dataforumthread']->cft_title,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "View Thread",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " "
+                ."melakukan aksi View Thread" . " '" . $data['dataforumthread']->cft_title . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+        redirect(site_url('siswa/detail_thread_siswa/'.$cft_id));
+    }
 }

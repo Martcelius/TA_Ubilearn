@@ -117,6 +117,17 @@ class Assesment extends CI_Controller {
         //end at_risk
         $sec = $timeTaken; 
         $this->session->set_flashdata('result_timeTaken', $min.'minute(s) '.$sec.' second(s)');
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "Done Assesment:" . " " . $cek_ar->ass_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "Done Assesment",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " "
+                ."melakukan aksi Done Assesment" . " '" .  $cek_ar->ass_name . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
         redirect(base_url().'siswa/Assesment/result/'.$ass_id );
     }
 
@@ -167,17 +178,6 @@ class Assesment extends CI_Controller {
         date_default_timezone_set('Asia/Jakarta');
         $data['currDate'] = date("l, Y-m-d h:i:sa");
 
-        $event = array(
-            'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => "Done Assesment:" . " " . $data['assesment'],
-            'log_referrer'      => $this->input->server('REQUEST_URI'),
-            'log_name'          => "Done Assesment",
-            'log_origin'        => $this->agent->agent_string(),
-            'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Done Assesment" . " '" . $data['assesment']->ass_name . "'"
-        );
-        $this->lib_event_log->add_user_event($event);
         $dataResult = new M_Course_Assesment_Result;
         $dataResult->ass_id = $ass_id;
         $dataResult->ass_result = $data['nilaiAkhir'];

@@ -64,19 +64,23 @@
                         <div id="demo" class="collapse">
                             <div class="mdl-card__supporting-text">
                                 <ul class="demo-list-icon mdl-list">
-                                    <?php
-                                    $num = 1;
-                                    foreach ($lesson as $lessons):?>
-                                        <li class="mdl-list__item">
-                                    <span class="mdl-list__item-primary-content">
-                                        <span style="margin-right: 25px;"><?php echo $num++ ?> </span>
-                                        <i class="material-icons mdl-list__item-icon">label</i>
-                                        <a href="<?php echo site_url('siswa/materi/' . $lessons->lsn_id) ?>"
-                                           style="<?php echo $lsnAccessColor[$num-2] ?>"><?php echo 'Materi - ' . $lessons->lsn_name ?></a>
-                                </span>
-                                            <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
-                                        </li>
-                                    <?php endforeach; ?>
+                                    <?php if (count($lesson) != 0):?>
+                                        <?php
+                                        $num = 1;
+                                        foreach ($lesson as $lessons):?>
+                                            <li class="mdl-list__item">
+                                        <span class="mdl-list__item-primary-content">
+                                            <span style="margin-right: 25px;"><?php echo $num++ ?> </span>
+                                            <i class="material-icons mdl-list__item-icon">label</i>
+                                            <a href="<?php echo site_url('siswa/content/log_lesson/' . $lessons->lsn_id) ?>"
+                                               style="<?php echo $lsnAccessColor[$num-2] ?>"><?php echo 'Materi - ' . $lessons->lsn_name ?></a>
+                                        </span>
+                                                <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else :?>
+                                    <h3>Data Tidak Ada</h3>
+                                    <?php endif;?>
                                 </ul>
                             </div>
                         </div>
@@ -106,6 +110,7 @@
                         <div id="demo2" class="collapse">
                             <div class="mdl-card__supporting-text">
                                 <ul class="demo-list-icon mdl-list">
+                                    <?php if (count($listAss) != 0):?>
                                     <?php
                                     $num = 1;
                                     $i = 0;
@@ -122,6 +127,9 @@
                                             <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                         </li>
                                         <?php $i++; endforeach; ?>
+                                    <?php else :?>
+                                        <h3>Data Tidak Ada</h3>
+                                    <?php endif;?>
                                 </ul>
 
                             </div>
@@ -152,6 +160,7 @@
                             <div class="mdl-card__supporting-text">
 
                                 <ul class="demo-list-icon mdl-list">
+                                    <?php if (count($assignment) != 0):?>
                                     <?php
                                     $num = 1;
                                     foreach ($assignment as $c):?>
@@ -165,6 +174,9 @@
                                             <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                         </li>
                                     <?php endforeach; ?>
+                                    <?php else :?>
+                                        <h3>Data Tidak Ada</h3>
+                                    <?php endif;?>
                                 </ul>
 
                             </div>

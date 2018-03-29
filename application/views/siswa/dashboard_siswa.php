@@ -46,7 +46,7 @@
             <ul class="demo-list-three mdl-list">
                 <?php if (count($list_course) != 0): ?>
                     <?php foreach($list_course as $c){ ?>
-                  <a class="lst" href="<?php echo base_url().'siswa/course_detail/'.$c->crs_id ?>">
+                  <a class="lst" href="<?php echo base_url().'siswa/course/log/'.$c->crs_id ?>">
                   <li class="mdl-list__item mdl-list__item--three-line lst point" style="padding-top: 16px;padding-bottom: 0px;height: 58px;">
                     <span class="mdl-list__item-primary-content">
                       <i class="fa fa-circle mdl-list__item-icon"></i>
@@ -114,11 +114,11 @@
                     <ul class="demo-list-three mdl-list">
                         <?php if (count($list_thread) != 0): ?>
                             <?php foreach($list_thread as $forum){ ?>
-                                <a class="lst" href="<?php echo base_url().'siswa/detail_thread_siswa/'.$forum->cft_id ?>">
+                                <a class="lst" href="<?php echo base_url().'siswa/thread/log_detailThread/'.$forum->cft_id ?>">
                                     <li class="mdl-list__item mdl-list__item--three-line lst point" style="padding-top: 16px;padding-bottom: 0px;height: 58px;">
                                         <span class="mdl-list__item-primary-content">
                                           <i class="fa fa-circle mdl-list__item-icon"></i>
-                                          <span>[<?php echo $forum->cfr_title ?>] <?php echo $forum->cft_title ?></span>
+                                          <span>[Forum: <?php echo strip_tags($forum->cfr_desc);?>] <?php echo $forum->cft_title ?></span>
                                           <span class="mdl-list__item-text-body">
                                             dibuat pada :<?php echo $forum->cft_timecreated ?>
                                           </span>
