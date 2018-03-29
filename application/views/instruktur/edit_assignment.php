@@ -116,7 +116,7 @@
     $("form").submit( function(e) {
         var a = $('#textEditor').val();
         if(a == ''){
-            alert('Deskripsi Content tidak boleh kosong');
+            alert('Deskripsi Assignment tidak boleh kosong');
             e.preventDefault();
         }
     });

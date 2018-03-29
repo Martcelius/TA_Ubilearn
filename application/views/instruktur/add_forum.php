@@ -100,6 +100,14 @@
         }
     });
 
+    $("form").submit(function (e) {
+        var a = $('#textEditor').val();
+        if (a == '') {
+            alert('Deskripsi Forum tidak boleh kosong');
+            e.preventDefault();
+        }
+    });
+
     $("form").submit( function(e) {
         var a = $('#textEditor').val();
         if(a == ''){

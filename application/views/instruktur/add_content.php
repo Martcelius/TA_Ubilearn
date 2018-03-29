@@ -95,6 +95,14 @@
         });
         textEdit(1);
     });
+
+    $("form").submit(function (e) {
+        var a = $('#textEditor1').val();
+        if (a == '') {
+            alert('Deskripsi Content tidak boleh kosong');
+            e.preventDefault();
+        }
+    });
 </script>
 <!-- <script>
     CKEDITOR.replace( 'ckedit' );

@@ -102,7 +102,7 @@
     $("form").submit( function(e) {
         var a = $('#textEditor').val();
         if(a == ''){
-            alert('Deskripsi Content tidak boleh kosong');
+            alert('Deskripsi Forum tidak boleh kosong');
             e.preventDefault();
         }
     });

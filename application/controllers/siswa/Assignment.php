@@ -56,10 +56,10 @@ class Assignment extends CI_Controller {
 
     public function upload_assignment($asg_id)
     {
-        $file = "file_siswa".time();
+//        $file = "file_siswa".time();
         $config['upload_path'] ='./res/assets/File_siswa';
         $config['allowed_types'] = 'doc|csv|pptx|pdf|docx|xlxs|xls|rar|zip';
-        $config['file_name'] = $file;
+//        $config['file_name'] = $file;
         $this->load->library('upload',$config);
         $this->upload->do_upload('asg_attachment');
         $result = $this->upload->data();
@@ -73,16 +73,23 @@ class Assignment extends CI_Controller {
             'time_created' => $dt,
             'due_date' => $data['assignment']->asg_duedate
         );
-//        dd($data_asg['file']);
-
         $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
-        if($result['is_image'])
-        {
-
-        }
-        elseif (empty($cek_user)){
+        if(empty($cek_user)){
             $insert = $this->M_Course_Assignment_Submission->insert($data_asg,$asg_id);
-
+            // Capture Log Start
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "Unggah Tugas:" . " " . $data['assignment']->asg_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Course",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " "
+                    ."melakukan aksi Unggah Tugas" . " '" . $data['assignment']->asg_name . "' "
+                    . "pada Course" . " '" . $data['course']->crs_name . "'"
+            );
+            $this->lib_event_log->add_user_event($event);
+            // Capture Log End
         }
         else {
             $this->session->set_flashdata('submit', 'Berkas tidak terupload! Anda sudah mengumpulkan tugas ini.');
@@ -94,21 +101,6 @@ class Assignment extends CI_Controller {
         $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assignment']->crs_id)
             ->first();
-        // Capture Log Start
-        $event = array(
-            'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => "Unggah Tugas:" . " " . $data['assignment']->asg_name,
-            'log_referrer'      => $this->input->server('REQUEST_URI'),
-            'log_name'          => "View Course",
-            'log_origin'        => $this->agent->agent_string(),
-            'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " "
-                ."melakukan aksi Unggah Tugas" . " '" . $data['assignment']->asg_name . "' "
-                . "pada Course" . " '" . $data['course']->crs_name . "'"
-        );
-        $this->lib_event_log->add_user_event($event);
-        // Capture Log End
-
         redirect('siswa/assignment_detail/'.$asg_id);
 
     }
