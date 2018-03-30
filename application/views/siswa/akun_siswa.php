@@ -171,6 +171,12 @@
                 <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" class="img-responsive img-thumbnail" id="blah">            </div>
             </div>
             </div>
+            <legend style="color:white;">Lain-lain</legend>
+            <span class="pull-left">
+                <a href="<?php echo site_url('siswa/hasil_kuesioner_ls') ?>">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="background: #018a20;"><i class="fa fa-sticky-note"></i> Lihat Hasil Kuesioner</button>
+                </a>
+            </span>
             </div>
         </div>
     </div>
