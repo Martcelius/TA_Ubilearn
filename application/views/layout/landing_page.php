@@ -138,10 +138,8 @@
                                 <h3 class="flex-item">Telkom University</h3>
                             </li>
                             <li>
-                                <a target="_blank" href="signup" class="btn btn-primary btn-lg flex-item" rel="nofollow">Daftar as Pelajar!</a>
-                                <a target="_blank" href="signup_instruktur" class="btn btn-primary btn-lg flex-item" rel="nofollow">Daftar as Instruktur!</a>
-                                <a target="_blank" href="signin" class="btn btn-outline-white btn-lg flex-item"
-                                    rel="nofollow">Masuk!</a>
+                                <a target="_blank" href="signup" class="btn btn-primary btn-lg flex-item" rel="nofollow">Daftar Sebagai Peserta Didik</a>
+                                <a target="_blank" href="signin" class="btn btn-outline-white btn-lg flex-item" rel="nofollow">Masuk</a>
                             </li>
                     </ul>
                 </div>

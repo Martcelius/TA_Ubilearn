@@ -35,7 +35,7 @@
                     <select id="selectLoc" class="js-example-placeholder-single mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" name="state">
                         <option value="AL">Semua</option>    
                         <?php foreach ($loc as $lo): ?>
-                        <option value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
+                        <option <?php if ($lo->loc_id == $ajis) echo "selected"; ?> value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
                         <?php endforeach; ?>
                     </select>
                     
@@ -225,9 +225,11 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url().'siswa/course/goals'. data ?>",
-            data: "key=value",
-            success: function(){ alert("success"); },
+            url: "<?php echo base_url().'siswa/course/goals/'?>" + data,
+            data: data,
+            success: function(){
+                location.reload();  
+                alert("success"); },
             error: function(xhr, textStatus, error){
                 alert(xhr.statusText);
                 alert(textStatus);

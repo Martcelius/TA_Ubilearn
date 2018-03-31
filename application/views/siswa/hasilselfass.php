@@ -60,7 +60,12 @@
 <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet">
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">
-<h3>Team Role : <strong><i><?php echo $hasilKues2->hasil ?></i></strong></h3>  
+<h3>Team Role : <strong><i><?php 
+if ($hasilKues2->hasil == NULL) {
+  redirect('siswa/kuesioner_tr');
+} else {
+  echo $hasilKues2->hasil;
+} ?></i></strong></h3>  
 </div>
 </div>
 </div>

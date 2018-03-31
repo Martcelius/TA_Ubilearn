@@ -81,6 +81,7 @@ class Course extends CI_Controller {
        $data['course'] = M_Course::leftJoin("users","users.usr_id","=","course.usr_id")
                            ->where('crs_id',$crs_id)->first();
        $data['lesson'] = M_Course_Lesson::where('crs_id',$crs_id)->get();
+       $data['loc'] = M_Course_Learning_Outcomes::where('crs_id',$crs_id)->get();
        $data['jml_lesson'] = $data['lesson']->count();
         if (count($data['lesson']) != 0){
             $i = 0;
@@ -153,5 +154,10 @@ class Course extends CI_Controller {
 
     }
 
+    public function goals($loc)
+    {
+        
+    }
 
+    
 }
