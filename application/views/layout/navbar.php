@@ -34,115 +34,59 @@
 				$jumlah_notif = M_Notification::where('usr_id', '=', $this->session->userdata('id'))->where('ntf_read', '=', 'N')->count();
 				$notifs = M_Notification::where('usr_id', '=', $this->session->userdata('id'))->where('ntf_read', '=', 'N')->get();
 			?>
-			
-            <!-- <div class="material-icons mdl-badge mdl-badge--overlap mdl-button--icon notification" id="notification" data-badge="<?php echo $jumlah_notif?>">
-					notifications_none
-				</div>
-				<ul class="mdl-menu mdl-list mdl-js-menu mdl-menu--bottom-right mdl-shadow--2dp notifications-dropdown"
-				for="notification">
-					<li class="mdl-list__item">
-                        <?php 
-                        // if ($jumlah_notif > 0) {
-                        //     echo "Anda memiliki " . $jumlah_notif . " notifikasi!";
-                        // } else {
-                        //     echo "Anda tidak memiliki notifikasi!";
-                        // }
-                        ?>
-					</li> -->
-					<!-- <?php //foreach($notifs as $notif): ?>
-                    <a style="text-decoration:none;" href="
-                    <?php
-                    // if ($notif->ntf_type == "LSN") {
-                    //     echo base_url().'siswa/Notif/read_notif/materi/'.$notif->lsn_id.'/'.$notif->ntf_id;
-                    // } else if ($notif->ntf_type == "ASS") {
-                    //     echo base_url().'siswa/Notif/read_notif/assesment_info/'.$notif->ass_id.'/'.$notif->ntf_id;
-                    // } else if ($notif->ntf_type == "ASG") {
-                    //     echo base_url().'siswa/Notif/read_notif/assignment_detail/'.$notif->asg_id.'/'.$notif->ntf_id;
-                    // }
-                    ?>"> -->
-					<!-- <li class="mdl-menu__item mdl-list__item list__item--border-top">
-						<span class="mdl-list__item-primary-content">
-							<span class="mdl-list__item-avatar background-color--primary">
-								<i class="material-icons">new_releases</i>
-							</span>
-							<span><?php //echo $notif->ntf_message ?></span>
-						</span>
-						<span class="mdl-list__item-secondary-content">
-							<span class="label">2 hours</span>
-						</span>
-                    </li> -->
-                    <!-- <li class="mdl-menu__item mdl-list__item">
-						<span class="mdl-list__item-primary-content">
-							<span><?php //echo $notif->ntf_message ?></span>
-						</span>
-						<span class="mdl-list__item-secondary-content">
-							<span class="label">just now</span>
-						</span>
-					</li>
-					</a>
-                    <?php //endforeach; ?>
-                    <li class="mdl-list__item list__item--border-top">
-						<button href="<?php echo site_url('instruktur/learning_outcome')?>" class="mdl-button mdl-js-button mdl-js-ripple-effect">ALL NOTIFICATIONS</button>
-					</li>
-                </ul> -->
-                <div class="material-icons mdl-badge mdl-badge--overlap mdl-button--icon message" id="inbox" data-badge="<?php echo $jumlah_notif ?>">
-                    notifications_none
-				</div>
-            <!-- Messages dropdown-->
-				<ul class="mdl-menu mdl-list mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-shadow--2dp messages-dropdown" for="inbox">
-					<li class="mdl-list__item">
-                    <?php 
-                        if ($jumlah_notif > 0) {
-                            echo "Anda memiliki " . $jumlah_notif . " notifikasi!";
-                        } else {
-                            echo "Anda tidak memiliki notifikasi!";
-                        }
-                        ?>
-                    </li>
-                    <?php foreach($notifs as $notif): ?>
-                    <a style="text-decoration:none;" href="
-                    <?php
-                    if ($notif->ntf_type == "LSN") {
-                        echo base_url().'siswa/Notif/read_notif/materi/'.$notif->lsn_id.'/'.$notif->ntf_id;
-                    } else if ($notif->ntf_type == "ASS") {
-                        echo base_url().'siswa/Notif/read_notif/assesment_info/'.$notif->ass_id.'/'.$notif->ntf_id;
-                    } else if ($notif->ntf_type == "ASG") {
-                        echo base_url().'siswa/Notif/read_notif/assignment_detail/'.$notif->asg_id.'/'.$notif->ntf_id;
+
+            <div class="material-icons mdl-badge mdl-badge--overlap mdl-button--icon message" id="inbox" data-badge="<?php echo $jumlah_notif ?>">
+                notifications_none
+            </div>
+            <ul class="mdl-menu mdl-list mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-shadow--2dp messages-dropdown" for="inbox">
+                <li class="mdl-list__item">
+                <?php 
+                    if ($jumlah_notif > 0) {
+                        echo "Anda memiliki " . $jumlah_notif . " notifikasi!";
+                    } else {
+                        echo "Anda tidak memiliki notifikasi!";
                     }
-                    ?>">
-					<li class="mdl-menu__item mdl-list__item mdl-list__item--two-line list__item--border-top">
-						<span class="mdl-list__item-primary-content">
-							<!-- <span class="mdl-list__item-avatar background-color--primary">
-                            <i class="material-icons">new_releases</i>
-                            </span> -->
-							<span><?php echo $notif->ntf_instructor ?></span>
-							<span class="mdl-list__item-sub-title"><?php echo $notif->ntf_message ?></span>
-						</span>
-						<span class="mdl-list__item-secondary-content">
-							<span class="label label--transparent"><?php echo time_ago($notif->ntf_time->format('U'))?></span>
-						</span>
-                    </li>
-                    </a>
-                    <?php endforeach; ?>
-                    <a style="text-decoration:none;" href="<?php echo site_url('notifikasi') ?>">
-					<li class="mdl-list__item list__item--border-top">
-						<button href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Lihat Semua Notifikasi</button>
-                    </li>
-                    </a>
-				</ul>
+                    ?>
+                </li>
+                <?php foreach($notifs as $notif): ?>
+                <a style="text-decoration:none;" href="
+                <?php
+                if ($notif->ntf_type == "LSN") {
+                    echo base_url().'siswa/Notif/read_notif/materi/'.$notif->lsn_id.'/'.$notif->ntf_id;
+                } else if ($notif->ntf_type == "ASS") {
+                    echo base_url().'siswa/Notif/read_notif/assesment_info/'.$notif->ass_id.'/'.$notif->ntf_id;
+                } else if ($notif->ntf_type == "ASG") {
+                    echo base_url().'siswa/Notif/read_notif/assignment_detail/'.$notif->asg_id.'/'.$notif->ntf_id;
+                }
+                ?>">
+                <li class="mdl-menu__item mdl-list__item mdl-list__item--two-line list__item--border-top">
+                    <span class="mdl-list__item-primary-content">
+                        <span><?php echo $notif->ntf_instructor ?></span>
+                        <span class="mdl-list__item-sub-title"><?php echo $notif->ntf_message ?></span>
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="label label--transparent"><?php echo time_ago($notif->ntf_time->format('U'))?></span>
+                    </span>
+                </li>
+                </a>
+                <?php endforeach; ?>
+                <a style="text-decoration:none;" href="<?php echo site_url('notifikasi') ?>">
+                <li class="mdl-list__item list__item--border-top">
+                    <button href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Lihat Semua Notifikasi</button>
+                </li>
+                </a>
+            </ul>
 
             <!-- <?php echo $this->session->userdata('foto')?> -->
             <div class="avatar-dropdown" id="icon" >
                 <span><?php echo $this->session->userdata('firstname');?></span>
                 <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>">
             </div>
-            <!-- Account dropdawn-->
             <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
                 for="icon">
                 <li class="mdl-list__item mdl-list__item--two-line" style="height: 75px;">
                     <span class="mdl-list__item-primary-content">
                         <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" class="material-icons mdl-list__item-avatar">
-                        <!-- <span class="material-icons mdl-list__item-avatar"></span> -->
                         <span><?php echo $this->session->userdata('firstname');?></span>
                         <span class="mdl-list__item-sub-title" style="word-wrap: break-word;"><?php echo $this->session->userdata('email');?></span>
 
