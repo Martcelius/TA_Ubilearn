@@ -225,7 +225,7 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url().'siswa/course/goals/'?>",
+            url: "<?php echo base_url().'siswa/course/goals/'?>" + data,
             data: data,
             success: function(){
                 location.reload();  

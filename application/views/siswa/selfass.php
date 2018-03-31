@@ -17,11 +17,11 @@
     <div class="mdl-grid div1" >                
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
-                
+            <form id="form1" name="form1" method="post" action="<?php echo base_url().'siswa/Kuesioner/calc_kuesioner' ?>">  
+
     <!-- kuesioner halaman 1 -->
 <div class="mdl-card__supporting-text" id="kues1">
-    <form id="form1" name="form1" method="post" action="<?php echo base_url().'siswa/Kuesioner/calc_kuesioner' ?>">  
-        <ol start="1" type="1">
+            <ol start="1" type="1">
             <h4>
             <li>Saya lebih memahami sesuatu setelah</li>
             <ol start="1" type="a">

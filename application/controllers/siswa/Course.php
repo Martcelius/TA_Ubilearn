@@ -154,5 +154,10 @@ class Course extends CI_Controller {
 
     }
 
+    public function goals($loc)
+    {
+        
+    }
+
     
 }
