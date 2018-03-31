@@ -1,3 +1,8 @@
+<style>
+mark { 
+    background-color: yellow;
+}
+</style>
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
         <div class="mdl-cell mdl-cell--12-col">
@@ -11,7 +16,13 @@
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text" style="color:white"><?php echo $course->lsn_name ?></h2>
                 </div>
-                <?php foreach ($contents as $content): ?>
+                <?php 
+                $cnt_lg = array();
+                foreach ($learning_goal as $lg):
+                    $cnt_lg[] = $lg->cnt_id;
+                endforeach;
+
+                foreach ($contents as $content): ?>
                     <ul class="mdl-list" style="margin: 15px;">
                         <li class="mdl-list__item" style="background-color: #0d0d0d">
 								 <span class="mdl-list__item-primary-content">
@@ -21,7 +32,16 @@
                                 </span>
                             <div class="mdl-layout-spacer"></div>
                             <b class="mdl-list__item-secondary-action"
-                               style="margin-right:50px"><?php echo $content->cnt_type ?></b>
+                               style="margin-right:50px">
+                               <h4><span class="label label-success"><?php 
+                               if (in_array($content->cnt_id, $cnt_lg)) {
+                                   echo "Target Pembelajaran";
+                               }
+                               ?></h4></span>
+                               </b>
+                            <b class="mdl-list__item-secondary-action"
+                               style="margin-right:50px">
+                               <h4><span class="label label-default"><?php echo $content->cnt_type ?></span></h4></b>
                             <!-- <a href="<?php 
                             if ($content->cnt_type == 'Text') {
                                 $btncl = 1;

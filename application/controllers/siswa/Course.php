@@ -82,6 +82,7 @@ class Course extends CI_Controller {
                            ->where('crs_id',$crs_id)->first();
        $data['lesson'] = M_Course_Lesson::where('crs_id',$crs_id)->get();
        $data['loc'] = M_Course_Learning_Outcomes::where('crs_id',$crs_id)->get();
+       $data['learning_goal'] = M_learning_Goal::where('usr_id',$this->session->userdata('id'))->first();
        $data['jml_lesson'] = $data['lesson']->count();
         if (count($data['lesson']) != 0){
             $i = 0;
@@ -156,7 +157,13 @@ class Course extends CI_Controller {
 
     public function goals($loc)
     {
-        
+        $data['loc_id'] = $loc;
+        $data['usr_id'] = $this->session->userdata('id');
+        $insert = $this->M_Learning_Goal->insert($data);
+
+        if ($insert){
+            $this->session->set_flashdata('data_learning_goal','Berhasil memperbarui target pembelajaran.');
+        }
     }
 
     
