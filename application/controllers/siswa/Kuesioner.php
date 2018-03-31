@@ -16,18 +16,71 @@ class Kuesioner extends CI_Controller {
             redirect('instruktur/dashboard');
         } else if ($this->session->userdata('level') == NULL) {
             redirect('');
+        } else {
+            if($this->session->userdata('ls') == 0){
+                redirect('siswa/kuesioner_ls');
+            }
+            else if($this->session->userdata('tr') == 0){
+                redirect('siswa/kuesioner_tr');
+            }
         }
+
     }
+
 
     public function kuesioner_ls(){
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/selfass';
+        if($this->session->userdata('ls') == 1){
+            redirect('siswa/hasil_kuesioner_ls');
+        }
+        $this->load->view('layout/master', $data);
+    }
+
+    public function hasil_kuesioner_ls(){
+        $data['sidebar'] = 'layout/sidebar';
+        $data['content'] = 'siswa/hasilselfass';
+        $hasil = $this->M_Hasil_Kuesioner->selectByUser($this->session->userdata('id'));
+        $data['hasil'] = $hasil;
+        if($hasil->Active > $hasil->Reflective){
+            $hasilKues['AR'] = 'Active';
+        }
+        else{
+            $hasilKues['AR'] = 'Reflective';
+        }
+
+        if($hasil->Sensing > $hasil->Intuitive){
+            $hasilKues['SI'] = 'Sensing';
+        }
+        else{
+            $hasilKues['SI'] = 'Intuitive';
+        }
+
+        if($hasil->Visual > $hasil->Verbal){
+            $hasilKues['VV'] = 'Visual';
+        }
+        else{
+            $hasilKues['VV'] = 'Verbal';
+        }
+
+        if($hasil->Sequential > $hasil->Global){
+            $hasilKues['SG'] = 'Sequential';
+        }
+        else{
+            $hasilKues['SG'] = 'Global';
+        }
+        $data['hasilKues'] = $hasilKues;
+        $hasil2 = $this->M_Hasil_Kuesioner2->selectByUser($this->session->userdata('id'));
+        $data['hasilKues2'] = $hasil2;
         $this->load->view('layout/master', $data);
     }
 
     public function kuesioner_tr(){
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/kuesioner_teamrole';
+        if($this->session->userdata('tr') == 1){
+            redirect('siswa/hasil_kuesioner_ls');
+        }
         $this->load->view('layout/master', $data);
     }
 
@@ -49,45 +102,33 @@ class Kuesioner extends CI_Controller {
         $Global = [4,8,12,16,28,40,24,32,20,36,44];
 
         $hasil[0] = $this->calcLs($Active,$Reflective,$h);
-        if($hasil[0][0] > $hasil[0][1]){
-            $hasil_akhir[0] = 'Active';
-        }
-        else{
-            $hasil_akhir[0] = 'Reflective';
-        }
 
         $hasil[1] = $this->calcLs($Sensing,$Intuitive,$h);
-        if($hasil[1][0] > $hasil[0][1]){
-            $hasil_akhir[1] = 'Sensing';
-        }
-        else{
-            $hasil_akhir[1] = 'Intuitive';
-        }
 
         $hasil[2] = $this->calcLs($Visual,$Verbal,$h);
-        if($hasil[2][0] > $hasil[0][1]){
-            $hasil_akhir[2] = 'Visual';
-        }
-        else{
-            $hasil_akhir[2] = 'Verbal';
-        }
 
         $hasil[3] = $this->calcLs($Sequential,$Global,$h);
-        if($hasil[3][0] > $hasil[0][1]){
-            $hasil_akhir[3] = 'Sequential';
-        }
-        else{
-            $hasil_akhir[3] = 'Global';
-        }
+
 
         $mhk = new M_Hasil_Kuesioner;
         $mhk->usr_id = $this->session->userdata('id');
-        $mhk->AR = $hasil_akhir[0];
-        $mhk->SI = $hasil_akhir[1];
-        $mhk->VV = $hasil_akhir[2];
-        $mhk->SG = $hasil_akhir[3];
+        $mhk->Active = $hasil[0][0];
+        $mhk->Reflective = $hasil[0][1];
+        $mhk->Sensing = $hasil[1][0];
+        $mhk->Intuitive = $hasil[1][1];
+        $mhk->Visual = $hasil[2][0];
+        $mhk->Verbal = $hasil[2][1];
+        $mhk->Sequential = $hasil[3][0];
+        $mhk->Global = $hasil[3][1];
         $mhkId = $this->M_Hasil_Kuesioner->insert($mhk);
-        echo $mhkId;
+        /*$mhkId if 0 = error, if 1 = success*/
+        if($mhkId != 0){
+            $this->session->set_userdata('ls',1);
+            redirect('siswa/hasil_kuesioner_ls');
+        }
+        else{
+            echo 'Error Encountered !';
+        }
     }
 
     public function calcLs($data1,$data2,$hasil){
@@ -110,6 +151,21 @@ class Kuesioner extends CI_Controller {
 
         $temp = [$A,$B];
         return $temp;
+    }
+
+    public function insert_tr(){
+        $mhk2 = new M_Hasil_Kuesioner2;
+        $mhk2->usr_id = $this->session->userdata('id');
+        $mhk2->hasil = $this->input->post('hasil');
+        $mhk2Id = $this->M_Hasil_Kuesioner2->insert($mhk2);
+
+        if($mhk2Id != 0){
+            $this->session->set_userdata('tr',1);
+            redirect('siswa/hasil_kuesioner_ls');
+        }
+        else{
+            echo 'Error Encountered !';
+        }
     }
 
 }

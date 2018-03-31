@@ -96,6 +96,7 @@ $route['siswa/result/(:any)'] = 'siswa/assesment/result/$1';
 
 $route['siswa/kuesioner_ls'] = 'siswa/Kuesioner/kuesioner_ls';
 $route['siswa/kuesioner_tr'] = 'siswa/Kuesioner/kuesioner_tr';
+$route['siswa/hasil_kuesioner_ls'] = 'siswa/Kuesioner/hasil_kuesioner_ls';
 
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
