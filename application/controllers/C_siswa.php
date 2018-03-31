@@ -16,6 +16,13 @@ class C_siswa extends CI_Controller {
             redirect('admin/dashboard');
         } else if ($this->session->userdata('level') == NULL) {
             redirect('');
+        } else {
+            if($this->session->userdata('ls') == 0){
+                redirect('siswa/kuesioner_ls');
+            }
+            else if($this->session->userdata('tr') == 0){
+                redirect('siswa/kuesioner_tr');
+            }
         }
 
     }

@@ -20,7 +20,7 @@
           <div class="mdl-card__supporting-text" style="width: 100%;">
               <ol>
                   <li>Form Kuesioner terletak di kolom sebelah kiri</li>
-                  <li>Klik "To The Test" atau scroll ke bawah sampai menemukan form untuk isi kuesioner</li>
+                  <li>Pada kolom Form Kuesioner, Klik "To The Test" atau scroll ke bawah sampai menemukan form untuk isi kuesioner</li>
                   <li>Setiap pertanyaan diberi 2 pilihan, Pilih lah yang paling cocok dengan kepribadianmu</li>
                   <li>untuk "My Educational Level is" pilihlah "College" atau "University"</li>
                   <li>Klik tombol "next" jika sudah selesai mengisi semua pilihan</li>
@@ -58,22 +58,22 @@
                 <li>Hasil kuesioner ditunjukan pada pie-chart yang muncul</li>
                 <li>Centang hasil kuesioner yang sudah didapatkan, dibawah ini :</li>
                 <li style="list-style-type: none;">
-                  <form role="form" action="">
+                  <form method="post" action="<?php echo base_url().'siswa/Kuesioner/insert_tr' ?>">
                     <div class="row">
                       <div class="col-md-4">
-                        <label class="radio"><input type="radio" name="hasil">Executive</label>
-                        <label class="radio"><input type="radio" name="hasil">Innovator</label>
-                        <label class="radio"><input type="radio" name="hasil">Explorer</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Executive" required>Executive</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Innovator" required>Innovator</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Explorer" required>Explorer</label>
                       </div>
                       <div class="col-md-4">
-                        <label class="radio"><input type="radio" name="hasil">Analyst</label>
-                        <label class="radio"><input type="radio" name="hasil">Driver</label>
-                        <label class="radio"><input type="radio" name="hasil">Chairman</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Analyst" required>Analyst</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Driver" required>Driver</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Chairman" required>Chairman</label>
                       </div>
                       <div class="col-md-4">
-                        <label class="radio"><input type="radio" name="hasil">Completer</label>
-                        <label class="radio"><input type="radio" name="hasil">Team Player</label>
-                        <label class="radio"><input type="radio" name="hasil">Expert</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Completer" required>Completer</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Team Player" required>Team Player</label>
+                        <label class="radio"><input type="radio" name="hasil" value="Expert" required>Expert</label>
                       </div>
                     </div>
                     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised pull-right" style="background: #4a95b9;">Kirim</button>

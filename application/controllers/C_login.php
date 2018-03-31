@@ -93,6 +93,17 @@ class C_login extends CI_Controller {
                 }
                 elseif ($this->session->userdata('level')==2)
                 {
+                    if(!$this->M_Hasil_Kuesioner->selectByUser($this->session->userdata('id'))){
+                        $this->session->set_userdata('ls',0);
+                        $this->session->set_userdata('tr',0);
+                    }else if (!$this->M_Hasil_Kuesioner2->selectByUser($this->session->userdata('id'))){
+                        $this->session->set_userdata('ls',1);
+                        $this->session->set_userdata('tr',0);
+                    }
+                    else {
+                        $this->session->set_userdata('ls',1);
+                        $this->session->set_userdata('tr',1);
+                    }
                     redirect('siswa/dashboard');
                 }
                 elseif ($this->session->userdata('level')==3)
