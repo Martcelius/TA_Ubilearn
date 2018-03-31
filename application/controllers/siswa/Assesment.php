@@ -103,6 +103,7 @@ class Assesment extends CI_Controller {
             $min = $min + 1;
             $timeTaken = $timeTaken - 60;
         }
+
         //at_risk
         $cek_ar = $this->M_Course_Assesment->select($ass_id);
         $cek = $this->M_At_risk->select($this->session->userdata('id'));
@@ -115,6 +116,7 @@ class Assesment extends CI_Controller {
 //            dd($data_ar['usr_id']);
         }
         //end at_risk
+
         $sec = $timeTaken; 
         $this->session->set_flashdata('result_timeTaken', $min.'minute(s) '.$sec.' second(s)');
         $event = array(
@@ -128,6 +130,27 @@ class Assesment extends CI_Controller {
                 ."melakukan aksi Done Assesment" . " '" .  $cek_ar->ass_name . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_assesment')->where('ass_id',$ass_id)->first(['crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('done_assessment');
+            }
+        }
+        //end activity_count
+
         redirect(base_url().'siswa/Assesment/result/'.$ass_id );
     }
 

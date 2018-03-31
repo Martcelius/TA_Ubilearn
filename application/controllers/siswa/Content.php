@@ -50,6 +50,27 @@ class Content extends CI_Controller {
 
     public function countLogContent($lsn_id,$num,$content4)
     {
+        //activity_count
+        $data_course = DB::table('course_lesson')->where('lsn_id',$lsn_id)->first(['crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_content' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_content' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('view_content');
+            }
+
+        }
+        //end activity_count
+
         $clc = M_Lesson_Access_Log::where('lsn_id',$lsn_id)->where('usr_id',$this->session->userdata('id'))->exists();
         if($clc == NULL){
             $clc = M_Lesson_Access_Log::insert(['lsn_id' => $lsn_id, 'usr_id' => $this->session->userdata('id')]);
@@ -110,7 +131,7 @@ class Content extends CI_Controller {
             'usr_id'            => $this->session->userdata('id'),
             'log_event_context' => "View Lesson:" . " " . $data['course']->lsn_name,
             'log_referrer'      => $this->input->server('REQUEST_URI'),
-            'log_name'          => "View Lessonmartcelmartcelius",
+            'log_name'          => "View Lesson",
             'log_origin'        => $this->agent->agent_string(),
             'log_ip'            => $this->input->server('REMOTE_ADDR'),
             'log_desc'          => $this->session->userdata('username'). " "

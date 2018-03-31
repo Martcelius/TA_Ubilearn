@@ -115,6 +115,29 @@ class Thread extends CI_Controller {
             );
             $this->lib_event_log->add_user_event($event);
 
+            //activity_count
+            $data_course = DB::table('course_forum')
+                ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+                ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+                ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+            $data_user = DB::table('activity_count')
+                ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+            if ($data_user == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_thread' => 1]);
+            }else{
+                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+                if ($cek_course == NULL){
+                    DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_thread' => 1]);
+                }else{
+                    DB::table('activity_count')
+                        ->where('usr_id','=', $this->session->userdata('id'))
+                        ->where('crs_id','=', $cek_course->crs_id)
+                        ->increment('create_thread');
+                }
+            }
+            //end activity_count
+
             $this->session->set_flashdata('data_thread', 'Data Thread Berhasil Tersimpan');
         }else{
             $this->session->set_flashdata('data_gagal_thread', 'Data Thread Tidak Berhasil Tersimpan');
@@ -302,6 +325,29 @@ class Thread extends CI_Controller {
         );
         $this->lib_event_log->add_user_event($event);
 
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('create_reply');
+            }
+        }
+        //end activity_count
+
         // $user = M_User::where('usr_id', '=', $this->session->userdata('id'));
         // $reply_count = $user->usr_reply_count + 1;
         // M_User::where('usr_id', '=', $this->session->userdata('id'))->update(['usr_reply_count' => $reply_count]);
@@ -418,6 +464,29 @@ class Thread extends CI_Controller {
         );
         $this->lib_event_log->add_user_event($event);
 
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('create_reply');
+            }
+        }
+        //end activity_count
+
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
 
@@ -529,6 +598,29 @@ class Thread extends CI_Controller {
             ."melakukan aksi Create Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('create_reply');
+            }
+        }
+        //end activity_count
 
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
@@ -920,6 +1012,7 @@ class Thread extends CI_Controller {
             ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
             ->where('course_forum_thread.cft_id',$cft_id)
             ->first();
+
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
             'log_event_context' => "View Thread:" . " " . $data['dataforumthread']->cft_title,
@@ -931,6 +1024,29 @@ class Thread extends CI_Controller {
                 ."melakukan aksi View Thread" . " '" . $data['dataforumthread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$data['dataforumthread']->cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_thread' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_thread' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('view_thread');
+            }
+        }
+        //end activity_count
         redirect(site_url('siswa/detail_thread_siswa/'.$cft_id));
     }
 }
