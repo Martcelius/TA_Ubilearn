@@ -164,5 +164,6 @@ $autoload['model'] = array(
     'M_At_risk',
     'M_Log',
     'M_Lesson_Access_Log',
-    'M_Hasil_Kuesioner'
+    'M_Hasil_Kuesioner',
+    'M_Hasil_Kuesioner2'
     );

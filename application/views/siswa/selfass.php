@@ -528,7 +528,6 @@ function next(nomer){
     }
     else{
         alert('Kuesioner tidak lengkap');
-        alert('Blegug sia !');
     }
 
 
