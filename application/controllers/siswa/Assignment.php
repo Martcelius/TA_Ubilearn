@@ -88,15 +88,35 @@ class Assignment extends CI_Controller {
                 'usr_id'            => $this->session->userdata('id'),
                 'log_event_context' => "Unggah Tugas:" . " " . $data['assignment']->asg_name,
                 'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View Course",
+                'log_name'          => "Uploaded",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " "
                     ."melakukan aksi Unggah Tugas" . " '" . $data['assignment']->asg_name . "' "
-                    . "pada Course" . " '" . $data['course']->crs_name . "'"
+                    . "pada Course" . " '" . $data['assignment']->crs_name . "'"
             );
             $this->lib_event_log->add_user_event($event);
             // Capture Log End
+
+            //activity_count
+            $data_course = DB::table('course_assignment')->where('asg_id',$asg_id)->first(['crs_id']);
+            $data_user = DB::table('activity_count')
+                ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+            if ($data_user == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'uploaded' => 1]);
+            }else{
+                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+                if ($cek_course == NULL){
+                    DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'uploaded' => 1]);
+                }else{
+                    DB::table('activity_count')
+                        ->where('usr_id','=', $this->session->userdata('id'))
+                        ->where('crs_id','=', $cek_course->crs_id)
+                        ->increment('uploaded');
+                }
+            }
+            //end activity_count
         }
         else {
             $this->session->set_flashdata('submit', 'Berkas tidak terupload! Anda sudah mengumpulkan tugas ini.');

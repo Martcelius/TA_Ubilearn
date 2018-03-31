@@ -122,6 +122,29 @@ class Thread extends CI_Controller {
             );
             $this->lib_event_log->add_user_event($event);
 
+            //activity_count
+            $data_course = DB::table('course_forum')
+                ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+                ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+                ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+            $data_user = DB::table('activity_count')
+                ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+            if ($data_user == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_thread' => 1]);
+            }else{
+                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+                if ($cek_course == NULL){
+                    DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_thread' => 1]);
+                }else{
+                    DB::table('activity_count')
+                        ->where('usr_id','=', $this->session->userdata('id'))
+                        ->where('crs_id','=', $cek_course->crs_id)
+                        ->increment('create_thread');
+                }
+            }
+            //end activity_count
+
             $this->session->set_flashdata('data_thread', 'Data Thread Berhasil Tersimpan');
         }else{
             $this->session->set_flashdata('data_gagal_thread', 'Data Thread Tidak Berhasil Tersimpan');
@@ -242,7 +265,8 @@ class Thread extends CI_Controller {
 
         $datainputsumword = $this->M_Course_Forum_User->updatesumword_forum_user($cfu_id,$cfu_sumword);
 
-        $cekuser = M_Course_Forum_Thread::where('cft_id','=',$cft_id)->first();
+        $cekuser = M_Course_Forum_Thread::leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
+                                        ->where('cft_id','=',$cft_id)->first();
 
         if($cekuser->usr_id == $iduser)
         {
@@ -257,27 +281,44 @@ class Thread extends CI_Controller {
             //Update Message out
             $updatemsgout = $this->M_Course_Forum_User->updatemsgout_forum_user($cfu_id);
 
-            //update Message in
-            $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
-                                                ->where('cfr_id','=',$cfr_id)
-                                                ->first();
-            $cfuser_id = $datausermsgin->cfu_id;
-            
-            $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
+            if($cekuser->usr_level == 2)
+            {
+                //update Message in
+                $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                ->where('cfr_id','=',$cfr_id)
+                ->first();
+                $cfuser_id = $datausermsgin->cfu_id;
 
-            //Update Centrality
-            $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
-                                                ->where('cfr_id','=',$cfr_id)
-                                                ->first();
-            
-            $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
-            $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
-            $jumlahsiswa = $jumlahsiswa-1;
-            $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+                $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
+                
+                //Update Centrality
+                $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
+                            ->where('cfr_id','=',$cfr_id)
+                            ->first();
 
-            $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+                $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
+                $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+                $jumlahsiswa = $jumlahsiswa-1;
 
-            $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                if ($cfu_centralitymsgout >= $jumlahsiswa)
+                {
+                    $cfu_centralitymsgout = $jumlahsiswa;
+
+                    $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                    $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                    $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                }
+                else
+                {
+                    $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                    $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                    $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                }
+            }
         }
 
         //Update Prestige
@@ -290,11 +331,26 @@ class Thread extends CI_Controller {
         
         $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
         $jumlahsiswa = $jumlahsiswa-1;
-        $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
 
-        $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+        if ($cfu_prestigemsgin >= $jumlahsiswa)
+        {
+            $cfu_prestigemsgin = $jumlahsiswa;
+            
+            $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
 
-        $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+            $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+            $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+        }
+        else
+        {
+            $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+            $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+            $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+        }
+        
         
         $data['datathread'] = M_Course_Forum_Thread::where("cft_id", "=", $cft_id)->first();
         $event = array(
@@ -308,6 +364,29 @@ class Thread extends CI_Controller {
             ."melakukan aksi Create Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('create_reply');
+            }
+        }
+        //end activity_count
 
         // $user = M_User::where('usr_id', '=', $this->session->userdata('id'));
         // $reply_count = $user->usr_reply_count + 1;
@@ -348,7 +427,8 @@ class Thread extends CI_Controller {
             //Update Sum Word
             $datainputsumword = $this->M_Course_Forum_User->updatesumword_forum_user($cfu_id,$cfu_sumword);
 
-            $cekuser = M_Course_Forum_Thread_Reply::where('ftr_id','=',$ftr_id)->first();
+            $cekuser = M_Course_Forum_Thread_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply.usr_id')
+                                                ->where('ftr_id','=',$ftr_id)->first();
 
             if($cekuser->usr_id == $iduser)
             {
@@ -363,27 +443,46 @@ class Thread extends CI_Controller {
                 //Update Message out
                 $updatemsgout = $this->M_Course_Forum_User->updatemsgout_forum_user($cfu_id);
 
-                //update Message in
-                $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
-                                                    ->where('cfr_id','=',$cfr_id)
-                                                    ->first();
-                $cfuser_id = $datausermsgin->cfu_id;
-                
-                $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
+                if ($cekuser->usr_level == 2)
+                {
+                    //update Message in
+                    $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                    ->where('cfr_id','=',$cfr_id)
+                    ->first();
+                    $cfuser_id = $datausermsgin->cfu_id;
 
-                //Update Centrality
-                $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
-                                                        ->where('cfr_id','=',$cfr_id)
-                                                        ->first();
+                    $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
 
-                $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
-                $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
-                $jumlahsiswa = $jumlahsiswa-1;
-                $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+                    //Update Centrality
+                    $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
+                                        ->where('cfr_id','=',$cfr_id)
+                                        ->first();
 
-                $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+                    $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
+                    $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+                    $jumlahsiswa = $jumlahsiswa-1;
 
-                $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                    if ($cfu_centralitymsgout >= $jumlahsiswa)
+                    {
+                        $cfu_centralitymsgout = $jumlahsiswa;
+
+                        $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                        $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                        $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+
+                    }
+                    else
+                    {
+                        $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                        $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                        $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                    }
+                    
+                }
             }
 
             //Update Prestige
@@ -396,11 +495,26 @@ class Thread extends CI_Controller {
 
             $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
             $jumlahsiswa = $jumlahsiswa-1;
-            $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
 
-            $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+            if ($cfu_prestigemsgin >= $jumlahsiswa)
+            {
+                $cfu_prestigemsgin = $jumlahsiswa;
 
-            $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+                $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+                $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+                $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+            }
+            else
+            {
+                $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+                $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+                $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+            }
+            
         }
         else
         {
@@ -424,6 +538,29 @@ class Thread extends CI_Controller {
             ."melakukan aksi Create Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('create_reply');
+            }
+        }
+        //end activity_count
 
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
@@ -460,7 +597,8 @@ class Thread extends CI_Controller {
             //Update Sum Word
             $datainputsumword = $this->M_Course_Forum_User->updatesumword_forum_user($cfu_id,$cfu_sumword);
 
-            $cekuser = M_Course_Forum_Thread_Reply_Reply::where('trr_id','=',$trr_id)->first();
+            $cekuser = M_Course_Forum_Thread_Reply_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply_reply.usr_id')
+                                                        ->where('trr_id','=',$trr_id)->first();
 
             if($cekuser->usr_id == $iduser)
             {
@@ -475,27 +613,45 @@ class Thread extends CI_Controller {
                 //Update Message out
                 $updatemsgout = $this->M_Course_Forum_User->updatemsgout_forum_user($cfu_id);
 
-                //update Message in
-                $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
-                                                    ->where('cfr_id','=',$cfr_id)
-                                                    ->first();
-                $cfuser_id = $datausermsgin->cfu_id;
-                
-                $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
+                if($cekuser->usr_level == 2)
+                {
+                    //update Message in
+                    $datausermsgin = M_Course_Forum_User::where('usr_id','=',$cekuser->usr_id)
+                    ->where('cfr_id','=',$cfr_id)
+                    ->first();
 
-                //Update Centrality
-                $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
-                ->where('cfr_id','=',$cfr_id)
-                ->first();
+                    $cfuser_id = $datausermsgin->cfu_id;
 
-                $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
-                $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
-                $jumlahsiswa = $jumlahsiswa-1;
-                $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+                    $updatemsgin = $this->M_Course_Forum_User->updatemsgin_forum_user($cfuser_id);
 
-                $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+                    //Update Centrality
+                    $datausercentrality = M_Course_Forum_User::where('usr_id','=',$iduser)
+                    ->where('cfr_id','=',$cfr_id)
+                    ->first();
 
-                $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                    $cfu_centralitymsgout = $datausercentrality->cfu_msgout;
+                    $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
+                    $jumlahsiswa = $jumlahsiswa-1;
+
+                    if($cfu_centralitymsgout >= $jumlahsiswa)
+                    {
+                        $cfu_centralitymsgout = $jumlahsiswa;
+
+                        $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                        $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                        $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                    }
+                    else
+                    {
+                        $cfu_centrality = $cfu_centralitymsgout/$jumlahsiswa;
+
+                        $cfu_centrality = number_format((float)$cfu_centrality,3,'.','');
+
+                        $updatecentrality = $this->M_Course_Forum_User->updatecentrality_forum_user($cfu_id,$cfu_centrality);
+                    }
+                }
             }
 
             //Update Prestige
@@ -508,11 +664,26 @@ class Thread extends CI_Controller {
 
             $jumlahsiswa = M_Course_Forum_User::where('cfr_id','=',$cfr_id)->count();
             $jumlahsiswa = $jumlahsiswa-1;
-            $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
 
-            $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+            if($cfu_prestigemsgin >= $jumlahsiswa)
+            {
+                $cfu_prestigemsgin = $jumlahsiswa;
 
-            $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+                $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+                $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+                $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+            }
+            else
+            {
+                $cfu_prestige = $cfu_prestigemsgin/$jumlahsiswa;
+
+                $cfu_prestige = number_format((float)$cfu_prestige,3,'.','');
+
+                $updateprestige = $this->M_Course_Forum_User->updateprestige_forum_user($cfu_idprestige,$cfu_prestige);
+            }
+            
          }
          else
          {
@@ -536,6 +707,29 @@ class Thread extends CI_Controller {
             ."melakukan aksi Create Reply pada thread" . " '" . $data['datathread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('create_reply');
+            }
+        }
+        //end activity_count
 
         redirect('siswa/detail_thread_siswa/'.$cft_id);
     }
@@ -927,6 +1121,7 @@ class Thread extends CI_Controller {
             ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
             ->where('course_forum_thread.cft_id',$cft_id)
             ->first();
+
         $event = array(
             'usr_id'            => $this->session->userdata('id'),
             'log_event_context' => "View Thread:" . " " . $data['dataforumthread']->cft_title,
@@ -938,6 +1133,29 @@ class Thread extends CI_Controller {
                 ."melakukan aksi View Thread" . " '" . $data['dataforumthread']->cft_title . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_forum')
+            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+            ->where('course_forum.cfr_id',$data['dataforumthread']->cfr_id)->first(['course.crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_thread' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_thread' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('view_thread');
+            }
+        }
+        //end activity_count
         redirect(site_url('siswa/detail_thread_siswa/'.$cft_id));
     }
 }
