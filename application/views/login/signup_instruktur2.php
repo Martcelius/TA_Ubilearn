@@ -52,7 +52,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Nama Depan tidak boleh kosong">
-						<input value="<?php echo set_value('name_depan'); ?>" class="input100" type="text" name="name_depan" placeholder="Nama Depan">
+						<input value="<?php echo set_value('name_depan'); ?>" class="input100" type="text" name="name_depan" placeholder="Nama Depan" style="text-transform: capitalize;">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Nama Belakang tidak boleh kosong">
-						<input value="<?php echo set_value('name_belakang'); ?>" class="input100" type="text" name="name_belakang" placeholder="Nama Belakang">
+						<input value="<?php echo set_value('name_belakang'); ?>" class="input100" type="text" name="name_belakang" placeholder="Nama Belakang" style="text-transform: capitalize;">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>

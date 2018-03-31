@@ -38,7 +38,7 @@
                         <div class="form-group"  >
                             <label for="inputdeskripsiforum" class="col-sm-2 control-label" >Deskripsi Forum</label>
                             <div class="col-sm-10">
-                                <textarea name="deskripsiforum" id="textEditor" style="width: 100%;" ></textarea>
+                                <textarea name="deskripsiforum" id="textEditor" style="width: 100%;text-transform: capitalize;" ></textarea>
                             </div>
                         </div>
                         <div class="form-group">

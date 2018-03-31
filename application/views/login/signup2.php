@@ -52,7 +52,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Nama Depan tidak boleh kosong">
-						<input value="<?php echo set_value('name_depan'); ?>" class="input100" type="text" name="name_depan" placeholder="Nama Depan">
+						<input value="<?php echo set_value('name_depan'); ?>" class="input100" type="text" name="name_depan" placeholder="Nama Depan" style="text-transform: capitalize;">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Nama Belakang tidak boleh kosong">
-						<input value="<?php echo set_value('name_belakang'); ?>" class="input100" type="text" name="name_belakang" placeholder="Nama Belakang">
+						<input value="<?php echo set_value('name_belakang'); ?>" class="input100" type="text" name="name_belakang" placeholder="Nama Belakang" style="text-transform: capitalize;">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -103,8 +103,7 @@
 									  background: #e6e6e6;
 									  height: 50px;
 									  border-radius: 25px;
-									  padding: 0 30px 0 68px;" 
-							name="tempatAsal" required>
+									  padding: 0 30px 0 68px;" name="tempatAsal" required>
 							<option selected disabled>--Pilih Tempat Asal--</option>
                             <option>Aceh</option>
                             <option>Sumatera Utara</option>
@@ -147,8 +146,6 @@
 						</span>
 					</div>
 
-
-
 					<div class="wrap-input100 validate-input" data-validate = "Tanggal lahir tidak boleh kosong">
 						<input value="<?php echo set_value('tgl_lahir'); ?>" class="input100" type="date" name="tgl_lahir" style="color: gray;">
 						<span class="focus-input100"></span>
@@ -157,18 +154,17 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" style="text-align: center">
 						<label style="color: whitesmoke;" class="radio-inline" for="jenis_kelamin-0" style="margin-left: 10px; color:gray;">
-                        <input required <?php echo set_value('jenis_kelamin') == 1 ? "checked" : ""; ?> type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
-                        Pria
+                            <input style="transform:scale(2); " required <?php echo set_value('jenis_kelamin') == 1 ? "checked" : ""; ?> type="radio" name="jenis_kelamin" id="jenis_kelamin-0" value="1">
+                            Pria
                     	</label>
 	                    <label class="radio-inline" style="color: whitesmoke;" for="jenis_kelamin-1" style="margin-left: 10px; color:gray;">
-	                        <input required <?php echo set_value('jenis_kelamin') == 2 ? "checked" : ""; ?> type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
+	                        <input style="transform:scale(2);" required <?php echo set_value('jenis_kelamin') == 2 ? "checked" : ""; ?> type="radio" name="jenis_kelamin" id="jenis_kelamin-1" value="2">
 	                        Wanita
 	                    </label>
 					</div>
 
-					<!-- <p style="color: red;">Saldwklwadkoawowdok</p> -->
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
 							Daftar

@@ -13,13 +13,13 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Kontent</label>
                             <div class="col-sm-10">
-                                <input name="cnt_name" type="text" class="form-control" id="inputtext3" placeholder="Nama Content">
+                                <input name="cnt_name" type="text" class="form-control" id="inputtext3" placeholder="Nama Content" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi Content</label>
                             <div class="col-sm-10">
-                                <textarea name="cnt_desc" id="textEditor1" style="width: 100%;"></textarea>
+                                <textarea name="cnt_desc" id="textEditor1" style="width: 100%;text-transform: capitalize;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
