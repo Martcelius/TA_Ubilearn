@@ -66,7 +66,8 @@ class C_login extends CI_Controller {
                     'jk' =>$cek[0]->usr_jk,
                     'level' =>$cek[0]->usr_level,
                     'ttl' =>$cek[0]->usr_tgllahir,
-                    'tmpasal' => $cek[0]->usr_tmpasal
+                    'tmpasal' => $cek[0]->usr_tmpasal,
+                    'kelas' => $cek[0]->usr_kelas
                 );
 
                 $this->session->set_userdata($user);

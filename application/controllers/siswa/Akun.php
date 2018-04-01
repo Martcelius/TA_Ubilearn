@@ -67,6 +67,7 @@ class Akun extends CI_Controller {
         $userData['usr_password'] = $this->input->post('password');
         $userData['usr_email'] = empty($this->input->post('email')) ? NULL : $this->input->post('email');
         $userData['usr_tmpasal'] = $this->input->post('tempatAsal');
+        $userData['usr_kelas'] = $this->input->post('kelas');
         if ($this->upload->do_upload('upload_foto'))
         {
             $userData['usr_picture'] = $result['file_name'];
@@ -86,7 +87,8 @@ class Akun extends CI_Controller {
             'lastname' =>$this->input->post('nama_belakang'),
             'gpa' =>empty($this->input->post('ipk')) ? NULL : $this->input->post('ipk'),
             'foto' =>$userData['usr_picture'],
-            'tmpasal' => $this->input->post('tempatAsal')
+            'tmpasal' => $this->input->post('tempatAsal'),
+            'kelas' => $this->input->post('kelas')
 //            'jk' =>empty($this->input->post('jenis_kelamin')) ? NULL : $this->input->post('jenis_kelamin'),
         );
         $this->session->set_userdata($user);
