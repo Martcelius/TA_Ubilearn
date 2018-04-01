@@ -91,6 +91,29 @@
 						</span>
 					</div>
 					<?php echo form_error('repeat-pass'); ?>
+					<div class="wrap-input100 validate-input" data-validate = "Kelas">
+						<select style="font-family: Poppins-Medium;
+									  font-size: 15px;
+									  line-height: 1.5;
+									  color: #666666;
+
+									  display: block;
+									  width: 100%;
+									  background: #e6e6e6;
+									  height: 50px;
+									  border-radius: 25px;
+									  padding: 0 30px 0 68px;" 
+							name="kelas" required>
+							<option selected disabled>--Pilih Kelas--</option>
+                            <option>IF-39-02</option>
+                            <option>IF-40-02</option>
+                            <option>IF-41-INT</option>
+                        </select>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+						</span>
+					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Kaya">
 						<select style="font-family: Poppins-Medium;
