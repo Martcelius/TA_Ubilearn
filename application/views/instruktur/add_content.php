@@ -34,6 +34,7 @@
                                 <select id="pilih" class="form-control" name="cnt_type" required>
                                     <option disabled="disabled" selected value="">--Pilih Tipe Content--</option>
                                     <option value="Text">Text</option>
+                                    <option value="Example">Example</option>
                                     <option value="Video">Video</option>
                                 </select>
                             </div>
@@ -87,10 +88,14 @@
                 $("#berkas").fadeIn();
                 $("#uploadberkas").attr("required",true);
                 $("#video").hide();
-            }else {
+            }else if ($(this).val() == "Video"){
                 $("#berkas").hide();
                 $("#video").fadeIn();
                 $("#uploadvideo").attr("required",true);
+            }else{
+                $("#berkas").fadeIn();
+                $("#uploadberkas").attr("required",true);
+                $("#video").hide();
             }
         });
         textEdit(1);
