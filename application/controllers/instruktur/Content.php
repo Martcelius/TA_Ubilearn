@@ -66,8 +66,10 @@ class Content extends CI_Controller {
         if ($cntData['cnt_type'] == "Text"){
 
             $cntData['cnt_source'] = $result['file_name'];
-        }else{
+        }else if ($cntData['cnt_type'] == "Video"){
             $cntData['cnt_source'] = $this->input->post('cnt_source');
+        }else{
+            $cntData['cnt_source'] = $result['file_name'];
         };
         $cntData['lsn_id'] = intval($this->input->post('lsn_id'));
         $cntData['loc_id'] = intval($this->input->post('loc_id'));

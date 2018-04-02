@@ -1,7 +1,7 @@
 <style>
-mark { 
-    background-color: yellow;
-}
+    mark {
+        background-color: yellow;
+    }
 </style>
 <main class="mdl-layout__content">
     <div class="mdl-grid cover-main">
@@ -16,7 +16,7 @@ mark {
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text" style="color:white"><?php echo $course->lsn_name ?></h2>
                 </div>
-                <?php 
+                <?php
                 $cnt_lg = array();
                 foreach ($learning_goal as $lg):
                     $cnt_lg[] = $lg->cnt_id;
@@ -26,34 +26,41 @@ mark {
                     <ul class="mdl-list" style="margin: 15px;">
                         <li class="mdl-list__item" style="background-color: #0d0d0d">
 								 <span class="mdl-list__item-primary-content">
-                                    <span style="margin-right: 25px;"></span>
-                                    <i class="material-icons mdl-list__item-icon"><?php if ($content->cnt_type == 'Text') echo "file_download"; else echo "play_circle_filled" ?></i>
+                                    <span style="margin-right: 25px;">
+                                    </span>
+                                      <i class="material-icons mdl-list__item-icon"><?php if ($content->cnt_type == 'Text') echo "file_download"; else if ($content->cnt_type == 'Video') echo "play_circle_filled"; else echo "file_download"; ?></i>
                                      <?php echo $content->cnt_name ?>
+                                     <span class="mdl-list__item-text-body">
+                                        <span class="label label-success" style="margin-left:20px "><?php
+                                            if (in_array($content->cnt_id, $cnt_lg)) {
+                                                echo "Target Pembelajaran";
+                                            }
+                                            ?>
+                                        </span>
+                                     </span>
                                 </span>
                             <div class="mdl-layout-spacer"></div>
                             <b class="mdl-list__item-secondary-action"
-                               style="margin-right:50px">
-                               <h4><span class="label label-success"><?php 
-                               if (in_array($content->cnt_id, $cnt_lg)) {
-                                   echo "Target Pembelajaran";
-                               }
-                               ?></h4></span>
-                               </b>
+                               style="text-align: center">
+                                <h4></h4>
+                            </b>
                             <b class="mdl-list__item-secondary-action"
-                               style="margin-right:50px">
-                               <h4><span class="label label-default"><?php echo $content->cnt_type ?></span></h4></b>
-                            <!-- <a href="<?php 
+                               style="margin-right: 50px">
+                                <h4><span class=""><?php echo $content->cnt_type ?></span></h4></b>
+                            <!-- <a href="<?php
                             if ($content->cnt_type == 'Text') {
                                 $btncl = 1;
-                            }
-                            else {
+                            } else if ($content->cnt_type == 'Video') {
                                 $btncl = 0;
+                            } else {
+                                $btncl = 2;
                             } ?>"> -->
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue btnClick" <?php if ($content->cnt_type == 'Text') echo 'data-loc = '.site_url('res/assets/content/' . $content->cnt_source); else echo 'data-loc = '.site_url('siswa/content/video/' . $content->cnt_id); ?>
-                                                data-log="<?php echo $btncl?>"  data-content4="<?php echo $content->cnt_id?>" >
-                                    <i class="material-icons"></i>
-                                    <?php if ($content->cnt_type == 'Text') echo "Unduh"; else echo "Masuk"; ?>
-                                </button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue btnClick" <?php if ($content->cnt_type == 'Text') echo 'data-loc = ' . site_url('res/assets/content/' . $content->cnt_source);
+                            else if ($content->cnt_type == 'Video') echo 'data-loc = ' . site_url('siswa/content/video/' . $content->cnt_id); else echo 'data-loc = ' . site_url('res/assets/content/' . $content->cnt_source) ?>
+                                    data-log="<?php echo $btncl ?>" data-content4="<?php echo $content->cnt_id ?>">
+                                <i class="material-icons"></i>
+                                <?php if ($content->cnt_type == 'Text') echo "Unduh"; else if ($content->cnt_type == 'Video') echo "Masuk"; else echo "Unduh" ?>
+                            </button>
                             <!-- </a> -->
                         </li>
                     </ul>
@@ -100,25 +107,25 @@ mark {
 <script type="text/javascript">
 
 
-    $(document).ready(function(){
-        $(".btnClick").click(function(){
+    $(document).ready(function () {
+        $(".btnClick").click(function () {
             var loc = $(this).data('loc');
             var log = $(this).data('log');
             var content4 = $(this).data('content4');
             $.ajax({
-                url: '<?php echo base_url().'siswa/Content/countLogContent/'.$content->lsn_id?>'+'/'+log+'/'+content4,
+                url: '<?php echo base_url() . 'siswa/Content/countLogContent/' . $content->lsn_id?>' + '/' + log + '/' + content4,
                 type: 'POST',
                 cache: false,
                 contentType: false,
                 processData: false,
-                success: function(res){
-                    window.location = loc;
+                success: function (res) {
+                    window.open(loc, '_blank');
                 },
-                error: function(res){
+                error: function (res) {
                     alert('Error');
                 }
             });
-            
+
         });
     });
 </script>

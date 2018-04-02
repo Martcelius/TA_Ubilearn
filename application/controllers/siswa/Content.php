@@ -106,7 +106,7 @@ class Content extends CI_Controller {
                     . "pada Course" . " '" . $data['kontent']->crs_name . "."
             );
             $this->lib_event_log->add_user_event($event);
-        }else{
+        }else if ($num == 1){
             $data['kontent'] = M_Course_Content::leftJoin('course_lesson','course_lesson.lsn_id','=','course_content.lsn_id')
                 ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                 ->leftJoin('users','users.usr_id','=','course.usr_id')
@@ -125,7 +125,25 @@ class Content extends CI_Controller {
                     . "pada Course" . " '" . $data['kontent']->crs_name . "'"
             );
             $this->lib_event_log->add_user_event($event);
-
+        }else {
+            $data['kontent'] = M_Course_Content::leftJoin('course_lesson','course_lesson.lsn_id','=','course_content.lsn_id')
+                ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
+                ->leftJoin('users','users.usr_id','=','course.usr_id')
+                ->where('course_content.cnt_id',$content4)
+                ->first();
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "View Content:" . " " . $data['kontent']->cnt_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Content Example",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " "
+                    ."melakukan aksi View Content" . " '" . $data['kontent']->cnt_name . "' "
+                    ."pada Lesson" . " " . $data['kontent']->lsn_name . "' "
+                    . "pada Course" . " '" . $data['kontent']->crs_name . "'"
+            );
+            $this->lib_event_log->add_user_event($event);
         }
     }
 

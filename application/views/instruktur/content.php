@@ -39,7 +39,8 @@
 						<li class="mdl-list__item">
 							<span class="mdl-list__item-primary-content">
 								<span style="margin-right: 25px;"></span>
-								<i class="material-icons mdl-list__item-icon"><?php if($content->cnt_type == 'Text') echo "file_download"; else echo "play_circle_filled" ?></i>
+								<i class="material-icons mdl-list__item-icon"><?php if($content->cnt_type == 'Text') echo "file_download"; else if($content->cnt_type == 'Video') echo "play_circle_filled";
+								else echo "file_download";?></i>
 								<?php echo $content->cnt_name;?>
 							</span>
                             <div class="mdl-layout-spacer"></div>
