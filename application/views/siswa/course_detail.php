@@ -45,8 +45,6 @@
                          ?> value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
                         <?php endforeach; ?>
                     </select>
-                    
-
                 </div>
                 <!-- dropdown -->
                 <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">

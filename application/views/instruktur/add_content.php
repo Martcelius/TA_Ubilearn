@@ -34,6 +34,7 @@
                                 <select id="pilih" class="form-control" name="cnt_type" required>
                                     <option disabled="disabled" selected value="">--Pilih Tipe Content--</option>
                                     <option value="Text">Text</option>
+                                    <option value="Example">Example</option>
                                     <option value="Video">Video</option>
                                 </select>
                             </div>
@@ -41,7 +42,7 @@
                         <div class="form-group" id="berkas" style="display:none">
                             <label class="col-sm-2 control-label">Attachment</label>
                             <div class="col-sm-10">
-                                <input type="file" name="cnt_source" id="uploadberkas" >
+                                <input type="file" name="cnt_source" id="uploadberkas" accept="application/pdf">
                                 <span>*Isi bila source pembelajaran berupa file</span>
                             </div>
                         </div>
@@ -87,10 +88,14 @@
                 $("#berkas").fadeIn();
                 $("#uploadberkas").attr("required",true);
                 $("#video").hide();
-            }else {
+            }else if ($(this).val() == "Video"){
                 $("#berkas").hide();
                 $("#video").fadeIn();
                 $("#uploadvideo").attr("required",true);
+            }else{
+                $("#berkas").fadeIn();
+                $("#uploadberkas").attr("required",true);
+                $("#video").hide();
             }
         });
         textEdit(1);

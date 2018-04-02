@@ -45,10 +45,18 @@
                             //kuis blm mulai timeopen lebih besar dari dt
                             echo "  <button onclick=\"sweet()\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue\">AMBIL ASSESSMENT</button>";
                             
+<<<<<<< HEAD
+                        }    else{
+                                //telat                            
+                                echo "  <button onclick=\"sweet2()\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red\">AMBIL ASSESSMENT</button>";
+                            }
+
+=======
                         } else {
                             //telat                            
                             echo "  <button onclick=\"sweet2()\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-red\">AMBIL ASSESSMENT</button>";
                         } 
+>>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
                         ?>
                     </div>
 

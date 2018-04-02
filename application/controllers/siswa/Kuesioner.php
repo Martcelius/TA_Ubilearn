@@ -37,32 +37,41 @@ class Kuesioner extends CI_Controller {
         $data['hasil'] = $hasil;
         if($hasil->Active > $hasil->Reflective){
             $hasilKues['AR'] = 'Active';
+            $descKues['AR'] = 'peserta didik yang lebih menyukai proses informasi secara aktif dengan melakukan sesuatu dengan materi yang dipelajari seperti contoh mendiskusikan, menjelaskan atau mengujinya.';
         }
         else{
             $hasilKues['AR'] = 'Reflective';
+            $descKues['AR'] = 'peserta didik yang lebih menyukai memikirkan materi dan bekerja sendiri.';
         }
 
         if($hasil->Sensing > $hasil->Intuitive){
             $hasilKues['SI'] = 'Sensing';
+            $descKues['SI'] = 'peserta didik yang lebih menyukai konkrit seperti fakta dan data.';
         }
         else{
             $hasilKues['SI'] = 'Intuitive';
+            $descKues['SI'] = 'peserta didik yang lebih menyukai mempelajari materi abstrak seperti teori dan makna yang mendasarinya, menganalisis kinerja pada pertanyaan tentang fakta serta pada teori dan konsep.';
         }
 
         if($hasil->Visual > $hasil->Verbal){
             $hasilKues['VV'] = 'Visual';
+            $descKues['VV'] = 'peserta didik yang lebih menyukai sesuatu dari apa yang dapat mereka lihat seperti grafik, gambar, dan diagram.';            
         }
         else{
             $hasilKues['VV'] = 'Verbal';
+            $descKues['VV'] = 'peserta didik yang lebih menyukai belajar dari audio atau kata-kata, terlepas kata itu diucapkan atau ditulis.';            
         }
 
         if($hasil->Sequential > $hasil->Global){
             $hasilKues['SG'] = 'Sequential';
+            $descKues['SG'] = 'peserta didik yang lebih nyaman dengan detail dan cenderung melalui kursus langkah demi langkah dengan cara linear.';            
         }
         else{
             $hasilKues['SG'] = 'Global';
+            $descKues['SG'] = 'peserta didik yang lebih nyaman belajar dengan lompatan besar, kadang-kadang melewatkan objek pembelajaran dan melompat ke materi yang lebih kompleks atau penting bagi peserta didik tersebut.';            
         }
         $data['hasilKues'] = $hasilKues;
+        $data['descKues'] = $descKues;
         $hasil2 = $this->M_Hasil_Kuesioner2->selectByUser($this->session->userdata('id'));
         $data['hasilKues2'] = $hasil2;
         $this->load->view('layout/master', $data);
