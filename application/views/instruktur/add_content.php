@@ -42,7 +42,7 @@
                         <div class="form-group" id="berkas" style="display:none">
                             <label class="col-sm-2 control-label">Attachment</label>
                             <div class="col-sm-10">
-                                <input type="file" name="cnt_source" id="uploadberkas" >
+                                <input type="file" name="cnt_source" id="uploadberkas" accept="application/pdf">
                                 <span>*Isi bila source pembelajaran berupa file</span>
                             </div>
                         </div>

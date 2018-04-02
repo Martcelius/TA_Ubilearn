@@ -70,7 +70,7 @@ $route['siswa/Content/countLogContent/(:any)'] = 'siswa/Content/countLogContent/
 //content
 $route['siswa/materi/(:any)'] = 'siswa/content/index/$1';
 $route['siswa/content/(:any)'] = 'siswa/content/contents/$1';
-$route['siswa/content/video/(:any)'] = 'siswa/content/contents/$1';
+$route['siswa/content/contents/(:any)'] = 'siswa/content/contents/$1';
 //forum
 $route['siswa/forum_siswa'] = 'siswa/Forum/index';
 $route['siswa/dashboard_forum_siswa/(:any)'] = 'siswa/forum/dashboard_forum_siswa/$1';

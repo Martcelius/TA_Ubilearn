@@ -63,14 +63,11 @@ class Content extends CI_Controller {
         $cntData['cnt_desc'] = empty($this->input->post('cnt_desc')) ? NULL : $this->input->post('cnt_desc');
         $cntData['cnt_comment'] = empty($this->input->post('cnt_comment')) ? NULL : $this->input->post('cnt_comment');
         $cntData['cnt_type'] = empty($this->input->post('cnt_type')) ? NULL : $this->input->post('cnt_type');
-        if ($cntData['cnt_type'] == "Text"){
-
+        if ($cntData['cnt_type'] == "Text" || $cntData['cnt_type'] == "Example" ){
             $cntData['cnt_source'] = $result['file_name'];
-        }else if ($cntData['cnt_type'] == "Video"){
-            $cntData['cnt_source'] = $this->input->post('cnt_source');
         }else{
-            $cntData['cnt_source'] = $result['file_name'];
-        };
+            $cntData['cnt_source'] = $this->input->post('cnt_source');
+        }
         $cntData['lsn_id'] = intval($this->input->post('lsn_id'));
         $cntData['loc_id'] = intval($this->input->post('loc_id'));
         

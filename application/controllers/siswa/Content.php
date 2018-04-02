@@ -52,8 +52,11 @@ class Content extends CI_Controller {
             ->where('course_content.cnt_id',$cnt_id)
             ->first();
         $data['LO'] = M_Course_Learning_Outcomes::where('loc_id',$data['kontent']->loc_id)->first();
-
-        $data['content'] = 'siswa/course_video';
+        if ($data['kontent']->cnt_type == 'Text' || $data['kontent']->cnt_type == 'Example' ){
+            $data['content'] = 'siswa/course_text';
+        }else{
+            $data['content'] = 'siswa/course_video';
+        }
         $data['sidebar'] = 'layout/sidebar';
         $this->load->view('layout/master',$data);
     }
