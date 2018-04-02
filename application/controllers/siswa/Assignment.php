@@ -33,13 +33,11 @@ class Assignment extends CI_Controller {
             ->where("asg_id","=", $asg_id)
             ->first();
 
-
         $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assignment']->crs_id)
             ->first();
-//
+        
         $data['data_instruktur'] = M_Course_Assignment::where("asg_id", $asg_id)->first();
-//        dd($data['data_instruktur']->asg_attachment);
         $dt= date('Y-m-d h:i:s');
         $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
         if (empty($cek_user))
@@ -57,6 +55,33 @@ class Assignment extends CI_Controller {
             //ngumpulin
             $this->session->set_flashdata('done', 'Anda sudah mengumpulkan tugas');
 
+        }
+
+        //Outline Stay
+        if (strpos($this->agent->referrer(), 'siswa/course/log/') !== FALSE) {
+            $waktu_sekarang = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+            
+            $waktu_sebelum = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->where('log_name', "View Course")
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+
+            $lama_stay = strtotime($waktu_sekarang) - strtotime($waktu_sebelum);
+            $hari    = floor($lama_stay/(60*60*24));   
+            $jam   = floor(($lama_stay-($hari*60*60*24))/(60*60));   
+            $menit = floor(($lama_stay-($hari*60*60*24)-($jam*60*60))/60);
+
+            //cek udah ada usernya atau belum di learning_style
+            $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+            if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            } else {
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            }
         }
         $this->load->view('layout/master', $data);
     }

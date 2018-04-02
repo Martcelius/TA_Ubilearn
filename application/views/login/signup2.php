@@ -105,8 +105,8 @@
 									  padding: 0 30px 0 68px;" 
 							name="kelas" required>
 							<option selected disabled>--Pilih Kelas--</option>
-                            <option>IF-39-02</option>
-                            <option>IF-40-02</option>
+                            <option>IF-41-04</option>
+                            <option>IF-41-05</option>
                             <option>IF-41-INT</option>
                         </select>
 						<span class="focus-input100"></span>

@@ -36,7 +36,13 @@
                         <option value="AL">Semua</option>    
                         <?php 
                         foreach ($loc as $lo): ?>
-                        <option <?php if ($lo->loc_id == $learning_goal->loc_id) echo "selected"; ?> value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
+                        <option <?php 
+                        if ($lo->loc_id == $learning_goal->loc_id) {
+                            echo "selected";
+                        } else if ($lo->loc_id == NULL) {
+                            echo "";
+                        }
+                         ?> value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
                         <?php endforeach; ?>
                     </select>
                     
