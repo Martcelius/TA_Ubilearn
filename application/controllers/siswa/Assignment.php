@@ -124,7 +124,7 @@ class Assignment extends CI_Controller {
             // Capture Log End
 
             //activity_count
-            $data_course = DB::table('course_assignment')->where('asg_id',$asg_id)->first(['crs_id']);
+            $data_course = M_Course_Assignment::where('asg_id',$asg_id)->first(['crs_id']);
             $data_user = DB::table('activity_count')
                 ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
 

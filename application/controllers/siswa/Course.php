@@ -297,6 +297,9 @@ class Course extends CI_Controller {
             $this->load->view('layout/master', $data);
         }
 
+        $outline_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_visit', 1);
+
     }
 
     public function log($crs_id)

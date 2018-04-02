@@ -219,7 +219,7 @@ class Assesment extends CI_Controller {
         $this->lib_event_log->add_user_event($event);
 
         //activity_count
-        $data_course = DB::table('course_assesment')->where('ass_id',$ass_id)->first(['crs_id']);
+        $data_course = M_Course_Assesment::where('ass_id',$ass_id)->first(['crs_id']);
         $data_user = DB::table('activity_count')
             ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
 

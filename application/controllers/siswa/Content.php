@@ -64,7 +64,7 @@ class Content extends CI_Controller {
     public function countLogContent($lsn_id,$num,$content4)
     {
         //activity_count
-        $data_course = DB::table('course_lesson')->where('lsn_id',$lsn_id)->first(['crs_id']);
+        $data_course = M_Course_Lesson::where('lsn_id',$lsn_id)->first(['crs_id']);
         $data_user = DB::table('activity_count')
             ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
 
