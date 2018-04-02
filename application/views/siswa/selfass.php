@@ -14,6 +14,7 @@
       </div>
     </div>
 
+
     <div class="mdl-grid div1" >                
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
@@ -449,7 +450,9 @@
             </h4>
             <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;">
             <!-- <a href="<?php echo base_url().'siswa/selfass/'?>"> -->
+
                 <button type="button" onclick="prev(3)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
+
             Sebelumnya
                 </button>
             <!-- </a> -->
@@ -472,6 +475,7 @@
         </div>
     </div>
 </main>
+
 <!-- <style>
 #up {
     background: url(http://icdn.lenta.ru/assets/icons-s238578731b-c5df9ffc01b66d2cee1e3e3d6d74e49b.png) no-repeat;
@@ -573,6 +577,7 @@ function cekRadio(idx){
 }
 
 /*jQuery(window).scroll(function(){
+>>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
     var fromTopPx = 200; // distance to trigger
     var scrolledFromtop = jQuery(window).scrollTop();
     if(scrolledFromtop > fromTopPx){
