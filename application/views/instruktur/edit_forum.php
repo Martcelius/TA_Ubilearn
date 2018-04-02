@@ -25,23 +25,13 @@
                 </div>
 
                 <div class="mdl-card__supporting-text">
-                    <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->lsn_id) ?>" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('instruktur/update_forum/'.$dataLesson->cfr_id.'/'.$dataLesson->crs_id) ?>" class="form-horizontal" method="post">
                         <div class="form-group">
-                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Pilih Lesson</label>
+                            <label for="inputlessonforum" class="col-sm-2 control-label" style="font-size:12px;">Lesson</label>
                             <div class="col-sm-10">
-                                <select id="inputlessonforum" class="form-control" name="lsn_id" required>
-                                    <option selected value="<?php echo $dataLesson->lsn_id;?>"><?php echo $dataLesson->lsn_name;?></option>
-                                    <?php foreach ($pilihanLesson as $lesson):?>
-                                        <option value="<?php echo $lesson->lsn_id?>"><?php echo $lesson->lsn_name?></option>
-                                    <?php endforeach;?>
+                                <select class="form-control">
+                                    <option value=""><?php echo $dataLesson->lsn_name?></option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputjudulforum" class="col-sm-2 control-label" style="font-size:12px;">Judul Forum</label>
-                            <div class="col-sm-10">
-                                <input name="judul_forum" type="text" class="form-control" id="inputjudulforum" value="<?php echo $dataLesson->cfr_title;?>" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -112,7 +102,7 @@
     $("form").submit( function(e) {
         var a = $('#textEditor').val();
         if(a == ''){
-            alert('Deskripsi Content tidak boleh kosong');
+            alert('Deskripsi Forum tidak boleh kosong');
             e.preventDefault();
         }
     });

@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Lesson</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputEmail3" name="lsn_name" value="<?php echo $dataLesson->lsn_name; ?>">
+                            <input type="text" class="form-control" id="inputEmail3" name="lsn_name" value="<?php echo $dataLesson->lsn_name; ?>" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">

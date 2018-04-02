@@ -35,7 +35,7 @@
 				<div class="login100-pic js-tilt" data-tilt >
 					<img src="<?php echo base_url().'res/assets/Login_v1/' ?>images/img-01.png" alt="IMG">
 				</div>
-
+				
 				<form class="login100-form validate-form" method="post" action="<?php echo base_url().'C_login/masuk' ?>" style="width: 315px;" >
 					<span class="login100-form-title" style="color: black;padding-bottom: 25px;">
 						Masuk

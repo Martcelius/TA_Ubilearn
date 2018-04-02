@@ -21,25 +21,25 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Kode Course</label>
                             <div class="col-sm-10">
-                            <input name="m-kode-course" type="text" class="form-control" id="inputtext3" value="<?php echo $course->crs_code ?>"  >
+                            <input name="m-kode-course" type="text" class="form-control" id="inputtext3" value="<?php echo $course->crs_code ?>" style="text-transform: capitalize;" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Nama Course</label>
                             <div class="col-sm-10">
-                            <input name="m-nama-course" type="text" class="form-control" id="inputPassword3" value="<?php echo $course->crs_name ?>" >
+                            <input name="m-nama-course" type="text" class="form-control" id="inputPassword3" value="<?php echo $course->crs_name ?>" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-course" class="form-control" id="inputtext3" value="<?php echo $course->crs_summary ?>" ><?php echo htmlspecialchars($course->crs_summary) ?></textarea>
+                            <textarea name="m-deskripsi-course" class="form-control" style="text-transform: capitalize;" id="inputtext3" value="<?php echo $course->crs_summary ?>" ><?php echo htmlspecialchars($course->crs_summary) ?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Universitas Course</label>
                             <div class="col-sm-10">
-                            <input name="m-univ-course" type="text" class="form-control" id="inputtext3" value="<?php echo $course->crs_univ ?>" >
+                            <input name="m-univ-course" type="text" class="form-control" id="inputtext3" value="<?php echo $course->crs_univ ?>" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">

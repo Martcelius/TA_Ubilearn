@@ -2,15 +2,6 @@
     <div class="mdl-grid cover-main">
     </div>
     <div class="mdl-grid">
-
-        <?php if ($this->session->flashdata('insert_content') == TRUE): ?>
-            <div role="alert" class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
-                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
-                </button>
-                <p><?php echo $this->session->flashdata('insert_content')?></p>
-            </div>
-        <?php endif; ?>
-
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
                 <div class="mdl-card__title" style="display:block;">
@@ -22,13 +13,13 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Kontent</label>
                             <div class="col-sm-10">
-                                <input name="cnt_name" type="text" class="form-control" id="inputtext3" placeholder="Nama Content">
+                                <input name="cnt_name" type="text" class="form-control" id="inputtext3" placeholder="Nama Content" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi Content</label>
                             <div class="col-sm-10">
-                                <textarea name="cnt_desc" id="textEditor1" style="width: 100%;"></textarea>
+                                <textarea name="cnt_desc" id="textEditor1" style="width: 100%;text-transform: capitalize;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -103,6 +94,14 @@
             }
         });
         textEdit(1);
+    });
+
+    $("form").submit(function (e) {
+        var a = $('#textEditor1').val();
+        if (a == '') {
+            alert('Deskripsi Content tidak boleh kosong');
+            e.preventDefault();
+        }
     });
 </script>
 <!-- <script>

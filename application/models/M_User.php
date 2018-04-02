@@ -94,6 +94,8 @@ class M_User extends Eloquent
         $userUpdate->usr_email = $data['usr_email'];
         $userUpdate->usr_picture = $data['usr_picture'];
         $userUpdate->usr_gpa = $data['usr_gpa'];
+        $userUpdate->usr_tmpasal = $data['usr_tmpasal'];
+        $userUpdate->usr_kelas = $data['usr_kelas'];
 //        $userUpdate->usr_jk = $data['usr_jk'];
         return $userUpdate->save();
     }
@@ -132,8 +134,22 @@ class M_User extends Eloquent
                     </script>";
             return false;
         }
+    }
 
+    public function update_thread_count($sumthread,$id)
+    {
+        $userthread = M_User::where('usr_id','=',$id)->first();
+        $userthread->usr_thread_count = $sumthread;
 
+        return $userthread->save();
+    }
+
+    public function update_post_count($sumpost,$id)
+    {
+        $userpost = M_User::where('usr_id','=',$id)->first();
+        $userpost->usr_post_count = $sumpost;
+
+        return $userpost->save();
     }
 
     

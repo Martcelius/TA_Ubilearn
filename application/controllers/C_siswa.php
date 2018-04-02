@@ -10,6 +10,21 @@ class C_siswa extends CI_Controller {
     {
         parent::__construct();
 
+        if ($this->session->userdata('level')=="3") {
+            redirect('instruktur/dashboard');
+        } else if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        } else {
+            if($this->session->userdata('ls') == 0){
+                redirect('siswa/kuesioner_ls');
+            }
+            else if($this->session->userdata('tr') == 0){
+                redirect('siswa/kuesioner_tr');
+            }
+        }
+
     }
 
     public function index()
@@ -19,6 +34,7 @@ class C_siswa extends CI_Controller {
 
     public function dashboard_siswa()
     {
+        //course lates
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/dashboard_siswa';
         $cenr = new M_Course_Enrol;
@@ -32,11 +48,23 @@ class C_siswa extends CI_Controller {
             $listAss[$i] = $ass->select($c->ass_id);
             $i++;
         }
+        //forum lates
+        $threadlast = new M_Course_Forum_Thread;
+        $data['list_thread'] = $threadlast->selectByUser($this->session->userdata('id'),5);
         $data['listAss'] = $listAss;
         $data['ansStd'] = $ansStd;
+//        dd($data['ansStd']);
         $this->load->view('layout/master', $data);
 
     }
+
+//    public function dashboard_siswa2()
+//    {
+//        $data['sidebar'] = 'layout/sidebar';
+//        $data['content'] = 'siswa/dashboard_siswa';
+//
+////        $this->load->view('layout/master', $data);
+//    }
 
     public function forum_siswa()
     {

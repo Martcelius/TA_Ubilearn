@@ -8,12 +8,40 @@
                 </div>
             </div>
         </div>
+        <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+            <div class="">
+                <div class="">
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--11-col-desktop mdl-cell--11-col-tablet mdl-cell--11-col-phone">
+            <div class="">
+                <div class="">
+                
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="mdl-grid">
 
         <div class="mdl-cell mdl-cell--9-col">
             <div class="mdl-grid">
+
+                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                    <h4 style="color: white">
+                        <b>Target Pembelajaran</b><sub style="color:#05C1CD"><b>(Apa yang ingin Anda pelajari?)</b></sub> <b>&#8681;</b>
+                    </h4>                    
+                    <select id="selectLoc" class="js-example-placeholder-single mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" name="state">
+                        <option value="AL">Semua</option>    
+                        <?php 
+                        foreach ($loc as $lo): ?>
+                        <option <?php if ($lo->loc_id == $learning_goal->loc_id) echo "selected"; ?> value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    
+
+                </div>
                 <!-- dropdown -->
                 <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
                     <div class="mdl-card mdl-shadow--2dp">
@@ -37,19 +65,23 @@
                         <div id="demo" class="collapse">
                             <div class="mdl-card__supporting-text">
                                 <ul class="demo-list-icon mdl-list">
-                                    <?php
-                                    $num = 1;
-                                    foreach ($lesson as $lessons):?>
-                                        <li class="mdl-list__item">
-                                    <span class="mdl-list__item-primary-content">
-                                        <span style="margin-right: 25px;"><?php echo $num++ ?> </span>
-                                        <i class="material-icons mdl-list__item-icon">label</i>
-                                        <a href="<?php echo site_url('siswa/materi/' . $lessons->lsn_id) ?>"
-                                           style="color: white;"><?php echo 'Materi - ' . $lessons->lsn_name ?></a>
-                                </span>
-                                            <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
-                                        </li>
-                                    <?php endforeach; ?>
+                                    <?php if (count($lesson) != 0):?>
+                                        <?php
+                                        $num = 1;
+                                        foreach ($lesson as $lessons):?>
+                                            <li class="mdl-list__item">
+                                        <span class="mdl-list__item-primary-content">
+                                            <span style="margin-right: 25px;"><?php echo $num++ ?> </span>
+                                            <i class="material-icons mdl-list__item-icon">label</i>
+                                            <a href="<?php echo site_url('siswa/content/log_lesson/' . $lessons->lsn_id) ?>"
+                                               style="<?php echo $lsnAccessColor[$num-2] ?>"><?php echo 'Materi - ' . $lessons->lsn_name ?></a>
+                                        </span>
+                                                <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else :?>
+                                    <h3>Data Tidak Ada</h3>
+                                    <?php endif;?>
                                 </ul>
                             </div>
                         </div>
@@ -79,6 +111,7 @@
                         <div id="demo2" class="collapse">
                             <div class="mdl-card__supporting-text">
                                 <ul class="demo-list-icon mdl-list">
+                                    <?php if (count($listAss) != 0):?>
                                     <?php
                                     $num = 1;
                                     $i = 0;
@@ -95,6 +128,9 @@
                                             <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                         </li>
                                         <?php $i++; endforeach; ?>
+                                    <?php else :?>
+                                        <h3>Data Tidak Ada</h3>
+                                    <?php endif;?>
                                 </ul>
 
                             </div>
@@ -125,6 +161,7 @@
                             <div class="mdl-card__supporting-text">
 
                                 <ul class="demo-list-icon mdl-list">
+                                    <?php if (count($assignment) != 0):?>
                                     <?php
                                     $num = 1;
                                     foreach ($assignment as $c):?>
@@ -138,6 +175,9 @@
                                             <b class="mdl-list__item-secondary-action" style="margin-right:50px"></b>
                                         </li>
                                     <?php endforeach; ?>
+                                    <?php else :?>
+                                        <h3>Data Tidak Ada</h3>
+                                    <?php endif;?>
                                 </ul>
 
                             </div>
@@ -170,3 +210,36 @@
         </div>
 
 </main>
+
+<script>
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $(".js-example-placeholder-single").select2({
+        placeholder: "Apa yang ingin Anda pelajari?",
+        allowClear: true
+    });
+
+    $('#selectLoc').on('select2:select', 
+    function (e) {
+        var data = e.params.data.id;
+        console.log(data);
+
+        $.ajax({
+            url: '<?php echo base_url().'siswa/course/goals/'?>' + data,
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(res){
+                location.reload();
+            },
+            error: function(res){
+                alert('Error');
+            }
+        });
+        return false;
+    });
+});
+
+
+</script>

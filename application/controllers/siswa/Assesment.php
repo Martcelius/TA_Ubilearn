@@ -8,7 +8,20 @@ class Assesment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-
+        if ($this->session->userdata('level')=="1") {
+            redirect('admin/dashboard');
+        } else if ($this->session->userdata('level')=="3") {
+            redirect('instruktur/dashboard');
+        } else if ($this->session->userdata('level') == NULL) {
+            redirect('');
+        } else {
+            if($this->session->userdata('ls') == 0){
+                redirect('siswa/kuesioner_ls');
+            }
+            else if($this->session->userdata('tr') == 0){
+                redirect('siswa/kuesioner_tr');
+            }
+        }
     }
 
     public function index($id)
@@ -97,8 +110,54 @@ class Assesment extends CI_Controller {
             $min = $min + 1;
             $timeTaken = $timeTaken - 60;
         }
+
+        //at_risk
+        $cek_ar = $this->M_Course_Assesment->select($ass_id);
+        $cek = $this->M_At_risk->select($this->session->userdata('id'));
+//        dd($cek->count());
+        if($cek_ar->ass_tipe == "Kuis" && $cek->count() < 3){
+            $data_ar['usr_id'] = $this->session->userdata('id');
+            $data_ar['ass_id'] = $cek_ar->ass_id;
+            $data_ar['crs_id'] = $cek_ar->crs_id;
+            $this->M_At_risk->insert($data_ar);
+//            dd($data_ar['usr_id']);
+        }
+        //end at_risk
+
         $sec = $timeTaken; 
         $this->session->set_flashdata('result_timeTaken', $min.'minute(s) '.$sec.' second(s)');
+        $event = array(
+            'usr_id'            => $this->session->userdata('id'),
+            'log_event_context' => "Done Assesment:" . " " . $cek_ar->ass_name,
+            'log_referrer'      => $this->input->server('REQUEST_URI'),
+            'log_name'          => "Done Assesment",
+            'log_origin'        => $this->agent->agent_string(),
+            'log_ip'            => $this->input->server('REMOTE_ADDR'),
+            'log_desc'          => $this->session->userdata('username'). " "
+                ."melakukan aksi Done Assesment" . " '" .  $cek_ar->ass_name . "'"
+        );
+        $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = DB::table('course_assesment')->where('ass_id',$ass_id)->first(['crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);
+        }else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('done_assessment');
+            }
+        }
+        //end activity_count
+
         redirect(base_url().'siswa/Assesment/result/'.$ass_id );
     }
 
@@ -149,17 +208,6 @@ class Assesment extends CI_Controller {
         date_default_timezone_set('Asia/Jakarta');
         $data['currDate'] = date("l, Y-m-d h:i:sa");
 
-        $event = array(
-            'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => "Done Assesment:" . " " . $data['assesment'],
-            'log_referrer'      => $this->input->server('REQUEST_URI'),
-            'log_name'          => "Done Assesment",
-            'log_origin'        => $this->agent->agent_string(),
-            'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " " 
-            ."melakukan aksi Done Assesment" . " '" . $data['assesment']->ass_name . "'"
-        );
-        $this->lib_event_log->add_user_event($event);
         $dataResult = new M_Course_Assesment_Result;
         $dataResult->ass_id = $ass_id;
         $dataResult->ass_result = $data['nilaiAkhir'];

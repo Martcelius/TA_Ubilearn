@@ -31,8 +31,16 @@ class M_Course_Forum_Thread extends Eloquent
         };
         return $update->save();
 
+    }
 
-
+    public function selectByUser($usr_id,$limit = NULL){
+        if($limit != NULL){
+            $data = M_Course_Forum_Thread::join('course_forum', 'course_forum.cfr_id', '=', 'course_forum_thread.cfr_id')->where('course_forum_thread.usr_id',$usr_id)->orderBy('cft_timecreated', 'desc')->limit($limit)->get();
+        }
+        else{
+            $data = M_Course_Forum_Thread::join('course_forum', 'course_forum.cfr_id', '=', 'course_forum_thread.cfr_id')->where('course_forum_thread.usr_id',$usr_id)->orderBy('cft_timecreated', 'desc')->get();
+        }
+        return $data;
     }
     
 }

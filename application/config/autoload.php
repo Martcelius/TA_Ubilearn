@@ -139,7 +139,8 @@ $autoload['model'] = array(
     'M_Course_Lesson', 
     'M_Course_Content',
     'M_Course_Learning_Outcomes', 
-    'M_Course_Forum', 
+    'M_Course_Forum',
+    'M_Course_Forum_User', 
     'M_Course_Forum_Thread', 
     'M_Course_Forum_Thread_Reply', 
     'M_Course_Forum_Thread_Reply_Reply',
@@ -158,5 +159,13 @@ $autoload['model'] = array(
     'M_Rating_Reply',
     'M_Rating_Reply_Reply',
     'M_Rating_Reply_Reply_Reply',
-    'M_Rating_Thread'
+    'M_Rating_Thread',
+    'M_Notification',
+    'M_At_risk',
+    'M_Log',
+    'M_Lesson_Access_Log',
+    'M_Hasil_Kuesioner',
+    'M_Hasil_Kuesioner2',
+    'M_Learning_Goal',
+    'M_Learning_Style'
     );

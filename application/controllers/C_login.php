@@ -30,7 +30,7 @@ class C_login extends CI_Controller {
 		$this->load->view('login/login');
 	}
 
-    function masuk(){
+    public function masuk(){
         $username = $this->input->post('username');
         $password = md5($this->input->post('password'));
 
@@ -65,7 +65,9 @@ class C_login extends CI_Controller {
                     'foto' =>$cek[0]->usr_picture,
                     'jk' =>$cek[0]->usr_jk,
                     'level' =>$cek[0]->usr_level,
-                    'ttl' =>$cek[0]->usr_tgllahir
+                    'ttl' =>$cek[0]->usr_tgllahir,
+                    'tmpasal' => $cek[0]->usr_tmpasal,
+                    'kelas' => $cek[0]->usr_kelas
                 );
 
                 $this->session->set_userdata($user);
@@ -80,21 +82,32 @@ class C_login extends CI_Controller {
                     'log_ip'            => $this->input->server('REMOTE_ADDR'),
                     'log_desc'          => $this->session->userdata('username'). " " ."melakukan aksi Login"
                 );
-                $this->lib_event_log->add_user_event($event);
-                // Capture Log End
+                    $this->lib_event_log->add_user_event($event);
+                    // Capture Log End
 
 //                dd($this->session->userdata('foto'));
-                if ($this->session->userdata('level')==1)
-                {
+                    if ($this->session->userdata('level')==1)
+                    {
 //                    dd($user['ttl']);
                     // print_r($this->sAession->userdata());
                     redirect('admin/dashboard');
                 }
-                elseif ($this->session->userdata('level')==2)
+                else if ($this->session->userdata('level')==2)
                 {
+                    if(!$this->M_Hasil_Kuesioner->selectByUser($this->session->userdata('id'))){
+                        $this->session->set_userdata('ls',0);
+                        $this->session->set_userdata('tr',0);
+                    }else if (!$this->M_Hasil_Kuesioner2->selectByUser($this->session->userdata('id'))){
+                        $this->session->set_userdata('ls',1);
+                        $this->session->set_userdata('tr',0);
+                    }
+                    else {
+                        $this->session->set_userdata('ls',1);
+                        $this->session->set_userdata('tr',1);
+                    }
                     redirect('siswa/dashboard');
                 }
-                elseif ($this->session->userdata('level')==3)
+                else if ($this->session->userdata('level')==3)
                 {
                     redirect("instruktur/dashboard");
                 }

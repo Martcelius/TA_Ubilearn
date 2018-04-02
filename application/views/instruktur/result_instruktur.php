@@ -6,9 +6,7 @@
                     <h3 style="color:white">Evaluasi Manajemen Proyek</h3>
                 </div>
                 <div>
-                    <P style="color: white">
-                        <b>Learning Goals </b><sub style="color:#44efe2">(What do you want to learn ?)</sub>
-                    </P>
+
                 </div>
             </div>
     </div>

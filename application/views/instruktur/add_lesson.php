@@ -12,13 +12,13 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Lesson</label>
                             <div class="col-sm-10">
-                            <input name="lsn_name" type="text" class="form-control" id="inputEmail3" placeholder="Nama Lesson">
+                            <input name="lsn_name" type="text" class="form-control" id="inputEmail3" placeholder="Nama Lesson" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Intro Lesson</label>
                             <div class="col-sm-10">
-                            <textarea name="lsn_intro" class="form-control" style="width: 100%;"></textarea>
+                            <textarea name="lsn_intro" class="form-control" style="width: 100%;text-transform: capitalize;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

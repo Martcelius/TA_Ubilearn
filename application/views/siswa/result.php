@@ -115,7 +115,7 @@
     <div style="text-align:center;margin-bottom: 20px;">
     <a href="<?php echo base_url().'siswa/assesment_info/'.$ass_obj->ass_id ?>">
         <button style="background-color: #387093;" class="mdl-button mdl-js-button mdl-button--raised">
-            Selesai Mengerjakan
+            Info Assesment
         </button>
     </a>
     </div>
