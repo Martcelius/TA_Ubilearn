@@ -97,7 +97,9 @@ mark {
         </div>
 		<div class="mdl-cell mdl-cell--9-col">
 		</div>
-        <div class="mdl-cell mdl-cell--3-col">
+
+        <!-- REKOMENDASI LS -->
+        <!-- <div class="mdl-cell mdl-cell--3-col">
            <div class="mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title" style="display: block">
                             <button class="btn-dd" style="float: right;" type="button" data-toggle="collapse"
@@ -149,7 +151,7 @@ mark {
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
         </div>
     </div>
 </main>

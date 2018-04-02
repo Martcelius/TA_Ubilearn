@@ -14,9 +14,7 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="mdl-grid" >
-<<<<<<< HEAD
-            
-=======
+
   <div role="alert"
      class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
     <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
@@ -24,16 +22,11 @@
     <p>Terima Kasih sudah mengisi data kuesioner</p>
 </div>
 
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet">
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div"></div>
-<<<<<<< HEAD
-<h6>Learning style anda adalah 'active' yang artinya.......</h6>
-=======
-<h6>Learning style anda adalah "<?php echo $hasilKues['AR'] ?>" yang artinya.......</h6>
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
+<h6>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['AR'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['AR'] ?>" adalah <?php echo $descKues['AR'] ?></h6>
 </div>
 </div>
 </div>
@@ -42,11 +35,7 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div1"></div>
-<<<<<<< HEAD
-<h6>Learning style anda adalah 'verbal' yang artinya.......</h6>
-=======
-<h6>Learning style anda adalah "<?php echo $hasilKues['VV'] ?>" yang artinya.......</h6>
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
+<h5>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['VV'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['VV'] ?>" adalah <?php echo $descKues['VV'] ?></h5>
 </div>
 </div>
 </div>
@@ -55,11 +44,7 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div2"></div>
-<<<<<<< HEAD
-<h6>Learning style anda adalah 'sensing' yang artinya.......</h6>
-=======
-<h6>Learning style anda adalah "<?php echo $hasilKues['SI'] ?>" yang artinya.......</h6>
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
+<h6>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['SI'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['SI'] ?>" adalah <?php echo $descKues['SI'] ?></h6>
 </div>
 </div>
 </div>
@@ -68,10 +53,7 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div3"></div>
-<<<<<<< HEAD
-<h6>Learning style anda adalah 'Global' yang artinya.......</h6>
-=======
-<h6>Learning style anda adalah "<?php echo $hasilKues['SG'] ?>" yang artinya.......</h6>
+<h6>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['SG'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['SG'] ?>" adalah <?php echo $descKues['SG'] ?></h6>
 </div>
 </div>
 </div>
@@ -85,7 +67,7 @@ if ($hasilKues2->hasil == NULL) {
 } else {
   echo $hasilKues2->hasil;
 } ?></i></strong></h3>  
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
+
 </div>
 </div>
 </div>
@@ -99,11 +81,7 @@ google.charts.setOnLoadCallback(drawAxisTickColors);
 function drawAxisTickColors() {
       var data = google.visualization.arrayToDataTable([
         ['Learning Style', 'Active', 'Reflective'],
-<<<<<<< HEAD
-        ['Active/Reflective', 9,2]
-=======
         ['Active/Reflective', <?php echo $hasil->Active ?>,<?php echo $hasil->Reflective ?>]
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
       ]);
 
       var options = {
@@ -149,11 +127,7 @@ google.charts.setOnLoadCallback(drawAxisTickColors);
 function drawAxisTickColors() {
       var data = google.visualization.arrayToDataTable([
         ['Learning Style', 'Verbal', 'Visual'],
-<<<<<<< HEAD
-        ['Verbal/Visual', 8,3 ]
-=======
         ['Verbal/Visual', <?php echo $hasil->Verbal ?>,<?php echo $hasil->Visual ?> ]
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
       ]);
 
       var options = {
@@ -199,11 +173,7 @@ google.charts.setOnLoadCallback(drawAxisTickColors);
 function drawAxisTickColors() {
       var data = google.visualization.arrayToDataTable([
         ['Learning Style', 'Sensing', 'Intuitive'],
-<<<<<<< HEAD
-        ['Sensing/Intuitive', 6,5 ]
-=======
         ['Sensing/Intuitive', <?php echo $hasil->Sensing ?>,<?php echo $hasil->Intuitive ?> ]
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
       ]);
 
       var options = {
@@ -248,13 +218,8 @@ google.charts.setOnLoadCallback(drawAxisTickColors);
 
 function drawAxisTickColors() {
       var data = google.visualization.arrayToDataTable([
-<<<<<<< HEAD
-        ['Learning Style', 'Sequence', 'Global'],
-        ['Verbal/Visual', 1,10 ]
-=======
         ['Learning Style', 'Sequential', 'Global'],
         ['Sequential/Global', <?php echo $hasil->Sequential ?>,<?php echo $hasil->Global ?> ]
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
       ]);
 
       var options = {
