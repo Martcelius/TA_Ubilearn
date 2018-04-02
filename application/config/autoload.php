@@ -165,5 +165,7 @@ $autoload['model'] = array(
     'M_Log',
     'M_Lesson_Access_Log',
     'M_Hasil_Kuesioner',
-    'M_Hasil_Kuesioner2'
+    'M_Hasil_Kuesioner2',
+    'M_Learning_Goal',
+    'M_Learning_Style'
     );

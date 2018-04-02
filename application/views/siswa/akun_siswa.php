@@ -85,6 +85,22 @@
                     </div>  
             </div>
             <div class="form-group">
+                <label class="col-md-4 control-label" for="Kelas">Kelas</label>  
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                             <select class="form-control" name="kelas">
+                                <option><?php echo $this->session->userdata('kelas') ?></option>
+                                <option>IF-39-02</option>
+                                <option>IF-40-02</option>
+                                <option>IF-41-INT</option>
+                             </select>
+                        </div>
+                    </div>  
+            </div>
+            <div class="form-group">
                         <label class="col-md-4 control-label">Tempat Asal</label>
                         <div class="col-md-4">
                             <div class="input-group">

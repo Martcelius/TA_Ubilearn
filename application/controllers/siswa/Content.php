@@ -35,6 +35,9 @@ class Content extends CI_Controller {
         ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
         ->where('course_content.lsn_id',$lsn_id)->get();
 
+        $data['learning_goal'] = M_Course_Content::leftJoin('learning_goals','learning_goals.loc_id','=','course_content.loc_id')
+        ->where('learning_goals.usr_id', $this->session->userdata('id'))->get();
+
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/course_materi';
         $this->load->view('layout/master',$data);
