@@ -34,12 +34,17 @@
                     </h4>                    
                     <select id="selectLoc" class="js-example-placeholder-single mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" name="state">
                         <option value="AL">Semua</option>    
-                        <?php foreach ($loc as $lo): ?>
-                        <option value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
+                        <?php 
+                        foreach ($loc as $lo): ?>
+                        <option <?php 
+                        if ($lo->loc_id == $learning_goal->loc_id) {
+                            echo "selected";
+                        } else if ($lo->loc_id == NULL) {
+                            echo "";
+                        }
+                         ?> value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
                         <?php endforeach; ?>
                     </select>
-                    
-
                 </div>
                 <!-- dropdown -->
                 <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
@@ -222,18 +227,23 @@ $(document).ready(function() {
     function (e) {
         var data = e.params.data.id;
         console.log(data);
-        
+
         $.ajax({
-            type: "POST",
-            url: "<?php echo base_url().'siswa/course/goals'. data ?>",
-            data: "key=value",
-            success: function(){ alert("success"); },
-            error: function(xhr, textStatus, error){
-                alert(xhr.statusText);
-                alert(textStatus);
-                alert(error);
+            url: '<?php echo base_url().'siswa/course/goals/'?>' + data,
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(res){
+                location.reload();
+            },
+            error: function(res){
+                alert('Error');
             }
         });
+        return false;
     });
 });
+
+
 </script>

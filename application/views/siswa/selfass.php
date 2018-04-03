@@ -14,350 +14,351 @@
       </div>
     </div>
 
+
     <div class="mdl-grid div1" >                
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet">
             <div class="mdl-card mdl-shadow--2dp pie-chart">
-                
-    <!-- kuesioner halaman 1 -->
-<div class="mdl-card__supporting-text" id="kues1">
-    <form id="form1" name="form1" method="post" action="<?php echo base_url().'siswa/Kuesioner/calc_kuesioner' ?>">  
-        <ol start="1" type="1">
-            <h4>
-            <li>Saya lebih memahami sesuatu setelah</li>
-            <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle1" value="a" required>Mencobanya.</li>
-                <li><input type="radio" name="learningstyle1" value="b" required>Memikirkannya.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Saya lebih suka dianggap sebagai orang yang</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle2" value="a">Realistis.</li>
-                <li><input type="radio" name="learningstyle2" value="b">Inovatif.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Kalau saya memikirkan apa yang saya lakukan kemarin, di pikiran saya akan muncul</li>
-         <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle3" value="a">Gambar.</li>
-                <li><input type="radio" name="learningstyle3" value="b">Kata-kata/kisah.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Saya cenderung</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle4" value="a">Mengerti detil suatu hal tetapi bingung kerangka besarnya.</li>
-                <li><input type="radio" name="learningstyle4" value="b">Mengerti kerangka besarnya tapi bingung dengan detilnya.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Ketika mempelajari sesuatu yang baru, saya merasa terbantu dengan</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle5" value="a">Membicarakannya.</li>
-                <li><input type="radio" name="learningstyle5" value="b">Memikirkannya.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Seandainya saya dosen, saya akan mengajarkan hal-hal yang berkaitan dengan</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle6" value="a">Fakta dan situasi nyata sehari-hari.</li>
-                <li><input type="radio" name="learningstyle6" value="b">Ide dan teori.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Saya lebih suka mendapat informasi baru dalam bentuk</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle7" value="a">Gambar, diagram, grafik, atau peta.</li>
-                <li><input type="radio" name="learningstyle7" value="b">Petunjuk tertulis atau info lisan.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Begitu saya paham</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle8" value="a">Bagian-bagiannya, saya paham keseluruhannya.</li>
-                <li><input type="radio" name="learningstyle8" value="b">Keseluruhannya, saya paham bagaimana bagian-bagiannya bisa pas.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Dalam kelompok belajar yang mengerjakan materi sukar, saya biasanya akan</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle9" value="a">Menimbrung dan menyumbang ide.</li>
-                <li><input type="radio" name="learningstyle9" value="b">Duduk tenang dan mendengarkan.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Saya merasa lebih mudah</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle10" value="a">Mempelajari fakta.</li>
-                <li><input type="radio" name="learningstyle10" value="b">Mempelajari konsep.</li>
-            </i>  
-        </ol>
-<br>
-            <li>Dalam buku yang penuh gambar dan bagan, saya cenderung</li>
-        <ol start="1" type="a">
-            <i>
-                <li><input type="radio" name="learningstyle11" value="a">Melihat seksama gambar dan bagan.</li>
-                <li><input type="radio" name="learningstyle11" value="b">Fokus pada penjelasan teks.</li>
-            </i>  
-        </ol>
-        </ol>
-        </h4>
-
-    <div style="text-align:left;margin-left: 30px;margin-bottom: 30px;">
-        <!-- <a href="<?php echo base_url().'siswa/selfass2/'?>"> -->
-            <button type="button" onclick="next(2)" id="nextt" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
-        Selanjutnya
-            </button>
-        <!-- </a> -->
-    </div>
-    <div style="text-align:left;margin-left: 30px;margin-bottom: 30px;margin-right: 30px;">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
-        Halaman 1 dari 4
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- kuesioner halaman 2 -->
-<div class="mdl-card__supporting-text" id="kues2">
-    <ol start="12" type="1">
-        <h4>
-        <li>Ketika menyelesaikan soal matematika</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle12" value="a">Saya biasanya mengerjakan solusinya selangkah demi selangkah.</li>
-                    <li><input type="radio" name="learningstyle12" value="b">Saya sering tahu solusinya, tapi sulit mengerjakan langkah-langkahnya.</li>
-                </i>  
-            </ol>
+            <form id="form1" name="form1" method="post" action="<?php echo base_url().'siswa/Kuesioner/calc_kuesioner' ?>">
+            <!-- kuesioner halaman 1 -->
+                <div class="mdl-card__supporting-text" id="kues1">
+                <form id="form1" name="form1" method="post" action="<?php echo base_url().'siswa/Kuesioner/calc_kuesioner' ?>">
+                    <ol start="1" type="1">
+                        <h4>
+                        <li>Saya lebih memahami sesuatu setelah</li>
+                        <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle1" value="a" required>Mencobanya.</li>
+                            <li><input type="radio" name="learningstyle1" value="b" required>Memikirkannya.</li>
+                        </i>
+                    </ol>
             <br>
-        <li>Dalam kelas yang saya ikuti</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle13" value="a">Biasanya saya kenal banyak mahasiswanya.</li>
-                    <li><input type="radio" name="learningstyle13" value="b">Jarang saya kenal banyak mahasiswanya.</li>
-                </i>  
-            </ol>
+                        <li>Saya lebih suka dianggap sebagai orang yang</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle2" value="a">Realistis.</li>
+                            <li><input type="radio" name="learningstyle2" value="b">Inovatif.</li>
+                        </i>
+                    </ol>
             <br>
-        <li>Ketika membaca non-fiksi, saya lebih suka yang</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle14" value="a">Mengajari saya fakta baru atau cara melakukan sesuatu.</li>
-                    <li><input type="radio" name="learningstyle14" value="b">Memberi saya ide-ide baru untuk dipikirkan.</li>
-                </i>  
-            </ol>
+                        <li>Kalau saya memikirkan apa yang saya lakukan kemarin, di pikiran saya akan muncul</li>
+                     <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle3" value="a">Gambar.</li>
+                            <li><input type="radio" name="learningstyle3" value="b">Kata-kata/kisah.</li>
+                        </i>
+                    </ol>
             <br>
-        <li>Saya suka guru/dosen yang</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle15" value="a">Memperlihatkan banyak diagram.</li>
-                    <li><input type="radio" name="learningstyle15" value="b">Banyak memberi penjelasan.</li>
-                </i>  
-             </ol>
-             <br>
-        <li>Ketika menganalisa cerita atau novel,</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle16" value="a">Saya mengingat peristiwa-peristiwanya dan menghubung-hubungkan untuk mengetahui temanya.</li>
-                    <li><input type="radio" name="learningstyle16" value="b">Saya bisa menangkap temanya begitu selesai membaca, dan saya harus kembali untuk menemukan peristiwa-peristiwa yang menunjukkan tema tersebut.</li>
-                </i>  
-            </ol>
-             <br>                
-        <li>Ketika mengerjakan soal PR, biasanya saya</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle17" value="a">Langsung mengerjakan solusinya.</li>
-                    <li><input type="radio" name="learningstyle17" value="b">Mencoba memahami soalnya dulu.</li>
-                </i>  
-            </ol>
-             <br>                 
-        <li>Saya lebih suka ide tentang</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle18" value="a">Kepastian.</li>
-                    <li><input type="radio" name="learningstyle18" value="b">Teori.</li>
-                </i>  
-            </ol>
-             <br>                 
-        <li>Saya mengingat dengan baik</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle19" value="a">Yang saya lihat.</li>
-                    <li><input type="radio" name="learningstyle19" value="b">Yang saya dengar.</li>
-                </i>  
-            </ol>
-                    <br>
-        <li>Penting bagi saya bahwa instruktur perlu</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle20" value="a">Memaparkan materi dalam langkah yang berurutan dan jelas.</li>
-                    <li><input type="radio" name="learningstyle20" value="b">Memberikan gambaran besarnya dan mengkaitkan materi ke mata kuliah lain.</li>
-                </i>  
-            </ol>
-                    <br>
-         <li>Saya lebih suka belajar</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle21" value="a">Dalam kelompok.</li>
-                    <li><input type="radio" name="learningstyle21" value="b">Sendiri.</li>
-                </i>  
-            </ol>
-                    <br>
-        <li>Saya biasanya dianggap</li>
-            <ol start="1" type="a">
-                <i>
-                    <li><input type="radio" name="learningstyle22" value="a">Teliti/hati-hati dalam detil pekerjaan saya.</li>
-                    <li><input type="radio" name="learningstyle22" value="b">Kreatif dalam pekerjaan saya.</li>
-                </i>  
-            </ol>
+                        <li>Saya cenderung</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle4" value="a">Mengerti detil suatu hal tetapi bingung kerangka besarnya.</li>
+                            <li><input type="radio" name="learningstyle4" value="b">Mengerti kerangka besarnya tapi bingung dengan detilnya.</li>
+                        </i>
+                    </ol>
+            <br>
+                        <li>Ketika mempelajari sesuatu yang baru, saya merasa terbantu dengan</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle5" value="a">Membicarakannya.</li>
+                            <li><input type="radio" name="learningstyle5" value="b">Memikirkannya.</li>
+                        </i>
+                    </ol>
+            <br>
+                        <li>Seandainya saya dosen, saya akan mengajarkan hal-hal yang berkaitan dengan</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle6" value="a">Fakta dan situasi nyata sehari-hari.</li>
+                            <li><input type="radio" name="learningstyle6" value="b">Ide dan teori.</li>
+                        </i>
+                    </ol>
+            <br>
+                        <li>Saya lebih suka mendapat informasi baru dalam bentuk</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle7" value="a">Gambar, diagram, grafik, atau peta.</li>
+                            <li><input type="radio" name="learningstyle7" value="b">Petunjuk tertulis atau info lisan.</li>
+                        </i>
+                    </ol>
+            <br>
+                        <li>Begitu saya paham</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle8" value="a">Bagian-bagiannya, saya paham keseluruhannya.</li>
+                            <li><input type="radio" name="learningstyle8" value="b">Keseluruhannya, saya paham bagaimana bagian-bagiannya bisa pas.</li>
+                        </i>
+                    </ol>
+            <br>
+                        <li>Dalam kelompok belajar yang mengerjakan materi sukar, saya biasanya akan</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle9" value="a">Menimbrung dan menyumbang ide.</li>
+                            <li><input type="radio" name="learningstyle9" value="b">Duduk tenang dan mendengarkan.</li>
+                        </i>
+                    </ol>
+            <br>
+                        <li>Saya merasa lebih mudah</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle10" value="a">Mempelajari fakta.</li>
+                            <li><input type="radio" name="learningstyle10" value="b">Mempelajari konsep.</li>
+                        </i>
+                    </ol>
+            <br>
+                        <li>Dalam buku yang penuh gambar dan bagan, saya cenderung</li>
+                    <ol start="1" type="a">
+                        <i>
+                            <li><input type="radio" name="learningstyle11" value="a">Melihat seksama gambar dan bagan.</li>
+                            <li><input type="radio" name="learningstyle11" value="b">Fokus pada penjelasan teks.</li>
+                        </i>
+                    </ol>
+                    </ol>
                     </h4>
-<!-- tombol next&prev -->
-    <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;">
-            <!-- <a href="<?php echo base_url().'siswa/selfass/'?>"> -->
-                <button type="button" onclick="prev(1)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
-            Sebelumnya
-                </button>
-            <!-- </a> -->
-            <!-- <a href="<?php echo base_url().'siswa/selfass3/'?>"> -->
-                <button type="button" onclick="next(3)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
-            Selanjutnya
-                </button>
-            <!-- </a>     -->
-            </div>
-<!-- progress bar -->
-    <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;margin-right: 30px;">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-            Halaman 2 dari 4
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- kuesioner halaman 3 -->
-<div class="mdl-card__supporting-text" id="kues3">
-            <ol start="23" type="1">
-                <h4><li>Untuk mencari suatu tempat, saya lebih suka</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle23" value="a">Peta.</li>
-                    <li><input type="radio" name="learningstyle23" value="b">Instruksi lisan.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Saya belajar</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle24" value="a">Lumayan teratur. Jika saya belajar, saya akan paham.</li>
-                    <li><input type="radio" name="learningstyle24" value="b">Jatuh bangun. Saya bingung tapi tiba-tiba “dong”.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Saya lebih suka mula-mula</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle25" value="a">Mencobanya.</li>
-                    <li><input type="radio" name="learningstyle25" value="b">b.	memikirkan bagaimana melakukannya.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Ketika membaca untuk hiburan, saya suka penulis yang</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle26" value="a">Dengan jelas mengatakan maksudnya.</li>
-                    <li><input type="radio" name="learningstyle26" value="b">Mengatakan dengan cara kreatif dan menarik.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Ketika melihat diagram atau sketsa di kelas, saya cenderung mengingat</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle27" value="a">Gambarnya</li>
-                    <li><input type="radio" name="learningstyle27" value="b">Apa yang instruktur katakan tentangnya.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Ketika memikirkan isi informasi, saya cenderung</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle28" value="a">Fokus pada detil dan kehilangan gambar besarnya.</li>
-                    <li><input type="radio" name="learningstyle28" value="b">Berusaha memahami gambaran besarnya sebelum masuk pada detil.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Saya lebih mudah mengingat</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle29" value="a">Sesuatu yang telah saya lakukan.</li>
-                    <li><input type="radio" name="learningstyle29" value="b">Sesuatu yang sering saya pikirkan.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Ketika saya mengerjakan tugas, saya lebih suka</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle30" value="a">Menguasai satu cara melakukannya.</li>
-                    <li><input type="radio" name="learningstyle30" value="b">Menemukan cara-cara baru melakukannya.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Jika orang memperlihatkan suatu data, saya lebih suka</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle31" value="a">Berbentuk bagan atau grafik.</li>
-                    <li><input type="radio" name="learningstyle31" value="b">Berbentuk teks yang menyimpulkan hasilnya.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Ketika menulis paper, saya cenderung</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle32" value="a">Mengerjakan (berpikir atau menulis) mulai dari awal dan berlanjut sampai selesai.</li>
-                    <li><input type="radio" name="learningstyle32" value="b">Mengerjakan (berpikir atau menulis) bagian-bagian yang berbeda lalu menatanya.</li>
-                    </i>  
-            </ol>
-            <br>
-            <li>Ketika mengerjakan tugas besar kelompok, saya ingin mula-mula</li>
-                    <ol start="1" type="a">
-                        <i>
-                    <li><input type="radio" name="learningstyle33" value="a">Ada “diskusi kelompok” dulu yang tiap anggotanya menyumbang ide.</li>
-                    <li><input type="radio" name="learningstyle33" value="b">Berpikir sendiri-sendiri dulu baru berkumpul untuk membandingkan ide.</li>
-                    </i>  
-            </ol>
-            </h4>
-            <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;">
-            <!-- <a href="<?php echo base_url().'siswa/selfass/'?>"> -->
-                <button type="button" onclick="prev(2)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
-            Sebelumnya
-                </button>
-            <!-- </a> -->
-            <!-- <a href="<?php echo base_url().'siswa/selfass3/'?>"> -->
-                <button type="button" onclick="next(4)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
-            Selanjutnya
-                </button>
-            <!-- </a>     -->
-            </div>
-            <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;margin-right: 30px;">
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
-                Halaman 3 dari 4
+                <div style="text-align:left;margin-left: 30px;margin-bottom: 30px;">
+                    <!-- <a href="<?php echo base_url().'siswa/selfass2/'?>"> -->
+                        <button type="button" onclick="next(2)" id="nextt" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
+                    Selanjutnya
+                        </button>
+                    <!-- </a> -->
+                </div>
+                <div style="text-align:left;margin-left: 30px;margin-bottom: 30px;margin-right: 30px;">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
+                    Halaman 1 dari 4
+                        </div>
                     </div>
                 </div>
             </div>
-</div>
 
-<!-- kuesioner halaman 4 -->
-<div class="mdl-card__supporting-text" id="kues4">
+            <!-- kuesioner halaman 2 -->
+                <div class="mdl-card__supporting-text" id="kues2">
+                <ol start="12" type="1">
+                    <h4>
+                    <li>Ketika menyelesaikan soal matematika</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle12" value="a">Saya biasanya mengerjakan solusinya selangkah demi selangkah.</li>
+                                <li><input type="radio" name="learningstyle12" value="b">Saya sering tahu solusinya, tapi sulit mengerjakan langkah-langkahnya.</li>
+                            </i>
+                        </ol>
+                        <br>
+                    <li>Dalam kelas yang saya ikuti</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle13" value="a">Biasanya saya kenal banyak mahasiswanya.</li>
+                                <li><input type="radio" name="learningstyle13" value="b">Jarang saya kenal banyak mahasiswanya.</li>
+                            </i>
+                        </ol>
+                        <br>
+                    <li>Ketika membaca non-fiksi, saya lebih suka yang</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle14" value="a">Mengajari saya fakta baru atau cara melakukan sesuatu.</li>
+                                <li><input type="radio" name="learningstyle14" value="b">Memberi saya ide-ide baru untuk dipikirkan.</li>
+                            </i>
+                        </ol>
+                        <br>
+                    <li>Saya suka guru/dosen yang</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle15" value="a">Memperlihatkan banyak diagram.</li>
+                                <li><input type="radio" name="learningstyle15" value="b">Banyak memberi penjelasan.</li>
+                            </i>
+                         </ol>
+                         <br>
+                    <li>Ketika menganalisa cerita atau novel,</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle16" value="a">Saya mengingat peristiwa-peristiwanya dan menghubung-hubungkan untuk mengetahui temanya.</li>
+                                <li><input type="radio" name="learningstyle16" value="b">Saya bisa menangkap temanya begitu selesai membaca, dan saya harus kembali untuk menemukan peristiwa-peristiwa yang menunjukkan tema tersebut.</li>
+                            </i>
+                        </ol>
+                         <br>
+                    <li>Ketika mengerjakan soal PR, biasanya saya</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle17" value="a">Langsung mengerjakan solusinya.</li>
+                                <li><input type="radio" name="learningstyle17" value="b">Mencoba memahami soalnya dulu.</li>
+                            </i>
+                        </ol>
+                         <br>
+                    <li>Saya lebih suka ide tentang</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle18" value="a">Kepastian.</li>
+                                <li><input type="radio" name="learningstyle18" value="b">Teori.</li>
+                            </i>
+                        </ol>
+                         <br>
+                    <li>Saya mengingat dengan baik</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle19" value="a">Yang saya lihat.</li>
+                                <li><input type="radio" name="learningstyle19" value="b">Yang saya dengar.</li>
+                            </i>
+                        </ol>
+                                <br>
+                    <li>Penting bagi saya bahwa instruktur perlu</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle20" value="a">Memaparkan materi dalam langkah yang berurutan dan jelas.</li>
+                                <li><input type="radio" name="learningstyle20" value="b">Memberikan gambaran besarnya dan mengkaitkan materi ke mata kuliah lain.</li>
+                            </i>
+                        </ol>
+                                <br>
+                     <li>Saya lebih suka belajar</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle21" value="a">Dalam kelompok.</li>
+                                <li><input type="radio" name="learningstyle21" value="b">Sendiri.</li>
+                            </i>
+                        </ol>
+                                <br>
+                    <li>Saya biasanya dianggap</li>
+                        <ol start="1" type="a">
+                            <i>
+                                <li><input type="radio" name="learningstyle22" value="a">Teliti/hati-hati dalam detil pekerjaan saya.</li>
+                                <li><input type="radio" name="learningstyle22" value="b">Kreatif dalam pekerjaan saya.</li>
+                            </i>
+                        </ol>
+                                </h4>
+            <!-- tombol next&prev -->
+                <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;">
+                        <!-- <a href="<?php echo base_url().'siswa/selfass/'?>"> -->
+                            <button type="button" onclick="prev(1)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
+                        Sebelumnya
+                            </button>
+                        <!-- </a> -->
+                        <!-- <a href="<?php echo base_url().'siswa/selfass3/'?>"> -->
+                            <button type="button" onclick="next(3)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
+                        Selanjutnya
+                            </button>
+                        <!-- </a>     -->
+                        </div>
+            <!-- progress bar -->
+                <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;margin-right: 30px;">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                        Halaman 2 dari 4
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- kuesioner halaman 3 -->
+                <div class="mdl-card__supporting-text" id="kues3">
+                        <ol start="23" type="1">
+                            <h4><li>Untuk mencari suatu tempat, saya lebih suka</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle23" value="a">Peta.</li>
+                                <li><input type="radio" name="learningstyle23" value="b">Instruksi lisan.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Saya belajar</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle24" value="a">Lumayan teratur. Jika saya belajar, saya akan paham.</li>
+                                <li><input type="radio" name="learningstyle24" value="b">Jatuh bangun. Saya bingung tapi tiba-tiba “dong”.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Saya lebih suka mula-mula</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle25" value="a">Mencobanya.</li>
+                                <li><input type="radio" name="learningstyle25" value="b">b.	memikirkan bagaimana melakukannya.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Ketika membaca untuk hiburan, saya suka penulis yang</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle26" value="a">Dengan jelas mengatakan maksudnya.</li>
+                                <li><input type="radio" name="learningstyle26" value="b">Mengatakan dengan cara kreatif dan menarik.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Ketika melihat diagram atau sketsa di kelas, saya cenderung mengingat</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle27" value="a">Gambarnya</li>
+                                <li><input type="radio" name="learningstyle27" value="b">Apa yang instruktur katakan tentangnya.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Ketika memikirkan isi informasi, saya cenderung</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle28" value="a">Fokus pada detil dan kehilangan gambar besarnya.</li>
+                                <li><input type="radio" name="learningstyle28" value="b">Berusaha memahami gambaran besarnya sebelum masuk pada detil.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Saya lebih mudah mengingat</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle29" value="a">Sesuatu yang telah saya lakukan.</li>
+                                <li><input type="radio" name="learningstyle29" value="b">Sesuatu yang sering saya pikirkan.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Ketika saya mengerjakan tugas, saya lebih suka</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle30" value="a">Menguasai satu cara melakukannya.</li>
+                                <li><input type="radio" name="learningstyle30" value="b">Menemukan cara-cara baru melakukannya.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Jika orang memperlihatkan suatu data, saya lebih suka</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle31" value="a">Berbentuk bagan atau grafik.</li>
+                                <li><input type="radio" name="learningstyle31" value="b">Berbentuk teks yang menyimpulkan hasilnya.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Ketika menulis paper, saya cenderung</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle32" value="a">Mengerjakan (berpikir atau menulis) mulai dari awal dan berlanjut sampai selesai.</li>
+                                <li><input type="radio" name="learningstyle32" value="b">Mengerjakan (berpikir atau menulis) bagian-bagian yang berbeda lalu menatanya.</li>
+                                </i>
+                        </ol>
+                        <br>
+                        <li>Ketika mengerjakan tugas besar kelompok, saya ingin mula-mula</li>
+                                <ol start="1" type="a">
+                                    <i>
+                                <li><input type="radio" name="learningstyle33" value="a">Ada “diskusi kelompok” dulu yang tiap anggotanya menyumbang ide.</li>
+                                <li><input type="radio" name="learningstyle33" value="b">Berpikir sendiri-sendiri dulu baru berkumpul untuk membandingkan ide.</li>
+                                </i>
+                        </ol>
+                        </h4>
+                        <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;">
+                        <!-- <a href="<?php echo base_url().'siswa/selfass/'?>"> -->
+                            <button type="button" onclick="prev(2)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
+                        Sebelumnya
+                            </button>
+                        <!-- </a> -->
+                        <!-- <a href="<?php echo base_url().'siswa/selfass3/'?>"> -->
+                            <button type="button" onclick="next(4)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
+                        Selanjutnya
+                            </button>
+                        <!-- </a>     -->
+                        </div>
+                        <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;margin-right: 30px;">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+                            Halaman 3 dari 4
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+            <!-- kuesioner halaman 4 -->
+                <div class="mdl-card__supporting-text" id="kues4">
             <ol start="34" type="1">
                 <h4><li>Pujian yang lebih tinggi adalah jika seseorang itu dianggap</li>
                     <ol start="1" type="a">
@@ -449,7 +450,9 @@
             </h4>
             <div style="text-align:left;margin-left: 0px;margin-bottom: 30px;">
             <!-- <a href="<?php echo base_url().'siswa/selfass/'?>"> -->
+
                 <button type="button" onclick="prev(3)" style="background-color: #99999;" class="mdl-button mdl-js-button mdl-button--raised">
+
             Sebelumnya
                 </button>
             <!-- </a> -->
@@ -467,11 +470,12 @@
                 </div>
             </div>
 </div>
-</form>
+            </form>
             </div>
         </div>
     </div>
 </main>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("input").prop('required',true);

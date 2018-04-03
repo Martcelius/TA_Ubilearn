@@ -32,12 +32,121 @@ class Assesment extends CI_Controller {
         $data['assesment']=  M_Course_Assesment::leftJoin("course","course.crs_id","=","course_assesment.crs_id")
             ->where("ass_id","=", $id)
             ->first();
-
-
+            
         $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assesment']->crs_id)
             ->first();
-//        dd($data['course']);
+        
+        //Outline Stay
+        if (strpos($this->agent->referrer(), 'siswa/course_detail') !== FALSE) {
+
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "View Assessment:" . " " . $data['assesment']->ass_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Assessment",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " "
+                    ."melakukan aksi View Assessment"." ".$data['assesment']->ass_name
+            );
+            $this->lib_event_log->add_user_event($event);
+
+            $waktu_sekarang = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+            
+            $waktu_sebelum = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->where('log_name', "View Course")
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+
+            $lama_stay = strtotime($waktu_sekarang) - strtotime($waktu_sebelum);
+            $hari    = floor($lama_stay/(60*60*24));   
+            $jam   = floor(($lama_stay-($hari*60*60*24))/(60*60));   
+            $menit = floor(($lama_stay-($hari*60*60*24)-($jam*60*60))/60);
+
+            //cek udah ada usernya atau belum di learning_style
+            $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+            if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            } else {
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            }
+        }
+
+        //Quiz Result Stay
+        if ((strpos($this->agent->referrer(), 'siswa/result') !== FALSE)
+            || (strpos($this->agent->referrer(), 'assesment/result') !== FALSE)) {
+            
+                $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "View Assessment:" . " " . $data['assesment']->ass_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Assessment",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " "
+                    ."melakukan aksi View Assessment"." ".$data['assesment']->ass_name
+            );
+            $this->lib_event_log->add_user_event($event);
+            
+            $waktu_sekarang = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+            
+            $waktu_sebelum = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->where('log_name', "View Assessment Result")
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+
+            $lama_stay = strtotime($waktu_sekarang) - strtotime($waktu_sebelum);
+            $hari    = floor($lama_stay/(60*60*24));   
+            $jam   = floor(($lama_stay-($hari*60*60*24))/(60*60));   
+            $menit = floor(($lama_stay-($hari*60*60*24)-($jam*60*60))/60);
+
+            //cek udah ada usernya atau belum di learning_style
+            $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+            if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_quiz_stay_result', $lama_stay);
+            } else {
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_quiz_stay_result', $lama_stay);
+            }
+        }
+
+        //Selfass Stay & Exercise Stay
+        $asmt = M_Course_Assesment::where('ass_id', $id)->first();
+        //cek udah ada usernya atau belum di learning_style
+        $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+        if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_visit', 1);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_visit', 1);
+            }
+            
+        } else {
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_visit', 1);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_visit', 1);
+            }
+        }
+        
         $this->load->view('layout/master', $data);
     }
 
@@ -102,6 +211,36 @@ class Assesment extends CI_Controller {
             $num++;
         }
         $timeTaken = $this->input->post('timeTaken');
+
+        //Selfass Stay & Exercise Stay
+        $asmt = M_Course_Assesment::where('ass_id', $ass_id)->first();
+        //cek udah ada usernya atau belum di learning_style
+        $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+        if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_stay', $timeTaken);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_stay', $timeTaken);
+            }
+            
+        } else {
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_stay', $timeTaken);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_stay', $timeTaken);
+            }
+        }
+
         $min = 0;
         $sec = 0;
         $min = floor($timeTaken/60);
@@ -110,6 +249,7 @@ class Assesment extends CI_Controller {
             $min = $min + 1;
             $timeTaken = $timeTaken - 60;
         }
+
         //at_risk
         $cek_ar = $this->M_Course_Assesment->select($ass_id);
         $cek = $this->M_At_risk->select($this->session->userdata('id'));
@@ -122,6 +262,7 @@ class Assesment extends CI_Controller {
 //            dd($data_ar['usr_id']);
         }
         //end at_risk
+
         $sec = $timeTaken; 
         $this->session->set_flashdata('result_timeTaken', $min.'minute(s) '.$sec.' second(s)');
         $event = array(
@@ -135,6 +276,27 @@ class Assesment extends CI_Controller {
                 ."melakukan aksi Done Assesment" . " '" .  $cek_ar->ass_name . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //activity_count
+        $data_course = M_Course_Assesment::where('ass_id',$ass_id)->first(['crs_id']);
+        $data_user = DB::table('activity_count')
+            ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+        if ($data_user == NULL){
+            DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);
+        } else{
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            if ($cek_course == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);
+            }else{
+                DB::table('activity_count')
+                    ->where('usr_id','=', $this->session->userdata('id'))
+                    ->where('crs_id','=', $cek_course->crs_id)
+                    ->increment('done_assessment');
+            }
+        }
+        //end activity_count
+
         redirect(base_url().'siswa/Assesment/result/'.$ass_id );
     }
 
@@ -190,6 +352,24 @@ class Assesment extends CI_Controller {
         $dataResult->ass_result = $data['nilaiAkhir'];
         $dataResult->usr_id = $this->session->userdata('id');
         $this->M_Course_Assesment_Result->insert($dataResult);
+
+        //Log
+        if ((strpos($this->agent->referrer(), 'siswa/dashboard') !== FALSE)
+            || (strpos($this->agent->referrer(), 'siswa/assesment_info') !== FALSE)) {
+            
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "View Assessment Result:" . " " . $data['assesment']->ass_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "View Assessment Result",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " "
+                    ."melakukan aksi View Assessment Result" . " '" .  $data['assesment']->ass_name . "'"
+            );
+            $this->lib_event_log->add_user_event($event);
+        }
+
         $this->load->view('layout/master', $data);
     }
 }

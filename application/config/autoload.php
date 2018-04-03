@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','lib_event_log', 'form_validation', 'user_agent');
+$autoload['libraries'] = array('breadcrumbs','database','session','lib_event_log', 'form_validation', 'user_agent');
 
 /*
 | -------------------------------------------------------------------
@@ -165,5 +165,7 @@ $autoload['model'] = array(
     'M_Log',
     'M_Lesson_Access_Log',
     'M_Hasil_Kuesioner',
-    'M_Hasil_Kuesioner2'
+    'M_Hasil_Kuesioner2',
+    'M_Learning_Goal',
+    'M_Learning_Style'
     );

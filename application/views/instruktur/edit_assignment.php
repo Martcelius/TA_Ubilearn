@@ -19,13 +19,13 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Assignment</label>
                             <div class="col-sm-10">
-                            <input name="m-nama-asg" type="text" class="form-control" id="inputtext3" value="<?php echo $dataasing->asg_name; ?>" required>
+                            <input name="m-nama-asg" type="text" class="form-control" id="inputtext3" value="<?php echo $dataasing->asg_name; ?>" required style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi</label>
                             <div class="col-sm-10">
-                            <textarea name="m-deskripsi-asg" id="textEditor" style="width:100%;" value=""><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
+                            <textarea name="m-deskripsi-asg" id="textEditor" style="width:100%;text-transform: capitalize;" value=""><?php echo htmlspecialchars($dataasing->asg_text);?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -116,7 +116,7 @@
     $("form").submit( function(e) {
         var a = $('#textEditor').val();
         if(a == ''){
-            alert('Deskripsi Content tidak boleh kosong');
+            alert('Deskripsi Assignment tidak boleh kosong');
             e.preventDefault();
         }
     });

@@ -113,11 +113,21 @@
     <?php $i++; } ?>
 
     <div style="text-align:center;margin-bottom: 20px;">
-    <a href="<?php echo base_url().'siswa/assesment_info/'.$ass_obj->ass_id ?>">
-        <button style="background-color: #387093;" class="mdl-button mdl-js-button mdl-button--raised">
-            Info Assesment
-        </button>
-    </a>
+        <?php if ($ass_obj->ass_tipe == "Pre-test"):?>
+            <a href="<?php echo base_url().'siswa/course_detail/'.$course->crs_id ?>">
+                <button style="background-color: #387093;" class="mdl-button mdl-js-button mdl-button--raised">
+                    Kunjungi Course
+                </button>
+            </a>
+        <?php endif ?>
+        <?php if ($ass_obj->ass_tipe != "Pre-test"):?>
+            <a href="<?php echo base_url().'siswa/assesment_info/'.$ass_obj->ass_id ?>">
+                <button style="background-color: #387093;" class="mdl-button mdl-js-button mdl-button--raised">
+                    Info Assesment
+                </button>
+            </a>
+        <?php endif ?>
+
     </div>
 </main>
 

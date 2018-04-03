@@ -62,12 +62,14 @@
                                         <?php echo $assignment->asg_text;?>
                                     </p>
                                     <?php if($data_instruktur->asg_attachment != NULL):?>
-                                        <embed src="<?php echo base_url();?>res/assets/file/<?php echo $data_instruktur->asg_attachment;?>" style="width: 100%; height: 1000px;">
+                                    <div>
+                                        <embed src="<?php echo base_url();?>res/assets/file/<?php echo $data_instruktur->asg_attachment;?>" style="width: 100%; height: 300px;">
+                                    </div>
                                     <?php endif ?>
                                     <span>Silahkan unggah tugas, sebelum tanggal : </span>
                                     <h2 class="mdl-card__title-text" style="color: red;"><?php echo $newDateTime = date('d-M-y h:i A', strtotime($assignment->asg_duedate));?></h2>
                                     <div>
-                                        <input type='file' class="input-file" name='asg_attachment' onchange="readURL(this);" accept="application/zip,application/pdf,.rar" required/>
+                                        <input type='file' class="input-file" name='asg_attachment' onchange="readURL(this);" accept="application/zip,application/pdf" required/>
                                         <span>*unggah berkas dengan format pdf,rar dan zip</span>
 
                                     </div>

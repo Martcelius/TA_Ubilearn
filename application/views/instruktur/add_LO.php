@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi learning Outcome</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" id="loc_desc" placeholder="Deskripsi" name="loc_desc"></textarea>
+                            <textarea class="form-control" id="loc_desc" placeholder="Deskripsi" name="loc_desc" style="text-transform: capitalize;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

@@ -21,13 +21,13 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Kontent</label>
                             <div class="col-sm-10">
-                            <input name="cnt_name" type="text" class="form-control" id="inputtext3" value= "<?php echo $editContent->cnt_name;?>">
+                            <input name="cnt_name" type="text" class="form-control" id="inputtext3" value= "<?php echo $editContent->cnt_name;?>" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi Content</label>
                             <div class="col-sm-10">
-                            <textarea name="cnt_desc" id="textEditor" style="width: 100%;" value=""><?php echo htmlspecialchars($editContent->cnt_desc) ;?></textarea>
+                            <textarea name="cnt_desc" id="textEditor" style="width: 100%;text-transform: capitalize;" value=""><?php echo htmlspecialchars($editContent->cnt_desc) ;?></textarea>
                             </div>
                         </div>
                         <div class="form-group">

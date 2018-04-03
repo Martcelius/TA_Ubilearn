@@ -13,13 +13,13 @@
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Nama Kontent</label>
                             <div class="col-sm-10">
-                                <input name="cnt_name" type="text" class="form-control" id="inputtext3" placeholder="Nama Content">
+                                <input name="cnt_name" type="text" class="form-control" id="inputtext3" placeholder="Nama Content" style="text-transform: capitalize;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputtext3" class="col-sm-2 control-label">Deskripsi Content</label>
                             <div class="col-sm-10">
-                                <textarea name="cnt_desc" id="textEditor1" style="width: 100%;"></textarea>
+                                <textarea name="cnt_desc" id="textEditor1" style="width: 100%;text-transform: capitalize;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -34,6 +34,7 @@
                                 <select id="pilih" class="form-control" name="cnt_type" required>
                                     <option disabled="disabled" selected value="">--Pilih Tipe Content--</option>
                                     <option value="Text">Text</option>
+                                    <option value="Example">Example</option>
                                     <option value="Video">Video</option>
                                 </select>
                             </div>
@@ -41,7 +42,7 @@
                         <div class="form-group" id="berkas" style="display:none">
                             <label class="col-sm-2 control-label">Attachment</label>
                             <div class="col-sm-10">
-                                <input type="file" name="cnt_source" id="uploadberkas" >
+                                <input type="file" name="cnt_source" id="uploadberkas" accept="application/pdf">
                                 <span>*Isi bila source pembelajaran berupa file</span>
                             </div>
                         </div>
@@ -87,13 +88,25 @@
                 $("#berkas").fadeIn();
                 $("#uploadberkas").attr("required",true);
                 $("#video").hide();
-            }else {
+            }else if ($(this).val() == "Video"){
                 $("#berkas").hide();
                 $("#video").fadeIn();
                 $("#uploadvideo").attr("required",true);
+            }else{
+                $("#berkas").fadeIn();
+                $("#uploadberkas").attr("required",true);
+                $("#video").hide();
             }
         });
         textEdit(1);
+    });
+
+    $("form").submit(function (e) {
+        var a = $('#textEditor1').val();
+        if (a == '') {
+            alert('Deskripsi Content tidak boleh kosong');
+            e.preventDefault();
+        }
     });
 </script>
 <!-- <script>

@@ -14,6 +14,7 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="mdl-grid" >
+
   <div role="alert"
      class="alert alert-success alert-dismissible fade in mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-offset-tablet mdl-cell--12-col-phone">
     <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span>
@@ -25,7 +26,7 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div"></div>
-<h6>Learning style anda adalah "<?php echo $hasilKues['AR'] ?>" yang artinya.......</h6>
+<h6>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['AR'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['AR'] ?>" adalah <?php echo $descKues['AR'] ?></h6>
 </div>
 </div>
 </div>
@@ -34,7 +35,7 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div1"></div>
-<h6>Learning style anda adalah "<?php echo $hasilKues['VV'] ?>" yang artinya.......</h6>
+<h5>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['VV'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['VV'] ?>" adalah <?php echo $descKues['VV'] ?></h5>
 </div>
 </div>
 </div>
@@ -43,7 +44,7 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div2"></div>
-<h6>Learning style anda adalah "<?php echo $hasilKues['SI'] ?>" yang artinya.......</h6>
+<h6>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['SI'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['SI'] ?>" adalah <?php echo $descKues['SI'] ?></h6>
 </div>
 </div>
 </div>
@@ -52,7 +53,7 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">  
 <div id="chart_div3"></div>
-<h6>Learning style anda adalah "<?php echo $hasilKues['SG'] ?>" yang artinya.......</h6>
+<h6>Pada dimensi ini, berdasarkan hasil dari kuesioner <i>Index of Learning Style</i>(ILS) menunjukkan bahwa learning style anda adalah "<?php echo $hasilKues['SG'] ?>". Menurut Felder-Silverman, dimensi learning style "<?php echo $hasilKues['SG'] ?>" adalah <?php echo $descKues['SG'] ?></h6>
 </div>
 </div>
 </div>
@@ -60,7 +61,13 @@
 <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet">
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">
-<h3>Team Role : <strong><i><?php echo $hasilKues2->hasil ?></i></strong></h3>  
+<h3>Team Role : <strong><i><?php 
+if ($hasilKues2->hasil == NULL) {
+  redirect('siswa/kuesioner_tr');
+} else {
+  echo $hasilKues2->hasil;
+} ?></i></strong></h3>  
+
 </div>
 </div>
 </div>

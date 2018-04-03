@@ -33,13 +33,11 @@ class Assignment extends CI_Controller {
             ->where("asg_id","=", $asg_id)
             ->first();
 
-
         $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assignment']->crs_id)
             ->first();
-//
+        
         $data['data_instruktur'] = M_Course_Assignment::where("asg_id", $asg_id)->first();
-//        dd($data['data_instruktur']->asg_attachment);
         $dt= date('Y-m-d h:i:s');
         $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
         if (empty($cek_user))
@@ -58,15 +56,42 @@ class Assignment extends CI_Controller {
             $this->session->set_flashdata('done', 'Anda sudah mengumpulkan tugas');
 
         }
+
+        //Outline Stay
+        if (strpos($this->agent->referrer(), 'siswa/course_detail') !== FALSE) {
+            $waktu_sekarang = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+            
+            $waktu_sebelum = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->where('log_name', "View Course")
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+
+            $lama_stay = strtotime($waktu_sekarang) - strtotime($waktu_sebelum);
+            $hari    = floor($lama_stay/(60*60*24));   
+            $jam   = floor(($lama_stay-($hari*60*60*24))/(60*60));   
+            $menit = floor(($lama_stay-($hari*60*60*24)-($jam*60*60))/60);
+
+            //cek udah ada usernya atau belum di learning_style
+            $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+            if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            } else {
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            }
+        }
         $this->load->view('layout/master', $data);
     }
 
     public function upload_assignment($asg_id)
     {
-        $file = "file_siswa".time();
+//        $file = "file_siswa".time();
         $config['upload_path'] ='./res/assets/File_siswa';
         $config['allowed_types'] = 'doc|csv|pptx|pdf|docx|xlxs|xls|rar|zip';
-        $config['file_name'] = $file;
+//        $config['file_name'] = $file;
         $this->load->library('upload',$config);
         $this->upload->do_upload('asg_attachment');
         $result = $this->upload->data();
@@ -80,16 +105,43 @@ class Assignment extends CI_Controller {
             'time_created' => $dt,
             'due_date' => $data['assignment']->asg_duedate
         );
-//        dd($data_asg['file']);
-
         $cek_user = $this->M_Course_Assignment_Submission->cek_user($asg_id,'usr_id',$this->session->userdata['id']);
-        if($result['is_image'])
-        {
-
-        }
-        elseif (empty($cek_user)){
+        if(empty($cek_user)){
             $insert = $this->M_Course_Assignment_Submission->insert($data_asg,$asg_id);
+            // Capture Log Start
+            $event = array(
+                'usr_id'            => $this->session->userdata('id'),
+                'log_event_context' => "Unggah Tugas:" . " " . $data['assignment']->asg_name,
+                'log_referrer'      => $this->input->server('REQUEST_URI'),
+                'log_name'          => "Uploaded",
+                'log_origin'        => $this->agent->agent_string(),
+                'log_ip'            => $this->input->server('REMOTE_ADDR'),
+                'log_desc'          => $this->session->userdata('username'). " "
+                    ."melakukan aksi Unggah Tugas" . " '" . $data['assignment']->asg_name . "' "
+                    . "pada Course" . " '" . $data['assignment']->crs_name . "'"
+            );
+            $this->lib_event_log->add_user_event($event);
+            // Capture Log End
 
+            //activity_count
+            $data_course = M_Course_Assignment::where('asg_id',$asg_id)->first(['crs_id']);
+            $data_user = DB::table('activity_count')
+                ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
+
+            if ($data_user == NULL){
+                DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'uploaded' => 1]);
+            }else{
+                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+                if ($cek_course == NULL){
+                    DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'uploaded' => 1]);
+                }else{
+                    DB::table('activity_count')
+                        ->where('usr_id','=', $this->session->userdata('id'))
+                        ->where('crs_id','=', $cek_course->crs_id)
+                        ->increment('uploaded');
+                }
+            }
+            //end activity_count
         }
         else {
             $this->session->set_flashdata('submit', 'Berkas tidak terupload! Anda sudah mengumpulkan tugas ini.');
@@ -101,21 +153,6 @@ class Assignment extends CI_Controller {
         $data['course'] = M_Course::leftJoin('users','users.usr_id', '=','course.usr_id')
             ->where("crs_id", '=',$data['assignment']->crs_id)
             ->first();
-        // Capture Log Start
-        $event = array(
-            'usr_id'            => $this->session->userdata('id'),
-            'log_event_context' => "Unggah Tugas:" . " " . $data['assignment']->asg_name,
-            'log_referrer'      => $this->input->server('REQUEST_URI'),
-            'log_name'          => "View Course",
-            'log_origin'        => $this->agent->agent_string(),
-            'log_ip'            => $this->input->server('REMOTE_ADDR'),
-            'log_desc'          => $this->session->userdata('username'). " "
-                ."melakukan aksi Unggah Tugas" . " '" . $data['assignment']->asg_name . "' "
-                . "pada Course" . " '" . $data['course']->crs_name . "'"
-        );
-        $this->lib_event_log->add_user_event($event);
-        // Capture Log End
-
         redirect('siswa/assignment_detail/'.$asg_id);
 
     }

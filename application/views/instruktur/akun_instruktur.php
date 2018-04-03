@@ -57,7 +57,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input name="nama_depan" type="text" placeholder="Nama Depan" class="form-control input-md" value="<?php echo $this->session->userdata('firstname') ;?>">
+                            <input name="nama_depan" type="text" placeholder="Nama Depan" class="form-control input-md" value="<?php echo $this->session->userdata('firstname') ;?>" style="text-transform: capitalize;">
                         </div>
                     </div>  
             </div>
@@ -69,7 +69,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input name="nama_belakang" type="text" placeholder="Nama Belakang" class="form-control input-md" value="<?php echo $this->session->userdata('lastname') ;?>">
+                            <input name="nama_belakang" type="text" placeholder="Nama Belakang" class="form-control input-md" value="<?php echo $this->session->userdata('lastname') ;?>" style="text-transform: capitalize;">
                         </div>
                     </div>  
             </div>

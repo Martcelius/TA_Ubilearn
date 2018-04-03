@@ -25,6 +25,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hasil_kuesioner`
+--
+
+CREATE TABLE `hasil_kuesioner` (
+  `hk_id` int(10) NOT NULL,
+  `usr_id` int(10) NOT NULL,
+  `Active` int(10) NOT NULL,
+  `Reflective` int(10) NOT NULL,
+  `Sensing` int(10) NOT NULL,
+  `Intuitive` int(10) NOT NULL,
+  `Visual` int(10) NOT NULL,
+  `Verbal` int(10) NOT NULL,
+  `Sequential` int(10) NOT NULL,
+  `Global` int(10) NOT NULL,
+  `hk_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `hasil_kuesioner2`
+--
+
+CREATE TABLE `hasil_kuesioner2` (
+  `hk2_id` int(10) NOT NULL,
+  `usr_id` int(10) NOT NULL,
+  `hasil` varchar(35) NOT NULL,
+  `hk2_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `activity_count`
+--
+
+CREATE TABLE `activity_count` (
+  `activity_id` int(10) UNSIGNED NOT NULL,
+  `usr_id` int(10) NOT NULL,
+  `crs_id` int(10) NOT NULL,
+  `view_content` int(10) DEFAULT '0',
+  `done_assessment` int(10) DEFAULT '0',
+  `uploaded` int(10) DEFAULT '0',
+  `create_thread` int(10) DEFAULT '0',
+  `create_reply` int(10) DEFAULT '0',
+  `view_thread` int(10) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 -- Struktur dari tabel `at_risk`
 --
 
@@ -809,12 +854,13 @@ INSERT INTO `university` (`unv_id`, `unv_name`, `unv_latlong`, `unv_address`, `u
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `usr_id` int(10) UNSIGNED NOT NULL,
   `usr_kode` varchar(3) DEFAULT NULL,
+  `usr_nim` varchar(10) DEFAULT NULL,
   `usr_username` varchar(50) NOT NULL,
   `usr_firstname` varchar(50) NOT NULL,
   `usr_lastname` varchar(50) NOT NULL,
@@ -829,20 +875,21 @@ CREATE TABLE `users` (
   `usr_tgllahir` date DEFAULT NULL,
   `usr_post_count` int(30) DEFAULT '0',
   `usr_thread_count` int(30) DEFAULT '0',
-  `usr_reply_count` int(30) DEFAULT '0'
+  `usr_reply_count` int(30) DEFAULT '0',
+  `usr_tmpasal` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`, `usr_post_count`, `usr_thread_count`, `usr_reply_count`) VALUES
-(41, NULL, 'admin', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.co.id', 'avatar_default.jpg', NULL, NULL, NULL, '1', NULL, NULL, 0, 0, 0),
-(42, NULL, 'iqbal', 'Iqbal', 'Maulana', 'eedae20fc3c7a6e9c5b1102098771c70', 'iqbalmlna@student.telkomuniversity.ac.id', 'iqbal1520309207.jpeg', '3.50', NULL, '2018-03-21 02:43:40', '2', '1', '1996-08-07', 2, 0, 0),
-(43, 'RZQ', 'razzaq', 'Fikri', 'Razzaq', '2f3383ed694d0e9446f98e90abf539cc', 'fikri@razzaq.gmail.com', 'razzaq1520959378.jpg', NULL, NULL, '2018-03-13 16:42:58', '3', '1', '1995-06-19', 0, 0, 0),
-(44, NULL, 'adzan', 'Adzan', 'Anugrah', '88c7dc5f4ea5d6f5283946f53e166dfe', 'adzan@anu.co.id', 'adzan1520314965.jpg', NULL, NULL, '2018-03-27 02:12:22', '2', '2', '1996-07-25', 33, 5, 0),
-(45, NULL, 'nungki', 'Nungki', 'Selviandro', '6d882a978ee7a24596f5bb9d9e07d250', 'nungkiselviandro@gmail.com', 'avatar_default.jpg', NULL, NULL, NULL, '3', '1', '1956-07-08', 0, 0, 0),
-(46, NULL, 'martcel', 'Martcelius', 'Saragih', 'a0e13e106218e1cb1b72d5b58a85ab58', 'marsel@marsel.ac.id', 'martcel1521275671.jpeg', NULL, NULL, '2018-03-17 08:34:31', '2', '1', '2002-06-12', 0, 0, 0);
+INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_nim`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`, `usr_post_count`, `usr_thread_count`, `usr_reply_count`, `usr_tmpasal`) VALUES
+(41, NULL, NULL, 'admin', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.co.id', 'avatar_default.jpg', NULL, NULL, NULL, '1', NULL, NULL, 0, 0, 0, 'Jawa Barat'),
+(42, NULL, NULL, 'iqbal', 'Iqbal', 'Maulana', 'eedae20fc3c7a6e9c5b1102098771c70', 'iqbalmlna@student.telkomuniversity.ac.id', 'iqbal1520309207.jpeg', '3.50', NULL, '2018-03-21 02:43:40', '2', '1', '1996-08-07', 2, 0, 0, 'Jawa Barat'),
+(43, 'RZQ', NULL, 'razzaq', 'Fikri', 'Razzaq', '2f3383ed694d0e9446f98e90abf539cc', 'fikri@razzaq.gmail.com', 'razzaq1520959378.jpg', NULL, NULL, '2018-03-13 16:42:58', '3', '1', '1995-06-19', 0, 0, 0, 'Jawa Barat'),
+(44, NULL, NULL, 'adzan', 'Adzan', 'Anugrah', '88c7dc5f4ea5d6f5283946f53e166dfe', 'adzan@anu.co.id', 'adzan1520314965.jpg', NULL, NULL, '2018-03-27 02:12:22', '2', '2', '1996-07-25', 33, 5, 0, 'Jawa Barat'),
+(45, NULL, NULL, 'nungki', 'Nungki', 'Selviandro', '6d882a978ee7a24596f5bb9d9e07d250', 'nungkiselviandro@gmail.com', 'avatar_default.jpg', NULL, NULL, NULL, '3', '1', '1956-07-08', 0, 0, 0, 'Jawa Barat'),
+(46, NULL, NULL, 'martcel', 'Martcelius', 'Saragih', 'a0e13e106218e1cb1b72d5b58a85ab58', 'marsel@marsel.ac.id', 'martcel1521275671.jpeg', NULL, NULL, '2018-03-17 08:34:31', '2', '1', '2002-06-12', 0, 0, 0, 'Jawa Barat');
 
 -- --------------------------------------------------------
 
@@ -1608,6 +1655,26 @@ INSERT INTO `user_logs` (`log_id`, `log_time`, `usr_id`, `log_event_context`, `l
 --
 
 --
+-- Indexes for table `hasil_kuesioner`
+--
+ALTER TABLE `hasil_kuesioner`
+  ADD PRIMARY KEY (`hk_id`),
+  ADD UNIQUE KEY `usr_id` (`usr_id`);
+
+--
+-- Indexes for table `hasil_kuesioner2`
+--
+ALTER TABLE `hasil_kuesioner2`
+  ADD PRIMARY KEY (`hk2_id`),
+  ADD UNIQUE KEY `usr_id` (`usr_id`);
+
+--
+-- Indexes for table `activity_count`
+--
+ALTER TABLE `activity_count`
+  ADD PRIMARY KEY (`activity_id`);
+
+--
 -- Indexes for table `at_risk`
 --
 ALTER TABLE `at_risk`
@@ -1854,6 +1921,24 @@ ALTER TABLE `user_logs`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `hasil_kuesioner`
+--
+ALTER TABLE `hasil_kuesioner`
+  MODIFY `hk_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `hasil_kuesioner2`
+--
+ALTER TABLE `hasil_kuesioner2`
+  MODIFY `hk2_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `activity_count`
+--
+ALTER TABLE `activity_count`
+  MODIFY `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `at_risk`
