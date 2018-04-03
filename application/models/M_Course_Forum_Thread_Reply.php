@@ -42,7 +42,6 @@ class M_Course_Forum_Thread_Reply extends Eloquent
         
         return $thread->save();
     }
-    
 }
 
 ?>
