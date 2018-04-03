@@ -184,7 +184,8 @@
             </div>
 
             <div class="col-md-2 hidden-xs">
-                <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" class="img-responsive img-thumbnail" id="blah">            </div>
+                <img src="<?php echo base_url();?>res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" class="img-responsive img-thumbnail" id="blah">
+            </div>
             </div>
             </div>
             <legend style="color:white;">Lain-lain</legend>

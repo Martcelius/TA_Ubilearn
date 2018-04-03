@@ -21,7 +21,7 @@
 <meta name="msapplication-TileColor" content="#3372DF">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>res/assets/js/jquery-3.1.1.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -37,11 +37,17 @@
 <!-- buat drop down -->
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="<?php echo base_url();?>res/assets/js/bootstrap.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
+
+<!--<script src="--><?php //echo base_url();?><!--res/assets/js/bootstrap.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--<link href="--><?php //echo base_url(); ?><!--res/assets/css/bootstrap.min.css" rel="stylesheet">-->
+<!--<script type="text/javascript" src="--><?php //echo base_url(); ?><!--res/assets/js/bootstrap.min.js"></script>-->
 <script src="<?php echo base_url();?>res/assets/js/bootstrap-datetimepicker.min.js"></script>
 
 <!-- Summernote -->
@@ -49,8 +55,6 @@
 <script src="<?php echo base_url(); ?>res/assets/dist/summernote.js"></script>
 
 <script src="<?php echo base_url(); ?>documentation/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- drop down end -->
 
 <!-- Select2 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
