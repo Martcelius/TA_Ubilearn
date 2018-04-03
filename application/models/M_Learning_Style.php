@@ -15,15 +15,14 @@ class M_Learning_Style extends Eloquent
         return $this->belongsTo('M_User', 'usr_id');
     }
 
-    public function insert($data,$enr_id)
+    public function insert($data)
     {
-        $insert = new M_Course_Enrol_Detail;
-        $insert->end_status = $data['detail_status'];
-        $insert->usr_id = $data['data_user'];
-        $insert->enr_id = $enr_id;
+        $insert = new M_Learning_Style;
+        $insert->usr_id = $data['usr_id'];
         return $insert->save();
-
     }
+
+
 
 }
 

@@ -54,9 +54,10 @@ class Content extends CI_Controller {
         $data['LO'] = M_Course_Learning_Outcomes::where('loc_id',$data['kontent']->loc_id)->first();
         if ($data['kontent']->cnt_type == 'Text' || $data['kontent']->cnt_type == 'Example' ){
             $data['content'] = 'siswa/course_text';
-        }else{
+        } else {
             $data['content'] = 'siswa/course_video';
         }
+
         $data['sidebar'] = 'layout/sidebar';
         $this->load->view('layout/master',$data);
     }
@@ -64,7 +65,7 @@ class Content extends CI_Controller {
     public function countLogContent($lsn_id,$num,$content4)
     {
         //activity_count
-        $data_course = DB::table('course_lesson')->where('lsn_id',$lsn_id)->first(['crs_id']);
+        $data_course = M_Course_Lesson::where('lsn_id',$lsn_id)->first(['crs_id']);
         $data_user = DB::table('activity_count')
             ->where('usr_id',$this->session->userdata('id'))->first(['usr_id']);
 
@@ -109,7 +110,25 @@ class Content extends CI_Controller {
                     . "pada Course" . " '" . $data['kontent']->crs_name . "."
             );
             $this->lib_event_log->add_user_event($event);
-        }else if ($num == 1){
+
+            //Content Visit
+            //cek udah ada usernya atau belum di learning_style
+            $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+            if (!$cek_user_ada) {
+                $ls_data['usr_id'] = $this->session->userdata('id');
+                $this->M_Learning_Style->insert($ls_data);
+                $content_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit', 1);
+                $content_visit_video = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit_video', 1);
+            } else {
+                $content_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit', 1);
+                $content_visit_video = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit_video', 1);
+            }
+
+        } else if ($num == 1){
             $data['kontent'] = M_Course_Content::leftJoin('course_lesson','course_lesson.lsn_id','=','course_content.lsn_id')
                 ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                 ->leftJoin('users','users.usr_id','=','course.usr_id')
@@ -128,7 +147,25 @@ class Content extends CI_Controller {
                     . "pada Course" . " '" . $data['kontent']->crs_name . "'"
             );
             $this->lib_event_log->add_user_event($event);
-        }else {
+
+            //Content Visit
+            //cek udah ada usernya atau belum di learning_style
+            $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+            if (!$cek_user_ada) {
+                $ls_data['usr_id'] = $this->session->userdata('id');
+                $this->M_Learning_Style->insert($ls_data);
+                $content_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit', 1);
+                $content_visit_text = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit_text', 1);
+            } else {
+                $content_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit', 1);
+                $content_visit_text = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                            ->increment('ls_content_visit_text', 1);
+            }
+
+        } else {
             $data['kontent'] = M_Course_Content::leftJoin('course_lesson','course_lesson.lsn_id','=','course_content.lsn_id')
                 ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                 ->leftJoin('users','users.usr_id','=','course.usr_id')
@@ -147,6 +184,9 @@ class Content extends CI_Controller {
                     . "pada Course" . " '" . $data['kontent']->crs_name . "'"
             );
             $this->lib_event_log->add_user_event($event);
+
+            $example_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_example_visit', 1);
         }
     }
 
@@ -170,6 +210,34 @@ class Content extends CI_Controller {
                 . "pada Course" . " '" . $data['course']->crs_name . "'"
         );
         $this->lib_event_log->add_user_event($event);
+
+        //Outline Stay
+        if (strpos($this->agent->referrer(), 'siswa/course_detail') !== FALSE) {
+            $waktu_sekarang = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+            
+            $waktu_sebelum = M_Log::where('usr_id', $this->session->userdata('id'))
+                    ->where('log_name', "View Course")
+                    ->orderBy('log_time', 'DESC')->first()->log_time;
+
+            $lama_stay = strtotime($waktu_sekarang) - strtotime($waktu_sebelum);
+            $hari    = floor($lama_stay/(60*60*24));   
+            $jam   = floor(($lama_stay-($hari*60*60*24))/(60*60));   
+            $menit = floor(($lama_stay-($hari*60*60*24)-($jam*60*60))/60);
+
+            //cek udah ada usernya atau belum di learning_style
+            $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+            if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            } else {
+            $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_outline_stay', $lama_stay);
+            }
+        }
+
         // Capture Log End
         redirect(site_url('siswa/materi/' . $lsn_id));
     }

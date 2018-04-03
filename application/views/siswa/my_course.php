@@ -10,7 +10,23 @@
 
                 </div>
             </div>
+            
         </div>
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+      <div class="">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+            <?php
+                // $this->breadcrumbs->push('Dashboard', 'siswa/dashboard');
+                // $this->breadcrumbs->push('My Course', '/');
+                // echo $this->breadcrumbs->show();
+            ?>
+        </div>
+    </div>
+        
     </div>
     <div class="col-sm-12">
         <?php if ($this->session->flashdata('data_enroll') == TRUE): ?>

@@ -18,6 +18,20 @@ class M_Course_Forum_Thread_Reply_Reply_Reply extends Eloquent
         $thread->usr_id = $data['usr_id'];
         $thread->save();
 
+        //Forum Visit
+        //cek udah ada usernya atau belum di learning_style
+        $cek_user_ada = M_Learning_Style::where('usr_id', $data['usr_id'])->first();
+        if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $data['usr_id'];
+            $this->M_Learning_Style->insert($ls_data);
+            $forum_post = M_Learning_Style::where('usr_id', $data['usr_id'])
+                ->increment('ls_forum_post', 1);
+        } else {
+            $forum_post = M_Learning_Style::where('usr_id', $data['usr_id'])
+                ->increment('ls_forum_post', 1);
+        }
+        
+
         return $thread->rrr_id;
     }
 

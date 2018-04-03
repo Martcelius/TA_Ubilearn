@@ -64,9 +64,11 @@
                 </ul>
                 <hr>
                 <div style="text-align:center;">
+
                     <a href="<?php echo site_url('siswa/enrol/'.$dataCourse->crs_id)?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-light-blue" >
                         Ambil Course
                     </button></a>
+
                  </div>
             </div>
         </div>
