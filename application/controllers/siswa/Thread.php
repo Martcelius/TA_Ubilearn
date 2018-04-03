@@ -123,8 +123,7 @@ class Thread extends CI_Controller {
             $this->lib_event_log->add_user_event($event);
 
             //activity_count
-            $data_course = DB::table('course_forum')
-                ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+            $data_course = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
                 ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
                 ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
             $data_user = DB::table('activity_count')
@@ -540,8 +539,7 @@ class Thread extends CI_Controller {
         $this->lib_event_log->add_user_event($event);
 
         //activity_count
-        $data_course = DB::table('course_forum')
-            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+        $data_course = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
             ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
             ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
         $data_user = DB::table('activity_count')
@@ -709,8 +707,7 @@ class Thread extends CI_Controller {
         $this->lib_event_log->add_user_event($event);
 
         //activity_count
-        $data_course = DB::table('course_forum')
-            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+        $data_course = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
             ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
             ->where('course_forum.cfr_id',$cfr_id)->first(['course.crs_id']);
         $data_user = DB::table('activity_count')
@@ -1135,8 +1132,7 @@ class Thread extends CI_Controller {
         $this->lib_event_log->add_user_event($event);
 
         //activity_count
-        $data_course = DB::table('course_forum')
-            ->leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
+        $data_course = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
             ->leftJoin('course','course.crs_id','=','course_lesson.crs_id')
             ->where('course_forum.cfr_id',$data['dataforumthread']->cfr_id)->first(['course.crs_id']);
         $data_user = DB::table('activity_count')
@@ -1156,6 +1152,20 @@ class Thread extends CI_Controller {
             }
         }
         //end activity_count
+
+        //Forum Visit
+        //cek udah ada usernya atau belum di learning_style
+        $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+        if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            $forum_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_forum_visit', 1);
+        } else {
+            $forum_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_forum_visit', 1);
+        }
+
         redirect(site_url('siswa/detail_thread_siswa/'.$cft_id));
     }
 }
