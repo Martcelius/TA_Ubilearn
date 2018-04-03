@@ -89,6 +89,28 @@
                         </ul>
                     </div>
                 </div>
+                <center>
+                    <div class="pagination">
+                    <?php 
+                        $number = 1;
+                        $active = "";
+                        while($number <= $segmen)
+                        {
+                            if ($halaman == $number)
+                            {
+                                $active = "active";
+                            }
+                            else
+                            {
+                                $active = "";
+                            }?>
+                            
+                        <a href="<?php echo site_url('siswa/thread/list_thread_siswa/'.$forumid->cfr_id.'/'.$number)?>" class="<?php echo $active ?>"><?php echo $number ?></a>
+                    <?php 
+                        $number++;
+                        } ?>
+                    </div>
+                </center>
             </div>
 
             <div class="col-md-3">      
@@ -122,3 +144,26 @@
         $('#dataTables-example').dataTable();
     });
 </script>
+
+<style>
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: black;
+    border-radius: 5px;
+}
+</style>

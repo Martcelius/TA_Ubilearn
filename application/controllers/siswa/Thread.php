@@ -31,15 +31,32 @@ class Thread extends CI_Controller {
 
     }
 
-    public function list_thread_siswa($cfr_id)
+    public function list_thread_siswa($cfr_id,$halaman=NULL)
     {
+        $jumlahthread = M_Course_Forum_Thread::where('course_forum_thread.cfr_id','=',$cfr_id)->count();
+        $segmen = $jumlahthread/10;
+        $segmen = ceil($segmen);
+
+        $data['segmen'] = $segmen;
+        
+        if($halaman == NULL)
+        {
+            $halaman = 1;
+        }
+
+        $skipnumber = ($halaman-1)*10;
+        
         $data['datathreadsiswa'] = M_Course_Forum_Thread::leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
                                 ->where('course_forum_thread.cfr_id',$cfr_id)
+                                ->skip($skipnumber)
+                                ->take(10)
                                 ->get(['course_forum_thread.*','users.usr_firstname','users.usr_lastname']);
         $data['forumid'] = M_Course_Forum::where('cfr_id',$cfr_id)->first();
         $data['judul_lesson'] = M_Course_Forum::leftJoin('course_lesson','course_lesson.lsn_id','=','course_forum.lsn_id')
                             ->where('course_forum.cfr_id',$cfr_id)
                             ->first(['course_lesson.lsn_name']);
+
+        $data['halaman'] = $halaman;
  
         $sumpost[] = 0;
         if($data['datathreadsiswa'] != NULL)
@@ -226,19 +243,33 @@ class Thread extends CI_Controller {
         redirect('siswa/list_thread_siswa/'.$cfr_id);
     }
 
-    public function detail_thread_siswa($cft_id)
+    public function detail_thread_siswa($cft_id,$halaman=NULL)
     {
         $data['dataforumthread'] = M_Course_Forum::leftJoin('course_forum_thread','course_forum_thread.cfr_id','=','course_forum.cfr_id')
                                 ->leftJoin('users','users.usr_id','=','course_forum_thread.usr_id')
                                 ->where('course_forum_thread.cft_id',$cft_id)
                                 ->first();
 
+        $jumlahreply = M_Course_Forum_Thread_Reply::where('course_forum_thread_reply.cft_id','=',$cft_id)->count();
+
+        $segmen = $jumlahreply/10;
+        $segmen = ceil($segmen);
+
+        $data['segmen'] = $segmen;
+        
+        if($halaman == NULL)
+        {
+            $halaman = 1;
+        }
+
+        $data['halaman'] = $halaman;
+
         $data['sidebar'] = 'layout/sidebar';
         $data['content'] = 'siswa/detail_thread_siswa';
         $this->load->view('layout/master',$data);
     }
 
-    public function insert_komentar_reply($cft_id,$cfr_id)
+    public function insert_komentar_reply($cft_id,$cfr_id,$halaman)
     {
         $data['ftr_content'] = $this->input->post('forum_komentarr');
         $cfu_sumword = str_replace('</p><p>','',$data['ftr_content']);
@@ -392,10 +423,10 @@ class Thread extends CI_Controller {
         // $reply_count = $user->usr_reply_count + 1;
         // M_User::where('usr_id', '=', $this->session->userdata('id'))->update(['usr_reply_count' => $reply_count]);
 
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function insert_komentar_reply_reply($ftr_id,$cft_id,$cfr_id)
+    public function insert_komentar_reply_reply($ftr_id,$cft_id,$cfr_id,$halaman)
     {
         $data['trr_content'] = $this->input->post('forum_komentar1');
         $cfu_sumword = str_replace('</p><p>',' ',$data['trr_content']);
@@ -562,10 +593,10 @@ class Thread extends CI_Controller {
         }
         //end activity_count
 
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function insert_komentar_reply_reply_reply($trr_id,$cft_id,$cfr_id)
+    public function insert_komentar_reply_reply_reply($trr_id,$cft_id,$cfr_id,$halaman)
     {
         $data['rrr_content'] = $this->input->post('forum_komentar2');
         $cfu_sumword = str_replace('</p><p>',' ',$data['rrr_content']);
@@ -731,7 +762,7 @@ class Thread extends CI_Controller {
         }
         //end activity_count
 
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
     public function insert_rating_reply($ftr_id,$cft_id,$k,$cfr_id)
@@ -953,47 +984,6 @@ class Thread extends CI_Controller {
 
     public function delete_komentar_reply($ftr_id,$cft_id)
     {
-        // $sumreply2 = 0;
-        // $sumreply3 = 0;
-        
-        // $countreply2 = M_Course_Forum_Thread_Reply_Reply::leftJoin('course_forum_thread_reply','course_forum_thread_reply.ftr_id','=','course_forum_thread_reply_reply.ftr_id')
-        //                 ->where('course_forum_thread_reply.ftr_id',$ftr_id)
-        //                 ->where('course_forum_thread_reply.usr_id',$this->session->userdata('id'))               
-        //                 ->get();
-        // //$sumreply2 = $countreply2->count('usr_id');
-
-        // $i=1;
-        // $j=1;
-        // foreach($countreply2 as $datareply2)
-        // {
-        //     $datareply2thread[$i] = $datareply2->trr_id;
-
-        //     $jumlahreply2 = M_Course_Forum_Thread_Reply_Reply::where('course_forum_thread_reply_reply.trr_id',$datareply2thread[$i])
-        //                     ->where('course_forum_thread_reply_reply.usr_id',$this->session->userdata('id'))               
-        //                     ->get();
-        //     $sumreply2 = $sumreply2 + $jumlahreply2->count('usr_id');
-
-        //     foreach($jumlahreply2 as $jumreply2)
-        //     {
-        //         $datareply3thread[$j] = $jumreply2->trr_id;
-
-        //         $jumlahreply3 = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.trr_id',$datareply3thread[$j])
-        //                     ->where('course_forum_thread_reply_reply_reply.usr_id',$this->session->userdata('id'))
-        //                     ->get();
-        //         $sumreply3 = $sumreply3 + $jumlahreply3->count('usr_id');
-        //     }
-        // }
-
-        // $jumlah = $sumreply2 + $sumreply3;
-        // $jumlah++;
-        // dd($jumlah);
-
-        // $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
-        // $iduser = $this->session->userdata('id');
-        // $jumlahpostuser = $datauser->usr_post_count;
-        // $jumlahpostuser = $jumlahpostuser - $jumlah;
-        // $decpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
-
         $deleteThread= M_Course_Forum_Thread_Reply::where('ftr_id',$ftr_id)->delete();
 
         if($deleteThread)
@@ -1019,19 +1009,7 @@ class Thread extends CI_Controller {
     }
 
     public function delete_komentar_reply_reply($trr_id,$cft_id)
-    {
-        // $countreply3 = M_Course_Forum_Thread_Reply_Reply_Reply::where('course_forum_thread_reply_reply_reply.trr_id',$trr_id)
-        //                 ->where('course_forum_thread_reply_reply_reply.usr_id',$this->session->userdata('id'))
-        //                 ->get();
-        // $sumreply3 = $countreply3->count('usr_id');
-        // $sumreply3++;
-        
-        // $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
-        // $iduser = $this->session->userdata('id');
-        // $jumlahpostuser = $datauser->usr_post_count;
-        // $jumlahpostuser = $jumlahpostuser - $sumreply3;
-        // $decpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
-        
+    {   
         $deleteThread= M_Course_Forum_Thread_Reply_Reply::where('trr_id',$trr_id)->delete();
 
         if($deleteThread)
@@ -1058,12 +1036,6 @@ class Thread extends CI_Controller {
 
     public function delete_komentar_reply_reply_reply($rrr_id,$cft_id)
     {
-        // $datauser = M_User::where('usr_id', $this->session->userdata('id'))->first();
-        // $iduser = $this->session->userdata('id');
-        // $jumlahpostuser = $datauser->usr_post_count;
-        // $jumlahpostuser--;
-        // $decpostuser = $this->M_User->update_post_count($jumlahpostuser,$iduser);
-
         $deleteThread= M_Course_Forum_Thread_Reply_Reply_Reply::where('rrr_id',$rrr_id)->delete();
 
         if($deleteThread)
@@ -1156,6 +1128,6 @@ class Thread extends CI_Controller {
             }
         }
         //end activity_count
-        redirect(site_url('siswa/detail_thread_siswa/'.$cft_id));
+        redirect(site_url('siswa/detail_thread_siswa/'.$cft_id.'/1'));
     }
 }

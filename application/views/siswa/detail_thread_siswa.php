@@ -52,7 +52,7 @@
                         <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                     </div>
                     <div class="col-md-11">
-                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id) ?>" class="form-horizontal" method="post">
+                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Beri Komentar</label>
                                 <textarea name="forum_komentarr" class="forum_komentarr"></textarea>
@@ -82,12 +82,16 @@
 </div>
 
 <?php
-     $datareplythread= M_Course_Forum_Thread_Reply::leftJoin('users','users.usr_id','=','course_forum_thread_reply.usr_id')
+    $skipnumber = ($halaman-1)*10;
+    $datareplythread= DB::table('course_forum_thread_reply')
+                            ->leftJoin('users','users.usr_id','=','course_forum_thread_reply.usr_id')
                             ->where('course_forum_thread_reply.cft_id',$dataforumthread->cft_id)
+                            ->skip($skipnumber)
+                            ->take(10)
                             ->get();
                             //dd($datareplythread);
 ?>
-<?php $i = 0; $j = 1;?>
+<?php $i = 0; $j = 1; $x=1; $y=1; $z=1;?>
 <?php foreach($datareplythread as $replythread): ?>
 
 <?php 
@@ -267,7 +271,7 @@
                                 <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                             </div>
                             <div class="col-md-11">
-                                <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id)?>" class="form-horizontal" method="post">
+                                <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id.'/'.$halaman)?>" class="form-horizontal" method="post">
                                     <div class="form-group">
                                         <label>Beri Komentar</label>
                                         <textarea class="forum_komentar1" id="forum_komentar1<?php echo $i;?>"  name="forum_komentar1"></textarea>
@@ -292,6 +296,9 @@
                                                 ->get();
                                                 //dd($datareplythread);
                     ?>
+                    
+                    <?php $z++; ?>
+                    <div id="komen<?php echo $j;?><?php echo $i;?>" style="display: none;">
 
                     <?php foreach($datareply2thread as $reply2thread): ?>
                     
@@ -332,7 +339,7 @@
                     ?>
 
                     <?php $j++;?>
-                        <div id="balasankomentar1" style="padding-left:60px">
+                        <div id="balasankomentar1" style="padding-left:60px;">
                             <br>
                             <br>
                             <?php
@@ -393,7 +400,7 @@
                                         <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                     </a>
                                 </span>
-       
+    
                             <?php 
                                 }
                                 else
@@ -466,7 +473,7 @@
                                         <img class="img-circle" src="<?php echo base_url();?>/res/assets/images/uploads/<?php echo $this->session->userdata('foto');?>" style="width:75px;height:75px;" alt="User Image">
                                     </div>
                                     <div class="col-md-11">
-                                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id) ?>" class="form-horizontal" method="post">
+                                        <form action="<?php echo site_url('siswa/thread/insert_komentar_reply_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="form-horizontal" method="post">
                                             <div class="form-group">
                                                 <label>Beri Komentar</label>
                                                 <textarea class="forum_komentar2" id="forum_komentar2<?php echo $i;?>" name="forum_komentar2"></textarea>
@@ -655,11 +662,50 @@
                             <?php endforeach; ?>
                         </div>
                     <?php endforeach; ?>
+                    </div>
                 </div>
+                <div class="mdl-grid">
+                    <div class="col-md-12" style="text-align: center; padding-left: 0px; padding-right: 0px;">
+                        <a href="#" class ="tampilkankomentar" id="tampilkankomentar<?php echo $x;?><?php echo $y;?>" style="display: show; width: 100%; font-family: Helvetica Neue,Helvetica,Arial,sans-serif;">
+                            Tampilkan Semua Komentar
+                        </a>
+                    </div>   
+                </div>
+                <div class="mdl-grid">
+                    <div class="col-md-12" style="text-align: center; padding-left: 0px; padding-right: 0px;">
+                        <a href="#" class ="sembunyikankomentar" id="sembunyikankomentar<?php echo $x;?><?php echo $y;?>" style="display: none; width: 100%; font-family: Helvetica Neue,Helvetica,Arial,sans-serif;">
+                            Sembunyikan Semua Komentar
+                        </a>
+                    </div>   
+                </div>
+                <?php $y++;?>
             </div>
         </div>
     </div>
 <?php endforeach; ?>
+
+<center>
+    <div class="pagination">
+    <?php 
+        $number = 1;
+        $active = "";
+        while($number <= $segmen)
+        {
+            if ($halaman == $number)
+            {
+                $active = "active";
+            }
+            else
+            {
+                $active = "";
+            }?>
+            
+        <a href="<?php echo site_url('siswa/thread/detail_thread_siswa/'.$dataforumthread->cft_id.'/'.$number)?>" class="<?php echo $active ?>"><?php echo $number ?></a>
+    <?php 
+        $number++;
+        } ?>
+    </div>
+</center>
 </main>
 
 <!-- SHOW-HIDE -->
@@ -668,45 +714,80 @@
     {   
         $("#btn_komentar").on("click", function()
         {
-            $("#komentarr").attr("style","display:show")
+            $("#komentarr").attr("style","display:show");
         });
         $("#btn_batalkomentar").on("click", function()
         {
-            $("#komentarr").attr("style","display:none")
+            $("#komentarr").attr("style","display:none");
         });
 
         $('.btn_reply').click(function(){
             var id = $(this).attr('id');
             var regexnumber = id.match(/\d/g);
             
-            $("#reply"+regexnumber[0]+regexnumber[1]).attr("style","display:show")
+            $("#reply"+regexnumber[0]+regexnumber[1]).attr("style","display:show");
         });
 
         $('.btn_batal_reply').click(function(){
             var id = $(this).attr('id');
             var regexnumber = id.match(/\d/g);
             
-            $("#reply"+regexnumber[0]+regexnumber[1]).attr("style","display:none")
+            $("#reply"+regexnumber[0]+regexnumber[1]).attr("style","display:none");
         });
 
         $('.btn_reply_reply').click(function(){
             var id = $(this).attr('id');
             var regexnumber = id.match(/\d/g);
             
-            $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display:show")
+            $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display:show");
         });
 
         $('.btn_batal_reply_reply').click(function(){
             var id = $(this).attr('id');
             var regexnumber = id.match(/\d/g);
             
-            $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display:none")
+            $("#reply_reply"+regexnumber[0]+regexnumber[1]).attr("style","display: none");
+        });
+
+        $('.tampilkankomentar').click(function(){
+            var id = $(this).attr('id');
+            var regexnumber = id.match(/\d/g);
+
+            $("#komen"+regexnumber[0]+regexnumber[1]).attr("style","display: show");            
+            $("#tampilkankomentar"+regexnumber[0]+regexnumber[1]).attr("style","display: none; width: 100%; font-family: Helvetica Neue,Helvetica,Arial,sans-serif;");
+            $("#sembunyikankomentar"+regexnumber[0]+regexnumber[1]).attr("style","display: show; width: 100%; font-family: Helvetica Neue,Helvetica,Arial,sans-serif;");
+        });
+
+        $('.sembunyikankomentar').click(function(){
+            var id = $(this).attr('id');
+            var regexnumber = id.match(/\d/g);
+
+            $("#komen"+regexnumber[0]+regexnumber[1]).attr("style","display: none");            
+            $("#tampilkankomentar"+regexnumber[0]+regexnumber[1]).attr("style","display: show; width: 100%; font-family: Helvetica Neue,Helvetica,Arial,sans-serif;");
+            $("#sembunyikankomentar"+regexnumber[0]+regexnumber[1]).attr("style","display: none; width: 100%; font-family: Helvetica Neue,Helvetica,Arial,sans-serif;");
         });
 
         textEditByClass('forum_komentarr');
         textEditByClass('forum_komentar1');
         textEditByClass('forum_komentar2');
     });
+</script>
+
+<script language="javascript">
+
+function showPage(id)
+{
+    var totalNumberOfPages = 2;
+
+    for(i=1; i<=totalNumberOfPages; i++)
+    {
+        if(document.getElementById('page'+i))
+            document.getElementById('page'+i).style.display = 'none';
+    }
+    if(document.getElementById('page'+id))
+        document.getElementById('page'+id).style.display = 'show';
+}
+
 </script>
 
 <!-- CKEDITOR -->
@@ -718,4 +799,56 @@
     // CKEDITOR.replaceAll('forum_komentar2');
 </script>
 
+<!-- STYLE -->
+<style>
+a:link.tampilkankomentar, a:visited.tampilkankomentar {
+    background-color: white;
+    color: #999;
+    padding: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
 
+
+a:hover.tampilkankomentar, a:active.tampilkankomentar {
+    background-color: #337ab7;
+    color: white;
+}
+
+a:link.sembunyikankomentar, a:visited.sembunyikankomentar {
+    background-color: white;
+    color: #999;
+    padding: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover.sembunyikankomentar, a:active.sembunyikankomentar {
+    background-color: #337ab7;
+    color: white;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: black;
+    border-radius: 5px;
+}
+</style>
