@@ -63,7 +63,9 @@ class Course extends CI_Controller {
         );
         $this->lib_event_log->add_user_event($event);
         // Capture Log End
-        redirect('siswa/my_course');
+        $pt = M_Course_Assesment::where('crs_id','=',$crs_id)
+            ->where('ass_tipe','=','Pre-test')->first();
+        redirect('siswa/assesment_doing/'.$pt->ass_id);
     }
 
     public function my_course(){
