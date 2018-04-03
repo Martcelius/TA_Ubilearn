@@ -1,4 +1,5 @@
 <main class="mdl-layout__content">
+
     <div class="col-sm-12 cover-main">
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
@@ -44,10 +45,12 @@
                         <?php
                             $course_enrol = M_Course_Enrol::where('crs_id',$course_siswa->crs_id)
                                 ->where('usr_id',$this->session->userdata('id'))->first();
+//                            dd($pt->ass_id);
+
 //                      ?>
                         <a href="<?php if($course_enrol != NULL) echo site_url('siswa/course/log/'.$course_siswa->crs_id);else echo site_url('siswa/course_close/'.$course_siswa->crs_id); ?>">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored-blue">
-                                Masuk
+                            Masuk
                         </button></a>
                         </div>
                     </div>
