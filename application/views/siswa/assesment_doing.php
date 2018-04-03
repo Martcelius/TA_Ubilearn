@@ -44,7 +44,7 @@
                     foreach($qst_ans[$i] as $d){
                     ?>
                     <p>
-                        <input type="radio" value="<?php echo $d->ans_id ?>" name="jawaban<?php echo $i+1 ?>" onclick="pilih(<?php echo $i+1 ?>)">
+                        <input type="radio" value="<?php echo $d->ans_id ?>" name="jawaban<?php echo $i+1 ?>" onclick="pilih(<?php echo $i+1 ?>)" required>
                         <label><?php echo $d->ans_text ?></label>
                     </p>
                     <?php $j++; } ?>
@@ -62,6 +62,7 @@
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored-blue" type="submit" id="submitBtn" onclick="return setTimeTaken()">
             Selesai Mengerjakan
         </button>
+
     </div>
     </form>
 </main>
@@ -70,12 +71,23 @@
         $("#soal"+no).text('Sudah Terjawab');
         $("#soal"+no).css('color','#57f357');
     }
+
+    $(document).ready(function(){
+        $( window ).bind('beforeunload', function()
+         {
+           return 'It is going to be refreshed'; 
+        });
+        window.onhashchange = function() {
+            
+        }
+    });
 </script>
 
 <script>
 var timeTaken = 0;
 var ass_id = <?php echo $ass_obj->ass_id ?>;
 var peringatan = false;
+var sumOnline = 0;
 // Set the date we're counting down to
 var countDownDate = new Date("<?php echo $ass_obj->ass_timeclose ?>").getTime();
 /*var countDownDate = new Date("2018-02-28 13:50:5").getTime();*/
@@ -84,7 +96,7 @@ var countDownDate = new Date("<?php echo $ass_obj->ass_timeclose ?>").getTime();
 var x = setInterval(function() {
 
   timeTaken = timeTaken + 1;
-
+  var online = navigator.onLine;
   // Get todays date and time
   var now = new Date().getTime();
 
@@ -113,10 +125,32 @@ var x = setInterval(function() {
     peringatan = true;
     $('.timeBox').css('background','#e92a2a');
   }
+
+  if (!online) {
+    sumOnline++;
+  } else{
+    sumOnline = 0;
+  }
+
+  if(sumOnline >= 8){
+    alert('Koneksi Terputus !');
+    sumOnline = 0;
+  }
+
 }, 1000);
 
 function setTimeTaken(){
-    $('#timeTaken').val(timeTaken);
+    var online = navigator.onLine;
+    if(!online){
+      alert('Koneksi Terputus !');
+      $a = false;
+    }
+    else{
+      $('#timeTaken').val(timeTaken);
+      $(window).off('beforeunload');
+      $a = true;
+    }
+    return $a;
 }
 </script>
 

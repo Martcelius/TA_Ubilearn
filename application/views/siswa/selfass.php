@@ -476,30 +476,6 @@
     </div>
 </main>
 
-<!-- <style>
-#up {
-    background: url(http://icdn.lenta.ru/assets/icons-s238578731b-c5df9ffc01b66d2cee1e3e3d6d74e49b.png) no-repeat;
-    background-position: -2329px 0;
-    display: inline-block;
-    vertical-align: middle;
-    position: fixed;
-    right: 100px;
-    top: -64px;
-    width: 54px;
-    height: 54px;
-    cursor: pointer;
-    opacity: 0;
-    -webkit-transition: all 0.5s ease-in-out;
-        -moz-transition: all 0.5s ease-in-out;
-        -ms-transition: all 0.5s ease-in-out;
-        -o-transition: all 0.5s ease-in-out;
-        transition: all 0.5s ease-in-out;
-}
-#up.scrolled{
-    opacity:1;
-    top: 10px;
-}
-</style> -->
 <script type="text/javascript">
     $(document).ready(function(){
         $("input").prop('required',true);
@@ -575,21 +551,6 @@ function cekRadio(idx){
     }
     return a;
 }
-
-/*jQuery(window).scroll(function(){
->>>>>>> 94982785c6f77a3998c74b677782f03c6bb7396a
-    var fromTopPx = 200; // distance to trigger
-    var scrolledFromtop = jQuery(window).scrollTop();
-    if(scrolledFromtop > fromTopPx){
-        jQuery('#nextt').addClass('scrolled');
-    }else{
-        jQuery('#nextt').removeClass('scrolled');
-    }
-});
-jQuery('#nextt').on('click',function(){
-    jQuery("html, body").animate({ scrollTop: 0 }, 600);
-    return false;
-}); */ 
 
 function prev(nomer){
     var idx = nomer +1;
