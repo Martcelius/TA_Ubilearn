@@ -1152,6 +1152,20 @@ class Thread extends CI_Controller {
             }
         }
         //end activity_count
+
+        //Forum Visit
+        //cek udah ada usernya atau belum di learning_style
+        $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+        if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            $forum_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_forum_visit', 1);
+        } else {
+            $forum_visit = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_forum_visit', 1);
+        }
+
         redirect(site_url('siswa/detail_thread_siswa/'.$cft_id));
     }
 }

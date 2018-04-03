@@ -20,9 +20,9 @@
           <br>
           <br>
             <?php
-                $this->breadcrumbs->push('Dashboard', 'siswa/dashboard');
-                $this->breadcrumbs->push('My Course', '/');
-                echo $this->breadcrumbs->show();
+                // $this->breadcrumbs->push('Dashboard', 'siswa/dashboard');
+                // $this->breadcrumbs->push('My Course', '/');
+                // echo $this->breadcrumbs->show();
             ?>
         </div>
     </div>

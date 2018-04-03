@@ -58,7 +58,7 @@ class Assignment extends CI_Controller {
         }
 
         //Outline Stay
-        if (strpos($this->agent->referrer(), 'siswa/course/log/') !== FALSE) {
+        if (strpos($this->agent->referrer(), 'siswa/course_detail') !== FALSE) {
             $waktu_sekarang = M_Log::where('usr_id', $this->session->userdata('id'))
                     ->orderBy('log_time', 'DESC')->first()->log_time;
             

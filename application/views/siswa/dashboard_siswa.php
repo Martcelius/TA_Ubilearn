@@ -18,8 +18,8 @@
           <br>
           <br>
             <?php
-                $this->breadcrumbs->push('Dashboard', '/');
-                echo $this->breadcrumbs->show();
+                // $this->breadcrumbs->push('Dashboard', '/');
+                // echo $this->breadcrumbs->show();
             ?>
         </div>
     </div>

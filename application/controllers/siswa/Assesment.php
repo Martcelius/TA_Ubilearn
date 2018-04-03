@@ -38,7 +38,7 @@ class Assesment extends CI_Controller {
             ->first();
         
         //Outline Stay
-        if (strpos($this->agent->referrer(), 'siswa/course/log/') !== FALSE) {
+        if (strpos($this->agent->referrer(), 'siswa/course_detail') !== FALSE) {
 
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
@@ -111,10 +111,39 @@ class Assesment extends CI_Controller {
             $ls_data['usr_id'] = $this->session->userdata('id');
             $this->M_Learning_Style->insert($ls_data);
             $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
-                    ->increment('ls_outline_stay', $lama_stay);
+                    ->increment('ls_quiz_stay_result', $lama_stay);
             } else {
             $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
-                    ->increment('ls_outline_stay', $lama_stay);
+                    ->increment('ls_quiz_stay_result', $lama_stay);
+            }
+        }
+
+        //Selfass Stay & Exercise Stay
+        $asmt = M_Course_Assesment::where('ass_id', $id)->first();
+        //cek udah ada usernya atau belum di learning_style
+        $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+        if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_visit', 1);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_visit', 1);
+            }
+            
+        } else {
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_visit', 1);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_visit', 1);
             }
         }
         
@@ -182,6 +211,36 @@ class Assesment extends CI_Controller {
             $num++;
         }
         $timeTaken = $this->input->post('timeTaken');
+
+        //Selfass Stay & Exercise Stay
+        $asmt = M_Course_Assesment::where('ass_id', $ass_id)->first();
+        //cek udah ada usernya atau belum di learning_style
+        $cek_user_ada = M_Learning_Style::where('usr_id', $this->session->userdata('id'))->first();
+        if (!$cek_user_ada) {
+            $ls_data['usr_id'] = $this->session->userdata('id');
+            $this->M_Learning_Style->insert($ls_data);
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_stay', $timeTaken);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_stay', $timeTaken);
+            }
+            
+        } else {
+            if ($asmt->ass_tipe == "Exercise") {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_exercise_stay', $timeTaken);
+            } else {
+                //Exercise Stay
+                $outline_stay = M_Learning_Style::where('usr_id', $this->session->userdata('id'))
+                    ->increment('ls_selfass_stay', $timeTaken);
+            }
+        }
+
         $min = 0;
         $sec = 0;
         $min = floor($timeTaken/60);
@@ -225,7 +284,7 @@ class Assesment extends CI_Controller {
 
         if ($data_user == NULL){
             DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);
-        }else{
+        } else{
             $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
             if ($cek_course == NULL){
                 DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'done_assessment' => 1]);

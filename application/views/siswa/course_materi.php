@@ -32,12 +32,15 @@
                                               <i class="material-icons mdl-list__item-icon"><?php if ($content->cnt_type == 'Text') echo "file_download"; else if ($content->cnt_type == 'Video') echo "play_circle_filled"; else echo "file_download"; ?></i>
                                              <?php echo $content->cnt_name ?>
                                              <span class="mdl-list__item-text-body">
-                                                <span class="label label-success" style="margin-left:20px "><?php
-                                                    if (in_array($content->cnt_id, $cnt_lg)) {
-                                                        echo "Target Pembelajaran";
-                                                    }
-                                                    ?>
-                                                </span>
+                                                
+                                                <?php
+                                                if (in_array($content->cnt_id, $cnt_lg)) {
+                                                ?>
+                                                    <span class="label label-success" style="margin-left:20px ">Target Pembelajaran</span>
+                                                <?php
+                                                }
+                                                ?>
+                                                
                                              </span>
                                          </span>
                                         <b class="mdl-list__item-secondary-action"
