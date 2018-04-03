@@ -32,7 +32,27 @@ class At_risk extends CI_Controller {
             ->leftjoin("at_risk","at_risk.ass_id","=","course_assesment_result.ass_id")
             ->where("at_risk.usr_id",$usr_id)->where("course_assesment_result.usr_id",$usr_id)->where("course_assesment.crs_id",$crs_id)->groupby("at_risk.ass_id")->get();
 
-        $data['log'] = $this->M_Log->hitung_log($usr_id);
+//        $data['log'] = $this->M_Log->hitung_log($usr_id);
+        $data['log'] = M_Learning_Style::where('usr_id',$usr_id)->first();
+        $ls_content_visit_video = $data['log']->ls_content_visit_video;
+        $ls_content_visit_text = $data['log']->ls_content_visit_text;
+        $ls_content_visit = $data['log']->ls_content_visit;
+        $ls_content_stay = $data['log']->ls_content_stay;
+        $ls_content_stay_video = $data['log']->ls_content_stay_video;
+        $ls_content_stay_text = $data['log']->ls_content_stay_text;
+        $ls_outline_visit = $data['log']->ls_outline_visit;
+        $ls_outline_stay = $data['log']->ls_outline_stay;
+        $ls_example_visit = $data['log']->ls_example_visit;
+        $ls_example_stay = $data['log']->ls_example_stay;
+        $ls_selfass_visit = $data['log']->ls_selfass_visit;
+        $ls_selfass_stay = $data['log']->ls_selfass_stay;
+        $ls_exercise_visit = $data['log']->ls_exercise_visit;
+        $ls_exercise_stay = $data['log']->ls_exercise_stay;
+        $ls_quiz_stay_result = $data['log']->ls_quiz_stay_result;
+        $total_visit = $ls_content_visit + $ls_outline_visit + $ls_example_visit + $ls_selfass_visit + $ls_exercise_visit;
+        $total_stay = $ls_content_stay + $ls_outline_stay + $ls_example_stay + $ls_selfass_stay + $ls_exercise_stay;
+        $data ['total_visit'] = $total_visit;
+        $data ['total_stay'] = $total_stay;
         $data['count'] = $data['ar_kuis']->count();
         //parameter
         if($data['count'] == 3){
