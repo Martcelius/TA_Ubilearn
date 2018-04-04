@@ -229,6 +229,7 @@
                       <label class="radio"><input type="radio" class="minat" name="minat" value="Membaca Buku" required>Membaca Buku</label>
                       <label class="radio"><input type="radio" class="minat" name="minat" value="Otomotif" required>Otomotif</label>
                       <label class="radio"><input type="radio" class="minat" name="minat" value="Memasak" required>Memasak</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Memasak" required>Menari</label>
                       <label class="radio"><input type="radio" class="minat" name="minat" value="Travelling" required>Travelling</label>
                       <label class="radio"><input type="radio" class="minat" name="minat" value="Action Figure" required>Action Figure</label>
                       <label class="radio"><input type="radio" class="minat" name="minat" value="Gamer" required>Gamer</label>
@@ -237,19 +238,41 @@
                     tidak menemukan peminatan yang sesuai ?<br/>
                     <button type="button" onclick="klikLain()" class="mdl-button mdl-js-button mdl-button--raised">klik disini untuk lainnya</button>
                     <div class="col-md-12">
-                      <label class="radio lain"><input type="radio" class="minatLain lain2" name="minat" value="Olahraga" >Bidang Olahraga</label>
-                      <label class="radio lain"><input type="radio" class="minatLain lain2" name="minat" value="Musik" >Musik</label>
-                      <label class="radio lain"><input type="radio" class="minatLain lain2" name="minat" value="Seni" >Seni</label>
-                      <label class="radio lain"><input type="radio" class="minatLain lain2" name="minat" value="Pendidikan" >Pendidikan</label>
-                      <label class="radio lain"><input type="radio" class="minatLain lain2" name="minat" id="radioLain" value="Lainnya" >Bidang Lainnya</label>
-                      <label class="radio lain"><input type="text" disabled class="form-control minatLain" id="minatTxt" name="minatLainTxt" placeholder="ketikkan peminatan anda"></label>
+                      <label class="radio lain"><input type="radio" class="minatLain lain1" name="minat" value="Olahraga" >Bidang Olahraga</label>
+                      <label class="radio lain"><input type="radio" class="minatLain lain1" name="minat" value="Musik" >Bidang Musik</label>
+                      <label class="radio lain"><input type="radio" class="minatLain lain1" name="minat" value="Seni" >Bidang Seni</label>
+                      <label class="radio lain"><input type="radio" class="minatLain lain1" name="minat" value="Pendidikan" >Bidang Pendidikan</label>
+                      <label class="radio lain"><input type="radio" class="minatLain lain1" name="minat" value="Lainnya" >Bidang Lainnya</label>
+                      <label class="radio lain"><input type="text" disabled class="form-control minatLain" id="minatTxt" name="minatLainTxt" placeholder="Pilih bidang peminatan terlebih dahulu"></label>
                     </div>
                 </span>
                 <span id="Aka">
-                  
+                   <div class="col-md-6">
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Artificial Intelligent" required>Artificial Intelligent</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Machine Learning" required>Machine Learning</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Programming Java" required>Programming Java</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Programming Android" required>Programming Android</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Programming C++" required>Programming C++</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Programming Web" required>Programming Web</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Programming Lainnya" required>Programming Lainnya</label>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Internet Of Things" required>Internet of Things</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Jaringan" required>Jaringan (Network)</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Desain Aplikasi" required>Desain Aplikasi</label>
+                      <label class="radio"><input type="radio" class="minat" name="minat" value="Rekayasa Perangkat Lunak" required>Rekayasa Perangkat Lunak</label>
+                    </div>
+                   
+                    <div class="col-md-12">
+                     tidak menemukan peminatan yang sesuai ?<br/>
+                    <button type="button" onclick="klikLain()" class="mdl-button mdl-js-button mdl-button--raised">klik disini untuk lainnya</button>
+                      <label class="radio lain"><input type="radio" class="minatLain lain2" name="minat" value="Bidang Informatika" >Bidang Informatika</label>
+                      <label class="radio lain"><input type="radio" class="minatLain lain2" name="minat" value="Lainnya" >Bidang Lainnya</label>
+                      <label class="radio lain"><input type="text" disabled class="form-control minatLain" id="minat2Txt" name="minatLainTxt" placeholder="Pilih bidang peminatan terlebih dahulu"></label>
+                    </div>
                 </span>
                 </div>
-                <button type="button" class="mdl-button mdl-js-button mdl-button--raised pull-right" style="background: #43bf44">Kirim</button>
+                <button type="submit" id="btnSubmit" class="mdl-button mdl-js-button mdl-button--raised pull-right" style="background: #43bf44">Kirim</button>
                 <button type="button" onclick="prev()" class="mdl-button mdl-js-button mdl-button--raised pull-right" style="background: #4a95b9;margin-right: 10px;">Kembali</button>
               </li>
             </ul>
@@ -262,19 +285,31 @@
 
 </main>
 <script type="text/javascript">
-  $('#sub1').hide();
+  $('#sub2').hide();
   $('.lain').hide();
   $('#Non').hide();
   $('#Aka').hide();
 
   $(document).ready(function(){
     $('input[name="minat"]').click(function(){
-      if ($('input[id="radioLain"]').is(':checked'))
+      if ($('.lain1').is(':checked'))
       {
         $("#minatTxt").prop('disabled',false);
+        $("#minatTxt").prop('placeholder','Ketikkan peminatan disini');
       }
       else{
         $("#minatTxt").prop('disabled',true);
+        $("#minatTxt").prop('placeholder','Pilih bidang peminatan terlebih dahulu');
+      }
+
+      if ($('.lain2').is(':checked'))
+      {
+        $("#minat2Txt").prop('disabled',false);
+        $("#minat2Txt").prop('placeholder','Ketikkan peminatan disini');
+      }
+      else{
+        $("#minat2Txt").prop('disabled',true);
+        $("#minat2Txt").prop('placeholder','Pilih bidang peminatan terlebih dahulu');
       }
     });
 
@@ -301,11 +336,18 @@
   }
 
   function next(){
-    $('#sub1').hide();
-    $( "#sub2" ).fadeIn( "slow", function() {
-      $(this).show();
-    });
-    return true;
+    var a ;
+    if ($('input[name="hasil"]').is(':checked')){
+      a = true;
+      $('#sub1').hide();
+      $( "#sub2" ).fadeIn( "slow", function() {
+        $(this).show();
+      });
+    }else{
+      $('#btnSubmit').click();
+      a = false;
+    }
+    return a;
   }
 
   function prev(){
