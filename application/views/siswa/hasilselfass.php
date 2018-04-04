@@ -65,11 +65,14 @@
   echo $hasilKues2->hasil;
  ?></i></strong></h3> 
  <p><?php echo $hasil2Arti; ?></p> 
-
 </div>
 </div>
+<center style="margin-top: 15px;" >
+  <a href="<?php echo site_url('siswa/dashboard') ?>">
+    <button type="button" class="mdl-button mdl-js-button mdl-button--raised" style="background: #4a95b9;">Pergi Ke Dashboard</button>
+  </a>
+</center>
 </div>
-
 </div>
 
 <script>
