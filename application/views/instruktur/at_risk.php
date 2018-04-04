@@ -181,7 +181,7 @@
                                     <td style="text-align:center;"><?php echo $s->ass_result;?></td>
                                     <?php endforeach ?>
 
-                                    <td style="text-align:center;"><?php echo $log;?></td>
+                                    <td style="text-align:center;"><?php echo $total_visit;?></td>
                                     <td style="text-align:center;"><?php
                                             if ($count != 3){
                                                 if($c->usr_gpa == NULL){

@@ -190,7 +190,7 @@
                     <button type="button" class="mdl-button mdl-js-button mdl-button--raised pull-right" onclick="return next()" style="background: #4a95b9;">Selanjutnya</button>
                 </li>
               </ul>
-              
+
             </div>
             <div id="sub2" class="mdl-card__supporting-text" style="width: 100%;font-size: unset;">
             <ul>
@@ -272,6 +272,7 @@
                     </div>
                 </span>
                 </div>
+
                 <button type="submit" id="btnSubmit" class="mdl-button mdl-js-button mdl-button--raised pull-right" style="background: #43bf44">Kirim</button>
                 <button type="button" onclick="prev()" class="mdl-button mdl-js-button mdl-button--raised pull-right" style="background: #4a95b9;margin-right: 10px;">Kembali</button>
               </li>
