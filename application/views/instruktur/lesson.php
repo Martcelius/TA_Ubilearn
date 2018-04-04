@@ -449,7 +449,8 @@
                                                 <button class="btn btn-info" style="margin:2px;">
                                                     Lihat
                                                 </button>
-                                            </a></td>
+                                            </a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
