@@ -10,8 +10,11 @@ class M_Log extends Eloquent
     const UPDATED_AT = NULL;
     protected $primaryKey = 'log_id';
 
-    public function hitung_log ($usr_id){
-        return M_Log::where('usr_id','=',$usr_id)->count();
+    public function hitung_login ($usr_id){
+        return M_Log::where('usr_id','=',$usr_id)->where('log_name','=','Login')->count();
+    }
+    public function hitung_logout ($usr_id){
+        return M_Log::where('usr_id','=',$usr_id)->where('log_name','=','Logout')->count();
     }
 }
 

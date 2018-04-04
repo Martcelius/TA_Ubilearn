@@ -50,9 +50,12 @@ class At_risk extends CI_Controller {
         $ls_exercise_stay = $data['log']->ls_exercise_stay;
         $ls_quiz_stay_result = $data['log']->ls_quiz_stay_result;
         $total_visit = $ls_content_visit + $ls_outline_visit + $ls_example_visit + $ls_selfass_visit + $ls_exercise_visit;
-        $total_stay = $ls_content_stay + $ls_outline_stay + $ls_example_stay + $ls_selfass_stay + $ls_exercise_stay;
-        $data ['total_visit'] = $total_visit;
-        $data ['total_stay'] = $total_stay;
+        $data['login'] = $this->M_Log->hitung_login($usr_id);
+        $data['logout'] = $this->M_Log->hitung_logout($usr_id);
+//        dd($data['login']);
+//        $total_stay = $ls_content_stay + $ls_outline_stay + $ls_example_stay + $ls_selfass_stay + $ls_exercise_stay;
+        $data ['total'] = $total_visit +  $data['login'] + $data['logout'];
+//        $data ['total_stay'] = $total_stay;
         $data['count'] = $data['ar_kuis']->count();
         //parameter
         if($data['count'] == 3){
