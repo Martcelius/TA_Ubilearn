@@ -159,6 +159,13 @@ class Kuesioner extends CI_Controller {
         $mhk2 = new M_Hasil_Kuesioner2;
         $mhk2->usr_id = $this->session->userdata('id');
         $mhk2->hasil = $this->input->post('hasil');
+        $txt = $this->input->post('minatLainTxt');
+        if($txt != NULL){
+            $mhk2->minat = $this->input->post('minat').','.$txt;
+        }
+        else{
+            $mhk2->minat = $this->input->post('minat');   
+        }
         $mhk2Id = $this->M_Hasil_Kuesioner2->insert($mhk2);
 
         if($mhk2Id != 0){
