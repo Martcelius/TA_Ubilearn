@@ -131,7 +131,7 @@ class Assignment extends CI_Controller {
             if ($data_user == NULL){
                 DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'uploaded' => 1]);
             }else{
-                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->where('usr_id',$this->session->userdata('id'))->first(['crs_id']);
                 if ($cek_course == NULL){
                     DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'uploaded' => 1]);
                 }else{

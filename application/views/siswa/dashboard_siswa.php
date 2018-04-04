@@ -53,7 +53,7 @@
       <div class="mdl-card grey_card mdl-shadow--2dp pie-chart" >
           <div class="mdl-card__title" style="display:block;">
               <h2 class="mdl-card__title-text">Course</h2>
-              <div class="mdl-card__subtitle-text">Your recent Course</div>
+              <div class="mdl-card__subtitle-text">Your recent Course Enrol</div>
           </div>
           <div class="mdl-card__supporting-text" style="width: 100%;">
             <ul class="demo-list-three mdl-list">

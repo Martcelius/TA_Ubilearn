@@ -193,7 +193,7 @@
                         ?>
                         <span class="pull-right">
                             <button class="btn btn-primary btn_reply" id="btn_reply<?php echo $j;?><?php echo $i;?>" onclick=""><i class="fa fa-comment"></i> Komentar</button>
-                            <a href="<?php echo site_url('siswa/thread/delete_komentar_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id)?>">
+                            <a href="<?php echo site_url('siswa/thread/delete_komentar_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$halaman)?>">
                                 <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                             </a>
                         </span>
@@ -226,14 +226,14 @@
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
+                                            <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar" >
                                                 <span class="text-muted">
                                                     <span class="fa fa-star checked"></span>
                                                 </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
+                                            <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar" >
                                                 <span class="text-muted">
                                                     <span class="fa fa-star checked"></span>
                                                     <span class="fa fa-star checked"></span>
@@ -241,7 +241,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
+                                            <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply/'.$replythread->ftr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar" >
                                                 <span class="text-muted">
                                                     <span class="fa fa-star checked"></span>
                                                     <span class="fa fa-star checked"></span>
@@ -396,7 +396,7 @@
                                 ?>
                                 <span class="pull-right">                                
                                     <button class="btn btn-primary btn_reply_reply" id="btn_reply_reply<?php echo $j;?><?php echo $i;?>"><i class="fa fa-comment"></i> Komentar</button>
-                                    <a href="<?php echo site_url('siswa/thread/delete_komentar_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id)?>">
+                                    <a href="<?php echo site_url('siswa/thread/delete_komentar_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$halaman)?>">
                                         <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                     </a>
                                 </span>
@@ -430,14 +430,14 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar">
+                                                        <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar">
                                                             <span class="text-muted">
                                                                 <span class="fa fa-star checked"></span>
                                                             </span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
+                                                        <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar" >
                                                             <span class="text-muted">
                                                                 <span class="fa fa-star checked"></span>
                                                                 <span class="fa fa-star checked"></span>
@@ -445,7 +445,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
+                                                        <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply/'.$reply2thread->trr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar" >
                                                             <span class="text-muted">
                                                                 <span class="fa fa-star checked"></span>
                                                                 <span class="fa fa-star checked"></span>
@@ -593,7 +593,7 @@
                                         if($this->session->userdata('id') == $reply3thread->usr_id)
                                         {    
                                         ?>
-                                        <a href="<?php echo site_url('siswa/thread/delete_komentar_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id)?>">
+                                        <a href="<?php echo site_url('siswa/thread/delete_komentar_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$halaman)?>">
                                             <span class="pull-right">
                                                 <button class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus?');"><i class="fa fa-trash"></i></button>
                                             </span>
@@ -626,14 +626,14 @@
                                                         </button>
                                                         <ul class="dropdown-menu">
                                                             <li>
-                                                                <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar">
+                                                                <a href="<?php $k=1; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar">
                                                                     <span class="text-muted">
                                                                         <span class="fa fa-star checked"></span>
                                                                     </span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
+                                                                <a href="<?php $k=2; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar" >
                                                                     <span class="text-muted">
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
@@ -641,7 +641,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id) ?>" class="rateStar" >
+                                                                <a href="<?php $k=3; echo site_url('siswa/thread/insert_rating_reply_reply_reply/'.$reply3thread->rrr_id.'/'.$dataforumthread->cft_id.'/'.$k.'/'.$dataforumthread->cfr_id.'/'.$halaman) ?>" class="rateStar" >
                                                                     <span class="text-muted">
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>

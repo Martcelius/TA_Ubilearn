@@ -149,7 +149,7 @@ class Thread extends CI_Controller {
             if ($data_user == NULL){
                 DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_thread' => 1]);
             }else{
-                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+                $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->where('usr_id',$this->session->userdata('id'))->first(['crs_id']);
                 if ($cek_course == NULL){
                     DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_thread' => 1]);
                 }else{
@@ -406,7 +406,7 @@ class Thread extends CI_Controller {
         if ($data_user == NULL){
             DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
         }else{
-            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->where('usr_id',$this->session->userdata('id'))->first(['crs_id']);
             if ($cek_course == NULL){
                 DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
             }else{
@@ -579,7 +579,7 @@ class Thread extends CI_Controller {
         if ($data_user == NULL){
             DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
         }else{
-            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->where('usr_id',$this->session->userdata('id'))->first(['crs_id']);
             if ($cek_course == NULL){
                 DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
             }else{
@@ -747,7 +747,7 @@ class Thread extends CI_Controller {
         if ($data_user == NULL){
             DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
         }else{
-            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->where('usr_id',$this->session->userdata('id'))->first(['crs_id']);
             if ($cek_course == NULL){
                 DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'create_reply' => 1]);
             }else{
@@ -762,7 +762,7 @@ class Thread extends CI_Controller {
         redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function insert_rating_reply($ftr_id,$cft_id,$k,$cfr_id)
+    public function insert_rating_reply($ftr_id,$cft_id,$k,$cfr_id,$halaman)
     {
         $data['ftr_id'] = $ftr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -832,10 +832,10 @@ class Thread extends CI_Controller {
         );
         $this->lib_event_log->add_user_event($event);
 
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function insert_rating_reply_reply($trr_id,$cft_id,$k,$cfr_id)
+    public function insert_rating_reply_reply($trr_id,$cft_id,$k,$cfr_id,$halaman)
     {
         $data['trr_id'] = $trr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -904,10 +904,10 @@ class Thread extends CI_Controller {
         );
         $this->lib_event_log->add_user_event($event);
 
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k,$cfr_id)
+    public function insert_rating_reply_reply_reply($rrr_id,$cft_id,$k,$cfr_id,$halaman)
     {
         $data['rrr_id'] = $rrr_id;
         $data['usr_id'] = $this->session->userdata('id');
@@ -976,10 +976,10 @@ class Thread extends CI_Controller {
         );
         $this->lib_event_log->add_user_event($event);
 
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function delete_komentar_reply($ftr_id,$cft_id)
+    public function delete_komentar_reply($ftr_id,$cft_id,$halaman)
     {
         $deleteThread= M_Course_Forum_Thread_Reply::where('ftr_id',$ftr_id)->delete();
 
@@ -1002,10 +1002,10 @@ class Thread extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_komentar_reply', 'Data Thread Tidak Berhasil Terhapus');
         }
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function delete_komentar_reply_reply($trr_id,$cft_id)
+    public function delete_komentar_reply_reply($trr_id,$cft_id,$halaman)
     {   
         $deleteThread= M_Course_Forum_Thread_Reply_Reply::where('trr_id',$trr_id)->delete();
 
@@ -1028,10 +1028,10 @@ class Thread extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_komentar_reply_reply', 'Data Thread Tidak Berhasil Terhapus');
         }
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
-    public function delete_komentar_reply_reply_reply($rrr_id,$cft_id)
+    public function delete_komentar_reply_reply_reply($rrr_id,$cft_id,$halaman)
     {
         $deleteThread= M_Course_Forum_Thread_Reply_Reply_Reply::where('rrr_id',$rrr_id)->delete();
 
@@ -1054,7 +1054,7 @@ class Thread extends CI_Controller {
         }else{
             $this->session->set_flashdata('data_gagal_komentar_reply_reply', 'Data Thread Tidak Berhasil Terhapus');
         }
-        redirect('siswa/detail_thread_siswa/'.$cft_id);
+        redirect('siswa/detail_thread_siswa/'.$cft_id.'/'.$halaman);
     }
 
     function debug_to_console( $data ) {
@@ -1113,7 +1113,7 @@ class Thread extends CI_Controller {
         if ($data_user == NULL){
             DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_thread' => 1]);
         }else{
-            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->first(['crs_id']);
+            $cek_course = DB::table('activity_count')->where('crs_id',$data_course->crs_id)->where('usr_id',$this->session->userdata('id'))->first(['crs_id']);
             if ($cek_course == NULL){
                 DB::table('activity_count')->insert(['usr_id' => $this->session->userdata('id'),'crs_id' => $data_course->crs_id,'view_thread' => 1]);
             }else{
