@@ -1,4 +1,4 @@
-<link rel="icon" type="image/png" href="images/DB_16х16.png">
+<link rel="icon" type="image/png" href="<?php echo base_url().'res/assets/' ?>images/fav.ico">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
