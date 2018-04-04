@@ -18,6 +18,10 @@
                 <i class="material-icons" role="presentation">forum</i>
                 Forum
             </a>
+            <a style="text-decoration:none;" class="mdl-navigation__link <?php if ($this->uri->segment(2) == 'user_guide') echo "mdl-navigation__link--current"?>" href="<?php echo site_url('siswa/user_guide')?> ">
+                <i class="material-icons">insert_drive_file</i>
+                User Guide
+            </a>
 
 
 

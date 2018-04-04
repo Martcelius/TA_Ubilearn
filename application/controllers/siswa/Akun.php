@@ -523,4 +523,12 @@ class Akun extends CI_Controller {
 
     }
 
+    public function user_guide()
+    {
+        $data['sidebar'] = 'layout/sidebar';
+        $data['content'] = 'siswa/user_guide';
+        $this->load->view('layout/master', $data);
+    }
+
+
 }
