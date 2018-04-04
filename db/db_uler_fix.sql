@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.6
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 13 Mar 2018 pada 12.35
--- Versi Server: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Host: localhost
+-- Generation Time: Apr 04, 2018 at 09:46 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course`
+-- Table structure for table `activity_count`
+--
+
+CREATE TABLE `activity_count` (
+  `activity_id` int(10) UNSIGNED NOT NULL,
+  `usr_id` int(10) NOT NULL,
+  `crs_id` int(10) NOT NULL,
+  `view_content` int(10) DEFAULT '0',
+  `done_assessment` int(10) DEFAULT '0',
+  `uploaded` int(10) DEFAULT '0',
+  `create_thread` int(10) DEFAULT '0',
+  `create_reply` int(10) DEFAULT '0',
+  `view_thread` int(10) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `at_risk`
+--
+
+CREATE TABLE `at_risk` (
+  `ar_id` int(10) NOT NULL,
+  `usr_id` int(10) UNSIGNED DEFAULT NULL,
+  `ass_id` int(10) UNSIGNED DEFAULT NULL,
+  `crs_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
 --
 
 CREATE TABLE `course` (
@@ -41,17 +70,16 @@ CREATE TABLE `course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course`
+-- Dumping data for table `course`
 --
 
 INSERT INTO `course` (`crs_id`, `crs_code`, `crs_name`, `crs_summary`, `crs_univ`, `crs_timecreated`, `crs_timemodified`, `cat_id`, `usr_id`) VALUES
-(14, 'SBP', 'Sistem Berbasis Pengetahuan', 'Berisi tentang mekanisme/metode penyelesaian problem yang tidak\r\ndapat diselesaikan dengan pemrograman konvensional secara efisien', 'Universitas Telkom', '2018-03-05 04:17:15', '2018-03-05 04:17:15', 1, 43),
-(18, 'SFH123', 'Pemodelan Sistem', 'MOSEN!!!!!', 'UNIKOM', '2018-03-13 10:31:29', '2018-03-13 10:31:29', 1, 45);
+(22, 'STD', 'Struktur Data', 'Pada mata kuliah ini diajarkan berbagai macam struktur data yang dapat diimplementasikan dalam program komputer.\r\n\r\nBahasan mencakup :\r\nAbstract Data Type(ADT), Representasi struktur data linier dan primitif-primitifnya (array, linked list, variasi linked list, stack, queue),\r\nRepresentasi struktur data non linier dan primitif-primitifnya (tree, graph, multilist) dan algorima penelusuran (preorder, inorder,\r\npostorder) dan pencarian (BFS, DFS)', 'Universitas Telkom', '2018-04-03 10:26:39', '2018-04-03 10:26:39', 1, 48);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment`
+-- Table structure for table `course_assesment`
 --
 
 CREATE TABLE `course_assesment` (
@@ -69,17 +97,16 @@ CREATE TABLE `course_assesment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment`
+-- Dumping data for table `course_assesment`
 --
 
 INSERT INTO `course_assesment` (`ass_id`, `ass_tipe`, `ass_name`, `ass_desc`, `ass_timeopen`, `ass_timeclose`, `ass_shufflequestions`, `ass_timelimit`, `ass_timecreated`, `ass_timemodified`, `crs_id`) VALUES
-(1, 'Kuis', 'Kuis 1', 'Kuis 1 mencakup materi mesin inferensi', '2018-03-07 10:00:00', '2018-03-07 12:00:00', NULL, NULL, '2018-03-05 04:32:07', '2018-03-05 04:32:07', 14),
-(2, 'Pre-test', 'Pre-test Kuis 2', '-', '2018-03-05 23:00:00', '2018-03-06 23:00:00', NULL, NULL, '2018-03-05 21:49:39', '2018-03-05 21:49:39', 14);
+(12, 'Pre-test', 'Pre-test', 'Pre-test ini bertujuan untuk mengetahui kemampuan mahasiswa saat ini terhadap course Struktur Data.', '2018-04-03 10:00:00', '2020-11-26 10:00:00', NULL, NULL, '2018-04-03 10:31:36', '2018-04-03 10:31:36', 22);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment_question`
+-- Table structure for table `course_assesment_question`
 --
 
 CREATE TABLE `course_assesment_question` (
@@ -93,20 +120,16 @@ CREATE TABLE `course_assesment_question` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment_question`
+-- Dumping data for table `course_assesment_question`
 --
 
 INSERT INTO `course_assesment_question` (`qst_id`, `qst_text`, `qst_shuffleanswers`, `qst_timecreated`, `qst_timemodified`, `ass_id`, `loc_id`) VALUES
-(3, '<p>Pertanyaan dengan poin tinggi?</p>\r\n', NULL, '2018-03-05 04:32:07', '2018-03-05 04:32:07', 1, 0),
-(4, '<p>Pertanyaan dummy 1</p>\r\n', NULL, '2018-03-05 21:49:39', '2018-03-05 21:49:39', 2, 3),
-(5, '<p>Pertanyaan dummy 2</p>\r\n', NULL, '2018-03-05 21:49:39', '2018-03-05 21:49:39', 2, 4),
-(6, '<p>Pertanyaan dummy 4</p>\r\n', NULL, '2018-03-05 21:49:39', '2018-03-05 21:49:39', 2, 4),
-(7, '<p>Pertanyaan dummy 4</p>\r\n', NULL, '2018-03-05 21:49:39', '2018-03-05 21:49:39', 2, 4);
+(24, '<p>soal buat rojak</p>', NULL, '2018-04-03 10:31:36', '2018-04-03 10:31:36', 12, 12);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment_questions_answer`
+-- Table structure for table `course_assesment_questions_answer`
 --
 
 CREATE TABLE `course_assesment_questions_answer` (
@@ -117,35 +140,20 @@ CREATE TABLE `course_assesment_questions_answer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_assesment_questions_answer`
+-- Dumping data for table `course_assesment_questions_answer`
 --
 
 INSERT INTO `course_assesment_questions_answer` (`ans_id`, `ans_text`, `ans_point`, `qst_id`) VALUES
-(16, 'true', '25.0000000', 4),
-(17, 'false', '0.0000000', 4),
-(18, 'false', '0.0000000', 4),
-(19, 'false', '0.0000000', 4),
-(20, 'false', '0.0000000', 4),
-(21, 'false', '0.0000000', 5),
-(22, 'true', '25.0000000', 5),
-(23, 'false', '0.0000000', 5),
-(24, 'false', '0.0000000', 5),
-(25, 'false', '0.0000000', 5),
-(26, 'false', '25.0000000', 6),
-(27, 'false', '0.0000000', 6),
-(28, 'false', '0.0000000', 6),
-(29, 'false', '0.0000000', 6),
-(30, 'true', '0.0000000', 6),
-(31, 'true', '25.0000000', 7),
-(32, 'false', '0.0000000', 7),
-(33, 'false', '0.0000000', 7),
-(34, 'false', '0.0000000', 7),
-(35, 'false', '0.0000000', 7);
+(116, 'true', '100.0000000', 24),
+(117, 'false', '0.0000000', 24),
+(118, 'false', '0.0000000', 24),
+(119, 'false', '0.0000000', 24),
+(120, 'false', '0.0000000', 24);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assesment_questions_answer_of_student`
+-- Table structure for table `course_assesment_questions_answer_of_student`
 --
 
 CREATE TABLE `course_assesment_questions_answer_of_student` (
@@ -156,20 +164,23 @@ CREATE TABLE `course_assesment_questions_answer_of_student` (
   `usr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `course_assesment_questions_answer_of_student`
+-- Table structure for table `course_assesment_result`
 --
 
-INSERT INTO `course_assesment_questions_answer_of_student` (`ast_id`, `ast_point`, `ass_id`, `ans_id`, `usr_id`) VALUES
-(1, '25.0000000', 2, 16, 42),
-(2, '25.0000000', 2, 22, 42),
-(3, '25.0000000', 2, 26, 42),
-(4, '25.0000000', 2, 31, 42);
+CREATE TABLE `course_assesment_result` (
+  `id` int(10) NOT NULL,
+  `ass_id` int(10) UNSIGNED NOT NULL,
+  `ass_result` float DEFAULT NULL,
+  `usr_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assignment`
+-- Table structure for table `course_assignment`
 --
 
 CREATE TABLE `course_assignment` (
@@ -183,18 +194,22 @@ CREATE TABLE `course_assignment` (
   `crs_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `course_assignment`
+-- Table structure for table `course_assignment_loc`
 --
 
-INSERT INTO `course_assignment` (`asg_id`, `asg_name`, `asg_text`, `asg_attachment`, `asg_duedate`, `asg_timecreated`, `asg_timemodified`, `crs_id`) VALUES
-(1, 'Tugas 1 - Intro Mesin Inferensi', '<p><strong>Pada lingkungan pembelajaran <em>ubiquitous learning</em>, <em>learner </em>akan menerima materi pembelajaran sesuai dengan kondisi serta interaksi <em>learner </em>dengan sistem. Ada <em>learner </em>yang lulus mengikuti kelas pembelajaran, ada juga yang gagal. Dalam beberapa tahun terakhir ini, studi telah menunjukan minat dan perhatian yang terus meningkat dari berbagai negara mengenai tingginya ketidaklulusan <em>learner</em>. Berbagai cara dilakukan untuk membantu <em>learner</em', 'Tugas_1_-_Intro_Mesin_Inferensi1520338085.pdf', '2018-03-13 23:55:00', '2018-03-05 20:56:22', '2018-03-06 12:12:23', 14),
-(2, 'Tugas 2 - Implementasi Mesin Inferensi', '<p>-</p>\r\n', 'Tugas_2_-_Implementasi_Mesin_Inferensi1520305092.pdf', '2018-04-06 23:55:00', '2018-03-05 20:58:12', '2018-03-05 20:58:12', 14);
+CREATE TABLE `course_assignment_loc` (
+  `id` int(10) NOT NULL,
+  `asg_id` int(10) UNSIGNED NOT NULL,
+  `loc_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_assignment_submission`
+-- Table structure for table `course_assignment_submission`
 --
 
 CREATE TABLE `course_assignment_submission` (
@@ -208,18 +223,10 @@ CREATE TABLE `course_assignment_submission` (
   `asg_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `course_assignment_submission`
---
-
-INSERT INTO `course_assignment_submission` (`sub_id`, `sub_attachment`, `sub_comment`, `sub_due_status`, `sub_timecreated`, `sub_timemodified`, `usr_id`, `asg_id`) VALUES
-(1, 'file_siswa1520312973.zip', '', NULL, '2018-03-06 05:09:33', '2018-03-06 05:09:33', 42, 2),
-(2, '3 Mesin inferensi.pptx', '', NULL, '2018-03-06 05:40:42', '2018-03-06 05:40:42', 44, 2);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_category`
+-- Table structure for table `course_category`
 --
 
 CREATE TABLE `course_category` (
@@ -230,7 +237,7 @@ CREATE TABLE `course_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_category`
+-- Dumping data for table `course_category`
 --
 
 INSERT INTO `course_category` (`cat_id`, `cat_name`, `cat_timecreated`, `cat_timemodified`) VALUES
@@ -239,7 +246,7 @@ INSERT INTO `course_category` (`cat_id`, `cat_name`, `cat_timecreated`, `cat_tim
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_content`
+-- Table structure for table `course_content`
 --
 
 CREATE TABLE `course_content` (
@@ -255,18 +262,10 @@ CREATE TABLE `course_content` (
   `loc_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `course_content`
---
-
-INSERT INTO `course_content` (`cnt_id`, `cnt_name`, `cnt_desc`, `cnt_comment`, `cnt_type`, `cnt_source`, `cnt_timecreated`, `cnt_timemodified`, `lsn_id`, `loc_id`) VALUES
-(1, 'Mesin Inferensi part 1', '<p>E.g., &forall;x King(x) &and; Greedy(x) &rArr; Evil(x) yields:</p>\r\n\r\n<p>King(John) &and; Greedy(John) &rArr; Evil(John)</p>\r\n\r\n<p><br />\r\nKing(Richard) &and; Greedy(Richard) &rArr; Evil(Richard)</p>\r\n\r\n<p><br />\r\nKing(Father(John)) &and; Greedy(Father(John)) &rArr; Evil(Father(John))</p>\r\n', '-', 'Video', 'https://www.youtube.com/watch?v=2pEkWk-LHmU', '2018-03-05 04:25:02', '2018-03-05 04:25:02', 10, 3),
-(2, 'Mesin Inferensi part 2', '<p>For any sentence &alpha;, variable v, and constant symbol k<br />\r\nthat does not appear elsewhere in the knowledge base:</p>\r\n\r\n<p><br />\r\n&exist;v &alpha;</p>\r\n\r\n<p><br />\r\nSubst({v/k}, &alpha;)</p>\r\n\r\n<p>E.g., &exist;x Crown(x) &and; OnHead(x,John) yields:</p>\r\n\r\n<p><br />\r\nCrown(C1) &and; OnHead(C1,John)</p>\r\n\r\n<p><br />\r\nprovided C1 is a new constant symbol, called a Skolem</p>\r\n', '-', 'Text', 'Mesin_Inferensi_part_21520305893.pptx', '2018-03-05 04:27:20', '2018-03-05 21:11:33', 10, 3);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_enrol`
+-- Table structure for table `course_enrol`
 --
 
 CREATE TABLE `course_enrol` (
@@ -278,56 +277,25 @@ CREATE TABLE `course_enrol` (
   `crs_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `course_enrol`
---
-
-INSERT INTO `course_enrol` (`enr_id`, `enr_status`, `enr_timecreated`, `enr_timemodified`, `usr_id`, `crs_id`) VALUES
-(1, 'Diambil', '2018-03-05 21:01:59', '2018-03-05 21:01:59', 42, 14),
-(2, 'Diambil', '2018-03-06 05:40:09', '2018-03-06 05:40:09', 44, 14),
-(4, 'Diambil', '2018-03-13 10:38:34', '2018-03-13 10:38:34', 42, 18),
-(5, 'Diambil', '2018-03-13 11:04:11', '2018-03-13 11:04:11', 44, 18);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_enrol_detail`
---
-
-CREATE TABLE `course_enrol_detail` (
-  `end_id` int(10) UNSIGNED NOT NULL,
-  `end_status` varchar(500) DEFAULT NULL,
-  `end_timecreated` timestamp NULL DEFAULT NULL,
-  `end_timemodified` timestamp NULL DEFAULT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `enr_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `course_forum`
+-- Table structure for table `course_forum`
 --
 
 CREATE TABLE `course_forum` (
   `cfr_id` int(10) UNSIGNED NOT NULL,
-  `cfr_title` varchar(75) NOT NULL,
   `cfr_desc` varchar(150) NOT NULL,
   `usr_id` int(10) UNSIGNED NOT NULL,
-  `lsn_id` int(10) UNSIGNED NOT NULL
+  `lsn_id` int(10) UNSIGNED NOT NULL,
+  `cfr_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cfr_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `course_forum`
---
-
-INSERT INTO `course_forum` (`cfr_id`, `cfr_title`, `cfr_desc`, `usr_id`, `lsn_id`) VALUES
-(8, 'Introduction', 'Pengenalan introduction', 45, 12);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread`
+-- Table structure for table `course_forum_thread`
 --
 
 CREATE TABLE `course_forum_thread` (
@@ -341,17 +309,10 @@ CREATE TABLE `course_forum_thread` (
   `usr_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `course_forum_thread`
---
-
-INSERT INTO `course_forum_thread` (`cft_id`, `cft_title`, `cft_content`, `cft_rated`, `cft_timecreated`, `cft_timemodified`, `cfr_id`, `usr_id`) VALUES
-(15, 'Pengen Kenalan', '<p>Masalah Introduction</p>\r\n', NULL, '2018-03-13 10:39:24', '2018-03-13 10:39:24', 8, 42);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread_reply`
+-- Table structure for table `course_forum_thread_reply`
 --
 
 CREATE TABLE `course_forum_thread_reply` (
@@ -360,20 +321,15 @@ CREATE TABLE `course_forum_thread_reply` (
   `ftr_timecreated` timestamp NULL DEFAULT NULL,
   `ftr_timemodified` timestamp NULL DEFAULT NULL,
   `cft_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `ftr_ratingsum` int(10) DEFAULT '0',
+  `ftr_ratingcount` int(10) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `course_forum_thread_reply`
---
-
-INSERT INTO `course_forum_thread_reply` (`ftr_id`, `ftr_content`, `ftr_timecreated`, `ftr_timemodified`, `cft_id`, `usr_id`) VALUES
-(2, NULL, '2018-03-13 11:00:24', '2018-03-13 11:00:24', 15, 42);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread_reply_reply`
+-- Table structure for table `course_forum_thread_reply_reply`
 --
 
 CREATE TABLE `course_forum_thread_reply_reply` (
@@ -382,20 +338,15 @@ CREATE TABLE `course_forum_thread_reply_reply` (
   `trr_timecreated` timestamp NULL DEFAULT NULL,
   `trr_timemodified` timestamp NULL DEFAULT NULL,
   `ftr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `trr_ratingsum` int(10) DEFAULT '0',
+  `trr_ratingcount` int(10) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `course_forum_thread_reply_reply`
---
-
-INSERT INTO `course_forum_thread_reply_reply` (`trr_id`, `trr_content`, `trr_timecreated`, `trr_timemodified`, `ftr_id`, `usr_id`) VALUES
-(2, 'oi udah pada ngopi belommmmm', '2018-03-13 11:11:18', '2018-03-13 11:11:18', 2, 44);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_forum_thread_reply_reply_reply`
+-- Table structure for table `course_forum_thread_reply_reply_reply`
 --
 
 CREATE TABLE `course_forum_thread_reply_reply_reply` (
@@ -404,42 +355,61 @@ CREATE TABLE `course_forum_thread_reply_reply_reply` (
   `rrr_timecreated` timestamp NULL DEFAULT NULL,
   `rrr_timemodified` timestamp NULL DEFAULT NULL,
   `trr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `rrr_ratingsum` int(10) DEFAULT '0',
+  `rrr_ratingcount` int(10) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `course_forum_thread_reply_reply_reply`
---
-
-INSERT INTO `course_forum_thread_reply_reply_reply` (`rrr_id`, `rrr_content`, `rrr_timecreated`, `rrr_timemodified`, `trr_id`, `usr_id`) VALUES
-(1, 'oiiiiiiiiiiiiiiiii', '2018-03-13 11:12:21', '2018-03-13 11:12:21', 2, 42);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_learning_outcomes`
+-- Table structure for table `course_forum_user`
+--
+
+CREATE TABLE `course_forum_user` (
+  `cfu_id` int(10) UNSIGNED NOT NULL,
+  `cfr_id` int(10) UNSIGNED NOT NULL,
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `cfu_ratingsum` int(10) DEFAULT '0',
+  `cfu_ratingcount` int(10) DEFAULT '0',
+  `cfu_summsg` int(10) DEFAULT '0',
+  `cfu_msgin` int(10) DEFAULT '0',
+  `cfu_msgout` int(10) DEFAULT '0',
+  `cfu_sumword` int(10) DEFAULT '0',
+  `cfu_avgscrmsg` int(10) DEFAULT '0',
+  `cfu_centrality` int(10) DEFAULT '0',
+  `cfu_prestige` int(10) DEFAULT '0',
+  `cfu_timecreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `cfu_timemodified` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_learning_outcomes`
 --
 
 CREATE TABLE `course_learning_outcomes` (
   `loc_id` int(10) UNSIGNED NOT NULL,
-  `loc_desc` varchar(50) NOT NULL,
+  `loc_desc` text NOT NULL,
   `loc_timecreated` timestamp NULL DEFAULT NULL,
   `loc_timemodified` timestamp NULL DEFAULT NULL,
   `crs_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `course_learning_outcomes`
+-- Dumping data for table `course_learning_outcomes`
 --
 
 INSERT INTO `course_learning_outcomes` (`loc_id`, `loc_desc`, `loc_timecreated`, `loc_timemodified`, `crs_id`) VALUES
-(3, 'Memahami mesin inferensi', '2018-03-05 04:23:27', '2018-03-05 04:23:27', 14),
-(4, 'Mampu memahami dan mengimplentasikan mesin inferen', '2018-03-05 20:54:49', '2018-03-05 20:54:49', 14);
+(12, 'Mahasiswa dapat membangun algoritma untuk primitif struktur data Linked List dan mengimplementasikannya dalam Bahasa programan', '2018-04-03 10:26:39', '2018-04-03 10:26:39', 22),
+(13, 'Mahasiswa dapat membangun algoritma untuk primitif struktur data linear Stack dan Queue dan mengimplementasikannya dalam Bahasa programan', '2018-04-03 10:26:39', '2018-04-03 10:26:39', 22),
+(14, 'Mahasiswa dapat membangun algoritma untuk primitive struktur data non-linear Multi Linked List, Graph dan Tree dan mengimplementasikannya dalam Bahasa programan', '2018-04-03 10:26:39', '2018-04-03 10:26:39', 22);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `course_lesson`
+-- Table structure for table `course_lesson`
 --
 
 CREATE TABLE `course_lesson` (
@@ -451,84 +421,166 @@ CREATE TABLE `course_lesson` (
   `crs_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `course_lesson`
+-- Table structure for table `hasil_kuesioner`
 --
 
-INSERT INTO `course_lesson` (`lsn_id`, `lsn_name`, `lsn_intro`, `lsn_timecreated`, `lsn_timemodified`, `crs_id`) VALUES
-(10, 'Mesin Inferensi', '<p>Reducing first-order inference to propositional inference</p>\r\n', '2018-03-05 04:17:55', '2018-03-05 04:17:55', 14),
-(11, 'Ontologi Tools', '<p>CLIPS atau protege</p>\r\n', '2018-03-05 21:44:11', '2018-03-05 21:44:11', 14),
-(12, 'Introduction', 'Ini adalah pengenalan', '2018-03-13 10:32:17', '2018-03-13 10:32:17', 18);
+CREATE TABLE `hasil_kuesioner` (
+  `hk_id` int(10) NOT NULL,
+  `usr_id` int(10) NOT NULL,
+  `Active` int(10) NOT NULL,
+  `Reflective` int(10) NOT NULL,
+  `Sensing` int(10) NOT NULL,
+  `Intuitive` int(10) NOT NULL,
+  `Visual` int(10) NOT NULL,
+  `Verbal` int(10) NOT NULL,
+  `Sequential` int(10) NOT NULL,
+  `Global` int(10) NOT NULL,
+  `hk_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Table structure for table `hasil_kuesioner2`
+--
+
+CREATE TABLE `hasil_kuesioner2` (
+  `hk2_id` int(10) NOT NULL,
+  `usr_id` int(10) NOT NULL,
+  `hasil` varchar(35) NOT NULL,
+  `minat` varchar(100) NOT NULL,
+  `hk2_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `learning_goals`
+--
+
+CREATE TABLE `learning_goals` (
+  `lg_id` int(10) UNSIGNED NOT NULL,
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `loc_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rating_reply`
+-- Table structure for table `learning_style`
+--
+
+CREATE TABLE `learning_style` (
+  `ls_id` int(10) UNSIGNED NOT NULL,
+  `ls_content_visit` int(11) NOT NULL DEFAULT '0',
+  `ls_content_visit_video` int(11) NOT NULL DEFAULT '0',
+  `ls_content_visit_text` int(11) NOT NULL DEFAULT '0',
+  `ls_content_stay` int(11) NOT NULL DEFAULT '0',
+  `ls_content_stay_video` int(11) NOT NULL DEFAULT '0',
+  `ls_content_stay_text` int(11) NOT NULL DEFAULT '0',
+  `ls_outline_visit` int(11) NOT NULL DEFAULT '0',
+  `ls_outline_stay` int(11) NOT NULL DEFAULT '0',
+  `ls_example_visit` int(11) NOT NULL DEFAULT '0',
+  `ls_example_stay` int(11) NOT NULL DEFAULT '0',
+  `ls_selfass_visit` int(11) NOT NULL DEFAULT '0',
+  `ls_selfass_stay` int(11) NOT NULL DEFAULT '0',
+  `ls_exercise_visit` int(11) NOT NULL DEFAULT '0',
+  `ls_exercise_stay` int(11) NOT NULL DEFAULT '0',
+  `ls_ques_detail` int(11) NOT NULL DEFAULT '0',
+  `ls_ques_overview` int(11) DEFAULT '0',
+  `ls_ques_facts` int(11) NOT NULL DEFAULT '0',
+  `ls_ques_concepts` int(11) NOT NULL DEFAULT '0',
+  `ls_ques_graphics` int(11) NOT NULL DEFAULT '0',
+  `ls_ques_text` int(11) NOT NULL DEFAULT '0',
+  `ls_ques_interpret` int(11) NOT NULL DEFAULT '0',
+  `ls_ques_develop` int(11) NOT NULL DEFAULT '0',
+  `ls_forum_visit` int(11) NOT NULL DEFAULT '0',
+  `ls_forum_stay` int(11) NOT NULL DEFAULT '0',
+  `ls_forum_post` int(11) NOT NULL DEFAULT '0',
+  `ls_nav_overview_visit` int(11) NOT NULL DEFAULT '0',
+  `ls_nav_skip` int(11) NOT NULL DEFAULT '0',
+  `ls_quiz_stay_result` int(11) NOT NULL DEFAULT '0',
+  `ls_selfass_twice_wrong` int(11) NOT NULL DEFAULT '0',
+  `ls_quiz_revisions` int(11) NOT NULL DEFAULT '0',
+  `usr_id` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `lesson_access_log`
+--
+
+CREATE TABLE `lesson_access_log` (
+  `lal_id` int(10) NOT NULL,
+  `usr_id` int(10) NOT NULL,
+  `lsn_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `ntf_id` int(10) NOT NULL,
+  `ntf_type` varchar(10) DEFAULT NULL,
+  `ntf_instructor` varchar(50) NOT NULL,
+  `ntf_message` tinytext,
+  `ntf_read` varchar(1) NOT NULL DEFAULT 'N',
+  `ntf_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `usr_id` int(10) UNSIGNED NOT NULL,
+  `ass_id` int(10) UNSIGNED DEFAULT NULL,
+  `lsn_id` int(10) UNSIGNED DEFAULT NULL,
+  `asg_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating_reply`
 --
 
 CREATE TABLE `rating_reply` (
   `rry_id` int(10) NOT NULL,
   `ftr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `rry_rated` int(5) NOT NULL,
-  `rry_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `usr_id` int(10) UNSIGNED DEFAULT NULL,
+  `rry_rated` int(5) DEFAULT NULL,
+  `rry_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rry_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `rating_reply`
---
-
-INSERT INTO `rating_reply` (`rry_id`, `ftr_id`, `usr_id`, `rry_rated`, `rry_timecreated`) VALUES
-(1, 2, 44, 1, '2018-03-13 11:07:16'),
-(4, 2, 44, 3, '2018-03-13 11:18:30');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rating_reply_reply`
+-- Table structure for table `rating_reply_reply`
 --
 
 CREATE TABLE `rating_reply_reply` (
   `rrp_id` int(10) NOT NULL,
   `trr_id` int(10) UNSIGNED NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `rrp_rated` int(5) NOT NULL,
-  `rrp_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `usr_id` int(10) UNSIGNED DEFAULT NULL,
+  `rrp_rated` int(5) DEFAULT NULL,
+  `rrp_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rrp_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `rating_reply_reply`
---
-
-INSERT INTO `rating_reply_reply` (`rrp_id`, `trr_id`, `usr_id`, `rrp_rated`, `rrp_timecreated`) VALUES
-(1, 2, 42, 3, '2018-03-13 11:11:56'),
-(2, 2, 42, 3, '2018-03-13 11:19:21');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rating_reply_reply_reply`
+-- Table structure for table `rating_reply_reply_reply`
 --
 
 CREATE TABLE `rating_reply_reply_reply` (
   `rrl_id` int(10) NOT NULL,
   `rrr_id` int(10) NOT NULL,
-  `usr_id` int(10) UNSIGNED NOT NULL,
-  `rrl_rated` int(5) NOT NULL,
-  `rrl_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `usr_id` int(10) UNSIGNED DEFAULT NULL,
+  `rrl_rated` int(5) DEFAULT NULL,
+  `rrl_timecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rrl_timemodified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `rating_reply_reply_reply`
---
-
-INSERT INTO `rating_reply_reply_reply` (`rrl_id`, `rrr_id`, `usr_id`, `rrl_rated`, `rrl_timecreated`) VALUES
-(3, 1, 44, 3, '2018-03-13 11:16:45');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rating_thread`
+-- Table structure for table `rating_thread`
 --
 
 CREATE TABLE `rating_thread` (
@@ -542,7 +594,7 @@ CREATE TABLE `rating_thread` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -555,7 +607,7 @@ CREATE TABLE `roles` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `university`
+-- Table structure for table `university`
 --
 
 CREATE TABLE `university` (
@@ -572,7 +624,7 @@ CREATE TABLE `university` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `university`
+-- Dumping data for table `university`
 --
 
 INSERT INTO `university` (`unv_id`, `unv_name`, `unv_latlong`, `unv_address`, `unv_contact`, `unv_email`, `unv_website`, `unv_stats`, `unv_timecreated`, `unv_timemodified`) VALUES
@@ -582,12 +634,13 @@ INSERT INTO `university` (`unv_id`, `unv_name`, `unv_latlong`, `unv_address`, `u
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `usr_id` int(10) UNSIGNED NOT NULL,
   `usr_kode` varchar(3) DEFAULT NULL,
+  `usr_nim` varchar(10) DEFAULT NULL,
   `usr_username` varchar(50) NOT NULL,
   `usr_firstname` varchar(50) NOT NULL,
   `usr_lastname` varchar(50) NOT NULL,
@@ -602,24 +655,26 @@ CREATE TABLE `users` (
   `usr_tgllahir` date DEFAULT NULL,
   `usr_post_count` int(30) DEFAULT '0',
   `usr_thread_count` int(30) DEFAULT '0',
-  `usr_reply_count` int(30) DEFAULT '0'
+  `usr_reply_count` int(30) DEFAULT '0',
+  `usr_tmpasal` varchar(35) NOT NULL,
+  `usr_kelas` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`, `usr_post_count`, `usr_thread_count`, `usr_reply_count`) VALUES
-(41, NULL, 'admin', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.co.id', 'avatar_default.jpg', NULL, NULL, NULL, '1', NULL, NULL, 0, 0, 0),
-(42, NULL, 'iqbal', 'Iqbal', 'Maulana', 'eedae20fc3c7a6e9c5b1102098771c70', 'iqbalmlna@student.telkomuniversity.ac.id', 'iqbal1520309207.jpeg', '3.50', NULL, '2018-03-05 22:06:47', '2', '1', '1996-08-07', 0, 0, 0),
-(43, 'RZQ', 'razzaq', 'Fikri', 'Razzaq', '2f3383ed694d0e9446f98e90abf539cc', 'fikri@razzaq.gmail.com', 'razzaq1520305206.jpg', NULL, NULL, '2018-03-06 11:52:19', '3', '1', '1995-06-19', 0, 0, 0),
-(44, NULL, 'adzan', 'Adzan', 'Anugrah', '88c7dc5f4ea5d6f5283946f53e166dfe', 'adzan@anu.co.id', 'adzan1520314965.jpg', NULL, NULL, '2018-03-06 05:42:45', '2', '2', '1996-07-25', 0, 0, 0),
-(45, NULL, 'nungki', 'Nungki', 'Selviandro', '6d882a978ee7a24596f5bb9d9e07d250', 'nungkiselviandro@gmail.com', 'avatar_default.jpg', NULL, NULL, NULL, '3', '1', '1956-07-08', 0, 0, 0);
+INSERT INTO `users` (`usr_id`, `usr_kode`, `usr_nim`, `usr_username`, `usr_firstname`, `usr_lastname`, `usr_password`, `usr_email`, `usr_picture`, `usr_gpa`, `usr_timecreated`, `usr_timemodified`, `usr_level`, `usr_jk`, `usr_tgllahir`, `usr_post_count`, `usr_thread_count`, `usr_reply_count`, `usr_tmpasal`, `usr_kelas`) VALUES
+(41, NULL, NULL, 'admin', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.co.id', 'avatar_default.jpg', NULL, NULL, NULL, '1', NULL, NULL, 0, 0, 0, 'Jawa Barat', NULL),
+(42, NULL, NULL, 'iqbal', 'Iqbal', 'Maulana', 'eedae20fc3c7a6e9c5b1102098771c70', 'iqbalmlna@student.telkomuniversity.ac.id', 'iqbal1520309207.jpeg', '3.50', NULL, '2018-04-03 08:13:11', '2', '1', '1996-08-07', 4, 12, 0, 'Jawa Barat', NULL),
+(43, 'RZQ', NULL, 'razzaq', 'Fikri', 'Razzaq', '2f3383ed694d0e9446f98e90abf539cc', 'fikri@razzaq.gmail.com', 'razzaq1520959378.jpg', NULL, NULL, '2018-03-13 16:42:58', '3', '1', '1995-06-19', 0, 0, 0, 'Jawa Barat', NULL),
+(44, NULL, NULL, 'adzan', 'Adzan', 'Anugrah', '88c7dc5f4ea5d6f5283946f53e166dfe', 'adzan@anu.co.id', 'adzan1520314965.jpg', NULL, NULL, '2018-03-27 02:12:22', '2', '2', '1996-07-25', 33, 5, 0, 'Jawa Barat', NULL),
+(48, NULL, NULL, 'yantirusmawati', 'Yanti', 'Rusmawati', '6dc3735bcc27e1d246559a4a232fb1a7', 'yantirusmawati@telkomuniversity.ac.id', 'avatar_default.jpg', NULL, NULL, NULL, '3', '2', '1990-01-30', 0, 0, 0, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_logs`
+-- Table structure for table `user_logs`
 --
 
 CREATE TABLE `user_logs` (
@@ -631,34 +686,27 @@ CREATE TABLE `user_logs` (
   `log_name` varchar(100) NOT NULL,
   `log_origin` varchar(100) NOT NULL,
   `log_ip` varchar(20) NOT NULL,
-  `log_desc` varchar(50) NOT NULL
+  `log_desc` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `user_logs`
---
-
-INSERT INTO `user_logs` (`log_id`, `log_time`, `usr_id`, `log_event_context`, `log_referrer`, `log_name`, `log_origin`, `log_ip`, `log_desc`) VALUES
-(1, '2018-02-28 11:13:21', 37, 'MODOL DI CALANA', NULL, 'MODIL', 'FIREFOX', '20.10.20.10', ''),
-(3, '2018-03-06 10:03:07', 40, '/TA_Ubilearn/C_login/masuk', 'http://localhost/TA_Ubilearn/s', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi Login'),
-(4, '2018-03-06 10:17:22', 40, '/TA_Ubilearn/C_login/masuk', 'http://localhost/TA_Ubilearn/s', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi Login'),
-(5, '2018-03-06 10:17:39', 40, '/TA_Ubilearn/siswa/course_close/8', 'http://localhost/TA_Ubilearn/s', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Course '),
-(6, '2018-03-06 10:18:21', 40, '/TA_Ubilearn/siswa/course_close/8', 'http://localhost/TA_Ubilearn/s', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Course Merda Merdi'),
-(7, '2018-03-06 10:23:08', 40, '/TA_Ubilearn/siswa/course_detail/3', 'http://localhost/TA_Ubilearn/siswa/course', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Course Evvean'),
-(8, '2018-03-06 10:23:23', 39, '/TA_Ubilearn/C_login/masuk', 'http://localhost/TA_Ubilearn/signin', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 'a melakukan aksi Login'),
-(9, '2018-03-06 10:25:15', 40, '/TA_Ubilearn/C_login/masuk', 'http://localhost/TA_Ubilearn/signin', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi Login'),
-(10, '2018-03-06 10:25:33', 40, '/TA_Ubilearn/siswa/course_detail/13', 'http://localhost/TA_Ubilearn/siswa/course', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Course Untuk User A'),
-(11, '2018-03-06 10:32:19', 40, '/TA_Ubilearn/C_login/masuk', 'http://localhost/TA_Ubilearn/signin', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi Login'),
-(12, '2018-03-06 10:32:51', 39, '/TA_Ubilearn/C_login/masuk', 'http://localhost/TA_Ubilearn/signin', 'Login', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 'a melakukan aksi Login'),
-(13, '2018-03-06 10:34:21', 40, '/TA_Ubilearn/siswa/course_detail/13', 'http://localhost/TA_Ubilearn/siswa/course', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Course Untuk User A'),
-(14, '2018-03-06 10:34:29', 40, '/TA_Ubilearn/siswa/materi/9', 'http://localhost/TA_Ubilearn/siswa/course_detail/13', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Lesson Lesson 2 pada Course '),
-(15, '2018-03-06 10:44:55', 40, '/TA_Ubilearn/siswa/materi/9', '', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Lesson Lesson 2 pada Course '),
-(16, '2018-03-06 10:45:02', 40, '/TA_Ubilearn/siswa/materi/9', '', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Lesson Lesson 2 pada Course '),
-(17, '2018-03-06 10:45:07', 40, '/TA_Ubilearn/siswa/materi/8', '', 'View Course', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.18', '::1', 's melakukan aksi View Lesson Lesson 1 pada Course ');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `activity_count`
+--
+ALTER TABLE `activity_count`
+  ADD PRIMARY KEY (`activity_id`);
+
+--
+-- Indexes for table `at_risk`
+--
+ALTER TABLE `at_risk`
+  ADD PRIMARY KEY (`ar_id`),
+  ADD KEY `usr_id` (`usr_id`),
+  ADD KEY `crs_id` (`crs_id`),
+  ADD KEY `ass_id` (`ass_id`);
 
 --
 -- Indexes for table `course`
@@ -700,11 +748,27 @@ ALTER TABLE `course_assesment_questions_answer_of_student`
   ADD KEY `users_answerstudent_foreign` (`usr_id`);
 
 --
+-- Indexes for table `course_assesment_result`
+--
+ALTER TABLE `course_assesment_result`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `assesment_foreign` (`ass_id`),
+  ADD KEY `user_foreign` (`usr_id`);
+
+--
 -- Indexes for table `course_assignment`
 --
 ALTER TABLE `course_assignment`
   ADD PRIMARY KEY (`asg_id`),
   ADD KEY `course_assignment_foreign` (`crs_id`);
+
+--
+-- Indexes for table `course_assignment_loc`
+--
+ALTER TABLE `course_assignment_loc`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `asg_foreign` (`asg_id`),
+  ADD KEY `loc_foreign` (`loc_id`);
 
 --
 -- Indexes for table `course_assignment_submission`
@@ -735,14 +799,6 @@ ALTER TABLE `course_enrol`
   ADD PRIMARY KEY (`enr_id`),
   ADD KEY `course_enrol_foreign` (`crs_id`),
   ADD KEY `user_enrol_foreign` (`usr_id`);
-
---
--- Indexes for table `course_enrol_detail`
---
-ALTER TABLE `course_enrol_detail`
-  ADD PRIMARY KEY (`end_id`),
-  ADD KEY `enrol_details_foreign` (`usr_id`),
-  ADD KEY `enrol_enrol_details_foreign` (`enr_id`);
 
 --
 -- Indexes for table `course_forum`
@@ -784,6 +840,14 @@ ALTER TABLE `course_forum_thread_reply_reply_reply`
   ADD KEY `user_reply_foreign` (`usr_id`);
 
 --
+-- Indexes for table `course_forum_user`
+--
+ALTER TABLE `course_forum_user`
+  ADD PRIMARY KEY (`cfu_id`),
+  ADD KEY `cfu_user` (`usr_id`),
+  ADD KEY `cfu_forum` (`cfr_id`);
+
+--
 -- Indexes for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
@@ -796,6 +860,50 @@ ALTER TABLE `course_learning_outcomes`
 ALTER TABLE `course_lesson`
   ADD PRIMARY KEY (`lsn_id`),
   ADD KEY `course_lesson_foreign` (`crs_id`);
+
+--
+-- Indexes for table `hasil_kuesioner`
+--
+ALTER TABLE `hasil_kuesioner`
+  ADD PRIMARY KEY (`hk_id`),
+  ADD UNIQUE KEY `usr_id` (`usr_id`);
+
+--
+-- Indexes for table `hasil_kuesioner2`
+--
+ALTER TABLE `hasil_kuesioner2`
+  ADD PRIMARY KEY (`hk2_id`),
+  ADD UNIQUE KEY `usr_id` (`usr_id`);
+
+--
+-- Indexes for table `learning_goals`
+--
+ALTER TABLE `learning_goals`
+  ADD PRIMARY KEY (`lg_id`),
+  ADD UNIQUE KEY `usr_id` (`usr_id`);
+
+--
+-- Indexes for table `learning_style`
+--
+ALTER TABLE `learning_style`
+  ADD PRIMARY KEY (`ls_id`),
+  ADD UNIQUE KEY `usr_id` (`usr_id`);
+
+--
+-- Indexes for table `lesson_access_log`
+--
+ALTER TABLE `lesson_access_log`
+  ADD PRIMARY KEY (`lal_id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`ntf_id`),
+  ADD KEY `usr_foreign_key` (`usr_id`),
+  ADD KEY `lsn_foreign_key` (`lsn_id`),
+  ADD KEY `ass_foreign_key` (`ass_id`),
+  ADD KEY `asg_foreign_key` (`asg_id`);
 
 --
 -- Indexes for table `rating_reply`
@@ -846,7 +954,8 @@ ALTER TABLE `university`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`usr_id`),
-  ADD UNIQUE KEY `usr_kode` (`usr_kode`);
+  ADD UNIQUE KEY `usr_kode` (`usr_kode`),
+  ADD UNIQUE KEY `usr_nim` (`usr_nim`);
 
 --
 -- Indexes for table `user_logs`
@@ -860,167 +969,260 @@ ALTER TABLE `user_logs`
 --
 
 --
+-- AUTO_INCREMENT for table `activity_count`
+--
+ALTER TABLE `activity_count`
+  MODIFY `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `at_risk`
+--
+ALTER TABLE `at_risk`
+  MODIFY `ar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `crs_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `course_assesment`
 --
 ALTER TABLE `course_assesment`
-  MODIFY `ass_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ass_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_question`
 --
 ALTER TABLE `course_assesment_question`
-  MODIFY `qst_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `qst_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_questions_answer`
 --
 ALTER TABLE `course_assesment_questions_answer`
-  MODIFY `ans_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `ans_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+
 --
 -- AUTO_INCREMENT for table `course_assesment_questions_answer_of_student`
 --
 ALTER TABLE `course_assesment_questions_answer_of_student`
-  MODIFY `ast_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ast_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `course_assesment_result`
+--
+ALTER TABLE `course_assesment_result`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
 --
 -- AUTO_INCREMENT for table `course_assignment`
 --
 ALTER TABLE `course_assignment`
-  MODIFY `asg_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `asg_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `course_assignment_loc`
+--
+ALTER TABLE `course_assignment_loc`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course_assignment_submission`
 --
 ALTER TABLE `course_assignment_submission`
-  MODIFY `sub_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sub_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `course_category`
 --
 ALTER TABLE `course_category`
   MODIFY `cat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `course_content`
 --
 ALTER TABLE `course_content`
-  MODIFY `cnt_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cnt_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `course_enrol`
 --
 ALTER TABLE `course_enrol`
-  MODIFY `enr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `course_enrol_detail`
---
-ALTER TABLE `course_enrol_detail`
-  MODIFY `end_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `enr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `course_forum`
 --
 ALTER TABLE `course_forum`
-  MODIFY `cfr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cfr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread`
 --
 ALTER TABLE `course_forum_thread`
-  MODIFY `cft_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `cft_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply`
 --
 ALTER TABLE `course_forum_thread_reply`
-  MODIFY `ftr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ftr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply`
   MODIFY `trr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `course_forum_thread_reply_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply_reply`
-  MODIFY `rrr_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rrr_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `course_forum_user`
+--
+ALTER TABLE `course_forum_user`
+  MODIFY `cfu_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
-  MODIFY `loc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `loc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `course_lesson`
 --
 ALTER TABLE `course_lesson`
-  MODIFY `lsn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `lsn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `hasil_kuesioner`
+--
+ALTER TABLE `hasil_kuesioner`
+  MODIFY `hk_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `hasil_kuesioner2`
+--
+ALTER TABLE `hasil_kuesioner2`
+  MODIFY `hk2_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `learning_goals`
+--
+ALTER TABLE `learning_goals`
+  MODIFY `lg_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `learning_style`
+--
+ALTER TABLE `learning_style`
+  MODIFY `ls_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `lesson_access_log`
+--
+ALTER TABLE `lesson_access_log`
+  MODIFY `lal_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `ntf_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `rating_reply`
 --
 ALTER TABLE `rating_reply`
-  MODIFY `rry_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `rry_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `rating_reply_reply`
 --
 ALTER TABLE `rating_reply_reply`
   MODIFY `rrp_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `rating_reply_reply_reply`
 --
 ALTER TABLE `rating_reply_reply_reply`
-  MODIFY `rrl_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rrl_id` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `rating_thread`
 --
 ALTER TABLE `rating_thread`
   MODIFY `rtd_id` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `rol_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `university`
 --
 ALTER TABLE `university`
   MODIFY `unv_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `usr_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `user_logs`
 --
 ALTER TABLE `user_logs`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1048;
+
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `course`
+-- Constraints for table `at_risk`
+--
+ALTER TABLE `at_risk`
+  ADD CONSTRAINT `at_risk_ibfk_1` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `at_risk_ibfk_3` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `at_risk_ibfk_4` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `course`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `course_category_course_foreign` FOREIGN KEY (`cat_id`) REFERENCES `course_category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `course_user_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment`
+-- Constraints for table `course_assesment`
 --
 ALTER TABLE `course_assesment`
   ADD CONSTRAINT `course_assesment_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment_question`
+-- Constraints for table `course_assesment_question`
 --
 ALTER TABLE `course_assesment_question`
   ADD CONSTRAINT `assesment_questions_foreign` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment_questions_answer`
+-- Constraints for table `course_assesment_questions_answer`
 --
 ALTER TABLE `course_assesment_questions_answer`
   ADD CONSTRAINT `questions_answers_foreign` FOREIGN KEY (`qst_id`) REFERENCES `course_assesment_question` (`qst_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assesment_questions_answer_of_student`
+-- Constraints for table `course_assesment_questions_answer_of_student`
 --
 ALTER TABLE `course_assesment_questions_answer_of_student`
   ADD CONSTRAINT `answer_answerstudent_foreign` FOREIGN KEY (`ans_id`) REFERENCES `course_assesment_questions_answer` (`ans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1028,108 +1230,143 @@ ALTER TABLE `course_assesment_questions_answer_of_student`
   ADD CONSTRAINT `users_answerstudent_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assignment`
+-- Constraints for table `course_assesment_result`
+--
+ALTER TABLE `course_assesment_result`
+  ADD CONSTRAINT `assesment_foreign` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `course_assignment`
 --
 ALTER TABLE `course_assignment`
   ADD CONSTRAINT `course_assignment_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_assignment_submission`
+-- Constraints for table `course_assignment_loc`
+--
+ALTER TABLE `course_assignment_loc`
+  ADD CONSTRAINT `asg_foreign` FOREIGN KEY (`asg_id`) REFERENCES `course_assignment` (`asg_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `loc_foreign` FOREIGN KEY (`loc_id`) REFERENCES `course_learning_outcomes` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `course_assignment_submission`
 --
 ALTER TABLE `course_assignment_submission`
   ADD CONSTRAINT `assignment_submission_foreign` FOREIGN KEY (`asg_id`) REFERENCES `course_assignment` (`asg_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_submission_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_content`
+-- Constraints for table `course_content`
 --
 ALTER TABLE `course_content`
   ADD CONSTRAINT `content_learningoutcomes_foreign` FOREIGN KEY (`loc_id`) REFERENCES `course_learning_outcomes` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `content_lesson_foreign` FOREIGN KEY (`lsn_id`) REFERENCES `course_lesson` (`lsn_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_enrol`
+-- Constraints for table `course_enrol`
 --
 ALTER TABLE `course_enrol`
   ADD CONSTRAINT `course_enrol_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_enrol_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`);
-
 --
--- Ketidakleluasaan untuk tabel `course_enrol_detail`
---
-ALTER TABLE `course_enrol_detail`
-  ADD CONSTRAINT `enrol_enrol_details_foreign` FOREIGN KEY (`enr_id`) REFERENCES `course_enrol` (`enr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `enrol_users_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `course_forum`
+-- Constraints for table `course_forum`
 --
 ALTER TABLE `course_forum`
   ADD CONSTRAINT `course_forum_foreign` FOREIGN KEY (`lsn_id`) REFERENCES `course_lesson` (`lsn_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_forum_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread`
+-- Constraints for table `course_forum_thread`
 --
 ALTER TABLE `course_forum_thread`
   ADD CONSTRAINT `forum_thread_foreign` FOREIGN KEY (`cfr_id`) REFERENCES `course_forum` (`cfr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread_reply`
+-- Constraints for table `course_forum_thread_reply`
 --
 ALTER TABLE `course_forum_thread_reply`
   ADD CONSTRAINT `cft_ftr_foreign` FOREIGN KEY (`cft_id`) REFERENCES `course_forum_thread` (`cft_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `users_ftr_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread_reply_reply`
+-- Constraints for table `course_forum_thread_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply`
   ADD CONSTRAINT `threads_posts_foreign` FOREIGN KEY (`ftr_id`) REFERENCES `course_forum_thread_reply` (`ftr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `users_posts_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_forum_thread_reply_reply_reply`
+-- Constraints for table `course_forum_thread_reply_reply_reply`
 --
 ALTER TABLE `course_forum_thread_reply_reply_reply`
   ADD CONSTRAINT `reply_reply_foreign` FOREIGN KEY (`trr_id`) REFERENCES `course_forum_thread_reply_reply` (`trr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_reply_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_learning_outcomes`
+-- Constraints for table `course_forum_user`
+--
+ALTER TABLE `course_forum_user`
+  ADD CONSTRAINT `cfu_forum` FOREIGN KEY (`cfr_id`) REFERENCES `course_forum` (`cfr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cfu_user` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `course_learning_outcomes`
 --
 ALTER TABLE `course_learning_outcomes`
   ADD CONSTRAINT `course_loc_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `course_lesson`
+-- Constraints for table `course_lesson`
 --
 ALTER TABLE `course_lesson`
   ADD CONSTRAINT `course_lesson_foreign` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rating_reply`
+-- Constraints for table `learning_goals`
+--
+ALTER TABLE `learning_goals`
+  ADD CONSTRAINT `loc_lg` FOREIGN KEY (`loc_id`) REFERENCES `course_learning_outcomes` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usr_lg` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `learning_style`
+--
+ALTER TABLE `learning_style`
+  ADD CONSTRAINT `usr_ls` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `asg_foreign_key` FOREIGN KEY (`asg_id`) REFERENCES `course_assignment` (`asg_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ass_foreign_key` FOREIGN KEY (`ass_id`) REFERENCES `course_assesment` (`ass_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `lsn_foreign_key` FOREIGN KEY (`lsn_id`) REFERENCES `course_lesson` (`lsn_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usr_foreign_key` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `rating_reply`
 --
 ALTER TABLE `rating_reply`
   ADD CONSTRAINT `ftr_foreign` FOREIGN KEY (`ftr_id`) REFERENCES `course_forum_thread_reply` (`ftr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usr_foreign` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rating_reply_reply`
+-- Constraints for table `rating_reply_reply`
 --
 ALTER TABLE `rating_reply_reply`
   ADD CONSTRAINT `reply_rating` FOREIGN KEY (`trr_id`) REFERENCES `course_forum_thread_reply_reply` (`trr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_rating` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rating_reply_reply_reply`
+-- Constraints for table `rating_reply_reply_reply`
 --
 ALTER TABLE `rating_reply_reply_reply`
   ADD CONSTRAINT `injek_rating` FOREIGN KEY (`rrr_id`) REFERENCES `course_forum_thread_reply_reply_reply` (`rrr_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `userr_rating` FOREIGN KEY (`usr_id`) REFERENCES `users` (`usr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rating_thread`
+-- Constraints for table `rating_thread`
 --
 ALTER TABLE `rating_thread`
   ADD CONSTRAINT `rating_thread` FOREIGN KEY (`cft_id`) REFERENCES `course_forum_thread` (`cft_id`) ON DELETE CASCADE ON UPDATE CASCADE,
