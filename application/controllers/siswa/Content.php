@@ -51,6 +51,10 @@ class Content extends CI_Controller {
             ->leftJoin('users','users.usr_id','=','course.usr_id')
             ->where('course_content.cnt_id',$cnt_id)
             ->first();
+        
+        $tipekonten = $data['kontent']->cnt_type;
+        $this->session->set_userdata('tipekonten', $tipekonten);
+        
         $data['LO'] = M_Course_Learning_Outcomes::where('loc_id',$data['kontent']->loc_id)->first();
         if ($data['kontent']->cnt_type == 'Text' || $data['kontent']->cnt_type == 'Example' ){
             $data['content'] = 'siswa/course_text';

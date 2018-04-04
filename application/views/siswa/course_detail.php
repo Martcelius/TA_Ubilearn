@@ -5,6 +5,7 @@
                 <div class="">
                     <h2 style="color:white"><?php echo $course->crs_name ?></h2>
                     <h3 style="color:white"><?php echo $course->usr_kode ?></h3>
+                    <?php echo $this->session->userdata('tipekonten') ?>
                 </div>
             </div>
         </div>
@@ -37,10 +38,12 @@
                         <?php 
                         foreach ($loc as $lo): ?>
                         <option <?php 
-                        if ($lo->loc_id == $learning_goal->loc_id) {
-                            echo "selected";
-                        } else if ($lo->loc_id == NULL) {
-                            echo "";
+                        if ($learning_goal !== NULL) {
+                            if ($lo->loc_id == $learning_goal->loc_id) {
+                                echo "selected";
+                            } else if ($lo->loc_id == NULL) {
+                                echo "";
+                            }
                         }
                          ?> value="<?php echo $lo->loc_id ?>"><?php echo $lo->loc_desc ?></option>
                         <?php endforeach; ?>
