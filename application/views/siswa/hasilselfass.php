@@ -62,16 +62,17 @@
         <div class="mdl-card mdl-shadow--2dp pie-chart">
             <div class="mdl-card__supporting-text">
 <h3>Team Role : <strong><i><?php 
-if ($hasilKues2->hasil == NULL) {
-  redirect('siswa/kuesioner_tr');
-} else {
   echo $hasilKues2->hasil;
-} ?></i></strong></h3>  
-
+ ?></i></strong></h3> 
+ <p><?php echo $hasil2Arti; ?></p> 
 </div>
 </div>
+<center style="margin-top: 15px;" >
+  <a href="<?php echo site_url('siswa/dashboard') ?>">
+    <button type="button" class="mdl-button mdl-js-button mdl-button--raised" style="background: #4a95b9;">Pergi Ke Dashboard</button>
+  </a>
+</center>
 </div>
-
 </div>
 
 <script>

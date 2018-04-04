@@ -162,7 +162,26 @@
                 <br/>
                 <li>Imagine : membayangkan</li>
                 <li>Listen : mendengarkan</li>
+                <hr/>
+                Penjelasan Hasil Kuesioner
                 <br/>
+                <li style="text-align: justify;margin-right: 12px;">Executive : Eksekutif terkadang juga disebut sebagai penyelenggara/peng-organisasi. Eksekutif umumnya disiplin dan bersemangat untuk menyelesaikan pekerjaan. Dia efisien, praktis, dan sistematis. Eksekutif terorganisasi dengan baik dan tekun, dan dengan cepat mengubah ide dari tim menjadi tindakan nyata dan rencana praktis</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Innovator : Inovator sering merupakan generator kreatif dari sebuah tim. Dia memiliki imajinasi yang kuat dan keinginan untuk menjadi original. Inovator lebih memilih untuk mandiri dan cenderung mendekati tugas dengan cara ilmiah/secara logika. Sebagai individu kreatif, inovator memiliki peran penting dalam sebuah tim untuk menyelesaikan tugas dan memecahkan masalah.</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Explorer : Penjelajah umumnya bersifat ekstrovert. Dia ceria, suka berteman. Penjelajah juga bersifat investigatif, tertarik dan ingin tahu tentang berbagai hal. Karena para penjelajah suka berimprovisasi dan berkomunikasi dengan orang lain, mereka akan memiliki sedikit masalah dalam menyajikan ide kepada tim dan mengembangkan kontak baru.</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Analyst : Analis memiliki kecenderungan untuk dilindungi (defensive) dan kritis. Analis juga akan bereaksi terhadap rencana dan ide dengan cara yang rasional dan masuk akal. Dia akan menyukai pendekatan yang bijaksana untuk suatu hal dan akan mengevaluasinya sesuai dengan keakuratannya sebelum bertindak.</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Driver : Driver umumnya sangat ambisius dan energik. Dia mungkin tampak tidak sabar dan impulsif. Driver adalah motivator yang kuat dan akan menantang orang lain pada saat-saat penting. Meskipun tindakan driver kadang-kadang tampak agak emosional, mereka memainkan peran penting dalam mendorong tim maju untuk berhasil.</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Chariman : Chairman memiliki peran koordinasi yang kuat. Dengan penekanan pada prosedur, chairman akan berusaha membawa dan menjaga tim tetap bersama. Dia komunikatif dan berhubungan dengan anggota tim dengan cara yang sopan dan berpikiran terbuka.</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Completer : Completer sangat teliti dan merasa bertanggung jawab atas pencapaian tim. Completers prihatin ketika kesalahan dibuat dan mereka cenderung khawatir karena sifat pengendalian mereka. Completer ini juga dikenal sebagai finisher karena mereka paling efektif digunakan pada akhir tugas, untuk memoles dan meneliti pekerjaan untuk kesalahan, menundukkannya pada standar kontrol kualitas tertinggi.</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Team Player : Team player selalu peduli, menghindari konflik, dan menumbuhkan harmoni. Menjadi seseorang yang suka membantu orang lain, Team player umumnya dianggap menyenangkan dan ramah. Ia diplomatis dan menekankan solidaritas dan kohesi tim.</li>
+                <br/>
+                <li style="text-align: justify;margin-right: 12px;">Expert : Expert memiliki keterampilan dan keahlian yang diperlukan untuk tugas khusus yang ada. Dia memiliki fokus yang kuat pada tugas dan mungkin bersikap defensif ketika orang lain mengganggu pekerjaannya. Expert lebih suka bekerja sendiri dan anggota tim sering memiliki kepercayaan dan keyakinan yang besar terhadap dirinya.</li>
               </ul>
               <hr/>
               <ul>
