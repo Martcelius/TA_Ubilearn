@@ -99,6 +99,8 @@ $route['siswa/kuesioner_ls'] = 'siswa/Kuesioner/kuesioner_ls';
 $route['siswa/kuesioner_tr'] = 'siswa/Kuesioner/kuesioner_tr';
 $route['siswa/hasil_kuesioner_ls'] = 'siswa/Kuesioner/hasil_kuesioner_ls';
 
+$route['siswa/user_guide'] = 'siswa/akun/user_guide';
+
 //route admin
 $route['admin/dashboard'] = 'C_admin/dashboard_admin';
 $route['admin/akun_admin'] = 'admin/akun/akun_admin';
