@@ -146,13 +146,13 @@ class Notif extends CI_Controller {
             
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View All Course:" . " " . $this->session->userdata('username'),
+                'log_event_context' => "View All Notif:" . " " . $this->session->userdata('username'),
                 'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View All Course",
+                'log_name'          => "View All Notif",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " "
-                    ."melakukan aksi View All Course"
+                    ."melakukan aksi View All Notif"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -351,13 +351,13 @@ class Notif extends CI_Controller {
             
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View All Course:" . " " . $this->session->userdata('username'),
+                'log_event_context' => "View Notif:" . " " . $notif_update->ntf_type,
                 'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View All Course",
+                'log_name'          => "View Notif",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " "
-                    ."melakukan aksi View All Course"
+                    ."melakukan aksi View Notif"." ". $notif_update->ntf_type
             );
             $this->lib_event_log->add_user_event($event);
 

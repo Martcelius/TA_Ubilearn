@@ -272,18 +272,6 @@ class C_login extends CI_Controller {
 
         //Content Video, Text, Example Stay
         if (strpos($this->agent->referrer(), 'content/contents') !== FALSE) {
-            
-            $event = array(
-                'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View All Course:" . " " . $this->session->userdata('username'),
-                'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View All Course",
-                'log_origin'        => $this->agent->agent_string(),
-                'log_ip'            => $this->input->server('REMOTE_ADDR'),
-                'log_desc'          => $this->session->userdata('username'). " "
-                    ."melakukan aksi View All Course"
-            );
-            $this->lib_event_log->add_user_event($event);
 
             $waktu_sekarang = M_Log::where('usr_id', $this->session->userdata('id'))
                     ->orderBy('log_time', 'DESC')->first()->log_time;

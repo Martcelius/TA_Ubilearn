@@ -140,13 +140,13 @@ class C_siswa extends CI_Controller {
             
             $event = array(
                 'usr_id'            => $this->session->userdata('id'),
-                'log_event_context' => "View All Course:" . " " . $this->session->userdata('username'),
+                'log_event_context' => "Dashboard:" . " " . $this->session->userdata('username'),
                 'log_referrer'      => $this->input->server('REQUEST_URI'),
-                'log_name'          => "View All Course",
+                'log_name'          => "Dashboard",
                 'log_origin'        => $this->agent->agent_string(),
                 'log_ip'            => $this->input->server('REMOTE_ADDR'),
                 'log_desc'          => $this->session->userdata('username'). " "
-                    ."melakukan aksi View All Course"
+                    ."melakukan aksi Dashboard"
             );
             $this->lib_event_log->add_user_event($event);
 
@@ -253,14 +253,6 @@ class C_siswa extends CI_Controller {
         $this->load->view('layout/master', $data);
 
     }
-
-//    public function dashboard_siswa2()
-//    {
-//        $data['sidebar'] = 'layout/sidebar';
-//        $data['content'] = 'siswa/dashboard_siswa';
-//
-////        $this->load->view('layout/master', $data);
-//    }
 
     public function forum_siswa()
     {
