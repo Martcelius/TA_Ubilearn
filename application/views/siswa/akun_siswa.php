@@ -80,8 +80,9 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </div>
-                            <input name="ipk" type="text" value="<?php echo $this->session->userdata('gpa') ;?>" class="form-control input-md">
+                            <input name="ipk" type="number" min="0" max="4" step=".01" value="<?php echo $this->session->userdata('gpa') ;?>" class="form-control input-md">
                         </div>
+                        <p>Contoh : 1,23</p>
                     </div>  
             </div>
             <div class="form-group">

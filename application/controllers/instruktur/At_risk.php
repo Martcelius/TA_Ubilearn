@@ -69,8 +69,18 @@ class At_risk extends CI_Controller {
             $kuis2 = $data['ar_kuis'][1]->ass_result;
             $kuis3 = $data['ar_kuis'][2]->ass_result;
             $lc = $data['log'];
+            $atribut['jk'] = $jk;
+            $from = new DateTime($data['ar'][0]->usr_tgllahir);
+            $to   = new DateTime('today');
+            $atribut['usia'] = $from->diff($to)->y;
+            $atribut['ipk'] = $ipk;
+            $atribut['kuis1'] = $kuis1;
+            $atribut['kuis2'] = $kuis2;
+            $atribut['kuis3'] = $kuis3;
+            $atribut['lc'] = $data ['total'];
         }
-//        dd($data['ar'][0]->usr_gpa);
+        $status = $this->M_At_risk->posterior($atribut);
+        $data['status'] = $status;
         $this->load->view('layout/master', $data);
     }
 

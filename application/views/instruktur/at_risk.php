@@ -190,7 +190,7 @@
                                                     echo 'Belum dapat diprediksi, jumlah kuis harus > 2';
                                                 }
                                             } else {
-                                                echo 'panggil fungsi naive bayes';
+                                                echo $status;
                                             }
                                         ?>
                                     </td>
